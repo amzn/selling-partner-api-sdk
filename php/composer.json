@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SpApi\\AuthAndAuth\\": "src/authandauth",
+            "SpApi\\AuthAndAuth\\": "sdk/src/authandauth",
             "OpenAPI\\Client\\": "sdk/lib/"
         }
     },
@@ -41,7 +41,7 @@
         }
     },
     "scripts": {
-        "fix": "phpcs --standard=PSR12 src/authandauth sdk/tests/authandauth",
-        "test": "phpunit tests/authandauth"
+        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/tests/authandauth",
+        "test": "phpunit sdk/tests/authandauth"
     }
 }
