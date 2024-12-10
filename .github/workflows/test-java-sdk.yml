@@ -1,0 +1,32 @@
+name: Test Java SDK
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'corretto'
+          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Start mock backend
+        working-directory: ./test/src
+        run: node index.js
+      - name: Execute tests
+        working-directory: ./java/sdk
+        run: ./gradlew test
