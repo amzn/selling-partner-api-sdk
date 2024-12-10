@@ -32,16 +32,16 @@
     },
     "autoload": {
         "psr-4": {
-            "SpApi\\AuthAndAuth\\": "sdk/src/authandauth",
+            "SpApi\\AuthAndAuth\\": "src/authandauth",
             "OpenAPI\\Client\\": "sdk/lib/"
         }
     },
     "autoload-dev": {
-        "psr-4": { "SpApi\\Test\\AuthAndAuth\\" : "sdk/src/tests/authandauth/"
+        "psr-4": { "SpApi\\Test\\AuthAndAuth\\" : "sdk/tests/authandauth/"
         }
     },
     "scripts": {
-        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/src/tests/authandauth",
-        "test": "phpunit sdk/tests/authandauth"
+        "fix": "phpcs --standard=PSR12 src/authandauth sdk/tests/authandauth",
+        "test": "phpunit tests/authandauth"
     }
 }
