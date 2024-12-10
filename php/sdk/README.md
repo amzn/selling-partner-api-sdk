@@ -48,9 +48,3 @@ Submit [issues][sdk-issues] - this is the preferred channel to interact with our
 Articulate your feature request or upvote existing ones on our [Issues][sdk-issues] page
 
 [sdk-issues]: https://github.com/amzn/selling-partner-api-sdk/issues
-
-
-
-
-
-

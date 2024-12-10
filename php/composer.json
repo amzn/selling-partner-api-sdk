@@ -37,11 +37,11 @@
         }
     },
     "autoload-dev": {
-        "psr-4": { "SpApi\\Test\\AuthAndAuth\\" : "sdk/tests/authandauth/"
+        "psr-4": { "SpApi\\Test\\AuthAndAuth\\" : "sdk/src/tests/authandauth/"
         }
     },
     "scripts": {
-        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/tests/authandauth",
+        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/src/tests/authandauth",
         "test": "phpunit sdk/tests/authandauth"
     }
 }
