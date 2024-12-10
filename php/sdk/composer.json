@@ -1,47 +1,42 @@
 {
-    "name": "spapi/auth-and-auth",
-    "description": "This library provides helper classes for use when signing HTTP requests for Amazon Selling Partner APIs.",
-    "version":"1.0",
-    "type": "library",
+    "name": "selling-partner-api-aa-php",
+    "description": "Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).",
     "keywords": [
-        "sp-api",
-        "amazon",
-        "sdk",
+        "openapitools",
         "openapi-generator",
+        "openapi",
         "php",
-        "rest"
+        "sdk",
+        "rest",
+        "api"
     ],
-    "homepage": "https://developer-docs.amazon.com/sp-api",
-    "license": "Apache-2.0",
+    "homepage": "https://openapi-generator.tech",
+    "license": "unlicense",
     "authors": [
         {
-            "name": "Amazon API Services",
-            "homepage": "https://developer-docs.amazon.com/sp-api"
+            "name": "OpenAPI-Generator contributors",
+            "homepage": "https://openapi-generator.tech"
         }
     ],
     "require": {
         "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
         "ext-json": "*",
+        "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^7.3",
-        "guzzlehttp/psr7": "^2.0",
-        "aws/aws-sdk-php": "^3.228"
+        "guzzlehttp/psr7": "^1.7 || ^2.0",
+        "symfony/rate-limiter": "^6.1",
+        "aws/aws-sdk-php": "^3.228",
+        "spapi/auth-and-auth": "1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "squizlabs/php_codesniffer": "^3.7"
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": {
-            "SpApi\\AuthAndAuth\\": "src/authandauth",
-            "OpenAPI\\Client\\": "sdk/lib/"
-        }
+        "psr-4": { "OpenAPI\\Client\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "SpApi\\Test\\AuthAndAuth\\" : "sdk/tests/authandauth/"
-        }
-    },
-    "scripts": {
-        "fix": "phpcs --standard=PSR12 src/authandauth sdk/tests/authandauth",
-        "test": "phpunit tests/authandauth"
+        "psr-4": { "OpenAPI\\Client\\Test\\" : "test/" }
     }
 }
