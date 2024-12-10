@@ -4,3 +4,9 @@
 **.jar
 php/sdk/tests/authandauth/OrdersTest.php
 php/sdk/tests/authandauth/SellersTest.php
+php/composer.lock
+php/vendor/
+php/sdk/test/OrdersTest.php
+php/sdk/test/SellersTest.php
+php/sdk/.DS_Store
+.DS_Store
