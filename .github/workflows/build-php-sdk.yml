@@ -33,9 +33,6 @@ jobs:
         run: cp -R selling-partner-api-models/clients/sellingpartner-api-aa-php/src selling-partner-api-sdk/php/sdk/src
       - name: Copy Composer dependencies
         run: cp -R selling-partner-api-models/clients/sellingpartner-api-aa-php/composer.json selling-partner-api-sdk/php/sdk
-      - name: Install Composer dependencies
-        working-directory: ./selling-partner-api-sdk/php/sdk
-        run: composer install
       - name: Execute openapi codegen
         working-directory: ./selling-partner-api-sdk/php
         run: |
