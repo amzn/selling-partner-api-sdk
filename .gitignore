@@ -2,5 +2,3 @@
 **/.gradle
 **/build
 **.jar
-php/sdk/tests/authandauth/OrdersTest.php
-php/sdk/tests/authandauth/SellersTest.php
