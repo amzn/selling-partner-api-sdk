@@ -26,35 +26,31 @@ Download the latest version [here](https://github.com/amzn/selling-partner-api-s
 Add the following line to the dependencies in your `build.gradle` file:
 
 ```
-implementation files('path/to/selling-partner-api-java-sdk-0.1.0.jar')
+implementation files('path/to/selling-partner-api-java-sdk-x.x.x.jar')
 ```
 
 ##### Maven
 
-Run the following command to install the `JAR` file in your local Maven repository (Note: Make sure to use the correct path to the downloaded `JAR` file):
+Run the following command to install the `JAR` file in your local Maven repository:
 
 ```sh
-mvn install:install-file -Dfile=[Replace with path to downloaded JAR file] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=java-sdk -Dversion=0.1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=[path to JAR file] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=java-sdk -Dversion=x.x -Dpackaging=jar
 ```
 
-Add the following lines to the dependency section in your `maven.pom` file:
+Add the following lines to the dependencies in your `maven.pom` file:
 
 ```xml
-<dependencies>
-    ...
-    <dependency>
-        <groupId>com.amazon.sellingpartnerapi</groupId>
-        <artifactId>java-sdk</artifactId>
-        <version>0.1.0</version>
-    </dependency>
-    ...
-</dependencies>
+<dependency>
+    <groupId>com.amazon.sellingpartnerapi</groupId>
+    <artifactId>java-sdk</artifactId>
+    <version>x.x</version>
+</dependency>
 ```
 
 ### Use the SDK
 
 In order to call one of the APIs included in the Selling Partner API, you need to:
-* Configure credentials (Note: Use your individual credentials for `clientId`, `clientSecret` and `refreshToken`)
+* Configure credentials
 * Create an instance for a specific API (e.g. Sellers API)
 * Call an operation
 
