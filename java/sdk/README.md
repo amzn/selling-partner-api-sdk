@@ -37,7 +37,7 @@ Run the following command to install the `JAR` file in your local Maven reposito
 mvn install:install-file -Dfile=[Replace with path to downloaded JAR file] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=java-sdk -Dversion=0.1.0 -Dpackaging=jar
 ```
 
-Add the following lines to the dependency section in your `maven.pom` file:
+Add the following lines to the dependencies in your `maven.pom` file:
 
 ```xml
 <dependencies>
