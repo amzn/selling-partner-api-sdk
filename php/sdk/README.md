@@ -22,6 +22,15 @@ To run the SDK you need PHP XX or higher.
 Download the latest version [here](https://github.com/amzn/selling-partner-api-sdk/releases).
 
 
+##### Composer
+
+Run the following command to install the dependencies in your php root directory:
+
+```sh
+composer install
+```
+A vendor folder will be created, adding all the dependencies to use the code.
+
 ### Use the SDK
 
 In order to call one of the APIs included in the Selling Partner API, you need to:
@@ -39,9 +48,3 @@ Submit [issues][sdk-issues] - this is the preferred channel to interact with our
 Articulate your feature request or upvote existing ones on our [Issues][sdk-issues] page
 
 [sdk-issues]: https://github.com/amzn/selling-partner-api-sdk/issues
-
-
-
-
-
-
