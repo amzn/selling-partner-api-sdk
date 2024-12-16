@@ -41,54 +41,54 @@ class Configuration
     /**
      * @var Configuration
      */
-    private static Configuration $defaultConfiguration;
+    private static $defaultConfiguration;
 
     /**
      * Boolean format for query string
      *
      * @var string
      */
-    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
+    protected $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
 
     /**
      * The host
      *
      * @var string
      */
-    protected string $host = '{{basePath}}';
+    protected $host = '{{basePath}}';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
      *
      * @var string
      */
-    protected string $userAgent = '{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{artifactVersion}}}{{^artifactVersion}}1.0.0{{/artifactVersion}}/PHP{{/httpUserAgent}}';
+    protected $userAgent = '{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{artifactVersion}}}{{^artifactVersion}}1.0.0{{/artifactVersion}}/PHP{{/httpUserAgent}}';
 
     /**
      * Debug switch (default set to false)
      *
      * @var bool
      */
-    protected bool $debug = false;
+    protected $debug = false;
 
     /**
      * Debug file location (log to STDOUT by default)
      *
      * @var string
      */
-    protected string $debugFile = 'php://output';
+    protected $debugFile = 'php://output';
 
     /**
      * Debug file location (log to STDOUT by default)
      *
      * @var string
      */
-    protected string $tempFolderPath;
+    protected $tempFolderPath;
 
     /**
      * @var LWAAuthorizationSigner
      */
-    private LWAAuthorizationSigner $lwaAuthSigner;
+    private $lwaAuthSigner;
 
     /**
      * Required inputs for config array
@@ -102,9 +102,11 @@ class Configuration
      */
     public function __construct(
         array $config = [],
-        ?LWAAuthorizationCredentials $lwaAuthorizationCredentials = null,
+        LWAAuthorizationCredentials $lwaAuthorizationCredentials = null,
+        string $region = "",
+        array $awsProviderConfig = [],
         bool $disableAccessTokenCache = false,
-        ?LWAAccessTokenCache $lwaTokenCache = null
+        LWAAccessTokenCache $lwaTokenCache = null,
     ) {
         $this->tempFolderPath = sys_get_temp_dir();
         if ($lwaAuthorizationCredentials) {
@@ -154,7 +156,7 @@ class Configuration
         }
     }
 
-    public function enableCache(?LWAAccessTokenCache $lwaAccessTokenCache = null): void
+    public function enableCache(LWAAccessTokenCache $lwaAccessTokenCache = null): void
     {
         $this->lwaAuthSigner->getLwaClient()->setLWAAccessTokenCache(
             $lwaAccessTokenCache ?? new LWAAccessTokenCache()
@@ -175,11 +177,11 @@ class Configuration
     /**
      * Sets boolean format for query string.
      *
-     * @param string $booleanFormat Boolean format for query string
+     * @param string $booleanFormatForQueryString Boolean format for query string
      *
      * @return $this
      */
-    public function setBooleanFormatForQueryString(string $booleanFormat): Configuration
+    public function setBooleanFormatForQueryString(string $booleanFormat)
     {
         $this->booleanFormatForQueryString = $booleanFormat;
 
@@ -203,7 +205,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setHost(string $host): Configuration
+    public function setHost($host)
     {
         $this->host = $host;
         return $this;
@@ -214,7 +216,7 @@ class Configuration
      *
      * @return string Host
      */
-    public function getHost(): string
+    public function getHost()
     {
         return $this->host;
     }
@@ -227,7 +229,7 @@ class Configuration
      * @throws \InvalidArgumentException
      * @return $this
      */
-    public function setUserAgent(string $userAgent): Configuration
+    public function setUserAgent($userAgent)
     {
         if (!is_string($userAgent)) {
             throw new \InvalidArgumentException('User-agent must be a string.');
@@ -242,7 +244,7 @@ class Configuration
      *
      * @return string user agent
      */
-    public function getUserAgent(): string
+    public function getUserAgent()
     {
         return $this->userAgent;
     }
@@ -254,7 +256,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setDebug(bool $debug): Configuration
+    public function setDebug($debug)
     {
         $this->debug = $debug;
         return $this;
@@ -265,7 +267,7 @@ class Configuration
      *
      * @return bool
      */
-    public function getDebug(): bool
+    public function getDebug()
     {
         return $this->debug;
     }
@@ -277,7 +279,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setDebugFile(string $debugFile): Configuration
+    public function setDebugFile($debugFile)
     {
         $this->debugFile = $debugFile;
         return $this;
@@ -288,7 +290,7 @@ class Configuration
      *
      * @return string
      */
-    public function getDebugFile(): string
+    public function getDebugFile()
     {
         return $this->debugFile;
     }
@@ -300,7 +302,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setTempFolderPath(string $tempFolderPath): Configuration
+    public function setTempFolderPath($tempFolderPath)
     {
         $this->tempFolderPath = $tempFolderPath;
         return $this;
@@ -311,7 +313,7 @@ class Configuration
      *
      * @return string Temp folder path
      */
-    public function getTempFolderPath(): string
+    public function getTempFolderPath()
     {
         return $this->tempFolderPath;
     }
@@ -321,7 +323,7 @@ class Configuration
      *
      * @return Configuration
      */
-    public static function getDefaultConfiguration(): Configuration
+    public static function getDefaultConfiguration()
     {
         if (self::$defaultConfiguration === null) {
             self::$defaultConfiguration = new Configuration();
@@ -347,7 +349,7 @@ class Configuration
      *
      * @return string The report for debugging
      */
-    public static function toDebugReport(): string
+    public static function toDebugReport()
     {
         $report  = 'PHP SDK ({{invokerPackage}}) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
@@ -362,11 +364,36 @@ class Configuration
     }
 
     /**
+     * Get API key (with prefix if set)
+     *
+     * @param  string $apiKeyIdentifier name of apikey
+     *
+     * @return null|string API key with the prefix
+     */
+    public function getApiKeyWithPrefix($apiKeyIdentifier)
+    {
+        $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
+        $apiKey = $this->getApiKey($apiKeyIdentifier);
+
+        if ($apiKey === null) {
+            return null;
+        }
+
+        if ($prefix === null) {
+            $keyWithPrefix = $apiKey;
+        } else {
+            $keyWithPrefix = $prefix . ' ' . $apiKey;
+        }
+
+        return $keyWithPrefix;
+    }
+
+    /**
      * Returns an array of host settings
      *
      * @return array an array of host settings
      */
-    public function getHostSettings(): array
+    public function getHostSettings()
     {
         return [
         {{#servers}}
@@ -402,11 +429,11 @@ class Configuration
     /**
      * Returns URL based on the index and variables
      *
-     * @param int $index index of the host settings
+     * @param int        $index     index of the host settings
      * @param array|null $variables hash of variable and the corresponding value (optional)
      * @return string URL based on host settings
      */
-    public function getHostFromSettings(int $index, ?array $variables = null): string
+    public function getHostFromSettings($index, $variables = null)
     {
         if (null === $variables) {
             $variables = [];

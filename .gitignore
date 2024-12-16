@@ -9,6 +9,4 @@ php/sdk/test/OrdersTest.php
 php/sdk/test/SellersTest.php
 php/sdk/.DS_Store
 .DS_Store
-
-
-
+php/.env
