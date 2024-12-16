@@ -36,8 +36,8 @@ jobs:
       - name: Execute openapi codegen
         working-directory: ./selling-partner-api-sdk/php
         run: |
-          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/sellers-api-model/sellers.json -g php -t config/templates -o sdk  --additional-properties=composerVendorName=amazon,composerPackageName=selling-partner-api-aa-php,modelPackage=models\\sellers && \
-          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/orders-api-model/ordersV0.json -g php -t config/templates -o sdk  --additional-properties=composerVendorName=amazon,composerPackageName=selling-partner-api-aa-php,modelPackage=models\\orders
+          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/sellers-api-model/sellers.json -g php -t config/templates -o sdk -c config/config.json --additional-properties=composerVendorName=amazon,composerPackageName=selling-partner-api-aa-php,modelPackage=Model\\sellers && \
+          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/orders-api-model/ordersV0.json -g php -t config/templates -o sdk  -c config/config.json --additional-properties=composerVendorName=amazon,composerPackageName=selling-partner-api-aa-php,modelPackage=Model\\orders
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:

@@ -1,0 +1,281 @@
+<?php
+/**
+ * TestHelper
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  {{invokerPackage}}
+ */
+
+namespace {{invokerPackage}}\Test;
+
+use OpenAPI\Client\ObjectSerializer;
+use ReflectionClass;
+use ReflectionNamedType;
+use ReflectionException;
+use ReflectionMethod;
+
+/**
+ * TestHelper
+ * A helper class for testing OpenAPI responses.
+ *
+ * @category Class
+ * @package  {{invokerPackage}}
+ */
+class TestHelper
+{
+    /**
+     * Retrieves the return type information of the getPayload method of the given response.
+     *
+     * @param object $response The response object to reflect upon.
+     * @return array|null Returns an array with the return type name and nullability, or null if not specified.
+     * @throws ReflectionException If the reflection fails.
+     */
+    public static function getReturnTypeInfo(object $response): ?array
+    {
+        $reflectionClass = new ReflectionClass($response);
+        $reflectionMethod = $reflectionClass->getMethod('getPayload');
+        $returnType = $reflectionMethod->getReturnType();
+
+        if ($returnType instanceof ReflectionNamedType) {
+            return [$returnType->getName(), $returnType->allowsNull()];
+        }
+
+        return null;
+    }
+
+
+    /**
+     * Maps the attributes of a given instance based on the expected response data.
+     *
+     * @param object $instance The instance to populate.
+     * @param array $expectedData The expected response data as an associative array.
+     * @return void
+     */
+    public static function mapAttributes(object $instance, array $expectedData): void
+    {
+        foreach ($instance::attributeMap() as $property => $jsonKey) {
+            $setterMethod = $instance::setters()[$property] ?? null;
+            $type = $instance::openAPITypes()[$property] ?? null;
+
+            if (!isset($expectedData[$jsonKey])) {
+                continue;
+            }
+
+            try {
+                if (class_exists($type) && !is_a($type, \DateTime::class, true)) {
+                    self::handleComplexType($instance, $setterMethod, $type, $expectedData[$jsonKey]);
+                } else {
+                    self::handleSimpleType($instance, $setterMethod, $type, $expectedData[$jsonKey]);
+                }
+            } catch (\Exception $e) {
+                echo "Error deserializing property: $property. " . $e->getMessage() . "\n";
+            }
+        }
+    }
+
+    /**
+     * Handles mapping for complex types (nested structures or arrays).
+     *
+     * @param object $instance The parent instance.
+     * @param string|null $setterMethod The setter method for the property.
+     * @param string $type The type of the property.
+     * @param mixed $data The data to map.
+     * @return void
+     */
+    private static function handleComplexType(object $instance, ?string $setterMethod, string $type, $data): void
+    {
+        if (!is_array($data)) {
+            $deserializedValue = ObjectSerializer::deserialize($data, $type);
+            $instance->$setterMethod($deserializedValue);
+            return;
+        }
+
+        if (array_keys($data) === range(0, count($data) - 1)) {
+            $nestedInstances = [];
+            $nestedInstance = new $type();
+            $propertyName = '';
+
+            foreach ($nestedInstance::attributeMap() as $nestedProperty => $nestedJsonKey) {
+                $propertyName = $nestedProperty;
+            }
+
+            $nestedInstanceSetterMethod = $nestedInstance::setters()[$propertyName] ?? null;
+            $nestedInstanceType = $nestedInstance::openAPITypes()[$propertyName] ?? null;
+            $elementType = substr($nestedInstanceType, 0, -2);
+
+            foreach ($data as $itemData) {
+                if (class_exists($elementType)) {
+                    $nestedNodeInstance = new $elementType();
+                    self::mapAttributes($nestedNodeInstance, $itemData);
+                    $nestedInstances[] = $nestedNodeInstance;
+                } else {
+                    $deserializedValue = ObjectSerializer::deserialize($itemData, $elementType);
+                    $nestedInstances[] = $deserializedValue;
+                }
+            }
+
+            $nestedInstance->$nestedInstanceSetterMethod($nestedInstances);
+            $instance->$setterMethod($nestedInstance);
+        } else {
+            $nestedInstance = new $type();
+            self::mapAttributes($nestedInstance, $data);
+            $instance->$setterMethod($nestedInstance);
+        }
+    }
+
+    /**
+     * Handles mapping for simple types (primitives or DateTime).
+     *
+     * @param object $instance The instance to populate.
+     * @param string|null $setterMethod The setter method for the property.
+     * @param string $type The type of the property.
+     * @param mixed $data The data to map.
+     * @return void
+     */
+    private static function handleSimpleType(object $instance, ?string $setterMethod, string $type, $data): void
+    {
+        ObjectSerializer::setDateTimeFormat('Y-m-d\TH:i:s.v\Z');
+        $deserializedValue = ObjectSerializer::deserialize($data, $type);
+        $instance->$setterMethod($deserializedValue);
+    }
+
+    /**
+     * Converts a snake_case string to camelCase or PascalCase.
+     *
+     * @param string $snakeCase The input string in snake_case format.
+     * @param bool $capitalizeFirst If true, returns PascalCase; if false, returns camelCase.
+     * @return string The converted string in camelCase or PascalCase format.
+     */
+    public static function snakeToCamelCase(string $snakeCase, bool $capitalizeFirst = true): string
+    {
+        // Split the input string by underscores into an array of words
+        $words = explode('_', $snakeCase);
+
+        // Capitalize the first letter of each word and join them into a single string
+        $camelCase = implode('', array_map('ucfirst', $words));
+
+        // If capitalizeFirst is true, return the string as is, otherwise lowercase the first letter
+        return $capitalizeFirst ? $camelCase : lcfirst($camelCase);
+    }
+
+    /**
+     * Prepares request parameters by mapping the input array to a structured format.
+     *
+     * @param array $params The parameter definitions, expected to have a getName() and getType() method.
+     * @param array $requestParameters The raw request data to map.
+     * @return array The prepared request parameters.
+     */
+    public static function prepareRequestParams(array $params, array $requestParameters): array
+    {
+        $requestParams = [];
+
+        foreach ($params as $param) {
+            $paramName = $param->getName();
+
+            // Handle special case for 'payload' parameter.
+            if ($paramName === 'payload') {
+                $typeName = $param->getType()->getName();
+                if (class_exists($typeName)) {
+                    $requestInstance = new $typeName();
+                    self::mapAttributes($requestInstance, $requestParameters['body']['value'] ?? []);
+                    $requestParams['payload'] = $requestInstance;
+                }
+                continue;
+            }
+
+            // Process regular parameters with snake_case to camelCase conversion.
+            $value = null;
+            foreach ([false, true] as $capitalizeFirst) {
+                $camelCaseName = self::snakeToCamelCase($paramName, $capitalizeFirst);
+                if (isset($requestParameters[$camelCaseName])) {
+                    $subArray = $requestParameters[$camelCaseName];
+                    if (is_array($subArray) && isset($subArray['value'])) {
+                        $value = $subArray['value'];
+                        break;
+                    }
+                }
+            }
+            $requestParams[$paramName] = $value;
+        }
+
+        return $requestParams;
+    }
+
+    /**
+     * Extracts response parameters from an expected response array.
+     *
+     * @param array|null $expectedResponse The expected response data.
+     * @return array|null The extracted response parameters or null if input is null.
+     */
+    public function getResponseParams(?array $expectedResponse): ?array
+    {
+        if ($expectedResponse === null) {
+            return null;
+        }
+
+        // Check if the current entry is an array and contains a 'value' key.
+        return array_filter($expectedResponse, function ($subArray) {
+            return is_array($subArray);
+        });
+    }
+
+    /**
+     * Convert an invalid JSON string into a valid JSON string.
+     *
+     * @param string $codegenResponse
+     * @return array|null The formatted valid JSON string.
+     */
+    public static function convertCodegenResponseToJson(string $codegenResponse): ?array
+    {
+        // Insert or Update case should not have Response body
+        if ($codegenResponse === '{}') {
+            return null;
+        }
+        // Decode HTML entities
+        $decodedResponse = html_entity_decode($codegenResponse);
+
+        // Define replacements in sequence
+        $replacements = [
+            '=' => '"="',
+            '{' => '{"',
+            ', ' => '", "',
+            '}' => '"}',
+            '="' => ':"',
+            ':"{' => ':{',
+            '}",' => '},',
+            '"[' => '["',
+            ']"' => '"]',
+            '}"]' => '}]',
+            '["{' => '[{',
+            '}"}' => '}}',
+            ', "{' => ', {',
+            '"false"' => '""',
+        ];
+
+        // Apply all replacements
+        $formattedResponse = $decodedResponse;
+        foreach ($replacements as $search => $replace) {
+            $formattedResponse = str_replace($search, $replace, $formattedResponse);
+        }
+        // For nested case
+        $formattedResponse = str_replace('}"}', '}}', $formattedResponse);
+        // Trim trailing semicolon if present
+        $formattedResponse = rtrim($formattedResponse, ';');
+
+        // Decode the JSON string into an associative array
+        return json_decode($formattedResponse, true);
+    }
+
+    /**
+     * @param $apiInstance
+     * @param string $methodName
+     * @return ReflectionMethod
+     * @throws ReflectionException
+     */
+    public static function getReflectionMethod($apiInstance, string $methodName): ReflectionMethod
+    {
+        return new ReflectionMethod($apiInstance, $methodName);
+    }
+}
+

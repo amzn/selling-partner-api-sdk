@@ -1,0 +1,12 @@
+{
+  "additionalProperties": {
+    "customTemplateDir": "./config/templates",
+    "testCounterStart": 1
+  },
+  "files": {
+    "TestHelper.mustache": {
+      "templateFile": "TestHelper.mustache",
+      "destinationFilename": "test/TestHelper.php"
+    }
+  }
+}
