@@ -1,7 +1,6 @@
 {
     "name": "spapi/auth-and-auth",
     "description": "This library provides helper classes for use when signing HTTP requests for Amazon Selling Partner APIs.",
-    "version":"1.0",
     "type": "library",
     "keywords": [
         "sp-api",
@@ -24,7 +23,10 @@
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.3",
         "guzzlehttp/psr7": "^2.0",
-        "aws/aws-sdk-php": "^3.228"
+        "aws/aws-sdk-php": "^3.228",
+        "symfony/http-kernel": "^5.4",
+        "symfony/rate-limiter": "^5.2",
+        "vlucas/phpdotenv": "^5.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",
@@ -33,15 +35,17 @@
     "autoload": {
         "psr-4": {
             "SpApi\\AuthAndAuth\\": "sdk/src/authandauth",
-            "OpenAPI\\Client\\": "sdk/lib/"
+            "OpenAPI\\Client\\": "sdk/lib/",
+            "OpenAPI\\Client\\Test\\" : "sdk/test/"
         }
     },
     "autoload-dev": {
-        "psr-4": { "SpApi\\Test\\AuthAndAuth\\" : "sdk/src/tests/authandauth/"
+        "psr-4": {
+            "SpApi\\Test\\AuthAndAuth\\" : "sdk/src/tests/authandauth/"
         }
     },
     "scripts": {
-        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/src/tests/authandauth",
+        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/src/tests/",
         "test": "phpunit sdk/tests/authandauth"
     }
 }
