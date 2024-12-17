@@ -31,6 +31,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -61,41 +62,41 @@ class SellersApi
     /**
      * @var Configuration
      */
-    protected $config;
+    protected Configuration $config;
 
     /**
      * @var HeaderSelector
      */
-    protected $headerSelector;
+    protected HeaderSelector $headerSelector;
 
     /**
      * @var int Host index
      */
-    protected $hostIndex;
+    protected int $hostIndex;
 
     /**
      * @var ?RateLimitConfiguration
      */
-    private $rateLimitConfig = null;
+    private ?RateLimitConfiguration $rateLimitConfig = null;
 
     /**
      * @var ?LimiterInterface
      */
-    private $rateLimiter = null;
+    private ?LimiterInterface $rateLimiter = null;
 
     /**
      * @param Configuration   $config
-     * @param RateLimitConfiguration $rateLimitConfig
-     * @param ClientInterface $client
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+     * @param RateLimitConfiguration|null $rateLimitConfig
+     * @param ClientInterface|null $client
+     * @param HeaderSelector|null $selector
+     * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
-        RateLimitConfiguration $rateLimitConfig = null,
-        ClientInterface $client = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
+        ?RateLimitConfiguration $rateLimitConfig = null,
+        ?ClientInterface $client = null,
+        ?HeaderSelector $selector = null,
+        int $hostIndex = 0
     ) {
         $this->config = $config;
         $this->rateLimitConfig = $rateLimitConfig;
@@ -125,7 +126,7 @@ class SellersApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex): void
+    public function setHostIndex(int $hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -135,7 +136,7 @@ class SellersApi
      *
      * @return int Host index
      */
-    public function getHostIndex()
+    public function getHostIndex(): int
     {
         return $this->hostIndex;
     }
@@ -143,7 +144,7 @@ class SellersApi
     /**
      * @return Configuration
      */
-    public function getConfig()
+    public function getConfig(): Configuration
     {
         return $this->config;
     }
@@ -154,9 +155,9 @@ class SellersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse
+     * @return \OpenAPI\Client\Model\sellers\GetAccountResponse
      */
-    public function getAccount()
+    public function getAccount(): \OpenAPI\Client\Model\sellers\GetAccountResponse
     {
         list($response) = $this->getAccountWithHttpInfo();
         return $response;
@@ -168,9 +169,9 @@ class SellersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse|\OpenAPI\Client\models\sellers\GetAccountResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\sellers\GetAccountResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAccountWithHttpInfo()
+    public function getAccountWithHttpInfo(): array
     {
         $request = $this->getAccountRequest();
         $request = $this->config->sign($request);
@@ -213,143 +214,143 @@ class SellersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\models\sellers\GetAccountResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetAccountResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\models\sellers\GetAccountResponse';
+            $returnType = '\OpenAPI\Client\Model\sellers\GetAccountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -370,7 +371,7 @@ class SellersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -378,7 +379,7 @@ class SellersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -386,7 +387,7 @@ class SellersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -394,7 +395,7 @@ class SellersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -402,7 +403,7 @@ class SellersApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -410,7 +411,7 @@ class SellersApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -418,7 +419,7 @@ class SellersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -426,7 +427,7 @@ class SellersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -434,7 +435,7 @@ class SellersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetAccountResponse',
+                        '\OpenAPI\Client\Model\sellers\GetAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -449,9 +450,9 @@ class SellersApi
      *
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
-    public function getAccountAsync()
+    public function getAccountAsync(): PromiseInterface
     {
         return $this->getAccountAsyncWithHttpInfo()
             ->then(
@@ -466,11 +467,11 @@ class SellersApi
      *
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
-    public function getAccountAsyncWithHttpInfo()
+    public function getAccountAsyncWithHttpInfo(): PromiseInterface
     {
-        $returnType = '\OpenAPI\Client\models\sellers\GetAccountResponse';
+        $returnType = '\OpenAPI\Client\Model\sellers\GetAccountResponse';
         $request = $this->getAccountRequest();
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -516,9 +517,9 @@ class SellersApi
      *
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @return Request
      */
-    public function getAccountRequest()
+    public function getAccountRequest(): Request
     {
 
         $resourcePath = '/sellers/v1/account';
@@ -539,6 +540,7 @@ class SellersApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
+                
                 '',
                 false
             );
@@ -565,7 +567,7 @@ class SellersApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
 
@@ -581,7 +583,7 @@ class SellersApi
             $headers
         );
 
-        $query = ObjectSerializer::buildQuery($queryParams);
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -596,9 +598,9 @@ class SellersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse
+     * @return \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse
      */
-    public function getMarketplaceParticipations()
+    public function getMarketplaceParticipations(): \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse
     {
         list($response) = $this->getMarketplaceParticipationsWithHttpInfo();
         return $response;
@@ -610,9 +612,9 @@ class SellersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse|\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMarketplaceParticipationsWithHttpInfo()
+    public function getMarketplaceParticipationsWithHttpInfo(): array
     {
         $request = $this->getMarketplaceParticipationsRequest();
         $request = $this->config->sign($request);
@@ -655,143 +657,143 @@ class SellersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse';
+            $returnType = '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -812,7 +814,7 @@ class SellersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -820,7 +822,7 @@ class SellersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -828,7 +830,7 @@ class SellersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -836,7 +838,7 @@ class SellersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -844,7 +846,7 @@ class SellersApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -852,7 +854,7 @@ class SellersApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -860,7 +862,7 @@ class SellersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -868,7 +870,7 @@ class SellersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -876,7 +878,7 @@ class SellersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse',
+                        '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -891,9 +893,9 @@ class SellersApi
      *
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
-    public function getMarketplaceParticipationsAsync()
+    public function getMarketplaceParticipationsAsync(): PromiseInterface
     {
         return $this->getMarketplaceParticipationsAsyncWithHttpInfo()
             ->then(
@@ -908,11 +910,11 @@ class SellersApi
      *
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
-    public function getMarketplaceParticipationsAsyncWithHttpInfo()
+    public function getMarketplaceParticipationsAsyncWithHttpInfo(): PromiseInterface
     {
-        $returnType = '\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse';
+        $returnType = '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse';
         $request = $this->getMarketplaceParticipationsRequest();
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -958,9 +960,9 @@ class SellersApi
      *
      *
      * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @return Request
      */
-    public function getMarketplaceParticipationsRequest()
+    public function getMarketplaceParticipationsRequest(): Request
     {
 
         $resourcePath = '/sellers/v1/marketplaceParticipations';
@@ -981,6 +983,7 @@ class SellersApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', 'payload'],
+                
                 '',
                 false
             );
@@ -1007,7 +1010,7 @@ class SellersApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
 
@@ -1023,7 +1026,7 @@ class SellersApi
             $headers
         );
 
-        $query = ObjectSerializer::buildQuery($queryParams);
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1038,7 +1041,7 @@ class SellersApi
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
      */
-    protected function createHttpClientOption()
+    protected function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {

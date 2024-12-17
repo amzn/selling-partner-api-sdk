@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**package_detail** | [**\OpenAPI\Client\models\orders\PackageDetail**](PackageDetail.md) |  |
+**package_detail** | [**\OpenAPI\Client\Model\orders\PackageDetail**](PackageDetail.md) |  |
 **cod_collection_method** | **string** | The COD collection method (only supported in the JP marketplace). | [optional]
 **marketplace_id** | **string** | The unobfuscated marketplace identifier. |
 

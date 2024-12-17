@@ -40,7 +40,7 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     new GuzzleHttp\Client()
 );
 $order_id = 'order_id_example'; // string | An Amazon-defined order identifier, in 3-7-7 format.
-$payload = new \OpenAPI\Client\models\orders\ConfirmShipmentRequest(); // \OpenAPI\Client\models\orders\ConfirmShipmentRequest | Request body of `confirmShipment`.
+$payload = new \OpenAPI\Client\Model\orders\ConfirmShipmentRequest(); // \OpenAPI\Client\Model\orders\ConfirmShipmentRequest | Request body of `confirmShipment`.
 
 try {
     $apiInstance->confirmShipment($order_id, $payload);
@@ -54,7 +54,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **order_id** | **string**| An Amazon-defined order identifier, in 3-7-7 format. | |
-| **payload** | [**\OpenAPI\Client\models\orders\ConfirmShipmentRequest**](../Model/ConfirmShipmentRequest.md)| Request body of &#x60;confirmShipment&#x60;. | |
+| **payload** | [**\OpenAPI\Client\Model\orders\ConfirmShipmentRequest**](../Model/ConfirmShipmentRequest.md)| Request body of &#x60;confirmShipment&#x60;. | |
 
 ### Return type
 
@@ -76,7 +76,7 @@ No authorization required
 ## `getOrder()`
 
 ```php
-getOrder($order_id): \OpenAPI\Client\models\orders\GetOrderResponse
+getOrder($order_id): \OpenAPI\Client\Model\orders\GetOrderResponse
 ```
 
 getOrder
@@ -114,7 +114,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrderResponse**](../Model/GetOrderResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrderResponse**](../Model/GetOrderResponse.md)
 
 ### Authorization
 
@@ -132,7 +132,7 @@ No authorization required
 ## `getOrderAddress()`
 
 ```php
-getOrderAddress($order_id): \OpenAPI\Client\models\orders\GetOrderAddressResponse
+getOrderAddress($order_id): \OpenAPI\Client\Model\orders\GetOrderAddressResponse
 ```
 
 getOrderAddress
@@ -170,7 +170,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrderAddressResponse**](../Model/GetOrderAddressResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrderAddressResponse**](../Model/GetOrderAddressResponse.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ No authorization required
 ## `getOrderBuyerInfo()`
 
 ```php
-getOrderBuyerInfo($order_id): \OpenAPI\Client\models\orders\GetOrderBuyerInfoResponse
+getOrderBuyerInfo($order_id): \OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse
 ```
 
 getOrderBuyerInfo
@@ -226,7 +226,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrderBuyerInfoResponse**](../Model/GetOrderBuyerInfoResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse**](../Model/GetOrderBuyerInfoResponse.md)
 
 ### Authorization
 
@@ -244,7 +244,7 @@ No authorization required
 ## `getOrderItems()`
 
 ```php
-getOrderItems($order_id, $next_token): \OpenAPI\Client\models\orders\GetOrderItemsResponse
+getOrderItems($order_id, $next_token): \OpenAPI\Client\Model\orders\GetOrderItemsResponse
 ```
 
 getOrderItems
@@ -284,7 +284,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrderItemsResponse**](../Model/GetOrderItemsResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrderItemsResponse**](../Model/GetOrderItemsResponse.md)
 
 ### Authorization
 
@@ -302,7 +302,7 @@ No authorization required
 ## `getOrderItemsBuyerInfo()`
 
 ```php
-getOrderItemsBuyerInfo($order_id, $next_token): \OpenAPI\Client\models\orders\GetOrderItemsBuyerInfoResponse
+getOrderItemsBuyerInfo($order_id, $next_token): \OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse
 ```
 
 getOrderItemsBuyerInfo
@@ -342,7 +342,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrderItemsBuyerInfoResponse**](../Model/GetOrderItemsBuyerInfoResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse**](../Model/GetOrderItemsBuyerInfoResponse.md)
 
 ### Authorization
 
@@ -360,7 +360,7 @@ No authorization required
 ## `getOrderRegulatedInfo()`
 
 ```php
-getOrderRegulatedInfo($order_id): \OpenAPI\Client\models\orders\GetOrderRegulatedInfoResponse
+getOrderRegulatedInfo($order_id): \OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse
 ```
 
 getOrderRegulatedInfo
@@ -398,7 +398,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrderRegulatedInfoResponse**](../Model/GetOrderRegulatedInfoResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse**](../Model/GetOrderRegulatedInfoResponse.md)
 
 ### Authorization
 
@@ -416,7 +416,7 @@ No authorization required
 ## `getOrders()`
 
 ```php
-getOrders($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after): \OpenAPI\Client\models\orders\GetOrdersResponse
+getOrders($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after): \OpenAPI\Client\Model\orders\GetOrdersResponse
 ```
 
 getOrders
@@ -496,7 +496,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\models\orders\GetOrdersResponse**](../Model/GetOrdersResponse.md)
+[**\OpenAPI\Client\Model\orders\GetOrdersResponse**](../Model/GetOrdersResponse.md)
 
 ### Authorization
 
@@ -535,7 +535,7 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     new GuzzleHttp\Client()
 );
 $order_id = 'order_id_example'; // string | An Amazon-defined order identifier, in 3-7-7 format.
-$payload = new \OpenAPI\Client\models\orders\UpdateShipmentStatusRequest(); // \OpenAPI\Client\models\orders\UpdateShipmentStatusRequest | The request body for the `updateShipmentStatus` operation.
+$payload = new \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest(); // \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest | The request body for the `updateShipmentStatus` operation.
 
 try {
     $apiInstance->updateShipmentStatus($order_id, $payload);
@@ -549,7 +549,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **order_id** | **string**| An Amazon-defined order identifier, in 3-7-7 format. | |
-| **payload** | [**\OpenAPI\Client\models\orders\UpdateShipmentStatusRequest**](../Model/UpdateShipmentStatusRequest.md)| The request body for the &#x60;updateShipmentStatus&#x60; operation. | |
+| **payload** | [**\OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest**](../Model/UpdateShipmentStatusRequest.md)| The request body for the &#x60;updateShipmentStatus&#x60; operation. | |
 
 ### Return type
 
@@ -592,7 +592,7 @@ $apiInstance = new OpenAPI\Client\Api\OrdersApi(
     new GuzzleHttp\Client()
 );
 $order_id = 'order_id_example'; // string | An Amazon-defined order identifier, in 3-7-7 format.
-$payload = new \OpenAPI\Client\models\orders\UpdateVerificationStatusRequest(); // \OpenAPI\Client\models\orders\UpdateVerificationStatusRequest | The request body for the `updateVerificationStatus` operation.
+$payload = new \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest(); // \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest | The request body for the `updateVerificationStatus` operation.
 
 try {
     $apiInstance->updateVerificationStatus($order_id, $payload);
@@ -606,7 +606,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **order_id** | **string**| An Amazon-defined order identifier, in 3-7-7 format. | |
-| **payload** | [**\OpenAPI\Client\models\orders\UpdateVerificationStatusRequest**](../Model/UpdateVerificationStatusRequest.md)| The request body for the &#x60;updateVerificationStatus&#x60; operation. | |
+| **payload** | [**\OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest**](../Model/UpdateVerificationStatusRequest.md)| The request body for the &#x60;updateVerificationStatus&#x60; operation. | |
 
 ### Return type
 
