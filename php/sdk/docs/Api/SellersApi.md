@@ -11,7 +11,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getAccount()`
 
 ```php
-getAccount(): \OpenAPI\Client\models\sellers\GetAccountResponse
+getAccount(): \OpenAPI\Client\Model\sellers\GetAccountResponse
 ```
 
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\models\sellers\GetAccountResponse**](../Model/GetAccountResponse.md)
+[**\OpenAPI\Client\Model\sellers\GetAccountResponse**](../Model/GetAccountResponse.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ No authorization required
 ## `getMarketplaceParticipations()`
 
 ```php
-getMarketplaceParticipations(): \OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse
+getMarketplaceParticipations(): \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse
 ```
 
 
@@ -99,7 +99,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\models\sellers\GetMarketplaceParticipationsResponse**](../Model/GetMarketplaceParticipationsResponse.md)
+[**\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse**](../Model/GetMarketplaceParticipationsResponse.md)
 
 ### Authorization
 

@@ -29,7 +29,7 @@
 namespace OpenAPI\Client;
 
 use GuzzleHttp\Psr7\Utils;
-use OpenAPI\Client\models\orders\ModelInterface;
+use OpenAPI\Client\Model\orders\ModelInterface;
 
 /**
  * ObjectSerializer Class Doc Comment
@@ -568,7 +568,7 @@ class ObjectSerializer
     *                                       to encode using RFC3986, or PHP_QUERY_RFC1738
     *                                       to encode using RFC1738.
     */
-    public static function buildQuery(array $params, $encoding = PHP_QUERY_RFC3986): string
+    public static function buildQuery(array $params, ?Configuration $config = null, $encoding = PHP_QUERY_RFC3986): string
     {
         if (!$params) {
             return '';
@@ -586,9 +586,14 @@ class ObjectSerializer
             throw new \InvalidArgumentException('Invalid type');
         }
 
-        $castBool = Configuration::BOOLEAN_FORMAT_INT == Configuration::getDefaultConfiguration()->getBooleanFormatForQueryString()
-            ? function ($v) { return (int) $v; }
-            : function ($v) { return $v ? 'true' : 'false'; };
+        $config = $config ?? Configuration::getDefaultConfiguration();
+        $castBool = $config->getBooleanFormatForQueryString() == Configuration::BOOLEAN_FORMAT_INT
+            ? function ($v) {
+                return (int) $v;
+            }
+            : function ($v) {
+                return $v ? 'true' : 'false';
+            };
 
         $qs = '';
         foreach ($params as $k => $v) {

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**marketplace** | [**\OpenAPI\Client\models\sellers\Marketplace**](Marketplace.md) |  |
+**marketplace** | [**\OpenAPI\Client\Model\sellers\Marketplace**](Marketplace.md) |  |
 **store_name** | **string** | The name of the seller&#39;s store as displayed in the marketplace. |
 **listing_status** | **string** | The current status of the seller&#39;s listings. |
 **selling_plan** | **string** | The selling plan details. |
