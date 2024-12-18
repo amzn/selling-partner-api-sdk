@@ -1,10 +1,4 @@
 <?php
-{{#phpRequireAutoloader}}
-require_once __DIR__ . '/../../vendor/autoload.php';
-$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
-$dotenv->load();
-{{/phpRequireAutoloader}}
-
 /**
 * {{classname}}Test
 * PHP version 7.4
@@ -47,23 +41,23 @@ $dotenv->load();
 * @link     https://openapi-generator.tech
 */
 {{#operations}}
-    class {{classname}}Test extends TestCase
-    {
+class {{classname}}Test extends TestCase
+{
     private {{classname}} $apiInstance;
     private TestHelper $testHelper;
 
     public function setUp(): void
     {
-    $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
-    "clientId" => $_ENV['SP_API_CLIENT_ID'],
-    "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
-    "refreshToken" => $_ENV['SP_API_REFRESH_TOKEN'],
-    "endpoint" => $_ENV['SP_API_ENDPOINT'] ?: "https://api.amazon.com/auth/o2/token"
-    ]);
-    $config = new Configuration([], $lwaAuthorizationCredentials);
-    $config->setHost($_ENV['SP_API_ENDPOINT_HOST'] ?: 'https://sandbox.sellingpartnerapi-fe.amazon.com');
-    $this->apiInstance = new {{classname}}($config, null, null);
-    $this->testHelper = new TestHelper();
+        $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
+        "clientId" => $_ENV['SP_API_CLIENT_ID'],
+        "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
+        "refreshToken" => $_ENV['SP_API_REFRESH_TOKEN'],
+        "endpoint" => $_ENV['SP_API_ENDPOINT'] ?: "https://api.amazon.com/auth/o2/token"
+        ]);
+        $config = new Configuration([], $lwaAuthorizationCredentials);
+        $config->setHost($_ENV['SP_API_ENDPOINT_HOST'] ?: 'https://sandbox.sellingpartnerapi-fe.amazon.com');
+        $this->apiInstance = new {{classname}}($config, null, null);
+        $this->testHelper = new TestHelper();
     }
 
     /**
