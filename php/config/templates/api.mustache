@@ -618,12 +618,8 @@ use {{invokerPackage}}\ObjectSerializer;
         // for model (json/xml)
         {{#bodyParams}}
         if (isset(${{paramName}})) {
-            echo '!!!!!!!!!!!!!!$payload !!!!!!!!!!!!!!!      ' . PHP_EOL;
-            print_r($payload);
             if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization(${{paramName}}));
-                echo '!!!!!!!!!!!!!!$httpBody !!!!!!!!!!!!!!!      ' . PHP_EOL;
-                print_r($httpBody);
             } else {
                 $httpBody = ${{paramName}};
             }

@@ -163,7 +163,7 @@ class TestHelper
      * Prepares request parameters by mapping the input array to a structured format.
      *
      * @param array $params The parameter definitions, expected to have a getName() and getType() method.
-     * @param array $requestParameters The raw request data to map.
+     * @param array|null $requestParameters The raw request data to map.
      * @return array The prepared request parameters.
      */
     public static function prepareRequestParams(array $params, ?array $requestParameters): array
@@ -277,5 +277,403 @@ class TestHelper
     {
         return new ReflectionMethod($apiInstance, $methodName);
     }
-}
 
+    /**
+     * Parses object types and maps their properties to keys in a JSON-like structure.
+     *
+     * @param array $matches The matches from regex that capture keys.
+     * @param object $currentClass The current class being analyzed.
+     * @param array $map The map where parsed data is stored.
+     * @param string $depth The depth of the current nesting.
+     * @return array The updated map with parsed data.
+     */
+    public static function parseObjectTypes(array $matches, object $currentClass, array &$map, string $depth): array
+    {
+        $openAPITypes = $currentClass::openAPITypes();
+        $attributeMap = $currentClass::attributeMap();
+        $lastIndex = null;
+        $keyOccurrencesCount = [];
+        foreach ($matches as $index => $match) {
+            // Skip already processed keys
+            if (isset($map[$index])) {
+                continue;
+            }
+
+            $key = $match[2];
+            // Find the property name from the API key
+            $propertyName = array_search($key, $attributeMap, true);
+            if ($propertyName === false) {
+                continue; // Skip if not found
+            } else {
+                if (isset($keyOccurrencesCount[$key])) {
+                    $keyOccurrencesCount[$key]++;
+                    if ($keyOccurrencesCount[$key] > $keyOccurrencesCount[$map[$lastIndex][0]]) {
+                        // Mark as Object end;
+                        if (isset($map[$lastIndex])) {
+                            $map[$lastIndex][3] = 'true';
+                        }
+                    }
+                } else {
+                    $keyOccurrencesCount[$key] = 1;
+                }
+            }
+
+            // Get the property type
+            $propertyType = $openAPITypes[$propertyName] ?? 'string';
+
+            if (class_exists($propertyType)) {
+                $class = new $propertyType();
+
+                if (!method_exists($class, 'openAPITypes')) {
+                    self::setKeyMapping($map, $key, $index, 'string', $depth, 'false');
+                    $lastIndex = $index;
+                    continue;
+                }
+                // Map object type and recursively parse
+                self::setKeyMapping($map, $key, $index, 'object', $depth, 'false');
+                self::parseObjectTypes($matches, $class, $map, $depth . '}');
+            } elseif (str_ends_with($propertyType, '[]')) {
+                $elementType = substr($propertyType, 0, -2);
+
+                if (class_exists($elementType)) {
+                    // Map array type and recursively parse elements
+                    self::setKeyMapping($map, $key, $index, 'array', $depth . ']', 'false');
+                    self::parseObjectTypes($matches, new $elementType(), $map, $depth . ']' . '}');
+                } elseif ($elementType === 'string') {
+                    self::setKeyMapping($map, $key, $index, 'string_array', $depth . ']', 'false');
+                } else {
+                    echo '!!!Complex nested object detected! $elementType = ' . $elementType . PHP_EOL;
+                }
+            } else {
+                // Map basic types
+                self::setKeyMapping($map, $key, $index, $propertyType, $depth, 'false');
+            }
+            $lastIndex = $index;
+        }
+        // Mark as Object end;
+        if (isset($map[$lastIndex])) {
+            $map[$lastIndex][3] = 'true';
+        }
+        return $map;
+    }
+
+    /**
+     * Maps a key to its type and depth.
+     *
+     * @param array $map The map to store the key mapping.
+     * @param string $key The key to map.
+     * @param int $index The index of the key.
+     * @param string $propertyType The type of the property.
+     * @param string $depth The depth of nesting.
+     * @return array The updated map.
+     */
+    public static function setKeyMapping(
+        array &$map,
+        string $key,
+        int $index,
+        string $propertyType,
+        string $depth,
+        string $isLast
+    ): array {
+        $map[$index][0] = $key;
+        $map[$index][1] = $propertyType;
+        $map[$index][2] = $depth;
+        $map[$index][3] = $isLast;
+        return $map;
+    }
+
+    /**
+     * Finds the position of the nth occurrence of a substring (needle) within a string (haystack),
+     * considering word boundaries to avoid partial matches.
+     *
+     * This method ensures that the substring is matched as a standalone word
+     * by verifying that it is not part of a larger word using word boundary checks.
+     *
+     * @param string $haystack The string to search within.
+     * @param string $needle The substring to search for.
+     * @param int $n The occurrence number to find (1-based).
+     * @return int|false The position of the nth occurrence of the substring, or false if not found.
+     */
+    public static function getNthIndex(string $haystack, string $needle, int $n)
+    {
+        // Tracks the starting position for each search
+        $offset = 0;
+        // Counts the occurrences of the substring
+        $count = 0;
+
+        while (true) {
+            // Search for the next occurrence of the substring starting from the offset
+            $position = strpos($haystack, $needle, $offset);
+            if ($position === false) {
+                // Return false if no more occurrences are found
+                return false;
+            }
+
+            // Check if the substring is a standalone word using word boundary checks
+            $before = $position === 0 || !ctype_alnum($haystack[$position - 1]);
+            $after = $position + strlen($needle)
+                >= strlen($haystack) || !ctype_alnum($haystack[$position + strlen($needle)]);
+
+            if ($before && $after) {
+                // Increment the count if the substring matches as a standalone word
+                $count++;
+                if ($count === $n) {
+                    // Return the position if the nth occurrence is found
+                    return $position;
+                }
+            }
+
+            // Move the offset forward to search for the next occurrence
+            $offset = $position + 1;
+        }
+        return $offset;
+    }
+
+
+    /**
+     * Converts a Codegen response text into a JSON-formatted string.
+     *
+     * This function takes a mapping of object types and a response text,
+     * then reformats the text to follow JSON structure.
+     * It replaces keys and values in the text based on the mapping provided.
+     *
+     * @param array $objectTypeMap An array where each element is a tuple containing:
+     *                             - The key name (string).
+     *                             - The type of the value ("object" or "array", or other types for simple values).
+     *                             - A suffix string used to determine the boundary of the value.
+     * @param string $jsonText The input text to be converted.
+     * @return string The JSON-formatted result string.
+     */
+    public static function convertCodegenResponseTextToJson(array $objectTypeMap, string $jsonText): string
+    {
+        $resultJson = $jsonText;
+        $keyOccurrencesCount = [];
+
+        foreach ($objectTypeMap as $index => $item) {
+            $key = $item[0];
+
+            // Track occurrences of the key for redundant keys
+            if (isset($keyOccurrencesCount[$key])) {
+                $keyOccurrencesCount[$key]++;
+            } else {
+                $keyOccurrencesCount[$key] = 1;
+            }
+
+            // Find the position of the current key
+            $keyPosition = self::getNthIndex($resultJson, $key, $keyOccurrencesCount[$key]);
+            if ($keyPosition === false) {
+                continue;
+            }
+
+            if ($item[1] !== 'object' && $item[1] !== 'array') {
+                $nextKey = null;
+
+                // Determine the position of the next key
+                if (isset($objectTypeMap[$index + 1])) {
+                    $nextKey = $objectTypeMap[$index + 1][0] ?? null;
+                }
+
+                $objectEndSuffix = '';
+                if (!$nextKey) {
+                    $objectEndSuffix = $item[2];
+                } elseif (strlen($item[2]) > strlen($objectTypeMap[$index + 1][2])) {
+                    $objectEndSuffix = substr($item[2], strlen($objectTypeMap[$index + 1][2]));
+                } elseif ($item[3] === 'true') {
+                    $objectEndSuffix = substr($item[2], 0, 1);
+                }
+
+                // Find the position of the next key or the end of the object
+                if ($nextKey) {
+                    $pattern = sprintf(
+                        "/,\\s*[{\\[]*\\s*%s=/",
+                        preg_quote($nextKey, '/') // Escape special characters in $nextKey
+                    );
+                    // Perform the search using preg_match
+                    if (preg_match($pattern, $resultJson, $matches, PREG_OFFSET_CAPTURE, $keyPosition)) {
+                        $nextKeyPosition = $matches[0][1] - strlen($objectEndSuffix); // Get the position of the match
+                    } else {
+                        $nextKeyPosition = null; // No match found
+                    }
+                } else {
+                    $nextKeyPosition = strlen($resultJson) - strlen($objectEndSuffix);
+                }
+
+                // Extract the value between the current key and the next key
+                $valueStart = $keyPosition + strlen($key . '=');
+                $valueLength = $nextKeyPosition - $valueStart;
+                $value = substr($resultJson, $valueStart, $valueLength);
+
+                // Trim and format the value
+                $value = trim($value);
+                if ($item[1] === 'string_array') {
+                    $value = self::formatStringToJsonArray($value);
+                } elseif ($item[1] !== 'bool') {
+                    $value = '"' . $value . '"';
+                }
+
+                // Replace the key-value pair in the result JSON
+                $resultJson = substr_replace(
+                    $resultJson,
+                    '"' . $key . '"' . ':' . $value,
+                    $keyPosition,
+                    $valueLength + strlen($key . ':')
+                );
+            } else {
+                // Replace keys of objects or arrays
+                $resultJson = substr_replace(
+                    $resultJson,
+                    '"' . $key . '"' . ':',
+                    $keyPosition,
+                    strlen($key . ':')
+                );
+            }
+        }
+        return $resultJson;
+    }
+
+
+    /**
+     * Converts a Codegen-generated response string into a JSON-compatible associative array.
+     *
+     * <p>This method takes a string response from a Codegen output, processes it to extract
+     * key-value pairs, and maps these pairs to a provided model. The result is a JSON-compatible
+     * associative array that can be further used or transformed.</p>
+     *
+     * <p>Special cases include:</p>
+     * <ul>
+     *   <li>If the response body is '{}', the method returns {@code null}.</li>
+     *   <li>HTML entities in the response string are decoded before further processing.</li>
+     * </ul>
+     *
+     * @param string $codegenResponse
+     * @param object|null $model $model An object representing the initial model structure to map the response data.
+     * @return array|null associative array parsed from the Codegen response string, or
+     * @see #parseObjectTypes
+     * @see #convertCodegenResponseTextToJson
+     */
+    public static function convertCodegenResponseToModelJson(string $codegenResponse, ?object $model): ?array
+    {
+        // Insert or Update case should not have Response body
+        if ($codegenResponse === '{}') {
+            return null;
+        }
+        // Decode HTML entities
+        $codegenResponse = html_entity_decode($codegenResponse);
+        // Extract key=value pairs using regex
+        preg_match_all('/([{\[,]?)\s*([^=\s]+)=/', $codegenResponse, $matches, PREG_SET_ORDER);
+        // Clean up matches to remove unwanted characters
+        foreach ($matches as &$match) {
+            if (preg_match('/[{\[]/', $match[2]) && $match[2] !== ',') {
+                $match[2] = preg_replace('/[{\[]/', '', $match[2]);
+            }
+        }
+        unset($match);
+        $map = [];
+        // Start parsing with the initial class
+        $objectTypeMap = self::parseObjectTypes($matches, $model, $map, '}');
+        $resultJson = self::convertCodegenResponseTextToJson($objectTypeMap, $codegenResponse);
+        // Decode the JSON string into an associative array
+        return json_decode($resultJson, true);
+    }
+
+    public static function formatStringToJsonArray($input): string
+    {
+        // Remove the leading `[` from the input string.
+        $trimmedInput = ltrim($input, '[');
+
+        // Split the string by `,` to get individual elements as an array.
+        $elements = explode(',', $trimmedInput);
+
+        // Trim each element and wrap it in double quotes.
+        $quotedElements = array_map(function ($element) {
+            // Trim the element and wrap it in double quotes.
+            return '"' . trim($element) . '"';
+        }, $elements);
+
+        // Join the quoted elements with commas and return them as a JSON-like array string.
+        return '[' . implode(',', $quotedElements);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public static function createDummyParameter(array $params): array
+    {
+        $dummyParams = [];
+        foreach ($params as $param) {
+            // Get the type of the parameter
+            $type = $param->getType();
+            if ($type) {
+                $typeName = $type->getName();
+                if (class_exists($typeName)) {
+                    // If the type is a class, create an instance of the class
+                    $dummyObject = new $typeName();
+                    $dummyParams[] = self::populateDummyData($dummyObject);
+                } elseif ($typeName === 'int') {
+                    // If the type is int, set it to 0
+                    $dummyParams[] = 0;
+                } elseif ($typeName === 'string') {
+                    // If the type is string, set it to an empty string
+                    $dummyParams[] = '';
+                } elseif ($typeName === 'array') {
+                    // If the type is array, set it to an empty array
+                    $dummyParams[] = [];
+                } else {
+                    // For other types, set it to null
+                    $dummyParams[] = '';
+                }
+            } else {
+                // If the type is not defined, set it to null
+                $dummyParams[] = '';
+            }
+        }
+        return $dummyParams;
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public static function populateDummyData($object)
+    {
+        $reflectionClass = new ReflectionClass($object);
+
+        foreach ($reflectionClass->getProperties() as $property) {
+            $property->setAccessible(true);
+
+            // Get the type of the property
+            $type = $property->getType();
+            if ($type) {
+                $typeName = $type->getName();
+                if (class_exists($typeName)) {
+                    // If the type is a class, create an instance and populate it recursively
+                    $nestedObject = new $typeName();
+                    $property->setValue($object, populateDummyData($nestedObject));
+                } elseif ($typeName === 'int') {
+                    // Set dummy integer value
+                    $property->setValue($object, 1);
+                } elseif ($typeName === 'string') {
+                    // Set dummy string value
+                    $property->setValue($object, 'dummy_value');
+                } elseif ($typeName === 'array') {
+                    // Set dummy array value
+                    $property->setValue($object, []);
+                } elseif ($typeName === 'bool') {
+                    // Set dummy boolean value
+                    $property->setValue($object, true);
+                } else {
+                    // Set null for other types
+                    $property->setValue($object, null);
+                }
+            }
+        }
+        return $object;
+    }
+
+    /**
+     * Array that defines test cases which are shippable for now
+     * @var array|string[]
+     */
+    public static array $testSkipCasesList = [
+        'testGetOrders400' // Throwing error because required parameter is missing
+    ];
+}
