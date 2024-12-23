@@ -386,12 +386,12 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     /**
      * Gets {{name}}
      *
-     * @return {{{dataType}}}{{^required}}|null{{/required}}
+     * @return {{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}}{{^required}}|null{{/required}}
     {{#deprecated}}
      * @deprecated
     {{/deprecated}}
      */
-    public function {{getter}}(): {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}}
+    public function {{getter}}(): {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}}
     {
         return $this->container['{{name}}'];
     }
@@ -399,14 +399,14 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     /**
      * Sets {{name}}
      *
-     * @param {{{dataType}}}{{^required}}|null{{/required}} ${{name}}{{#description}} {{{.}}}{{/description}}{{^description}} {{{name}}}{{/description}}
+     * @param {{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}}{{^required}}|null{{/required}} ${{name}}{{#description}} {{{.}}}{{/description}}{{^description}} {{{name}}}{{/description}}
      *
      * @return {{^returnType}}self{{/returnType}}{{#returnType}}{{returnType}}{{/returnType}}
     {{#deprecated}}
      * @deprecated
     {{/deprecated}}
      */
-    public function {{setter}}(${{name}}): {{^returnType}}self{{/returnType}}{{#returnType}}{{returnType}}{{/returnType}}
+    public function {{setter}}({{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}} ${{name}}): {{^returnType}}self{{/returnType}}{{#returnType}}{{returnType}}{{/returnType}}
     {
         {{#isNullable}}
         if (is_null(${{name}})) {

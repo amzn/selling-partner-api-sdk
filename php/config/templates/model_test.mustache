@@ -65,6 +65,11 @@ class {{classname}}Test extends TestCase
         $testValue = reset($allowedValues);
         {{/isEnum}}
         {{^isEnum}}
+        {{#isEnumRef}}
+        $enumInstance = new {{dataType}}();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
+        {{/isEnumRef}}
         {{#isString}}
         $testValue = 'test';
         {{/isString}}
@@ -80,9 +85,9 @@ class {{classname}}Test extends TestCase
         {{#isArray}}
         $testValue = [];
         {{/isArray}}
-        {{^isString}}{{^isInteger}}{{^isNumber}}{{^isBoolean}}{{^isArray}}
+        {{^isEnumRef}}{{^isString}}{{^isInteger}}{{^isNumber}}{{^isBoolean}}{{^isArray}}
         $testValue = new {{{dataType}}}();
-        {{/isArray}}{{/isBoolean}}{{/isNumber}}{{/isInteger}}{{/isString}}
+        {{/isArray}}{{/isBoolean}}{{/isNumber}}{{/isInteger}}{{/isString}}{{/isEnumRef}}
         {{/isEnum}}
         $this->model->set{{nameInPascalCase}}($testValue);
         $this->assertEquals($testValue, $this->model->get{{nameInPascalCase}}());

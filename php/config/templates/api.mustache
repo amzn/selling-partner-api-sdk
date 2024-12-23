@@ -48,7 +48,7 @@ use {{invokerPackage}}\ObjectSerializer;
     /**
      * @var ClientInterface
      */
-    protected $client;
+    protected ClientInterface $client;
 
     /**
      * @var Configuration
@@ -166,7 +166,8 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}{{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}
+     * {{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
@@ -176,8 +177,10 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{operationId}}({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}){{#returnType}}: {{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{^responses}}void{{/responses}}{{/returnType}}
-    {
+    public function {{operationId}}(
+    {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    ){{#returnType}}: {{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
         {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});{{#returnType}}
         return $response;{{/returnType}}
     }
@@ -207,7 +210,8 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}
+     * {{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
@@ -217,8 +221,10 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}): array
-    {
+    public function {{operationId}}WithHttpInfo(
+    {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    ): array {
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
         $request = $this->config->sign($request);
 
@@ -350,7 +356,8 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}
+     * {{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
      * @throws \InvalidArgumentException
@@ -359,8 +366,10 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{operationId}}Async({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}): PromiseInterface
-    {
+    public function {{operationId}}Async(
+    {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    ): PromiseInterface {
         return $this->{{operationId}}AsyncWithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
             ->then(
                 function ($response) {
@@ -394,7 +403,8 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}
+     * {{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
      * @throws \InvalidArgumentException
@@ -403,8 +413,10 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{operationId}}AsyncWithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}): PromiseInterface
-    {
+    public function {{operationId}}AsyncWithHttpInfo(
+    {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    ): PromiseInterface {
         $returnType = '{{{returnType}}}';
         $request = $this->{{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
         $request = $this->config->sign($request);
@@ -468,7 +480,8 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
+     * @param  {{{dataType}}}{{^required}}|null{{/required}} ${{paramName}}
+     * {{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
 {{/allParams}}
      *
      * @throws \InvalidArgumentException
@@ -477,8 +490,10 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{operationId}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}): Request
-    {
+    public function {{operationId}}Request(
+    {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
+    {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
+    ): Request {
         {{#vendorExtensions.x-group-parameters}}
         // unbox the parameters from the associative array
         {{#allParams}}
