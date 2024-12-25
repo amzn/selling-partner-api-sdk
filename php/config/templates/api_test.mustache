@@ -52,7 +52,7 @@ class {{classname}}Test extends TestCase
             "refreshToken" => $_ENV['SP_API_REFRESH_TOKEN'],
             "endpoint" => $_ENV['SP_API_ENDPOINT'] ?: "https://api.amazon.com/auth/o2/token"
         ];
-        $scopes = $this->testHelper->getScopesForApi('{{classname}}');
+        $scopes = $this->testHelper->getScopesForApi($this->getName());
         if (!empty($scopes)) {
             $credentialsConfig['scopes'] = $scopes;
         }
@@ -74,21 +74,10 @@ class {{classname}}Test extends TestCase
     {
         switch ($expectedStatusCode) {
             case 200:
-                $payload = $response->getPayload();
-                $this->assertNotNull($payload);
-                $returnTypeInfo = $this->testHelper->getReturnTypeInfo($response);
-                if ($returnTypeInfo) {
-                    [$returnTypeName, $isNullable] = $returnTypeInfo;
-                    if (class_exists($returnTypeName)) {
-                        $expectedInstance = new $returnTypeName();
-                        $this->testHelper->mapAttributes($expectedInstance, $responseParams['payload'] ?? []);
-                        $this->assertEquals($expectedInstance, $payload);
-                    } else {
-                        echo "Class $returnTypeName does not exist.";
-                    }
-                } else {
-                    echo "No return type specified for getPayload.";
-                }
+            case 201:
+            case 202:
+                $actual = json_decode($response, true);
+                $this->assertEquals($responseParams, $actual);
                 break;
 
             case 204:

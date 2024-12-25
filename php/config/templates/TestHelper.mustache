@@ -132,9 +132,8 @@ class TestHelper
      * @param mixed $data The data to map.
      * @return void
      */
-    private static function handleSimpleType(object $instance, ?string $setterMethod, string $type, $data): void
+    private static function handleSimpleType(object $instance, ?string $setterMethod, string $type, mixed $data): void
     {
-        ObjectSerializer::setDateTimeFormat('Y-m-d\TH:i:s.v\Z');
         $deserializedValue = ObjectSerializer::deserialize($data, $type);
         $instance->$setterMethod($deserializedValue);
     }
@@ -164,6 +163,7 @@ class TestHelper
      * @param array $params The parameter definitions, expected to have a getName() and getType() method.
      * @param array|null $requestParameters The raw request data to map.
      * @return array The prepared request parameters.
+     * @throws ReflectionException
      */
     private static function prepareRequestParams(array $params, ?array $requestParameters): array
     {
@@ -173,7 +173,7 @@ class TestHelper
             $paramName = $param->getName();
 
             // Handle special case for 'payload' parameter.
-            if ($paramName === 'payload') {
+            if ($paramName === 'payload' || $paramName === 'body') {
                 $typeName = $param->getType()->getName();
                 if (class_exists($typeName)) {
                     $requestInstance = new $typeName();
@@ -191,7 +191,7 @@ class TestHelper
                             }
 
                             // Generate dummy value based on the type
-                            $dummyValue = self::getDummyValueForType($propertyType);
+                            $dummyValue = self::getDummyValueForType($propertyType, $propertyName);
 
                             // Check if a setter exists for the property
                             if (array_key_exists($propertyName, $setters)) {
@@ -219,11 +219,12 @@ class TestHelper
                         $value = $subArray['value'];
                         break;
                     }
-                } elseif (!$param->isOptional()) {
-                    $typeName = $param->getType()->getName();
-                    // Insert Dummy parameter
-                    $value = self::getDummyValueForType($typeName);
                 }
+            }
+            if (empty($value) && !$param->isOptional()) {
+                $typeName = $param->getType()->getName();
+                // Insert Dummy parameter
+                $value = self::getDummyValueForType($typeName, $paramName);
             }
             $requestParams[$paramName] = $value;
         }
@@ -232,18 +233,33 @@ class TestHelper
     }
 
     /**
+     * Map for Domain Specific parameters
+     * @var array
+     */
+    private static array $domainSpecificParameterMap = [
+        'arn' => 'arn:aws:sqs:test:test:test',
+        'notification_type' => 'ANY_OFFER_CHANGED',
+        'event_filter_type' => 'ANY_OFFER_CHANGED'
+    ];
+
+    /**
      * Returns a dummy value based on the given type.
      *
      * @param string $typeName
+     * @param string $paramName
      * @return mixed
      * @throws ReflectionException
      */
-    private static function getDummyValueForType(string $typeName): mixed
+    private static function getDummyValueForType(string $typeName, string $paramName): mixed
     {
+        // Handle domain specific case
+        if (isset(self::$domainSpecificParameterMap[$paramName])) {
+            return self::$domainSpecificParameterMap[$paramName];
+        }
         // Handle array and specific object types
         if (str_ends_with($typeName, '[]')) {
             $elementType = substr($typeName, 0, -2);
-            return [self::getDummyValueForType($elementType)];
+            return [self::getDummyValueForType($elementType, $paramName)];
         }
 
         if (class_exists($typeName)) {
@@ -265,7 +281,7 @@ class TestHelper
                 }
 
                 // Generate dummy value based on the type
-                $dummyValue = self::getDummyValueForType($propertyType);
+                $dummyValue = self::getDummyValueForType($propertyType, $propertyName);
 
                 // Check if a setter exists for the property
                 if (array_key_exists($propertyName, $setters)) {
@@ -403,7 +419,14 @@ class TestHelper
                     echo '!!!Complex nested object detected! $elementType = ' . $elementType . PHP_EOL;
                 }
             } elseif ($propertyType === 'object') {
-                // Handle  request parameter which doesn't have object class with NameSpace
+            /* This is added because testPutListingsItem200 case's request {body&#x3D;{}};
+            But it might be removed
+                if (!isset($matches[$index + 1])) {
+                    self::setKeyMapping($map, $key, $index, $propertyType, $depth, 'true');
+                    continue;
+                }
+                */
+                // Handle request parameter which doesn't have object class with NameSpace
                 self::setKeyMapping($map, $key, $index, $propertyType, $depth, 'false');
                 $nextKey = $matches[$index + 1][2];
                 $nextPropertyName = array_search($nextKey . '-' . $key, $attributeMap, true);
@@ -631,20 +654,22 @@ class TestHelper
     private static function convertCodegenTextToModelJson(string $codegenText, ?object $model, ?array $params): ?array
     {
         // Insert or Update case should not have Response body
-        if ($codegenText === '{}') {
-            return null;
+        if ($codegenText === '{}' || $codegenText === '') {
+            return json_decode($codegenText, true);
         }
         // Decode HTML entities
         $codegenText = html_entity_decode($codegenText);
         // Extract key=value pairs using regex
         preg_match_all('/([{\[,]?)\s*([^=\s]+)=/', $codegenText, $matches, PREG_SET_ORDER);
         // Clean up matches to remove unwanted characters
-        foreach ($matches as &$match) {
-            if (preg_match('/[{\[]/', $match[2]) && $match[2] !== ',') {
+        foreach ($matches as $key => &$match) {
+            if (empty($match[1])) {
+                unset($matches[$key]);
+            } elseif (preg_match('/[{\[]/', $match[2]) && $match[2] !== ',') {
                 $match[2] = preg_replace('/[{\[]/', '', $match[2]);
             }
         }
-        unset($match);
+        $matches = array_values($matches);
         $map = [];
         $apiTypeArray = [];
         $attributeMapArray = [];
@@ -667,8 +692,8 @@ class TestHelper
                 } else {
                     foreach ([false, true] as $capitalizeFirst) {
                         $camelCaseName = self::snakeToCamelCase($paramName, $capitalizeFirst);
-                        foreach ($matches as $match) {
-                            if ($match[2] == $camelCaseName) {
+                        foreach ($matches as $eachMatch) {
+                            if ($eachMatch[2] === $camelCaseName) {
                                 $apiTypeArray[$paramName] = 'object';
                                 $attributeMapArray[$paramName] = $camelCaseName;
                                 $apiTypeArray['value' . '-' . $camelCaseName] = $param->getType()->getName();
@@ -775,7 +800,12 @@ class TestHelper
      * @var array|string[]
      */
     private array $scopesRequiredMap = [
-        'NotificationsApi' => ['sellingpartnerapi::notifications']
+        'testCreateDestination200' => ['sellingpartnerapi::notifications'],
+        'testGetDestination200' => ['sellingpartnerapi::notifications'],
+        'testDeleteDestination200' => ['sellingpartnerapi::notifications'],
+        'testGetDestinations200' => ['sellingpartnerapi::notifications'],
+        'testDeleteSubscriptionById200' => ['sellingpartnerapi::notifications'],
+        'testGetSubscriptionById200' => ['sellingpartnerapi::notifications'],
     ];
 
 
@@ -812,13 +842,17 @@ class TestHelper
         'testUpdateVerificationStatus400',
         'testGetOrderRegulatedInfo200', // Getting 403 due to restricted role required
         'testGetOrderRegulatedInfo400',  // Getting 403 due to restricted role required
+        'testGetOrderItemsBuyerInfo200', // Response should have required field OrderItemId, but it doesn't
         // NotificationAPI
-        'testCreateDestination200', // Required request body is missing
-        'testCreateSubscription200', // Required request body is missing
-        'testDeleteDestination200', // Required parameter destinationId is missing
-        'testDeleteSubscriptionById200', // Required parameter subscriptionId is missing
-        'testGetDestination200', // Required parameter destinationId is missing
-        'testGetSubscription200', // Required parameter notificationType is missing
-        'testGetSubscriptionById200' // Required parameter subscriptionId is missing
+        'testDeleteSubscriptionById200', // Getting 400 with InvalidInput error
+        'testGetSubscriptionById200', // Getting 400 with InvalidInput error
+        // Feed API
+        'testCancelFeed200', // Always 500 will be returned
+        'testCreateFeed400', // Request should have mandatory field FeedType
+        'testCreateFeedDocument400', // Request should have mandatory field ContentType
+        // Report API
+        'testCancelReport200',  // Always 500 will be returned
+        'testCancelReportSchedule200', // Always 500 will be returned
+        'testCreateReportSchedule400' // Request should have mandatory field MarketplaceIds
     ];
 }

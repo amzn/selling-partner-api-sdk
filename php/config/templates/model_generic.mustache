@@ -386,12 +386,12 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     /**
      * Gets {{name}}
      *
-     * @return {{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}}{{^required}}|null{{/required}}
+     * @return {{#isArray}}arrayA{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}}{{^required}}|null{{/required}}
     {{#deprecated}}
      * @deprecated
     {{/deprecated}}
      */
-    public function {{getter}}(): {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}}
+    public function {{getter}}(): {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{#isMap}}array{{/isMap}}{{#isEnum}}string{{/isEnum}}{{^isMap}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isMap}}{{/isArray}}
     {
         return $this->container['{{name}}'];
     }
@@ -406,7 +406,7 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
      * @deprecated
     {{/deprecated}}
      */
-    public function {{setter}}({{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{#isEnum}}string{{/isEnum}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isArray}} ${{name}}): {{^returnType}}self{{/returnType}}{{#returnType}}{{returnType}}{{/returnType}}
+    public function {{setter}}({{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{#isMap}}array{{/isMap}}{{#isEnum}}string{{/isEnum}}{{^isMap}}{{^isEnum}}{{#isEnumRef}}string{{/isEnumRef}}{{^isEnumRef}}{{{dataType}}}{{/isEnumRef}}{{/isEnum}}{{/isMap}}{{/isArray}} ${{name}}): {{^returnType}}self{{/returnType}}{{#returnType}}{{returnType}}{{/returnType}}
     {
         {{#isNullable}}
         if (is_null(${{name}})) {

@@ -21,7 +21,6 @@
 namespace {{invokerPackage}};
 
 use DateTime;
-use DateTimeInterface;
 use GuzzleHttp\Psr7\Utils;
 use {{invokerPackage}}\Model\ModelInterface;
 
@@ -36,7 +35,7 @@ use {{invokerPackage}}\Model\ModelInterface;
 class ObjectSerializer
 {
     /** @var string */
-    private static string $dateTimeFormat = DateTimeInterface::ATOM;
+    private static string $dateTimeFormat = 'Y-m-d\TH:i:s.v\Z';
 
     /**
      * Change the date format
