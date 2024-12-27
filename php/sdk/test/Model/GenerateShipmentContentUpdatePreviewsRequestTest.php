@@ -1,0 +1,75 @@
+<?php
+/**
+ * GenerateShipmentContentUpdatePreviewsRequestTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\fulfillmentinbound\GenerateShipmentContentUpdatePreviewsRequest;
+
+/**
+ * GenerateShipmentContentUpdatePreviewsRequestTest Class Doc Comment
+ *
+ * @category    Class
+ * @description The &#x60;GenerateShipmentContentUpdatePreviews&#x60; request.
+ * @package     OpenAPI\Client
+ */
+class GenerateShipmentContentUpdatePreviewsRequestTest extends TestCase
+{
+
+    private GenerateShipmentContentUpdatePreviewsRequest $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new GenerateShipmentContentUpdatePreviewsRequest();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "GenerateShipmentContentUpdatePreviewsRequest"
+     */
+    public function testGenerateShipmentContentUpdatePreviewsRequest()
+    {
+        $this->assertInstanceOf(GenerateShipmentContentUpdatePreviewsRequest::class, $this->model);
+    }
+
+    /**
+     * Test attribute "boxes"
+     */
+    public function testPropertyBoxes()
+    {
+        $testValue = [];
+        
+        $this->model->setBoxes($testValue);
+        $this->assertEquals($testValue, $this->model->getBoxes());
+    }
+
+    /**
+     * Test attribute "items"
+     */
+    public function testPropertyItems()
+    {
+        $testValue = [];
+        
+        $this->model->setItems($testValue);
+        $this->assertEquals($testValue, $this->model->getItems());
+    }
+}

@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\DeliveryPreferences;
+use OpenAPI\Client\Model\fulfillmentoutbound\DeliveryPreferences;
 
 /**
  * DeliveryPreferencesTest Class Doc Comment
  *
  * @category    Class
- * @description Contains all of the delivery instructions provided by the customer for the shipping address.
+ * @description The delivery preferences applied to the destination address. These preferences are applied when possible and are best effort. This feature is currently supported only in the JP marketplace and not applicable for other marketplaces. For eligible orders, the default delivery preference will be to deliver the package unattended at the front door, unless you specify otherwise.
  * @package     OpenAPI\Client
  */
 class DeliveryPreferencesTest extends TestCase
@@ -52,47 +52,25 @@ class DeliveryPreferencesTest extends TestCase
     }
 
     /**
+     * Test attribute "delivery_instructions"
+     */
+    public function testPropertyDeliveryInstructions()
+    {
+        $testValue = 'test';
+        
+        $this->model->setDeliveryInstructions($testValue);
+        $this->assertEquals($testValue, $this->model->getDeliveryInstructions());
+    }
+
+    /**
      * Test attribute "drop_off_location"
      */
     public function testPropertyDropOffLocation()
     {
-        $testValue = 'test';
+        
+        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DropOffLocation();
         
         $this->model->setDropOffLocation($testValue);
         $this->assertEquals($testValue, $this->model->getDropOffLocation());
-    }
-
-    /**
-     * Test attribute "preferred_delivery_time"
-     */
-    public function testPropertyPreferredDeliveryTime()
-    {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\PreferredDeliveryTime();
-        
-        $this->model->setPreferredDeliveryTime($testValue);
-        $this->assertEquals($testValue, $this->model->getPreferredDeliveryTime());
-    }
-
-    /**
-     * Test attribute "other_attributes"
-     */
-    public function testPropertyOtherAttributes()
-    {
-        $testValue = [];
-        
-        $this->model->setOtherAttributes($testValue);
-        $this->assertEquals($testValue, $this->model->getOtherAttributes());
-    }
-
-    /**
-     * Test attribute "address_instructions"
-     */
-    public function testPropertyAddressInstructions()
-    {
-        $testValue = 'test';
-        
-        $this->model->setAddressInstructions($testValue);
-        $this->assertEquals($testValue, $this->model->getAddressInstructions());
     }
 }

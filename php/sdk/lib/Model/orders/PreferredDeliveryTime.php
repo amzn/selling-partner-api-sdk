@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * PreferredDeliveryTime Class Doc Comment
@@ -300,7 +301,7 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets business_hours
      *
-     * @return \OpenAPI\Client\Model\orders\BusinessHours[]|null
+     * @return arrayA|null
      */
     public function getBusinessHours(): ?array
     {
@@ -310,11 +311,11 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets business_hours
      *
-     * @param \OpenAPI\Client\Model\orders\BusinessHours[]|null $business_hours Business hours when the business is open for deliveries.
+     * @param array|null $business_hours Business hours when the business is open for deliveries.
      *
      * @return self
      */
-    public function setBusinessHours($business_hours): self
+    public function setBusinessHours(?array $business_hours): self
     {
         if (is_null($business_hours)) {
             throw new \InvalidArgumentException('non-nullable business_hours cannot be null');
@@ -327,7 +328,7 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets exception_dates
      *
-     * @return \OpenAPI\Client\Model\orders\ExceptionDates[]|null
+     * @return arrayA|null
      */
     public function getExceptionDates(): ?array
     {
@@ -337,11 +338,11 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets exception_dates
      *
-     * @param \OpenAPI\Client\Model\orders\ExceptionDates[]|null $exception_dates Dates when the business is closed during the next 30 days.
+     * @param array|null $exception_dates Dates when the business is closed during the next 30 days.
      *
      * @return self
      */
-    public function setExceptionDates($exception_dates): self
+    public function setExceptionDates(?array $exception_dates): self
     {
         if (is_null($exception_dates)) {
             throw new \InvalidArgumentException('non-nullable exception_dates cannot be null');

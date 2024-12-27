@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * FulfillmentInstruction Class Doc Comment
@@ -307,7 +308,7 @@ class FulfillmentInstruction implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setFulfillmentSupplySourceId($fulfillment_supply_source_id): self
+    public function setFulfillmentSupplySourceId(?string $fulfillment_supply_source_id): self
     {
         if (is_null($fulfillment_supply_source_id)) {
             throw new \InvalidArgumentException('non-nullable fulfillment_supply_source_id cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ConfirmShipmentOrderItem Class Doc Comment
@@ -327,7 +328,7 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
      *
      * @return self
      */
-    public function setOrderItemId($order_item_id): self
+    public function setOrderItemId(string $order_item_id): self
     {
         if (is_null($order_item_id)) {
             throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
@@ -354,7 +355,7 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
      *
      * @return self
      */
-    public function setQuantity($quantity): self
+    public function setQuantity(int $quantity): self
     {
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
@@ -367,7 +368,7 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets transparency_codes
      *
-     * @return string[]|null
+     * @return arrayA|null
      */
     public function getTransparencyCodes(): ?array
     {
@@ -377,11 +378,11 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets transparency_codes
      *
-     * @param string[]|null $transparency_codes A list of order items.
+     * @param array|null $transparency_codes A list of order items.
      *
      * @return self
      */
-    public function setTransparencyCodes($transparency_codes): self
+    public function setTransparencyCodes(?array $transparency_codes): self
     {
         if (is_null($transparency_codes)) {
             throw new \InvalidArgumentException('non-nullable transparency_codes cannot be null');

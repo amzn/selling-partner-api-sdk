@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Measurement Class Doc Comment
@@ -388,7 +389,7 @@ class Measurement implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setUnit($unit): self
+    public function setUnit(string $unit): self
     {
         if (is_null($unit)) {
             throw new \InvalidArgumentException('non-nullable unit cannot be null');
@@ -425,7 +426,7 @@ class Measurement implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setValue($value): self
+    public function setValue(float $value): self
     {
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');

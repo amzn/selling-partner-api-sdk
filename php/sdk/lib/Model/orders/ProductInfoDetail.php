@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ProductInfoDetail Class Doc Comment
@@ -307,7 +308,7 @@ class ProductInfoDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setNumberOfItems($number_of_items): self
+    public function setNumberOfItems(?string $number_of_items): self
     {
         if (is_null($number_of_items)) {
             throw new \InvalidArgumentException('non-nullable number_of_items cannot be null');

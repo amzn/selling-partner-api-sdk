@@ -247,8 +247,9 @@ class OrderTest extends TestCase
      */
     public function testPropertyEasyShipShipmentStatus()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\EasyShipShipmentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\EasyShipShipmentStatus();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setEasyShipShipmentStatus($testValue);
         $this->assertEquals($testValue, $this->model->getEasyShipShipmentStatus());
@@ -576,8 +577,9 @@ class OrderTest extends TestCase
      */
     public function testPropertyElectronicInvoiceStatus()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\ElectronicInvoiceStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\ElectronicInvoiceStatus();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setElectronicInvoiceStatus($testValue);
         $this->assertEquals($testValue, $this->model->getElectronicInvoiceStatus());

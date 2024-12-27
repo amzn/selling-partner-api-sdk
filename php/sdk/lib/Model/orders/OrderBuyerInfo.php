@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OrderBuyerInfo Class Doc Comment
@@ -345,7 +346,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAmazonOrderId($amazon_order_id): self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
             throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
@@ -372,7 +373,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerEmail($buyer_email): self
+    public function setBuyerEmail(?string $buyer_email): self
     {
         if (is_null($buyer_email)) {
             throw new \InvalidArgumentException('non-nullable buyer_email cannot be null');
@@ -399,7 +400,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerName($buyer_name): self
+    public function setBuyerName(?string $buyer_name): self
     {
         if (is_null($buyer_name)) {
             throw new \InvalidArgumentException('non-nullable buyer_name cannot be null');
@@ -426,7 +427,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerCounty($buyer_county): self
+    public function setBuyerCounty(?string $buyer_county): self
     {
         if (is_null($buyer_county)) {
             throw new \InvalidArgumentException('non-nullable buyer_county cannot be null');
@@ -453,7 +454,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerTaxInfo($buyer_tax_info): self
+    public function setBuyerTaxInfo(?\OpenAPI\Client\Model\orders\BuyerTaxInfo $buyer_tax_info): self
     {
         if (is_null($buyer_tax_info)) {
             throw new \InvalidArgumentException('non-nullable buyer_tax_info cannot be null');
@@ -480,7 +481,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPurchaseOrderNumber($purchase_order_number): self
+    public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         if (is_null($purchase_order_number)) {
             throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * PrimaryContact Class Doc Comment
@@ -327,7 +328,7 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setName($name): self
+    public function setName(string $name): self
     {
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
@@ -354,7 +355,7 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAddress($address): self
+    public function setAddress(\OpenAPI\Client\Model\sellers\Address $address): self
     {
         if (is_null($address)) {
             throw new \InvalidArgumentException('non-nullable address cannot be null');
@@ -381,7 +382,7 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNonLatinName($non_latin_name): self
+    public function setNonLatinName(?string $non_latin_name): self
     {
         if (is_null($non_latin_name)) {
             throw new \InvalidArgumentException('non-nullable non_latin_name cannot be null');

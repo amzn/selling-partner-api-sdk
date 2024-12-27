@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Account Class Doc Comment
@@ -356,7 +357,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_level_attributes
      *
-     * @return \OpenAPI\Client\Model\sellers\MarketplaceLevelAttributes[]
+     * @return arrayA
      */
     public function getMarketplaceLevelAttributes(): array
     {
@@ -366,11 +367,11 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marketplace_level_attributes
      *
-     * @param \OpenAPI\Client\Model\sellers\MarketplaceLevelAttributes[] $marketplace_level_attributes A list of details of the marketplaces where the seller account is active.
+     * @param array $marketplace_level_attributes A list of details of the marketplaces where the seller account is active.
      *
      * @return self
      */
-    public function setMarketplaceLevelAttributes($marketplace_level_attributes): self
+    public function setMarketplaceLevelAttributes(array $marketplace_level_attributes): self
     {
         if (is_null($marketplace_level_attributes)) {
             throw new \InvalidArgumentException('non-nullable marketplace_level_attributes cannot be null');
@@ -397,7 +398,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBusinessType($business_type): self
+    public function setBusinessType(string $business_type): self
     {
         if (is_null($business_type)) {
             throw new \InvalidArgumentException('non-nullable business_type cannot be null');
@@ -434,7 +435,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBusiness($business): self
+    public function setBusiness(?\OpenAPI\Client\Model\sellers\Business $business): self
     {
         if (is_null($business)) {
             throw new \InvalidArgumentException('non-nullable business cannot be null');
@@ -461,7 +462,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPrimaryContact($primary_contact): self
+    public function setPrimaryContact(?\OpenAPI\Client\Model\sellers\PrimaryContact $primary_contact): self
     {
         if (is_null($primary_contact)) {
             throw new \InvalidArgumentException('non-nullable primary_contact cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OrderItemsInner Class Doc Comment
@@ -313,7 +314,7 @@ class OrderItemsInner implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderItemId($order_item_id): self
+    public function setOrderItemId(?string $order_item_id): self
     {
         if (is_null($order_item_id)) {
             throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
@@ -340,7 +341,7 @@ class OrderItemsInner implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setQuantity($quantity): self
+    public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');

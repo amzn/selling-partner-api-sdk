@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ValidVerificationDetail Class Doc Comment
@@ -320,7 +321,7 @@ class ValidVerificationDetail implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return self
      */
-    public function setVerificationDetailType($verification_detail_type): self
+    public function setVerificationDetailType(string $verification_detail_type): self
     {
         if (is_null($verification_detail_type)) {
             throw new \InvalidArgumentException('non-nullable verification_detail_type cannot be null');
@@ -333,7 +334,7 @@ class ValidVerificationDetail implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets valid_verification_statuses
      *
-     * @return \OpenAPI\Client\Model\orders\VerificationStatus[]
+     * @return arrayA
      */
     public function getValidVerificationStatuses(): array
     {
@@ -343,11 +344,11 @@ class ValidVerificationDetail implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets valid_verification_statuses
      *
-     * @param \OpenAPI\Client\Model\orders\VerificationStatus[] $valid_verification_statuses A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
+     * @param array $valid_verification_statuses A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
      *
      * @return self
      */
-    public function setValidVerificationStatuses($valid_verification_statuses): self
+    public function setValidVerificationStatuses(array $valid_verification_statuses): self
     {
         if (is_null($valid_verification_statuses)) {
             throw new \InvalidArgumentException('non-nullable valid_verification_statuses cannot be null');

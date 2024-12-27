@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * RejectionReason Class Doc Comment
@@ -320,7 +321,7 @@ class RejectionReason implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRejectionReasonId($rejection_reason_id): self
+    public function setRejectionReasonId(string $rejection_reason_id): self
     {
         if (is_null($rejection_reason_id)) {
             throw new \InvalidArgumentException('non-nullable rejection_reason_id cannot be null');
@@ -347,7 +348,7 @@ class RejectionReason implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRejectionReasonDescription($rejection_reason_description): self
+    public function setRejectionReasonDescription(string $rejection_reason_description): self
     {
         if (is_null($rejection_reason_description)) {
             throw new \InvalidArgumentException('non-nullable rejection_reason_description cannot be null');

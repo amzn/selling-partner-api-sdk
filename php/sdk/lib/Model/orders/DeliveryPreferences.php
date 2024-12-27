@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * DeliveryPreferences Class Doc Comment
@@ -328,7 +329,7 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setDropOffLocation($drop_off_location): self
+    public function setDropOffLocation(?string $drop_off_location): self
     {
         if (is_null($drop_off_location)) {
             throw new \InvalidArgumentException('non-nullable drop_off_location cannot be null');
@@ -355,7 +356,7 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setPreferredDeliveryTime($preferred_delivery_time): self
+    public function setPreferredDeliveryTime(?\OpenAPI\Client\Model\orders\PreferredDeliveryTime $preferred_delivery_time): self
     {
         if (is_null($preferred_delivery_time)) {
             throw new \InvalidArgumentException('non-nullable preferred_delivery_time cannot be null');
@@ -368,7 +369,7 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets other_attributes
      *
-     * @return \OpenAPI\Client\Model\orders\OtherDeliveryAttributes[]|null
+     * @return arrayA|null
      */
     public function getOtherAttributes(): ?array
     {
@@ -378,11 +379,11 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets other_attributes
      *
-     * @param \OpenAPI\Client\Model\orders\OtherDeliveryAttributes[]|null $other_attributes Enumerated list of miscellaneous delivery attributes associated with the shipping address.
+     * @param array|null $other_attributes Enumerated list of miscellaneous delivery attributes associated with the shipping address.
      *
      * @return self
      */
-    public function setOtherAttributes($other_attributes): self
+    public function setOtherAttributes(?array $other_attributes): self
     {
         if (is_null($other_attributes)) {
             throw new \InvalidArgumentException('non-nullable other_attributes cannot be null');
@@ -409,7 +410,7 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setAddressInstructions($address_instructions): self
+    public function setAddressInstructions(?string $address_instructions): self
     {
         if (is_null($address_instructions)) {
             throw new \InvalidArgumentException('non-nullable address_instructions cannot be null');

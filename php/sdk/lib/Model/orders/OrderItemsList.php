@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OrderItemsList Class Doc Comment
@@ -313,7 +314,7 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_items
      *
-     * @return \OpenAPI\Client\Model\orders\OrderItem[]
+     * @return arrayA
      */
     public function getOrderItems(): array
     {
@@ -323,11 +324,11 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_items
      *
-     * @param \OpenAPI\Client\Model\orders\OrderItem[] $order_items A list of order items.
+     * @param array $order_items A list of order items.
      *
      * @return self
      */
-    public function setOrderItems($order_items): self
+    public function setOrderItems(array $order_items): self
     {
         if (is_null($order_items)) {
             throw new \InvalidArgumentException('non-nullable order_items cannot be null');
@@ -354,7 +355,7 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNextToken($next_token): self
+    public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
             throw new \InvalidArgumentException('non-nullable next_token cannot be null');
@@ -381,7 +382,7 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAmazonOrderId($amazon_order_id): self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
             throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');

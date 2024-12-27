@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * MarketplaceLevelAttributes Class Doc Comment
@@ -388,7 +389,7 @@ class MarketplaceLevelAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setMarketplace($marketplace): self
+    public function setMarketplace(\OpenAPI\Client\Model\sellers\Marketplace $marketplace): self
     {
         if (is_null($marketplace)) {
             throw new \InvalidArgumentException('non-nullable marketplace cannot be null');
@@ -415,7 +416,7 @@ class MarketplaceLevelAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setStoreName($store_name): self
+    public function setStoreName(string $store_name): self
     {
         if (is_null($store_name)) {
             throw new \InvalidArgumentException('non-nullable store_name cannot be null');
@@ -442,7 +443,7 @@ class MarketplaceLevelAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setListingStatus($listing_status): self
+    public function setListingStatus(string $listing_status): self
     {
         if (is_null($listing_status)) {
             throw new \InvalidArgumentException('non-nullable listing_status cannot be null');
@@ -479,7 +480,7 @@ class MarketplaceLevelAttributes implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setSellingPlan($selling_plan): self
+    public function setSellingPlan(string $selling_plan): self
     {
         if (is_null($selling_plan)) {
             throw new \InvalidArgumentException('non-nullable selling_plan cannot be null');

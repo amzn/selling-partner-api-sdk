@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * PrescriptionDetail Class Doc Comment
@@ -382,7 +383,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setPrescriptionId($prescription_id): self
+    public function setPrescriptionId(string $prescription_id): self
     {
         if (is_null($prescription_id)) {
             throw new \InvalidArgumentException('non-nullable prescription_id cannot be null');
@@ -409,7 +410,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setExpirationDate($expiration_date): self
+    public function setExpirationDate(\DateTime $expiration_date): self
     {
         if (is_null($expiration_date)) {
             throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
@@ -436,7 +437,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setWrittenQuantity($written_quantity): self
+    public function setWrittenQuantity(int $written_quantity): self
     {
         if (is_null($written_quantity)) {
             throw new \InvalidArgumentException('non-nullable written_quantity cannot be null');
@@ -468,7 +469,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setTotalRefillsAuthorized($total_refills_authorized): self
+    public function setTotalRefillsAuthorized(int $total_refills_authorized): self
     {
         if (is_null($total_refills_authorized)) {
             throw new \InvalidArgumentException('non-nullable total_refills_authorized cannot be null');
@@ -500,7 +501,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setRefillsRemaining($refills_remaining): self
+    public function setRefillsRemaining(int $refills_remaining): self
     {
         if (is_null($refills_remaining)) {
             throw new \InvalidArgumentException('non-nullable refills_remaining cannot be null');
@@ -532,7 +533,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setClinicId($clinic_id): self
+    public function setClinicId(string $clinic_id): self
     {
         if (is_null($clinic_id)) {
             throw new \InvalidArgumentException('non-nullable clinic_id cannot be null');
@@ -559,7 +560,7 @@ class PrescriptionDetail implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setUsageInstructions($usage_instructions): self
+    public function setUsageInstructions(string $usage_instructions): self
     {
         if (is_null($usage_instructions)) {
             throw new \InvalidArgumentException('non-nullable usage_instructions cannot be null');

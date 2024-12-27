@@ -56,8 +56,9 @@ class RegulatedOrderVerificationStatusTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\VerificationStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\VerificationStatus();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());

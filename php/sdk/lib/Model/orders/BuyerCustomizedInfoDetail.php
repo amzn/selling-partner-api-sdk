@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * BuyerCustomizedInfoDetail Class Doc Comment
@@ -307,7 +308,7 @@ class BuyerCustomizedInfoDetail implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setCustomizedUrl($customized_url): self
+    public function setCustomizedUrl(?string $customized_url): self
     {
         if (is_null($customized_url)) {
             throw new \InvalidArgumentException('non-nullable customized_url cannot be null');

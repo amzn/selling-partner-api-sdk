@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * RegulatedInformationField Class Doc Comment
@@ -364,7 +365,7 @@ class RegulatedInformationField implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setFieldId($field_id): self
+    public function setFieldId(string $field_id): self
     {
         if (is_null($field_id)) {
             throw new \InvalidArgumentException('non-nullable field_id cannot be null');
@@ -391,7 +392,7 @@ class RegulatedInformationField implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setFieldLabel($field_label): self
+    public function setFieldLabel(string $field_label): self
     {
         if (is_null($field_label)) {
             throw new \InvalidArgumentException('non-nullable field_label cannot be null');
@@ -418,7 +419,7 @@ class RegulatedInformationField implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setFieldType($field_type): self
+    public function setFieldType(string $field_type): self
     {
         if (is_null($field_type)) {
             throw new \InvalidArgumentException('non-nullable field_type cannot be null');
@@ -455,7 +456,7 @@ class RegulatedInformationField implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setFieldValue($field_value): self
+    public function setFieldValue(string $field_value): self
     {
         if (is_null($field_value)) {
             throw new \InvalidArgumentException('non-nullable field_value cannot be null');

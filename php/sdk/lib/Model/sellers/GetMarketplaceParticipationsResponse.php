@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * GetMarketplaceParticipationsResponse Class Doc Comment
@@ -300,7 +301,7 @@ class GetMarketplaceParticipationsResponse implements ModelInterface, ArrayAcces
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\sellers\MarketplaceParticipation[]|null
+     * @return arrayA|null
      */
     public function getPayload(): ?array
     {
@@ -310,11 +311,11 @@ class GetMarketplaceParticipationsResponse implements ModelInterface, ArrayAcces
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\sellers\MarketplaceParticipation[]|null $payload List of marketplace participations.
+     * @param array|null $payload List of marketplace participations.
      *
      * @return self
      */
-    public function setPayload($payload): self
+    public function setPayload(?array $payload): self
     {
         if (is_null($payload)) {
             throw new \InvalidArgumentException('non-nullable payload cannot be null');
@@ -327,7 +328,7 @@ class GetMarketplaceParticipationsResponse implements ModelInterface, ArrayAcces
     /**
      * Gets errors
      *
-     * @return \OpenAPI\Client\Model\sellers\Error[]|null
+     * @return arrayA|null
      */
     public function getErrors(): ?array
     {
@@ -337,11 +338,11 @@ class GetMarketplaceParticipationsResponse implements ModelInterface, ArrayAcces
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\sellers\Error[]|null $errors A list of error responses returned when a request is unsuccessful.
+     * @param array|null $errors A list of error responses returned when a request is unsuccessful.
      *
      * @return self
      */
-    public function setErrors($errors): self
+    public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
             throw new \InvalidArgumentException('non-nullable errors cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * AutomatedShippingSettings Class Doc Comment
@@ -321,7 +322,7 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setHasAutomatedShippingSettings($has_automated_shipping_settings): self
+    public function setHasAutomatedShippingSettings(?bool $has_automated_shipping_settings): self
     {
         if (is_null($has_automated_shipping_settings)) {
             throw new \InvalidArgumentException('non-nullable has_automated_shipping_settings cannot be null');
@@ -348,7 +349,7 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setAutomatedCarrier($automated_carrier): self
+    public function setAutomatedCarrier(?string $automated_carrier): self
     {
         if (is_null($automated_carrier)) {
             throw new \InvalidArgumentException('non-nullable automated_carrier cannot be null');
@@ -375,7 +376,7 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return self
      */
-    public function setAutomatedShipMethod($automated_ship_method): self
+    public function setAutomatedShipMethod(?string $automated_ship_method): self
     {
         if (is_null($automated_ship_method)) {
             throw new \InvalidArgumentException('non-nullable automated_ship_method cannot be null');

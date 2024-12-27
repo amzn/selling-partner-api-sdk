@@ -78,8 +78,9 @@ class AssociatedItemTest extends TestCase
      */
     public function testPropertyAssociationType()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\AssociationType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\AssociationType();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setAssociationType($testValue);
         $this->assertEquals($testValue, $this->model->getAssociationType());

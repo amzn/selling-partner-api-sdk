@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * GetAccountResponse Class Doc Comment
@@ -314,7 +315,7 @@ class GetAccountResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setPayload($payload): self
+    public function setPayload(?\OpenAPI\Client\Model\sellers\Account $payload): self
     {
         if (is_null($payload)) {
             throw new \InvalidArgumentException('non-nullable payload cannot be null');
@@ -327,7 +328,7 @@ class GetAccountResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets errors
      *
-     * @return \OpenAPI\Client\Model\sellers\Error[]|null
+     * @return arrayA|null
      */
     public function getErrors(): ?array
     {
@@ -337,11 +338,11 @@ class GetAccountResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\sellers\Error[]|null $errors A list of error responses returned when a request is unsuccessful.
+     * @param array|null $errors A list of error responses returned when a request is unsuccessful.
      *
      * @return self
      */
-    public function setErrors($errors): self
+    public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
             throw new \InvalidArgumentException('non-nullable errors cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OpenInterval Class Doc Comment
@@ -314,7 +315,7 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setStartTime($start_time): self
+    public function setStartTime(?\OpenAPI\Client\Model\orders\OpenTimeInterval $start_time): self
     {
         if (is_null($start_time)) {
             throw new \InvalidArgumentException('non-nullable start_time cannot be null');
@@ -341,7 +342,7 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setEndTime($end_time): self
+    public function setEndTime(?\OpenAPI\Client\Model\orders\OpenTimeInterval $end_time): self
     {
         if (is_null($end_time)) {
             throw new \InvalidArgumentException('non-nullable end_time cannot be null');

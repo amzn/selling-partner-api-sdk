@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * PointsGrantedDetail Class Doc Comment
@@ -314,7 +315,7 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setPointsNumber($points_number): self
+    public function setPointsNumber(?int $points_number): self
     {
         if (is_null($points_number)) {
             throw new \InvalidArgumentException('non-nullable points_number cannot be null');
@@ -341,7 +342,7 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setPointsMonetaryValue($points_monetary_value): self
+    public function setPointsMonetaryValue(?\OpenAPI\Client\Model\orders\Money $points_monetary_value): self
     {
         if (is_null($points_monetary_value)) {
             throw new \InvalidArgumentException('non-nullable points_monetary_value cannot be null');

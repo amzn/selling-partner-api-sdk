@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OrdersList Class Doc Comment
@@ -317,7 +318,7 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets orders
      *
-     * @return \OpenAPI\Client\Model\orders\Order[]
+     * @return arrayA
      */
     public function getOrders(): array
     {
@@ -327,11 +328,11 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets orders
      *
-     * @param \OpenAPI\Client\Model\orders\Order[] $orders A list of orders.
+     * @param array $orders A list of orders.
      *
      * @return self
      */
-    public function setOrders($orders): self
+    public function setOrders(array $orders): self
     {
         if (is_null($orders)) {
             throw new \InvalidArgumentException('non-nullable orders cannot be null');
@@ -358,7 +359,7 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNextToken($next_token): self
+    public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
             throw new \InvalidArgumentException('non-nullable next_token cannot be null');
@@ -385,7 +386,7 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setLastUpdatedBefore($last_updated_before): self
+    public function setLastUpdatedBefore(?string $last_updated_before): self
     {
         if (is_null($last_updated_before)) {
             throw new \InvalidArgumentException('non-nullable last_updated_before cannot be null');
@@ -412,7 +413,7 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCreatedBefore($created_before): self
+    public function setCreatedBefore(?string $created_before): self
     {
         if (is_null($created_before)) {
             throw new \InvalidArgumentException('non-nullable created_before cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * MarketplaceParticipation Class Doc Comment
@@ -319,7 +320,7 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
      *
      * @return self
      */
-    public function setMarketplace($marketplace): self
+    public function setMarketplace(\OpenAPI\Client\Model\sellers\Marketplace $marketplace): self
     {
         if (is_null($marketplace)) {
             throw new \InvalidArgumentException('non-nullable marketplace cannot be null');
@@ -346,7 +347,7 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
      *
      * @return self
      */
-    public function setParticipation($participation): self
+    public function setParticipation(\OpenAPI\Client\Model\sellers\Participation $participation): self
     {
         if (is_null($participation)) {
             throw new \InvalidArgumentException('non-nullable participation cannot be null');

@@ -57,7 +57,7 @@ class OrdersApi
     /**
      * @var ClientInterface
      */
-    protected $client;
+    protected ClientInterface $client;
 
     /**
      * @var Configuration
@@ -154,15 +154,19 @@ class OrdersApi
      *
      * confirmShipment
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+     *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
-    public function confirmShipment(string $order_id, \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload)
-    {
+    public function confirmShipment(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+    ): void {
         $this->confirmShipmentWithHttpInfo($order_id, $payload);
     }
 
@@ -171,15 +175,19 @@ class OrdersApi
      *
      * confirmShipment
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+     *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
-    public function confirmShipmentWithHttpInfo(string $order_id, \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload): array
-    {
+    public function confirmShipmentWithHttpInfo(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+    ): array {
         $request = $this->confirmShipmentRequest($order_id, $payload);
         $request = $this->config->sign($request);
 
@@ -289,14 +297,18 @@ class OrdersApi
      *
      * confirmShipment
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+     *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function confirmShipmentAsync(string $order_id, \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload): PromiseInterface
-    {
+    public function confirmShipmentAsync(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+    ): PromiseInterface {
         return $this->confirmShipmentAsyncWithHttpInfo($order_id, $payload)
             ->then(
                 function ($response) {
@@ -310,14 +322,18 @@ class OrdersApi
      *
      * confirmShipment
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+     *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function confirmShipmentAsyncWithHttpInfo(string $order_id, \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload): PromiseInterface
-    {
+    public function confirmShipmentAsyncWithHttpInfo(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->confirmShipmentRequest($order_id, $payload);
         $request = $this->config->sign($request);
@@ -349,14 +365,18 @@ class OrdersApi
     /**
      * Create request for operation 'confirmShipment'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload Request body of &#x60;confirmShipment&#x60;. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+     *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function confirmShipmentRequest(string $order_id, \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload): Request
-    {
+    public function confirmShipmentRequest(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\ConfirmShipmentRequest $payload
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -404,12 +424,8 @@ class OrdersApi
 
         // for model (json/xml)
         if (isset($payload)) {
-            echo '!!!!!!!!!!!!!!$payload !!!!!!!!!!!!!!!      ' . PHP_EOL;
-            print_r($payload);
             if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
-                echo '!!!!!!!!!!!!!!$httpBody !!!!!!!!!!!!!!!      ' . PHP_EOL;
-                print_r($httpBody);
             } else {
                 $httpBody = $payload;
             }
@@ -463,14 +479,16 @@ class OrdersApi
      *
      * getOrder
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrderResponse
      */
-    public function getOrder(string $order_id): \OpenAPI\Client\Model\orders\GetOrderResponse
-    {
+    public function getOrder(
+        string $order_id
+    ): \OpenAPI\Client\Model\orders\GetOrderResponse {
         list($response) = $this->getOrderWithHttpInfo($order_id);
         return $response;
     }
@@ -480,14 +498,16 @@ class OrdersApi
      *
      * getOrder
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderWithHttpInfo(string $order_id): array
-    {
+    public function getOrderWithHttpInfo(
+        string $order_id
+    ): array {
         $request = $this->getOrderRequest($order_id);
         $request = $this->config->sign($request);
 
@@ -719,13 +739,15 @@ class OrdersApi
      *
      * getOrder
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderAsync(string $order_id): PromiseInterface
-    {
+    public function getOrderAsync(
+        string $order_id
+    ): PromiseInterface {
         return $this->getOrderAsyncWithHttpInfo($order_id)
             ->then(
                 function ($response) {
@@ -739,13 +761,15 @@ class OrdersApi
      *
      * getOrder
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderAsyncWithHttpInfo(string $order_id): PromiseInterface
-    {
+    public function getOrderAsyncWithHttpInfo(
+        string $order_id
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrderResponse';
         $request = $this->getOrderRequest($order_id);
         $request = $this->config->sign($request);
@@ -790,13 +814,15 @@ class OrdersApi
     /**
      * Create request for operation 'getOrder'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrderRequest(string $order_id): Request
-    {
+    public function getOrderRequest(
+        string $order_id
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -887,14 +913,16 @@ class OrdersApi
      *
      * getOrderAddress
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrderAddressResponse
      */
-    public function getOrderAddress(string $order_id): \OpenAPI\Client\Model\orders\GetOrderAddressResponse
-    {
+    public function getOrderAddress(
+        string $order_id
+    ): \OpenAPI\Client\Model\orders\GetOrderAddressResponse {
         list($response) = $this->getOrderAddressWithHttpInfo($order_id);
         return $response;
     }
@@ -904,14 +932,16 @@ class OrdersApi
      *
      * getOrderAddress
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrderAddressResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderAddressWithHttpInfo(string $order_id): array
-    {
+    public function getOrderAddressWithHttpInfo(
+        string $order_id
+    ): array {
         $request = $this->getOrderAddressRequest($order_id);
         $request = $this->config->sign($request);
 
@@ -1143,13 +1173,15 @@ class OrdersApi
      *
      * getOrderAddress
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderAddressAsync(string $order_id): PromiseInterface
-    {
+    public function getOrderAddressAsync(
+        string $order_id
+    ): PromiseInterface {
         return $this->getOrderAddressAsyncWithHttpInfo($order_id)
             ->then(
                 function ($response) {
@@ -1163,13 +1195,15 @@ class OrdersApi
      *
      * getOrderAddress
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderAddressAsyncWithHttpInfo(string $order_id): PromiseInterface
-    {
+    public function getOrderAddressAsyncWithHttpInfo(
+        string $order_id
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrderAddressResponse';
         $request = $this->getOrderAddressRequest($order_id);
         $request = $this->config->sign($request);
@@ -1214,13 +1248,15 @@ class OrdersApi
     /**
      * Create request for operation 'getOrderAddress'
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrderAddressRequest(string $order_id): Request
-    {
+    public function getOrderAddressRequest(
+        string $order_id
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1311,14 +1347,16 @@ class OrdersApi
      *
      * getOrderBuyerInfo
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse
      */
-    public function getOrderBuyerInfo(string $order_id): \OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse
-    {
+    public function getOrderBuyerInfo(
+        string $order_id
+    ): \OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse {
         list($response) = $this->getOrderBuyerInfoWithHttpInfo($order_id);
         return $response;
     }
@@ -1328,14 +1366,16 @@ class OrdersApi
      *
      * getOrderBuyerInfo
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderBuyerInfoWithHttpInfo(string $order_id): array
-    {
+    public function getOrderBuyerInfoWithHttpInfo(
+        string $order_id
+    ): array {
         $request = $this->getOrderBuyerInfoRequest($order_id);
         $request = $this->config->sign($request);
 
@@ -1567,13 +1607,15 @@ class OrdersApi
      *
      * getOrderBuyerInfo
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderBuyerInfoAsync(string $order_id): PromiseInterface
-    {
+    public function getOrderBuyerInfoAsync(
+        string $order_id
+    ): PromiseInterface {
         return $this->getOrderBuyerInfoAsyncWithHttpInfo($order_id)
             ->then(
                 function ($response) {
@@ -1587,13 +1629,15 @@ class OrdersApi
      *
      * getOrderBuyerInfo
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderBuyerInfoAsyncWithHttpInfo(string $order_id): PromiseInterface
-    {
+    public function getOrderBuyerInfoAsyncWithHttpInfo(
+        string $order_id
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrderBuyerInfoResponse';
         $request = $this->getOrderBuyerInfoRequest($order_id);
         $request = $this->config->sign($request);
@@ -1638,13 +1682,15 @@ class OrdersApi
     /**
      * Create request for operation 'getOrderBuyerInfo'
      *
-     * @param  string $order_id An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrderBuyerInfoRequest(string $order_id): Request
-    {
+    public function getOrderBuyerInfoRequest(
+        string $order_id
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1735,15 +1781,19 @@ class OrdersApi
      *
      * getOrderItems
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrderItemsResponse
      */
-    public function getOrderItems(string $order_id, ?string $next_token = null): \OpenAPI\Client\Model\orders\GetOrderItemsResponse
-    {
+    public function getOrderItems(
+        string $order_id,
+        ?string $next_token = null
+    ): \OpenAPI\Client\Model\orders\GetOrderItemsResponse {
         list($response) = $this->getOrderItemsWithHttpInfo($order_id, $next_token);
         return $response;
     }
@@ -1753,15 +1803,19 @@ class OrdersApi
      *
      * getOrderItems
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrderItemsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderItemsWithHttpInfo(string $order_id, ?string $next_token = null): array
-    {
+    public function getOrderItemsWithHttpInfo(
+        string $order_id,
+        ?string $next_token = null
+    ): array {
         $request = $this->getOrderItemsRequest($order_id, $next_token);
         $request = $this->config->sign($request);
 
@@ -1993,14 +2047,18 @@ class OrdersApi
      *
      * getOrderItems
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderItemsAsync(string $order_id, ?string $next_token = null): PromiseInterface
-    {
+    public function getOrderItemsAsync(
+        string $order_id,
+        ?string $next_token = null
+    ): PromiseInterface {
         return $this->getOrderItemsAsyncWithHttpInfo($order_id, $next_token)
             ->then(
                 function ($response) {
@@ -2014,14 +2072,18 @@ class OrdersApi
      *
      * getOrderItems
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderItemsAsyncWithHttpInfo(string $order_id, ?string $next_token = null): PromiseInterface
-    {
+    public function getOrderItemsAsyncWithHttpInfo(
+        string $order_id,
+        ?string $next_token = null
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrderItemsResponse';
         $request = $this->getOrderItemsRequest($order_id, $next_token);
         $request = $this->config->sign($request);
@@ -2066,14 +2128,18 @@ class OrdersApi
     /**
      * Create request for operation 'getOrderItems'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrderItemsRequest(string $order_id, ?string $next_token = null): Request
-    {
+    public function getOrderItemsRequest(
+        string $order_id,
+        ?string $next_token = null
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2173,15 +2239,19 @@ class OrdersApi
      *
      * getOrderItemsBuyerInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse
      */
-    public function getOrderItemsBuyerInfo(string $order_id, ?string $next_token = null): \OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse
-    {
+    public function getOrderItemsBuyerInfo(
+        string $order_id,
+        ?string $next_token = null
+    ): \OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse {
         list($response) = $this->getOrderItemsBuyerInfoWithHttpInfo($order_id, $next_token);
         return $response;
     }
@@ -2191,15 +2261,19 @@ class OrdersApi
      *
      * getOrderItemsBuyerInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderItemsBuyerInfoWithHttpInfo(string $order_id, ?string $next_token = null): array
-    {
+    public function getOrderItemsBuyerInfoWithHttpInfo(
+        string $order_id,
+        ?string $next_token = null
+    ): array {
         $request = $this->getOrderItemsBuyerInfoRequest($order_id, $next_token);
         $request = $this->config->sign($request);
 
@@ -2431,14 +2505,18 @@ class OrdersApi
      *
      * getOrderItemsBuyerInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderItemsBuyerInfoAsync(string $order_id, ?string $next_token = null): PromiseInterface
-    {
+    public function getOrderItemsBuyerInfoAsync(
+        string $order_id,
+        ?string $next_token = null
+    ): PromiseInterface {
         return $this->getOrderItemsBuyerInfoAsyncWithHttpInfo($order_id, $next_token)
             ->then(
                 function ($response) {
@@ -2452,14 +2530,18 @@ class OrdersApi
      *
      * getOrderItemsBuyerInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderItemsBuyerInfoAsyncWithHttpInfo(string $order_id, ?string $next_token = null): PromiseInterface
-    {
+    public function getOrderItemsBuyerInfoAsyncWithHttpInfo(
+        string $order_id,
+        ?string $next_token = null
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrderItemsBuyerInfoResponse';
         $request = $this->getOrderItemsBuyerInfoRequest($order_id, $next_token);
         $request = $this->config->sign($request);
@@ -2504,14 +2586,18 @@ class OrdersApi
     /**
      * Create request for operation 'getOrderItemsBuyerInfo'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrderItemsBuyerInfoRequest(string $order_id, ?string $next_token = null): Request
-    {
+    public function getOrderItemsBuyerInfoRequest(
+        string $order_id,
+        ?string $next_token = null
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2611,14 +2697,16 @@ class OrdersApi
      *
      * getOrderRegulatedInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse
      */
-    public function getOrderRegulatedInfo(string $order_id): \OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse
-    {
+    public function getOrderRegulatedInfo(
+        string $order_id
+    ): \OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse {
         list($response) = $this->getOrderRegulatedInfoWithHttpInfo($order_id);
         return $response;
     }
@@ -2628,14 +2716,16 @@ class OrdersApi
      *
      * getOrderRegulatedInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderRegulatedInfoWithHttpInfo(string $order_id): array
-    {
+    public function getOrderRegulatedInfoWithHttpInfo(
+        string $order_id
+    ): array {
         $request = $this->getOrderRegulatedInfoRequest($order_id);
         $request = $this->config->sign($request);
 
@@ -2867,13 +2957,15 @@ class OrdersApi
      *
      * getOrderRegulatedInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderRegulatedInfoAsync(string $order_id): PromiseInterface
-    {
+    public function getOrderRegulatedInfoAsync(
+        string $order_id
+    ): PromiseInterface {
         return $this->getOrderRegulatedInfoAsyncWithHttpInfo($order_id)
             ->then(
                 function ($response) {
@@ -2887,13 +2979,15 @@ class OrdersApi
      *
      * getOrderRegulatedInfo
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrderRegulatedInfoAsyncWithHttpInfo(string $order_id): PromiseInterface
-    {
+    public function getOrderRegulatedInfoAsyncWithHttpInfo(
+        string $order_id
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrderRegulatedInfoResponse';
         $request = $this->getOrderRegulatedInfoRequest($order_id);
         $request = $this->config->sign($request);
@@ -2938,13 +3032,15 @@ class OrdersApi
     /**
      * Create request for operation 'getOrderRegulatedInfo'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrderRegulatedInfoRequest(string $order_id): Request
-    {
+    public function getOrderRegulatedInfoRequest(
+        string $order_id
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -3035,35 +3131,79 @@ class OrdersApi
      *
      * getOrders
      *
-     * @param  string[] $marketplace_ids A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
-     * @param  string|null $created_after Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
-     * @param  string|null $created_before Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string|null $last_updated_after Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
-     * @param  string|null $last_updated_before Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string[]|null $order_statuses A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
-     * @param  string[]|null $fulfillment_channels A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
-     * @param  string[]|null $payment_methods A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
-     * @param  string|null $buyer_email The email address of a buyer. Used to select orders that contain the specified email address. (optional)
-     * @param  string|null $seller_order_id An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
-     * @param  int|null $max_results_per_page A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
-     * @param  string[]|null $easy_ship_shipment_statuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
-     * @param  string[]|null $electronic_invoice_statuses A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
-     * @param  string[]|null $amazon_order_ids A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
-     * @param  string|null $actual_fulfillment_supply_source_id The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
-     * @param  bool|null $is_ispu When true, this order is marked to be picked up from a store rather than delivered. (optional)
-     * @param  string|null $store_chain_store_id The store chain store identifier. Linked to a specific store in a store chain. (optional)
-     * @param  string|null $earliest_delivery_date_before Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $earliest_delivery_date_after Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_before Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_after Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string[] $marketplace_ids
+     *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
+     * @param  string|null $created_after
+     *  Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
+     * @param  string|null $created_before
+     *  Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string|null $last_updated_after
+     *  Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
+     * @param  string|null $last_updated_before
+     *  Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string[]|null $order_statuses
+     *  A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
+     * @param  string[]|null $fulfillment_channels
+     *  A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
+     * @param  string[]|null $payment_methods
+     *  A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param  string|null $buyer_email
+     *  The email address of a buyer. Used to select orders that contain the specified email address. (optional)
+     * @param  string|null $seller_order_id
+     *  An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
+     * @param  int|null $max_results_per_page
+     *  A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
+     * @param  string[]|null $easy_ship_shipment_statuses
+     *  A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
+     * @param  string[]|null $electronic_invoice_statuses
+     *  A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
+     * @param  string[]|null $amazon_order_ids
+     *  A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
+     * @param  string|null $actual_fulfillment_supply_source_id
+     *  The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
+     * @param  bool|null $is_ispu
+     *  When true, this order is marked to be picked up from a store rather than delivered. (optional)
+     * @param  string|null $store_chain_store_id
+     *  The store chain store identifier. Linked to a specific store in a store chain. (optional)
+     * @param  string|null $earliest_delivery_date_before
+     *  Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $earliest_delivery_date_after
+     *  Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_before
+     *  Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_after
+     *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\orders\GetOrdersResponse
      */
-    public function getOrders(array $marketplace_ids, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?array $order_statuses = null, ?array $fulfillment_channels = null, ?array $payment_methods = null, ?string $buyer_email = null, ?string $seller_order_id = null, ?int $max_results_per_page = null, ?array $easy_ship_shipment_statuses = null, ?array $electronic_invoice_statuses = null, ?string $next_token = null, ?array $amazon_order_ids = null, ?string $actual_fulfillment_supply_source_id = null, ?bool $is_ispu = null, ?string $store_chain_store_id = null, ?string $earliest_delivery_date_before = null, ?string $earliest_delivery_date_after = null, ?string $latest_delivery_date_before = null, ?string $latest_delivery_date_after = null): \OpenAPI\Client\Model\orders\GetOrdersResponse
-    {
+    public function getOrders(
+        array $marketplace_ids,
+        ?string $created_after = null,
+        ?string $created_before = null,
+        ?string $last_updated_after = null,
+        ?string $last_updated_before = null,
+        ?array $order_statuses = null,
+        ?array $fulfillment_channels = null,
+        ?array $payment_methods = null,
+        ?string $buyer_email = null,
+        ?string $seller_order_id = null,
+        ?int $max_results_per_page = null,
+        ?array $easy_ship_shipment_statuses = null,
+        ?array $electronic_invoice_statuses = null,
+        ?string $next_token = null,
+        ?array $amazon_order_ids = null,
+        ?string $actual_fulfillment_supply_source_id = null,
+        ?bool $is_ispu = null,
+        ?string $store_chain_store_id = null,
+        ?string $earliest_delivery_date_before = null,
+        ?string $earliest_delivery_date_after = null,
+        ?string $latest_delivery_date_before = null,
+        ?string $latest_delivery_date_after = null
+    ): \OpenAPI\Client\Model\orders\GetOrdersResponse {
         list($response) = $this->getOrdersWithHttpInfo($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
         return $response;
     }
@@ -3073,35 +3213,79 @@ class OrdersApi
      *
      * getOrders
      *
-     * @param  string[] $marketplace_ids A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
-     * @param  string|null $created_after Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
-     * @param  string|null $created_before Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string|null $last_updated_after Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
-     * @param  string|null $last_updated_before Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string[]|null $order_statuses A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
-     * @param  string[]|null $fulfillment_channels A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
-     * @param  string[]|null $payment_methods A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
-     * @param  string|null $buyer_email The email address of a buyer. Used to select orders that contain the specified email address. (optional)
-     * @param  string|null $seller_order_id An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
-     * @param  int|null $max_results_per_page A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
-     * @param  string[]|null $easy_ship_shipment_statuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
-     * @param  string[]|null $electronic_invoice_statuses A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
-     * @param  string[]|null $amazon_order_ids A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
-     * @param  string|null $actual_fulfillment_supply_source_id The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
-     * @param  bool|null $is_ispu When true, this order is marked to be picked up from a store rather than delivered. (optional)
-     * @param  string|null $store_chain_store_id The store chain store identifier. Linked to a specific store in a store chain. (optional)
-     * @param  string|null $earliest_delivery_date_before Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $earliest_delivery_date_after Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_before Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_after Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string[] $marketplace_ids
+     *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
+     * @param  string|null $created_after
+     *  Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
+     * @param  string|null $created_before
+     *  Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string|null $last_updated_after
+     *  Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
+     * @param  string|null $last_updated_before
+     *  Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string[]|null $order_statuses
+     *  A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
+     * @param  string[]|null $fulfillment_channels
+     *  A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
+     * @param  string[]|null $payment_methods
+     *  A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param  string|null $buyer_email
+     *  The email address of a buyer. Used to select orders that contain the specified email address. (optional)
+     * @param  string|null $seller_order_id
+     *  An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
+     * @param  int|null $max_results_per_page
+     *  A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
+     * @param  string[]|null $easy_ship_shipment_statuses
+     *  A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
+     * @param  string[]|null $electronic_invoice_statuses
+     *  A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
+     * @param  string[]|null $amazon_order_ids
+     *  A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
+     * @param  string|null $actual_fulfillment_supply_source_id
+     *  The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
+     * @param  bool|null $is_ispu
+     *  When true, this order is marked to be picked up from a store rather than delivered. (optional)
+     * @param  string|null $store_chain_store_id
+     *  The store chain store identifier. Linked to a specific store in a store chain. (optional)
+     * @param  string|null $earliest_delivery_date_before
+     *  Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $earliest_delivery_date_after
+     *  Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_before
+     *  Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_after
+     *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\orders\GetOrdersResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrdersWithHttpInfo(array $marketplace_ids, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?array $order_statuses = null, ?array $fulfillment_channels = null, ?array $payment_methods = null, ?string $buyer_email = null, ?string $seller_order_id = null, ?int $max_results_per_page = null, ?array $easy_ship_shipment_statuses = null, ?array $electronic_invoice_statuses = null, ?string $next_token = null, ?array $amazon_order_ids = null, ?string $actual_fulfillment_supply_source_id = null, ?bool $is_ispu = null, ?string $store_chain_store_id = null, ?string $earliest_delivery_date_before = null, ?string $earliest_delivery_date_after = null, ?string $latest_delivery_date_before = null, ?string $latest_delivery_date_after = null): array
-    {
+    public function getOrdersWithHttpInfo(
+        array $marketplace_ids,
+        ?string $created_after = null,
+        ?string $created_before = null,
+        ?string $last_updated_after = null,
+        ?string $last_updated_before = null,
+        ?array $order_statuses = null,
+        ?array $fulfillment_channels = null,
+        ?array $payment_methods = null,
+        ?string $buyer_email = null,
+        ?string $seller_order_id = null,
+        ?int $max_results_per_page = null,
+        ?array $easy_ship_shipment_statuses = null,
+        ?array $electronic_invoice_statuses = null,
+        ?string $next_token = null,
+        ?array $amazon_order_ids = null,
+        ?string $actual_fulfillment_supply_source_id = null,
+        ?bool $is_ispu = null,
+        ?string $store_chain_store_id = null,
+        ?string $earliest_delivery_date_before = null,
+        ?string $earliest_delivery_date_after = null,
+        ?string $latest_delivery_date_before = null,
+        ?string $latest_delivery_date_after = null
+    ): array {
         $request = $this->getOrdersRequest($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
         $request = $this->config->sign($request);
 
@@ -3333,34 +3517,78 @@ class OrdersApi
      *
      * getOrders
      *
-     * @param  string[] $marketplace_ids A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
-     * @param  string|null $created_after Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
-     * @param  string|null $created_before Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string|null $last_updated_after Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
-     * @param  string|null $last_updated_before Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string[]|null $order_statuses A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
-     * @param  string[]|null $fulfillment_channels A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
-     * @param  string[]|null $payment_methods A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
-     * @param  string|null $buyer_email The email address of a buyer. Used to select orders that contain the specified email address. (optional)
-     * @param  string|null $seller_order_id An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
-     * @param  int|null $max_results_per_page A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
-     * @param  string[]|null $easy_ship_shipment_statuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
-     * @param  string[]|null $electronic_invoice_statuses A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
-     * @param  string[]|null $amazon_order_ids A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
-     * @param  string|null $actual_fulfillment_supply_source_id The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
-     * @param  bool|null $is_ispu When true, this order is marked to be picked up from a store rather than delivered. (optional)
-     * @param  string|null $store_chain_store_id The store chain store identifier. Linked to a specific store in a store chain. (optional)
-     * @param  string|null $earliest_delivery_date_before Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $earliest_delivery_date_after Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_before Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_after Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string[] $marketplace_ids
+     *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
+     * @param  string|null $created_after
+     *  Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
+     * @param  string|null $created_before
+     *  Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string|null $last_updated_after
+     *  Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
+     * @param  string|null $last_updated_before
+     *  Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string[]|null $order_statuses
+     *  A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
+     * @param  string[]|null $fulfillment_channels
+     *  A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
+     * @param  string[]|null $payment_methods
+     *  A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param  string|null $buyer_email
+     *  The email address of a buyer. Used to select orders that contain the specified email address. (optional)
+     * @param  string|null $seller_order_id
+     *  An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
+     * @param  int|null $max_results_per_page
+     *  A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
+     * @param  string[]|null $easy_ship_shipment_statuses
+     *  A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
+     * @param  string[]|null $electronic_invoice_statuses
+     *  A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
+     * @param  string[]|null $amazon_order_ids
+     *  A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
+     * @param  string|null $actual_fulfillment_supply_source_id
+     *  The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
+     * @param  bool|null $is_ispu
+     *  When true, this order is marked to be picked up from a store rather than delivered. (optional)
+     * @param  string|null $store_chain_store_id
+     *  The store chain store identifier. Linked to a specific store in a store chain. (optional)
+     * @param  string|null $earliest_delivery_date_before
+     *  Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $earliest_delivery_date_after
+     *  Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_before
+     *  Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_after
+     *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrdersAsync(array $marketplace_ids, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?array $order_statuses = null, ?array $fulfillment_channels = null, ?array $payment_methods = null, ?string $buyer_email = null, ?string $seller_order_id = null, ?int $max_results_per_page = null, ?array $easy_ship_shipment_statuses = null, ?array $electronic_invoice_statuses = null, ?string $next_token = null, ?array $amazon_order_ids = null, ?string $actual_fulfillment_supply_source_id = null, ?bool $is_ispu = null, ?string $store_chain_store_id = null, ?string $earliest_delivery_date_before = null, ?string $earliest_delivery_date_after = null, ?string $latest_delivery_date_before = null, ?string $latest_delivery_date_after = null): PromiseInterface
-    {
+    public function getOrdersAsync(
+        array $marketplace_ids,
+        ?string $created_after = null,
+        ?string $created_before = null,
+        ?string $last_updated_after = null,
+        ?string $last_updated_before = null,
+        ?array $order_statuses = null,
+        ?array $fulfillment_channels = null,
+        ?array $payment_methods = null,
+        ?string $buyer_email = null,
+        ?string $seller_order_id = null,
+        ?int $max_results_per_page = null,
+        ?array $easy_ship_shipment_statuses = null,
+        ?array $electronic_invoice_statuses = null,
+        ?string $next_token = null,
+        ?array $amazon_order_ids = null,
+        ?string $actual_fulfillment_supply_source_id = null,
+        ?bool $is_ispu = null,
+        ?string $store_chain_store_id = null,
+        ?string $earliest_delivery_date_before = null,
+        ?string $earliest_delivery_date_after = null,
+        ?string $latest_delivery_date_before = null,
+        ?string $latest_delivery_date_after = null
+    ): PromiseInterface {
         return $this->getOrdersAsyncWithHttpInfo($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after)
             ->then(
                 function ($response) {
@@ -3374,34 +3602,78 @@ class OrdersApi
      *
      * getOrders
      *
-     * @param  string[] $marketplace_ids A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
-     * @param  string|null $created_after Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
-     * @param  string|null $created_before Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string|null $last_updated_after Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
-     * @param  string|null $last_updated_before Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string[]|null $order_statuses A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
-     * @param  string[]|null $fulfillment_channels A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
-     * @param  string[]|null $payment_methods A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
-     * @param  string|null $buyer_email The email address of a buyer. Used to select orders that contain the specified email address. (optional)
-     * @param  string|null $seller_order_id An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
-     * @param  int|null $max_results_per_page A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
-     * @param  string[]|null $easy_ship_shipment_statuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
-     * @param  string[]|null $electronic_invoice_statuses A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
-     * @param  string[]|null $amazon_order_ids A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
-     * @param  string|null $actual_fulfillment_supply_source_id The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
-     * @param  bool|null $is_ispu When true, this order is marked to be picked up from a store rather than delivered. (optional)
-     * @param  string|null $store_chain_store_id The store chain store identifier. Linked to a specific store in a store chain. (optional)
-     * @param  string|null $earliest_delivery_date_before Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $earliest_delivery_date_after Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_before Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_after Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string[] $marketplace_ids
+     *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
+     * @param  string|null $created_after
+     *  Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
+     * @param  string|null $created_before
+     *  Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string|null $last_updated_after
+     *  Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
+     * @param  string|null $last_updated_before
+     *  Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string[]|null $order_statuses
+     *  A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
+     * @param  string[]|null $fulfillment_channels
+     *  A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
+     * @param  string[]|null $payment_methods
+     *  A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param  string|null $buyer_email
+     *  The email address of a buyer. Used to select orders that contain the specified email address. (optional)
+     * @param  string|null $seller_order_id
+     *  An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
+     * @param  int|null $max_results_per_page
+     *  A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
+     * @param  string[]|null $easy_ship_shipment_statuses
+     *  A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
+     * @param  string[]|null $electronic_invoice_statuses
+     *  A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
+     * @param  string[]|null $amazon_order_ids
+     *  A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
+     * @param  string|null $actual_fulfillment_supply_source_id
+     *  The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
+     * @param  bool|null $is_ispu
+     *  When true, this order is marked to be picked up from a store rather than delivered. (optional)
+     * @param  string|null $store_chain_store_id
+     *  The store chain store identifier. Linked to a specific store in a store chain. (optional)
+     * @param  string|null $earliest_delivery_date_before
+     *  Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $earliest_delivery_date_after
+     *  Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_before
+     *  Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_after
+     *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getOrdersAsyncWithHttpInfo(array $marketplace_ids, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?array $order_statuses = null, ?array $fulfillment_channels = null, ?array $payment_methods = null, ?string $buyer_email = null, ?string $seller_order_id = null, ?int $max_results_per_page = null, ?array $easy_ship_shipment_statuses = null, ?array $electronic_invoice_statuses = null, ?string $next_token = null, ?array $amazon_order_ids = null, ?string $actual_fulfillment_supply_source_id = null, ?bool $is_ispu = null, ?string $store_chain_store_id = null, ?string $earliest_delivery_date_before = null, ?string $earliest_delivery_date_after = null, ?string $latest_delivery_date_before = null, ?string $latest_delivery_date_after = null): PromiseInterface
-    {
+    public function getOrdersAsyncWithHttpInfo(
+        array $marketplace_ids,
+        ?string $created_after = null,
+        ?string $created_before = null,
+        ?string $last_updated_after = null,
+        ?string $last_updated_before = null,
+        ?array $order_statuses = null,
+        ?array $fulfillment_channels = null,
+        ?array $payment_methods = null,
+        ?string $buyer_email = null,
+        ?string $seller_order_id = null,
+        ?int $max_results_per_page = null,
+        ?array $easy_ship_shipment_statuses = null,
+        ?array $electronic_invoice_statuses = null,
+        ?string $next_token = null,
+        ?array $amazon_order_ids = null,
+        ?string $actual_fulfillment_supply_source_id = null,
+        ?bool $is_ispu = null,
+        ?string $store_chain_store_id = null,
+        ?string $earliest_delivery_date_before = null,
+        ?string $earliest_delivery_date_after = null,
+        ?string $latest_delivery_date_before = null,
+        ?string $latest_delivery_date_after = null
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\orders\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
         $request = $this->config->sign($request);
@@ -3446,34 +3718,78 @@ class OrdersApi
     /**
      * Create request for operation 'getOrders'
      *
-     * @param  string[] $marketplace_ids A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
-     * @param  string|null $created_after Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
-     * @param  string|null $created_before Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string|null $last_updated_after Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
-     * @param  string|null $last_updated_before Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
-     * @param  string[]|null $order_statuses A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
-     * @param  string[]|null $fulfillment_channels A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
-     * @param  string[]|null $payment_methods A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
-     * @param  string|null $buyer_email The email address of a buyer. Used to select orders that contain the specified email address. (optional)
-     * @param  string|null $seller_order_id An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
-     * @param  int|null $max_results_per_page A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
-     * @param  string[]|null $easy_ship_shipment_statuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
-     * @param  string[]|null $electronic_invoice_statuses A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
-     * @param  string|null $next_token A string token returned in the response of your previous request. (optional)
-     * @param  string[]|null $amazon_order_ids A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
-     * @param  string|null $actual_fulfillment_supply_source_id The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
-     * @param  bool|null $is_ispu When true, this order is marked to be picked up from a store rather than delivered. (optional)
-     * @param  string|null $store_chain_store_id The store chain store identifier. Linked to a specific store in a store chain. (optional)
-     * @param  string|null $earliest_delivery_date_before Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $earliest_delivery_date_after Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_before Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
-     * @param  string|null $latest_delivery_date_after Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string[] $marketplace_ids
+     *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
+     * @param  string|null $created_after
+     *  Use this date to select orders created after (or at) a specified time. Only orders placed after the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;LastUpdatedAfter&#x60; and &#x60;LastUpdatedBefore&#x60; cannot be set when &#x60;CreatedAfter&#x60; is set. (optional)
+     * @param  string|null $created_before
+     *  Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;CreatedBefore&#x60; is optional when &#x60;CreatedAfter&#x60; is set. If specified, &#x60;CreatedBefore&#x60; must be equal to or after the &#x60;CreatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string|null $last_updated_after
+     *  Use this date to select orders that were last updated after (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: Either the &#x60;CreatedAfter&#x60; parameter or the &#x60;LastUpdatedAfter&#x60; parameter is required. Both cannot be empty. &#x60;CreatedAfter&#x60; or &#x60;CreatedBefore&#x60; cannot be set when &#x60;LastUpdatedAfter&#x60; is set. (optional)
+     * @param  string|null $last_updated_before
+     *  Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.  **Note**: &#x60;LastUpdatedBefore&#x60; is optional when &#x60;LastUpdatedAfter&#x60; is set. But if specified, &#x60;LastUpdatedBefore&#x60; must be equal to or after the &#x60;LastUpdatedAfter&#x60; date and at least two minutes before current time. (optional)
+     * @param  string[]|null $order_statuses
+     *  A list of &#x60;OrderStatus&#x60; values used to filter the results.  **Possible values:** - &#x60;PendingAvailability&#x60; (This status is available for pre-orders only. The order has been placed, payment has not been authorized, and the release date of the item is in the future.) - &#x60;Pending&#x60; (The order has been placed but payment has not been authorized.) - &#x60;Unshipped&#x60; (Payment has been authorized and the order is ready for shipment, but no items in the order have been shipped.) - &#x60;PartiallyShipped&#x60; (One or more, but not all, items in the order have been shipped.) - &#x60;Shipped&#x60; (All items in the order have been shipped.) - &#x60;InvoiceUnconfirmed&#x60; (All items in the order have been shipped. The seller has not yet given confirmation to Amazon that the invoice has been shipped to the buyer.) - &#x60;Canceled&#x60; (The order has been canceled.) - &#x60;Unfulfillable&#x60; (The order cannot be fulfilled. This state applies only to Multi-Channel Fulfillment orders.) (optional)
+     * @param  string[]|null $fulfillment_channels
+     *  A list that indicates how an order was fulfilled. Filters the results by fulfillment channel.   **Possible values**: &#x60;AFN&#x60; (fulfilled by Amazon), &#x60;MFN&#x60; (fulfilled by seller). (optional)
+     * @param  string[]|null $payment_methods
+     *  A list of payment method values. Use this field to select orders that were paid with the specified payment methods.  **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60; (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param  string|null $buyer_email
+     *  The email address of a buyer. Used to select orders that contain the specified email address. (optional)
+     * @param  string|null $seller_order_id
+     *  An order identifier that is specified by the seller. Used to select only the orders that match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;, &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, LastUpdatedBefore, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
+     * @param  int|null $max_results_per_page
+     *  A number that indicates the maximum number of orders that can be returned per page. Value must be 1 - 100. Default 100. (optional)
+     * @param  string[]|null $easy_ship_shipment_statuses
+     *  A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship orders with statuses that match the specified values. If &#x60;EasyShipShipmentStatus&#x60; is specified, only Amazon Easy Ship orders are returned.  **Possible values:** - &#x60;PendingSchedule&#x60; (The package is awaiting the schedule for pick-up.) - &#x60;PendingPickUp&#x60; (Amazon has not yet picked up the package from the seller.) - &#x60;PendingDropOff&#x60; (The seller will deliver the package to the carrier.) - &#x60;LabelCanceled&#x60; (The seller canceled the pickup.) - &#x60;PickedUp&#x60; (Amazon has picked up the package from the seller.) - &#x60;DroppedOff&#x60; (The package is delivered to the carrier by the seller.) - &#x60;AtOriginFC&#x60; (The packaged is at the origin fulfillment center.) - &#x60;AtDestinationFC&#x60; (The package is at the destination fulfillment center.) - &#x60;Delivered&#x60; (The package has been delivered.) - &#x60;RejectedByBuyer&#x60; (The package has been rejected by the buyer.) - &#x60;Undeliverable&#x60; (The package cannot be delivered.) - &#x60;ReturningToSeller&#x60; (The package was not delivered and is being returned to the seller.) - &#x60;ReturnedToSeller&#x60; (The package was not delivered and was returned to the seller.) - &#x60;Lost&#x60; (The package is lost.) - &#x60;OutForDelivery&#x60; (The package is out for delivery.) - &#x60;Damaged&#x60; (The package was damaged by the carrier.) (optional)
+     * @param  string[]|null $electronic_invoice_statuses
+     *  A list of &#x60;ElectronicInvoiceStatus&#x60; values. Used to select orders with electronic invoice statuses that match the specified values.  **Possible values:** - &#x60;NotRequired&#x60; (Electronic invoice submission is not required for this order.) - &#x60;NotFound&#x60; (The electronic invoice was not submitted for this order.) - &#x60;Processing&#x60; (The electronic invoice is being processed for this order.) - &#x60;Errored&#x60; (The last submitted electronic invoice was rejected for this order.) - &#x60;Accepted&#x60; (The last submitted electronic invoice was submitted and accepted.) (optional)
+     * @param  string|null $next_token
+     *  A string token returned in the response of your previous request. (optional)
+     * @param  string[]|null $amazon_order_ids
+     *  A list of &#x60;AmazonOrderId&#x60; values. An &#x60;AmazonOrderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (optional)
+     * @param  string|null $actual_fulfillment_supply_source_id
+     *  The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)
+     * @param  bool|null $is_ispu
+     *  When true, this order is marked to be picked up from a store rather than delivered. (optional)
+     * @param  string|null $store_chain_store_id
+     *  The store chain store identifier. Linked to a specific store in a store chain. (optional)
+     * @param  string|null $earliest_delivery_date_before
+     *  Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $earliest_delivery_date_after
+     *  Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_before
+     *  Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     * @param  string|null $latest_delivery_date_after
+     *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getOrdersRequest(array $marketplace_ids, ?string $created_after = null, ?string $created_before = null, ?string $last_updated_after = null, ?string $last_updated_before = null, ?array $order_statuses = null, ?array $fulfillment_channels = null, ?array $payment_methods = null, ?string $buyer_email = null, ?string $seller_order_id = null, ?int $max_results_per_page = null, ?array $easy_ship_shipment_statuses = null, ?array $electronic_invoice_statuses = null, ?string $next_token = null, ?array $amazon_order_ids = null, ?string $actual_fulfillment_supply_source_id = null, ?bool $is_ispu = null, ?string $store_chain_store_id = null, ?string $earliest_delivery_date_before = null, ?string $earliest_delivery_date_after = null, ?string $latest_delivery_date_before = null, ?string $latest_delivery_date_after = null): Request
-    {
+    public function getOrdersRequest(
+        array $marketplace_ids,
+        ?string $created_after = null,
+        ?string $created_before = null,
+        ?string $last_updated_after = null,
+        ?string $last_updated_before = null,
+        ?array $order_statuses = null,
+        ?array $fulfillment_channels = null,
+        ?array $payment_methods = null,
+        ?string $buyer_email = null,
+        ?string $seller_order_id = null,
+        ?int $max_results_per_page = null,
+        ?array $easy_ship_shipment_statuses = null,
+        ?array $electronic_invoice_statuses = null,
+        ?string $next_token = null,
+        ?array $amazon_order_ids = null,
+        ?string $actual_fulfillment_supply_source_id = null,
+        ?bool $is_ispu = null,
+        ?string $store_chain_store_id = null,
+        ?string $earliest_delivery_date_before = null,
+        ?string $earliest_delivery_date_after = null,
+        ?string $latest_delivery_date_before = null,
+        ?string $latest_delivery_date_after = null
+    ): Request {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
             throw new \InvalidArgumentException(
@@ -3762,15 +4078,19 @@ class OrdersApi
      *
      * updateShipmentStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
-    public function updateShipmentStatus(string $order_id, \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload)
-    {
+    public function updateShipmentStatus(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+    ): void {
         $this->updateShipmentStatusWithHttpInfo($order_id, $payload);
     }
 
@@ -3779,15 +4099,19 @@ class OrdersApi
      *
      * updateShipmentStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateShipmentStatusWithHttpInfo(string $order_id, \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload): array
-    {
+    public function updateShipmentStatusWithHttpInfo(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+    ): array {
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
 
@@ -3905,14 +4229,18 @@ class OrdersApi
      *
      * updateShipmentStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function updateShipmentStatusAsync(string $order_id, \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload): PromiseInterface
-    {
+    public function updateShipmentStatusAsync(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+    ): PromiseInterface {
         return $this->updateShipmentStatusAsyncWithHttpInfo($order_id, $payload)
             ->then(
                 function ($response) {
@@ -3926,14 +4254,18 @@ class OrdersApi
      *
      * updateShipmentStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function updateShipmentStatusAsyncWithHttpInfo(string $order_id, \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload): PromiseInterface
-    {
+    public function updateShipmentStatusAsyncWithHttpInfo(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
@@ -3965,14 +4297,18 @@ class OrdersApi
     /**
      * Create request for operation 'updateShipmentStatus'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function updateShipmentStatusRequest(string $order_id, \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload): Request
-    {
+    public function updateShipmentStatusRequest(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest $payload
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4020,12 +4356,8 @@ class OrdersApi
 
         // for model (json/xml)
         if (isset($payload)) {
-            echo '!!!!!!!!!!!!!!$payload !!!!!!!!!!!!!!!      ' . PHP_EOL;
-            print_r($payload);
             if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
-                echo '!!!!!!!!!!!!!!$httpBody !!!!!!!!!!!!!!!      ' . PHP_EOL;
-                print_r($httpBody);
             } else {
                 $httpBody = $payload;
             }
@@ -4079,15 +4411,19 @@ class OrdersApi
      *
      * updateVerificationStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+     *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
-    public function updateVerificationStatus(string $order_id, \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload)
-    {
+    public function updateVerificationStatus(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+    ): void {
         $this->updateVerificationStatusWithHttpInfo($order_id, $payload);
     }
 
@@ -4096,15 +4432,19 @@ class OrdersApi
      *
      * updateVerificationStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+     *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateVerificationStatusWithHttpInfo(string $order_id, \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload): array
-    {
+    public function updateVerificationStatusWithHttpInfo(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+    ): array {
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
 
@@ -4222,14 +4562,18 @@ class OrdersApi
      *
      * updateVerificationStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+     *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function updateVerificationStatusAsync(string $order_id, \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload): PromiseInterface
-    {
+    public function updateVerificationStatusAsync(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+    ): PromiseInterface {
         return $this->updateVerificationStatusAsyncWithHttpInfo($order_id, $payload)
             ->then(
                 function ($response) {
@@ -4243,14 +4587,18 @@ class OrdersApi
      *
      * updateVerificationStatus
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+     *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function updateVerificationStatusAsyncWithHttpInfo(string $order_id, \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload): PromiseInterface
-    {
+    public function updateVerificationStatusAsyncWithHttpInfo(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
@@ -4282,14 +4630,18 @@ class OrdersApi
     /**
      * Create request for operation 'updateVerificationStatus'
      *
-     * @param  string $order_id An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
+     * @param  string $order_id
+     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
+     * @param  \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+     *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function updateVerificationStatusRequest(string $order_id, \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload): Request
-    {
+    public function updateVerificationStatusRequest(
+        string $order_id,
+        \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest $payload
+    ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4337,12 +4689,8 @@ class OrdersApi
 
         // for model (json/xml)
         if (isset($payload)) {
-            echo '!!!!!!!!!!!!!!$payload !!!!!!!!!!!!!!!      ' . PHP_EOL;
-            print_r($payload);
             if ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
-                echo '!!!!!!!!!!!!!!$httpBody !!!!!!!!!!!!!!!      ' . PHP_EOL;
-                print_r($httpBody);
             } else {
                 $httpBody = $payload;
             }

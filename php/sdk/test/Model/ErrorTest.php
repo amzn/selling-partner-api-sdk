@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\Error;
+use OpenAPI\Client\Model\awd\Error;
 
 /**
  * ErrorTest Class Doc Comment
@@ -63,17 +63,6 @@ class ErrorTest extends TestCase
     }
 
     /**
-     * Test attribute "message"
-     */
-    public function testPropertyMessage()
-    {
-        $testValue = 'test';
-        
-        $this->model->setMessage($testValue);
-        $this->assertEquals($testValue, $this->model->getMessage());
-    }
-
-    /**
      * Test attribute "details"
      */
     public function testPropertyDetails()
@@ -82,5 +71,16 @@ class ErrorTest extends TestCase
         
         $this->model->setDetails($testValue);
         $this->assertEquals($testValue, $this->model->getDetails());
+    }
+
+    /**
+     * Test attribute "message"
+     */
+    public function testPropertyMessage()
+    {
+        $testValue = 'test';
+        
+        $this->model->setMessage($testValue);
+        $this->assertEquals($testValue, $this->model->getMessage());
     }
 }

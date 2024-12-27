@@ -67,8 +67,9 @@ class UpdateShipmentStatusRequestTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\ShipmentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\ShipmentStatus();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setShipmentStatus($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentStatus());

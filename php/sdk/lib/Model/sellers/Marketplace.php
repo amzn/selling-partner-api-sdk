@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Marketplace Class Doc Comment
@@ -364,7 +365,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setId($id): self
+    public function setId(string $id): self
     {
         if (is_null($id)) {
             throw new \InvalidArgumentException('non-nullable id cannot be null');
@@ -391,7 +392,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setName($name): self
+    public function setName(string $name): self
     {
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
@@ -418,7 +419,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCountryCode($country_code): self
+    public function setCountryCode(string $country_code): self
     {
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
@@ -450,7 +451,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setDefaultCurrencyCode($default_currency_code): self
+    public function setDefaultCurrencyCode(string $default_currency_code): self
     {
         if (is_null($default_currency_code)) {
             throw new \InvalidArgumentException('non-nullable default_currency_code cannot be null');
@@ -477,7 +478,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setDefaultLanguageCode($default_language_code): self
+    public function setDefaultLanguageCode(string $default_language_code): self
     {
         if (is_null($default_language_code)) {
             throw new \InvalidArgumentException('non-nullable default_language_code cannot be null');
@@ -504,7 +505,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setDomainName($domain_name): self
+    public function setDomainName(string $domain_name): self
     {
         if (is_null($domain_name)) {
             throw new \InvalidArgumentException('non-nullable domain_name cannot be null');
