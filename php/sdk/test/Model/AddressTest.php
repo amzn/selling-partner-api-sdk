@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\Address;
+use OpenAPI\Client\Model\awd\Address;
 
 /**
  * AddressTest Class Doc Comment
  *
  * @category    Class
- * @description Represents an address
+ * @description Shipping address that represents the origin or destination location.
  * @package     OpenAPI\Client
  */
 class AddressTest extends TestCase
@@ -74,25 +74,14 @@ class AddressTest extends TestCase
     }
 
     /**
-     * Test attribute "country_code"
+     * Test attribute "address_line3"
      */
-    public function testPropertyCountryCode()
+    public function testPropertyAddressLine3()
     {
         $testValue = 'test';
         
-        $this->model->setCountryCode($testValue);
-        $this->assertEquals($testValue, $this->model->getCountryCode());
-    }
-
-    /**
-     * Test attribute "state_or_province_code"
-     */
-    public function testPropertyStateOrProvinceCode()
-    {
-        $testValue = 'test';
-        
-        $this->model->setStateOrProvinceCode($testValue);
-        $this->assertEquals($testValue, $this->model->getStateOrProvinceCode());
+        $this->model->setAddressLine3($testValue);
+        $this->assertEquals($testValue, $this->model->getAddressLine3());
     }
 
     /**
@@ -107,6 +96,61 @@ class AddressTest extends TestCase
     }
 
     /**
+     * Test attribute "country_code"
+     */
+    public function testPropertyCountryCode()
+    {
+        $testValue = 'test';
+        
+        $this->model->setCountryCode($testValue);
+        $this->assertEquals($testValue, $this->model->getCountryCode());
+    }
+
+    /**
+     * Test attribute "county"
+     */
+    public function testPropertyCounty()
+    {
+        $testValue = 'test';
+        
+        $this->model->setCounty($testValue);
+        $this->assertEquals($testValue, $this->model->getCounty());
+    }
+
+    /**
+     * Test attribute "district"
+     */
+    public function testPropertyDistrict()
+    {
+        $testValue = 'test';
+        
+        $this->model->setDistrict($testValue);
+        $this->assertEquals($testValue, $this->model->getDistrict());
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+        $testValue = 'test';
+        
+        $this->model->setName($testValue);
+        $this->assertEquals($testValue, $this->model->getName());
+    }
+
+    /**
+     * Test attribute "phone_number"
+     */
+    public function testPropertyPhoneNumber()
+    {
+        $testValue = 'test';
+        
+        $this->model->setPhoneNumber($testValue);
+        $this->assertEquals($testValue, $this->model->getPhoneNumber());
+    }
+
+    /**
      * Test attribute "postal_code"
      */
     public function testPropertyPostalCode()
@@ -115,5 +159,16 @@ class AddressTest extends TestCase
         
         $this->model->setPostalCode($testValue);
         $this->assertEquals($testValue, $this->model->getPostalCode());
+    }
+
+    /**
+     * Test attribute "state_or_region"
+     */
+    public function testPropertyStateOrRegion()
+    {
+        $testValue = 'test';
+        
+        $this->model->setStateOrRegion($testValue);
+        $this->assertEquals($testValue, $this->model->getStateOrRegion());
     }
 }

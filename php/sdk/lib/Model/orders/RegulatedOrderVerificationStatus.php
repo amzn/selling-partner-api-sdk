@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * RegulatedOrderVerificationStatus Class Doc Comment
@@ -344,9 +345,9 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\orders\VerificationStatus
+     * @return string
      */
-    public function getStatus(): \OpenAPI\Client\Model\orders\VerificationStatus
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
@@ -354,11 +355,11 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\orders\VerificationStatus $status status
+     * @param string $status status
      *
      * @return self
      */
-    public function setStatus($status): self
+    public function setStatus(string $status): self
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
@@ -385,7 +386,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
      *
      * @return self
      */
-    public function setRequiresMerchantAction($requires_merchant_action): self
+    public function setRequiresMerchantAction(bool $requires_merchant_action): self
     {
         if (is_null($requires_merchant_action)) {
             throw new \InvalidArgumentException('non-nullable requires_merchant_action cannot be null');
@@ -398,7 +399,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Gets valid_rejection_reasons
      *
-     * @return \OpenAPI\Client\Model\orders\RejectionReason[]
+     * @return arrayA
      */
     public function getValidRejectionReasons(): array
     {
@@ -408,11 +409,11 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Sets valid_rejection_reasons
      *
-     * @param \OpenAPI\Client\Model\orders\RejectionReason[] $valid_rejection_reasons A list of valid rejection reasons that may be used to reject the order's regulated information.
+     * @param array $valid_rejection_reasons A list of valid rejection reasons that may be used to reject the order's regulated information.
      *
      * @return self
      */
-    public function setValidRejectionReasons($valid_rejection_reasons): self
+    public function setValidRejectionReasons(array $valid_rejection_reasons): self
     {
         if (is_null($valid_rejection_reasons)) {
             throw new \InvalidArgumentException('non-nullable valid_rejection_reasons cannot be null');
@@ -439,7 +440,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
      *
      * @return self
      */
-    public function setRejectionReason($rejection_reason): self
+    public function setRejectionReason(?\OpenAPI\Client\Model\orders\RejectionReason $rejection_reason): self
     {
         if (is_null($rejection_reason)) {
             throw new \InvalidArgumentException('non-nullable rejection_reason cannot be null');
@@ -466,7 +467,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
      *
      * @return self
      */
-    public function setReviewDate($review_date): self
+    public function setReviewDate(?string $review_date): self
     {
         if (is_null($review_date)) {
             throw new \InvalidArgumentException('non-nullable review_date cannot be null');
@@ -493,7 +494,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
      *
      * @return self
      */
-    public function setExternalReviewerId($external_reviewer_id): self
+    public function setExternalReviewerId(?string $external_reviewer_id): self
     {
         if (is_null($external_reviewer_id)) {
             throw new \InvalidArgumentException('non-nullable external_reviewer_id cannot be null');
@@ -506,7 +507,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Gets valid_verification_details
      *
-     * @return \OpenAPI\Client\Model\orders\ValidVerificationDetail[]|null
+     * @return arrayA|null
      */
     public function getValidVerificationDetails(): ?array
     {
@@ -516,11 +517,11 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Sets valid_verification_details
      *
-     * @param \OpenAPI\Client\Model\orders\ValidVerificationDetail[]|null $valid_verification_details A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
+     * @param array|null $valid_verification_details A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
      *
      * @return self
      */
-    public function setValidVerificationDetails($valid_verification_details): self
+    public function setValidVerificationDetails(?array $valid_verification_details): self
     {
         if (is_null($valid_verification_details)) {
             throw new \InvalidArgumentException('non-nullable valid_verification_details cannot be null');

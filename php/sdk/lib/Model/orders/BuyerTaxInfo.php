@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * BuyerTaxInfo Class Doc Comment
@@ -321,7 +322,7 @@ class BuyerTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCompanyLegalName($company_legal_name): self
+    public function setCompanyLegalName(?string $company_legal_name): self
     {
         if (is_null($company_legal_name)) {
             throw new \InvalidArgumentException('non-nullable company_legal_name cannot be null');
@@ -348,7 +349,7 @@ class BuyerTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setTaxingRegion($taxing_region): self
+    public function setTaxingRegion(?string $taxing_region): self
     {
         if (is_null($taxing_region)) {
             throw new \InvalidArgumentException('non-nullable taxing_region cannot be null');
@@ -361,7 +362,7 @@ class BuyerTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_classifications
      *
-     * @return \OpenAPI\Client\Model\orders\TaxClassification[]|null
+     * @return arrayA|null
      */
     public function getTaxClassifications(): ?array
     {
@@ -371,11 +372,11 @@ class BuyerTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_classifications
      *
-     * @param \OpenAPI\Client\Model\orders\TaxClassification[]|null $tax_classifications A list of tax classifications that apply to the order.
+     * @param array|null $tax_classifications A list of tax classifications that apply to the order.
      *
      * @return self
      */
-    public function setTaxClassifications($tax_classifications): self
+    public function setTaxClassifications(?array $tax_classifications): self
     {
         if (is_null($tax_classifications)) {
             throw new \InvalidArgumentException('non-nullable tax_classifications cannot be null');

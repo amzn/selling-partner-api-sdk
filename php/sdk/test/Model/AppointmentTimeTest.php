@@ -1,0 +1,76 @@
+<?php
+/**
+ * AppointmentTimeTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\services\AppointmentTime;
+
+/**
+ * AppointmentTimeTest Class Doc Comment
+ *
+ * @category    Class
+ * @description The time of the appointment window.
+ * @package     OpenAPI\Client
+ */
+class AppointmentTimeTest extends TestCase
+{
+
+    private AppointmentTime $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new AppointmentTime();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "AppointmentTime"
+     */
+    public function testAppointmentTime()
+    {
+        $this->assertInstanceOf(AppointmentTime::class, $this->model);
+    }
+
+    /**
+     * Test attribute "start_time"
+     */
+    public function testPropertyStartTime()
+    {
+        
+        $testValue = new \DateTime();
+        
+        $this->model->setStartTime($testValue);
+        $this->assertEquals($testValue, $this->model->getStartTime());
+    }
+
+    /**
+     * Test attribute "duration_in_minutes"
+     */
+    public function testPropertyDurationInMinutes()
+    {
+        $testValue = 123;
+        
+        $this->model->setDurationInMinutes($testValue);
+        $this->assertEquals($testValue, $this->model->getDurationInMinutes());
+    }
+}

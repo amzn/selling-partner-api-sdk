@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Order Class Doc Comment
@@ -781,7 +782,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAmazonOrderId($amazon_order_id): self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
             throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
@@ -808,7 +809,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setSellerOrderId($seller_order_id): self
+    public function setSellerOrderId(?string $seller_order_id): self
     {
         if (is_null($seller_order_id)) {
             throw new \InvalidArgumentException('non-nullable seller_order_id cannot be null');
@@ -835,7 +836,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPurchaseDate($purchase_date): self
+    public function setPurchaseDate(string $purchase_date): self
     {
         if (is_null($purchase_date)) {
             throw new \InvalidArgumentException('non-nullable purchase_date cannot be null');
@@ -862,7 +863,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setLastUpdateDate($last_update_date): self
+    public function setLastUpdateDate(string $last_update_date): self
     {
         if (is_null($last_update_date)) {
             throw new \InvalidArgumentException('non-nullable last_update_date cannot be null');
@@ -889,7 +890,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderStatus($order_status): self
+    public function setOrderStatus(string $order_status): self
     {
         if (is_null($order_status)) {
             throw new \InvalidArgumentException('non-nullable order_status cannot be null');
@@ -926,7 +927,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setFulfillmentChannel($fulfillment_channel): self
+    public function setFulfillmentChannel(?string $fulfillment_channel): self
     {
         if (is_null($fulfillment_channel)) {
             throw new \InvalidArgumentException('non-nullable fulfillment_channel cannot be null');
@@ -963,7 +964,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setSalesChannel($sales_channel): self
+    public function setSalesChannel(?string $sales_channel): self
     {
         if (is_null($sales_channel)) {
             throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
@@ -990,7 +991,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderChannel($order_channel): self
+    public function setOrderChannel(?string $order_channel): self
     {
         if (is_null($order_channel)) {
             throw new \InvalidArgumentException('non-nullable order_channel cannot be null');
@@ -1017,7 +1018,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipServiceLevel($ship_service_level): self
+    public function setShipServiceLevel(?string $ship_service_level): self
     {
         if (is_null($ship_service_level)) {
             throw new \InvalidArgumentException('non-nullable ship_service_level cannot be null');
@@ -1044,7 +1045,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderTotal($order_total): self
+    public function setOrderTotal(?\OpenAPI\Client\Model\orders\Money $order_total): self
     {
         if (is_null($order_total)) {
             throw new \InvalidArgumentException('non-nullable order_total cannot be null');
@@ -1071,7 +1072,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNumberOfItemsShipped($number_of_items_shipped): self
+    public function setNumberOfItemsShipped(?int $number_of_items_shipped): self
     {
         if (is_null($number_of_items_shipped)) {
             throw new \InvalidArgumentException('non-nullable number_of_items_shipped cannot be null');
@@ -1098,7 +1099,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNumberOfItemsUnshipped($number_of_items_unshipped): self
+    public function setNumberOfItemsUnshipped(?int $number_of_items_unshipped): self
     {
         if (is_null($number_of_items_unshipped)) {
             throw new \InvalidArgumentException('non-nullable number_of_items_unshipped cannot be null');
@@ -1111,7 +1112,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_execution_detail
      *
-     * @return \OpenAPI\Client\Model\orders\PaymentExecutionDetailItem[]|null
+     * @return arrayA|null
      */
     public function getPaymentExecutionDetail(): ?array
     {
@@ -1121,11 +1122,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_execution_detail
      *
-     * @param \OpenAPI\Client\Model\orders\PaymentExecutionDetailItem[]|null $payment_execution_detail A list of payment execution detail items.
+     * @param array|null $payment_execution_detail A list of payment execution detail items.
      *
      * @return self
      */
-    public function setPaymentExecutionDetail($payment_execution_detail): self
+    public function setPaymentExecutionDetail(?array $payment_execution_detail): self
     {
         if (is_null($payment_execution_detail)) {
             throw new \InvalidArgumentException('non-nullable payment_execution_detail cannot be null');
@@ -1152,7 +1153,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPaymentMethod($payment_method): self
+    public function setPaymentMethod(?string $payment_method): self
     {
         if (is_null($payment_method)) {
             throw new \InvalidArgumentException('non-nullable payment_method cannot be null');
@@ -1175,7 +1176,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_method_details
      *
-     * @return string[]|null
+     * @return arrayA|null
      */
     public function getPaymentMethodDetails(): ?array
     {
@@ -1185,11 +1186,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method_details
      *
-     * @param string[]|null $payment_method_details A list of payment method detail items.
+     * @param array|null $payment_method_details A list of payment method detail items.
      *
      * @return self
      */
-    public function setPaymentMethodDetails($payment_method_details): self
+    public function setPaymentMethodDetails(?array $payment_method_details): self
     {
         if (is_null($payment_method_details)) {
             throw new \InvalidArgumentException('non-nullable payment_method_details cannot be null');
@@ -1216,7 +1217,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id): self
+    public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
@@ -1243,7 +1244,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipmentServiceLevelCategory($shipment_service_level_category): self
+    public function setShipmentServiceLevelCategory(?string $shipment_service_level_category): self
     {
         if (is_null($shipment_service_level_category)) {
             throw new \InvalidArgumentException('non-nullable shipment_service_level_category cannot be null');
@@ -1256,9 +1257,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets easy_ship_shipment_status
      *
-     * @return \OpenAPI\Client\Model\orders\EasyShipShipmentStatus|null
+     * @return string|null
      */
-    public function getEasyShipShipmentStatus(): ?\OpenAPI\Client\Model\orders\EasyShipShipmentStatus
+    public function getEasyShipShipmentStatus(): ?string
     {
         return $this->container['easy_ship_shipment_status'];
     }
@@ -1266,11 +1267,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets easy_ship_shipment_status
      *
-     * @param \OpenAPI\Client\Model\orders\EasyShipShipmentStatus|null $easy_ship_shipment_status easy_ship_shipment_status
+     * @param string|null $easy_ship_shipment_status easy_ship_shipment_status
      *
      * @return self
      */
-    public function setEasyShipShipmentStatus($easy_ship_shipment_status): self
+    public function setEasyShipShipmentStatus(?string $easy_ship_shipment_status): self
     {
         if (is_null($easy_ship_shipment_status)) {
             throw new \InvalidArgumentException('non-nullable easy_ship_shipment_status cannot be null');
@@ -1297,7 +1298,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCbaDisplayableShippingLabel($cba_displayable_shipping_label): self
+    public function setCbaDisplayableShippingLabel(?string $cba_displayable_shipping_label): self
     {
         if (is_null($cba_displayable_shipping_label)) {
             throw new \InvalidArgumentException('non-nullable cba_displayable_shipping_label cannot be null');
@@ -1324,7 +1325,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderType($order_type): self
+    public function setOrderType(?string $order_type): self
     {
         if (is_null($order_type)) {
             throw new \InvalidArgumentException('non-nullable order_type cannot be null');
@@ -1361,7 +1362,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setEarliestShipDate($earliest_ship_date): self
+    public function setEarliestShipDate(?string $earliest_ship_date): self
     {
         if (is_null($earliest_ship_date)) {
             throw new \InvalidArgumentException('non-nullable earliest_ship_date cannot be null');
@@ -1388,7 +1389,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setLatestShipDate($latest_ship_date): self
+    public function setLatestShipDate(?string $latest_ship_date): self
     {
         if (is_null($latest_ship_date)) {
             throw new \InvalidArgumentException('non-nullable latest_ship_date cannot be null');
@@ -1415,7 +1416,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setEarliestDeliveryDate($earliest_delivery_date): self
+    public function setEarliestDeliveryDate(?string $earliest_delivery_date): self
     {
         if (is_null($earliest_delivery_date)) {
             throw new \InvalidArgumentException('non-nullable earliest_delivery_date cannot be null');
@@ -1442,7 +1443,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setLatestDeliveryDate($latest_delivery_date): self
+    public function setLatestDeliveryDate(?string $latest_delivery_date): self
     {
         if (is_null($latest_delivery_date)) {
             throw new \InvalidArgumentException('non-nullable latest_delivery_date cannot be null');
@@ -1469,7 +1470,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsBusinessOrder($is_business_order): self
+    public function setIsBusinessOrder(?bool $is_business_order): self
     {
         if (is_null($is_business_order)) {
             throw new \InvalidArgumentException('non-nullable is_business_order cannot be null');
@@ -1496,7 +1497,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsPrime($is_prime): self
+    public function setIsPrime(?bool $is_prime): self
     {
         if (is_null($is_prime)) {
             throw new \InvalidArgumentException('non-nullable is_prime cannot be null');
@@ -1523,7 +1524,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsPremiumOrder($is_premium_order): self
+    public function setIsPremiumOrder(?bool $is_premium_order): self
     {
         if (is_null($is_premium_order)) {
             throw new \InvalidArgumentException('non-nullable is_premium_order cannot be null');
@@ -1550,7 +1551,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsGlobalExpressEnabled($is_global_express_enabled): self
+    public function setIsGlobalExpressEnabled(?bool $is_global_express_enabled): self
     {
         if (is_null($is_global_express_enabled)) {
             throw new \InvalidArgumentException('non-nullable is_global_express_enabled cannot be null');
@@ -1577,7 +1578,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setReplacedOrderId($replaced_order_id): self
+    public function setReplacedOrderId(?string $replaced_order_id): self
     {
         if (is_null($replaced_order_id)) {
             throw new \InvalidArgumentException('non-nullable replaced_order_id cannot be null');
@@ -1604,7 +1605,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsReplacementOrder($is_replacement_order): self
+    public function setIsReplacementOrder(?bool $is_replacement_order): self
     {
         if (is_null($is_replacement_order)) {
             throw new \InvalidArgumentException('non-nullable is_replacement_order cannot be null');
@@ -1631,7 +1632,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPromiseResponseDueDate($promise_response_due_date): self
+    public function setPromiseResponseDueDate(?string $promise_response_due_date): self
     {
         if (is_null($promise_response_due_date)) {
             throw new \InvalidArgumentException('non-nullable promise_response_due_date cannot be null');
@@ -1658,7 +1659,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsEstimatedShipDateSet($is_estimated_ship_date_set): self
+    public function setIsEstimatedShipDateSet(?bool $is_estimated_ship_date_set): self
     {
         if (is_null($is_estimated_ship_date_set)) {
             throw new \InvalidArgumentException('non-nullable is_estimated_ship_date_set cannot be null');
@@ -1685,7 +1686,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsSoldByAb($is_sold_by_ab): self
+    public function setIsSoldByAb(?bool $is_sold_by_ab): self
     {
         if (is_null($is_sold_by_ab)) {
             throw new \InvalidArgumentException('non-nullable is_sold_by_ab cannot be null');
@@ -1712,7 +1713,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsIba($is_iba): self
+    public function setIsIba(?bool $is_iba): self
     {
         if (is_null($is_iba)) {
             throw new \InvalidArgumentException('non-nullable is_iba cannot be null');
@@ -1739,7 +1740,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setDefaultShipFromLocationAddress($default_ship_from_location_address): self
+    public function setDefaultShipFromLocationAddress(?\OpenAPI\Client\Model\orders\Address $default_ship_from_location_address): self
     {
         if (is_null($default_ship_from_location_address)) {
             throw new \InvalidArgumentException('non-nullable default_ship_from_location_address cannot be null');
@@ -1766,7 +1767,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerInvoicePreference($buyer_invoice_preference): self
+    public function setBuyerInvoicePreference(?string $buyer_invoice_preference): self
     {
         if (is_null($buyer_invoice_preference)) {
             throw new \InvalidArgumentException('non-nullable buyer_invoice_preference cannot be null');
@@ -1803,7 +1804,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerTaxInformation($buyer_tax_information): self
+    public function setBuyerTaxInformation(?\OpenAPI\Client\Model\orders\BuyerTaxInformation $buyer_tax_information): self
     {
         if (is_null($buyer_tax_information)) {
             throw new \InvalidArgumentException('non-nullable buyer_tax_information cannot be null');
@@ -1830,7 +1831,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setFulfillmentInstruction($fulfillment_instruction): self
+    public function setFulfillmentInstruction(?\OpenAPI\Client\Model\orders\FulfillmentInstruction $fulfillment_instruction): self
     {
         if (is_null($fulfillment_instruction)) {
             throw new \InvalidArgumentException('non-nullable fulfillment_instruction cannot be null');
@@ -1857,7 +1858,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsIspu($is_ispu): self
+    public function setIsIspu(?bool $is_ispu): self
     {
         if (is_null($is_ispu)) {
             throw new \InvalidArgumentException('non-nullable is_ispu cannot be null');
@@ -1884,7 +1885,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsAccessPointOrder($is_access_point_order): self
+    public function setIsAccessPointOrder(?bool $is_access_point_order): self
     {
         if (is_null($is_access_point_order)) {
             throw new \InvalidArgumentException('non-nullable is_access_point_order cannot be null');
@@ -1911,7 +1912,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setMarketplaceTaxInfo($marketplace_tax_info): self
+    public function setMarketplaceTaxInfo(?\OpenAPI\Client\Model\orders\MarketplaceTaxInfo $marketplace_tax_info): self
     {
         if (is_null($marketplace_tax_info)) {
             throw new \InvalidArgumentException('non-nullable marketplace_tax_info cannot be null');
@@ -1938,7 +1939,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setSellerDisplayName($seller_display_name): self
+    public function setSellerDisplayName(?string $seller_display_name): self
     {
         if (is_null($seller_display_name)) {
             throw new \InvalidArgumentException('non-nullable seller_display_name cannot be null');
@@ -1965,7 +1966,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShippingAddress($shipping_address): self
+    public function setShippingAddress(?\OpenAPI\Client\Model\orders\Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
             throw new \InvalidArgumentException('non-nullable shipping_address cannot be null');
@@ -1992,7 +1993,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerInfo($buyer_info): self
+    public function setBuyerInfo(?\OpenAPI\Client\Model\orders\BuyerInfo $buyer_info): self
     {
         if (is_null($buyer_info)) {
             throw new \InvalidArgumentException('non-nullable buyer_info cannot be null');
@@ -2019,7 +2020,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAutomatedShippingSettings($automated_shipping_settings): self
+    public function setAutomatedShippingSettings(?\OpenAPI\Client\Model\orders\AutomatedShippingSettings $automated_shipping_settings): self
     {
         if (is_null($automated_shipping_settings)) {
             throw new \InvalidArgumentException('non-nullable automated_shipping_settings cannot be null');
@@ -2046,7 +2047,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setHasRegulatedItems($has_regulated_items): self
+    public function setHasRegulatedItems(?bool $has_regulated_items): self
     {
         if (is_null($has_regulated_items)) {
             throw new \InvalidArgumentException('non-nullable has_regulated_items cannot be null');
@@ -2059,9 +2060,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets electronic_invoice_status
      *
-     * @return \OpenAPI\Client\Model\orders\ElectronicInvoiceStatus|null
+     * @return string|null
      */
-    public function getElectronicInvoiceStatus(): ?\OpenAPI\Client\Model\orders\ElectronicInvoiceStatus
+    public function getElectronicInvoiceStatus(): ?string
     {
         return $this->container['electronic_invoice_status'];
     }
@@ -2069,11 +2070,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets electronic_invoice_status
      *
-     * @param \OpenAPI\Client\Model\orders\ElectronicInvoiceStatus|null $electronic_invoice_status electronic_invoice_status
+     * @param string|null $electronic_invoice_status electronic_invoice_status
      *
      * @return self
      */
-    public function setElectronicInvoiceStatus($electronic_invoice_status): self
+    public function setElectronicInvoiceStatus(?string $electronic_invoice_status): self
     {
         if (is_null($electronic_invoice_status)) {
             throw new \InvalidArgumentException('non-nullable electronic_invoice_status cannot be null');

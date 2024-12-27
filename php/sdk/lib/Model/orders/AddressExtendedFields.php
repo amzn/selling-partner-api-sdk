@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * AddressExtendedFields Class Doc Comment
@@ -328,7 +329,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setStreetName($street_name): self
+    public function setStreetName(?string $street_name): self
     {
         if (is_null($street_name)) {
             throw new \InvalidArgumentException('non-nullable street_name cannot be null');
@@ -355,7 +356,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setStreetNumber($street_number): self
+    public function setStreetNumber(?string $street_number): self
     {
         if (is_null($street_number)) {
             throw new \InvalidArgumentException('non-nullable street_number cannot be null');
@@ -382,7 +383,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setComplement($complement): self
+    public function setComplement(?string $complement): self
     {
         if (is_null($complement)) {
             throw new \InvalidArgumentException('non-nullable complement cannot be null');
@@ -409,7 +410,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return self
      */
-    public function setNeighborhood($neighborhood): self
+    public function setNeighborhood(?string $neighborhood): self
     {
         if (is_null($neighborhood)) {
             throw new \InvalidArgumentException('non-nullable neighborhood cannot be null');

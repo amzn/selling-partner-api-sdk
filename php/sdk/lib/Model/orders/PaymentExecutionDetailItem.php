@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * PaymentExecutionDetailItem Class Doc Comment
@@ -320,7 +321,7 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setPayment($payment): self
+    public function setPayment(\OpenAPI\Client\Model\orders\Money $payment): self
     {
         if (is_null($payment)) {
             throw new \InvalidArgumentException('non-nullable payment cannot be null');
@@ -347,7 +348,7 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return self
      */
-    public function setPaymentMethod($payment_method): self
+    public function setPaymentMethod(string $payment_method): self
     {
         if (is_null($payment_method)) {
             throw new \InvalidArgumentException('non-nullable payment_method cannot be null');

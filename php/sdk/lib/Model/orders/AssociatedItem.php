@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * AssociatedItem Class Doc Comment
@@ -321,7 +322,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderId($order_id): self
+    public function setOrderId(?string $order_id): self
     {
         if (is_null($order_id)) {
             throw new \InvalidArgumentException('non-nullable order_id cannot be null');
@@ -348,7 +349,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setOrderItemId($order_item_id): self
+    public function setOrderItemId(?string $order_item_id): self
     {
         if (is_null($order_item_id)) {
             throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
@@ -361,9 +362,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets association_type
      *
-     * @return \OpenAPI\Client\Model\orders\AssociationType|null
+     * @return string|null
      */
-    public function getAssociationType(): ?\OpenAPI\Client\Model\orders\AssociationType
+    public function getAssociationType(): ?string
     {
         return $this->container['association_type'];
     }
@@ -371,11 +372,11 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets association_type
      *
-     * @param \OpenAPI\Client\Model\orders\AssociationType|null $association_type association_type
+     * @param string|null $association_type association_type
      *
      * @return self
      */
-    public function setAssociationType($association_type): self
+    public function setAssociationType(?string $association_type): self
     {
         if (is_null($association_type)) {
             throw new \InvalidArgumentException('non-nullable association_type cannot be null');

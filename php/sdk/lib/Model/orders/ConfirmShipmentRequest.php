@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ConfirmShipmentRequest Class Doc Comment
@@ -349,7 +350,7 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setPackageDetail($package_detail): self
+    public function setPackageDetail(\OpenAPI\Client\Model\orders\PackageDetail $package_detail): self
     {
         if (is_null($package_detail)) {
             throw new \InvalidArgumentException('non-nullable package_detail cannot be null');
@@ -376,7 +377,7 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setCodCollectionMethod($cod_collection_method): self
+    public function setCodCollectionMethod(?string $cod_collection_method): self
     {
         if (is_null($cod_collection_method)) {
             throw new \InvalidArgumentException('non-nullable cod_collection_method cannot be null');
@@ -413,7 +414,7 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id): self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');

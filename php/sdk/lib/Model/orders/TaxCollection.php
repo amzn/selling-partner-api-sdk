@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * TaxCollection Class Doc Comment
@@ -358,7 +359,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setModel($model): self
+    public function setModel(?string $model): self
     {
         if (is_null($model)) {
             throw new \InvalidArgumentException('non-nullable model cannot be null');
@@ -395,7 +396,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setResponsibleParty($responsible_party): self
+    public function setResponsibleParty(?string $responsible_party): self
     {
         if (is_null($responsible_party)) {
             throw new \InvalidArgumentException('non-nullable responsible_party cannot be null');

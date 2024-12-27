@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * MarketplaceTaxInfo Class Doc Comment
@@ -293,7 +294,7 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tax_classifications
      *
-     * @return \OpenAPI\Client\Model\orders\TaxClassification[]|null
+     * @return arrayA|null
      */
     public function getTaxClassifications(): ?array
     {
@@ -303,11 +304,11 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tax_classifications
      *
-     * @param \OpenAPI\Client\Model\orders\TaxClassification[]|null $tax_classifications A list of tax classifications that apply to the order.
+     * @param array|null $tax_classifications A list of tax classifications that apply to the order.
      *
      * @return self
      */
-    public function setTaxClassifications($tax_classifications): self
+    public function setTaxClassifications(?array $tax_classifications): self
     {
         if (is_null($tax_classifications)) {
             throw new \InvalidArgumentException('non-nullable tax_classifications cannot be null');

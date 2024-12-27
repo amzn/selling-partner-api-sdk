@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OrderAddress Class Doc Comment
@@ -331,7 +332,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAmazonOrderId($amazon_order_id): self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
             throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
@@ -358,7 +359,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerCompanyName($buyer_company_name): self
+    public function setBuyerCompanyName(?string $buyer_company_name): self
     {
         if (is_null($buyer_company_name)) {
             throw new \InvalidArgumentException('non-nullable buyer_company_name cannot be null');
@@ -385,7 +386,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShippingAddress($shipping_address): self
+    public function setShippingAddress(?\OpenAPI\Client\Model\orders\Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
             throw new \InvalidArgumentException('non-nullable shipping_address cannot be null');
@@ -412,7 +413,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setDeliveryPreferences($delivery_preferences): self
+    public function setDeliveryPreferences(?\OpenAPI\Client\Model\orders\DeliveryPreferences $delivery_preferences): self
     {
         if (is_null($delivery_preferences)) {
             throw new \InvalidArgumentException('non-nullable delivery_preferences cannot be null');

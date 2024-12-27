@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ExceptionDates Class Doc Comment
@@ -321,7 +322,7 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setExceptionDate($exception_date): self
+    public function setExceptionDate(?string $exception_date): self
     {
         if (is_null($exception_date)) {
             throw new \InvalidArgumentException('non-nullable exception_date cannot be null');
@@ -348,7 +349,7 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsOpen($is_open): self
+    public function setIsOpen(?bool $is_open): self
     {
         if (is_null($is_open)) {
             throw new \InvalidArgumentException('non-nullable is_open cannot be null');
@@ -361,7 +362,7 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets open_intervals
      *
-     * @return \OpenAPI\Client\Model\orders\OpenInterval[]|null
+     * @return arrayA|null
      */
     public function getOpenIntervals(): ?array
     {
@@ -371,11 +372,11 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets open_intervals
      *
-     * @param \OpenAPI\Client\Model\orders\OpenInterval[]|null $open_intervals Time window during the day when the business is open.
+     * @param array|null $open_intervals Time window during the day when the business is open.
      *
      * @return self
      */
-    public function setOpenIntervals($open_intervals): self
+    public function setOpenIntervals(?array $open_intervals): self
     {
         if (is_null($open_intervals)) {
             throw new \InvalidArgumentException('non-nullable open_intervals cannot be null');

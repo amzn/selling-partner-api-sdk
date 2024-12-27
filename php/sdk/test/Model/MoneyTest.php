@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\Money;
+use OpenAPI\Client\Model\fulfillmentoutbound\Money;
 
 /**
  * MoneyTest Class Doc Comment
  *
  * @category    Class
- * @description The monetary value of the order.
+ * @description An amount of money, including units in the form of currency.
  * @package     OpenAPI\Client
  */
 class MoneyTest extends TestCase
@@ -63,13 +63,13 @@ class MoneyTest extends TestCase
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "value"
      */
-    public function testPropertyAmount()
+    public function testPropertyValue()
     {
         $testValue = 'test';
         
-        $this->model->setAmount($testValue);
-        $this->assertEquals($testValue, $this->model->getAmount());
+        $this->model->setValue($testValue);
+        $this->assertEquals($testValue, $this->model->getValue());
     }
 }

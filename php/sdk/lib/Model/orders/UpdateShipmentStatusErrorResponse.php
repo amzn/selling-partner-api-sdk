@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * UpdateShipmentStatusErrorResponse Class Doc Comment
@@ -293,7 +294,7 @@ class UpdateShipmentStatusErrorResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets errors
      *
-     * @return \OpenAPI\Client\Model\orders\Error[]|null
+     * @return arrayA|null
      */
     public function getErrors(): ?array
     {
@@ -303,11 +304,11 @@ class UpdateShipmentStatusErrorResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\orders\Error[]|null $errors A list of error responses returned when a request is unsuccessful.
+     * @param array|null $errors A list of error responses returned when a request is unsuccessful.
      *
      * @return self
      */
-    public function setErrors($errors): self
+    public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
             throw new \InvalidArgumentException('non-nullable errors cannot be null');

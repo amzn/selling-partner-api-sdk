@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * BuyerTaxInformation Class Doc Comment
@@ -328,7 +329,7 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setBuyerLegalCompanyName($buyer_legal_company_name): self
+    public function setBuyerLegalCompanyName(?string $buyer_legal_company_name): self
     {
         if (is_null($buyer_legal_company_name)) {
             throw new \InvalidArgumentException('non-nullable buyer_legal_company_name cannot be null');
@@ -355,7 +356,7 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setBuyerBusinessAddress($buyer_business_address): self
+    public function setBuyerBusinessAddress(?string $buyer_business_address): self
     {
         if (is_null($buyer_business_address)) {
             throw new \InvalidArgumentException('non-nullable buyer_business_address cannot be null');
@@ -382,7 +383,7 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setBuyerTaxRegistrationId($buyer_tax_registration_id): self
+    public function setBuyerTaxRegistrationId(?string $buyer_tax_registration_id): self
     {
         if (is_null($buyer_tax_registration_id)) {
             throw new \InvalidArgumentException('non-nullable buyer_tax_registration_id cannot be null');
@@ -409,7 +410,7 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setBuyerTaxOffice($buyer_tax_office): self
+    public function setBuyerTaxOffice(?string $buyer_tax_office): self
     {
         if (is_null($buyer_tax_office)) {
             throw new \InvalidArgumentException('non-nullable buyer_tax_office cannot be null');

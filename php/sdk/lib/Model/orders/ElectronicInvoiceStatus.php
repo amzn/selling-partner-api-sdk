@@ -28,6 +28,7 @@
 
 namespace OpenAPI\Client\Model\orders;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ElectronicInvoiceStatus Class Doc Comment

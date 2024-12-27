@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Business Class Doc Comment
@@ -341,7 +342,7 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setName($name): self
+    public function setName(string $name): self
     {
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
@@ -368,7 +369,7 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setRegisteredBusinessAddress($registered_business_address): self
+    public function setRegisteredBusinessAddress(\OpenAPI\Client\Model\sellers\Address $registered_business_address): self
     {
         if (is_null($registered_business_address)) {
             throw new \InvalidArgumentException('non-nullable registered_business_address cannot be null');
@@ -395,7 +396,7 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCompanyRegistrationNumber($company_registration_number): self
+    public function setCompanyRegistrationNumber(?string $company_registration_number): self
     {
         if (is_null($company_registration_number)) {
             throw new \InvalidArgumentException('non-nullable company_registration_number cannot be null');
@@ -422,7 +423,7 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCompanyTaxIdentificationNumber($company_tax_identification_number): self
+    public function setCompanyTaxIdentificationNumber(?string $company_tax_identification_number): self
     {
         if (is_null($company_tax_identification_number)) {
             throw new \InvalidArgumentException('non-nullable company_tax_identification_number cannot be null');
@@ -449,7 +450,7 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setNonLatinName($non_latin_name): self
+    public function setNonLatinName(?string $non_latin_name): self
     {
         if (is_null($non_latin_name)) {
             throw new \InvalidArgumentException('non-nullable non_latin_name cannot be null');

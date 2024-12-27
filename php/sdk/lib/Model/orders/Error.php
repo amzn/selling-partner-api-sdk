@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Error Class Doc Comment
@@ -327,7 +328,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCode($code): self
+    public function setCode(string $code): self
     {
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
@@ -354,7 +355,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setMessage($message): self
+    public function setMessage(string $message): self
     {
         if (is_null($message)) {
             throw new \InvalidArgumentException('non-nullable message cannot be null');
@@ -381,7 +382,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setDetails($details): self
+    public function setDetails(?string $details): self
     {
         if (is_null($details)) {
             throw new \InvalidArgumentException('non-nullable details cannot be null');

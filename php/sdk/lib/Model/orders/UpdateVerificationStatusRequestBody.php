@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * UpdateVerificationStatusRequestBody Class Doc Comment
@@ -317,9 +318,9 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\orders\VerificationStatus|null
+     * @return string|null
      */
-    public function getStatus(): ?\OpenAPI\Client\Model\orders\VerificationStatus
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -327,11 +328,11 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\orders\VerificationStatus|null $status status
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setStatus($status): self
+    public function setStatus(?string $status): self
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
@@ -358,7 +359,7 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
      *
      * @return self
      */
-    public function setExternalReviewerId($external_reviewer_id): self
+    public function setExternalReviewerId(string $external_reviewer_id): self
     {
         if (is_null($external_reviewer_id)) {
             throw new \InvalidArgumentException('non-nullable external_reviewer_id cannot be null');
@@ -385,7 +386,7 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
      *
      * @return self
      */
-    public function setRejectionReasonId($rejection_reason_id): self
+    public function setRejectionReasonId(?string $rejection_reason_id): self
     {
         if (is_null($rejection_reason_id)) {
             throw new \InvalidArgumentException('non-nullable rejection_reason_id cannot be null');
@@ -412,7 +413,7 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
      *
      * @return self
      */
-    public function setVerificationDetails($verification_details): self
+    public function setVerificationDetails(?\OpenAPI\Client\Model\orders\VerificationDetails $verification_details): self
     {
         if (is_null($verification_details)) {
             throw new \InvalidArgumentException('non-nullable verification_details cannot be null');

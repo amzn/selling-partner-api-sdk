@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * PackageDetail Class Doc Comment
@@ -371,7 +372,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPackageReferenceId($package_reference_id): self
+    public function setPackageReferenceId(string $package_reference_id): self
     {
         if (is_null($package_reference_id)) {
             throw new \InvalidArgumentException('non-nullable package_reference_id cannot be null');
@@ -398,7 +399,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCarrierCode($carrier_code): self
+    public function setCarrierCode(string $carrier_code): self
     {
         if (is_null($carrier_code)) {
             throw new \InvalidArgumentException('non-nullable carrier_code cannot be null');
@@ -425,7 +426,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCarrierName($carrier_name): self
+    public function setCarrierName(?string $carrier_name): self
     {
         if (is_null($carrier_name)) {
             throw new \InvalidArgumentException('non-nullable carrier_name cannot be null');
@@ -452,7 +453,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShippingMethod($shipping_method): self
+    public function setShippingMethod(?string $shipping_method): self
     {
         if (is_null($shipping_method)) {
             throw new \InvalidArgumentException('non-nullable shipping_method cannot be null');
@@ -479,7 +480,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setTrackingNumber($tracking_number): self
+    public function setTrackingNumber(string $tracking_number): self
     {
         if (is_null($tracking_number)) {
             throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
@@ -506,7 +507,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipDate($ship_date): self
+    public function setShipDate(\DateTime $ship_date): self
     {
         if (is_null($ship_date)) {
             throw new \InvalidArgumentException('non-nullable ship_date cannot be null');
@@ -533,7 +534,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setShipFromSupplySourceId($ship_from_supply_source_id): self
+    public function setShipFromSupplySourceId(?string $ship_from_supply_source_id): self
     {
         if (is_null($ship_from_supply_source_id)) {
             throw new \InvalidArgumentException('non-nullable ship_from_supply_source_id cannot be null');
@@ -546,7 +547,7 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_items
      *
-     * @return \OpenAPI\Client\Model\orders\ConfirmShipmentOrderItem[]
+     * @return arrayA
      */
     public function getOrderItems(): array
     {
@@ -556,11 +557,11 @@ class PackageDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_items
      *
-     * @param \OpenAPI\Client\Model\orders\ConfirmShipmentOrderItem[] $order_items A list of order items.
+     * @param array $order_items A list of order items.
      *
      * @return self
      */
-    public function setOrderItems($order_items): self
+    public function setOrderItems(array $order_items): self
     {
         if (is_null($order_items)) {
             throw new \InvalidArgumentException('non-nullable order_items cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * UpdateVerificationStatusRequest Class Doc Comment
@@ -310,7 +311,7 @@ class UpdateVerificationStatusRequest implements ModelInterface, ArrayAccess, \J
      *
      * @return self
      */
-    public function setRegulatedOrderVerificationStatus($regulated_order_verification_status): self
+    public function setRegulatedOrderVerificationStatus(\OpenAPI\Client\Model\orders\UpdateVerificationStatusRequestBody $regulated_order_verification_status): self
     {
         if (is_null($regulated_order_verification_status)) {
             throw new \InvalidArgumentException('non-nullable regulated_order_verification_status cannot be null');

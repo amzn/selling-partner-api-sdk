@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ItemBuyerInfo Class Doc Comment
@@ -335,7 +336,7 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setBuyerCustomizedInfo($buyer_customized_info): self
+    public function setBuyerCustomizedInfo(?\OpenAPI\Client\Model\orders\BuyerCustomizedInfoDetail $buyer_customized_info): self
     {
         if (is_null($buyer_customized_info)) {
             throw new \InvalidArgumentException('non-nullable buyer_customized_info cannot be null');
@@ -362,7 +363,7 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setGiftWrapPrice($gift_wrap_price): self
+    public function setGiftWrapPrice(?\OpenAPI\Client\Model\orders\Money $gift_wrap_price): self
     {
         if (is_null($gift_wrap_price)) {
             throw new \InvalidArgumentException('non-nullable gift_wrap_price cannot be null');
@@ -389,7 +390,7 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setGiftWrapTax($gift_wrap_tax): self
+    public function setGiftWrapTax(?\OpenAPI\Client\Model\orders\Money $gift_wrap_tax): self
     {
         if (is_null($gift_wrap_tax)) {
             throw new \InvalidArgumentException('non-nullable gift_wrap_tax cannot be null');
@@ -416,7 +417,7 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setGiftMessageText($gift_message_text): self
+    public function setGiftMessageText(?string $gift_message_text): self
     {
         if (is_null($gift_message_text)) {
             throw new \InvalidArgumentException('non-nullable gift_message_text cannot be null');
@@ -443,7 +444,7 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setGiftWrapLevel($gift_wrap_level): self
+    public function setGiftWrapLevel(?string $gift_wrap_level): self
     {
         if (is_null($gift_wrap_level)) {
             throw new \InvalidArgumentException('non-nullable gift_wrap_level cannot be null');

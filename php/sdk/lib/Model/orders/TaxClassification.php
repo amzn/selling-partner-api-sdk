@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * TaxClassification Class Doc Comment
@@ -314,7 +315,7 @@ class TaxClassification implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setName($name): self
+    public function setName(?string $name): self
     {
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
@@ -341,7 +342,7 @@ class TaxClassification implements ModelInterface, ArrayAccess, \JsonSerializabl
      *
      * @return self
      */
-    public function setValue($value): self
+    public function setValue(?string $value): self
     {
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');

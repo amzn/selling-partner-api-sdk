@@ -57,7 +57,7 @@ class SellersApi
     /**
      * @var ClientInterface
      */
-    protected $client;
+    protected ClientInterface $client;
 
     /**
      * @var Configuration
@@ -157,8 +157,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\sellers\GetAccountResponse
      */
-    public function getAccount(): \OpenAPI\Client\Model\sellers\GetAccountResponse
-    {
+    public function getAccount(
+    
+    ): \OpenAPI\Client\Model\sellers\GetAccountResponse {
         list($response) = $this->getAccountWithHttpInfo();
         return $response;
     }
@@ -171,8 +172,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\sellers\GetAccountResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAccountWithHttpInfo(): array
-    {
+    public function getAccountWithHttpInfo(
+    
+    ): array {
         $request = $this->getAccountRequest();
         $request = $this->config->sign($request);
 
@@ -452,8 +454,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getAccountAsync(): PromiseInterface
-    {
+    public function getAccountAsync(
+    
+    ): PromiseInterface {
         return $this->getAccountAsyncWithHttpInfo()
             ->then(
                 function ($response) {
@@ -469,8 +472,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getAccountAsyncWithHttpInfo(): PromiseInterface
-    {
+    public function getAccountAsyncWithHttpInfo(
+    
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\sellers\GetAccountResponse';
         $request = $this->getAccountRequest();
         $request = $this->config->sign($request);
@@ -519,8 +523,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getAccountRequest(): Request
-    {
+    public function getAccountRequest(
+    
+    ): Request {
 
         $resourcePath = '/sellers/v1/account';
         $formParams = [];
@@ -600,8 +605,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse
      */
-    public function getMarketplaceParticipations(): \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse
-    {
+    public function getMarketplaceParticipations(
+    
+    ): \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse {
         list($response) = $this->getMarketplaceParticipationsWithHttpInfo();
         return $response;
     }
@@ -614,8 +620,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMarketplaceParticipationsWithHttpInfo(): array
-    {
+    public function getMarketplaceParticipationsWithHttpInfo(
+    
+    ): array {
         $request = $this->getMarketplaceParticipationsRequest();
         $request = $this->config->sign($request);
 
@@ -895,8 +902,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getMarketplaceParticipationsAsync(): PromiseInterface
-    {
+    public function getMarketplaceParticipationsAsync(
+    
+    ): PromiseInterface {
         return $this->getMarketplaceParticipationsAsyncWithHttpInfo()
             ->then(
                 function ($response) {
@@ -912,8 +920,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getMarketplaceParticipationsAsyncWithHttpInfo(): PromiseInterface
-    {
+    public function getMarketplaceParticipationsAsyncWithHttpInfo(
+    
+    ): PromiseInterface {
         $returnType = '\OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse';
         $request = $this->getMarketplaceParticipationsRequest();
         $request = $this->config->sign($request);
@@ -962,8 +971,9 @@ class SellersApi
      * @throws \InvalidArgumentException
      * @return Request
      */
-    public function getMarketplaceParticipationsRequest(): Request
-    {
+    public function getMarketplaceParticipationsRequest(
+    
+    ): Request {
 
         $resourcePath = '/sellers/v1/marketplaceParticipations';
         $formParams = [];

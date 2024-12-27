@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * AmazonPrograms Class Doc Comment
@@ -296,7 +297,7 @@ class AmazonPrograms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets programs
      *
-     * @return string[]
+     * @return arrayA
      */
     public function getPrograms(): array
     {
@@ -306,11 +307,11 @@ class AmazonPrograms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets programs
      *
-     * @param string[] $programs A list of the programs that are associated with the specified order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`
+     * @param array $programs A list of the programs that are associated with the specified order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`
      *
      * @return self
      */
-    public function setPrograms($programs): self
+    public function setPrograms(array $programs): self
     {
         if (is_null($programs)) {
             throw new \InvalidArgumentException('non-nullable programs cannot be null');

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * SubstitutionOption Class Doc Comment
@@ -335,7 +336,7 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setAsin($asin): self
+    public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
             throw new \InvalidArgumentException('non-nullable asin cannot be null');
@@ -362,7 +363,7 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setQuantityOrdered($quantity_ordered): self
+    public function setQuantityOrdered(?int $quantity_ordered): self
     {
         if (is_null($quantity_ordered)) {
             throw new \InvalidArgumentException('non-nullable quantity_ordered cannot be null');
@@ -389,7 +390,7 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setSellerSku($seller_sku): self
+    public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
             throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
@@ -416,7 +417,7 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setTitle($title): self
+    public function setTitle(?string $title): self
     {
         if (is_null($title)) {
             throw new \InvalidArgumentException('non-nullable title cannot be null');
@@ -443,7 +444,7 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setMeasurement($measurement): self
+    public function setMeasurement(?\OpenAPI\Client\Model\orders\Measurement $measurement): self
     {
         if (is_null($measurement)) {
             throw new \InvalidArgumentException('non-nullable measurement cannot be null');

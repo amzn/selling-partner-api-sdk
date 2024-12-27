@@ -1,0 +1,76 @@
+<?php
+/**
+ * SelfShipAppointmentSlotsAvailabilityTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\fulfillmentinbound\SelfShipAppointmentSlotsAvailability;
+
+/**
+ * SelfShipAppointmentSlotsAvailabilityTest Class Doc Comment
+ *
+ * @category    Class
+ * @description The self ship appointment time slots availability and an expiration date for which the slots can be scheduled.
+ * @package     OpenAPI\Client
+ */
+class SelfShipAppointmentSlotsAvailabilityTest extends TestCase
+{
+
+    private SelfShipAppointmentSlotsAvailability $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new SelfShipAppointmentSlotsAvailability();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "SelfShipAppointmentSlotsAvailability"
+     */
+    public function testSelfShipAppointmentSlotsAvailability()
+    {
+        $this->assertInstanceOf(SelfShipAppointmentSlotsAvailability::class, $this->model);
+    }
+
+    /**
+     * Test attribute "expires_at"
+     */
+    public function testPropertyExpiresAt()
+    {
+        
+        $testValue = new \DateTime();
+        
+        $this->model->setExpiresAt($testValue);
+        $this->assertEquals($testValue, $this->model->getExpiresAt());
+    }
+
+    /**
+     * Test attribute "slots"
+     */
+    public function testPropertySlots()
+    {
+        $testValue = [];
+        
+        $this->model->setSlots($testValue);
+        $this->assertEquals($testValue, $this->model->getSlots());
+    }
+}

@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * OrderRegulatedInfo Class Doc Comment
@@ -340,7 +341,7 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setAmazonOrderId($amazon_order_id): self
+    public function setAmazonOrderId(string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
             throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
@@ -367,7 +368,7 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setRegulatedInformation($regulated_information): self
+    public function setRegulatedInformation(\OpenAPI\Client\Model\orders\RegulatedInformation $regulated_information): self
     {
         if (is_null($regulated_information)) {
             throw new \InvalidArgumentException('non-nullable regulated_information cannot be null');
@@ -394,7 +395,7 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setRequiresDosageLabel($requires_dosage_label): self
+    public function setRequiresDosageLabel(bool $requires_dosage_label): self
     {
         if (is_null($requires_dosage_label)) {
             throw new \InvalidArgumentException('non-nullable requires_dosage_label cannot be null');
@@ -421,7 +422,7 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return self
      */
-    public function setRegulatedOrderVerificationStatus($regulated_order_verification_status): self
+    public function setRegulatedOrderVerificationStatus(\OpenAPI\Client\Model\orders\RegulatedOrderVerificationStatus $regulated_order_verification_status): self
     {
         if (is_null($regulated_order_verification_status)) {
             throw new \InvalidArgumentException('non-nullable regulated_order_verification_status cannot be null');

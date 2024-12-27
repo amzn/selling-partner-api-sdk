@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Address Class Doc Comment
@@ -348,7 +349,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAddressLine1($address_line1): self
+    public function setAddressLine1(string $address_line1): self
     {
         if (is_null($address_line1)) {
             throw new \InvalidArgumentException('non-nullable address_line1 cannot be null');
@@ -375,7 +376,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setAddressLine2($address_line2): self
+    public function setAddressLine2(?string $address_line2): self
     {
         if (is_null($address_line2)) {
             throw new \InvalidArgumentException('non-nullable address_line2 cannot be null');
@@ -402,7 +403,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCountryCode($country_code): self
+    public function setCountryCode(string $country_code): self
     {
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
@@ -429,7 +430,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setStateOrProvinceCode($state_or_province_code): self
+    public function setStateOrProvinceCode(?string $state_or_province_code): self
     {
         if (is_null($state_or_province_code)) {
             throw new \InvalidArgumentException('non-nullable state_or_province_code cannot be null');
@@ -456,7 +457,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setCity($city): self
+    public function setCity(?string $city): self
     {
         if (is_null($city)) {
             throw new \InvalidArgumentException('non-nullable city cannot be null');
@@ -483,7 +484,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setPostalCode($postal_code): self
+    public function setPostalCode(?string $postal_code): self
     {
         if (is_null($postal_code)) {
             throw new \InvalidArgumentException('non-nullable postal_code cannot be null');

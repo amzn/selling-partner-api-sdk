@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * VerificationDetails Class Doc Comment
@@ -307,7 +308,7 @@ class VerificationDetails implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return self
      */
-    public function setPrescriptionDetail($prescription_detail): self
+    public function setPrescriptionDetail(?\OpenAPI\Client\Model\orders\PrescriptionDetail $prescription_detail): self
     {
         if (is_null($prescription_detail)) {
             throw new \InvalidArgumentException('non-nullable prescription_detail cannot be null');

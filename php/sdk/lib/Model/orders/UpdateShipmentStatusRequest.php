@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * UpdateShipmentStatusRequest Class Doc Comment
@@ -327,7 +328,7 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
      *
      * @return self
      */
-    public function setMarketplaceId($marketplace_id): self
+    public function setMarketplaceId(string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
@@ -340,9 +341,9 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets shipment_status
      *
-     * @return \OpenAPI\Client\Model\orders\ShipmentStatus
+     * @return string
      */
-    public function getShipmentStatus(): \OpenAPI\Client\Model\orders\ShipmentStatus
+    public function getShipmentStatus(): string
     {
         return $this->container['shipment_status'];
     }
@@ -350,11 +351,11 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets shipment_status
      *
-     * @param \OpenAPI\Client\Model\orders\ShipmentStatus $shipment_status shipment_status
+     * @param string $shipment_status shipment_status
      *
      * @return self
      */
-    public function setShipmentStatus($shipment_status): self
+    public function setShipmentStatus(string $shipment_status): self
     {
         if (is_null($shipment_status)) {
             throw new \InvalidArgumentException('non-nullable shipment_status cannot be null');
@@ -367,7 +368,7 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets order_items
      *
-     * @return \OpenAPI\Client\Model\orders\OrderItemsInner[]|null
+     * @return arrayA|null
      */
     public function getOrderItems(): ?array
     {
@@ -377,11 +378,11 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets order_items
      *
-     * @param \OpenAPI\Client\Model\orders\OrderItemsInner[]|null $order_items For partial shipment status updates, the list of order items and quantities to be updated.
+     * @param array|null $order_items For partial shipment status updates, the list of order items and quantities to be updated.
      *
      * @return self
      */
-    public function setOrderItems($order_items): self
+    public function setOrderItems(?array $order_items): self
     {
         if (is_null($order_items)) {
             throw new \InvalidArgumentException('non-nullable order_items cannot be null');

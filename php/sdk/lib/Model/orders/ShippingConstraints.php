@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * ShippingConstraints Class Doc Comment
@@ -314,9 +315,9 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets pallet_delivery
      *
-     * @return \OpenAPI\Client\Model\orders\ConstraintType|null
+     * @return string|null
      */
-    public function getPalletDelivery(): ?\OpenAPI\Client\Model\orders\ConstraintType
+    public function getPalletDelivery(): ?string
     {
         return $this->container['pallet_delivery'];
     }
@@ -324,11 +325,11 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets pallet_delivery
      *
-     * @param \OpenAPI\Client\Model\orders\ConstraintType|null $pallet_delivery pallet_delivery
+     * @param string|null $pallet_delivery pallet_delivery
      *
      * @return self
      */
-    public function setPalletDelivery($pallet_delivery): self
+    public function setPalletDelivery(?string $pallet_delivery): self
     {
         if (is_null($pallet_delivery)) {
             throw new \InvalidArgumentException('non-nullable pallet_delivery cannot be null');
@@ -341,9 +342,9 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets signature_confirmation
      *
-     * @return \OpenAPI\Client\Model\orders\ConstraintType|null
+     * @return string|null
      */
-    public function getSignatureConfirmation(): ?\OpenAPI\Client\Model\orders\ConstraintType
+    public function getSignatureConfirmation(): ?string
     {
         return $this->container['signature_confirmation'];
     }
@@ -351,11 +352,11 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets signature_confirmation
      *
-     * @param \OpenAPI\Client\Model\orders\ConstraintType|null $signature_confirmation signature_confirmation
+     * @param string|null $signature_confirmation signature_confirmation
      *
      * @return self
      */
-    public function setSignatureConfirmation($signature_confirmation): self
+    public function setSignatureConfirmation(?string $signature_confirmation): self
     {
         if (is_null($signature_confirmation)) {
             throw new \InvalidArgumentException('non-nullable signature_confirmation cannot be null');
@@ -368,9 +369,9 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets recipient_identity_verification
      *
-     * @return \OpenAPI\Client\Model\orders\ConstraintType|null
+     * @return string|null
      */
-    public function getRecipientIdentityVerification(): ?\OpenAPI\Client\Model\orders\ConstraintType
+    public function getRecipientIdentityVerification(): ?string
     {
         return $this->container['recipient_identity_verification'];
     }
@@ -378,11 +379,11 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets recipient_identity_verification
      *
-     * @param \OpenAPI\Client\Model\orders\ConstraintType|null $recipient_identity_verification recipient_identity_verification
+     * @param string|null $recipient_identity_verification recipient_identity_verification
      *
      * @return self
      */
-    public function setRecipientIdentityVerification($recipient_identity_verification): self
+    public function setRecipientIdentityVerification(?string $recipient_identity_verification): self
     {
         if (is_null($recipient_identity_verification)) {
             throw new \InvalidArgumentException('non-nullable recipient_identity_verification cannot be null');
@@ -395,9 +396,9 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets recipient_age_verification
      *
-     * @return \OpenAPI\Client\Model\orders\ConstraintType|null
+     * @return string|null
      */
-    public function getRecipientAgeVerification(): ?\OpenAPI\Client\Model\orders\ConstraintType
+    public function getRecipientAgeVerification(): ?string
     {
         return $this->container['recipient_age_verification'];
     }
@@ -405,11 +406,11 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets recipient_age_verification
      *
-     * @param \OpenAPI\Client\Model\orders\ConstraintType|null $recipient_age_verification recipient_age_verification
+     * @param string|null $recipient_age_verification recipient_age_verification
      *
      * @return self
      */
-    public function setRecipientAgeVerification($recipient_age_verification): self
+    public function setRecipientAgeVerification(?string $recipient_age_verification): self
     {
         if (is_null($recipient_age_verification)) {
             throw new \InvalidArgumentException('non-nullable recipient_age_verification cannot be null');

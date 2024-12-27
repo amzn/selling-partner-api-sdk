@@ -56,8 +56,9 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyPalletDelivery()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setPalletDelivery($testValue);
         $this->assertEquals($testValue, $this->model->getPalletDelivery());
@@ -68,8 +69,9 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertySignatureConfirmation()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setSignatureConfirmation($testValue);
         $this->assertEquals($testValue, $this->model->getSignatureConfirmation());
@@ -80,8 +82,9 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyRecipientIdentityVerification()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setRecipientIdentityVerification($testValue);
         $this->assertEquals($testValue, $this->model->getRecipientIdentityVerification());
@@ -92,8 +95,9 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyRecipientAgeVerification()
     {
-        
-        $testValue = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setRecipientAgeVerification($testValue);
         $this->assertEquals($testValue, $this->model->getRecipientAgeVerification());

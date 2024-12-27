@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * RegulatedInformation Class Doc Comment
@@ -296,7 +297,7 @@ class RegulatedInformation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets fields
      *
-     * @return \OpenAPI\Client\Model\orders\RegulatedInformationField[]
+     * @return arrayA
      */
     public function getFields(): array
     {
@@ -306,11 +307,11 @@ class RegulatedInformation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets fields
      *
-     * @param \OpenAPI\Client\Model\orders\RegulatedInformationField[] $fields A list of regulated information fields as collected from the regulatory form.
+     * @param array $fields A list of regulated information fields as collected from the regulatory form.
      *
      * @return self
      */
-    public function setFields($fields): self
+    public function setFields(array $fields): self
     {
         if (is_null($fields)) {
             throw new \InvalidArgumentException('non-nullable fields cannot be null');

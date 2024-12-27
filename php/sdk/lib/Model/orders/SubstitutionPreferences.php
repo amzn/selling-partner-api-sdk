@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * SubstitutionPreferences Class Doc Comment
@@ -343,7 +344,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return self
      */
-    public function setSubstitutionType($substitution_type): self
+    public function setSubstitutionType(string $substitution_type): self
     {
         if (is_null($substitution_type)) {
             throw new \InvalidArgumentException('non-nullable substitution_type cannot be null');
@@ -366,7 +367,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets substitution_options
      *
-     * @return \OpenAPI\Client\Model\orders\SubstitutionOption[]|null
+     * @return arrayA|null
      */
     public function getSubstitutionOptions(): ?array
     {
@@ -376,11 +377,11 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets substitution_options
      *
-     * @param \OpenAPI\Client\Model\orders\SubstitutionOption[]|null $substitution_options A collection of substitution options.
+     * @param array|null $substitution_options A collection of substitution options.
      *
      * @return self
      */
-    public function setSubstitutionOptions($substitution_options): self
+    public function setSubstitutionOptions(?array $substitution_options): self
     {
         if (is_null($substitution_options)) {
             throw new \InvalidArgumentException('non-nullable substitution_options cannot be null');

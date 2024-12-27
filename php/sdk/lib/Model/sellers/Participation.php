@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\sellers;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * Participation Class Doc Comment
@@ -320,7 +321,7 @@ class Participation implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setIsParticipating($is_participating): self
+    public function setIsParticipating(bool $is_participating): self
     {
         if (is_null($is_participating)) {
             throw new \InvalidArgumentException('non-nullable is_participating cannot be null');
@@ -347,7 +348,7 @@ class Participation implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return self
      */
-    public function setHasSuspendedListings($has_suspended_listings): self
+    public function setHasSuspendedListings(bool $has_suspended_listings): self
     {
         if (is_null($has_suspended_listings)) {
             throw new \InvalidArgumentException('non-nullable has_suspended_listings cannot be null');

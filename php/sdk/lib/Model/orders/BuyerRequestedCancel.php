@@ -31,6 +31,7 @@ namespace OpenAPI\Client\Model\orders;
 use
 ArrayAccess;
 use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ModelInterface;
 
 /**
  * BuyerRequestedCancel Class Doc Comment
@@ -314,7 +315,7 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return self
      */
-    public function setIsBuyerRequestedCancel($is_buyer_requested_cancel): self
+    public function setIsBuyerRequestedCancel(?string $is_buyer_requested_cancel): self
     {
         if (is_null($is_buyer_requested_cancel)) {
             throw new \InvalidArgumentException('non-nullable is_buyer_requested_cancel cannot be null');
@@ -341,7 +342,7 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return self
      */
-    public function setBuyerCancelReason($buyer_cancel_reason): self
+    public function setBuyerCancelReason(?string $buyer_cancel_reason): self
     {
         if (is_null($buyer_cancel_reason)) {
             throw new \InvalidArgumentException('non-nullable buyer_cancel_reason cannot be null');

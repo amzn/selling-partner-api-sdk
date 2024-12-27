@@ -1,0 +1,77 @@
+<?php
+/**
+ * BatchResponseTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\pricing\BatchResponse;
+
+/**
+ * BatchResponseTest Class Doc Comment
+ *
+ * @category    Class
+ * @description The common properties for responses to individual requests within a batch.
+ * @package     OpenAPI\Client
+ */
+class BatchResponseTest extends TestCase
+{
+
+    private BatchResponse $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new BatchResponse();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "BatchResponse"
+     */
+    public function testBatchResponse()
+    {
+        $this->assertInstanceOf(BatchResponse::class, $this->model);
+    }
+
+    /**
+     * Test attribute "headers"
+     */
+    public function testPropertyHeaders()
+    {
+        
+        $testValue = new array<string,string>();
+        
+        $this->model->setHeaders($testValue);
+        $this->assertEquals($testValue, $this->model->getHeaders());
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\pricing\HttpStatusLine();
+        
+        $this->model->setStatus($testValue);
+        $this->assertEquals($testValue, $this->model->getStatus());
+    }
+}
