@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\OfferType;
+use OpenAPI\Client\Model\pricingV0\OfferType;
 
 /**
  * OfferTypeTest Class Doc Comment
@@ -56,7 +56,7 @@ class OfferTypeTest extends TestCase
      */
     public function testPropertyOfferType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\OfferCustomerType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\OfferCustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class OfferTypeTest extends TestCase
     public function testPropertyBuyingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\PriceType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\PriceType();
         
         $this->model->setBuyingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getBuyingPrice());
@@ -82,7 +82,7 @@ class OfferTypeTest extends TestCase
     public function testPropertyRegularPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setRegularPrice($testValue);
         $this->assertEquals($testValue, $this->model->getRegularPrice());
@@ -94,7 +94,7 @@ class OfferTypeTest extends TestCase
     public function testPropertyBusinessPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setBusinessPrice($testValue);
         $this->assertEquals($testValue, $this->model->getBusinessPrice());

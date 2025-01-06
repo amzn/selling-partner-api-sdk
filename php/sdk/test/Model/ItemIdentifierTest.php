@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\ItemIdentifier;
+use OpenAPI\Client\Model\catalogItems\ItemIdentifier;
 
 /**
  * ItemIdentifierTest Class Doc Comment

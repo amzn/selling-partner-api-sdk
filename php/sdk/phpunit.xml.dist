@@ -3,7 +3,7 @@
   <coverage processUncoveredFiles="true">
     <include>
       <directory suffix=".php">./lib/Api</directory>
-      <directory suffix=".php">./lib/Model/vendor/transactionstatus</directory>
+      <directory suffix=".php">./lib/Model/vendorTransactionStatus</directory>
     </include>
   </coverage>
   <testsuites>

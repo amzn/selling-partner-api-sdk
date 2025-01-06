@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PartneredLtlDataInput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PartneredLtlDataInput;
 
 /**
  * PartneredLtlDataInputTest Class Doc Comment
@@ -57,7 +57,7 @@ class PartneredLtlDataInputTest extends TestCase
     public function testPropertyContact()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Contact();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Contact();
         
         $this->model->setContact($testValue);
         $this->assertEquals($testValue, $this->model->getContact());
@@ -80,7 +80,7 @@ class PartneredLtlDataInputTest extends TestCase
      */
     public function testPropertySellerFreightClass()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\SellerFreightClass();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\SellerFreightClass();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -117,7 +117,7 @@ class PartneredLtlDataInputTest extends TestCase
     public function testPropertyTotalWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Weight();
         
         $this->model->setTotalWeight($testValue);
         $this->assertEquals($testValue, $this->model->getTotalWeight());
@@ -129,7 +129,7 @@ class PartneredLtlDataInputTest extends TestCase
     public function testPropertySellerDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Amount();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Amount();
         
         $this->model->setSellerDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getSellerDeclaredValue());

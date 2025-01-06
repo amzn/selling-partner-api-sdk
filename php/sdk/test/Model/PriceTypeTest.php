@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\PriceType;
+use OpenAPI\Client\Model\pricingV0\PriceType;
 
 /**
  * PriceTypeTest Class Doc Comment
@@ -57,7 +57,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyLandedPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setLandedPrice($testValue);
         $this->assertEquals($testValue, $this->model->getLandedPrice());
@@ -69,7 +69,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -81,7 +81,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setShipping($testValue);
         $this->assertEquals($testValue, $this->model->getShipping());
@@ -93,7 +93,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\Points();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

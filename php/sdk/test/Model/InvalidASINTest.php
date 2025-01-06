@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InvalidASIN;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InvalidASIN;
 
 /**
  * InvalidASINTest Class Doc Comment
@@ -67,7 +67,7 @@ class InvalidASINTest extends TestCase
      */
     public function testPropertyErrorReason()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\ErrorReason();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\ErrorReason();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

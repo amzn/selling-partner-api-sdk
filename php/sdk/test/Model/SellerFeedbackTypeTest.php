@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\SellerFeedbackType;
+use OpenAPI\Client\Model\pricingV0\SellerFeedbackType;
 
 /**
  * SellerFeedbackTypeTest Class Doc Comment

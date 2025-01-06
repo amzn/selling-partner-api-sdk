@@ -154,17 +154,17 @@ class FeesApi
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  body (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse
+     * @return \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse
      */
     public function getMyFeesEstimateForASIN(
         string $asin,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
-    ): \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse {
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
+    ): \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse {
         list($response) = $this->getMyFeesEstimateForASINWithHttpInfo($asin, $body);
         return $response;
     }
@@ -174,16 +174,16 @@ class FeesApi
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyFeesEstimateForASINWithHttpInfo(
         string $asin,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): array {
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
         $request = $this->config->sign($request);
@@ -226,128 +226,128 @@ class FeesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse';
+            $returnType = '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -368,7 +368,7 @@ class FeesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -376,7 +376,7 @@ class FeesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -384,7 +384,7 @@ class FeesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -392,7 +392,7 @@ class FeesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class FeesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class FeesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class FeesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class FeesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class FeesApi
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -447,7 +447,7 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINAsync(
         string $asin,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): PromiseInterface {
         return $this->getMyFeesEstimateForASINAsyncWithHttpInfo($asin, $body)
             ->then(
@@ -462,7 +462,7 @@ class FeesApi
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -470,9 +470,9 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINAsyncWithHttpInfo(
         string $asin,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse';
+        $returnType = '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -518,7 +518,7 @@ class FeesApi
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -526,7 +526,7 @@ class FeesApi
      */
     public function getMyFeesEstimateForASINRequest(
         string $asin,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): Request {
         // verify the required parameter 'asin' is set
         if ($asin === null || (is_array($asin) && count($asin) === 0)) {
@@ -630,17 +630,17 @@ class FeesApi
      *
      * @param  string $seller_sku
      *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  body (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse
+     * @return \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse
      */
     public function getMyFeesEstimateForSKU(
         string $seller_sku,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
-    ): \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse {
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
+    ): \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse {
         list($response) = $this->getMyFeesEstimateForSKUWithHttpInfo($seller_sku, $body);
         return $response;
     }
@@ -650,16 +650,16 @@ class FeesApi
      *
      * @param  string $seller_sku
      *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyFeesEstimateForSKUWithHttpInfo(
         string $seller_sku,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): array {
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
         $request = $this->config->sign($request);
@@ -702,128 +702,128 @@ class FeesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse';
+            $returnType = '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -844,7 +844,7 @@ class FeesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -852,7 +852,7 @@ class FeesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -860,7 +860,7 @@ class FeesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -868,7 +868,7 @@ class FeesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -876,7 +876,7 @@ class FeesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -884,7 +884,7 @@ class FeesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -892,7 +892,7 @@ class FeesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -900,7 +900,7 @@ class FeesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -915,7 +915,7 @@ class FeesApi
      *
      * @param  string $seller_sku
      *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -923,7 +923,7 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKUAsync(
         string $seller_sku,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): PromiseInterface {
         return $this->getMyFeesEstimateForSKUAsyncWithHttpInfo($seller_sku, $body)
             ->then(
@@ -938,7 +938,7 @@ class FeesApi
      *
      * @param  string $seller_sku
      *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -946,9 +946,9 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKUAsyncWithHttpInfo(
         string $seller_sku,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse';
+        $returnType = '\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -994,7 +994,7 @@ class FeesApi
      *
      * @param  string $seller_sku
      *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+     * @param  \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1002,7 +1002,7 @@ class FeesApi
      */
     public function getMyFeesEstimateForSKURequest(
         string $seller_sku,
-        \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest $body
+        \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest $body
     ): Request {
         // verify the required parameter 'seller_sku' is set
         if ($seller_sku === null || (is_array($seller_sku) && count($seller_sku) === 0)) {
@@ -1104,12 +1104,12 @@ class FeesApi
     /**
      * Operation getMyFeesEstimates
      *
-     * @param  \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[] $body
+     * @param  \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[] $body
      *  body (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\productfees\FeesEstimateResult[]
+     * @return \OpenAPI\Client\Model\productFees\FeesEstimateResult[]
      */
     public function getMyFeesEstimates(
         array $body
@@ -1121,12 +1121,12 @@ class FeesApi
     /**
      * Operation getMyFeesEstimatesWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[] $body
+     * @param  \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[] $body
      *  (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\productfees\FeesEstimateResult[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\productFees\FeesEstimateResult[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyFeesEstimatesWithHttpInfo(
         array $body
@@ -1172,128 +1172,128 @@ class FeesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\productfees\FeesEstimateResult[]' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\FeesEstimateResult[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\FeesEstimateResult[]' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\FeesEstimateResult[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\FeesEstimateResult[]', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\FeesEstimateResult[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\productfees\FeesEstimateResult[]';
+            $returnType = '\OpenAPI\Client\Model\productFees\FeesEstimateResult[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1314,7 +1314,7 @@ class FeesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\FeesEstimateResult[]',
+                        '\OpenAPI\Client\Model\productFees\FeesEstimateResult[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1322,7 +1322,7 @@ class FeesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1330,7 +1330,7 @@ class FeesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1338,7 +1338,7 @@ class FeesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1346,7 +1346,7 @@ class FeesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1354,7 +1354,7 @@ class FeesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1362,7 +1362,7 @@ class FeesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1370,7 +1370,7 @@ class FeesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\productfees\GetMyFeesEstimatesErrorList',
+                        '\OpenAPI\Client\Model\productFees\GetMyFeesEstimatesErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1383,7 +1383,7 @@ class FeesApi
     /**
      * Operation getMyFeesEstimatesAsync
      *
-     * @param  \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[] $body
+     * @param  \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[] $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1403,7 +1403,7 @@ class FeesApi
     /**
      * Operation getMyFeesEstimatesAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[] $body
+     * @param  \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[] $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1412,7 +1412,7 @@ class FeesApi
     public function getMyFeesEstimatesAsyncWithHttpInfo(
         array $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\productfees\FeesEstimateResult[]';
+        $returnType = '\OpenAPI\Client\Model\productFees\FeesEstimateResult[]';
         $request = $this->getMyFeesEstimatesRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1456,7 +1456,7 @@ class FeesApi
     /**
      * Create request for operation 'getMyFeesEstimates'
      *
-     * @param  \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[] $body
+     * @param  \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[] $body
      *  (required)
      *
      * @throws \InvalidArgumentException

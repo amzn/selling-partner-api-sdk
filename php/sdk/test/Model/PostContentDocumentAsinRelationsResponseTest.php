@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\PostContentDocumentAsinRelationsResponse;
+use OpenAPI\Client\Model\aplusContent\PostContentDocumentAsinRelationsResponse;
 
 /**
  * PostContentDocumentAsinRelationsResponseTest Class Doc Comment

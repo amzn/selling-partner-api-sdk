@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\BrandRefinement;
+use OpenAPI\Client\Model\catalogItems\BrandRefinement;
 
 /**
  * BrandRefinementTest Class Doc Comment

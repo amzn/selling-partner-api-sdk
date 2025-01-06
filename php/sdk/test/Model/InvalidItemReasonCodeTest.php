@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\InvalidItemReasonCode;
+use OpenAPI\Client\Model\fulfillmentOutbound\InvalidItemReasonCode;
 
 /**
  * InvalidItemReasonCodeTest Class Doc Comment

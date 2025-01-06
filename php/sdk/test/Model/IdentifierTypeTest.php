@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\IdentifierType;
+use OpenAPI\Client\Model\pricingV0\IdentifierType;
 
 /**
  * IdentifierTypeTest Class Doc Comment
@@ -57,7 +57,7 @@ class IdentifierTypeTest extends TestCase
     public function testPropertyMarketplaceAsin()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\ASINIdentifier();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\ASINIdentifier();
         
         $this->model->setMarketplaceAsin($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplaceAsin());
@@ -69,7 +69,7 @@ class IdentifierTypeTest extends TestCase
     public function testPropertySkuIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\SellerSKUIdentifier();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\SellerSKUIdentifier();
         
         $this->model->setSkuIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getSkuIdentifier());

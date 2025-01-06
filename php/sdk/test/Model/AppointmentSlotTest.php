@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\AppointmentSlot;
+use OpenAPI\Client\Model\fulfillmentInbound\AppointmentSlot;
 
 /**
  * AppointmentSlotTest Class Doc Comment
@@ -68,7 +68,7 @@ class AppointmentSlotTest extends TestCase
     public function testPropertySlotTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\AppointmentSlotTime();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\AppointmentSlotTime();
         
         $this->model->setSlotTime($testValue);
         $this->assertEquals($testValue, $this->model->getSlotTime());

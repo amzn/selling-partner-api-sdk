@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\Price;
+use OpenAPI\Client\Model\pricingV0\Price;
 
 /**
  * PriceTest Class Doc Comment
@@ -90,7 +90,7 @@ class PriceTest extends TestCase
     public function testPropertyProduct()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\Product();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\Product();
         
         $this->model->setProduct($testValue);
         $this->assertEquals($testValue, $this->model->getProduct());

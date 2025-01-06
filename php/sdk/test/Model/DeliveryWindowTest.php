@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\DeliveryWindow;
+use OpenAPI\Client\Model\fulfillmentOutbound\DeliveryWindow;
 
 /**
  * DeliveryWindowTest Class Doc Comment

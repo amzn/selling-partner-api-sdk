@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ShipmentDestination;
+use OpenAPI\Client\Model\fulfillmentInbound\ShipmentDestination;
 
 /**
  * ShipmentDestinationTest Class Doc Comment
@@ -57,7 +57,7 @@ class ShipmentDestinationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

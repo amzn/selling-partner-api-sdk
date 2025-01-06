@@ -165,14 +165,14 @@ class CatalogItemsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\catalogitems\Item
+     * @return \OpenAPI\Client\Model\catalogItems\Item
      */
     public function getCatalogItem(
         string $asin,
         array $marketplace_ids,
         ?array $included_data = null,
         ?string $locale = null
-    ): \OpenAPI\Client\Model\catalogitems\Item {
+    ): \OpenAPI\Client\Model\catalogItems\Item {
         list($response) = $this->getCatalogItemWithHttpInfo($asin, $marketplace_ids, $included_data, $locale);
         return $response;
     }
@@ -193,7 +193,7 @@ class CatalogItemsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\catalogitems\Item, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\catalogItems\Item, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCatalogItemWithHttpInfo(
         string $asin,
@@ -242,143 +242,143 @@ class CatalogItemsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\catalogitems\Item' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\Item' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\Item' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\Item' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\Item', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\Item', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\catalogitems\Item';
+            $returnType = '\OpenAPI\Client\Model\catalogItems\Item';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -399,7 +399,7 @@ class CatalogItemsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\Item',
+                        '\OpenAPI\Client\Model\catalogItems\Item',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class CatalogItemsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class CatalogItemsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class CatalogItemsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class CatalogItemsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class CatalogItemsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class CatalogItemsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -455,7 +455,7 @@ class CatalogItemsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -463,7 +463,7 @@ class CatalogItemsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -527,7 +527,7 @@ class CatalogItemsApi
         ?array $included_data = null,
         ?string $locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\catalogitems\Item';
+        $returnType = '\OpenAPI\Client\Model\catalogItems\Item';
         $request = $this->getCatalogItemRequest($asin, $marketplace_ids, $included_data, $locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -739,7 +739,7 @@ class CatalogItemsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\catalogitems\ItemSearchResults
+     * @return \OpenAPI\Client\Model\catalogItems\ItemSearchResults
      */
     public function searchCatalogItems(
         array $marketplace_ids,
@@ -754,7 +754,7 @@ class CatalogItemsApi
         ?int $page_size = 10,
         ?string $page_token = null,
         ?string $keywords_locale = null
-    ): \OpenAPI\Client\Model\catalogitems\ItemSearchResults {
+    ): \OpenAPI\Client\Model\catalogItems\ItemSearchResults {
         list($response) = $this->searchCatalogItemsWithHttpInfo($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
         return $response;
     }
@@ -791,7 +791,7 @@ class CatalogItemsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\catalogitems\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\catalogItems\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchCatalogItemsWithHttpInfo(
         array $marketplace_ids,
@@ -848,143 +848,143 @@ class CatalogItemsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\catalogitems\ItemSearchResults' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ItemSearchResults' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ItemSearchResults' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ItemSearchResults' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ItemSearchResults', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ItemSearchResults', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\catalogitems\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\catalogItems\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogitems\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\catalogItems\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogitems\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\catalogitems\ItemSearchResults';
+            $returnType = '\OpenAPI\Client\Model\catalogItems\ItemSearchResults';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1005,7 +1005,7 @@ class CatalogItemsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ItemSearchResults',
+                        '\OpenAPI\Client\Model\catalogItems\ItemSearchResults',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1013,7 +1013,7 @@ class CatalogItemsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1021,7 +1021,7 @@ class CatalogItemsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1029,7 +1029,7 @@ class CatalogItemsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1037,7 +1037,7 @@ class CatalogItemsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1045,7 +1045,7 @@ class CatalogItemsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1053,7 +1053,7 @@ class CatalogItemsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1061,7 +1061,7 @@ class CatalogItemsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1069,7 +1069,7 @@ class CatalogItemsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogitems\ErrorList',
+                        '\OpenAPI\Client\Model\catalogItems\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1181,7 +1181,7 @@ class CatalogItemsApi
         ?string $page_token = null,
         ?string $keywords_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\catalogitems\ItemSearchResults';
+        $returnType = '\OpenAPI\Client\Model\catalogItems\ItemSearchResults';
         $request = $this->searchCatalogItemsRequest($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

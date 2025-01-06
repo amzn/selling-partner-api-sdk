@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **gift_message** | **string** | A message to the gift recipient, if applicable. | [optional]
 **displayable_comment** | **string** | Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip. | [optional]
 **fulfillment_network_sku** | **string** | Amazon&#39;s fulfillment network SKU of the item. | [optional]
-**per_unit_declared_value** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Money**](Money.md) |  | [optional]
-**per_unit_price** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Money**](Money.md) |  | [optional]
-**per_unit_tax** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Money**](Money.md) |  | [optional]
+**per_unit_declared_value** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
+**per_unit_price** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
+**per_unit_tax** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\CustomPlacementInput;
+use OpenAPI\Client\Model\fulfillmentInbound\CustomPlacementInput;
 
 /**
  * CustomPlacementInputTest Class Doc Comment

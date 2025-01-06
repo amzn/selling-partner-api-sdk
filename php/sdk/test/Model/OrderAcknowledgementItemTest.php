@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\OrderAcknowledgementItem;
+use OpenAPI\Client\Model\vendorDfOrders\OrderAcknowledgementItem;
 
 /**
  * OrderAcknowledgementItemTest Class Doc Comment
@@ -91,7 +91,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyAcknowledgementStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\AcknowledgementStatus();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\AcknowledgementStatus();
         
         $this->model->setAcknowledgementStatus($testValue);
         $this->assertEquals($testValue, $this->model->getAcknowledgementStatus());
@@ -103,7 +103,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -115,7 +115,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());

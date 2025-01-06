@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse;
+use OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse;
 
 /**
  * DeleteInventoryItemResponseTest Class Doc Comment

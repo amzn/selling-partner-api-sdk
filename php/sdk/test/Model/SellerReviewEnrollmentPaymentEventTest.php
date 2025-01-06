@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\SellerReviewEnrollmentPaymentEvent;
+use OpenAPI\Client\Model\financesV0\SellerReviewEnrollmentPaymentEvent;
 
 /**
  * SellerReviewEnrollmentPaymentEventTest Class Doc Comment
@@ -91,7 +91,7 @@ class SellerReviewEnrollmentPaymentEventTest extends TestCase
     public function testPropertyFeeComponent()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\FeeComponent();
+        $testValue = new \OpenAPI\Client\Model\financesV0\FeeComponent();
         
         $this->model->setFeeComponent($testValue);
         $this->assertEquals($testValue, $this->model->getFeeComponent());
@@ -103,7 +103,7 @@ class SellerReviewEnrollmentPaymentEventTest extends TestCase
     public function testPropertyChargeComponent()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\ChargeComponent();
+        $testValue = new \OpenAPI\Client\Model\financesV0\ChargeComponent();
         
         $this->model->setChargeComponent($testValue);
         $this->assertEquals($testValue, $this->model->getChargeComponent());
@@ -115,7 +115,7 @@ class SellerReviewEnrollmentPaymentEventTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());

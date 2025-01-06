@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\ShippingServiceOptions;
+use OpenAPI\Client\Model\merchantFulfillment\ShippingServiceOptions;
 
 /**
  * ShippingServiceOptionsTest Class Doc Comment
@@ -56,7 +56,7 @@ class ShippingServiceOptionsTest extends TestCase
      */
     public function testPropertyDeliveryExperience()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\DeliveryExperienceType();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\DeliveryExperienceType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class ShippingServiceOptionsTest extends TestCase
     public function testPropertyDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\CurrencyAmount();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount();
         
         $this->model->setDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getDeclaredValue());
@@ -92,7 +92,7 @@ class ShippingServiceOptionsTest extends TestCase
      */
     public function testPropertyCarrierWillPickUpOption()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\CarrierWillPickUpOption();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\CarrierWillPickUpOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -105,7 +105,7 @@ class ShippingServiceOptionsTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\LabelFormat();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\ContentBadge;
+use OpenAPI\Client\Model\aplusContent\ContentBadge;
 
 /**
  * ContentBadgeTest Class Doc Comment

@@ -169,7 +169,7 @@ class DefinitionsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition
+     * @return \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition
      */
     public function getDefinitionsProductType(
         string $product_type,
@@ -179,7 +179,7 @@ class DefinitionsApi
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT'
-    ): \OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition {
+    ): \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition {
         list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
         return $response;
     }
@@ -204,7 +204,7 @@ class DefinitionsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDefinitionsProductTypeWithHttpInfo(
         string $product_type,
@@ -256,143 +256,143 @@ class DefinitionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition';
+            $returnType = '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -413,7 +413,7 @@ class DefinitionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -421,7 +421,7 @@ class DefinitionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -429,7 +429,7 @@ class DefinitionsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -437,7 +437,7 @@ class DefinitionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -445,7 +445,7 @@ class DefinitionsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -453,7 +453,7 @@ class DefinitionsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -461,7 +461,7 @@ class DefinitionsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -469,7 +469,7 @@ class DefinitionsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,7 +477,7 @@ class DefinitionsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -555,7 +555,7 @@ class DefinitionsApi
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT'
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition';
+        $returnType = '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition';
         $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -787,7 +787,7 @@ class DefinitionsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\producttypedefinitions\ProductTypeList
+     * @return \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList
      */
     public function searchDefinitionsProductTypes(
         array $marketplace_ids,
@@ -795,7 +795,7 @@ class DefinitionsApi
         ?string $item_name = null,
         ?string $locale = null,
         ?string $search_locale = null
-    ): \OpenAPI\Client\Model\producttypedefinitions\ProductTypeList {
+    ): \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList {
         list($response) = $this->searchDefinitionsProductTypesWithHttpInfo($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
         return $response;
     }
@@ -816,7 +816,7 @@ class DefinitionsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\producttypedefinitions\ProductTypeList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchDefinitionsProductTypesWithHttpInfo(
         array $marketplace_ids,
@@ -866,143 +866,143 @@ class DefinitionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\producttypedefinitions\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\productTypeDefinitions\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\producttypedefinitions\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList';
+            $returnType = '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1023,7 +1023,7 @@ class DefinitionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1031,7 +1031,7 @@ class DefinitionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1039,7 +1039,7 @@ class DefinitionsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1047,7 +1047,7 @@ class DefinitionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1055,7 +1055,7 @@ class DefinitionsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1063,7 +1063,7 @@ class DefinitionsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1071,7 +1071,7 @@ class DefinitionsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1079,7 +1079,7 @@ class DefinitionsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1087,7 +1087,7 @@ class DefinitionsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\producttypedefinitions\ErrorList',
+                        '\OpenAPI\Client\Model\productTypeDefinitions\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1153,7 +1153,7 @@ class DefinitionsApi
         ?string $locale = null,
         ?string $search_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList';
+        $returnType = '\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList';
         $request = $this->searchDefinitionsProductTypesRequest($marketplace_ids, $keywords, $item_name, $locale, $search_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

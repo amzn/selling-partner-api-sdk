@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\FailedAdhocDisbursementEvent;
+use OpenAPI\Client\Model\financesV0\FailedAdhocDisbursementEvent;
 
 /**
  * FailedAdhocDisbursementEventTest Class Doc Comment
@@ -112,7 +112,7 @@ class FailedAdhocDisbursementEventTest extends TestCase
     public function testPropertyTransferAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTransferAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTransferAmount());

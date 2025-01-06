@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\GetPrepInstructionsResponse;
+use OpenAPI\Client\Model\fulfillmentInboundV0\GetPrepInstructionsResponse;
 
 /**
  * GetPrepInstructionsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetPrepInstructionsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\GetPrepInstructionsResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\GetPrepInstructionsResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

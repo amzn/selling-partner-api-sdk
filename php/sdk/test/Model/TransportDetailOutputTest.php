@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\TransportDetailOutput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\TransportDetailOutput;
 
 /**
  * TransportDetailOutputTest Class Doc Comment
@@ -57,7 +57,7 @@ class TransportDetailOutputTest extends TestCase
     public function testPropertyPartneredSmallParcelData()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\PartneredSmallParcelDataOutput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\PartneredSmallParcelDataOutput();
         
         $this->model->setPartneredSmallParcelData($testValue);
         $this->assertEquals($testValue, $this->model->getPartneredSmallParcelData());
@@ -69,7 +69,7 @@ class TransportDetailOutputTest extends TestCase
     public function testPropertyNonPartneredSmallParcelData()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\NonPartneredSmallParcelDataOutput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredSmallParcelDataOutput();
         
         $this->model->setNonPartneredSmallParcelData($testValue);
         $this->assertEquals($testValue, $this->model->getNonPartneredSmallParcelData());
@@ -81,7 +81,7 @@ class TransportDetailOutputTest extends TestCase
     public function testPropertyPartneredLtlData()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\PartneredLtlDataOutput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\PartneredLtlDataOutput();
         
         $this->model->setPartneredLtlData($testValue);
         $this->assertEquals($testValue, $this->model->getPartneredLtlData());
@@ -93,7 +93,7 @@ class TransportDetailOutputTest extends TestCase
     public function testPropertyNonPartneredLtlData()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\NonPartneredLtlDataOutput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredLtlDataOutput();
         
         $this->model->setNonPartneredLtlData($testValue);
         $this->assertEquals($testValue, $this->model->getNonPartneredLtlData());

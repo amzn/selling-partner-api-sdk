@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ProductAdsPaymentEvent;
+use OpenAPI\Client\Model\financesV0\ProductAdsPaymentEvent;
 
 /**
  * ProductAdsPaymentEventTest Class Doc Comment
@@ -91,7 +91,7 @@ class ProductAdsPaymentEventTest extends TestCase
     public function testPropertyBaseValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setBaseValue($testValue);
         $this->assertEquals($testValue, $this->model->getBaseValue());
@@ -103,7 +103,7 @@ class ProductAdsPaymentEventTest extends TestCase
     public function testPropertyTaxValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxValue($testValue);
         $this->assertEquals($testValue, $this->model->getTaxValue());
@@ -115,7 +115,7 @@ class ProductAdsPaymentEventTest extends TestCase
     public function testPropertyTransactionValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTransactionValue($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionValue());

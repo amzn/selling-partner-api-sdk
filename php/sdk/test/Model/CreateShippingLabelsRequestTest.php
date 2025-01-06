@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.shipping\CreateShippingLabelsRequest;
+use OpenAPI\Client\Model\vendorDfShipping\CreateShippingLabelsRequest;
 
 /**
  * CreateShippingLabelsRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateShippingLabelsRequestTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -69,7 +69,7 @@ class CreateShippingLabelsRequestTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());

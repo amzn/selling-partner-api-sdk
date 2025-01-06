@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\ShipmentDetails;
+use OpenAPI\Client\Model\vendorDfOrders\ShipmentDetails;
 
 /**
  * ShipmentDetailsTest Class Doc Comment
@@ -112,7 +112,7 @@ class ShipmentDetailsTest extends TestCase
     public function testPropertyShipmentDates()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\ShipmentDates();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\ShipmentDates();
         
         $this->model->setShipmentDates($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentDates());

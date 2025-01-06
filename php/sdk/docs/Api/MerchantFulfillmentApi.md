@@ -14,7 +14,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `cancelShipment()`
 
 ```php
-cancelShipment($shipment_id): \OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse
+cancelShipment($shipment_id): \OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse
 ```
 
 
@@ -52,7 +52,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse**](../Model/CancelShipmentResponse.md)
+[**\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse**](../Model/CancelShipmentResponse.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ No authorization required
 ## `createShipment()`
 
 ```php
-createShipment($body): \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse
+createShipment($body): \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse
 ```
 
 
@@ -90,7 +90,7 @@ $apiInstance = new OpenAPI\Client\Api\MerchantFulfillmentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest(); // \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest | The request schema for the `CreateShipment` operation.
+$body = new \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest(); // \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest | The request schema for the `CreateShipment` operation.
 
 try {
     $result = $apiInstance->createShipment($body);
@@ -104,11 +104,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest**](../Model/CreateShipmentRequest.md)| The request schema for the &#x60;CreateShipment&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest**](../Model/CreateShipmentRequest.md)| The request schema for the &#x60;CreateShipment&#x60; operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse**](../Model/CreateShipmentResponse.md)
+[**\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse**](../Model/CreateShipmentResponse.md)
 
 ### Authorization
 
@@ -126,7 +126,7 @@ No authorization required
 ## `getAdditionalSellerInputs()`
 
 ```php
-getAdditionalSellerInputs($body): \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse
+getAdditionalSellerInputs($body): \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse
 ```
 
 
@@ -146,7 +146,7 @@ $apiInstance = new OpenAPI\Client\Api\MerchantFulfillmentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest(); // \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest | The request schema for the `GetAdditionalSellerInputs` operation.
+$body = new \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest(); // \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest | The request schema for the `GetAdditionalSellerInputs` operation.
 
 try {
     $result = $apiInstance->getAdditionalSellerInputs($body);
@@ -160,11 +160,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest**](../Model/GetAdditionalSellerInputsRequest.md)| The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest**](../Model/GetAdditionalSellerInputsRequest.md)| The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse**](../Model/GetAdditionalSellerInputsResponse.md)
+[**\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse**](../Model/GetAdditionalSellerInputsResponse.md)
 
 ### Authorization
 
@@ -182,7 +182,7 @@ No authorization required
 ## `getEligibleShipmentServices()`
 
 ```php
-getEligibleShipmentServices($body): \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse
+getEligibleShipmentServices($body): \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse
 ```
 
 
@@ -202,7 +202,7 @@ $apiInstance = new OpenAPI\Client\Api\MerchantFulfillmentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest(); // \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest | The request schema for the `GetEligibleShipmentServices` operation.
+$body = new \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest(); // \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest | The request schema for the `GetEligibleShipmentServices` operation.
 
 try {
     $result = $apiInstance->getEligibleShipmentServices($body);
@@ -216,11 +216,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest**](../Model/GetEligibleShipmentServicesRequest.md)| The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest**](../Model/GetEligibleShipmentServicesRequest.md)| The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse**](../Model/GetEligibleShipmentServicesResponse.md)
+[**\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse**](../Model/GetEligibleShipmentServicesResponse.md)
 
 ### Authorization
 
@@ -238,7 +238,7 @@ No authorization required
 ## `getShipment()`
 
 ```php
-getShipment($shipment_id): \OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse
+getShipment($shipment_id): \OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse
 ```
 
 
@@ -276,7 +276,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse**](../Model/GetShipmentResponse.md)
+[**\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse**](../Model/GetShipmentResponse.md)
 
 ### Authorization
 

@@ -11,7 +11,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getDefinitionsProductType()`
 
 ```php
-getDefinitionsProductType($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale): \OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition
+getDefinitionsProductType($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale): \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition
 ```
 
 
@@ -61,7 +61,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition**](../Model/ProductTypeDefinition.md)
+[**\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition**](../Model/ProductTypeDefinition.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ No authorization required
 ## `searchDefinitionsProductTypes()`
 
 ```php
-searchDefinitionsProductTypes($marketplace_ids, $keywords, $item_name, $locale, $search_locale): \OpenAPI\Client\Model\producttypedefinitions\ProductTypeList
+searchDefinitionsProductTypes($marketplace_ids, $keywords, $item_name, $locale, $search_locale): \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList
 ```
 
 
@@ -125,7 +125,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\producttypedefinitions\ProductTypeList**](../Model/ProductTypeList.md)
+[**\OpenAPI\Client\Model\productTypeDefinitions\ProductTypeList**](../Model/ProductTypeList.md)
 
 ### Authorization
 

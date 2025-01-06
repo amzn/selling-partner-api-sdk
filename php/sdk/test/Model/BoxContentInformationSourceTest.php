@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\BoxContentInformationSource;
+use OpenAPI\Client\Model\fulfillmentInbound\BoxContentInformationSource;
 
 /**
  * BoxContentInformationSourceTest Class Doc Comment

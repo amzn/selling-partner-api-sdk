@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\CancelSelfShipAppointmentResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\CancelSelfShipAppointmentResponse;
 
 /**
  * CancelSelfShipAppointmentResponseTest Class Doc Comment

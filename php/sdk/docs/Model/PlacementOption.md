@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discounts** | [**\OpenAPI\Client\Model\fulfillmentinbound\Incentive[]**](Incentive.md) | Discount for the offered option. |
+**discounts** | [**\OpenAPI\Client\Model\fulfillmentInbound\Incentive[]**](Incentive.md) | Discount for the offered option. |
 **expiration** | **\DateTime** | The expiration date of the placement option. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;. | [optional]
-**fees** | [**\OpenAPI\Client\Model\fulfillmentinbound\Incentive[]**](Incentive.md) | The fee for the offered option. |
+**fees** | [**\OpenAPI\Client\Model\fulfillmentInbound\Incentive[]**](Incentive.md) | The fee for the offered option. |
 **placement_option_id** | **string** | The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. |
 **shipment_ids** | **string[]** | Shipment ids. |
 **status** | **string** | The status of a placement option. Possible values: &#x60;OFFERED&#x60;, &#x60;ACCEPTED&#x60;, &#x60;EXPIRED&#x60;. |

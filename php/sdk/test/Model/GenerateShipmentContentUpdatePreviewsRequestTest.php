@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\GenerateShipmentContentUpdatePreviewsRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\GenerateShipmentContentUpdatePreviewsRequest;
 
 /**
  * GenerateShipmentContentUpdatePreviewsRequestTest Class Doc Comment

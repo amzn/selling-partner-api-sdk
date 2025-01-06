@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ListPackingGroupBoxesResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\ListPackingGroupBoxesResponse;
 
 /**
  * ListPackingGroupBoxesResponseTest Class Doc Comment
@@ -68,7 +68,7 @@ class ListPackingGroupBoxesResponseTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Pagination();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

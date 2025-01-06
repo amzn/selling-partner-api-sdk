@@ -10,7 +10,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `submitInventoryUpdate()`
 
 ```php
-submitInventoryUpdate($warehouse_id, $body): \OpenAPI\Client\Model\vendor.df.inventory\SubmitInventoryUpdateResponse
+submitInventoryUpdate($warehouse_id, $body): \OpenAPI\Client\Model\vendorDfInventory\SubmitInventoryUpdateResponse
 ```
 
 
@@ -31,7 +31,7 @@ $apiInstance = new OpenAPI\Client\Api\UpdateInventoryApi(
     new GuzzleHttp\Client()
 );
 $warehouse_id = 'warehouse_id_example'; // string | Identifier for the warehouse for which to update inventory.
-$body = new \OpenAPI\Client\Model\vendor.df.inventory\SubmitInventoryUpdateRequest(); // \OpenAPI\Client\Model\vendor.df.inventory\SubmitInventoryUpdateRequest | The request body containing the inventory update data to submit.
+$body = new \OpenAPI\Client\Model\vendorDfInventory\SubmitInventoryUpdateRequest(); // \OpenAPI\Client\Model\vendorDfInventory\SubmitInventoryUpdateRequest | The request body containing the inventory update data to submit.
 
 try {
     $result = $apiInstance->submitInventoryUpdate($warehouse_id, $body);
@@ -46,11 +46,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **warehouse_id** | **string**| Identifier for the warehouse for which to update inventory. | |
-| **body** | [**\OpenAPI\Client\Model\vendor.df.inventory\SubmitInventoryUpdateRequest**](../Model/SubmitInventoryUpdateRequest.md)| The request body containing the inventory update data to submit. | |
+| **body** | [**\OpenAPI\Client\Model\vendorDfInventory\SubmitInventoryUpdateRequest**](../Model/SubmitInventoryUpdateRequest.md)| The request body containing the inventory update data to submit. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.df.inventory\SubmitInventoryUpdateResponse**](../Model/SubmitInventoryUpdateResponse.md)
+[**\OpenAPI\Client\Model\vendorDfInventory\SubmitInventoryUpdateResponse**](../Model/SubmitInventoryUpdateResponse.md)
 
 ### Authorization
 

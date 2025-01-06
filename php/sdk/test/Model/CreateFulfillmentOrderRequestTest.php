@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\CreateFulfillmentOrderRequest;
+use OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderRequest;
 
 /**
  * CreateFulfillmentOrderRequestTest Class Doc Comment
@@ -112,7 +112,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\ShippingSpeedCategory();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -126,7 +126,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDeliveryWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DeliveryWindow();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\DeliveryWindow();
         
         $this->model->setDeliveryWindow($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryWindow());
@@ -138,7 +138,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDestinationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Address();
         
         $this->model->setDestinationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAddress());
@@ -150,7 +150,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDeliveryPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DeliveryPreferences();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\DeliveryPreferences();
         
         $this->model->setDeliveryPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryPreferences());
@@ -161,7 +161,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentAction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentAction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentAction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -174,7 +174,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentPolicy()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentPolicy();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentPolicy();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -188,7 +188,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyCodSettings()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\CODSettings();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\CODSettings();
         
         $this->model->setCodSettings($testValue);
         $this->assertEquals($testValue, $this->model->getCodSettings());

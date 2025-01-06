@@ -157,11 +157,11 @@ class MerchantFulfillmentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse
+     * @return \OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse
      */
     public function cancelShipment(
         string $shipment_id
-    ): \OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse {
+    ): \OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse {
         list($response) = $this->cancelShipmentWithHttpInfo($shipment_id);
         return $response;
     }
@@ -174,7 +174,7 @@ class MerchantFulfillmentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelShipmentWithHttpInfo(
         string $shipment_id
@@ -220,128 +220,128 @@ class MerchantFulfillmentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse';
+            $returnType = '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -362,7 +362,7 @@ class MerchantFulfillmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -370,7 +370,7 @@ class MerchantFulfillmentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -378,7 +378,7 @@ class MerchantFulfillmentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -386,7 +386,7 @@ class MerchantFulfillmentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -394,7 +394,7 @@ class MerchantFulfillmentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -402,7 +402,7 @@ class MerchantFulfillmentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -410,7 +410,7 @@ class MerchantFulfillmentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -418,7 +418,7 @@ class MerchantFulfillmentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -460,7 +460,7 @@ class MerchantFulfillmentApi
     public function cancelShipmentAsyncWithHttpInfo(
         string $shipment_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\merchantfulfillment\CancelShipmentResponse';
+        $returnType = '\OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse';
         $request = $this->cancelShipmentRequest($shipment_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -605,16 +605,16 @@ class MerchantFulfillmentApi
     /**
      * Operation createShipment
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
      *  The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse
+     * @return \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse
      */
     public function createShipment(
-        \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
-    ): \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse {
+        \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
+    ): \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse {
         list($response) = $this->createShipmentWithHttpInfo($body);
         return $response;
     }
@@ -622,15 +622,15 @@ class MerchantFulfillmentApi
     /**
      * Operation createShipmentWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
      *  The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createShipmentWithHttpInfo(
-        \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
     ): array {
         $request = $this->createShipmentRequest($body);
         $request = $this->config->sign($request);
@@ -673,128 +673,128 @@ class MerchantFulfillmentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse';
+            $returnType = '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -815,7 +815,7 @@ class MerchantFulfillmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -823,7 +823,7 @@ class MerchantFulfillmentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -831,7 +831,7 @@ class MerchantFulfillmentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -839,7 +839,7 @@ class MerchantFulfillmentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -847,7 +847,7 @@ class MerchantFulfillmentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -855,7 +855,7 @@ class MerchantFulfillmentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -863,7 +863,7 @@ class MerchantFulfillmentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -871,7 +871,7 @@ class MerchantFulfillmentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -884,14 +884,14 @@ class MerchantFulfillmentApi
     /**
      * Operation createShipmentAsync
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
      *  The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createShipmentAsync(
-        \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
     ): PromiseInterface {
         return $this->createShipmentAsyncWithHttpInfo($body)
             ->then(
@@ -904,16 +904,16 @@ class MerchantFulfillmentApi
     /**
      * Operation createShipmentAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
      *  The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createShipmentAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\merchantfulfillment\CreateShipmentResponse';
+        $returnType = '\OpenAPI\Client\Model\merchantFulfillment\CreateShipmentResponse';
         $request = $this->createShipmentRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -957,14 +957,14 @@ class MerchantFulfillmentApi
     /**
      * Create request for operation 'createShipment'
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
      *  The request schema for the &#x60;CreateShipment&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createShipmentRequest(
-        \OpenAPI\Client\Model\merchantfulfillment\CreateShipmentRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1052,16 +1052,16 @@ class MerchantFulfillmentApi
     /**
      * Operation getAdditionalSellerInputs
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
      *  The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse
+     * @return \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse
      */
     public function getAdditionalSellerInputs(
-        \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
-    ): \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse {
+        \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
+    ): \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse {
         list($response) = $this->getAdditionalSellerInputsWithHttpInfo($body);
         return $response;
     }
@@ -1069,15 +1069,15 @@ class MerchantFulfillmentApi
     /**
      * Operation getAdditionalSellerInputsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
      *  The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdditionalSellerInputsWithHttpInfo(
-        \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
     ): array {
         $request = $this->getAdditionalSellerInputsRequest($body);
         $request = $this->config->sign($request);
@@ -1120,128 +1120,128 @@ class MerchantFulfillmentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse';
+            $returnType = '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1262,7 +1262,7 @@ class MerchantFulfillmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1270,7 +1270,7 @@ class MerchantFulfillmentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1278,7 +1278,7 @@ class MerchantFulfillmentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1286,7 +1286,7 @@ class MerchantFulfillmentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1294,7 +1294,7 @@ class MerchantFulfillmentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1302,7 +1302,7 @@ class MerchantFulfillmentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1310,7 +1310,7 @@ class MerchantFulfillmentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1318,7 +1318,7 @@ class MerchantFulfillmentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1331,14 +1331,14 @@ class MerchantFulfillmentApi
     /**
      * Operation getAdditionalSellerInputsAsync
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
      *  The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getAdditionalSellerInputsAsync(
-        \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
     ): PromiseInterface {
         return $this->getAdditionalSellerInputsAsyncWithHttpInfo($body)
             ->then(
@@ -1351,16 +1351,16 @@ class MerchantFulfillmentApi
     /**
      * Operation getAdditionalSellerInputsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
      *  The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getAdditionalSellerInputsAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse';
+        $returnType = '\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse';
         $request = $this->getAdditionalSellerInputsRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1404,14 +1404,14 @@ class MerchantFulfillmentApi
     /**
      * Create request for operation 'getAdditionalSellerInputs'
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
      *  The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function getAdditionalSellerInputsRequest(
-        \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1499,16 +1499,16 @@ class MerchantFulfillmentApi
     /**
      * Operation getEligibleShipmentServices
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
      *  The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse
+     * @return \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse
      */
     public function getEligibleShipmentServices(
-        \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
-    ): \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse {
+        \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
+    ): \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse {
         list($response) = $this->getEligibleShipmentServicesWithHttpInfo($body);
         return $response;
     }
@@ -1516,15 +1516,15 @@ class MerchantFulfillmentApi
     /**
      * Operation getEligibleShipmentServicesWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
      *  The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEligibleShipmentServicesWithHttpInfo(
-        \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
     ): array {
         $request = $this->getEligibleShipmentServicesRequest($body);
         $request = $this->config->sign($request);
@@ -1567,128 +1567,128 @@ class MerchantFulfillmentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse';
+            $returnType = '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1709,7 +1709,7 @@ class MerchantFulfillmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1717,7 +1717,7 @@ class MerchantFulfillmentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1725,7 +1725,7 @@ class MerchantFulfillmentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1733,7 +1733,7 @@ class MerchantFulfillmentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1741,7 +1741,7 @@ class MerchantFulfillmentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1749,7 +1749,7 @@ class MerchantFulfillmentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1757,7 +1757,7 @@ class MerchantFulfillmentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1765,7 +1765,7 @@ class MerchantFulfillmentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1778,14 +1778,14 @@ class MerchantFulfillmentApi
     /**
      * Operation getEligibleShipmentServicesAsync
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
      *  The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getEligibleShipmentServicesAsync(
-        \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
     ): PromiseInterface {
         return $this->getEligibleShipmentServicesAsyncWithHttpInfo($body)
             ->then(
@@ -1798,16 +1798,16 @@ class MerchantFulfillmentApi
     /**
      * Operation getEligibleShipmentServicesAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
      *  The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getEligibleShipmentServicesAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesResponse';
+        $returnType = '\OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResponse';
         $request = $this->getEligibleShipmentServicesRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1851,14 +1851,14 @@ class MerchantFulfillmentApi
     /**
      * Create request for operation 'getEligibleShipmentServices'
      *
-     * @param  \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+     * @param  \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
      *  The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function getEligibleShipmentServicesRequest(
-        \OpenAPI\Client\Model\merchantfulfillment\GetEligibleShipmentServicesRequest $body
+        \OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1951,11 +1951,11 @@ class MerchantFulfillmentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse
+     * @return \OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse
      */
     public function getShipment(
         string $shipment_id
-    ): \OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse {
+    ): \OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse {
         list($response) = $this->getShipmentWithHttpInfo($shipment_id);
         return $response;
     }
@@ -1968,7 +1968,7 @@ class MerchantFulfillmentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShipmentWithHttpInfo(
         string $shipment_id
@@ -2014,128 +2014,128 @@ class MerchantFulfillmentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse';
+            $returnType = '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2156,7 +2156,7 @@ class MerchantFulfillmentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2164,7 +2164,7 @@ class MerchantFulfillmentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2172,7 +2172,7 @@ class MerchantFulfillmentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2180,7 +2180,7 @@ class MerchantFulfillmentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2188,7 +2188,7 @@ class MerchantFulfillmentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2196,7 +2196,7 @@ class MerchantFulfillmentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2204,7 +2204,7 @@ class MerchantFulfillmentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2212,7 +2212,7 @@ class MerchantFulfillmentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse',
+                        '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2254,7 +2254,7 @@ class MerchantFulfillmentApi
     public function getShipmentAsyncWithHttpInfo(
         string $shipment_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\merchantfulfillment\GetShipmentResponse';
+        $returnType = '\OpenAPI\Client\Model\merchantFulfillment\GetShipmentResponse';
         $request = $this->getShipmentRequest($shipment_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

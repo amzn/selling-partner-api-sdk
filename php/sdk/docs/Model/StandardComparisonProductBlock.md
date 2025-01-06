@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **position** | **int** | The rank or index of this comparison product block within the module. Different blocks cannot occupy the same position within a single module. |
-**image** | [**\OpenAPI\Client\Model\apluscontent\ImageComponent**](ImageComponent.md) |  | [optional]
+**image** | [**\OpenAPI\Client\Model\aplusContent\ImageComponent**](ImageComponent.md) |  | [optional]
 **title** | **string** | The comparison product title. | [optional]
 **asin** | **string** | The Amazon Standard Identification Number (ASIN). | [optional]
 **highlight** | **bool** | Determines whether this block of content is visually highlighted. | [optional]
-**metrics** | [**\OpenAPI\Client\Model\apluscontent\PlainTextItem[]**](PlainTextItem.md) | Comparison metrics for the product. | [optional]
+**metrics** | [**\OpenAPI\Client\Model\aplusContent\PlainTextItem[]**](PlainTextItem.md) | Comparison metrics for the product. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

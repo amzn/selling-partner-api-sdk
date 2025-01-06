@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\producttypedefinitions\SchemaLink;
+use OpenAPI\Client\Model\productTypeDefinitions\SchemaLink;
 
 /**
  * SchemaLinkTest Class Doc Comment
@@ -57,7 +57,7 @@ class SchemaLinkTest extends TestCase
     public function testPropertyLink()
     {
         
-        $testValue = new \OpenAPI\Client\Model\producttypedefinitions\SchemaLinkLink();
+        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\SchemaLinkLink();
         
         $this->model->setLink($testValue);
         $this->assertEquals($testValue, $this->model->getLink());

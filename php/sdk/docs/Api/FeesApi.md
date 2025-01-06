@@ -12,7 +12,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getMyFeesEstimateForASIN()`
 
 ```php
-getMyFeesEstimateForASIN($asin, $body): \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse
+getMyFeesEstimateForASIN($asin, $body): \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse
 ```
 
 
@@ -33,7 +33,7 @@ $apiInstance = new OpenAPI\Client\Api\FeesApi(
     new GuzzleHttp\Client()
 );
 $asin = 'asin_example'; // string | The Amazon Standard Identification Number (ASIN) of the item.
-$body = new \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest(); // \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest
+$body = new \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest(); // \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest
 
 try {
     $result = $apiInstance->getMyFeesEstimateForASIN($asin, $body);
@@ -48,11 +48,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **asin** | **string**| The Amazon Standard Identification Number (ASIN) of the item. | |
-| **body** | [**\OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest**](../Model/GetMyFeesEstimateRequest.md)|  | |
+| **body** | [**\OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest**](../Model/GetMyFeesEstimateRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse**](../Model/GetMyFeesEstimateResponse.md)
+[**\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse**](../Model/GetMyFeesEstimateResponse.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ No authorization required
 ## `getMyFeesEstimateForSKU()`
 
 ```php
-getMyFeesEstimateForSKU($seller_sku, $body): \OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse
+getMyFeesEstimateForSKU($seller_sku, $body): \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse
 ```
 
 
@@ -91,7 +91,7 @@ $apiInstance = new OpenAPI\Client\Api\FeesApi(
     new GuzzleHttp\Client()
 );
 $seller_sku = 'seller_sku_example'; // string | Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
-$body = new \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest(); // \OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest
+$body = new \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest(); // \OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest
 
 try {
     $result = $apiInstance->getMyFeesEstimateForSKU($seller_sku, $body);
@@ -106,11 +106,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **seller_sku** | **string**| Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. | |
-| **body** | [**\OpenAPI\Client\Model\productfees\GetMyFeesEstimateRequest**](../Model/GetMyFeesEstimateRequest.md)|  | |
+| **body** | [**\OpenAPI\Client\Model\productFees\GetMyFeesEstimateRequest**](../Model/GetMyFeesEstimateRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\productfees\GetMyFeesEstimateResponse**](../Model/GetMyFeesEstimateResponse.md)
+[**\OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse**](../Model/GetMyFeesEstimateResponse.md)
 
 ### Authorization
 
@@ -128,7 +128,7 @@ No authorization required
 ## `getMyFeesEstimates()`
 
 ```php
-getMyFeesEstimates($body): \OpenAPI\Client\Model\productfees\FeesEstimateResult[]
+getMyFeesEstimates($body): \OpenAPI\Client\Model\productFees\FeesEstimateResult[]
 ```
 
 
@@ -148,7 +148,7 @@ $apiInstance = new OpenAPI\Client\Api\FeesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = array(new \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest()); // \OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[]
+$body = array(new \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest()); // \OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[]
 
 try {
     $result = $apiInstance->getMyFeesEstimates($body);
@@ -162,11 +162,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\productfees\FeesEstimateByIdRequest[]**](../Model/FeesEstimateByIdRequest.md)|  | |
+| **body** | [**\OpenAPI\Client\Model\productFees\FeesEstimateByIdRequest[]**](../Model/FeesEstimateByIdRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\productfees\FeesEstimateResult[]**](../Model/FeesEstimateResult.md)
+[**\OpenAPI\Client\Model\productFees\FeesEstimateResult[]**](../Model/FeesEstimateResult.md)
 
 ### Authorization
 

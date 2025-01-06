@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\AplusResponse;
+use OpenAPI\Client\Model\aplusContent\AplusResponse;
 
 /**
  * AplusResponseTest Class Doc Comment

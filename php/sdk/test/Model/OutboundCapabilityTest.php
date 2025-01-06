@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\OutboundCapability;
+use OpenAPI\Client\Model\supplySources\OutboundCapability;
 
 /**
  * OutboundCapabilityTest Class Doc Comment
@@ -68,7 +68,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\OperationalConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());
@@ -80,7 +80,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyReturnLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\ReturnLocation();
+        $testValue = new \OpenAPI\Client\Model\supplySources\ReturnLocation();
         
         $this->model->setReturnLocation($testValue);
         $this->assertEquals($testValue, $this->model->getReturnLocation());
@@ -92,7 +92,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyDeliveryChannel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\DeliveryChannel();
+        $testValue = new \OpenAPI\Client\Model\supplySources\DeliveryChannel();
         
         $this->model->setDeliveryChannel($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryChannel());
@@ -104,7 +104,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyPickupChannel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\PickupChannel();
+        $testValue = new \OpenAPI\Client\Model\supplySources\PickupChannel();
         
         $this->model->setPickupChannel($testValue);
         $this->assertEquals($testValue, $this->model->getPickupChannel());

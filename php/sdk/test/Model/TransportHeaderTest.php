@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\TransportHeader;
+use OpenAPI\Client\Model\fulfillmentInboundV0\TransportHeader;
 
 /**
  * TransportHeaderTest Class Doc Comment
@@ -89,7 +89,7 @@ class TransportHeaderTest extends TestCase
      */
     public function testPropertyShipmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\ShipmentType();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\ShipmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

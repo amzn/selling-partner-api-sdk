@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\UpdateShipmentTrackingDetailsResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsResponse;
 
 /**
  * UpdateShipmentTrackingDetailsResponseTest Class Doc Comment

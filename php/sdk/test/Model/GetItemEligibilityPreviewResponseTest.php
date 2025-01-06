@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbainbound\GetItemEligibilityPreviewResponse;
+use OpenAPI\Client\Model\fbaInbound\GetItemEligibilityPreviewResponse;
 
 /**
  * GetItemEligibilityPreviewResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetItemEligibilityPreviewResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fbainbound\ItemEligibilityPreview();
+        $testValue = new \OpenAPI\Client\Model\fbaInbound\ItemEligibilityPreview();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

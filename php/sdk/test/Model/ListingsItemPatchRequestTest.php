@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\ListingsItemPatchRequest;
+use OpenAPI\Client\Model\listingsItems\ListingsItemPatchRequest;
 
 /**
  * ListingsItemPatchRequestTest Class Doc Comment

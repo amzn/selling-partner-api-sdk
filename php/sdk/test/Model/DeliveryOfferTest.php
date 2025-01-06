@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\DeliveryOffer;
+use OpenAPI\Client\Model\fulfillmentOutbound\DeliveryOffer;
 
 /**
  * DeliveryOfferTest Class Doc Comment
@@ -69,7 +69,7 @@ class DeliveryOfferTest extends TestCase
     public function testPropertyDateRange()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DateRange();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\DateRange();
         
         $this->model->setDateRange($testValue);
         $this->assertEquals($testValue, $this->model->getDateRange());
@@ -81,7 +81,7 @@ class DeliveryOfferTest extends TestCase
     public function testPropertyPolicy()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DeliveryPolicy();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\DeliveryPolicy();
         
         $this->model->setPolicy($testValue);
         $this->assertEquals($testValue, $this->model->getPolicy());

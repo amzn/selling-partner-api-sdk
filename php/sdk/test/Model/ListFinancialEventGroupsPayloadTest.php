@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ListFinancialEventGroupsPayload;
+use OpenAPI\Client\Model\financesV0\ListFinancialEventGroupsPayload;
 
 /**
  * ListFinancialEventGroupsPayloadTest Class Doc Comment

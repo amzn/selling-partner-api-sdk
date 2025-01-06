@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\Dimension;
+use OpenAPI\Client\Model\catalogItems\Dimension;
 
 /**
  * DimensionTest Class Doc Comment

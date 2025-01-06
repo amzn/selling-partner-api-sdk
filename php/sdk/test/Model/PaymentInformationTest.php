@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\PaymentInformation;
+use OpenAPI\Client\Model\fulfillmentOutbound\PaymentInformation;
 
 /**
  * PaymentInformationTest Class Doc Comment

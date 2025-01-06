@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\ColorType;
+use OpenAPI\Client\Model\aplusContent\ColorType;
 
 /**
  * ColorTypeTest Class Doc Comment

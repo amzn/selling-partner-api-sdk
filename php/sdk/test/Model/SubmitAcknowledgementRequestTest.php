@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\SubmitAcknowledgementRequest;
+use OpenAPI\Client\Model\vendorDfOrders\SubmitAcknowledgementRequest;
 
 /**
  * SubmitAcknowledgementRequestTest Class Doc Comment

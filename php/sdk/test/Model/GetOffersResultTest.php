@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\GetOffersResult;
+use OpenAPI\Client\Model\pricingV0\GetOffersResult;
 
 /**
  * GetOffersResultTest Class Doc Comment
@@ -89,7 +89,7 @@ class GetOffersResultTest extends TestCase
      */
     public function testPropertyItemCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\ConditionType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\ConditionType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class GetOffersResultTest extends TestCase
     public function testPropertyIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\ItemIdentifier();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\ItemIdentifier();
         
         $this->model->setIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getIdentifier());
@@ -126,7 +126,7 @@ class GetOffersResultTest extends TestCase
     public function testPropertySummary()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\Summary();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\Summary();
         
         $this->model->setSummary($testValue);
         $this->assertEquals($testValue, $this->model->getSummary());

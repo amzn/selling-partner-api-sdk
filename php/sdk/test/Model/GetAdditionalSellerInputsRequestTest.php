@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsRequest;
+use OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsRequest;
 
 /**
  * GetAdditionalSellerInputsRequestTest Class Doc Comment
@@ -68,7 +68,7 @@ class GetAdditionalSellerInputsRequestTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\Address();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());

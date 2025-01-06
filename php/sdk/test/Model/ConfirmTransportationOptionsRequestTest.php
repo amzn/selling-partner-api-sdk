@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ConfirmTransportationOptionsRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\ConfirmTransportationOptionsRequest;
 
 /**
  * ConfirmTransportationOptionsRequestTest Class Doc Comment

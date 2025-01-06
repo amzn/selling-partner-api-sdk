@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | [**\OpenAPI\Client\Model\fulfillmentinboundv0\Amount**](Amount.md) |  |
+**amount** | [**\OpenAPI\Client\Model\fulfillmentInboundV0\Amount**](Amount.md) |  |
 **confirm_deadline** | **\DateTime** | Timestamp in ISO 8601 format. | [optional]
 **void_deadline** | **\DateTime** | Timestamp in ISO 8601 format. | [optional]
 

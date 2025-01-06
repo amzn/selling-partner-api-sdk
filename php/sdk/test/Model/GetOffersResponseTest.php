@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\GetOffersResponse;
+use OpenAPI\Client\Model\pricingV0\GetOffersResponse;
 
 /**
  * GetOffersResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetOffersResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\GetOffersResult();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\GetOffersResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\ServicesCapability;
+use OpenAPI\Client\Model\supplySources\ServicesCapability;
 
 /**
  * ServicesCapabilityTest Class Doc Comment
@@ -68,7 +68,7 @@ class ServicesCapabilityTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\OperationalConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());

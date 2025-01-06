@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\CurrencyAmount;
+use OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount;
 
 /**
  * CurrencyAmountTest Class Doc Comment

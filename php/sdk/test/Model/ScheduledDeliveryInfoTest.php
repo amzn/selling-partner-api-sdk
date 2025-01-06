@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\ScheduledDeliveryInfo;
+use OpenAPI\Client\Model\fulfillmentOutbound\ScheduledDeliveryInfo;
 
 /**
  * ScheduledDeliveryInfoTest Class Doc Comment

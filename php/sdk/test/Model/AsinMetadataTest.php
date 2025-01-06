@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\AsinMetadata;
+use OpenAPI\Client\Model\aplusContent\AsinMetadata;
 
 /**
  * AsinMetadataTest Class Doc Comment

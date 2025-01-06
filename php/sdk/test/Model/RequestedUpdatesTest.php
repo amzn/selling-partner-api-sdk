@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\RequestedUpdates;
+use OpenAPI\Client\Model\fulfillmentInbound\RequestedUpdates;
 
 /**
  * RequestedUpdatesTest Class Doc Comment

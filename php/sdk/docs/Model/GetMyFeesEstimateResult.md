@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fees_estimate_result** | [**\OpenAPI\Client\Model\productfees\FeesEstimateResult**](FeesEstimateResult.md) |  | [optional]
+**fees_estimate_result** | [**\OpenAPI\Client\Model\productFees\FeesEstimateResult**](FeesEstimateResult.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

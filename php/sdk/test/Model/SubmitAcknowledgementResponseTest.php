@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\SubmitAcknowledgementResponse;
+use OpenAPI\Client\Model\vendorDfOrders\SubmitAcknowledgementResponse;
 
 /**
  * SubmitAcknowledgementResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class SubmitAcknowledgementResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\TransactionId();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\TransactionId();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());
@@ -69,7 +69,7 @@ class SubmitAcknowledgementResponseTest extends TestCase
     public function testPropertyErrors()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\ErrorList();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\ErrorList();
         
         $this->model->setErrors($testValue);
         $this->assertEquals($testValue, $this->model->getErrors());

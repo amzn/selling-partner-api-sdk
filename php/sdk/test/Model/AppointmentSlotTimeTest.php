@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\AppointmentSlotTime;
+use OpenAPI\Client\Model\fulfillmentInbound\AppointmentSlotTime;
 
 /**
  * AppointmentSlotTimeTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\ThroughputCap;
+use OpenAPI\Client\Model\supplySources\ThroughputCap;
 
 /**
  * ThroughputCapTest Class Doc Comment
@@ -67,7 +67,7 @@ class ThroughputCapTest extends TestCase
      */
     public function testPropertyTimeUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplysources\TimeUnit();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\TimeUnit();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

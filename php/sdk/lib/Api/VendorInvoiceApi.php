@@ -152,16 +152,16 @@ class VendorInvoiceApi
     /**
      * Operation submitInvoice
      *
-     * @param  \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+     * @param  \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse
+     * @return \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse
      */
     public function submitInvoice(
-        \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
-    ): \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse {
+        \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
+    ): \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse {
         list($response) = $this->submitInvoiceWithHttpInfo($body);
         return $response;
     }
@@ -169,15 +169,15 @@ class VendorInvoiceApi
     /**
      * Operation submitInvoiceWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+     * @param  \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitInvoiceWithHttpInfo(
-        \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+        \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
     ): array {
         $request = $this->submitInvoiceRequest($body);
         $request = $this->config->sign($request);
@@ -220,143 +220,143 @@ class VendorInvoiceApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse';
+            $returnType = '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -377,7 +377,7 @@ class VendorInvoiceApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class VendorInvoiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class VendorInvoiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -401,7 +401,7 @@ class VendorInvoiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class VendorInvoiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class VendorInvoiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class VendorInvoiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class VendorInvoiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class VendorInvoiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse',
+                        '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -454,14 +454,14 @@ class VendorInvoiceApi
     /**
      * Operation submitInvoiceAsync
      *
-     * @param  \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+     * @param  \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function submitInvoiceAsync(
-        \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+        \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
     ): PromiseInterface {
         return $this->submitInvoiceAsyncWithHttpInfo($body)
             ->then(
@@ -474,16 +474,16 @@ class VendorInvoiceApi
     /**
      * Operation submitInvoiceAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+     * @param  \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function submitInvoiceAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+        \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceResponse';
+        $returnType = '\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -527,14 +527,14 @@ class VendorInvoiceApi
     /**
      * Create request for operation 'submitInvoice'
      *
-     * @param  \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+     * @param  \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
      *  The request body containing one or more invoices for vendor orders. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function submitInvoiceRequest(
-        \OpenAPI\Client\Model\vendor.df.payments\SubmitInvoiceRequest $body
+        \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {

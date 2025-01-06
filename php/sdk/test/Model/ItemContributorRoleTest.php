@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\ItemContributorRole;
+use OpenAPI\Client\Model\catalogItems\ItemContributorRole;
 
 /**
  * ItemContributorRoleTest Class Doc Comment

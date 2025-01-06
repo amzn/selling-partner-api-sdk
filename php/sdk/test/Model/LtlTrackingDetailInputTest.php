@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\LtlTrackingDetailInput;
+use OpenAPI\Client\Model\fulfillmentInbound\LtlTrackingDetailInput;
 
 /**
  * LtlTrackingDetailInputTest Class Doc Comment

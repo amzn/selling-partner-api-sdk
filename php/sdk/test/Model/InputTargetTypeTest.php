@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\InputTargetType;
+use OpenAPI\Client\Model\merchantFulfillment\InputTargetType;
 
 /**
  * InputTargetTypeTest Class Doc Comment

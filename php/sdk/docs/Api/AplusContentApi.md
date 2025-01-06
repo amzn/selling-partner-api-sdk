@@ -19,7 +19,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `createContentDocument()`
 
 ```php
-createContentDocument($marketplace_id, $post_content_document_request): \OpenAPI\Client\Model\apluscontent\PostContentDocumentResponse
+createContentDocument($marketplace_id, $post_content_document_request): \OpenAPI\Client\Model\aplusContent\PostContentDocumentResponse
 ```
 
 
@@ -40,7 +40,7 @@ $apiInstance = new OpenAPI\Client\Api\AplusContentApi(
     new GuzzleHttp\Client()
 );
 $marketplace_id = 'marketplace_id_example'; // string | The identifier for the marketplace where the A+ Content is published.
-$post_content_document_request = new \OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest(); // \OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest | The content document request details.
+$post_content_document_request = new \OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest(); // \OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest | The content document request details.
 
 try {
     $result = $apiInstance->createContentDocument($marketplace_id, $post_content_document_request);
@@ -55,11 +55,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **marketplace_id** | **string**| The identifier for the marketplace where the A+ Content is published. | |
-| **post_content_document_request** | [**\OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest**](../Model/PostContentDocumentRequest.md)| The content document request details. | |
+| **post_content_document_request** | [**\OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest**](../Model/PostContentDocumentRequest.md)| The content document request details. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\PostContentDocumentResponse**](../Model/PostContentDocumentResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\PostContentDocumentResponse**](../Model/PostContentDocumentResponse.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ No authorization required
 ## `getContentDocument()`
 
 ```php
-getContentDocument($content_reference_key, $marketplace_id, $included_data_set): \OpenAPI\Client\Model\apluscontent\GetContentDocumentResponse
+getContentDocument($content_reference_key, $marketplace_id, $included_data_set): \OpenAPI\Client\Model\aplusContent\GetContentDocumentResponse
 ```
 
 
@@ -119,7 +119,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\GetContentDocumentResponse**](../Model/GetContentDocumentResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\GetContentDocumentResponse**](../Model/GetContentDocumentResponse.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ No authorization required
 ## `listContentDocumentAsinRelations()`
 
 ```php
-listContentDocumentAsinRelations($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token): \OpenAPI\Client\Model\apluscontent\ListContentDocumentAsinRelationsResponse
+listContentDocumentAsinRelations($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token): \OpenAPI\Client\Model\aplusContent\ListContentDocumentAsinRelationsResponse
 ```
 
 
@@ -183,7 +183,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\ListContentDocumentAsinRelationsResponse**](../Model/ListContentDocumentAsinRelationsResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\ListContentDocumentAsinRelationsResponse**](../Model/ListContentDocumentAsinRelationsResponse.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ No authorization required
 ## `postContentDocumentApprovalSubmission()`
 
 ```php
-postContentDocumentApprovalSubmission($content_reference_key, $marketplace_id): \OpenAPI\Client\Model\apluscontent\PostContentDocumentApprovalSubmissionResponse
+postContentDocumentApprovalSubmission($content_reference_key, $marketplace_id): \OpenAPI\Client\Model\aplusContent\PostContentDocumentApprovalSubmissionResponse
 ```
 
 
@@ -241,7 +241,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\PostContentDocumentApprovalSubmissionResponse**](../Model/PostContentDocumentApprovalSubmissionResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\PostContentDocumentApprovalSubmissionResponse**](../Model/PostContentDocumentApprovalSubmissionResponse.md)
 
 ### Authorization
 
@@ -259,7 +259,7 @@ No authorization required
 ## `postContentDocumentAsinRelations()`
 
 ```php
-postContentDocumentAsinRelations($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request): \OpenAPI\Client\Model\apluscontent\PostContentDocumentAsinRelationsResponse
+postContentDocumentAsinRelations($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request): \OpenAPI\Client\Model\aplusContent\PostContentDocumentAsinRelationsResponse
 ```
 
 
@@ -281,7 +281,7 @@ $apiInstance = new OpenAPI\Client\Api\AplusContentApi(
 );
 $content_reference_key = 'content_reference_key_example'; // string | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier.
 $marketplace_id = 'marketplace_id_example'; // string | The identifier for the marketplace where the A+ Content is published.
-$post_content_document_asin_relations_request = new \OpenAPI\Client\Model\apluscontent\PostContentDocumentAsinRelationsRequest(); // \OpenAPI\Client\Model\apluscontent\PostContentDocumentAsinRelationsRequest | The content document ASIN relations request details.
+$post_content_document_asin_relations_request = new \OpenAPI\Client\Model\aplusContent\PostContentDocumentAsinRelationsRequest(); // \OpenAPI\Client\Model\aplusContent\PostContentDocumentAsinRelationsRequest | The content document ASIN relations request details.
 
 try {
     $result = $apiInstance->postContentDocumentAsinRelations($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
@@ -297,11 +297,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **content_reference_key** | **string**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. | |
 | **marketplace_id** | **string**| The identifier for the marketplace where the A+ Content is published. | |
-| **post_content_document_asin_relations_request** | [**\OpenAPI\Client\Model\apluscontent\PostContentDocumentAsinRelationsRequest**](../Model/PostContentDocumentAsinRelationsRequest.md)| The content document ASIN relations request details. | |
+| **post_content_document_asin_relations_request** | [**\OpenAPI\Client\Model\aplusContent\PostContentDocumentAsinRelationsRequest**](../Model/PostContentDocumentAsinRelationsRequest.md)| The content document ASIN relations request details. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\PostContentDocumentAsinRelationsResponse**](../Model/PostContentDocumentAsinRelationsResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\PostContentDocumentAsinRelationsResponse**](../Model/PostContentDocumentAsinRelationsResponse.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ No authorization required
 ## `postContentDocumentSuspendSubmission()`
 
 ```php
-postContentDocumentSuspendSubmission($content_reference_key, $marketplace_id): \OpenAPI\Client\Model\apluscontent\PostContentDocumentSuspendSubmissionResponse
+postContentDocumentSuspendSubmission($content_reference_key, $marketplace_id): \OpenAPI\Client\Model\aplusContent\PostContentDocumentSuspendSubmissionResponse
 ```
 
 
@@ -359,7 +359,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\PostContentDocumentSuspendSubmissionResponse**](../Model/PostContentDocumentSuspendSubmissionResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\PostContentDocumentSuspendSubmissionResponse**](../Model/PostContentDocumentSuspendSubmissionResponse.md)
 
 ### Authorization
 
@@ -377,7 +377,7 @@ No authorization required
 ## `searchContentDocuments()`
 
 ```php
-searchContentDocuments($marketplace_id, $page_token): \OpenAPI\Client\Model\apluscontent\SearchContentDocumentsResponse
+searchContentDocuments($marketplace_id, $page_token): \OpenAPI\Client\Model\aplusContent\SearchContentDocumentsResponse
 ```
 
 
@@ -417,7 +417,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\SearchContentDocumentsResponse**](../Model/SearchContentDocumentsResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\SearchContentDocumentsResponse**](../Model/SearchContentDocumentsResponse.md)
 
 ### Authorization
 
@@ -435,7 +435,7 @@ No authorization required
 ## `searchContentPublishRecords()`
 
 ```php
-searchContentPublishRecords($marketplace_id, $asin, $page_token): \OpenAPI\Client\Model\apluscontent\SearchContentPublishRecordsResponse
+searchContentPublishRecords($marketplace_id, $asin, $page_token): \OpenAPI\Client\Model\aplusContent\SearchContentPublishRecordsResponse
 ```
 
 
@@ -477,7 +477,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\SearchContentPublishRecordsResponse**](../Model/SearchContentPublishRecordsResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\SearchContentPublishRecordsResponse**](../Model/SearchContentPublishRecordsResponse.md)
 
 ### Authorization
 
@@ -495,7 +495,7 @@ No authorization required
 ## `updateContentDocument()`
 
 ```php
-updateContentDocument($content_reference_key, $marketplace_id, $post_content_document_request): \OpenAPI\Client\Model\apluscontent\PostContentDocumentResponse
+updateContentDocument($content_reference_key, $marketplace_id, $post_content_document_request): \OpenAPI\Client\Model\aplusContent\PostContentDocumentResponse
 ```
 
 
@@ -517,7 +517,7 @@ $apiInstance = new OpenAPI\Client\Api\AplusContentApi(
 );
 $content_reference_key = 'content_reference_key_example'; // string | The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
 $marketplace_id = 'marketplace_id_example'; // string | The identifier for the marketplace where the A+ Content is published.
-$post_content_document_request = new \OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest(); // \OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest | The content document request details.
+$post_content_document_request = new \OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest(); // \OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest | The content document request details.
 
 try {
     $result = $apiInstance->updateContentDocument($content_reference_key, $marketplace_id, $post_content_document_request);
@@ -533,11 +533,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **content_reference_key** | **string**| The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. | |
 | **marketplace_id** | **string**| The identifier for the marketplace where the A+ Content is published. | |
-| **post_content_document_request** | [**\OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest**](../Model/PostContentDocumentRequest.md)| The content document request details. | |
+| **post_content_document_request** | [**\OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest**](../Model/PostContentDocumentRequest.md)| The content document request details. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\PostContentDocumentResponse**](../Model/PostContentDocumentResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\PostContentDocumentResponse**](../Model/PostContentDocumentResponse.md)
 
 ### Authorization
 
@@ -555,7 +555,7 @@ No authorization required
 ## `validateContentDocumentAsinRelations()`
 
 ```php
-validateContentDocumentAsinRelations($marketplace_id, $post_content_document_request, $asin_set): \OpenAPI\Client\Model\apluscontent\ValidateContentDocumentAsinRelationsResponse
+validateContentDocumentAsinRelations($marketplace_id, $post_content_document_request, $asin_set): \OpenAPI\Client\Model\aplusContent\ValidateContentDocumentAsinRelationsResponse
 ```
 
 
@@ -576,7 +576,7 @@ $apiInstance = new OpenAPI\Client\Api\AplusContentApi(
     new GuzzleHttp\Client()
 );
 $marketplace_id = 'marketplace_id_example'; // string | The identifier for the marketplace where the A+ Content is published.
-$post_content_document_request = new \OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest(); // \OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest | The content document request details.
+$post_content_document_request = new \OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest(); // \OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest | The content document request details.
 $asin_set = array('asin_set_example'); // string[] | The set of ASINs.
 
 try {
@@ -592,12 +592,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **marketplace_id** | **string**| The identifier for the marketplace where the A+ Content is published. | |
-| **post_content_document_request** | [**\OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest**](../Model/PostContentDocumentRequest.md)| The content document request details. | |
+| **post_content_document_request** | [**\OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest**](../Model/PostContentDocumentRequest.md)| The content document request details. | |
 | **asin_set** | [**string[]**](../Model/string.md)| The set of ASINs. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\apluscontent\ValidateContentDocumentAsinRelationsResponse**](../Model/ValidateContentDocumentAsinRelationsResponse.md)
+[**\OpenAPI\Client\Model\aplusContent\ValidateContentDocumentAsinRelationsResponse**](../Model/ValidateContentDocumentAsinRelationsResponse.md)
 
 ### Authorization
 

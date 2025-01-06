@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ChargeInstrument;
+use OpenAPI\Client\Model\financesV0\ChargeInstrument;
 
 /**
  * ChargeInstrumentTest Class Doc Comment
@@ -79,7 +79,7 @@ class ChargeInstrumentTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

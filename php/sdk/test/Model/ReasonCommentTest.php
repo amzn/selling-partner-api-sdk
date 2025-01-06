@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ReasonComment;
+use OpenAPI\Client\Model\fulfillmentInbound\ReasonComment;
 
 /**
  * ReasonCommentTest Class Doc Comment

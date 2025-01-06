@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productfees\FeesEstimateError;
+use OpenAPI\Client\Model\productFees\FeesEstimateError;
 
 /**
  * FeesEstimateErrorTest Class Doc Comment

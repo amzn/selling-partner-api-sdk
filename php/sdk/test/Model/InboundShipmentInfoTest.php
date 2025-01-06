@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentInfo;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentInfo;
 
 /**
  * InboundShipmentInfoTest Class Doc Comment
@@ -79,7 +79,7 @@ class InboundShipmentInfoTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());
@@ -101,7 +101,7 @@ class InboundShipmentInfoTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\ShipmentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\ShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class InboundShipmentInfoTest extends TestCase
      */
     public function testPropertyLabelPrepType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\LabelPrepType();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\LabelPrepType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -150,7 +150,7 @@ class InboundShipmentInfoTest extends TestCase
      */
     public function testPropertyBoxContentsSource()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\BoxContentsSource();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\BoxContentsSource();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -164,7 +164,7 @@ class InboundShipmentInfoTest extends TestCase
     public function testPropertyEstimatedBoxContentsFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\BoxContentsFeeDetails();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\BoxContentsFeeDetails();
         
         $this->model->setEstimatedBoxContentsFee($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedBoxContentsFee());

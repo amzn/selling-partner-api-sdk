@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\GuidanceReason;
+use OpenAPI\Client\Model\fulfillmentInboundV0\GuidanceReason;
 
 /**
  * GuidanceReasonTest Class Doc Comment

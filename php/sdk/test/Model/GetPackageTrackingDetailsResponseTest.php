@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\GetPackageTrackingDetailsResponse;
+use OpenAPI\Client\Model\fulfillmentOutbound\GetPackageTrackingDetailsResponse;
 
 /**
  * GetPackageTrackingDetailsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetPackageTrackingDetailsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\PackageTrackingDetails();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\PackageTrackingDetails();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

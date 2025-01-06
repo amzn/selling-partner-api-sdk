@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\ListingsItemSubmissionResponse;
+use OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse;
 
 /**
  * ListingsItemSubmissionResponseTest Class Doc Comment

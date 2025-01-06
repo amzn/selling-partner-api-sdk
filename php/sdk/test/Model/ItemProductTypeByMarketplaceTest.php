@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\ItemProductTypeByMarketplace;
+use OpenAPI\Client\Model\catalogItems\ItemProductTypeByMarketplace;
 
 /**
  * ItemProductTypeByMarketplaceTest Class Doc Comment

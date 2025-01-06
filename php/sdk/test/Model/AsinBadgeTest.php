@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\AsinBadge;
+use OpenAPI\Client\Model\aplusContent\AsinBadge;
 
 /**
  * AsinBadgeTest Class Doc Comment

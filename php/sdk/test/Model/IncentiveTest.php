@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\Incentive;
+use OpenAPI\Client\Model\fulfillmentInbound\Incentive;
 
 /**
  * IncentiveTest Class Doc Comment
@@ -90,7 +90,7 @@ class IncentiveTest extends TestCase
     public function testPropertyValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Currency();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Currency();
         
         $this->model->setValue($testValue);
         $this->assertEquals($testValue, $this->model->getValue());

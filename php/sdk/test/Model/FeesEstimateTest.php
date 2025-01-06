@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productfees\FeesEstimate;
+use OpenAPI\Client\Model\productFees\FeesEstimate;
 
 /**
  * FeesEstimateTest Class Doc Comment
@@ -69,7 +69,7 @@ class FeesEstimateTest extends TestCase
     public function testPropertyTotalFeesEstimate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productfees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
         
         $this->model->setTotalFeesEstimate($testValue);
         $this->assertEquals($testValue, $this->model->getTotalFeesEstimate());

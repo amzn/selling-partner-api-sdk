@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PutTransportDetailsRequest;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PutTransportDetailsRequest;
 
 /**
  * PutTransportDetailsRequestTest Class Doc Comment
@@ -67,7 +67,7 @@ class PutTransportDetailsRequestTest extends TestCase
      */
     public function testPropertyShipmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\ShipmentType();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\ShipmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -81,7 +81,7 @@ class PutTransportDetailsRequestTest extends TestCase
     public function testPropertyTransportDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\TransportDetailInput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\TransportDetailInput();
         
         $this->model->setTransportDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTransportDetails());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\ASINPrepInstructions;
+use OpenAPI\Client\Model\fulfillmentInboundV0\ASINPrepInstructions;
 
 /**
  * ASINPrepInstructionsTest Class Doc Comment
@@ -67,7 +67,7 @@ class ASINPrepInstructionsTest extends TestCase
      */
     public function testPropertyBarcodeInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\BarcodeInstruction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\BarcodeInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -80,7 +80,7 @@ class ASINPrepInstructionsTest extends TestCase
      */
     public function testPropertyPrepGuidance()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PrepGuidance();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PrepGuidance();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

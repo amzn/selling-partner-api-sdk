@@ -13,7 +13,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getPurchaseOrder()`
 
 ```php
-getPurchaseOrder($purchase_order_number): \OpenAPI\Client\Model\vendor.orders\GetPurchaseOrderResponse
+getPurchaseOrder($purchase_order_number): \OpenAPI\Client\Model\vendorOrders\GetPurchaseOrderResponse
 ```
 
 
@@ -51,7 +51,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.orders\GetPurchaseOrderResponse**](../Model/GetPurchaseOrderResponse.md)
+[**\OpenAPI\Client\Model\vendorOrders\GetPurchaseOrderResponse**](../Model/GetPurchaseOrderResponse.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ No authorization required
 ## `getPurchaseOrders()`
 
 ```php
-getPurchaseOrders($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code): \OpenAPI\Client\Model\vendor.orders\GetPurchaseOrdersResponse
+getPurchaseOrders($limit, $created_after, $created_before, $sort_order, $next_token, $include_details, $changed_after, $changed_before, $po_item_state, $is_po_changed, $purchase_order_state, $ordering_vendor_code): \OpenAPI\Client\Model\vendorOrders\GetPurchaseOrdersResponse
 ```
 
 
@@ -129,7 +129,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.orders\GetPurchaseOrdersResponse**](../Model/GetPurchaseOrdersResponse.md)
+[**\OpenAPI\Client\Model\vendorOrders\GetPurchaseOrdersResponse**](../Model/GetPurchaseOrdersResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ No authorization required
 ## `getPurchaseOrdersStatus()`
 
 ```php
-getPurchaseOrdersStatus($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id): \OpenAPI\Client\Model\vendor.orders\GetPurchaseOrdersStatusResponse
+getPurchaseOrdersStatus($limit, $sort_order, $next_token, $created_after, $created_before, $updated_after, $updated_before, $purchase_order_number, $purchase_order_status, $item_confirmation_status, $item_receive_status, $ordering_vendor_code, $ship_to_party_id): \OpenAPI\Client\Model\vendorOrders\GetPurchaseOrdersStatusResponse
 ```
 
 
@@ -209,7 +209,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.orders\GetPurchaseOrdersStatusResponse**](../Model/GetPurchaseOrdersStatusResponse.md)
+[**\OpenAPI\Client\Model\vendorOrders\GetPurchaseOrdersStatusResponse**](../Model/GetPurchaseOrdersStatusResponse.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ No authorization required
 ## `submitAcknowledgement()`
 
 ```php
-submitAcknowledgement($body): \OpenAPI\Client\Model\vendor.orders\SubmitAcknowledgementResponse
+submitAcknowledgement($body): \OpenAPI\Client\Model\vendorOrders\SubmitAcknowledgementResponse
 ```
 
 
@@ -247,7 +247,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorOrdersApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendor.orders\SubmitAcknowledgementRequest(); // \OpenAPI\Client\Model\vendor.orders\SubmitAcknowledgementRequest | Submits acknowledgements for one or more purchase orders from a vendor.
+$body = new \OpenAPI\Client\Model\vendorOrders\SubmitAcknowledgementRequest(); // \OpenAPI\Client\Model\vendorOrders\SubmitAcknowledgementRequest | Submits acknowledgements for one or more purchase orders from a vendor.
 
 try {
     $result = $apiInstance->submitAcknowledgement($body);
@@ -261,11 +261,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendor.orders\SubmitAcknowledgementRequest**](../Model/SubmitAcknowledgementRequest.md)| Submits acknowledgements for one or more purchase orders from a vendor. | |
+| **body** | [**\OpenAPI\Client\Model\vendorOrders\SubmitAcknowledgementRequest**](../Model/SubmitAcknowledgementRequest.md)| Submits acknowledgements for one or more purchase orders from a vendor. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.orders\SubmitAcknowledgementResponse**](../Model/SubmitAcknowledgementResponse.md)
+[**\OpenAPI\Client\Model\vendorOrders\SubmitAcknowledgementResponse**](../Model/SubmitAcknowledgementResponse.md)
 
 ### Authorization
 

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\SupplySource;
+use OpenAPI\Client\Model\supplySources\SupplySource;
 
 /**
  * SupplySourceTest Class Doc Comment
@@ -89,7 +89,7 @@ class SupplySourceTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplysources\SupplySourceStatusReadOnly();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\SupplySourceStatusReadOnly();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class SupplySourceTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\Address();
+        $testValue = new \OpenAPI\Client\Model\supplySources\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());
@@ -115,7 +115,7 @@ class SupplySourceTest extends TestCase
     public function testPropertyConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\SupplySourceConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\SupplySourceConfiguration();
         
         $this->model->setConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getConfiguration());
@@ -127,7 +127,7 @@ class SupplySourceTest extends TestCase
     public function testPropertyCapabilities()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\SupplySourceCapabilities();
+        $testValue = new \OpenAPI\Client\Model\supplySources\SupplySourceCapabilities();
         
         $this->model->setCapabilities($testValue);
         $this->assertEquals($testValue, $this->model->getCapabilities());

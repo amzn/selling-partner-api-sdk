@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardMultipleImageTextModule;
+use OpenAPI\Client\Model\aplusContent\StandardMultipleImageTextModule;
 
 /**
  * StandardMultipleImageTextModuleTest Class Doc Comment

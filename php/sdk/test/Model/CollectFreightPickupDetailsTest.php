@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.shipments\CollectFreightPickupDetails;
+use OpenAPI\Client\Model\vendorShipments\CollectFreightPickupDetails;
 
 /**
  * CollectFreightPickupDetailsTest Class Doc Comment

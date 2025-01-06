@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\ImageCropSpecification;
+use OpenAPI\Client\Model\aplusContent\ImageCropSpecification;
 
 /**
  * ImageCropSpecificationTest Class Doc Comment
@@ -57,7 +57,7 @@ class ImageCropSpecificationTest extends TestCase
     public function testPropertySize()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ImageDimensions();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageDimensions();
         
         $this->model->setSize($testValue);
         $this->assertEquals($testValue, $this->model->getSize());
@@ -69,7 +69,7 @@ class ImageCropSpecificationTest extends TestCase
     public function testPropertyOffset()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ImageOffsets();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageOffsets();
         
         $this->model->setOffset($testValue);
         $this->assertEquals($testValue, $this->model->getOffset());

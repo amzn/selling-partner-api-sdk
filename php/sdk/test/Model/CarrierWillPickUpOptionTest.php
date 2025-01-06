@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\CarrierWillPickUpOption;
+use OpenAPI\Client\Model\merchantFulfillment\CarrierWillPickUpOption;
 
 /**
  * CarrierWillPickUpOptionTest Class Doc Comment

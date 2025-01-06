@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productfees\MoneyType;
+use OpenAPI\Client\Model\productFees\MoneyType;
 
 /**
  * MoneyTypeTest Class Doc Comment

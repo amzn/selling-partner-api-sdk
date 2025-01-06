@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\LiquidVolume;
+use OpenAPI\Client\Model\merchantFulfillment\LiquidVolume;
 
 /**
  * LiquidVolumeTest Class Doc Comment

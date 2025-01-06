@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\DetailedShippingTimeType;
+use OpenAPI\Client\Model\pricingV0\DetailedShippingTimeType;
 
 /**
  * DetailedShippingTimeTypeTest Class Doc Comment

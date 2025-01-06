@@ -13,7 +13,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getShipmentDetails()`
 
 ```php
-getShipmentDetails($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code): \OpenAPI\Client\Model\vendor.shipments\GetShipmentDetailsResponse
+getShipmentDetails($limit, $sort_order, $next_token, $created_after, $created_before, $shipment_confirmed_before, $shipment_confirmed_after, $package_label_created_before, $package_label_created_after, $shipped_before, $shipped_after, $estimated_delivery_before, $estimated_delivery_after, $shipment_delivery_before, $shipment_delivery_after, $requested_pick_up_before, $requested_pick_up_after, $scheduled_pick_up_before, $scheduled_pick_up_after, $current_shipment_status, $vendor_shipment_identifier, $buyer_reference_number, $buyer_warehouse_code, $seller_warehouse_code): \OpenAPI\Client\Model\vendorShipments\GetShipmentDetailsResponse
 ```
 
 GetShipmentDetails
@@ -97,7 +97,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.shipments\GetShipmentDetailsResponse**](../Model/GetShipmentDetailsResponse.md)
+[**\OpenAPI\Client\Model\vendorShipments\GetShipmentDetailsResponse**](../Model/GetShipmentDetailsResponse.md)
 
 ### Authorization
 
@@ -115,7 +115,7 @@ No authorization required
 ## `getShipmentLabels()`
 
 ```php
-getShipmentLabels($limit, $sort_order, $next_token, $label_created_after, $labelcreated_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code): \OpenAPI\Client\Model\vendor.shipments\GetShipmentLabels
+getShipmentLabels($limit, $sort_order, $next_token, $label_created_after, $labelcreated_before, $buyer_reference_number, $vendor_shipment_identifier, $seller_warehouse_code): \OpenAPI\Client\Model\vendorShipments\GetShipmentLabels
 ```
 
 GetShipmentLabels
@@ -167,7 +167,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.shipments\GetShipmentLabels**](../Model/GetShipmentLabels.md)
+[**\OpenAPI\Client\Model\vendorShipments\GetShipmentLabels**](../Model/GetShipmentLabels.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ No authorization required
 ## `submitShipmentConfirmations()`
 
 ```php
-submitShipmentConfirmations($body): \OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsResponse
+submitShipmentConfirmations($body): \OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsResponse
 ```
 
 SubmitShipmentConfirmations
@@ -205,7 +205,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorShipmentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsRequest(); // \OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsRequest | A request to submit shipment confirmation.
+$body = new \OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsRequest(); // \OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsRequest | A request to submit shipment confirmation.
 
 try {
     $result = $apiInstance->submitShipmentConfirmations($body);
@@ -219,11 +219,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsRequest**](../Model/SubmitShipmentConfirmationsRequest.md)| A request to submit shipment confirmation. | |
+| **body** | [**\OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsRequest**](../Model/SubmitShipmentConfirmationsRequest.md)| A request to submit shipment confirmation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsResponse**](../Model/SubmitShipmentConfirmationsResponse.md)
+[**\OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsResponse**](../Model/SubmitShipmentConfirmationsResponse.md)
 
 ### Authorization
 
@@ -241,7 +241,7 @@ No authorization required
 ## `submitShipments()`
 
 ```php
-submitShipments($body): \OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsResponse
+submitShipments($body): \OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsResponse
 ```
 
 SubmitShipments
@@ -261,7 +261,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorShipmentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendor.shipments\SubmitShipments(); // \OpenAPI\Client\Model\vendor.shipments\SubmitShipments | A request to submit shipment request.
+$body = new \OpenAPI\Client\Model\vendorShipments\SubmitShipments(); // \OpenAPI\Client\Model\vendorShipments\SubmitShipments | A request to submit shipment request.
 
 try {
     $result = $apiInstance->submitShipments($body);
@@ -275,11 +275,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendor.shipments\SubmitShipments**](../Model/SubmitShipments.md)| A request to submit shipment request. | |
+| **body** | [**\OpenAPI\Client\Model\vendorShipments\SubmitShipments**](../Model/SubmitShipments.md)| A request to submit shipment request. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.shipments\SubmitShipmentConfirmationsResponse**](../Model/SubmitShipmentConfirmationsResponse.md)
+[**\OpenAPI\Client\Model\vendorShipments\SubmitShipmentConfirmationsResponse**](../Model/SubmitShipmentConfirmationsResponse.md)
 
 ### Authorization
 

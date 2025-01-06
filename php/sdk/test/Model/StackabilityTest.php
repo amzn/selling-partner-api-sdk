@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\Stackability;
+use OpenAPI\Client\Model\fulfillmentInbound\Stackability;
 
 /**
  * StackabilityTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\Feature;
+use OpenAPI\Client\Model\fulfillmentOutbound\Feature;
 
 /**
  * FeatureTest Class Doc Comment

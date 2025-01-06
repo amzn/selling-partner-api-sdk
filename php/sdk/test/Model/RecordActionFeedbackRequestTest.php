@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\appintegrations\RecordActionFeedbackRequest;
+use OpenAPI\Client\Model\appIntegrations\RecordActionFeedbackRequest;
 
 /**
  * RecordActionFeedbackRequestTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardHeaderTextListBlock;
+use OpenAPI\Client\Model\aplusContent\StandardHeaderTextListBlock;
 
 /**
  * StandardHeaderTextListBlockTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardHeaderTextListBlockTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardHeaderTextListBlockTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardTextListBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextListBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

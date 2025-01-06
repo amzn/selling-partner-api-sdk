@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse;
+use OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse;
 
 /**
  * CreateInventoryItemResponseTest Class Doc Comment
