@@ -31,6 +31,10 @@ use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionException;
 use ReflectionMethod;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable('../../../sdk');
+$dotenv->load();
 
 /**
  * TestHelper
@@ -41,26 +45,7 @@ use ReflectionMethod;
  */
 class TestHelper
 {
-    /**
-     * Retrieves the return type information of the getPayload method of the given response.
-     *
-     * @param object $response The response object to reflect upon.
-     * @return array|null Returns an array with the return type name and nullability, or null if not specified.
-     * @throws ReflectionException If the reflection fails.
-     */
-    public static function getReturnTypeInfo(object $response): ?array
-    {
-        $reflectionClass = new ReflectionClass($response);
-        $reflectionMethod = $reflectionClass->getMethod('getPayload');
-        $returnType = $reflectionMethod->getReturnType();
-
-        if ($returnType instanceof ReflectionNamedType) {
-            return [$returnType->getName(), $returnType->allowsNull()];
-        }
-
-        return null;
-    }
-
+    private static string $marketPlaceId = 'ATVPDKIKX0DER';
 
     /**
      * Maps the attributes of a given instance based on the expected response data.
@@ -116,7 +101,7 @@ class TestHelper
             $nestedInstances = [];
             $listType = substr($type, 0, -2);
             foreach ($data as $itemData) {
-                if (class_exists($listType)) {
+                if (class_exists($listType) && method_exists($listType, 'openAPITypes')) {
                     $nestedNodeInstance = new $listType();
                     self::mapAttributes($nestedNodeInstance, $itemData);
                     $nestedInstances[] = $nestedNodeInstance;
@@ -183,12 +168,17 @@ class TestHelper
             $paramName = $param->getName();
 
             // Handle special case for 'payload' parameter.
-            if ($paramName === 'payload' || $paramName === 'body') {
+            if (
+                $paramName === 'payload'
+                || $paramName === 'body'
+                || $paramName === 'requests'
+                || $paramName === 'get_featured_offer_expected_price_batch_request_body'
+            ) {
                 $typeName = $param->getType()->getName();
                 if (class_exists($typeName)) {
                     $requestInstance = new $typeName();
-                    if (isset($requestParameters['body'])) {
-                        self::mapAttributes($requestInstance, $requestParameters['body']['value'] ?? []);
+                    if (isset($requestParameters['body']['value'])) {
+                        self::mapAttributes($requestInstance, $requestParameters['body']['value']);
                     } elseif (!$param->isOptional()) {
                         // Insert Dummy object
                         $openAPITypes = $typeName::openAPITypes();
@@ -215,6 +205,8 @@ class TestHelper
                     }
 
                     $requestParams['payload'] = $requestInstance;
+                } elseif ($typeName === 'array') {
+                    $requestParams['payload'] = $requestParameters['body']['value'];
                 }
                 continue;
             }
@@ -242,6 +234,17 @@ class TestHelper
         return $requestParams;
     }
 
+    private static function generateUuidV4(): string
+    {
+        $data = openssl_random_pseudo_bytes(16);
+
+        $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
+        $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+
+        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+    }
+
+
     /**
      * Map for Domain Specific parameters
      * @var array
@@ -249,7 +252,17 @@ class TestHelper
     private static array $domainSpecificParameterMap = [
         'arn' => 'arn:aws:sqs:test:test:test',
         'notification_type' => 'ANY_OFFER_CHANGED',
-        'event_filter_type' => 'ANY_OFFER_CHANGED'
+        'event_filter_type' => 'ANY_OFFER_CHANGED',
+        'offer_type' => 'CONSUMER',
+        'expiration' => '2024-01-01',
+        'country_code' => 'US',
+        'op' => 'add',
+        'requirements' => 'LISTING_OFFER_ONLY',
+        'attributes' => [],
+        // FbaInventory
+        'granularity_type' => 'Marketplace',
+        'quantity' => 0,
+        'seller_sku' => 'automation_test'
     ];
 
     /**
@@ -265,6 +278,16 @@ class TestHelper
         // Handle domain specific case
         if (isset(self::$domainSpecificParameterMap[$paramName])) {
             return self::$domainSpecificParameterMap[$paramName];
+        // Listing
+        } elseif ($paramName === 'marketplace_ids') {
+            return [$_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId];
+        // FbaInventory
+        } elseif ($paramName === 'marketplace_id') {
+            return $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+        } elseif ($paramName === 'x_amzn_idempotency_token') {
+            return self::generateUuidV4();
+        } elseif ($paramName === 'granularity_id') {
+            return $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
         }
         // Handle array and specific object types
         if (str_ends_with($typeName, '[]')) {
@@ -308,31 +331,13 @@ class TestHelper
 
         // Handle primitive types
         return match ($typeName) {
-            'int' => 0,
-            'float' => 0.0,
+            'int' => 1,
+            'float' => 1.0,
             'bool' => false,
             'string' => 'test',
             'array' => ["1"],
             default => null,
         };
-    }
-
-    /**
-     * Extracts response parameters from an expected response array.
-     *
-     * @param array|null $expectedResponse The expected response data.
-     * @return array|null The extracted response parameters or null if input is null.
-     */
-    public function getResponseParams(?array $expectedResponse): ?array
-    {
-        if ($expectedResponse === null) {
-            return null;
-        }
-
-        // Check if the current entry is an array and contains a 'value' key.
-        return array_filter($expectedResponse, function ($subArray) {
-            return is_array($subArray);
-        });
     }
 
     /**
@@ -347,462 +352,115 @@ class TestHelper
     }
 
     /**
-     * Parses object types and maps their properties to keys in a JSON-like structure.
+     * Prepares the request parameters for a specified method of an API instance.
      *
-     * @param array $matches The matches from regex that capture keys.
-     * @param array $openAPITypes
-     * @param array $attributeMap
-     * @param array $map The map where parsed data is stored.
-     * @param string $depth The depth of the current nesting.
-     * @return array The updated map with parsed data.
+     * This method uses reflection to retrieve the parameters of a given method
+     * and matches them with the provided request array to prepare a structured
+     * array of parameters for the method invocation.
+     *
+     * @param object $apiInstance The instance of the API class that contains the method.
+     * @param string $methodName The name of the method for which parameters need to be prepared.
+     * @param array $request An associative array of request parameters to be matched
+     *                       with the method's defined parameters.
+     *
+     * @return array An array of parameters structured to match the specified method's signature.
+     *
+     * @throws ReflectionException If the reflection process fails, such as when the
+     *                             specified method does not exist in the given API instance.
      */
-    private static function parseObjectTypes(
-        array $matches,
-        array $openAPITypes,
-        array $attributeMap,
-        array &$map,
-        string $depth
-    ): array {
-        $lastIndex = null;
-        $keyOccurrencesCount = [];
-        foreach ($matches as $index => $match) {
-            // Skip already processed keys
-            if (isset($map[$index])) {
-                continue;
-            }
-
-            $key = $match[2];
-            // Find the property name from the API key
-            $propertyName = array_search($key, $attributeMap, true);
-            if ($propertyName === false) {
-                continue; // Skip if not found
-            } else {
-                if (isset($keyOccurrencesCount[$key])) {
-                    $keyOccurrencesCount[$key]++;
-                    if ($keyOccurrencesCount[$key] > $keyOccurrencesCount[$map[$lastIndex][0]]) {
-                        // Mark as Object end;
-                        if (isset($map[$lastIndex])) {
-                            $map[$lastIndex][3] = 'true';
-                        }
-                    }
-                } else {
-                    $keyOccurrencesCount[$key] = 1;
-                }
-            }
-
-            // Get the property type
-            $propertyType = $openAPITypes[$propertyName] ?? 'string';
-            if (class_exists($propertyType)) {
-                $class = new $propertyType();
-
-                if (!method_exists($class, 'openAPITypes')) {
-                    self::setKeyMapping($map, $key, $index, 'string', $depth, 'false');
-                    $lastIndex = $index;
-                    continue;
-                }
-                // Map object type and recursively parse
-                self::setKeyMapping($map, $key, $index, 'object', $depth, 'false');
-                self::parseObjectTypes(
-                    $matches,
-                    $class::openAPITypes(),
-                    $class::attributeMap(),
-                    $map,
-                    '}' . $depth
-                );
-            } elseif (str_ends_with($propertyType, '[]')) {
-                $elementType = substr($propertyType, 0, -2);
-
-                if (class_exists($elementType)) {
-                    // Map array type and recursively parse elements
-                    self::setKeyMapping($map, $key, $index, 'array', ']' . $depth, 'false');
-                    $class = new $elementType();
-                    self::parseObjectTypes(
-                        $matches,
-                        $class::openAPITypes(),
-                        $class::attributeMap(),
-                        $map,
-                        '}]' . $depth
-                    );
-                } elseif ($elementType === 'string') {
-                    self::setKeyMapping($map, $key, $index, 'string_array', ']' . $depth, 'false');
-                } else {
-                    echo '!!!Complex nested object detected! $elementType = ' . $elementType . PHP_EOL;
-                }
-            } elseif ($propertyType === 'object') {
-            /* This is added because testPutListingsItem200 case's request {body&#x3D;{}};
-            But it might be removed
-                if (!isset($matches[$index + 1])) {
-                    self::setKeyMapping($map, $key, $index, $propertyType, $depth, 'true');
-                    continue;
-                }
-                */
-                // Handle request parameter which doesn't have object class with NameSpace
-                self::setKeyMapping($map, $key, $index, $propertyType, $depth, 'false');
-                $nextKey = $matches[$index + 1][2];
-                $nextPropertyName = array_search($nextKey . '-' . $key, $attributeMap, true);
-                $nextPropertyType = $openAPITypes[$nextPropertyName] ?? 'string';
-                if (class_exists($nextPropertyType)) {
-                    $nextClass = new $nextPropertyType();
-                    self::setKeyMapping($map, $nextKey, $index + 1, 'object', '}' . $depth, 'false');
-                    self::parseObjectTypes(
-                        $matches,
-                        $nextClass::openAPITypes(),
-                        $nextClass::attributeMap(),
-                        $map,
-                        '}}' . $depth
-                    );
-                } elseif ($nextPropertyType === 'array') {
-                    self::setKeyMapping($map, $nextKey, $index + 1, 'string_array', ']}' . $depth, 'true');
-                } else {
-                    self::setKeyMapping($map, $nextKey, $index + 1, $nextPropertyType, '}' . $depth, 'true');
-                }
-            } else {
-                // Map basic types
-                self::setKeyMapping($map, $key, $index, $propertyType, $depth, 'false');
-            }
-            $lastIndex = $index;
-        }
-        // Mark as Object end;
-        if (isset($map[$lastIndex])) {
-            $map[$lastIndex][3] = 'true';
-        }
-        return $map;
-    }
-
-    /**
-     * Maps a key to its type and depth.
-     *
-     * @param array $map The map to store the key mapping.
-     * @param string $key The key to map.
-     * @param int $index The index of the key.
-     * @param string $propertyType The type of the property.
-     * @param string $depth The depth of nesting.
-     * @return void The updated map.
-     */
-    private static function setKeyMapping(
-        array &$map,
-        string $key,
-        int $index,
-        string $propertyType,
-        string $depth,
-        string $isLast
-    ): void {
-        $map[$index][0] = $key;
-        $map[$index][1] = $propertyType;
-        $map[$index][2] = $depth;
-        $map[$index][3] = $isLast;
-    }
-
-    /**
-     * Finds the position of the nth occurrence of a substring (needle) within a string (haystack),
-     * considering word boundaries to avoid partial matches.
-     *
-     * This method ensures that the substring is matched as a standalone word
-     * by verifying that it is not part of a larger word using word boundary checks.
-     *
-     * @param string $haystack The string to search within.
-     * @param string $needle The substring to search for.
-     * @param int $n The occurrence number to find (1-based).
-     * @return int|false The position of the nth occurrence of the substring, or false if not found.
-     */
-    private static function getNthIndex(string $haystack, string $needle, int $n): bool|int
-    {
-        // Tracks the starting position for each search
-        $offset = 0;
-        // Counts the occurrences of the substring
-        $count = 0;
-
-        while (true) {
-            // Search for the next occurrence of the substring starting from the offset
-            $position = strpos($haystack, $needle, $offset);
-            if ($position === false) {
-                // Return false if no more occurrences are found
-                return false;
-            }
-
-            // Check if the substring is a standalone word using word boundary checks
-            $before = $position === 0 || !ctype_alnum($haystack[$position - 1]);
-            $after = $position + strlen($needle)
-                >= strlen($haystack) || !ctype_alnum($haystack[$position + strlen($needle)]);
-
-            if ($before && $after) {
-                // Increment the count if the substring matches as a standalone word
-                $count++;
-                if ($count === $n) {
-                    // Return the position if the nth occurrence is found
-                    return $position;
-                }
-            }
-
-            // Move the offset forward to search for the next occurrence
-            $offset = $position + 1;
-        }
-    }
-
-
-    /**
-     * Converts a Codegen response text into a JSON-formatted string.
-     *
-     * This function takes a mapping of object types and a response text,
-     * then reformats the text to follow JSON structure.
-     * It replaces keys and values in the text based on the mapping provided.
-     *
-     * @param array $objectTypeMap An array where each element is a tuple containing:
-     *                             - The key name (string).
-     *                             - The type of the value ("object" or "array", or other types for simple values).
-     *                             - A suffix string used to determine the boundary of the value.
-     * @param string $jsonText The input text to be converted.
-     * @return string The JSON-formatted result string.
-     */
-    private static function convertCodegenResponseTextToJson(array $objectTypeMap, string $jsonText): string
-    {
-        $resultJson = $jsonText;
-        $keyOccurrencesCount = [];
-
-        foreach ($objectTypeMap as $index => $item) {
-            $key = $item[0];
-
-            // Track occurrences of the key for redundant keys
-            if (isset($keyOccurrencesCount[$key])) {
-                $keyOccurrencesCount[$key]++;
-            } else {
-                $keyOccurrencesCount[$key] = 1;
-            }
-
-            // Find the position of the current key
-            $keyPosition = self::getNthIndex($resultJson, $key, $keyOccurrencesCount[$key]);
-            if ($keyPosition === false) {
-                continue;
-            }
-
-            if ($item[1] !== 'object' && $item[1] !== 'array') {
-                $nextKey = null;
-
-                // Determine the position of the next key
-                if (isset($objectTypeMap[$index + 1])) {
-                    $nextKey = $objectTypeMap[$index + 1][0] ?? null;
-                }
-
-                $objectEndSuffix = '';
-                if (!$nextKey) {
-                    $objectEndSuffix = $item[2];
-                } elseif (strlen($item[2]) > strlen($objectTypeMap[$index + 1][2])) {
-                    $objectEndSuffix = substr($item[2], strlen($objectTypeMap[$index + 1][2]));
-                } elseif ($item[3] === 'true') {
-                    $objectEndSuffix = substr($item[2], 0, 1);
-                }
-
-                // Find the position of the next key or the end of the object
-                if ($nextKey) {
-                    $pattern = sprintf(
-                        "/,\\s*[{\\[]*\\s*%s=/",
-                        preg_quote($nextKey, '/') // Escape special characters in $nextKey
-                    );
-                    // Perform the search using preg_match
-                    if (preg_match($pattern, $resultJson, $matches, PREG_OFFSET_CAPTURE, $keyPosition)) {
-                        $nextKeyPosition = $matches[0][1] - strlen($objectEndSuffix); // Get the position of the match
-                    } else {
-                        $nextKeyPosition = null; // No match found
-                    }
-                } else {
-                    $nextKeyPosition = strlen($resultJson) - strlen($objectEndSuffix);
-                }
-
-                // Extract the value between the current key and the next key
-                $valueStart = $keyPosition + strlen($key . '=');
-                $valueLength = $nextKeyPosition - $valueStart;
-                $value = substr($resultJson, $valueStart, $valueLength);
-
-                // Trim and format the value
-                $value = trim($value);
-                if ($item[1] === 'string_array') {
-                    $value = self::formatStringToJsonArray($value);
-                } elseif ($item[1] !== 'bool' && $item[1] !== 'int') {
-                    $value = '"' . $value . '"';
-                }
-
-                // Replace the key-value pair in the result JSON
-                $resultJson = substr_replace(
-                    $resultJson,
-                    '"' . $key . '"' . ':' . $value,
-                    $keyPosition,
-                    $valueLength + strlen($key . ':')
-                );
-            } else {
-                // Replace keys of objects or arrays
-                $resultJson = substr_replace(
-                    $resultJson,
-                    '"' . $key . '"' . ':',
-                    $keyPosition,
-                    strlen($key . ':')
-                );
-            }
-        }
-        return $resultJson;
-    }
-
-    /**
-     * Converts a Codegen-generated response string into a JSON-compatible associative array.
-     *
-     * <p>This method takes a string response from a Codegen output, processes it to extract
-     * key-value pairs, and maps these pairs to a provided model. The result is a JSON-compatible
-     * associative array that can be further used or transformed.</p>
-     *
-     * <p>Special cases include:</p>
-     * <ul>
-     *   <li>If the response body is '{}', the method returns {@code null}.</li>
-     *   <li>HTML entities in the response string are decoded before further processing.</li>
-     * </ul>
-     *
-     * @param string $codegenText
-     * @param object|null $model $model An object representing the initial model structure to map the response data.
-     * @param array|null $params
-     * @return array|null associative array parsed from the Codegen response string, or
-     * @see #parseObjectTypes
-     * @see #convertCodegenResponseTextToJson
-     */
-    private static function convertCodegenTextToModelJson(string $codegenText, ?object $model, ?array $params): ?array
-    {
-        // Insert or Update case should not have Response body
-        if ($codegenText === '{}' || $codegenText === '') {
-            return json_decode($codegenText, true);
-        }
-        // Decode HTML entities
-        $codegenText = html_entity_decode($codegenText);
-        // Extract key=value pairs using regex
-        preg_match_all('/([{\[,]?)\s*([^=\s]+)=/', $codegenText, $matches, PREG_SET_ORDER);
-        // Clean up matches to remove unwanted characters
-        foreach ($matches as $key => &$match) {
-            if (empty($match[1])) {
-                unset($matches[$key]);
-            } elseif (preg_match('/[{\[]/', $match[2]) && $match[2] !== ',') {
-                $match[2] = preg_replace('/[{\[]/', '', $match[2]);
-            }
-        }
-        $matches = array_values($matches);
-        $map = [];
-        $apiTypeArray = [];
-        $attributeMapArray = [];
-        if ($params) {
-            // Request Json
-            foreach ($params as $index => $param) {
-                $type = $param->getType();
-                $paramName = $param->getName();
-                if ($paramName === 'payload') {
-                    $typeName = $param->getType()->getName();
-                    if (class_exists($typeName)) {
-                        $apiTypeArray['body'] = 'object';
-                        $attributeMapArray['body'] = 'body';
-                        $apiTypeArray['value-body'] = $typeName;
-                        $attributeMapArray['value-body'] = 'value-body';
-                        $requestInstance = new $typeName();
-                        $apiTypeArray = array_merge($apiTypeArray, $requestInstance::openAPITypes());
-                        $attributeMapArray = array_merge($attributeMapArray, $requestInstance::attributeMap());
-                    }
-                } else {
-                    foreach ([false, true] as $capitalizeFirst) {
-                        $camelCaseName = self::snakeToCamelCase($paramName, $capitalizeFirst);
-                        foreach ($matches as $eachMatch) {
-                            if ($eachMatch[2] === $camelCaseName) {
-                                $apiTypeArray[$paramName] = 'object';
-                                $attributeMapArray[$paramName] = $camelCaseName;
-                                $apiTypeArray['value' . '-' . $camelCaseName] = $param->getType()->getName();
-                                $attributeMapArray['value' . '-' . $camelCaseName] = 'value' . '-' . $camelCaseName;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        } elseif ($model) {
-            // Response Json parse
-            $apiTypeArray = $model::openAPITypes();
-            $attributeMapArray = $model::attributeMap();
-        }
-        //Convert Test to JsonText
-        $objectTypeMap = self::parseObjectTypes(
-            $matches,
-            $apiTypeArray,
-            $attributeMapArray,
-            $map,
-            '}'
-        );
-        $codegenText = self::convertCodegenResponseTextToJson($objectTypeMap, $codegenText);
-        // Decode the JSON string into an associative array
-        return json_decode($codegenText, true);
-    }
-
-    /**
-     * Formats a string into a JSON-like array representation.
-     *
-     * This method takes an input string that represents a list of elements
-     * (e.g., "item1,item2,item3"), trims the leading "[" if present, splits
-     * the string by commas, trims each element, wraps them in double quotes,
-     * and returns the resulting JSON-like array string.
-     *
-     * Example:
-     * Input: "item1,item2,item3"
-     * Output: ["item1","item2","item3"]
-     *
-     * @param string $input The input string to format, which may contain a leading "[".
-     * @return string A JSON-like array string with elements wrapped in double quotes.
-     */
-    private static function formatStringToJsonArray(string $input): string
-    {
-        // Remove the leading `[` from the input string.
-        $trimmedInput = ltrim($input, '[');
-
-        // Split the string by `,` to get individual elements as an array.
-        $elements = explode(',', $trimmedInput);
-
-        // Trim each element and wrap it in double quotes.
-        $quotedElements = array_map(function ($element) {
-            // Trim the element and wrap it in double quotes.
-            return '"' . trim($element) . '"';
-        }, $elements);
-
-        // Join the quoted elements with commas and return them as a JSON-like array string.
-        return '[' . implode(',', $quotedElements);
-    }
-
-    /**
-     * Prepares request parameters for the API call.
-     *
-     * @param $apiInstance
-     * @param string $methodName
-     * @param string $requestJson
-     * @return array
-     * @throws ReflectionException
-     */
-    public static function prepareRequestParamsFromMethod($apiInstance, string $methodName, string $requestJson): array
+    public static function prepareRequestParameter(object $apiInstance, string $methodName, ?array $request): array
     {
         $reflection = self::getReflectionMethod($apiInstance, $methodName);
         $params = $reflection->getParameters();
-        $parsedRequest = self::convertCodegenTextToModelJson(rtrim($requestJson, ';'), null, $params);
-        return self::prepareRequestParams($params, $parsedRequest);
+        return self::prepareRequestParams($params, $request);
     }
 
     /**
-     * Prepares the expected response for the API call.
+     * Extracts the request parameters and expected response from a JSON schema.
      *
-     * @param $apiInstance
-     * @param string $methodName
-     * @param string $responseJson
-     * @return array|null
+     * This method processes a JSON schema string, decodes it, and extracts the
+     * request parameters and expected response for a specified operation ID.
+     * It prepares the request parameters to match the method signature of
+     * the provided API instance.
+     *
+     * @param object $apiInstance The instance of the API class that contains the method to be invoked.
+     * @param string $jsonSchema The JSON schema string representing the request and response definitions.
+     * @param string $operationId The operation ID corresponding to the method in the API instance.
+     *
+     * @return array An associative array containing:
+     *               - `requestParams` (array): Prepared request parameters for the specified method.
+     *               - `expectedResponse` (mixed): The expected response extracted from the JSON schema.
+     *
+     * @throws \InvalidArgumentException If the provided JSON schema is invalid or cannot be decoded.
+     * @throws ReflectionException If there is an error during the preparation of request parameters
+     *                             (e.g., method does not exist in the API instance).
+     */
+    public function extractRequestAndResponse(object $apiInstance, string $jsonSchema, string $operationId): array
+    {
+        // Decode HTML entities
+        $codegenText = html_entity_decode($jsonSchema);
+
+        // Remove unnecessary characters
+        $codegenText = str_replace(["\r", "\n"], '', $codegenText);
+        //$codegenText = str_replace(' ', '', $codegenText);
+
+        // Decode JSON
+        $data = json_decode($codegenText, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \InvalidArgumentException("Invalid JSON schema provided: " . json_last_error_msg());
+        }
+
+        // Extract request object
+        $request = $data['x-amzn-api-sandbox']['static'][0]['request']['parameters'] ?? null;
+
+        // Prepare request parameters
+        $requestParams = self::prepareRequestParameter(
+            $apiInstance,
+            $operationId,
+            $request
+        );
+
+        // Extract expected response
+        $expectedResponse = $data['x-amzn-api-sandbox']['static'][0]['response'] ?? null;
+
+        return [
+            'requestParams' => $requestParams,
+            'expectedResponse' => $expectedResponse
+        ];
+    }
+
+    /**
      * @throws ReflectionException
      */
-    public static function prepareExpectedResponse($apiInstance, string $methodName, string $responseJson): ?array
+    public function buildRequestForDynamicSandBox(object $apiInstance, string $operationId): array
     {
-        $reflection = self::getReflectionMethod($apiInstance, $methodName);
-        $returnType = $reflection->getReturnType();
+        // Prepare request parameters
+        return self::prepareRequestParameter(
+            $apiInstance,
+            $operationId,
+            null
+        );
+    }
 
-        if ($returnType !== null) {
-            $className = $returnType->getName();
-            if (class_exists($className)) {
-                return self::convertCodegenTextToModelJson($responseJson, new $className(), null);
-            }
-        }
-        return null;
+    /**
+     * Array that defines TestCase Name requires specific ateTimeFormat
+     * @var array
+     */
+    private array $dateTimeFormatSpecificCase = [
+        'FeesApi' => 'D M d H:i:s T Y',
+        'ListingsItemsApi' => 'Y-m-d\TH:i:s\Z'
+    ];
+
+
+    /**
+     * Get required DateTimeFormat for a given testCaseName.
+     *
+     * @param string $caseName
+     * @return string|null
+     */
+    public function getDateTimeFormatForCase(string $caseName): ?string
+    {
+        return $this->dateTimeFormatSpecificCase[$caseName] ?? null;
     }
 
     /**
@@ -820,25 +478,29 @@ class TestHelper
 
 
     /**
-     * Get required scopes for a given API.
+     * Get required scopes for a given caseName.
      *
-     * @param string $apiName
+     * @param string $caseName
      * @return array
      */
-    public function getScopesForApi(string $apiName): array
+    public function getScopesForApi(string $caseName): array
     {
-        return $this->scopesRequiredMap[$apiName] ?? [];
+        return $this->scopesRequiredMap[$caseName] ?? [];
     }
 
     /**
      * Checks if the test case should be skipped.
      *
      * @param string $testCaseName
+     * @param string|null $className
      * @return bool
      */
-    public static function shouldSkipTest(string $testCaseName): bool
+    public static function shouldSkipTest(string $testCaseName, ?string $className = null): bool
     {
-        return in_array($testCaseName, TestHelper::$testSkipCasesList);
+        if (!in_array($testCaseName, TestHelper::$testSkipCasesList)) {
+            return in_array($className, TestHelper::$testSkipCasesList);
+        }
+        return true;
     }
 
     /**
@@ -846,6 +508,38 @@ class TestHelper
      * @var array|string[]
      */
     public static array $testSkipCasesList = [
+        // Definition of Test Class which has not been tested
+        'DefaultApi',
+        'AplusContentApi',
+        'AppIntegrationsApi',
+        'ApplicationsApi',
+        'AwdApi',
+        'CustomerInvoicesApi',
+        'EasyShipApi',
+        'FbaOutboundApi',
+        'InvoicesApi',
+        'MessagingApi',
+        'OffersApi',
+        'QueriesApi',
+        'SalesApi',
+        'SellersApi',
+        'SellingpartnersApi',
+        'ServiceApi',
+        'ShipmentInvoiceApi',
+        'ShippingApi',
+        'SolicitationsApi',
+        'SupplySourcesApi',
+        'TokensApi',
+        'UpdateInventoryApi',
+        'UploadsApi',
+        'VendorInvoiceApi',
+        'VendorOrdersApi',
+        'VendorShipmentsApi',
+        'VendorShippingApi',
+        'VendorShippingLabelsApi',
+        'VendorTransactionApi',
+
+        // Definition of individual case which is unable to test
         // Order API
         // Missing required parameter in Request regulatedOrderVerificationStatus and can not be auto filled
         //Because there is no difference between 200 case.
@@ -863,6 +557,46 @@ class TestHelper
         // Report API
         'testCancelReport200',  // Always 500 will be returned
         'testCancelReportSchedule200', // Always 500 will be returned
-        'testCreateReportSchedule400' // Request should have mandatory field MarketplaceIds
+        'testCreateReportSchedule400', // Request should have mandatory field MarketplaceIds
+        // Pricing API
+        'testGetCompetitiveSummary200', // Request offerType should be CONSUMER, not Consumer
+        // FBA Inbound Eligibility API
+        'testGetItemEligibilityPreview401', // Always 500 will be returned
+        'testGetItemEligibilityPreview503', // Always 500 will be returned
+        // fulfillmentInbound_2024-03-20
+        'testGenerateShipmentContentUpdatePreviews202', // Sandbox Returns 400
+        'testGenerateTransportationOptions202', // Sandbox Returns 400
+        'testGetInboundPlan200', // Json expected Response of timestamp is in wrong format. Millisecond should be added.
+        'testGetShipment200', // Json expected Response of timestamp is in wrong format. Millisecond should be added.
+        // Json expected Response of timestamp is in wrong format. Millisecond should be added.
+        'testScheduleSelfShipAppointment200',
+        'testGetShipmentContentUpdatePreview200', // "expiration" at the Json expected Response Json is wrong
+        'testListShipmentContentUpdatePreviews200', // "expiration" at the Json expected Response Json is wrong
+        'testListInboundPlans200', //Json expected Response of timestamp is in wrong format.Millisecond should be added.
+        'testListPrepDetails200', // Sandbox Returns 400
+        'testSetPackingInformation202', // Sandbox Returns 400
+        'testUpdateItemComplianceDetails202',  // Sandbox Returns 400
+        'testSetPrepDetails202', // Sandbox Returns 400
+        // CatalogItem
+        'testGetCatalogItem200', // Response has Invalid value for images.variant such as PT09-PT14, EEGL and EGUS
+        'testSearchCatalogItems200', // Response has Invalid value for images.variant such as PT09-PT14, EEGL and EGUS
+        // ProductFeesAPI
+        'testGetMyFeesEstimates200', // Sandbox Returns 400
+        'testGetMyFeesEstimateForASIN400', // Request can not be made because Request is missing mandatory parameters
+        'testGetMyFeesEstimateForSKU400', // Request can not be made because Request is missing mandatory parameters
+        // ListingsItems_2021-08-01
+        // Expected response is different from actual response.
+        // TimeStamp Format is inconsistent within same Expected response Json
+        'testGetListingsItem200',
+        // fbaInventory
+        'testAddInventory200', // Create inventory is dependency for this operation
+        // listingsRestrictions
+        'testGetListingsRestrictions400', // Error response can not be handled due to wrong ErrorList definition in Json
+        // merchantFulfillment
+        'testCancelShipment200', // Label.FileContents.FileType is Enum, but “” is returned.
+        // ShippingService.ShippingServiceOptions.CarrierWillPickUp is mandatory, but not returned.
+        'testCreateShipment200',
+        //Response ShippingServiceList.ShippingServiceOptions.LabelFormat should be Enum value or removed
+        'testGetEligibleShipmentServices200'
     ];
 }

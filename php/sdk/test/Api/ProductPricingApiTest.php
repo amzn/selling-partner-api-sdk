@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\ProductPricingApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,646 @@ class ProductPricingApiTest extends TestCase
 
     /**
      * Test case for getCompetitivePricing_200
-     * .
      */
     public function testGetCompetitivePricing200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing200')) {
+             if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{MarketplaceId&#x3D;{value&#x3D;ATVPDKIKX0DER}, ItemType&#x3D;{value&#x3D;Asin}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetPricingResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Asin&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ {
+                &quot;CompetitivePriceId&quot; : &quot;4545645646&quot;,
+                &quot;Price&quot; : {
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 130
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 120
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 130,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 10
+                    }
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;belongsToRequester&quot; : true
+              } ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 20,
+                &quot;condition&quot; : &quot;new&quot;
+              } ],
+              &quot;TradeInValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10
+              }
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;325345&quot;,
+              &quot;Rank&quot; : 1
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ {
+                &quot;CompetitivePriceId&quot; : &quot;45456452646&quot;,
+                &quot;Price&quot; : {
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 130
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 120
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 130,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 10
+                    }
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;belongsToRequester&quot; : true
+              } ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;new&quot;
+              } ],
+              &quot;TradeInValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;string&quot;,
+                &quot;Amount&quot; : 0
+              }
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;54564&quot;,
+              &quot;Rank&quot; : 1
+            } ]
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Sku&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ {
+                &quot;CompetitivePriceId&quot; : &quot;3454535&quot;,
+                &quot;Price&quot; : {
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 130
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 120
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 130,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 10
+                    }
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;belongsToRequester&quot; : true
+              } ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 402,
+                &quot;condition&quot; : &quot;new&quot;
+              } ],
+              &quot;TradeInValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 20
+              }
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;676554&quot;,
+              &quot;Rank&quot; : 1
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ {
+                &quot;CompetitivePriceId&quot; : &quot;4545645646&quot;,
+                &quot;Price&quot; : {
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 130
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 120
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 130,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 10
+                    }
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;belongsToRequester&quot; : true
+              } ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 402,
+                &quot;condition&quot; : &quot;new&quot;
+              } ],
+              &quot;TradeInValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 20
+              }
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;35345&quot;,
+              &quot;Rank&quot; : 1
+            } ]
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Asin&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;New&quot;
+              }, {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;Any&quot;
+              } ]
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;office_product_display_on_website&quot;,
+              &quot;Rank&quot; : 19
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;1069616&quot;,
+              &quot;Rank&quot; : 1
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;705333011&quot;,
+              &quot;Rank&quot; : 1
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;1069242&quot;,
+              &quot;Rank&quot; : 17
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;New&quot;
+              }, {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;Any&quot;
+              } ]
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;464394&quot;,
+              &quot;Rank&quot; : 224
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;12954861&quot;,
+              &quot;Rank&quot; : 1057
+            } ]
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Sku&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;New&quot;
+              }, {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;Any&quot;
+              } ]
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;office_product_display_on_website&quot;,
+              &quot;Rank&quot; : 19
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;1069616&quot;,
+              &quot;Rank&quot; : 1
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;705333011&quot;,
+              &quot;Rank&quot; : 1
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;1069242&quot;,
+              &quot;Rank&quot; : 17
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;New&quot;
+              }, {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;Any&quot;
+              } ]
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;464394&quot;,
+              &quot;Rank&quot; : 224
+            }, {
+              &quot;ProductCategoryId&quot; : &quot;12954861&quot;,
+              &quot;Rank&quot; : 1057
+            } ]
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Asin&quot;
+          },
+          &quot;CustomerType&quot; : {
+            &quot;value&quot; : &quot;Business&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ {
+                &quot;CompetitivePriceId&quot; : &quot;1&quot;,
+                &quot;Price&quot; : {
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 120
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 130
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 130,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 10
+                    }
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;offerType&quot; : &quot;B2C&quot;,
+                &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;belongsToRequester&quot; : true
+              }, {
+                &quot;CompetitivePriceId&quot; : &quot;1&quot;,
+                &quot;Price&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 115
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;offerType&quot; : &quot;B2B&quot;,
+                &quot;quantityTier&quot; : 3,
+                &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+                &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;belongsToRequester&quot; : true
+              }, {
+                &quot;CompetitivePriceId&quot; : &quot;1&quot;,
+                &quot;Price&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 110
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;offerType&quot; : &quot;B2B&quot;,
+                &quot;quantityTier&quot; : 5,
+                &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+                &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;belongsToRequester&quot; : true
+              } ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 3,
+                &quot;condition&quot; : &quot;new&quot;
+              } ],
+              &quot;TradeInValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10
+              }
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;325345&quot;,
+              &quot;Rank&quot; : 1
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;CompetitivePricing&quot; : {
+              &quot;CompetitivePrices&quot; : [ {
+                &quot;CompetitivePriceId&quot; : &quot;1&quot;,
+                &quot;Price&quot; : {
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 130
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 120
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 130,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 10
+                    }
+                  }
+                },
+                &quot;condition&quot; : &quot;new&quot;,
+                &quot;offerType&quot; : &quot;B2B&quot;,
+                &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;belongsToRequester&quot; : true
+              } ],
+              &quot;NumberOfOfferListings&quot; : [ {
+                &quot;Count&quot; : 1,
+                &quot;condition&quot; : &quot;new&quot;
+              } ],
+              &quot;TradeInValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;string&quot;,
+                &quot;Amount&quot; : 0
+              }
+            },
+            &quot;SalesRankings&quot; : [ {
+              &quot;ProductCategoryId&quot; : &quot;54564&quot;,
+              &quot;Rank&quot; : 1
+            } ]
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getCompetitivePricing',
-                $invalidRequestJson
+                $jsonSchema,
+                'getCompetitivePricing'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;[{status&#x3D;Success, ASIN&#x3D;B00V5DG6IQ, Product&#x3D;{Identifiers&#x3D;{MarketplaceASIN&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ASIN&#x3D;B00V5DG6IQ}, SKUIdentifier&#x3D;{MarketplaceId&#x3D;, SellerId&#x3D;, SellerSKU&#x3D;}}, CompetitivePricing&#x3D;{CompetitivePrices&#x3D;[{CompetitivePriceId&#x3D;4545645646, Price&#x3D;{LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;130}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;120}, Points&#x3D;{PointsNumber&#x3D;130, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}}}, condition&#x3D;new, belongsToRequester&#x3D;true}], NumberOfOfferListings&#x3D;[{Count&#x3D;20, condition&#x3D;new}], TradeInValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}}, SalesRankings&#x3D;[{ProductCategoryId&#x3D;325345, Rank&#x3D;1}]}}, {status&#x3D;Success, ASIN&#x3D;B00551Q3CS, Product&#x3D;{Identifiers&#x3D;{MarketplaceASIN&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ASIN&#x3D;B00551Q3CS}, SKUIdentifier&#x3D;{MarketplaceId&#x3D;, SellerId&#x3D;, SellerSKU&#x3D;}}, CompetitivePricing&#x3D;{CompetitivePrices&#x3D;[{CompetitivePriceId&#x3D;45456452646, Price&#x3D;{LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;130}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;120}, Points&#x3D;{PointsNumber&#x3D;130, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}}}, condition&#x3D;new, belongsToRequester&#x3D;true}], NumberOfOfferListings&#x3D;[{Count&#x3D;1, condition&#x3D;new}], TradeInValue&#x3D;{CurrencyCode&#x3D;string, Amount&#x3D;0}}, SalesRankings&#x3D;[{ProductCategoryId&#x3D;54564, Rank&#x3D;1}]}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getCompetitivePricing',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getCompetitivePricingWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +788,75 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getCompetitivePricing_400
-     * .
      */
     public function testGetCompetitivePricing400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing400')) {
+             if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{MarketplaceId&#x3D;{value&#x3D;TEST_CASE_400}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetPricingResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_400&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getCompetitivePricing',
-                $invalidRequestJson
+                $jsonSchema,
+                'getCompetitivePricing'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getCompetitivePricing',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getCompetitivePricingWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,94 +869,342 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getCompetitivePricing_401
-     * .
      */
     public function testGetCompetitivePricing401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCompetitivePricing_403
-     * .
      */
     public function testGetCompetitivePricing403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCompetitivePricing_404
-     * .
      */
     public function testGetCompetitivePricing404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCompetitivePricing_429
-     * .
      */
     public function testGetCompetitivePricing429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCompetitivePricing_500
-     * .
      */
     public function testGetCompetitivePricing500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCompetitivePricing_503
-     * .
      */
     public function testGetCompetitivePricing503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffers_200
-     * .
      */
     public function testGetItemOffers200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetItemOffers200')) {
+             if ($this->testHelper->shouldSkipTest('testGetItemOffers200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{Asin&#x3D;{value&#x3D;B00V5DG6IQ}, MarketplaceId&#x3D;{value&#x3D;ATVPDKIKX0DER}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOffersResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;Asin&quot; : {
+            &quot;value&quot; : &quot;B00V5DG6IQ&quot;
+          },
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ItemCondition&quot; : &quot;New&quot;,
+          &quot;Identifier&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;,
+            &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+          },
+          &quot;Summary&quot; : {
+            &quot;LowestPrices&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;LandedPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;Shipping&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0.0
+              }
+            } ],
+            &quot;NumberOfOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;BuyBoxEligibleOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;TotalOfferCount&quot; : 1
+          },
+          &quot;Offers&quot; : [ {
+            &quot;Shipping&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 0.0
+            },
+            &quot;ListingPrice&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 10.0
+            },
+            &quot;ShippingTime&quot; : {
+              &quot;maximumHours&quot; : 48,
+              &quot;minimumHours&quot; : 24,
+              &quot;availabilityType&quot; : &quot;NOW&quot;
+            },
+            &quot;SellerFeedbackRating&quot; : {
+              &quot;FeedbackCount&quot; : 0,
+              &quot;SellerPositiveFeedbackRating&quot; : 0.0
+            },
+            &quot;ShipsFrom&quot; : {
+              &quot;State&quot; : &quot;WA&quot;,
+              &quot;Country&quot; : &quot;US&quot;
+            },
+            &quot;SubCondition&quot; : &quot;new&quot;,
+            &quot;IsFeaturedMerchant&quot; : false,
+            &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+            &quot;IsFulfilledByAmazon&quot; : false
+          } ],
+          &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;Asin&quot; : {
+            &quot;value&quot; : &quot;B00V5DG6IQ&quot;
+          },
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;CustomerType&quot; : {
+            &quot;value&quot; : &quot;Business&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ItemCondition&quot; : &quot;New&quot;,
+          &quot;Identifier&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;,
+            &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+          },
+          &quot;Summary&quot; : {
+            &quot;LowestPrices&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;LandedPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;Shipping&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0.0
+              }
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 20,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 8.0
+              }
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 30,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 6.0
+              }
+            } ],
+            &quot;NumberOfOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;BuyBoxEligibleOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;BuyBoxPrices&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 9.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;Shipping&quot; : {
+                &quot;Amount&quot; : 0.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;LandedPrice&quot; : {
+                &quot;Amount&quot; : 9.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 20,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 8.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 30,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 7.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
+            } ],
+            &quot;TotalOfferCount&quot; : 4
+          },
+          &quot;Offers&quot; : [ {
+            &quot;Shipping&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 0.0
+            },
+            &quot;ListingPrice&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 10.0
+            },
+            &quot;quantityDiscountPrices&quot; : [ {
+              &quot;quantityTier&quot; : 20,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;listingPrice&quot; : {
+                &quot;Amount&quot; : 8.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              }
+            }, {
+              &quot;quantityTier&quot; : 30,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;listingPrice&quot; : {
+                &quot;Amount&quot; : 7.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              }
+            } ],
+            &quot;ShippingTime&quot; : {
+              &quot;maximumHours&quot; : 48,
+              &quot;minimumHours&quot; : 24,
+              &quot;availabilityType&quot; : &quot;NOW&quot;
+            },
+            &quot;SellerFeedbackRating&quot; : {
+              &quot;FeedbackCount&quot; : 0,
+              &quot;SellerPositiveFeedbackRating&quot; : 0.0
+            },
+            &quot;ShipsFrom&quot; : {
+              &quot;State&quot; : &quot;WA&quot;,
+              &quot;Country&quot; : &quot;US&quot;
+            },
+            &quot;SubCondition&quot; : &quot;new&quot;,
+            &quot;IsFeaturedMerchant&quot; : false,
+            &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+            &quot;MyOffer&quot; : true,
+            &quot;IsFulfilledByAmazon&quot; : false
+          } ],
+          &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getItemOffers',
-                $invalidRequestJson
+                $jsonSchema,
+                'getItemOffers'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{ASIN&#x3D;B00V5DG6IQ, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B00V5DG6IQ}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], TotalOfferCount&#x3D;1}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, SellerFeedbackRating&#x3D;{FeedbackCount&#x3D;0, SellerPositiveFeedbackRating&#x3D;0.0}, ShipsFrom&#x3D;{State&#x3D;WA, Country&#x3D;US}, SubCondition&#x3D;new, IsFeaturedMerchant&#x3D;false, SellerId&#x3D;AXXXXXXXXXXXXX, IsFulfilledByAmazon&#x3D;false}], MarketplaceID&#x3D;ATVPDKIKX0DER}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getItemOffers',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getItemOffersWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -327,40 +1217,75 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getItemOffers_400
-     * .
      */
     public function testGetItemOffers400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetItemOffers400')) {
+             if ($this->testHelper->shouldSkipTest('testGetItemOffers400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{Asin&#x3D;{value&#x3D;TEST_CASE_400}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOffersResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;Asin&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_400&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getItemOffers',
-                $invalidRequestJson
+                $jsonSchema,
+                'getItemOffers'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getItemOffers',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getItemOffersWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -373,94 +1298,2178 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getItemOffers_401
-     * .
      */
     public function testGetItemOffers401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffers_403
-     * .
      */
     public function testGetItemOffers403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffers_404
-     * .
      */
     public function testGetItemOffers404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffers_429
-     * .
      */
     public function testGetItemOffers429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffers_500
-     * .
      */
     public function testGetItemOffers500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffers_503
-     * .
      */
     public function testGetItemOffers503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffersBatch_200
-     * .
      */
     public function testGetItemOffersBatch200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch200')) {
+             if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{requests&#x3D;[{uri&#x3D;/products/pricing/v0/items/B000P6Q7MY/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B001Q3KU9Q/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B007Z07UK6/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B000OQA3N4/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B07PTMKYS7/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B001PYUTII/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B00505DW2I/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B00CGZQU42/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B01LY2ZYRF/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/items/B00KFRNZY6/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that requests were run in batch.  Check the batch response status lines for information on whether a batch request succeeded.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetItemOffersBatchResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;requests&quot; : [ {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B000P6Q7MY/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B001Q3KU9Q/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B007Z07UK6/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B000OQA3N4/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B07PTMKYS7/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B001PYUTII/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B00505DW2I/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B00CGZQU42/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B01LY2ZYRF/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B00KFRNZY6/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;responses&quot; : [ {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B000P6Q7MY&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B000P6Q7MY&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 21
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 21
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 21
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 21
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;toy_display_on_website&quot;,
+                  &quot;Rank&quot; : 48602
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;166064011&quot;,
+                  &quot;Rank&quot; : 1168
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251920011&quot;,
+                  &quot;Rank&quot; : 1304
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 26
+                },
+                &quot;TotalOfferCount&quot; : 1
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 21
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;2889aa8a-77b4-4d11-99f9-5fc24994dc0f&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B000P6Q7MY&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B001Q3KU9Q&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B001Q3KU9Q&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 24.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 24.99
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 20.49
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10.49
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 24.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 24.99
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 0
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;toy_display_on_website&quot;,
+                  &quot;Rank&quot; : 6674
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251947011&quot;,
+                  &quot;Rank&quot; : 33
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;23627232011&quot;,
+                  &quot;Rank&quot; : 41
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251913011&quot;,
+                  &quot;Rank&quot; : 88
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 27.99
+                },
+                &quot;TotalOfferCount&quot; : 2
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 24.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 0,
+                  &quot;minimumHours&quot; : 0,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : true
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1OHOT6VONX3KA&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : true
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;5ff728ac-8f9c-4caa-99a7-704f898eec9c&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B001Q3KU9Q&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B007Z07UK6&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B007Z07UK6&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 18
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 11
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 7
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 5.01
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 4.99
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 11
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 0
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;fashion_display_on_website&quot;,
+                  &quot;Rank&quot; : 34481
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;3421050011&quot;,
+                  &quot;Rank&quot; : 24
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;TotalOfferCount&quot; : 14
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 1
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 720,
+                  &quot;minimumHours&quot; : 504,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AFQSGY2BVBPU2&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 3.5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;ARLPNLRVRA0WL&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3QO25ZNO05UF8&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : true
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AQBXQGCOQTJS6&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5.5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;ATAQTPUEAJ499&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 4.99
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5.01
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AEMQJEQHIGU8X&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3GAR3KWWUHTHC&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 12
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2YE02EFDC36RW&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 20
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A17VVVVNIJPQI4&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 50
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3ALR9P0658YQT&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 100
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A35LOCZQ3NFRAA&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;ab062f54-6b1c-4eab-9c59-f9c85847c3cc&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B007Z07UK6&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B000OQA3N4&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B000OQA3N4&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 3
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 0
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;sports_display_on_website&quot;,
+                  &quot;Rank&quot; : 232244
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;3395921&quot;,
+                  &quot;Rank&quot; : 242
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;19574752011&quot;,
+                  &quot;Rank&quot; : 1579
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 25
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3TH9S8BH6GOGM&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 3.99
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 9.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A09263691NO8MK5LA75X2&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 20
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;110f73fc-463d-4a68-a042-3a675ee37367&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B000OQA3N4&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B07PTMKYS7&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B07PTMKYS7&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 200
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 200
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 12
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 12
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 0
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 0
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;video_games_display_on_website&quot;,
+                  &quot;Rank&quot; : 2597
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;19497044011&quot;,
+                  &quot;Rank&quot; : 33
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;14670126011&quot;,
+                  &quot;Rank&quot; : 45
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 399
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 12
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3TH9S8BH6GOGM&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 20
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;f5b23d61-455e-40c4-b615-ca03fd0a25de&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B07PTMKYS7&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B001PYUTII&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B001PYUTII&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 17.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 17.99
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 20
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 20
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0.5
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0.5
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 4270
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 14
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 8
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 0
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;toy_display_on_website&quot;,
+                  &quot;Rank&quot; : 30959
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;196604011&quot;,
+                  &quot;Rank&quot; : 94
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251910011&quot;,
+                  &quot;Rank&quot; : 13863
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 17.99
+                },
+                &quot;TotalOfferCount&quot; : 4286
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A21GPS04ENK3GH&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 9
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1NHJ2GQHJYKDD&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1EZPZGQPCQEQR&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2BSRKTUYRBQX7&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 12.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A14RRT8J7KHRG0&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A29DD74D3MDLD3&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 15
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1EZPZGQPCQEQR&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 17.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 0,
+                  &quot;minimumHours&quot; : 0,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : true
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1OHOT6VONX3KA&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : true
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 23
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2NO69NJS5R7BW&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 23
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3J2OPDM7RLS9A&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 30
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AA7AN6LI5ZZMD&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 30
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 30
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A29DD74D3MDLD3&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 50
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3D4MFKTUUP0RS&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 1400
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A16ZGNLKQR74W7&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;5b4ebbf3-cd9f-4e5f-a252-1aed3933ae0e&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:25 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B001PYUTII&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B00505DW2I&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B00505DW2I&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 14.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 4.99
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 14.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 4.99
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 3
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 3
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;toy_display_on_website&quot;,
+                  &quot;Rank&quot; : 6581
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;14194715011&quot;,
+                  &quot;Rank&quot; : 11
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251975011&quot;,
+                  &quot;Rank&quot; : 15
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 36
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 4.99
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A5LI4TEX5CN80&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 15
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 33
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AH2OYH1RAT8PM&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;da27fbae-3066-44b5-8f08-d472152eea0b&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B00505DW2I&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B00CGZQU42&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B00CGZQU42&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 100
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 100
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 50
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 50
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 50
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 50
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;fashion_display_on_website&quot;,
+                  &quot;Rank&quot; : 1093666
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;1045012&quot;,
+                  &quot;Rank&quot; : 2179
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 18.99
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 50
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3CTKJEUROOISL&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 50
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 100
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 0,
+                  &quot;minimumHours&quot; : 0,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : true
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A16V258PS36Q2H&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : true
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;057b337c-3c17-4bbd-9bbf-79c1ef756dc0&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B00CGZQU42&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B01LY2ZYRF&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B01LY2ZYRF&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 22
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 22
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 22
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 22
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 59.5
+                },
+                &quot;TotalOfferCount&quot; : 1
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 22
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;196a1220-82c4-4b07-8a73-a7d92511f6ef&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:22 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B01LY2ZYRF&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;ASIN&quot; : &quot;B00KFRNZY6&quot;,
+              &quot;status&quot; : &quot;NoBuyableOffers&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;ASIN&quot; : &quot;B00KFRNZY6&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;TotalOfferCount&quot; : 0
+              },
+              &quot;Offers&quot; : [ ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;7e49bdbb-7347-46fe-8c66-beb7b9c08118&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:21:23 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;Asin&quot; : &quot;B00KFRNZY6&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getItemOffersBatch',
-                $invalidRequestJson
+                $jsonSchema,
+                'getItemOffersBatch'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{responses&#x3D;[{status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B000P6Q7MY, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B000P6Q7MY}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;21}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;21}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;21}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;21}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;toy_display_on_website, Rank&#x3D;48602}, {ProductCategoryId&#x3D;166064011, Rank&#x3D;1168}, {ProductCategoryId&#x3D;251920011, Rank&#x3D;1304}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;26}, TotalOfferCount&#x3D;1}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;21}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;2889aa8a-77b4-4d11-99f9-5fc24994dc0f, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B000P6Q7MY, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B001Q3KU9Q, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B001Q3KU9Q}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;24.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;24.99}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20.49}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.49}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;24.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;24.99}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;0}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;toy_display_on_website, Rank&#x3D;6674}, {ProductCategoryId&#x3D;251947011, Rank&#x3D;33}, {ProductCategoryId&#x3D;23627232011, Rank&#x3D;41}, {ProductCategoryId&#x3D;251913011, Rank&#x3D;88}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;27.99}, TotalOfferCount&#x3D;2}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;24.99}, ShippingTime&#x3D;{maximumHours&#x3D;0, minimumHours&#x3D;0, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;true}, SubCondition&#x3D;new, SellerId&#x3D;A1OHOT6VONX3KA, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;true}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;5ff728ac-8f9c-4caa-99a7-704f898eec9c, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B001Q3KU9Q, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B007Z07UK6, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B007Z07UK6}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;18}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;11}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;7}}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5.01}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}}], NumberOfOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;11}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;0}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;fashion_display_on_website, Rank&#x3D;34481}, {ProductCategoryId&#x3D;3421050011, Rank&#x3D;24}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, TotalOfferCount&#x3D;14}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, ShippingTime&#x3D;{maximumHours&#x3D;720, minimumHours&#x3D;504, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AFQSGY2BVBPU2, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;ARLPNLRVRA0WL, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3QO25ZNO05UF8, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;true}, SubCondition&#x3D;new, SellerId&#x3D;AQBXQGCOQTJS6, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5.5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;ATAQTPUEAJ499, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5.01}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AEMQJEQHIGU8X, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3GAR3KWWUHTHC, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2YE02EFDC36RW, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A17VVVVNIJPQI4, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3ALR9P0658YQT, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;100}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A35LOCZQ3NFRAA, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;ab062f54-6b1c-4eab-9c59-f9c85847c3cc, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B007Z07UK6, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B000OQA3N4, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B000OQA3N4}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;3}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;0}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;sports_display_on_website, Rank&#x3D;232244}, {ProductCategoryId&#x3D;3395921, Rank&#x3D;242}, {ProductCategoryId&#x3D;19574752011, Rank&#x3D;1579}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;25}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3TH9S8BH6GOGM, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;9.99}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A09263691NO8MK5LA75X2, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;110f73fc-463d-4a68-a042-3a675ee37367, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B000OQA3N4, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B07PTMKYS7, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B07PTMKYS7}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;200}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;200}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;0}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;0}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;video_games_display_on_website, Rank&#x3D;2597}, {ProductCategoryId&#x3D;19497044011, Rank&#x3D;33}, {ProductCategoryId&#x3D;14670126011, Rank&#x3D;45}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;399}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3TH9S8BH6GOGM, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;f5b23d61-455e-40c4-b615-ca03fd0a25de, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B07PTMKYS7, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B001PYUTII, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B001PYUTII}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.5}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.5}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;4270}, {condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;14}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;8}, {condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;0}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;toy_display_on_website, Rank&#x3D;30959}, {ProductCategoryId&#x3D;196604011, Rank&#x3D;94}, {ProductCategoryId&#x3D;251910011, Rank&#x3D;13863}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, TotalOfferCount&#x3D;4286}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A21GPS04ENK3GH, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;9}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A1NHJ2GQHJYKDD, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A1EZPZGQPCQEQR, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2BSRKTUYRBQX7, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12.99}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A14RRT8J7KHRG0, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A29DD74D3MDLD3, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;15}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A1EZPZGQPCQEQR, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, ShippingTime&#x3D;{maximumHours&#x3D;0, minimumHours&#x3D;0, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;true}, SubCondition&#x3D;new, SellerId&#x3D;A1OHOT6VONX3KA, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;true}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;23}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2NO69NJS5R7BW, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;23}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3J2OPDM7RLS9A, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;30}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AA7AN6LI5ZZMD, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;30}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;30}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A29DD74D3MDLD3, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3D4MFKTUUP0RS, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1400}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A16ZGNLKQR74W7, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;5b4ebbf3-cd9f-4e5f-a252-1aed3933ae0e, Date&#x3D;Tue, 28 Jun 2022 14:21:25 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B001PYUTII, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B00505DW2I, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B00505DW2I}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;14.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;14.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;3}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;3}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;toy_display_on_website, Rank&#x3D;6581}, {ProductCategoryId&#x3D;14194715011, Rank&#x3D;11}, {ProductCategoryId&#x3D;251975011, Rank&#x3D;15}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;36}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A5LI4TEX5CN80, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;15}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;33}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AH2OYH1RAT8PM, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;da27fbae-3066-44b5-8f08-d472152eea0b, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B00505DW2I, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B00CGZQU42, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B00CGZQU42}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;100}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;100}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;fashion_display_on_website, Rank&#x3D;1093666}, {ProductCategoryId&#x3D;1045012, Rank&#x3D;2179}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;18.99}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3CTKJEUROOISL, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;100}, ShippingTime&#x3D;{maximumHours&#x3D;0, minimumHours&#x3D;0, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;true}, SubCondition&#x3D;new, SellerId&#x3D;A16V258PS36Q2H, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, IsFulfilledByAmazon&#x3D;true}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;057b337c-3c17-4bbd-9bbf-79c1ef756dc0, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B00CGZQU42, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B01LY2ZYRF, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B01LY2ZYRF}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;22}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;22}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;22}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;22}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;59.5}, TotalOfferCount&#x3D;1}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;22}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;196a1220-82c4-4b07-8a73-a7d92511f6ef, Date&#x3D;Tue, 28 Jun 2022 14:21:22 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B01LY2ZYRF, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{ASIN&#x3D;B00KFRNZY6, status&#x3D;NoBuyableOffers, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, ASIN&#x3D;B00KFRNZY6}, Summary&#x3D;{TotalOfferCount&#x3D;0}, Offers&#x3D;[], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;7e49bdbb-7347-46fe-8c66-beb7b9c08118, Date&#x3D;Tue, 28 Jun 2022 14:21:23 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, Asin&#x3D;B00KFRNZY6, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getItemOffersBatch',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getItemOffersBatchWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -473,40 +3482,83 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getItemOffersBatch_400
-     * .
      */
     public function testGetItemOffersBatch400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch400')) {
+             if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{requests&#x3D;[{uri&#x3D;/products/pricing/v0/items/B000P6Q7MY/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Errors&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;requests&quot; : [ {
+                &quot;uri&quot; : &quot;/products/pricing/v0/items/B000P6Q7MY/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getItemOffersBatch',
-                $invalidRequestJson
+                $jsonSchema,
+                'getItemOffersBatch'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getItemOffersBatch',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getItemOffersBatchWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -519,94 +3571,343 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getItemOffersBatch_401
-     * .
      */
     public function testGetItemOffersBatch401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffersBatch_403
-     * .
      */
     public function testGetItemOffersBatch403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffersBatch_404
-     * .
      */
     public function testGetItemOffersBatch404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffersBatch_429
-     * .
      */
     public function testGetItemOffersBatch429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffersBatch_500
-     * .
      */
     public function testGetItemOffersBatch500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getItemOffersBatch_503
-     * .
      */
     public function testGetItemOffersBatch503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffers_200
-     * .
      */
     public function testGetListingOffers200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingOffers200')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingOffers200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{SellerSKU&#x3D;{value&#x3D;NABetaASINB00V5DG6IQ}, MarketplaceId&#x3D;{value&#x3D;ATVPDKIKX0DER}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOffersResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;SellerSKU&quot; : {
+            &quot;value&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+          },
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;SKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;,
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ItemCondition&quot; : &quot;New&quot;,
+          &quot;Identifier&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;,
+            &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+          },
+          &quot;Summary&quot; : {
+            &quot;LowestPrices&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;LandedPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;Shipping&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0.0
+              }
+            } ],
+            &quot;NumberOfOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;BuyBoxEligibleOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;TotalOfferCount&quot; : 1
+          },
+          &quot;Offers&quot; : [ {
+            &quot;Shipping&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 0.0
+            },
+            &quot;ListingPrice&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 10.0
+            },
+            &quot;ShippingTime&quot; : {
+              &quot;maximumHours&quot; : 48,
+              &quot;minimumHours&quot; : 24,
+              &quot;availabilityType&quot; : &quot;NOW&quot;
+            },
+            &quot;SellerFeedbackRating&quot; : {
+              &quot;FeedbackCount&quot; : 0,
+              &quot;SellerPositiveFeedbackRating&quot; : 0.0
+            },
+            &quot;ShipsFrom&quot; : {
+              &quot;State&quot; : &quot;WA&quot;,
+              &quot;Country&quot; : &quot;US&quot;
+            },
+            &quot;SubCondition&quot; : &quot;new&quot;,
+            &quot;IsFeaturedMerchant&quot; : false,
+            &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+            &quot;MyOffer&quot; : true,
+            &quot;IsFulfilledByAmazon&quot; : false
+          } ],
+          &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;SellerSKU&quot; : {
+            &quot;value&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+          },
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;CustomerType&quot; : {
+            &quot;value&quot; : &quot;Business&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;SKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;,
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ItemCondition&quot; : &quot;New&quot;,
+          &quot;Identifier&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;,
+            &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+          },
+          &quot;Summary&quot; : {
+            &quot;LowestPrices&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;LandedPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;Shipping&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0.0
+              }
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 20,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 8.0
+              }
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 30,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 6.0
+              }
+            } ],
+            &quot;NumberOfOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;BuyBoxEligibleOffers&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+            } ],
+            &quot;BuyBoxPrices&quot; : [ {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 9.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;Shipping&quot; : {
+                &quot;Amount&quot; : 0.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;LandedPrice&quot; : {
+                &quot;Amount&quot; : 9.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 20,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 8.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
+            }, {
+              &quot;condition&quot; : &quot;new&quot;,
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;quantityTier&quot; : 30,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 7.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
+            } ],
+            &quot;TotalOfferCount&quot; : 4
+          },
+          &quot;Offers&quot; : [ {
+            &quot;Shipping&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 0.0
+            },
+            &quot;ListingPrice&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 10.0
+            },
+            &quot;quantityDiscountPrices&quot; : [ {
+              &quot;quantityTier&quot; : 2,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;listingPrice&quot; : {
+                &quot;Amount&quot; : 8.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              }
+            }, {
+              &quot;quantityTier&quot; : 3,
+              &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+              &quot;listingPrice&quot; : {
+                &quot;Amount&quot; : 7.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              }
+            } ],
+            &quot;ShippingTime&quot; : {
+              &quot;maximumHours&quot; : 48,
+              &quot;minimumHours&quot; : 24,
+              &quot;availabilityType&quot; : &quot;NOW&quot;
+            },
+            &quot;SellerFeedbackRating&quot; : {
+              &quot;FeedbackCount&quot; : 0,
+              &quot;SellerPositiveFeedbackRating&quot; : 0.0
+            },
+            &quot;ShipsFrom&quot; : {
+              &quot;State&quot; : &quot;WA&quot;,
+              &quot;Country&quot; : &quot;US&quot;
+            },
+            &quot;SubCondition&quot; : &quot;new&quot;,
+            &quot;IsFeaturedMerchant&quot; : false,
+            &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+            &quot;MyOffer&quot; : true,
+            &quot;IsFulfilledByAmazon&quot; : false
+          } ],
+          &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingOffers',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingOffers'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{SKU&#x3D;NABetaASINB00V5DG6IQ, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, SellerSKU&#x3D;NABetaASINB00V5DG6IQ}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], TotalOfferCount&#x3D;1}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, SellerFeedbackRating&#x3D;{FeedbackCount&#x3D;0, SellerPositiveFeedbackRating&#x3D;0.0}, ShipsFrom&#x3D;{State&#x3D;WA, Country&#x3D;US}, SubCondition&#x3D;new, IsFeaturedMerchant&#x3D;false, SellerId&#x3D;AXXXXXXXXXXXXX, MyOffer&#x3D;true, IsFulfilledByAmazon&#x3D;false}], MarketplaceID&#x3D;ATVPDKIKX0DER}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingOffers',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingOffersWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -619,40 +3920,75 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getListingOffers_400
-     * .
      */
     public function testGetListingOffers400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingOffers400')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingOffers400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{SellerSKU&#x3D;{value&#x3D;TEST_CASE_400}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOffersResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;SellerSKU&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_400&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingOffers',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingOffers'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingOffers',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingOffersWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -665,94 +4001,1599 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getListingOffers_401
-     * .
      */
     public function testGetListingOffers401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffers_403
-     * .
      */
     public function testGetListingOffers403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffers_404
-     * .
      */
     public function testGetListingOffers404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffers_429
-     * .
      */
     public function testGetListingOffers429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffers_500
-     * .
      */
     public function testGetListingOffers500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffers_503
-     * .
      */
     public function testGetListingOffers503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffersBatch_200
-     * .
      */
     public function testGetListingOffersBatch200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch200')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{requests&#x3D;[{uri&#x3D;/products/pricing/v0/listings/GC-QTMS-SV2I/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/listings/VT-DEIT-57TQ/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/listings/NA-H7X1-JYTM/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/listings/RL-JVOC-MBSL/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}, {uri&#x3D;/products/pricing/v0/listings/74-64KG-H9W9/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that requests were run in batch.  Check the batch response status lines for information on whether a batch request succeeded.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetListingOffersBatchResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;requests&quot; : [ {
+                &quot;uri&quot; : &quot;/products/pricing/v0/listings/GC-QTMS-SV2I/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/listings/VT-DEIT-57TQ/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/listings/NA-H7X1-JYTM/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/listings/RL-JVOC-MBSL/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              }, {
+                &quot;uri&quot; : &quot;/products/pricing/v0/listings/74-64KG-H9W9/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;responses&quot; : [ {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;SKU&quot; : &quot;GC-QTMS-SV2I&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;SellerSKU&quot; : &quot;GC-QTMS-SV2I&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 17.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 17.99
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 20
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 20
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0.5
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0.5
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 4270
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 14
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Amazon&quot;
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;toy_display_on_website&quot;,
+                  &quot;Rank&quot; : 30959
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;196604011&quot;,
+                  &quot;Rank&quot; : 94
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251910011&quot;,
+                  &quot;Rank&quot; : 13863
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 17.99
+                },
+                &quot;TotalOfferCount&quot; : 4286
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A21GPS04ENK3GH&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 9
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1NHJ2GQHJYKDD&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1EZPZGQPCQEQR&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2BSRKTUYRBQX7&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 12.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A14RRT8J7KHRG0&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A29DD74D3MDLD3&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 15
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1EZPZGQPCQEQR&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 17.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 0,
+                  &quot;minimumHours&quot; : 0,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : true
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A1OHOT6VONX3KA&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : true
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 23
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2NO69NJS5R7BW&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 23
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3J2OPDM7RLS9A&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 30
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AA7AN6LI5ZZMD&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 30
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 30
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A29DD74D3MDLD3&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 50
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3D4MFKTUUP0RS&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 1400
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A16ZGNLKQR74W7&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;ffd73923-1728-4d57-a45b-8e07a5e10366&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:18:08 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;SellerSKU&quot; : &quot;GC-QTMS-SV2I&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;SKU&quot; : &quot;VT-DEIT-57TQ&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;SellerSKU&quot; : &quot;VT-DEIT-57TQ&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 14.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 4.99
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 14.99
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 4.99
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 3
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;toy_display_on_website&quot;,
+                  &quot;Rank&quot; : 6581
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;14194715011&quot;,
+                  &quot;Rank&quot; : 11
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;251975011&quot;,
+                  &quot;Rank&quot; : 15
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 36
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 4.99
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A5LI4TEX5CN80&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 15
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 33
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AH2OYH1RAT8PM&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;96372776-dae8-4cd3-8edf-c9cd2d708c0c&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:18:05 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;SellerSKU&quot; : &quot;VT-DEIT-57TQ&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;SKU&quot; : &quot;NA-H7X1-JYTM&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;SellerSKU&quot; : &quot;NA-H7X1-JYTM&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 18
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 11
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 7
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 1
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;BuyBoxPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 5.01
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 4.99
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 11
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;used&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                }, {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;fashion_display_on_website&quot;,
+                  &quot;Rank&quot; : 34481
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;3421050011&quot;,
+                  &quot;Rank&quot; : 24
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;TotalOfferCount&quot; : 14
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 1
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 720,
+                  &quot;minimumHours&quot; : 504,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AFQSGY2BVBPU2&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 3.5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;ARLPNLRVRA0WL&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3QO25ZNO05UF8&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : true
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AQBXQGCOQTJS6&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5.5
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;ATAQTPUEAJ499&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 4.99
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 5.01
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;AEMQJEQHIGU8X&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : true,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3GAR3KWWUHTHC&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 12
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2YE02EFDC36RW&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 20
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A17VVVVNIJPQI4&quot;,
+                &quot;IsFeaturedMerchant&quot; : true,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 50
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : true,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3ALR9P0658YQT&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 100
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A35LOCZQ3NFRAA&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;0160ecba-a238-40ba-8ef9-647e9a0baf55&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:18:05 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;SellerSKU&quot; : &quot;NA-H7X1-JYTM&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;SKU&quot; : &quot;RL-JVOC-MBSL&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;SellerSKU&quot; : &quot;RL-JVOC-MBSL&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 3
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;sports_display_on_website&quot;,
+                  &quot;Rank&quot; : 232244
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;3395921&quot;,
+                  &quot;Rank&quot; : 242
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;19574752011&quot;,
+                  &quot;Rank&quot; : 1579
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 25
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3TH9S8BH6GOGM&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 3.99
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 9.99
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A09263691NO8MK5LA75X2&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 20
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;09d9fb32-661e-44f3-ac59-b2f91bb3d88e&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:18:05 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;SellerSKU&quot; : &quot;RL-JVOC-MBSL&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        }, {
+          &quot;status&quot; : {
+            &quot;statusCode&quot; : 200,
+            &quot;reasonPhrase&quot; : &quot;OK&quot;
+          },
+          &quot;body&quot; : {
+            &quot;payload&quot; : {
+              &quot;SKU&quot; : &quot;74-64KG-H9W9&quot;,
+              &quot;status&quot; : &quot;Success&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;Identifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;SellerSKU&quot; : &quot;74-64KG-H9W9&quot;
+              },
+              &quot;Summary&quot; : {
+                &quot;LowestPrices&quot; : [ {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 200
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 200
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;LandedPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 12
+                  },
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 12
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                } ],
+                &quot;NumberOfOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 1
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;,
+                  &quot;OfferCount&quot; : 2
+                } ],
+                &quot;BuyBoxEligibleOffers&quot; : [ {
+                  &quot;condition&quot; : &quot;collectible&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                }, {
+                  &quot;condition&quot; : &quot;new&quot;,
+                  &quot;fulfillmentChannel&quot; : &quot;Merchant&quot;
+                } ],
+                &quot;SalesRankings&quot; : [ {
+                  &quot;ProductCategoryId&quot; : &quot;video_games_display_on_website&quot;,
+                  &quot;Rank&quot; : 2597
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;19497044011&quot;,
+                  &quot;Rank&quot; : 33
+                }, {
+                  &quot;ProductCategoryId&quot; : &quot;14670126011&quot;,
+                  &quot;Rank&quot; : 45
+                } ],
+                &quot;ListPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 399
+                },
+                &quot;TotalOfferCount&quot; : 3
+              },
+              &quot;Offers&quot; : [ {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 12
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 48,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A3TH9S8BH6GOGM&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : false,
+                &quot;IsFulfilledByAmazon&quot; : false
+              }, {
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0
+                },
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 20
+                },
+                &quot;ShippingTime&quot; : {
+                  &quot;maximumHours&quot; : 24,
+                  &quot;minimumHours&quot; : 24,
+                  &quot;availabilityType&quot; : &quot;NOW&quot;
+                },
+                &quot;ShipsFrom&quot; : {
+                  &quot;Country&quot; : &quot;US&quot;
+                },
+                &quot;PrimeInformation&quot; : {
+                  &quot;IsPrime&quot; : false,
+                  &quot;IsNationalPrime&quot; : false
+                },
+                &quot;SubCondition&quot; : &quot;new&quot;,
+                &quot;SellerId&quot; : &quot;A2SNBFWOFW4SWG&quot;,
+                &quot;IsFeaturedMerchant&quot; : false,
+                &quot;IsBuyBoxWinner&quot; : false,
+                &quot;MyOffer&quot; : true,
+                &quot;IsFulfilledByAmazon&quot; : false
+              } ],
+              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+            }
+          },
+          &quot;headers&quot; : {
+            &quot;x-amzn-RequestId&quot; : &quot;0df944c2-6de5-48d1-9c9c-df138c00e797&quot;,
+            &quot;Date&quot; : &quot;Tue, 28 Jun 2022 14:18:05 GMT&quot;
+          },
+          &quot;request&quot; : {
+            &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;SellerSKU&quot; : &quot;74-64KG-H9W9&quot;,
+            &quot;CustomerType&quot; : &quot;Consumer&quot;,
+            &quot;ItemCondition&quot; : &quot;New&quot;
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingOffersBatch',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingOffersBatch'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{responses&#x3D;[{status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{SKU&#x3D;GC-QTMS-SV2I, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, SellerSKU&#x3D;GC-QTMS-SV2I}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.5}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.5}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;4270}, {condition&#x3D;new, fulfillmentChannel&#x3D;Amazon, OfferCount&#x3D;1}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;14}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant}, {condition&#x3D;new, fulfillmentChannel&#x3D;Amazon}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;toy_display_on_website, Rank&#x3D;30959}, {ProductCategoryId&#x3D;196604011, Rank&#x3D;94}, {ProductCategoryId&#x3D;251910011, Rank&#x3D;13863}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, TotalOfferCount&#x3D;4286}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A21GPS04ENK3GH, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;9}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A1NHJ2GQHJYKDD, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A1EZPZGQPCQEQR, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2BSRKTUYRBQX7, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12.99}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A14RRT8J7KHRG0, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A29DD74D3MDLD3, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;15}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A1EZPZGQPCQEQR, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;17.99}, ShippingTime&#x3D;{maximumHours&#x3D;0, minimumHours&#x3D;0, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;true}, SubCondition&#x3D;new, SellerId&#x3D;A1OHOT6VONX3KA, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;true}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;23}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2NO69NJS5R7BW, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;23}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3J2OPDM7RLS9A, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;30}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AA7AN6LI5ZZMD, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;30}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;true, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;30}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A29DD74D3MDLD3, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3D4MFKTUUP0RS, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1400}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A16ZGNLKQR74W7, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;ffd73923-1728-4d57-a45b-8e07a5e10366, Date&#x3D;Tue, 28 Jun 2022 14:18:08 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, SellerSKU&#x3D;GC-QTMS-SV2I, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{SKU&#x3D;VT-DEIT-57TQ, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, SellerSKU&#x3D;VT-DEIT-57TQ}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;14.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;14.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;3}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;toy_display_on_website, Rank&#x3D;6581}, {ProductCategoryId&#x3D;14194715011, Rank&#x3D;11}, {ProductCategoryId&#x3D;251975011, Rank&#x3D;15}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;36}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A5LI4TEX5CN80, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;15}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;true, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;33}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AH2OYH1RAT8PM, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;96372776-dae8-4cd3-8edf-c9cd2d708c0c, Date&#x3D;Tue, 28 Jun 2022 14:18:05 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, SellerSKU&#x3D;VT-DEIT-57TQ, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{SKU&#x3D;NA-H7X1-JYTM, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, SellerSKU&#x3D;NA-H7X1-JYTM}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;18}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;11}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;7}}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], BuyBoxPrices&#x3D;[{condition&#x3D;new, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5.01}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}}], NumberOfOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;11}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;used, fulfillmentChannel&#x3D;Merchant}, {condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;fashion_display_on_website, Rank&#x3D;34481}, {ProductCategoryId&#x3D;3421050011, Rank&#x3D;24}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, TotalOfferCount&#x3D;14}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;1}, ShippingTime&#x3D;{maximumHours&#x3D;720, minimumHours&#x3D;504, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AFQSGY2BVBPU2, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;ARLPNLRVRA0WL, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3QO25ZNO05UF8, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;true}, SubCondition&#x3D;new, SellerId&#x3D;AQBXQGCOQTJS6, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5.5}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;ATAQTPUEAJ499, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;4.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;5.01}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;AEMQJEQHIGU8X, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;true, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3GAR3KWWUHTHC, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2YE02EFDC36RW, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A17VVVVNIJPQI4, IsFeaturedMerchant&#x3D;true, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;50}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;true, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3ALR9P0658YQT, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;100}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A35LOCZQ3NFRAA, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;0160ecba-a238-40ba-8ef9-647e9a0baf55, Date&#x3D;Tue, 28 Jun 2022 14:18:05 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, SellerSKU&#x3D;NA-H7X1-JYTM, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{SKU&#x3D;RL-JVOC-MBSL, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, SellerSKU&#x3D;RL-JVOC-MBSL}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;3}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;sports_display_on_website, Rank&#x3D;232244}, {ProductCategoryId&#x3D;3395921, Rank&#x3D;242}, {ProductCategoryId&#x3D;19574752011, Rank&#x3D;1579}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;25}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3TH9S8BH6GOGM, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.99}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;9.99}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A09263691NO8MK5LA75X2, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;true, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;09d9fb32-661e-44f3-ac59-b2f91bb3d88e, Date&#x3D;Tue, 28 Jun 2022 14:18:05 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, SellerSKU&#x3D;RL-JVOC-MBSL, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}, {status&#x3D;{statusCode&#x3D;200, reasonPhrase&#x3D;OK}, body&#x3D;{payload&#x3D;{SKU&#x3D;74-64KG-H9W9, status&#x3D;Success, ItemCondition&#x3D;New, Identifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, SellerSKU&#x3D;74-64KG-H9W9}, Summary&#x3D;{LowestPrices&#x3D;[{condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;200}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;200}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}], NumberOfOffers&#x3D;[{condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;1}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant, OfferCount&#x3D;2}], BuyBoxEligibleOffers&#x3D;[{condition&#x3D;collectible, fulfillmentChannel&#x3D;Merchant}, {condition&#x3D;new, fulfillmentChannel&#x3D;Merchant}], SalesRankings&#x3D;[{ProductCategoryId&#x3D;video_games_display_on_website, Rank&#x3D;2597}, {ProductCategoryId&#x3D;19497044011, Rank&#x3D;33}, {ProductCategoryId&#x3D;14670126011, Rank&#x3D;45}], ListPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;399}, TotalOfferCount&#x3D;3}, Offers&#x3D;[{Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;12}, ShippingTime&#x3D;{maximumHours&#x3D;48, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A3TH9S8BH6GOGM, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;false, IsFulfilledByAmazon&#x3D;false}, {Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;20}, ShippingTime&#x3D;{maximumHours&#x3D;24, minimumHours&#x3D;24, availabilityType&#x3D;NOW}, ShipsFrom&#x3D;{Country&#x3D;US}, PrimeInformation&#x3D;{IsPrime&#x3D;false, IsNationalPrime&#x3D;false}, SubCondition&#x3D;new, SellerId&#x3D;A2SNBFWOFW4SWG, IsFeaturedMerchant&#x3D;false, IsBuyBoxWinner&#x3D;false, MyOffer&#x3D;true, IsFulfilledByAmazon&#x3D;false}], marketplaceId&#x3D;ATVPDKIKX0DER}}, headers&#x3D;{x-amzn-RequestId&#x3D;0df944c2-6de5-48d1-9c9c-df138c00e797, Date&#x3D;Tue, 28 Jun 2022 14:18:05 GMT}, request&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, SellerSKU&#x3D;74-64KG-H9W9, CustomerType&#x3D;Consumer, ItemCondition&#x3D;New}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingOffersBatch',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingOffersBatchWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -765,40 +5606,83 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getListingOffersBatch_400
-     * .
      */
     public function testGetListingOffersBatch400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch400')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{requests&#x3D;[{uri&#x3D;/products/pricing/v0/listings/GC-QTMS-SV2I/offers, method&#x3D;GET, MarketplaceId&#x3D;ATVPDKIKX0DER, ItemCondition&#x3D;New, CustomerType&#x3D;Consumer}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Errors&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;requests&quot; : [ {
+                &quot;uri&quot; : &quot;/products/pricing/v0/listings/GC-QTMS-SV2I/offers&quot;,
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ItemCondition&quot; : &quot;New&quot;,
+                &quot;CustomerType&quot; : &quot;Consumer&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingOffersBatch',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingOffersBatch'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingOffersBatch',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingOffersBatchWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -811,94 +5695,411 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getListingOffersBatch_401
-     * .
      */
     public function testGetListingOffersBatch401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffersBatch_403
-     * .
      */
     public function testGetListingOffersBatch403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffersBatch_404
-     * .
      */
     public function testGetListingOffersBatch404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffersBatch_429
-     * .
      */
     public function testGetListingOffersBatch429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffersBatch_500
-     * .
      */
     public function testGetListingOffersBatch500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingOffersBatch_503
-     * .
      */
     public function testGetListingOffersBatch503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getPricing_200
-     * .
      */
     public function testGetPricing200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetPricing200')) {
+             if ($this->testHelper->shouldSkipTest('testGetPricing200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{MarketplaceId&#x3D;{value&#x3D;ATVPDKIKX0DER}, ItemType&#x3D;{value&#x3D;Asin}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetPricingResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Asin&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;Offers&quot; : [ {
+              &quot;BuyingPrice&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;LandedPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.0
+                }
+              },
+              &quot;RegularPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;FulfillmentChannel&quot; : &quot;MERCHANT&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;ItemSubCondition&quot; : &quot;New&quot;,
+              &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;Offers&quot; : [ {
+              &quot;BuyingPrice&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;LandedPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.0
+                }
+              },
+              &quot;RegularPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;FulfillmentChannel&quot; : &quot;MERCHANT&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;ItemSubCondition&quot; : &quot;New&quot;,
+              &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
+            } ]
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Sku&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+              }
+            },
+            &quot;Offers&quot; : [ {
+              &quot;BuyingPrice&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;LandedPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.0
+                }
+              },
+              &quot;RegularPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;FulfillmentChannel&quot; : &quot;MERCHANT&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;ItemSubCondition&quot; : &quot;New&quot;,
+              &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+                &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
+              }
+            },
+            &quot;Offers&quot; : [ {
+              &quot;BuyingPrice&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;LandedPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10.0
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.0
+                }
+              },
+              &quot;RegularPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;FulfillmentChannel&quot; : &quot;MERCHANT&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;ItemSubCondition&quot; : &quot;New&quot;,
+              &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
+            } ]
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
+          },
+          &quot;ItemType&quot; : {
+            &quot;value&quot; : &quot;Asin&quot;
+          },
+          &quot;OfferType&quot; : {
+            &quot;value&quot; : &quot;B2B&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;Offers&quot; : [ {
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;BuyingPrice&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 9.5
+                },
+                &quot;LandedPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 9.5
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.0
+                }
+              },
+              &quot;RegularPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;quantityDiscountPrices&quot; : [ {
+                &quot;quantityTier&quot; : 2,
+                &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+                &quot;listingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 8.0
+                }
+              }, {
+                &quot;quantityTier&quot; : 3,
+                &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
+                &quot;listingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 7.0
+                }
+              } ],
+              &quot;FulfillmentChannel&quot; : &quot;MERCHANT&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;ItemSubCondition&quot; : &quot;New&quot;,
+              &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
+            } ]
+          }
+        }, {
+          &quot;status&quot; : &quot;Success&quot;,
+          &quot;ASIN&quot; : &quot;B00551Q3CS&quot;,
+          &quot;Product&quot; : {
+            &quot;Identifiers&quot; : {
+              &quot;MarketplaceASIN&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
+              },
+              &quot;SKUIdentifier&quot; : {
+                &quot;MarketplaceId&quot; : &quot;&quot;,
+                &quot;SellerId&quot; : &quot;&quot;,
+                &quot;SellerSKU&quot; : &quot;&quot;
+              }
+            },
+            &quot;Offers&quot; : [ {
+              &quot;offerType&quot; : &quot;B2B&quot;,
+              &quot;BuyingPrice&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 8.0
+                },
+                &quot;LandedPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 8.0
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 0.0
+                }
+              },
+              &quot;RegularPrice&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 10.0
+              },
+              &quot;FulfillmentChannel&quot; : &quot;MERCHANT&quot;,
+              &quot;ItemCondition&quot; : &quot;New&quot;,
+              &quot;ItemSubCondition&quot; : &quot;New&quot;,
+              &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
+            } ]
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getPricing',
-                $invalidRequestJson
+                $jsonSchema,
+                'getPricing'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;[{status&#x3D;Success, ASIN&#x3D;B00V5DG6IQ, Product&#x3D;{Identifiers&#x3D;{MarketplaceASIN&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ASIN&#x3D;B00V5DG6IQ}, SKUIdentifier&#x3D;{MarketplaceId&#x3D;, SellerId&#x3D;, SellerSKU&#x3D;}}, Offers&#x3D;[{BuyingPrice&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}}, RegularPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, FulfillmentChannel&#x3D;MERCHANT, ItemCondition&#x3D;New, ItemSubCondition&#x3D;New, SellerSKU&#x3D;NABetaASINB00V5DG6IQ}]}}, {status&#x3D;Success, ASIN&#x3D;B00551Q3CS, Product&#x3D;{Identifiers&#x3D;{MarketplaceASIN&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, ASIN&#x3D;B00551Q3CS}, SKUIdentifier&#x3D;{MarketplaceId&#x3D;, SellerId&#x3D;, SellerSKU&#x3D;}}, Offers&#x3D;[{BuyingPrice&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, LandedPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}}, RegularPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10.0}, FulfillmentChannel&#x3D;MERCHANT, ItemCondition&#x3D;New, ItemSubCondition&#x3D;New, SellerSKU&#x3D;NABetaASINB00551Q3CS}]}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getPricing',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getPricingWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -911,40 +6112,75 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getPricing_400
-     * .
      */
     public function testGetPricing400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetPricing400')) {
+             if ($this->testHelper->shouldSkipTest('testGetPricing400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{MarketplaceId&#x3D;{value&#x3D;TEST_CASE_400}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetPricingResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;MarketplaceId&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_400&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getPricing',
-                $invalidRequestJson
+                $jsonSchema,
+                'getPricing'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getPricing',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ProductPricingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getPricingWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -957,56 +6193,50 @@ class ProductPricingApiTest extends TestCase
     }
     /**
      * Test case for getPricing_401
-     * .
      */
     public function testGetPricing401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getPricing_403
-     * .
      */
     public function testGetPricing403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getPricing_404
-     * .
      */
     public function testGetPricing404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getPricing_429
-     * .
      */
     public function testGetPricing429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getPricing_500
-     * .
      */
     public function testGetPricing500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getPricing_503
-     * .
      */
     public function testGetPricing503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

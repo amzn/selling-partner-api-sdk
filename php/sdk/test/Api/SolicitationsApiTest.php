@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\SolicitationsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,70 @@ class SolicitationsApiTest extends TestCase
 
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_201
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateProductReviewAndSellerFeedbackSolicitation201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateProductReviewAndSellerFeedbackSolicitation201', 'SolicitationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateProductReviewAndSellerFeedbackSolicitationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createProductReviewAndSellerFeedbackSolicitation',
-                $invalidRequestJson
+                $jsonSchema,
+                'createProductReviewAndSellerFeedbackSolicitation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createProductReviewAndSellerFeedbackSolicitation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SolicitationsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -181,112 +212,168 @@ class SolicitationsApiTest extends TestCase
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_400
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_403
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_404
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_413
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_415
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_429
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_500
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createProductReviewAndSellerFeedbackSolicitation_503
-     * .
      */
     public function testCreateProductReviewAndSellerFeedbackSolicitation503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_200
-     * .
      */
     public function testGetSolicitationActionsForOrder200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetSolicitationActionsForOrder200')) {
+             if ($this->testHelper->shouldSkipTest('testGetSolicitationActionsForOrder200', 'SolicitationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, marketplaceIds&#x3D;{value&#x3D;[ATVPDKIKX0DER]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Returns hypermedia links under the _links.actions key that specify which solicitation actions are allowed for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetSolicitationActionsForOrderResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;_links&quot; : {
+          &quot;actions&quot; : [ {
+            &quot;href&quot; : &quot;/solicitations/v1/orders/903-1671087-0812628/solicitations/productReviewAndSellerFeedback?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;productReviewAndSellerFeedback&quot;
+          } ],
+          &quot;self&quot; : {
+            &quot;href&quot; : &quot;/solicitations/v1/orders/903-1671087-0812628?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;
+          }
+        },
+        &quot;_embedded&quot; : {
+          &quot;actions&quot; : [ {
+            &quot;_links&quot; : {
+              &quot;schema&quot; : {
+                &quot;href&quot; : &quot;/solicitations/v1/orders/903-1671087-0812628/solicitations/productReviewAndSellerFeedback/schema&quot;,
+                &quot;name&quot; : &quot;productReviewAndSellerFeedback&quot;
+              }
+            }
+          } ]
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;_links&quot; : {
+          &quot;actions&quot; : [ {
+            &quot;href&quot; : &quot;/solicitations/v1/orders/123-1234567-1234567/solicitations/productReviewAndSellerFeedback?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;productReviewAndSellerFeedback&quot;
+          } ],
+          &quot;self&quot; : {
+            &quot;href&quot; : &quot;/solicitations/v1/orders/123-1234567-1234567?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getSolicitationActionsForOrder',
-                $invalidRequestJson
+                $jsonSchema,
+                'getSolicitationActionsForOrder'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{_links&#x3D;{actions&#x3D;[{href&#x3D;/solicitations/v1/orders/123-1234567-1234567/solicitations/productReviewAndSellerFeedback?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;productReviewAndSellerFeedback}], self&#x3D;{href&#x3D;/solicitations/v1/orders/123-1234567-1234567?marketplaceIds&#x3D;ATVPDKIKX0DER}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getSolicitationActionsForOrder',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SolicitationsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getSolicitationActionsForOrderWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -299,74 +386,66 @@ class SolicitationsApiTest extends TestCase
     }
     /**
      * Test case for getSolicitationActionsForOrder_400
-     * .
      */
     public function testGetSolicitationActionsForOrder400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_403
-     * .
      */
     public function testGetSolicitationActionsForOrder403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_404
-     * .
      */
     public function testGetSolicitationActionsForOrder404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_413
-     * .
      */
     public function testGetSolicitationActionsForOrder413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_415
-     * .
      */
     public function testGetSolicitationActionsForOrder415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_429
-     * .
      */
     public function testGetSolicitationActionsForOrder429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_500
-     * .
      */
     public function testGetSolicitationActionsForOrder500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getSolicitationActionsForOrder_503
-     * .
      */
     public function testGetSolicitationActionsForOrder503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

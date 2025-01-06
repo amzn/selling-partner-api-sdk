@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\DefinitionsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,133 @@ class DefinitionsApiTest extends TestCase
 
     /**
      * Test case for getDefinitionsProductType_200
-     * .
      */
     public function testGetDefinitionsProductType200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetDefinitionsProductType200')) {
+             if ($this->testHelper->shouldSkipTest('testGetDefinitionsProductType200', 'DefinitionsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully retrieved an Amazon product type definition.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ProductTypeDefinition&quot;
+      },
+      &quot;example&quot; : {
+        &quot;metaSchema&quot; : {
+          &quot;link&quot; : {
+            &quot;resource&quot; : &quot;https://meta-schema-url&quot;,
+            &quot;verb&quot; : &quot;GET&quot;
+          },
+          &quot;checksum&quot; : &quot;c7af9479ca7261645cea9db56c5f720d&quot;
+        },
+        &quot;schema&quot; : {
+          &quot;link&quot; : {
+            &quot;resource&quot; : &quot;https://schema-url&quot;,
+            &quot;verb&quot; : &quot;GET&quot;
+          },
+          &quot;checksum&quot; : &quot;c7af9479ca7261645cea9db56c5f720d&quot;
+        },
+        &quot;requirements&quot; : &quot;LISTING&quot;,
+        &quot;requirementsEnforced&quot; : &quot;ENFORCED&quot;,
+        &quot;propertyGroups&quot; : {
+          &quot;product_identity&quot; : {
+            &quot;title&quot; : &quot;Product Identity&quot;,
+            &quot;description&quot; : &quot;Information to uniquely identify your product (e.g., UPC, EAN, GTIN, Product Type, Brand)&quot;,
+            &quot;propertyNames&quot; : [ &quot;item_name&quot;, &quot;brand&quot;, &quot;external_product_id&quot;, &quot;gtin_exemption_reason&quot;, &quot;merchant_suggested_asin&quot;, &quot;product_type&quot;, &quot;product_category&quot;, &quot;product_subcategory&quot;, &quot;item_type_keyword&quot; ]
+          }
+        },
+        &quot;locale&quot; : &quot;en_US&quot;,
+        &quot;marketplaceIds&quot; : [ &quot;ATVPDKIKX0DER&quot; ],
+        &quot;productType&quot; : &quot;LUGGAGE&quot;,
+        &quot;displayName&quot; : &quot;Luggage&quot;,
+        &quot;productTypeVersion&quot; : {
+          &quot;version&quot; : &quot;UHqSqmb4FNUk&#x3D;&quot;,
+          &quot;latest&quot; : true,
+          &quot;releaseCandidate&quot; : false
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;metaSchema&quot; : {
+          &quot;link&quot; : {
+            &quot;resource&quot; : &quot;https://meta-schema-url&quot;,
+            &quot;verb&quot; : &quot;GET&quot;
+          },
+          &quot;checksum&quot; : &quot;c7af9479ca7261645cea9db56c5f720d&quot;
+        },
+        &quot;schema&quot; : {
+          &quot;link&quot; : {
+            &quot;resource&quot; : &quot;https://schema-url&quot;,
+            &quot;verb&quot; : &quot;GET&quot;
+          },
+          &quot;checksum&quot; : &quot;c7af9479ca7261645cea9db56c5f720d&quot;
+        },
+        &quot;requirements&quot; : &quot;LISTING&quot;,
+        &quot;requirementsEnforced&quot; : &quot;ENFORCED&quot;,
+        &quot;propertyGroups&quot; : {
+          &quot;product_identity&quot; : {
+            &quot;title&quot; : &quot;Product Identity&quot;,
+            &quot;description&quot; : &quot;Information to uniquely identify your product (e.g., UPC, EAN, GTIN, Product Type, Brand)&quot;,
+            &quot;propertyNames&quot; : [ &quot;item_name&quot;, &quot;brand&quot;, &quot;external_product_id&quot;, &quot;gtin_exemption_reason&quot;, &quot;merchant_suggested_asin&quot;, &quot;product_type&quot;, &quot;product_category&quot;, &quot;product_subcategory&quot;, &quot;item_type_keyword&quot; ]
+          }
+        },
+        &quot;locale&quot; : &quot;en_US&quot;,
+        &quot;marketplaceIds&quot; : [ &quot;ATVPDKIKX0DER&quot; ],
+        &quot;productType&quot; : &quot;LUGGAGE&quot;,
+        &quot;displayName&quot; : &quot;Luggage&quot;,
+        &quot;productTypeVersion&quot; : {
+          &quot;version&quot; : &quot;UHqSqmb4FNUk&#x3D;&quot;,
+          &quot;latest&quot; : true,
+          &quot;releaseCandidate&quot; : false
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getDefinitionsProductType',
-                $invalidRequestJson
+                $jsonSchema,
+                'getDefinitionsProductType'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{metaSchema&#x3D;{link&#x3D;{resource&#x3D;https://meta-schema-url, verb&#x3D;GET}, checksum&#x3D;c7af9479ca7261645cea9db56c5f720d}, schema&#x3D;{link&#x3D;{resource&#x3D;https://schema-url, verb&#x3D;GET}, checksum&#x3D;c7af9479ca7261645cea9db56c5f720d}, requirements&#x3D;LISTING, requirementsEnforced&#x3D;ENFORCED, propertyGroups&#x3D;{product_identity&#x3D;{title&#x3D;Product Identity, description&#x3D;Information to uniquely identify your product (e.g., UPC, EAN, GTIN, Product Type, Brand), propertyNames&#x3D;[item_name, brand, external_product_id, gtin_exemption_reason, merchant_suggested_asin, product_type, product_category, product_subcategory, item_type_keyword]}}, locale&#x3D;en_US, marketplaceIds&#x3D;[ATVPDKIKX0DER], productType&#x3D;LUGGAGE, displayName&#x3D;Luggage, productTypeVersion&#x3D;{version&#x3D;UHqSqmb4FNUk&#x3D;, latest&#x3D;true, releaseCandidate&#x3D;false}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getDefinitionsProductType',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('DefinitionsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getDefinitionsProductTypeWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +275,76 @@ class DefinitionsApiTest extends TestCase
     }
     /**
      * Test case for getDefinitionsProductType_400
-     * .
      */
     public function testGetDefinitionsProductType400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetDefinitionsProductType400')) {
+             if ($this->testHelper->shouldSkipTest('testGetDefinitionsProductType400', 'DefinitionsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{productType&#x3D;{value&#x3D;INVALID}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;productType&quot; : {
+            &quot;value&quot; : &quot;INVALID&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid input&quot;,
+          &quot;details&quot; : &quot;Invalid input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getDefinitionsProductType',
-                $invalidRequestJson
+                $jsonSchema,
+                'getDefinitionsProductType'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid input, details&#x3D;Invalid input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getDefinitionsProductType',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('DefinitionsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getDefinitionsProductTypeWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,103 +357,137 @@ class DefinitionsApiTest extends TestCase
     }
     /**
      * Test case for getDefinitionsProductType_403
-     * .
      */
     public function testGetDefinitionsProductType403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getDefinitionsProductType_404
-     * .
      */
     public function testGetDefinitionsProductType404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getDefinitionsProductType_413
-     * .
      */
     public function testGetDefinitionsProductType413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getDefinitionsProductType_415
-     * .
      */
     public function testGetDefinitionsProductType415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getDefinitionsProductType_429
-     * .
      */
     public function testGetDefinitionsProductType429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getDefinitionsProductType_500
-     * .
      */
     public function testGetDefinitionsProductType500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getDefinitionsProductType_503
-     * .
      */
     public function testGetDefinitionsProductType503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_200
-     * .
      */
     public function testSearchDefinitionsProductTypes200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSearchDefinitionsProductTypes200')) {
+             if ($this->testHelper->shouldSkipTest('testSearchDefinitionsProductTypes200', 'DefinitionsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully retrieved a list of Amazon product types that have definitions available.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ProductTypeList&quot;
+      },
+      &quot;example&quot; : {
+        &quot;productTypes&quot; : [ {
+          &quot;name&quot; : &quot;LUGGAGE&quot;,
+          &quot;displayName&quot; : &quot;Luggage&quot;,
+          &quot;marketplaceIds&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+        } ],
+        &quot;productTypeVersion&quot; : &quot;UHqSqmb4FNUk&#x3D;&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;productTypes&quot; : [ {
+          &quot;name&quot; : &quot;LUGGAGE&quot;,
+          &quot;displayName&quot; : &quot;Luggage&quot;,
+          &quot;marketplaceIds&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+        } ],
+        &quot;productTypeVersion&quot; : &quot;UHqSqmb4FNUk&#x3D;&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'searchDefinitionsProductTypes',
-                $invalidRequestJson
+                $jsonSchema,
+                'searchDefinitionsProductTypes'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{productTypes&#x3D;[{name&#x3D;LUGGAGE, displayName&#x3D;Luggage, marketplaceIds&#x3D;[ATVPDKIKX0DER]}], productTypeVersion&#x3D;UHqSqmb4FNUk&#x3D;}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'searchDefinitionsProductTypes',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('DefinitionsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->searchDefinitionsProductTypesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -336,40 +500,76 @@ class DefinitionsApiTest extends TestCase
     }
     /**
      * Test case for searchDefinitionsProductTypes_400
-     * .
      */
     public function testSearchDefinitionsProductTypes400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSearchDefinitionsProductTypes400')) {
+             if ($this->testHelper->shouldSkipTest('testSearchDefinitionsProductTypes400', 'DefinitionsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{keywords&#x3D;{value&#x3D;[Invalid Request]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;keywords&quot; : {
+            &quot;value&quot; : [ &quot;Invalid Request&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid input&quot;,
+          &quot;details&quot; : &quot;Invalid input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'searchDefinitionsProductTypes',
-                $invalidRequestJson
+                $jsonSchema,
+                'searchDefinitionsProductTypes'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid input, details&#x3D;Invalid input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'searchDefinitionsProductTypes',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('DefinitionsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->searchDefinitionsProductTypesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -382,65 +582,58 @@ class DefinitionsApiTest extends TestCase
     }
     /**
      * Test case for searchDefinitionsProductTypes_403
-     * .
      */
     public function testSearchDefinitionsProductTypes403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_404
-     * .
      */
     public function testSearchDefinitionsProductTypes404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_413
-     * .
      */
     public function testSearchDefinitionsProductTypes413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_415
-     * .
      */
     public function testSearchDefinitionsProductTypes415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_429
-     * .
      */
     public function testSearchDefinitionsProductTypes429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_500
-     * .
      */
     public function testSearchDefinitionsProductTypes500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchDefinitionsProductTypes_503
-     * .
      */
     public function testSearchDefinitionsProductTypes503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\FeesApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,138 @@ class FeesApiTest extends TestCase
 
     /**
      * Test case for getMyFeesEstimateForASIN_200
-     * .
      */
     public function testGetMyFeesEstimateForASIN200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN200')) {
+             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN200', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, IsAmazonFulfilled&#x3D;false, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}, Identifier&#x3D;UmaS1}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMyFeesEstimateResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;IsAmazonFulfilled&quot; : false,
+                &quot;PriceToEstimateFees&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 0,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 0
+                    }
+                  }
+                },
+                &quot;Identifier&quot; : &quot;UmaS1&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;FeesEstimateResult&quot; : {
+            &quot;Status&quot; : &quot;Success&quot;,
+            &quot;FeesEstimateIdentifier&quot; : {
+              &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+              &quot;IdType&quot; : &quot;ASIN&quot;,
+              &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+              &quot;SellerInputIdentifier&quot; : &quot;UmaS1&quot;,
+              &quot;IsAmazonFulfilled&quot; : false,
+              &quot;IdValue&quot; : &quot;B00V5DG6IQ&quot;,
+              &quot;PriceToEstimateFees&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;Points&quot; : {
+                  &quot;PointsNumber&quot; : 0,
+                  &quot;PointsMonetaryValue&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }
+              }
+            },
+            &quot;FeesEstimate&quot; : {
+              &quot;TimeOfFeesEstimation&quot; : &quot;Mon Oct 28 18:49:32 UTC 2019&quot;,
+              &quot;TotalFeesEstimate&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 3.0
+              },
+              &quot;FeeDetailList&quot; : [ ]
+            },
+            &quot;Error&quot; : {
+              &quot;Type&quot; : &quot;&quot;,
+              &quot;Code&quot; : &quot;&quot;,
+              &quot;Message&quot; : &quot;&quot;,
+              &quot;Detail&quot; : [ ]
+            }
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMyFeesEstimateForASIN',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMyFeesEstimateForASIN'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{FeesEstimateResult&#x3D;{Status&#x3D;Success, FeesEstimateIdentifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, IdType&#x3D;ASIN, SellerId&#x3D;AXXXXXXXXXXXXX, SellerInputIdentifier&#x3D;UmaS1, IsAmazonFulfilled&#x3D;false, IdValue&#x3D;B00V5DG6IQ, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}}, FeesEstimate&#x3D;{TimeOfFeesEstimation&#x3D;Mon Oct 28 18:49:32 UTC 2019, TotalFeesEstimate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.0}, FeeDetailList&#x3D;[]}, Error&#x3D;{Type&#x3D;, Code&#x3D;, Message&#x3D;, Detail&#x3D;[]}}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMyFeesEstimateForASIN',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMyFeesEstimateForASINWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +280,80 @@ class FeesApiTest extends TestCase
     }
     /**
      * Test case for getMyFeesEstimateForASIN_400
-     * .
      */
     public function testGetMyFeesEstimateForASIN400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN400')) {
+             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN400', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;WRNGMRKTPLCE}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMyFeesEstimateResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;WRNGMRKTPLCE&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Incorrect Marketplace identifier.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMyFeesEstimateForASIN',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMyFeesEstimateForASIN'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Incorrect Marketplace identifier., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMyFeesEstimateForASIN',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMyFeesEstimateForASINWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,94 +366,186 @@ class FeesApiTest extends TestCase
     }
     /**
      * Test case for getMyFeesEstimateForASIN_401
-     * .
      */
     public function testGetMyFeesEstimateForASIN401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForASIN_403
-     * .
      */
     public function testGetMyFeesEstimateForASIN403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForASIN_404
-     * .
      */
     public function testGetMyFeesEstimateForASIN404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForASIN_429
-     * .
      */
     public function testGetMyFeesEstimateForASIN429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForASIN_500
-     * .
      */
     public function testGetMyFeesEstimateForASIN500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForASIN_503
-     * .
      */
     public function testGetMyFeesEstimateForASIN503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForSKU_200
-     * .
      */
     public function testGetMyFeesEstimateForSKU200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU200')) {
+             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU200', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, IsAmazonFulfilled&#x3D;false, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}, Identifier&#x3D;UmaS1}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMyFeesEstimateResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;IsAmazonFulfilled&quot; : false,
+                &quot;PriceToEstimateFees&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 0,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 0
+                    }
+                  }
+                },
+                &quot;Identifier&quot; : &quot;UmaS1&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;FeesEstimateResult&quot; : {
+            &quot;Status&quot; : &quot;Success&quot;,
+            &quot;FeesEstimateIdentifier&quot; : {
+              &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+              &quot;IdType&quot; : &quot;ASIN&quot;,
+              &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+              &quot;SellerInputIdentifier&quot; : &quot;UmaS1&quot;,
+              &quot;IsAmazonFulfilled&quot; : false,
+              &quot;IdValue&quot; : &quot;B00V5DG6IQ&quot;,
+              &quot;PriceToEstimateFees&quot; : {
+                &quot;ListingPrice&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;Shipping&quot; : {
+                  &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                  &quot;Amount&quot; : 10
+                },
+                &quot;Points&quot; : {
+                  &quot;PointsNumber&quot; : 0,
+                  &quot;PointsMonetaryValue&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 0
+                  }
+                }
+              }
+            },
+            &quot;FeesEstimate&quot; : {
+              &quot;TimeOfFeesEstimation&quot; : &quot;Mon Oct 28 18:49:32 UTC 2019&quot;,
+              &quot;TotalFeesEstimate&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 3.0
+              },
+              &quot;FeeDetailList&quot; : [ ]
+            },
+            &quot;Error&quot; : {
+              &quot;Type&quot; : &quot;&quot;,
+              &quot;Code&quot; : &quot;&quot;,
+              &quot;Message&quot; : &quot;&quot;,
+              &quot;Detail&quot; : [ ]
+            }
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMyFeesEstimateForSKU',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMyFeesEstimateForSKU'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{FeesEstimateResult&#x3D;{Status&#x3D;Success, FeesEstimateIdentifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, IdType&#x3D;ASIN, SellerId&#x3D;AXXXXXXXXXXXXX, SellerInputIdentifier&#x3D;UmaS1, IsAmazonFulfilled&#x3D;false, IdValue&#x3D;B00V5DG6IQ, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}}, FeesEstimate&#x3D;{TimeOfFeesEstimation&#x3D;Mon Oct 28 18:49:32 UTC 2019, TotalFeesEstimate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.0}, FeeDetailList&#x3D;[]}, Error&#x3D;{Type&#x3D;, Code&#x3D;, Message&#x3D;, Detail&#x3D;[]}}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMyFeesEstimateForSKU',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMyFeesEstimateForSKUWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -327,40 +558,80 @@ class FeesApiTest extends TestCase
     }
     /**
      * Test case for getMyFeesEstimateForSKU_400
-     * .
      */
     public function testGetMyFeesEstimateForSKU400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU400')) {
+             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU400', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;WRNGMRKTPLCE}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMyFeesEstimateResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;WRNGMRKTPLCE&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Incorrect Marketplace identifier.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMyFeesEstimateForSKU',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMyFeesEstimateForSKU'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Incorrect Marketplace identifier., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMyFeesEstimateForSKU',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMyFeesEstimateForSKUWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -373,94 +644,250 @@ class FeesApiTest extends TestCase
     }
     /**
      * Test case for getMyFeesEstimateForSKU_401
-     * .
      */
     public function testGetMyFeesEstimateForSKU401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForSKU_403
-     * .
      */
     public function testGetMyFeesEstimateForSKU403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForSKU_404
-     * .
      */
     public function testGetMyFeesEstimateForSKU404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForSKU_429
-     * .
      */
     public function testGetMyFeesEstimateForSKU429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForSKU_500
-     * .
      */
     public function testGetMyFeesEstimateForSKU500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimateForSKU_503
-     * .
      */
     public function testGetMyFeesEstimateForSKU503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimates_200
-     * .
      */
     public function testGetMyFeesEstimates200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates200')) {
+             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates200', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;[{FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, IsAmazonFulfilled&#x3D;false, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}, Identifier&#x3D;UmaS1}, IdType&#x3D;ASIN, IdValue&#x3D;asin123}, {FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;A1AM78C64UM0Y8, IsAmazonFulfilled&#x3D;true, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;0}}}, Identifier&#x3D;UmaS2}, IdType&#x3D;SellerSKU, IdValue&#x3D;sku123}]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMyFeesEstimatesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : [ {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;IsAmazonFulfilled&quot; : false,
+                &quot;PriceToEstimateFees&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 0,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 0
+                    }
+                  }
+                },
+                &quot;Identifier&quot; : &quot;UmaS1&quot;
+              },
+              &quot;IdType&quot; : &quot;ASIN&quot;,
+              &quot;IdValue&quot; : &quot;asin123&quot;
+            }, {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;A1AM78C64UM0Y8&quot;,
+                &quot;IsAmazonFulfilled&quot; : true,
+                &quot;PriceToEstimateFees&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 0,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+                      &quot;Amount&quot; : 0
+                    }
+                  }
+                },
+                &quot;Identifier&quot; : &quot;UmaS2&quot;
+              },
+              &quot;IdType&quot; : &quot;SellerSKU&quot;,
+              &quot;IdValue&quot; : &quot;sku123&quot;
+            } ]
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;Status&quot; : &quot;Success&quot;,
+        &quot;FeesEstimateIdentifier&quot; : {
+          &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;IdType&quot; : &quot;ASIN&quot;,
+          &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+          &quot;SellerInputIdentifier&quot; : &quot;UmaS1&quot;,
+          &quot;IsAmazonFulfilled&quot; : false,
+          &quot;IdValue&quot; : &quot;asin123&quot;,
+          &quot;PriceToEstimateFees&quot; : {
+            &quot;ListingPrice&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 10
+            },
+            &quot;Shipping&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 10
+            },
+            &quot;Points&quot; : {
+              &quot;PointsNumber&quot; : 0,
+              &quot;PointsMonetaryValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0
+              }
+            }
+          }
+        },
+        &quot;FeesEstimate&quot; : {
+          &quot;TimeOfFeesEstimation&quot; : &quot;Mon Oct 28 18:49:32 UTC 2019&quot;,
+          &quot;TotalFeesEstimate&quot; : {
+            &quot;CurrencyCode&quot; : &quot;USD&quot;,
+            &quot;Amount&quot; : 3.0
+          },
+          &quot;FeeDetailList&quot; : [ ]
+        },
+        &quot;Error&quot; : {
+          &quot;Type&quot; : &quot;&quot;,
+          &quot;Code&quot; : &quot;&quot;,
+          &quot;Message&quot; : &quot;&quot;,
+          &quot;Detail&quot; : [ ]
+        }
+      }, {
+        &quot;Status&quot; : &quot;Success&quot;,
+        &quot;FeesEstimateIdentifier&quot; : {
+          &quot;MarketplaceId&quot; : &quot;A1AM78C64UM0Y8&quot;,
+          &quot;IdType&quot; : &quot;SellerSKU&quot;,
+          &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
+          &quot;SellerInputIdentifier&quot; : &quot;UmaS2&quot;,
+          &quot;IsAmazonFulfilled&quot; : false,
+          &quot;IdValue&quot; : &quot;sku123&quot;,
+          &quot;PriceToEstimateFees&quot; : {
+            &quot;ListingPrice&quot; : {
+              &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+              &quot;Amount&quot; : 10
+            },
+            &quot;Shipping&quot; : {
+              &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+              &quot;Amount&quot; : 10
+            },
+            &quot;Points&quot; : {
+              &quot;PointsNumber&quot; : 0,
+              &quot;PointsMonetaryValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+                &quot;Amount&quot; : 0
+              }
+            }
+          }
+        },
+        &quot;FeesEstimate&quot; : {
+          &quot;TimeOfFeesEstimation&quot; : &quot;Mon Oct 28 18:49:32 UTC 2019&quot;,
+          &quot;TotalFeesEstimate&quot; : {
+            &quot;CurrencyCode&quot; : &quot;MXN&quot;,
+            &quot;Amount&quot; : 3.0
+          },
+          &quot;FeeDetailList&quot; : [ ]
+        },
+        &quot;Error&quot; : {
+          &quot;Type&quot; : &quot;&quot;,
+          &quot;Code&quot; : &quot;&quot;,
+          &quot;Message&quot; : &quot;&quot;,
+          &quot;Detail&quot; : [ ]
+        }
+      } ]
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMyFeesEstimates',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMyFeesEstimates'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '[{Status&#x3D;Success, FeesEstimateIdentifier&#x3D;{MarketplaceId&#x3D;ATVPDKIKX0DER, IdType&#x3D;ASIN, SellerId&#x3D;AXXXXXXXXXXXXX, SellerInputIdentifier&#x3D;UmaS1, IsAmazonFulfilled&#x3D;false, IdValue&#x3D;asin123, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}}, FeesEstimate&#x3D;{TimeOfFeesEstimation&#x3D;Mon Oct 28 18:49:32 UTC 2019, TotalFeesEstimate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;3.0}, FeeDetailList&#x3D;[]}, Error&#x3D;{Type&#x3D;, Code&#x3D;, Message&#x3D;, Detail&#x3D;[]}}, {Status&#x3D;Success, FeesEstimateIdentifier&#x3D;{MarketplaceId&#x3D;A1AM78C64UM0Y8, IdType&#x3D;SellerSKU, SellerId&#x3D;AXXXXXXXXXXXXX, SellerInputIdentifier&#x3D;UmaS2, IsAmazonFulfilled&#x3D;false, IdValue&#x3D;sku123, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;0}}}}, FeesEstimate&#x3D;{TimeOfFeesEstimation&#x3D;Mon Oct 28 18:49:32 UTC 2019, TotalFeesEstimate&#x3D;{CurrencyCode&#x3D;MXN, Amount&#x3D;3.0}, FeeDetailList&#x3D;[]}, Error&#x3D;{Type&#x3D;, Code&#x3D;, Message&#x3D;, Detail&#x3D;[]}}]';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMyFeesEstimates',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMyFeesEstimatesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -473,40 +900,101 @@ class FeesApiTest extends TestCase
     }
     /**
      * Test case for getMyFeesEstimates_400
-     * .
      */
     public function testGetMyFeesEstimates400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates400')) {
+             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates400', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;[{FeesEstimateRequest&#x3D;{MarketplaceId&#x3D;INVALIDMARKETPLACEID, IsAmazonFulfilled&#x3D;false, PriceToEstimateFees&#x3D;{ListingPrice&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Shipping&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;10}, Points&#x3D;{PointsNumber&#x3D;0, PointsMonetaryValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}}, Identifier&#x3D;UmaS1}, IdType&#x3D;ASIN, IdValue&#x3D;asin123}]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMyFeesEstimatesErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : [ {
+              &quot;FeesEstimateRequest&quot; : {
+                &quot;MarketplaceId&quot; : &quot;INVALIDMARKETPLACEID&quot;,
+                &quot;IsAmazonFulfilled&quot; : false,
+                &quot;PriceToEstimateFees&quot; : {
+                  &quot;ListingPrice&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Shipping&quot; : {
+                    &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                    &quot;Amount&quot; : 10
+                  },
+                  &quot;Points&quot; : {
+                    &quot;PointsNumber&quot; : 0,
+                    &quot;PointsMonetaryValue&quot; : {
+                      &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                      &quot;Amount&quot; : 0
+                    }
+                  }
+                },
+                &quot;Identifier&quot; : &quot;UmaS1&quot;
+              },
+              &quot;IdType&quot; : &quot;ASIN&quot;,
+              &quot;IdValue&quot; : &quot;asin123&quot;
+            } ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Incorrect Marketplace identifier.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMyFeesEstimates',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMyFeesEstimates'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Incorrect Marketplace identifier., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMyFeesEstimates',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('FeesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMyFeesEstimatesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -519,56 +1007,50 @@ class FeesApiTest extends TestCase
     }
     /**
      * Test case for getMyFeesEstimates_401
-     * .
      */
     public function testGetMyFeesEstimates401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimates_403
-     * .
      */
     public function testGetMyFeesEstimates403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimates_404
-     * .
      */
     public function testGetMyFeesEstimates404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimates_429
-     * .
      */
     public function testGetMyFeesEstimates429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimates_500
-     * .
      */
     public function testGetMyFeesEstimates500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMyFeesEstimates_503
-     * .
      */
     public function testGetMyFeesEstimates503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

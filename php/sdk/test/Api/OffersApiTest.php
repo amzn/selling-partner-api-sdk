@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\OffersApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,155 @@ class OffersApiTest extends TestCase
 
     /**
      * Test case for listOfferMetrics_200
-     * .
      */
     public function testListOfferMetrics200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testListOfferMetrics200')) {
+             if ($this->testHelper->shouldSkipTest('testListOfferMetrics200', 'OffersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{filters&#x3D;{aggregationFrequency&#x3D;YEAR, timeInterval&#x3D;{startDate&#x3D;2022-01-01T00:00:00Z, endDate&#x3D;2022-12-31T00:00:00Z}, marketplaceId&#x3D;ATVPDKIKX0DER, programTypes&#x3D;[SUBSCRIBE_AND_SAVE], timePeriodType&#x3D;PERFORMANCE, asins&#x3D;[B07CYBR5GZ, B07CYJJW8H]}, pagination&#x3D;{limit&#x3D;2, offset&#x3D;0}, sort&#x3D;{order&#x3D;ASC, key&#x3D;TOTAL_SUBSCRIPTIONS_REVENUE}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ListOfferMetricsResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;offers&quot; : [ {
+          &quot;notDeliveredDueToOOS&quot; : 30.78,
+          &quot;shippedSubscriptionUnits&quot; : 20,
+          &quot;totalSubscriptionsRevenue&quot; : 12.89,
+          &quot;asin&quot; : &quot;B000TMUDOW&quot;,
+          &quot;revenuePenetration&quot; : 10.34,
+          &quot;lostRevenueDueToOOS&quot; : 12.32,
+          &quot;couponsRevenuePenetration&quot; : 10,
+          &quot;timeInterval&quot; : {
+            &quot;endDate&quot; : &quot;2023-03-11T00:00:00Z&quot;,
+            &quot;startDate&quot; : &quot;2023-03-05T00:00:00Z&quot;
+          },
+          &quot;currencyCode&quot; : &quot;USD&quot;
+        }, {
+          &quot;notDeliveredDueToOOS&quot; : 40.78,
+          &quot;shippedSubscriptionUnits&quot; : 40,
+          &quot;totalSubscriptionsRevenue&quot; : 34.03,
+          &quot;asin&quot; : &quot;B004CLH5CY&quot;,
+          &quot;revenuePenetration&quot; : 9.87,
+          &quot;lostRevenueDueToOOS&quot; : 17.82,
+          &quot;couponsRevenuePenetration&quot; : 17,
+          &quot;timeInterval&quot; : {
+            &quot;endDate&quot; : &quot;2023-03-11T00:00:00Z&quot;,
+            &quot;startDate&quot; : &quot;2023-03-05T00:00:00Z&quot;
+          },
+          &quot;currencyCode&quot; : &quot;USD&quot;
+        } ],
+        &quot;pagination&quot; : {
+          &quot;totalResults&quot; : 17
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;filters&quot; : {
+                &quot;aggregationFrequency&quot; : &quot;YEAR&quot;,
+                &quot;timeInterval&quot; : {
+                  &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
+                  &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;
+                },
+                &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;programTypes&quot; : [ &quot;SUBSCRIBE_AND_SAVE&quot; ],
+                &quot;timePeriodType&quot; : &quot;PERFORMANCE&quot;,
+                &quot;asins&quot; : [ &quot;B07CYBR5GZ&quot;, &quot;B07CYJJW8H&quot; ]
+              },
+              &quot;pagination&quot; : {
+                &quot;limit&quot; : 2,
+                &quot;offset&quot; : 0
+              },
+              &quot;sort&quot; : {
+                &quot;order&quot; : &quot;ASC&quot;,
+                &quot;key&quot; : &quot;TOTAL_SUBSCRIPTIONS_REVENUE&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;offers&quot; : [ {
+          &quot;asin&quot; : &quot;B07CYBR5GZ&quot;,
+          &quot;notDeliveredDueToOOS&quot; : 10.2,
+          &quot;totalSubscriptionsRevenue&quot; : 100.45,
+          &quot;revenuePenetration&quot; : 23.6,
+          &quot;shippedSubscriptionUnits&quot; : 100,
+          &quot;activeSubscriptions&quot; : 100,
+          &quot;lostRevenueDueToOOS&quot; : 12.32,
+          &quot;couponsRevenuePenetration&quot; : 10,
+          &quot;timeInterval&quot; : {
+            &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
+            &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;
+          },
+          &quot;currencyCode&quot; : &quot;USD&quot;
+        }, {
+          &quot;asin&quot; : &quot;B07CYJJW8H&quot;,
+          &quot;notDeliveredDueToOOS&quot; : 12.78,
+          &quot;totalSubscriptionsRevenue&quot; : 80.11,
+          &quot;revenuePenetration&quot; : 35.9,
+          &quot;shippedSubscriptionUnits&quot; : 100,
+          &quot;activeSubscriptions&quot; : 100,
+          &quot;lostRevenueDueToOOS&quot; : 17.82,
+          &quot;couponsRevenuePenetration&quot; : 17,
+          &quot;timeInterval&quot; : {
+            &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
+            &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;
+          },
+          &quot;currencyCode&quot; : &quot;USD&quot;
+        } ],
+        &quot;pagination&quot; : {
+          &quot;totalResults&quot; : 17
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'listOfferMetrics',
-                $invalidRequestJson
+                $jsonSchema,
+                'listOfferMetrics'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{offers&#x3D;[{asin&#x3D;B07CYBR5GZ, notDeliveredDueToOOS&#x3D;10.2, totalSubscriptionsRevenue&#x3D;100.45, revenuePenetration&#x3D;23.6, shippedSubscriptionUnits&#x3D;100, activeSubscriptions&#x3D;100, lostRevenueDueToOOS&#x3D;12.32, couponsRevenuePenetration&#x3D;10, timeInterval&#x3D;{startDate&#x3D;2022-01-01T00:00:00Z, endDate&#x3D;2022-12-31T00:00:00Z}, currencyCode&#x3D;USD}, {asin&#x3D;B07CYJJW8H, notDeliveredDueToOOS&#x3D;12.78, totalSubscriptionsRevenue&#x3D;80.11, revenuePenetration&#x3D;35.9, shippedSubscriptionUnits&#x3D;100, activeSubscriptions&#x3D;100, lostRevenueDueToOOS&#x3D;17.82, couponsRevenuePenetration&#x3D;17, timeInterval&#x3D;{startDate&#x3D;2022-01-01T00:00:00Z, endDate&#x3D;2022-12-31T00:00:00Z}, currencyCode&#x3D;USD}], pagination&#x3D;{totalResults&#x3D;17}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'listOfferMetrics',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OffersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->listOfferMetricsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +297,95 @@ class OffersApiTest extends TestCase
     }
     /**
      * Test case for listOfferMetrics_400
-     * .
      */
     public function testListOfferMetrics400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testListOfferMetrics400')) {
+             if ($this->testHelper->shouldSkipTest('testListOfferMetrics400', 'OffersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{filters&#x3D;{aggregationFrequency&#x3D;DAY, timeInterval&#x3D;{startDate&#x3D;2022-01-01T00:00:00Z, endDate&#x3D;2022-12-31T00:00:00Z}, marketplaceId&#x3D;ATVPDKIKX0DER, programTypes&#x3D;[SUBSCRIBE_AND_SAVE], timePeriodType&#x3D;PERFORMANCE, asins&#x3D;[B07CYBR5GZ]}, pagination&#x3D;{limit&#x3D;1, offset&#x3D;0}, sort&#x3D;{order&#x3D;ASC, key&#x3D;TOTAL_SUBSCRIPTIONS_REVENUE}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;filters&quot; : {
+                &quot;aggregationFrequency&quot; : &quot;DAY&quot;,
+                &quot;timeInterval&quot; : {
+                  &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
+                  &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;
+                },
+                &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;programTypes&quot; : [ &quot;SUBSCRIBE_AND_SAVE&quot; ],
+                &quot;timePeriodType&quot; : &quot;PERFORMANCE&quot;,
+                &quot;asins&quot; : [ &quot;B07CYBR5GZ&quot; ]
+              },
+              &quot;pagination&quot; : {
+                &quot;limit&quot; : 1,
+                &quot;offset&quot; : 0
+              },
+              &quot;sort&quot; : {
+                &quot;order&quot; : &quot;ASC&quot;,
+                &quot;key&quot; : &quot;TOTAL_SUBSCRIPTIONS_REVENUE&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Unsupported aggregationFrequency is provided. Only WEEK, MONTH, QUARTER and YEAR are supported&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'listOfferMetrics',
-                $invalidRequestJson
+                $jsonSchema,
+                'listOfferMetrics'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Unsupported aggregationFrequency is provided. Only WEEK, MONTH, QUARTER and YEAR are supported}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'listOfferMetrics',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OffersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->listOfferMetricsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,112 +398,247 @@ class OffersApiTest extends TestCase
     }
     /**
      * Test case for listOfferMetrics_401
-     * .
      */
     public function testListOfferMetrics401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_403
-     * .
      */
     public function testListOfferMetrics403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_404
-     * .
      */
     public function testListOfferMetrics404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_413
-     * .
      */
     public function testListOfferMetrics413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_415
-     * .
      */
     public function testListOfferMetrics415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_429
-     * .
      */
     public function testListOfferMetrics429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_500
-     * .
      */
     public function testListOfferMetrics500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOfferMetrics_503
-     * .
      */
     public function testListOfferMetrics503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_200
-     * .
      */
     public function testListOffers200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testListOffers200')) {
+             if ($this->testHelper->shouldSkipTest('testListOffers200', 'OffersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{filters&#x3D;{eligibilities&#x3D;[ELIGIBLE], marketplaceId&#x3D;ATVPDKIKX0DER, programTypes&#x3D;[SUBSCRIBE_AND_SAVE], preferences&#x3D;{autoEnrollment&#x3D;[OPTED_IN, OPTED_OUT]}, promotions&#x3D;{sellingPartnerFundedTieredDiscount&#x3D;{percentage&#x3D;[0, 5, 10]}}}, pagination&#x3D;{limit&#x3D;25, offset&#x3D;0}, sort&#x3D;{order&#x3D;ASC, key&#x3D;ASIN}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ListOffersResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;offers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;offerProgramConfiguration&quot; : {
+            &quot;preferences&quot; : {
+              &quot;autoEnrollment&quot; : &quot;OPTED_IN&quot;
+            },
+            &quot;promotions&quot; : {
+              &quot;sellingPartnerFundedBaseDiscount&quot; : {
+                &quot;percentage&quot; : 5
+              },
+              &quot;sellingPartnerFundedTieredDiscount&quot; : {
+                &quot;percentage&quot; : 0
+              },
+              &quot;amazonFundedBaseDiscount&quot; : {
+                &quot;percentage&quot; : 5
+              },
+              &quot;amazonFundedTieredDiscount&quot; : {
+                &quot;percentage&quot; : 10
+              }
+            },
+            &quot;enrollmentMethod&quot; : &quot;AUTOMATIC&quot;
+          },
+          &quot;programType&quot; : &quot;SUBSCRIBE_AND_SAVE&quot;,
+          &quot;eligibility&quot; : &quot;ELIGIBLE&quot;,
+          &quot;asin&quot; : &quot;B09KR5B7FH&quot;,
+          &quot;sku&quot; : &quot;SKU_OPTED_IN&quot;
+        } ],
+        &quot;pagination&quot; : {
+          &quot;totalResults&quot; : 1
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;filters&quot; : {
+                &quot;eligibilities&quot; : [ &quot;ELIGIBLE&quot; ],
+                &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;programTypes&quot; : [ &quot;SUBSCRIBE_AND_SAVE&quot; ],
+                &quot;preferences&quot; : {
+                  &quot;autoEnrollment&quot; : [ &quot;OPTED_IN&quot;, &quot;OPTED_OUT&quot; ]
+                },
+                &quot;promotions&quot; : {
+                  &quot;sellingPartnerFundedTieredDiscount&quot; : {
+                    &quot;percentage&quot; : [ 0, 5, 10 ]
+                  }
+                }
+              },
+              &quot;pagination&quot; : {
+                &quot;limit&quot; : 25,
+                &quot;offset&quot; : 0
+              },
+              &quot;sort&quot; : {
+                &quot;order&quot; : &quot;ASC&quot;,
+                &quot;key&quot; : &quot;ASIN&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;offers&quot; : [ {
+          &quot;asin&quot; : &quot;B07CYBR5GZ&quot;,
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;sku&quot; : &quot;TEST_SKU_A&quot;,
+          &quot;eligibility&quot; : &quot;ELIGIBLE&quot;,
+          &quot;vendorCodes&quot; : [ &quot;ABCDE&quot;, &quot;PQRST&quot; ],
+          &quot;offerProgramConfiguration&quot; : {
+            &quot;preferences&quot; : {
+              &quot;autoEnrollment&quot; : &quot;OPTED_IN&quot;
+            },
+            &quot;promotions&quot; : {
+              &quot;sellingPartnerFundedBaseDiscount&quot; : {
+                &quot;percentage&quot; : 0
+              },
+              &quot;sellingPartnerFundedTieredDiscount&quot; : {
+                &quot;percentage&quot; : 5
+              },
+              &quot;amazonFundedBaseDiscount&quot; : {
+                &quot;percentage&quot; : 10
+              },
+              &quot;amazonFundedTieredDiscount&quot; : {
+                &quot;percentage&quot; : 15
+              }
+            },
+            &quot;enrollmentMethod&quot; : &quot;AUTOMATIC&quot;
+          },
+          &quot;programType&quot; : &quot;SUBSCRIBE_AND_SAVE&quot;
+        }, {
+          &quot;asin&quot; : &quot;B07CYCR5GZ&quot;,
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;sku&quot; : &quot;TEST_SKU_A&quot;,
+          &quot;eligibility&quot; : &quot;ELIGIBLE&quot;,
+          &quot;vendorCodes&quot; : [ &quot;ABCDE&quot;, &quot;PQRST&quot; ],
+          &quot;offerProgramConfiguration&quot; : {
+            &quot;preferences&quot; : {
+              &quot;autoEnrollment&quot; : &quot;OPTED_IN&quot;
+            },
+            &quot;promotions&quot; : {
+              &quot;sellingPartnerFundedBaseDiscount&quot; : {
+                &quot;percentage&quot; : 5
+              },
+              &quot;sellingPartnerFundedTieredDiscount&quot; : {
+                &quot;percentage&quot; : 0
+              },
+              &quot;amazonFundedBaseDiscount&quot; : {
+                &quot;percentage&quot; : 5
+              },
+              &quot;amazonFundedTieredDiscount&quot; : {
+                &quot;percentage&quot; : 10
+              }
+            },
+            &quot;enrollmentMethod&quot; : &quot;AUTOMATIC&quot;
+          },
+          &quot;programType&quot; : &quot;SUBSCRIBE_AND_SAVE&quot;
+        } ],
+        &quot;pagination&quot; : {
+          &quot;totalResults&quot; : 2
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'listOffers',
-                $invalidRequestJson
+                $jsonSchema,
+                'listOffers'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{offers&#x3D;[{asin&#x3D;B07CYBR5GZ, marketplaceId&#x3D;ATVPDKIKX0DER, sku&#x3D;TEST_SKU_A, eligibility&#x3D;ELIGIBLE, vendorCodes&#x3D;[ABCDE, PQRST], offerProgramConfiguration&#x3D;{preferences&#x3D;{autoEnrollment&#x3D;OPTED_IN}, promotions&#x3D;{sellingPartnerFundedBaseDiscount&#x3D;{percentage&#x3D;0}, sellingPartnerFundedTieredDiscount&#x3D;{percentage&#x3D;5}, amazonFundedBaseDiscount&#x3D;{percentage&#x3D;10}, amazonFundedTieredDiscount&#x3D;{percentage&#x3D;15}}, enrollmentMethod&#x3D;AUTOMATIC}, programType&#x3D;SUBSCRIBE_AND_SAVE}, {asin&#x3D;B07CYCR5GZ, marketplaceId&#x3D;ATVPDKIKX0DER, sku&#x3D;TEST_SKU_A, eligibility&#x3D;ELIGIBLE, vendorCodes&#x3D;[ABCDE, PQRST], offerProgramConfiguration&#x3D;{preferences&#x3D;{autoEnrollment&#x3D;OPTED_IN}, promotions&#x3D;{sellingPartnerFundedBaseDiscount&#x3D;{percentage&#x3D;5}, sellingPartnerFundedTieredDiscount&#x3D;{percentage&#x3D;0}, amazonFundedBaseDiscount&#x3D;{percentage&#x3D;5}, amazonFundedTieredDiscount&#x3D;{percentage&#x3D;10}}, enrollmentMethod&#x3D;AUTOMATIC}, programType&#x3D;SUBSCRIBE_AND_SAVE}], pagination&#x3D;{totalResults&#x3D;2}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'listOffers',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OffersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->listOffersWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -345,40 +651,89 @@ class OffersApiTest extends TestCase
     }
     /**
      * Test case for listOffers_400
-     * .
      */
     public function testListOffers400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testListOffers400')) {
+             if ($this->testHelper->shouldSkipTest('testListOffers400', 'OffersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{filters&#x3D;{eligibilities&#x3D;[BAD_VALUE], marketplaceId&#x3D;ATVPDKIKX0DER, programTypes&#x3D;[SUBSCRIBE_AND_SAVE]}, pagination&#x3D;{limit&#x3D;25, offset&#x3D;0}, sort&#x3D;{order&#x3D;ASC, key&#x3D;ASIN}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;filters&quot; : {
+                &quot;eligibilities&quot; : [ &quot;BAD_VALUE&quot; ],
+                &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+                &quot;programTypes&quot; : [ &quot;SUBSCRIBE_AND_SAVE&quot; ]
+              },
+              &quot;pagination&quot; : {
+                &quot;limit&quot; : 25,
+                &quot;offset&quot; : 0
+              },
+              &quot;sort&quot; : {
+                &quot;order&quot; : &quot;ASC&quot;,
+                &quot;key&quot; : &quot;ASIN&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Unsupported eligibility is provided. Only ELIGIBLE, INELIGIBLE, SUSPENDED and REPLENISHMENT_ONLY_ORDERING are supported&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'listOffers',
-                $invalidRequestJson
+                $jsonSchema,
+                'listOffers'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Unsupported eligibility is provided. Only ELIGIBLE, INELIGIBLE, SUSPENDED and REPLENISHMENT_ONLY_ORDERING are supported}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'listOffers',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OffersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->listOffersWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -391,74 +746,66 @@ class OffersApiTest extends TestCase
     }
     /**
      * Test case for listOffers_401
-     * .
      */
     public function testListOffers401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_403
-     * .
      */
     public function testListOffers403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_404
-     * .
      */
     public function testListOffers404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_413
-     * .
      */
     public function testListOffers413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_415
-     * .
      */
     public function testListOffers415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_429
-     * .
      */
     public function testListOffers429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_500
-     * .
      */
     public function testListOffers500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listOffers_503
-     * .
      */
     public function testListOffers503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\InvoicesApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,86 @@ class InvoicesApiTest extends TestCase
 
     /**
      * Test case for createInvoicesExport_202
-     * .
      */
     public function testCreateInvoicesExport202()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport202')) {
+             if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport202', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{dateEnd&#x3D;2024-07-30T23:59:59, dateStart&#x3D;2024-07-01T00:00:00, externalInvoiceId&#x3D;1283743, fileFormat&#x3D;XML, invoiceType&#x3D;SYMBOLIC_RETURN, marketplaceId&#x3D;A2Q3Y263D00KWC, series&#x3D;32, statuses&#x3D;[AUTHORIZED], transactionIdentifier&#x3D;{name&#x3D;BUSINESS_TRANSACTION_ID, id&#x3D;94cd4e1a-5cc5-486d-b592-045a95a168e1}, transactionType&#x3D;CUSTOMER_SALES}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ExportInvoicesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;dateEnd&quot; : &quot;2024-07-30T23:59:59&quot;,
+              &quot;dateStart&quot; : &quot;2024-07-01T00:00:00&quot;,
+              &quot;externalInvoiceId&quot; : &quot;1283743&quot;,
+              &quot;fileFormat&quot; : &quot;XML&quot;,
+              &quot;invoiceType&quot; : &quot;SYMBOLIC_RETURN&quot;,
+              &quot;marketplaceId&quot; : &quot;A2Q3Y263D00KWC&quot;,
+              &quot;series&quot; : &quot;32&quot;,
+              &quot;statuses&quot; : [ &quot;AUTHORIZED&quot; ],
+              &quot;transactionIdentifier&quot; : {
+                &quot;name&quot; : &quot;BUSINESS_TRANSACTION_ID&quot;,
+                &quot;id&quot; : &quot;94cd4e1a-5cc5-486d-b592-045a95a168e1&quot;
+              },
+              &quot;transactionType&quot; : &quot;CUSTOMER_SALES&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;exportId&quot; : &quot;4bdd8293-0cd7-4208-bed5-78b2c6ecefef&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createInvoicesExport',
-                $invalidRequestJson
+                $jsonSchema,
+                'createInvoicesExport'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{exportId&#x3D;4bdd8293-0cd7-4208-bed5-78b2c6ecefef}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createInvoicesExport',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createInvoicesExportWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(202, $statusCode);
 
             // Handle different response codes
@@ -181,40 +228,72 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for createInvoicesExport_400
-     * .
      */
     public function testCreateInvoicesExport400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required attribute(s): &#39;marketplaceId&#39;.&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createInvoicesExport',
-                $invalidRequestJson
+                $jsonSchema,
+                'createInvoicesExport'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Missing required attribute(s): &#39;marketplaceId&#39;., message&#x3D;Request has missing or invalid parameters and cannot be parsed.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createInvoicesExport',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createInvoicesExportWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,112 +306,153 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for createInvoicesExport_401
-     * .
      */
     public function testCreateInvoicesExport401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_403
-     * .
      */
     public function testCreateInvoicesExport403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_404
-     * .
      */
     public function testCreateInvoicesExport404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_413
-     * .
      */
     public function testCreateInvoicesExport413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_415
-     * .
      */
     public function testCreateInvoicesExport415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_429
-     * .
      */
     public function testCreateInvoicesExport429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_500
-     * .
      */
     public function testCreateInvoicesExport500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createInvoicesExport_503
-     * .
      */
     public function testCreateInvoicesExport503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_200
-     * .
      */
     public function testGetInvoice200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoice200')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoice200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{invoiceId&#x3D;{value&#x3D;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94}, marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetInvoiceResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;invoiceId&quot; : {
+            &quot;value&quot; : &quot;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoice&quot; : {
+          &quot;date&quot; : &quot;2024-07-10T15:00:00.000Z&quot;,
+          &quot;errorCode&quot; : &quot;&quot;,
+          &quot;externalInvoiceId&quot; : &quot;1283743&quot;,
+          &quot;govResponse&quot; : &quot;&quot;,
+          &quot;id&quot; : &quot;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94&quot;,
+          &quot;invoiceType&quot; : &quot;CUSTOMER_SALES&quot;,
+          &quot;series&quot; : &quot;32&quot;,
+          &quot;status&quot; : &quot;AUTHORIZED&quot;,
+          &quot;transactionIds&quot; : [ {
+            &quot;name&quot; : &quot;BUSINESS_TRANSACTION_ID&quot;,
+            &quot;id&quot; : &quot;94cd4e1a-5cc5-486d-b592-045a95a168e1&quot;
+          } ],
+          &quot;transactionType&quot; : &quot;CUSTOMER_SALES_SYMBOLIC&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoice',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoice'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{invoice&#x3D;{date&#x3D;2024-07-10T15:00:00.000Z, errorCode&#x3D;, externalInvoiceId&#x3D;1283743, govResponse&#x3D;, id&#x3D;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94, invoiceType&#x3D;CUSTOMER_SALES, series&#x3D;32, status&#x3D;AUTHORIZED, transactionIds&#x3D;[{name&#x3D;BUSINESS_TRANSACTION_ID, id&#x3D;94cd4e1a-5cc5-486d-b592-045a95a168e1}], transactionType&#x3D;CUSTOMER_SALES_SYMBOLIC}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoice',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoiceWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -345,40 +465,91 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoice_400
-     * .
      */
     public function testGetInvoice400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoice400')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoice400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required parameter &#39;invoiceId&#39;&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;invoiceId&quot; : {
+            &quot;value&quot; : &quot;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required parameter &#39;marketplaceId&#39;&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoice',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoice'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Missing required parameter &#39;invoiceId&#39;, message&#x3D;Invalid Request.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoice',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoiceWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -391,112 +562,210 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoice_401
-     * .
      */
     public function testGetInvoice401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_403
-     * .
      */
     public function testGetInvoice403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_404
-     * .
      */
     public function testGetInvoice404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_413
-     * .
      */
     public function testGetInvoice413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_415
-     * .
      */
     public function testGetInvoice415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_429
-     * .
      */
     public function testGetInvoice429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_500
-     * .
      */
     public function testGetInvoice500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoice_503
-     * .
      */
     public function testGetInvoice503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_200
-     * .
      */
     public function testGetInvoices200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoices200')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoices200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{dateEnd&#x3D;{value&#x3D;2024-07-20T23:59:59}, dateStart&#x3D;{value&#x3D;2024-07-01T00:00:00}, invoiceType&#x3D;{value&#x3D;SYMBOLIC_RETURN}, marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}, pageSize&#x3D;{value&#x3D;1}, sortBy&#x3D;{value&#x3D;START_DATE_TIME}, sortOrder&#x3D;{value&#x3D;DESC}, transactionIdentifierId&#x3D;{value&#x3D;94cd4e1a-5cc5-486d-b592-045a95a168e1}, transactionIdentifierName&#x3D;{value&#x3D;BUSINESS_TRANSACTION_ID}, transactionType&#x3D;{value&#x3D;CUSTOMER_SALES}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetInvoicesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;dateEnd&quot; : {
+            &quot;value&quot; : &quot;2024-07-20T23:59:59&quot;
+          },
+          &quot;dateStart&quot; : {
+            &quot;value&quot; : &quot;2024-07-01T00:00:00&quot;
+          },
+          &quot;invoiceType&quot; : {
+            &quot;value&quot; : &quot;SYMBOLIC_RETURN&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;pageSize&quot; : {
+            &quot;value&quot; : 1
+          },
+          &quot;sortBy&quot; : {
+            &quot;value&quot; : &quot;START_DATE_TIME&quot;
+          },
+          &quot;sortOrder&quot; : {
+            &quot;value&quot; : &quot;DESC&quot;
+          },
+          &quot;transactionIdentifierId&quot; : {
+            &quot;value&quot; : &quot;94cd4e1a-5cc5-486d-b592-045a95a168e1&quot;
+          },
+          &quot;transactionIdentifierName&quot; : {
+            &quot;value&quot; : &quot;BUSINESS_TRANSACTION_ID&quot;
+          },
+          &quot;transactionType&quot; : {
+            &quot;value&quot; : &quot;CUSTOMER_SALES&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoices&quot; : [ {
+          &quot;date&quot; : &quot;2024-07-10T15:00:00.000Z&quot;,
+          &quot;errorCode&quot; : &quot;&quot;,
+          &quot;externalInvoiceId&quot; : &quot;1283743&quot;,
+          &quot;govResponse&quot; : &quot;&quot;,
+          &quot;id&quot; : &quot;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94&quot;,
+          &quot;invoiceType&quot; : &quot;SYMBOLIC_RETURN&quot;,
+          &quot;series&quot; : &quot;32&quot;,
+          &quot;status&quot; : &quot;AUTHORIZED&quot;,
+          &quot;transactionIds&quot; : [ {
+            &quot;name&quot; : &quot;BUSINESS_TRANSACTION_ID&quot;,
+            &quot;id&quot; : &quot;94cd4e1a-5cc5-486d-b592-045a95a168e1&quot;
+          } ],
+          &quot;transactionType&quot; : &quot;CUSTOMER_SALES&quot;
+        } ],
+        &quot;nextToken&quot; : &quot;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17&quot;
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;externalInvoiceId&quot; : {
+            &quot;value&quot; : &quot;1283743&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;series&quot; : {
+            &quot;value&quot; : &quot;32&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoices&quot; : [ {
+          &quot;date&quot; : &quot;2024-07-10T15:00:00.000Z&quot;,
+          &quot;errorCode&quot; : &quot;&quot;,
+          &quot;externalInvoiceId&quot; : &quot;1283743&quot;,
+          &quot;govResponse&quot; : &quot;&quot;,
+          &quot;id&quot; : &quot;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94&quot;,
+          &quot;invoiceType&quot; : &quot;SYMBOLIC_RETURN&quot;,
+          &quot;series&quot; : &quot;32&quot;,
+          &quot;status&quot; : &quot;AUTHORIZED&quot;,
+          &quot;transactionIds&quot; : [ {
+            &quot;name&quot; : &quot;BUSINESS_TRANSACTION_ID&quot;,
+            &quot;id&quot; : &quot;94cd4e1a-5cc5-486d-b592-045a95a168e1&quot;
+          } ],
+          &quot;transactionType&quot; : &quot;CUSTOMER_SALES&quot;
+        } ],
+        &quot;nextToken&quot; : &quot;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoices',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoices'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{invoices&#x3D;[{date&#x3D;2024-07-10T15:00:00.000Z, errorCode&#x3D;, externalInvoiceId&#x3D;1283743, govResponse&#x3D;, id&#x3D;ad5b9dcd-6981-4dc4-a3d7-dd2568298a94, invoiceType&#x3D;SYMBOLIC_RETURN, series&#x3D;32, status&#x3D;AUTHORIZED, transactionIds&#x3D;[{name&#x3D;BUSINESS_TRANSACTION_ID, id&#x3D;94cd4e1a-5cc5-486d-b592-045a95a168e1}], transactionType&#x3D;CUSTOMER_SALES}], nextToken&#x3D;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoices',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -509,40 +778,82 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoices_400
-     * .
      */
     public function testGetInvoices400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoices400')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoices400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}, nextToken&#x3D;{value&#x3D;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17}, statuses&#x3D;{value&#x3D;[REJECTED]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;nextToken&quot; : {
+            &quot;value&quot; : &quot;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17&quot;
+          },
+          &quot;statuses&quot; : {
+            &quot;value&quot; : [ &quot;REJECTED&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Specifying nextToken with any other parameters will cause the request to fail.&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoices',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoices'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Specifying nextToken with any other parameters will cause the request to fail., message&#x3D;Invalid Request.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoices',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -555,112 +866,150 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoices_401
-     * .
      */
     public function testGetInvoices401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_403
-     * .
      */
     public function testGetInvoices403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_404
-     * .
      */
     public function testGetInvoices404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_413
-     * .
      */
     public function testGetInvoices413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_415
-     * .
      */
     public function testGetInvoices415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_429
-     * .
      */
     public function testGetInvoices429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_500
-     * .
      */
     public function testGetInvoices500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoices_503
-     * .
      */
     public function testGetInvoices503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_200
-     * .
      */
     public function testGetInvoicesAttributes200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes200')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetInvoicesAttributesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoicesAttributes&quot; : {
+          &quot;invoiceStatusOptions&quot; : [ {
+            &quot;description&quot; : &quot;The government authorized the invoice.&quot;,
+            &quot;value&quot; : &quot;AUTHORIZED&quot;
+          }, {
+            &quot;description&quot; : &quot;The government rejected the invoice.&quot;,
+            &quot;value&quot; : &quot;REJECTED&quot;
+          }, {
+            &quot;description&quot; : &quot;The invoice is canceled.&quot;,
+            &quot;value&quot; : &quot;CANCELED&quot;
+          } ],
+          &quot;invoiceTypeOptions&quot; : [ ],
+          &quot;transactionIdentifierNameOptions&quot; : [ ],
+          &quot;transactionTypeOptions&quot; : [ ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesAttributes',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesAttributes'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{invoicesAttributes&#x3D;{invoiceStatusOptions&#x3D;[{description&#x3D;The government authorized the invoice., value&#x3D;AUTHORIZED}, {description&#x3D;The government rejected the invoice., value&#x3D;REJECTED}, {description&#x3D;The invoice is canceled., value&#x3D;CANCELED}], invoiceTypeOptions&#x3D;[], transactionIdentifierNameOptions&#x3D;[], transactionTypeOptions&#x3D;[]}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesAttributes',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesAttributesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -673,40 +1022,72 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesAttributes_400
-     * .
      */
     public function testGetInvoicesAttributes400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes400')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required parameter: &#39;marketplaceId&#39;&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesAttributes',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesAttributes'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Missing required parameter: &#39;marketplaceId&#39;, message&#x3D;Invalid Request.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesAttributes',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesAttributesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -719,112 +1100,139 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesAttributes_401
-     * .
      */
     public function testGetInvoicesAttributes401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_403
-     * .
      */
     public function testGetInvoicesAttributes403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_404
-     * .
      */
     public function testGetInvoicesAttributes404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_413
-     * .
      */
     public function testGetInvoicesAttributes413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_415
-     * .
      */
     public function testGetInvoicesAttributes415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_429
-     * .
      */
     public function testGetInvoicesAttributes429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_500
-     * .
      */
     public function testGetInvoicesAttributes500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesAttributes_503
-     * .
      */
     public function testGetInvoicesAttributes503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_200
-     * .
      */
     public function testGetInvoicesDocument200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument200')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{invoicesDocumentId&#x3D;{value&#x3D;18c598f5-75db-4c1a-bd3e-4c64b36781c5}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetInvoicesDocumentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;invoicesDocumentId&quot; : {
+            &quot;value&quot; : &quot;18c598f5-75db-4c1a-bd3e-4c64b36781c5&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoicesDocument&quot; : {
+          &quot;invoicesDocumentId&quot; : &quot;18c598f5-75db-4c1a-bd3e-4c64b36781c5&quot;,
+          &quot;invoicesDocumentUrl&quot; : &quot;https://invoicesdocumentbucket.s3.eu-east-1.amazonaws.com/18c598f5-75db-4c1a-bd3e-4c64b36781c5.xml?X-Amz-Algorithm&#x3D;AWS4-HMAC-SHA256&amp;X-Amz-Credential&#x3D;&lt;CREDENTIAL&gt;&amp;X-Amz-Date&#x3D;20240710T171315Z&amp;X-Amz-Expires&#x3D;300&amp;X-Amz-Signature&#x3D;&lt;SIGNATURE&gt;&amp;X-Amz-SignedHeaders&#x3D;host&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesDocument',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesDocument'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{invoicesDocument&#x3D;{invoicesDocumentId&#x3D;18c598f5-75db-4c1a-bd3e-4c64b36781c5, invoicesDocumentUrl&#x3D;https://invoicesdocumentbucket.s3.eu-east-1.amazonaws.com/18c598f5-75db-4c1a-bd3e-4c64b36781c5.xml?X-Amz-Algorithm&#x3D;AWS4-HMAC-SHA256&amp;X-Amz-Credential&#x3D;&lt;CREDENTIAL&gt;&amp;X-Amz-Date&#x3D;20240710T171315Z&amp;X-Amz-Expires&#x3D;300&amp;X-Amz-Signature&#x3D;&lt;SIGNATURE&gt;&amp;X-Amz-SignedHeaders&#x3D;host}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesDocument',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesDocumentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -837,40 +1245,72 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesDocument_400
-     * .
      */
     public function testGetInvoicesDocument400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument400')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required parameter &#39;invoiceId&#39;&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesDocument',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesDocument'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Missing required parameter &#39;invoiceId&#39;, message&#x3D;Invalid Request.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesDocument',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesDocumentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -883,112 +1323,143 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesDocument_401
-     * .
      */
     public function testGetInvoicesDocument401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_403
-     * .
      */
     public function testGetInvoicesDocument403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_404
-     * .
      */
     public function testGetInvoicesDocument404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_413
-     * .
      */
     public function testGetInvoicesDocument413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_415
-     * .
      */
     public function testGetInvoicesDocument415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_429
-     * .
      */
     public function testGetInvoicesDocument429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_500
-     * .
      */
     public function testGetInvoicesDocument500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesDocument_503
-     * .
      */
     public function testGetInvoicesDocument503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_200
-     * .
      */
     public function testGetInvoicesExport200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesExport200')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesExport200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{exportId&#x3D;{value&#x3D;4bdd8293-0cd7-4208-bed5-78b2c6ecefef}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetInvoicesExportResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;exportId&quot; : {
+            &quot;value&quot; : &quot;4bdd8293-0cd7-4208-bed5-78b2c6ecefef&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;export&quot; : {
+          &quot;errorMessage&quot; : &quot;&quot;,
+          &quot;exportId&quot; : &quot;4bdd8293-0cd7-4208-bed5-78b2c6ecefef&quot;,
+          &quot;generateExportFinishedAt&quot; : &quot;2024-07-10T16:00:00.000Z&quot;,
+          &quot;generateExportStartedAt&quot; : &quot;2024-07-10T15:00:00.000Z&quot;,
+          &quot;invoicesDocumentIds&quot; : [ &quot;18c598f5-75db-4c1a-bd3e-4c64b36781c5&quot; ],
+          &quot;status&quot; : &quot;DONE&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesExport',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesExport'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{export&#x3D;{errorMessage&#x3D;, exportId&#x3D;4bdd8293-0cd7-4208-bed5-78b2c6ecefef, generateExportFinishedAt&#x3D;2024-07-10T16:00:00.000Z, generateExportStartedAt&#x3D;2024-07-10T15:00:00.000Z, invoicesDocumentIds&#x3D;[18c598f5-75db-4c1a-bd3e-4c64b36781c5], status&#x3D;DONE}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesExport',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesExportWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1001,40 +1472,72 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesExport_400
-     * .
      */
     public function testGetInvoicesExport400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesExport400')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesExport400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required parameter &#39;exportId&#39;&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesExport',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesExport'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Missing required parameter &#39;exportId&#39;, message&#x3D;Invalid Request.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesExport',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesExportWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1047,112 +1550,156 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesExport_401
-     * .
      */
     public function testGetInvoicesExport401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_403
-     * .
      */
     public function testGetInvoicesExport403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_404
-     * .
      */
     public function testGetInvoicesExport404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_413
-     * .
      */
     public function testGetInvoicesExport413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_415
-     * .
      */
     public function testGetInvoicesExport415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_429
-     * .
      */
     public function testGetInvoicesExport429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_500
-     * .
      */
     public function testGetInvoicesExport500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExport_503
-     * .
      */
     public function testGetInvoicesExport503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_200
-     * .
      */
     public function testGetInvoicesExports200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesExports200')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesExports200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{dateEnd&#x3D;{value&#x3D;2024-07-10T23:59:59.000Z}, dateStart&#x3D;{value&#x3D;2024-07-10T00:00:00.000Z}, marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}, pageSize&#x3D;{value&#x3D;1}, status&#x3D;{value&#x3D;DONE}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetInvoicesExportsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;dateEnd&quot; : {
+            &quot;value&quot; : &quot;2024-07-10T23:59:59.000Z&quot;
+          },
+          &quot;dateStart&quot; : {
+            &quot;value&quot; : &quot;2024-07-10T00:00:00.000Z&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;pageSize&quot; : {
+            &quot;value&quot; : 1
+          },
+          &quot;status&quot; : {
+            &quot;value&quot; : &quot;DONE&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;exports&quot; : [ {
+          &quot;errorMessage&quot; : &quot;&quot;,
+          &quot;exportId&quot; : &quot;4bdd8293-0cd7-4208-bed5-78b2c6ecefef&quot;,
+          &quot;generateExportFinishedAt&quot; : &quot;2024-07-10T16:00:00.000Z&quot;,
+          &quot;generateExportStartedAt&quot; : &quot;2024-07-10T15:00:00.000Z&quot;,
+          &quot;invoicesDocumentIds&quot; : [ &quot;18c598f5-75db-4c1a-bd3e-4c64b36781c5&quot; ],
+          &quot;status&quot; : &quot;DONE&quot;
+        } ],
+        &quot;nextToken&quot; : &quot;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesExports',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesExports'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{exports&#x3D;[{errorMessage&#x3D;, exportId&#x3D;4bdd8293-0cd7-4208-bed5-78b2c6ecefef, generateExportFinishedAt&#x3D;2024-07-10T16:00:00.000Z, generateExportStartedAt&#x3D;2024-07-10T15:00:00.000Z, invoicesDocumentIds&#x3D;[18c598f5-75db-4c1a-bd3e-4c64b36781c5], status&#x3D;DONE}], nextToken&#x3D;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesExports',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesExportsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1165,40 +1712,82 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesExports_400
-     * .
      */
     public function testGetInvoicesExports400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetInvoicesExports400')) {
+             if ($this->testHelper->shouldSkipTest('testGetInvoicesExports400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{marketplaceId&#x3D;{value&#x3D;A2Q3Y263D00KWC}, nextToken&#x3D;{value&#x3D;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17}, status&#x3D;{value&#x3D;DONE}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;nextToken&quot; : {
+            &quot;value&quot; : &quot;WTtGLzlBkat22iOI5C1yrpSPqMpz9UHYxdvm5U4DqEVJL5hqxv9xMuXe3eg35i17&quot;
+          },
+          &quot;status&quot; : {
+            &quot;value&quot; : &quot;DONE&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Specifying nextToken with any other parameters will cause the request to fail.&quot;,
+          &quot;message&quot; : &quot;Invalid Request.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getInvoicesExports',
-                $invalidRequestJson
+                $jsonSchema,
+                'getInvoicesExports'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, details&#x3D;Specifying nextToken with any other parameters will cause the request to fail., message&#x3D;Invalid Request.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getInvoicesExports',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getInvoicesExportsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1211,74 +1800,66 @@ class InvoicesApiTest extends TestCase
     }
     /**
      * Test case for getInvoicesExports_401
-     * .
      */
     public function testGetInvoicesExports401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_403
-     * .
      */
     public function testGetInvoicesExports403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_404
-     * .
      */
     public function testGetInvoicesExports404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_413
-     * .
      */
     public function testGetInvoicesExports413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_415
-     * .
      */
     public function testGetInvoicesExports415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_429
-     * .
      */
     public function testGetInvoicesExports429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_500
-     * .
      */
     public function testGetInvoicesExports500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getInvoicesExports_503
-     * .
      */
     public function testGetInvoicesExports503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

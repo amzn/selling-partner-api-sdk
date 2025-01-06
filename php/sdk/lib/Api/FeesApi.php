@@ -1113,7 +1113,7 @@ class FeesApi
      */
     public function getMyFeesEstimates(
         array $body
-    ): \OpenAPI\Client\Model\productfees\FeesEstimateResult[] {
+    ): array {
         list($response) = $this->getMyFeesEstimatesWithHttpInfo($body);
         return $response;
     }
