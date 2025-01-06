@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\OfferCustomerType;
+use OpenAPI\Client\Model\pricingV0\OfferCustomerType;
 
 /**
  * OfferCustomerTypeTest Class Doc Comment

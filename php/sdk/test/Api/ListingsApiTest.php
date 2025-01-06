@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\ListingsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,97 @@ class ListingsApiTest extends TestCase
 
     /**
      * Test case for getListingsRestrictions_200
-     * .
      */
     public function testGetListingsRestrictions200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingsRestrictions200')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingsRestrictions200', 'ListingsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully retrieved the listings restrictions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/RestrictionList&quot;
+      },
+      &quot;example&quot; : {
+        &quot;restrictions&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;conditionType&quot; : &quot;used_acceptable&quot;,
+          &quot;reasons&quot; : [ {
+            &quot;message&quot; : &quot;You cannot list the product in this condition.&quot;,
+            &quot;links&quot; : [ {
+              &quot;resource&quot; : &quot;https://sellercentral.amazon.com/hz/approvalrequest/restrictions/approve?asin&#x3D;B0000ASIN1&quot;,
+              &quot;verb&quot; : &quot;GET&quot;,
+              &quot;title&quot; : &quot;Request Approval via Seller Central.&quot;,
+              &quot;type&quot; : &quot;text/html&quot;
+            } ]
+          } ]
+        } ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : { }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;restrictions&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;conditionType&quot; : &quot;used_acceptable&quot;,
+          &quot;reasons&quot; : [ {
+            &quot;message&quot; : &quot;You cannot list the product in this condition.&quot;,
+            &quot;links&quot; : [ {
+              &quot;resource&quot; : &quot;https://sellercentral.amazon.com/hz/approvalrequest/restrictions/approve?asin&#x3D;B0000ASIN1&quot;,
+              &quot;verb&quot; : &quot;GET&quot;,
+              &quot;title&quot; : &quot;Request Approval via Seller Central.&quot;,
+              &quot;type&quot; : &quot;text/html&quot;
+            } ]
+          } ]
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingsRestrictions',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingsRestrictions'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{restrictions&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, conditionType&#x3D;used_acceptable, reasons&#x3D;[{message&#x3D;You cannot list the product in this condition., links&#x3D;[{resource&#x3D;https://sellercentral.amazon.com/hz/approvalrequest/restrictions/approve?asin&#x3D;B0000ASIN1, verb&#x3D;GET, title&#x3D;Request Approval via Seller Central., type&#x3D;text/html}]}]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingsRestrictions',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingsRestrictionsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +239,73 @@ class ListingsApiTest extends TestCase
     }
     /**
      * Test case for getListingsRestrictions_400
-     * .
      */
     public function testGetListingsRestrictions400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingsRestrictions400')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingsRestrictions400', 'ListingsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{asin&#x3D;{value&#x3D;BAD_ASIN}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;BAD_ASIN&quot;
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+        &quot;message&quot; : &quot;Invalid &#39;asin&#39; provided.&quot;
+      } ]
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingsRestrictions',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingsRestrictions'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid &#39;asin&#39; provided.}]';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingsRestrictions',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingsRestrictionsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,65 +318,58 @@ class ListingsApiTest extends TestCase
     }
     /**
      * Test case for getListingsRestrictions_403
-     * .
      */
     public function testGetListingsRestrictions403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsRestrictions_404
-     * .
      */
     public function testGetListingsRestrictions404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsRestrictions_413
-     * .
      */
     public function testGetListingsRestrictions413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsRestrictions_415
-     * .
      */
     public function testGetListingsRestrictions415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsRestrictions_429
-     * .
      */
     public function testGetListingsRestrictions429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsRestrictions_500
-     * .
      */
     public function testGetListingsRestrictions500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsRestrictions_503
-     * .
      */
     public function testGetListingsRestrictions503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardTextPairBlock;
+use OpenAPI\Client\Model\aplusContent\StandardTextPairBlock;
 
 /**
  * StandardTextPairBlockTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardTextPairBlockTest extends TestCase
     public function testPropertyLabel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
         
         $this->model->setLabel($testValue);
         $this->assertEquals($testValue, $this->model->getLabel());
@@ -69,7 +69,7 @@ class StandardTextPairBlockTest extends TestCase
     public function testPropertyDescription()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
         
         $this->model->setDescription($testValue);
         $this->assertEquals($testValue, $this->model->getDescription());

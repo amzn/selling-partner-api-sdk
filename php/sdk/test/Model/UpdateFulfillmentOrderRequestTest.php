@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\UpdateFulfillmentOrderRequest;
+use OpenAPI\Client\Model\fulfillmentOutbound\UpdateFulfillmentOrderRequest;
 
 /**
  * UpdateFulfillmentOrderRequestTest Class Doc Comment
@@ -101,7 +101,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\ShippingSpeedCategory();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -115,7 +115,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDestinationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Address();
         
         $this->model->setDestinationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAddress());
@@ -126,7 +126,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentAction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentAction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentAction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -139,7 +139,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentPolicy()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentPolicy();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentPolicy();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

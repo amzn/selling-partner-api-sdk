@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\TransportResult;
+use OpenAPI\Client\Model\fulfillmentInboundV0\TransportResult;
 
 /**
  * TransportResultTest Class Doc Comment
@@ -56,7 +56,7 @@ class TransportResultTest extends TestCase
      */
     public function testPropertyTransportStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\TransportStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\TransportStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

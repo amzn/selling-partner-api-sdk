@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\LockerDetails;
+use OpenAPI\Client\Model\fulfillmentOutbound\LockerDetails;
 
 /**
  * LockerDetailsTest Class Doc Comment

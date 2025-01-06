@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\AddressWithContact;
+use OpenAPI\Client\Model\supplySources\AddressWithContact;
 
 /**
  * AddressWithContactTest Class Doc Comment
@@ -57,7 +57,7 @@ class AddressWithContactTest extends TestCase
     public function testPropertyContactDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\ContactDetails();
+        $testValue = new \OpenAPI\Client\Model\supplySources\ContactDetails();
         
         $this->model->setContactDetails($testValue);
         $this->assertEquals($testValue, $this->model->getContactDetails());
@@ -69,7 +69,7 @@ class AddressWithContactTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\Address();
+        $testValue = new \OpenAPI\Client\Model\supplySources\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

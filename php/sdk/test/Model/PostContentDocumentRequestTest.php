@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\PostContentDocumentRequest;
+use OpenAPI\Client\Model\aplusContent\PostContentDocumentRequest;
 
 /**
  * PostContentDocumentRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class PostContentDocumentRequestTest extends TestCase
     public function testPropertyContentDocument()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ContentDocument();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ContentDocument();
         
         $this->model->setContentDocument($testValue);
         $this->assertEquals($testValue, $this->model->getContentDocument());

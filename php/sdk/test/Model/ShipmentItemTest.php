@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ShipmentItem;
+use OpenAPI\Client\Model\financesV0\ShipmentItem;
 
 /**
  * ShipmentItemTest Class Doc Comment
@@ -178,7 +178,7 @@ class ShipmentItemTest extends TestCase
     public function testPropertyCostOfPointsGranted()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setCostOfPointsGranted($testValue);
         $this->assertEquals($testValue, $this->model->getCostOfPointsGranted());
@@ -190,7 +190,7 @@ class ShipmentItemTest extends TestCase
     public function testPropertyCostOfPointsReturned()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setCostOfPointsReturned($testValue);
         $this->assertEquals($testValue, $this->model->getCostOfPointsReturned());

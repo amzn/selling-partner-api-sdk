@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\RejectedShippingService;
+use OpenAPI\Client\Model\merchantFulfillment\RejectedShippingService;
 
 /**
  * RejectedShippingServiceTest Class Doc Comment

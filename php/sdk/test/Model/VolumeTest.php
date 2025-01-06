@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.shipments\Volume;
+use OpenAPI\Client\Model\vendorShipments\Volume;
 
 /**
  * VolumeTest Class Doc Comment

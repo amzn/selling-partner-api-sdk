@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardImageSidebarModule;
+use OpenAPI\Client\Model\aplusContent\StandardImageSidebarModule;
 
 /**
  * StandardImageSidebarModuleTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardImageSidebarModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardImageSidebarModuleTest extends TestCase
     public function testPropertyImageCaptionBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardImageCaptionBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageCaptionBlock();
         
         $this->model->setImageCaptionBlock($testValue);
         $this->assertEquals($testValue, $this->model->getImageCaptionBlock());
@@ -81,7 +81,7 @@ class StandardImageSidebarModuleTest extends TestCase
     public function testPropertyDescriptionTextBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextBlock();
         
         $this->model->setDescriptionTextBlock($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionTextBlock());
@@ -93,7 +93,7 @@ class StandardImageSidebarModuleTest extends TestCase
     public function testPropertyDescriptionListBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardTextListBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextListBlock();
         
         $this->model->setDescriptionListBlock($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionListBlock());
@@ -105,7 +105,7 @@ class StandardImageSidebarModuleTest extends TestCase
     public function testPropertySidebarImageTextBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
         
         $this->model->setSidebarImageTextBlock($testValue);
         $this->assertEquals($testValue, $this->model->getSidebarImageTextBlock());
@@ -117,7 +117,7 @@ class StandardImageSidebarModuleTest extends TestCase
     public function testPropertySidebarListBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardTextListBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextListBlock();
         
         $this->model->setSidebarListBlock($testValue);
         $this->assertEquals($testValue, $this->model->getSidebarListBlock());

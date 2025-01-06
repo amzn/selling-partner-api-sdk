@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **financial_event_group_id** | **string** | The identifier of the financial event group. | [optional]
 **posted_date** | **\DateTime** | Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate). | [optional]
 **sku** | **string** | The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API. | [optional]
-**fee_list** | [**\OpenAPI\Client\Model\financesv0\FeeComponent[]**](FeeComponent.md) | A list of fee component information. | [optional]
+**fee_list** | [**\OpenAPI\Client\Model\financesV0\FeeComponent[]**](FeeComponent.md) | A list of fee component information. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

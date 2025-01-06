@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\AdditionalLocationInfo;
+use OpenAPI\Client\Model\fulfillmentOutbound\AdditionalLocationInfo;
 
 /**
  * AdditionalLocationInfoTest Class Doc Comment

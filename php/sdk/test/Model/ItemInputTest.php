@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ItemInput;
+use OpenAPI\Client\Model\fulfillmentInbound\ItemInput;
 
 /**
  * ItemInputTest Class Doc Comment
@@ -67,7 +67,7 @@ class ItemInputTest extends TestCase
      */
     public function testPropertyLabelOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\LabelOwner();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\LabelOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -102,7 +102,7 @@ class ItemInputTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\PrepOwner();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

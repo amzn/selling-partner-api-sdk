@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.orders\OrderItemStatusOrderedQuantity;
+use OpenAPI\Client\Model\vendorOrders\OrderItemStatusOrderedQuantity;
 
 /**
  * OrderItemStatusOrderedQuantityTest Class Doc Comment
@@ -57,7 +57,7 @@ class OrderItemStatusOrderedQuantityTest extends TestCase
     public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.orders\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendorOrders\ItemQuantity();
         
         $this->model->setOrderedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getOrderedQuantity());

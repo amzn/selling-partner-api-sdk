@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ScheduleSelfShipAppointmentResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentResponse;
 
 /**
  * ScheduleSelfShipAppointmentResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class ScheduleSelfShipAppointmentResponseTest extends TestCase
     public function testPropertySelfShipAppointmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\SelfShipAppointmentDetails();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\SelfShipAppointmentDetails();
         
         $this->model->setSelfShipAppointmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getSelfShipAppointmentDetails());

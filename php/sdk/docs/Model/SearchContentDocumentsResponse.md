@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**warnings** | [**\OpenAPI\Client\Model\apluscontent\Error[]**](Error.md) | A set of messages to the user, such as warnings or comments. | [optional]
+**warnings** | [**\OpenAPI\Client\Model\aplusContent\Error[]**](Error.md) | A set of messages to the user, such as warnings or comments. | [optional]
 **next_page_token** | **string** | A page token that is returned when the results of the call exceed the page size. To get another page of results, call the operation again, passing in this value with the pageToken parameter. | [optional]
-**content_metadata_records** | [**\OpenAPI\Client\Model\apluscontent\ContentMetadataRecord[]**](ContentMetadataRecord.md) | A list of A+ Content metadata records. |
+**content_metadata_records** | [**\OpenAPI\Client\Model\aplusContent\ContentMetadataRecord[]**](ContentMetadataRecord.md) | A list of A+ Content metadata records. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

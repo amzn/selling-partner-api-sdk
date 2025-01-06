@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\OperationalConfiguration;
+use OpenAPI\Client\Model\supplySources\OperationalConfiguration;
 
 /**
  * OperationalConfigurationTest Class Doc Comment
@@ -57,7 +57,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyContactDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\ContactDetails();
+        $testValue = new \OpenAPI\Client\Model\supplySources\ContactDetails();
         
         $this->model->setContactDetails($testValue);
         $this->assertEquals($testValue, $this->model->getContactDetails());
@@ -69,7 +69,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyThroughputConfig()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\ThroughputConfig();
+        $testValue = new \OpenAPI\Client\Model\supplySources\ThroughputConfig();
         
         $this->model->setThroughputConfig($testValue);
         $this->assertEquals($testValue, $this->model->getThroughputConfig());
@@ -81,7 +81,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyOperatingHoursByDay()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\OperatingHoursByDay();
+        $testValue = new \OpenAPI\Client\Model\supplySources\OperatingHoursByDay();
         
         $this->model->setOperatingHoursByDay($testValue);
         $this->assertEquals($testValue, $this->model->getOperatingHoursByDay());
@@ -93,7 +93,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyHandlingTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\Duration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\Duration();
         
         $this->model->setHandlingTime($testValue);
         $this->assertEquals($testValue, $this->model->getHandlingTime());

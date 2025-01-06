@@ -154,17 +154,17 @@ class FbaInventoryApi
      *
      * @param  string $x_amzn_idempotency_token
      *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
      *  List of items to add to Sandbox inventory. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fbainventory\AddInventoryResponse
+     * @return \OpenAPI\Client\Model\fbaInventory\AddInventoryResponse
      */
     public function addInventory(
         string $x_amzn_idempotency_token,
-        \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
-    ): \OpenAPI\Client\Model\fbainventory\AddInventoryResponse {
+        \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
+    ): \OpenAPI\Client\Model\fbaInventory\AddInventoryResponse {
         list($response) = $this->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body);
         return $response;
     }
@@ -174,16 +174,16 @@ class FbaInventoryApi
      *
      * @param  string $x_amzn_idempotency_token
      *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
      *  List of items to add to Sandbox inventory. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fbainventory\AddInventoryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\fbaInventory\AddInventoryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addInventoryWithHttpInfo(
         string $x_amzn_idempotency_token,
-        \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+        \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
     ): array {
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
         $request = $this->config->sign($request);
@@ -226,113 +226,113 @@ class FbaInventoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\AddInventoryResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse';
+            $returnType = '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -353,7 +353,7 @@ class FbaInventoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -361,7 +361,7 @@ class FbaInventoryApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -369,7 +369,7 @@ class FbaInventoryApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -377,7 +377,7 @@ class FbaInventoryApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class FbaInventoryApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class FbaInventoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -401,7 +401,7 @@ class FbaInventoryApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class FbaInventoryApi
      *
      * @param  string $x_amzn_idempotency_token
      *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
      *  List of items to add to Sandbox inventory. (required)
      *
      * @throws \InvalidArgumentException
@@ -424,7 +424,7 @@ class FbaInventoryApi
      */
     public function addInventoryAsync(
         string $x_amzn_idempotency_token,
-        \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+        \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
     ): PromiseInterface {
         return $this->addInventoryAsyncWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body)
             ->then(
@@ -439,7 +439,7 @@ class FbaInventoryApi
      *
      * @param  string $x_amzn_idempotency_token
      *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
      *  List of items to add to Sandbox inventory. (required)
      *
      * @throws \InvalidArgumentException
@@ -447,9 +447,9 @@ class FbaInventoryApi
      */
     public function addInventoryAsyncWithHttpInfo(
         string $x_amzn_idempotency_token,
-        \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+        \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fbainventory\AddInventoryResponse';
+        $returnType = '\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse';
         $request = $this->addInventoryRequest($x_amzn_idempotency_token, $add_inventory_request_body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -495,7 +495,7 @@ class FbaInventoryApi
      *
      * @param  string $x_amzn_idempotency_token
      *  A unique token/requestId provided with each call to ensure idempotency. (required)
-     * @param  \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
      *  List of items to add to Sandbox inventory. (required)
      *
      * @throws \InvalidArgumentException
@@ -503,7 +503,7 @@ class FbaInventoryApi
      */
     public function addInventoryRequest(
         string $x_amzn_idempotency_token,
-        \OpenAPI\Client\Model\fbainventory\AddInventoryRequest $add_inventory_request_body
+        \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest $add_inventory_request_body
     ): Request {
         // verify the required parameter 'x_amzn_idempotency_token' is set
         if ($x_amzn_idempotency_token === null || (is_array($x_amzn_idempotency_token) && count($x_amzn_idempotency_token) === 0)) {
@@ -601,16 +601,16 @@ class FbaInventoryApi
     /**
      * Operation createInventoryItem
      *
-     * @param  \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
      *  CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse
+     * @return \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse
      */
     public function createInventoryItem(
-        \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
-    ): \OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse {
+        \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
+    ): \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse {
         list($response) = $this->createInventoryItemWithHttpInfo($create_inventory_item_request_body);
         return $response;
     }
@@ -618,15 +618,15 @@ class FbaInventoryApi
     /**
      * Operation createInventoryItemWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
      *  CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInventoryItemWithHttpInfo(
-        \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+        \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
     ): array {
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
         $request = $this->config->sign($request);
@@ -669,113 +669,113 @@ class FbaInventoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse';
+            $returnType = '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -796,7 +796,7 @@ class FbaInventoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -804,7 +804,7 @@ class FbaInventoryApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -812,7 +812,7 @@ class FbaInventoryApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -820,7 +820,7 @@ class FbaInventoryApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -828,7 +828,7 @@ class FbaInventoryApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -836,7 +836,7 @@ class FbaInventoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -844,7 +844,7 @@ class FbaInventoryApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -857,14 +857,14 @@ class FbaInventoryApi
     /**
      * Operation createInventoryItemAsync
      *
-     * @param  \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
      *  CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createInventoryItemAsync(
-        \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+        \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
     ): PromiseInterface {
         return $this->createInventoryItemAsyncWithHttpInfo($create_inventory_item_request_body)
             ->then(
@@ -877,16 +877,16 @@ class FbaInventoryApi
     /**
      * Operation createInventoryItemAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
      *  CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createInventoryItemAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+        \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse';
+        $returnType = '\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse';
         $request = $this->createInventoryItemRequest($create_inventory_item_request_body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -930,14 +930,14 @@ class FbaInventoryApi
     /**
      * Create request for operation 'createInventoryItem'
      *
-     * @param  \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+     * @param  \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
      *  CreateInventoryItem Request Body Parameter. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createInventoryItemRequest(
-        \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest $create_inventory_item_request_body
+        \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest $create_inventory_item_request_body
     ): Request {
         // verify the required parameter 'create_inventory_item_request_body' is set
         if ($create_inventory_item_request_body === null || (is_array($create_inventory_item_request_body) && count($create_inventory_item_request_body) === 0)) {
@@ -1032,12 +1032,12 @@ class FbaInventoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse
+     * @return \OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse
      */
     public function deleteInventoryItem(
         string $seller_sku,
         string $marketplace_id
-    ): \OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse {
+    ): \OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse {
         list($response) = $this->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id);
         return $response;
     }
@@ -1052,7 +1052,7 @@ class FbaInventoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInventoryItemWithHttpInfo(
         string $seller_sku,
@@ -1099,113 +1099,113 @@ class FbaInventoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse';
+            $returnType = '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1226,7 +1226,7 @@ class FbaInventoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1234,7 +1234,7 @@ class FbaInventoryApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1242,7 +1242,7 @@ class FbaInventoryApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1250,7 +1250,7 @@ class FbaInventoryApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1258,7 +1258,7 @@ class FbaInventoryApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1266,7 +1266,7 @@ class FbaInventoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1274,7 +1274,7 @@ class FbaInventoryApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1322,7 +1322,7 @@ class FbaInventoryApi
         string $seller_sku,
         string $marketplace_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse';
+        $returnType = '\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse';
         $request = $this->deleteInventoryItemRequest($seller_sku, $marketplace_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1500,7 +1500,7 @@ class FbaInventoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse
+     * @return \OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse
      */
     public function getInventorySummaries(
         string $granularity_type,
@@ -1511,7 +1511,7 @@ class FbaInventoryApi
         ?array $seller_skus = null,
         ?string $seller_sku = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse {
+    ): \OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse {
         list($response) = $this->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
         return $response;
     }
@@ -1538,7 +1538,7 @@ class FbaInventoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInventorySummariesWithHttpInfo(
         string $granularity_type,
@@ -1591,113 +1591,113 @@ class FbaInventoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse';
+            $returnType = '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1718,7 +1718,7 @@ class FbaInventoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1726,7 +1726,7 @@ class FbaInventoryApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1734,7 +1734,7 @@ class FbaInventoryApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1742,7 +1742,7 @@ class FbaInventoryApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1750,7 +1750,7 @@ class FbaInventoryApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1758,7 +1758,7 @@ class FbaInventoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1766,7 +1766,7 @@ class FbaInventoryApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse',
+                        '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1850,7 +1850,7 @@ class FbaInventoryApi
         ?string $seller_sku = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse';
+        $returnType = '\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse';
         $request = $this->getInventorySummariesRequest($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

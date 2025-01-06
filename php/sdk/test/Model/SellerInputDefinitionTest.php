@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\SellerInputDefinition;
+use OpenAPI\Client\Model\merchantFulfillment\SellerInputDefinition;
 
 /**
  * SellerInputDefinitionTest Class Doc Comment
@@ -100,7 +100,7 @@ class SellerInputDefinitionTest extends TestCase
      */
     public function testPropertyInputTarget()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\InputTargetType();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\InputTargetType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class SellerInputDefinitionTest extends TestCase
     public function testPropertyStoredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\AdditionalSellerInput();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\AdditionalSellerInput();
         
         $this->model->setStoredValue($testValue);
         $this->assertEquals($testValue, $this->model->getStoredValue());

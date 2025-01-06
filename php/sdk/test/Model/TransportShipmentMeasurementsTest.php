@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.shipments\TransportShipmentMeasurements;
+use OpenAPI\Client\Model\vendorShipments\TransportShipmentMeasurements;
 
 /**
  * TransportShipmentMeasurementsTest Class Doc Comment
@@ -90,7 +90,7 @@ class TransportShipmentMeasurementsTest extends TestCase
     public function testPropertyShipmentWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.shipments\Weight();
+        $testValue = new \OpenAPI\Client\Model\vendorShipments\Weight();
         
         $this->model->setShipmentWeight($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentWeight());
@@ -102,7 +102,7 @@ class TransportShipmentMeasurementsTest extends TestCase
     public function testPropertyShipmentVolume()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.shipments\Volume();
+        $testValue = new \OpenAPI\Client\Model\vendorShipments\Volume();
         
         $this->model->setShipmentVolume($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentVolume());

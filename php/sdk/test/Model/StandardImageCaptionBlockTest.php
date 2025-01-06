@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardImageCaptionBlock;
+use OpenAPI\Client\Model\aplusContent\StandardImageCaptionBlock;
 
 /**
  * StandardImageCaptionBlockTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardImageCaptionBlockTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ImageComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());
@@ -69,7 +69,7 @@ class StandardImageCaptionBlockTest extends TestCase
     public function testPropertyCaption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
         
         $this->model->setCaption($testValue);
         $this->assertEquals($testValue, $this->model->getCaption());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\MskuPrepDetail;
+use OpenAPI\Client\Model\fulfillmentInbound\MskuPrepDetail;
 
 /**
  * MskuPrepDetailTest Class Doc Comment
@@ -56,7 +56,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyAllOwnersConstraint()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\AllOwnersConstraint();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\AllOwnersConstraint();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyLabelOwnerConstraint()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\OwnerConstraint();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\OwnerConstraint();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -93,7 +93,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyPrepCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\PrepCategory();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\PrepCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -106,7 +106,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyPrepOwnerConstraint()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\OwnerConstraint();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\OwnerConstraint();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

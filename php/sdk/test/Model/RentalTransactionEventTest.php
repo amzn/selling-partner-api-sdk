@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\RentalTransactionEvent;
+use OpenAPI\Client\Model\financesV0\RentalTransactionEvent;
 
 /**
  * RentalTransactionEventTest Class Doc Comment
@@ -135,7 +135,7 @@ class RentalTransactionEventTest extends TestCase
     public function testPropertyRentalInitialValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setRentalInitialValue($testValue);
         $this->assertEquals($testValue, $this->model->getRentalInitialValue());
@@ -147,7 +147,7 @@ class RentalTransactionEventTest extends TestCase
     public function testPropertyRentalReimbursement()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setRentalReimbursement($testValue);
         $this->assertEquals($testValue, $this->model->getRentalReimbursement());

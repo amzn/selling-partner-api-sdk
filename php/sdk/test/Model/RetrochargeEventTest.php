@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\RetrochargeEvent;
+use OpenAPI\Client\Model\financesV0\RetrochargeEvent;
 
 /**
  * RetrochargeEventTest Class Doc Comment
@@ -91,7 +91,7 @@ class RetrochargeEventTest extends TestCase
     public function testPropertyBaseTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setBaseTax($testValue);
         $this->assertEquals($testValue, $this->model->getBaseTax());
@@ -103,7 +103,7 @@ class RetrochargeEventTest extends TestCase
     public function testPropertyShippingTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setShippingTax($testValue);
         $this->assertEquals($testValue, $this->model->getShippingTax());

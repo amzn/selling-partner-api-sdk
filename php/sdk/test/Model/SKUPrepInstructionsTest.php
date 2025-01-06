@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\SKUPrepInstructions;
+use OpenAPI\Client\Model\fulfillmentInboundV0\SKUPrepInstructions;
 
 /**
  * SKUPrepInstructionsTest Class Doc Comment
@@ -78,7 +78,7 @@ class SKUPrepInstructionsTest extends TestCase
      */
     public function testPropertyBarcodeInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\BarcodeInstruction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\BarcodeInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class SKUPrepInstructionsTest extends TestCase
      */
     public function testPropertyPrepGuidance()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PrepGuidance();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PrepGuidance();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

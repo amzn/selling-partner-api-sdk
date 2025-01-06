@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\ListReturnReasonCodesResult;
+use OpenAPI\Client\Model\fulfillmentOutbound\ListReturnReasonCodesResult;
 
 /**
  * ListReturnReasonCodesResultTest Class Doc Comment

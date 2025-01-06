@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\NonPartneredLtlDataInput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredLtlDataInput;
 
 /**
  * NonPartneredLtlDataInputTest Class Doc Comment

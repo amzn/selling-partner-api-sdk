@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\LoanServicingEvent;
+use OpenAPI\Client\Model\financesV0\LoanServicingEvent;
 
 /**
  * LoanServicingEventTest Class Doc Comment
@@ -57,7 +57,7 @@ class LoanServicingEventTest extends TestCase
     public function testPropertyLoanAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setLoanAmount($testValue);
         $this->assertEquals($testValue, $this->model->getLoanAmount());

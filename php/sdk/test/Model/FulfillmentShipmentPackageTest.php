@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentShipmentPackage;
+use OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentShipmentPackage;
 
 /**
  * FulfillmentShipmentPackageTest Class Doc Comment
@@ -102,7 +102,7 @@ class FulfillmentShipmentPackageTest extends TestCase
     public function testPropertyLockerDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\LockerDetails();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\LockerDetails();
         
         $this->model->setLockerDetails($testValue);
         $this->assertEquals($testValue, $this->model->getLockerDetails());
@@ -114,7 +114,7 @@ class FulfillmentShipmentPackageTest extends TestCase
     public function testPropertyDeliveryInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DeliveryInformation();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\DeliveryInformation();
         
         $this->model->setDeliveryInformation($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryInformation());

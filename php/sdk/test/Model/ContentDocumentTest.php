@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\ContentDocument;
+use OpenAPI\Client\Model\aplusContent\ContentDocument;
 
 /**
  * ContentDocumentTest Class Doc Comment
@@ -67,7 +67,7 @@ class ContentDocumentTest extends TestCase
      */
     public function testPropertyContentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\apluscontent\ContentType();
+        $enumInstance = new \OpenAPI\Client\Model\aplusContent\ContentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\GetContentDocumentResponse;
+use OpenAPI\Client\Model\aplusContent\GetContentDocumentResponse;
 
 /**
  * GetContentDocumentResponseTest Class Doc Comment
@@ -68,7 +68,7 @@ class GetContentDocumentResponseTest extends TestCase
     public function testPropertyContentRecord()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ContentRecord();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ContentRecord();
         
         $this->model->setContentRecord($testValue);
         $this->assertEquals($testValue, $this->model->getContentRecord());

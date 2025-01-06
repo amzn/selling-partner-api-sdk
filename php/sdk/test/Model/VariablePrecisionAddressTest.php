@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\VariablePrecisionAddress;
+use OpenAPI\Client\Model\fulfillmentOutbound\VariablePrecisionAddress;
 
 /**
  * VariablePrecisionAddressTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\CreateInboundPlanRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\CreateInboundPlanRequest;
 
 /**
  * CreateInboundPlanRequestTest Class Doc Comment
@@ -90,7 +90,7 @@ class CreateInboundPlanRequestTest extends TestCase
     public function testPropertySourceAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\AddressInput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\AddressInput();
         
         $this->model->setSourceAddress($testValue);
         $this->assertEquals($testValue, $this->model->getSourceAddress());

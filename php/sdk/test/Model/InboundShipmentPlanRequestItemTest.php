@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentPlanRequestItem;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentPlanRequestItem;
 
 /**
  * InboundShipmentPlanRequestItemTest Class Doc Comment
@@ -78,7 +78,7 @@ class InboundShipmentPlanRequestItemTest extends TestCase
      */
     public function testPropertyCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\Condition();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

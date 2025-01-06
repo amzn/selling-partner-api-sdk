@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\AmazonPrepFeesDetails;
+use OpenAPI\Client\Model\fulfillmentInboundV0\AmazonPrepFeesDetails;
 
 /**
  * AmazonPrepFeesDetailsTest Class Doc Comment
@@ -56,7 +56,7 @@ class AmazonPrepFeesDetailsTest extends TestCase
      */
     public function testPropertyPrepInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PrepInstruction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PrepInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class AmazonPrepFeesDetailsTest extends TestCase
     public function testPropertyFeePerUnit()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Amount();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Amount();
         
         $this->model->setFeePerUnit($testValue);
         $this->assertEquals($testValue, $this->model->getFeePerUnit());

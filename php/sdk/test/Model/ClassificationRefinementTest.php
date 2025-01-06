@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\ClassificationRefinement;
+use OpenAPI\Client\Model\catalogItems\ClassificationRefinement;
 
 /**
  * ClassificationRefinementTest Class Doc Comment

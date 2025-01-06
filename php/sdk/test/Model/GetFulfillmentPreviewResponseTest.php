@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\GetFulfillmentPreviewResponse;
+use OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewResponse;
 
 /**
  * GetFulfillmentPreviewResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetFulfillmentPreviewResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\GetFulfillmentPreviewResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

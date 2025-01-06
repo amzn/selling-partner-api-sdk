@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest;
+use OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest;
 
 /**
  * CreateSupplySourceRequestTest Class Doc Comment
@@ -79,7 +79,7 @@ class CreateSupplySourceRequestTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\Address();
+        $testValue = new \OpenAPI\Client\Model\supplySources\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

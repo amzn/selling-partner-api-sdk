@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\SetPackingInformationResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\SetPackingInformationResponse;
 
 /**
  * SetPackingInformationResponseTest Class Doc Comment

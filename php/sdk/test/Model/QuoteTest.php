@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\Quote;
+use OpenAPI\Client\Model\fulfillmentInbound\Quote;
 
 /**
  * QuoteTest Class Doc Comment
@@ -57,7 +57,7 @@ class QuoteTest extends TestCase
     public function testPropertyCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Currency();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Currency();
         
         $this->model->setCost($testValue);
         $this->assertEquals($testValue, $this->model->getCost());

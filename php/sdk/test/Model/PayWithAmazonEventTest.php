@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\PayWithAmazonEvent;
+use OpenAPI\Client\Model\financesV0\PayWithAmazonEvent;
 
 /**
  * PayWithAmazonEventTest Class Doc Comment
@@ -102,7 +102,7 @@ class PayWithAmazonEventTest extends TestCase
     public function testPropertyCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\ChargeComponent();
+        $testValue = new \OpenAPI\Client\Model\financesV0\ChargeComponent();
         
         $this->model->setCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCharge());

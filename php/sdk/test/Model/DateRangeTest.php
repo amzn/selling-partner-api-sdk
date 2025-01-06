@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\DateRange;
+use OpenAPI\Client\Model\fulfillmentOutbound\DateRange;
 
 /**
  * DateRangeTest Class Doc Comment

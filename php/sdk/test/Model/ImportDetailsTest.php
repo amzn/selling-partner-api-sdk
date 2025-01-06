@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.orders\ImportDetails;
+use OpenAPI\Client\Model\vendorOrders\ImportDetails;
 
 /**
  * ImportDetailsTest Class Doc Comment

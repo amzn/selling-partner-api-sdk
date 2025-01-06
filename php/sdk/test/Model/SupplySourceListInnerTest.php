@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\SupplySourceListInner;
+use OpenAPI\Client\Model\supplySources\SupplySourceListInner;
 
 /**
  * SupplySourceListInnerTest Class Doc Comment
@@ -90,7 +90,7 @@ class SupplySourceListInnerTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\Address();
+        $testValue = new \OpenAPI\Client\Model\supplySources\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

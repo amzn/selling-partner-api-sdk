@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\Audience;
+use OpenAPI\Client\Model\listingsItems\Audience;
 
 /**
  * AudienceTest Class Doc Comment

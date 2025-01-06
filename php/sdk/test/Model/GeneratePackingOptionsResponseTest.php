@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\GeneratePackingOptionsResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\GeneratePackingOptionsResponse;
 
 /**
  * GeneratePackingOptionsResponseTest Class Doc Comment

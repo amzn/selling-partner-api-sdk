@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\AdditionalSellerInput;
+use OpenAPI\Client\Model\merchantFulfillment\AdditionalSellerInput;
 
 /**
  * AdditionalSellerInputTest Class Doc Comment
@@ -113,7 +113,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\Address();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\Address();
         
         $this->model->setValueAsAddress($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsAddress());
@@ -125,7 +125,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\Weight();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\Weight();
         
         $this->model->setValueAsWeight($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsWeight());
@@ -137,7 +137,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsDimension()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\Length();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\Length();
         
         $this->model->setValueAsDimension($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsDimension());
@@ -149,7 +149,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsCurrency()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\CurrencyAmount();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount();
         
         $this->model->setValueAsCurrency($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsCurrency());

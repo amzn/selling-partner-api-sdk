@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\CreateMarketplaceItemLabelsResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsResponse;
 
 /**
  * CreateMarketplaceItemLabelsResponseTest Class Doc Comment

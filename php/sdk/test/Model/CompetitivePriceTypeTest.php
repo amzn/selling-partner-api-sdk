@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\CompetitivePriceType;
+use OpenAPI\Client\Model\pricingV0\CompetitivePriceType;
 
 /**
  * CompetitivePriceTypeTest Class Doc Comment
@@ -68,7 +68,7 @@ class CompetitivePriceTypeTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\PriceType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\PriceType();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());
@@ -101,7 +101,7 @@ class CompetitivePriceTypeTest extends TestCase
      */
     public function testPropertyOfferType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\OfferCustomerType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\OfferCustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -125,7 +125,7 @@ class CompetitivePriceTypeTest extends TestCase
      */
     public function testPropertyQuantityDiscountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\QuantityDiscountType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\QuantityDiscountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

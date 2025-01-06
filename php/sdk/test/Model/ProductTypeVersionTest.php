@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\producttypedefinitions\ProductTypeVersion;
+use OpenAPI\Client\Model\productTypeDefinitions\ProductTypeVersion;
 
 /**
  * ProductTypeVersionTest Class Doc Comment

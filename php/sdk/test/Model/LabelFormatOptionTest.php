@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\LabelFormatOption;
+use OpenAPI\Client\Model\merchantFulfillment\LabelFormatOption;
 
 /**
  * LabelFormatOptionTest Class Doc Comment
@@ -67,7 +67,7 @@ class LabelFormatOptionTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\LabelFormat();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

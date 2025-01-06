@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.shipping\StatusUpdateDetails;
+use OpenAPI\Client\Model\vendorDfShipping\StatusUpdateDetails;
 
 /**
  * StatusUpdateDetailsTest Class Doc Comment
@@ -102,7 +102,7 @@ class StatusUpdateDetailsTest extends TestCase
     public function testPropertyStatusLocationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\Address();
         
         $this->model->setStatusLocationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getStatusLocationAddress());
@@ -114,7 +114,7 @@ class StatusUpdateDetailsTest extends TestCase
     public function testPropertyShipmentSchedule()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\ShipmentSchedule();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\ShipmentSchedule();
         
         $this->model->setShipmentSchedule($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentSchedule());

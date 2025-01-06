@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\SupplySourceStatusReadOnly;
+use OpenAPI\Client\Model\supplySources\SupplySourceStatusReadOnly;
 
 /**
  * SupplySourceStatusReadOnlyTest Class Doc Comment

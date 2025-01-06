@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\SelfShipAppointmentSlotsAvailability;
+use OpenAPI\Client\Model\fulfillmentInbound\SelfShipAppointmentSlotsAvailability;
 
 /**
  * SelfShipAppointmentSlotsAvailabilityTest Class Doc Comment

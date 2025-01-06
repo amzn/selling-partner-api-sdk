@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ComplianceDetail;
+use OpenAPI\Client\Model\fulfillmentInbound\ComplianceDetail;
 
 /**
  * ComplianceDetailTest Class Doc Comment
@@ -90,7 +90,7 @@ class ComplianceDetailTest extends TestCase
     public function testPropertyTaxDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\TaxDetails();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\TaxDetails();
         
         $this->model->setTaxDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTaxDetails());

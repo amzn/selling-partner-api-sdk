@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\SKUInboundGuidance;
+use OpenAPI\Client\Model\fulfillmentInboundV0\SKUInboundGuidance;
 
 /**
  * SKUInboundGuidanceTest Class Doc Comment
@@ -78,7 +78,7 @@ class SKUInboundGuidanceTest extends TestCase
      */
     public function testPropertyInboundGuidance()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\InboundGuidance();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\InboundGuidance();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

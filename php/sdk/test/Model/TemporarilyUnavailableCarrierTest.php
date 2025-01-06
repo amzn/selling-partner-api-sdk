@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\TemporarilyUnavailableCarrier;
+use OpenAPI\Client\Model\merchantFulfillment\TemporarilyUnavailableCarrier;
 
 /**
  * TemporarilyUnavailableCarrierTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\CommonTransportResult;
+use OpenAPI\Client\Model\fulfillmentInboundV0\CommonTransportResult;
 
 /**
  * CommonTransportResultTest Class Doc Comment
@@ -57,7 +57,7 @@ class CommonTransportResultTest extends TestCase
     public function testPropertyTransportResult()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\TransportResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\TransportResult();
         
         $this->model->setTransportResult($testValue);
         $this->assertEquals($testValue, $this->model->getTransportResult());

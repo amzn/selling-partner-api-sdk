@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\InboundOperationStatus;
+use OpenAPI\Client\Model\fulfillmentInbound\InboundOperationStatus;
 
 /**
  * InboundOperationStatusTest Class Doc Comment
@@ -89,7 +89,7 @@ class InboundOperationStatusTest extends TestCase
      */
     public function testPropertyOperationStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\OperationStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\OperationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

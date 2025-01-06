@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\IntegerWithUnits;
+use OpenAPI\Client\Model\aplusContent\IntegerWithUnits;
 
 /**
  * IntegerWithUnitsTest Class Doc Comment

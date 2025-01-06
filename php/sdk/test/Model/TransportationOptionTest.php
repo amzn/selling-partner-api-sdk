@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\TransportationOption;
+use OpenAPI\Client\Model\fulfillmentInbound\TransportationOption;
 
 /**
  * TransportationOptionTest Class Doc Comment
@@ -57,7 +57,7 @@ class TransportationOptionTest extends TestCase
     public function testPropertyCarrier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Carrier();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Carrier();
         
         $this->model->setCarrier($testValue);
         $this->assertEquals($testValue, $this->model->getCarrier());
@@ -69,7 +69,7 @@ class TransportationOptionTest extends TestCase
     public function testPropertyCarrierAppointment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\CarrierAppointment();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\CarrierAppointment();
         
         $this->model->setCarrierAppointment($testValue);
         $this->assertEquals($testValue, $this->model->getCarrierAppointment());
@@ -92,7 +92,7 @@ class TransportationOptionTest extends TestCase
     public function testPropertyQuote()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Quote();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Quote();
         
         $this->model->setQuote($testValue);
         $this->assertEquals($testValue, $this->model->getQuote());

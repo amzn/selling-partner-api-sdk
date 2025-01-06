@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\HazmatType;
+use OpenAPI\Client\Model\merchantFulfillment\HazmatType;
 
 /**
  * HazmatTypeTest Class Doc Comment

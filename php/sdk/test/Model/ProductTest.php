@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\Product;
+use OpenAPI\Client\Model\pricingV0\Product;
 
 /**
  * ProductTest Class Doc Comment
@@ -57,7 +57,7 @@ class ProductTest extends TestCase
     public function testPropertyIdentifiers()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\IdentifierType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\IdentifierType();
         
         $this->model->setIdentifiers($testValue);
         $this->assertEquals($testValue, $this->model->getIdentifiers());
@@ -91,7 +91,7 @@ class ProductTest extends TestCase
     public function testPropertyCompetitivePricing()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\CompetitivePricingType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\CompetitivePricingType();
         
         $this->model->setCompetitivePricing($testValue);
         $this->assertEquals($testValue, $this->model->getCompetitivePricing());

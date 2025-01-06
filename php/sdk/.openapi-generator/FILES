@@ -14,10 +14,10 @@ lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/ModelInterface.php
-lib/Model/vendor/transactionstatus/Error.php
-lib/Model/vendor/transactionstatus/GetTransactionResponse.php
-lib/Model/vendor/transactionstatus/Transaction.php
-lib/Model/vendor/transactionstatus/TransactionStatus.php
+lib/Model/vendorTransactionStatus/Error.php
+lib/Model/vendorTransactionStatus/GetTransactionResponse.php
+lib/Model/vendorTransactionStatus/Transaction.php
+lib/Model/vendorTransactionStatus/TransactionStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Model/GetTransactionResponseTest.php

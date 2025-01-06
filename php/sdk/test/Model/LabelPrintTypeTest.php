@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\LabelPrintType;
+use OpenAPI\Client\Model\fulfillmentInbound\LabelPrintType;
 
 /**
  * LabelPrintTypeTest Class Doc Comment

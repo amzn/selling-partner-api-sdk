@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\Dates;
+use OpenAPI\Client\Model\fulfillmentInbound\Dates;
 
 /**
  * DatesTest Class Doc Comment
@@ -57,7 +57,7 @@ class DatesTest extends TestCase
     public function testPropertyReadyToShipWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Window();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Window();
         
         $this->model->setReadyToShipWindow($testValue);
         $this->assertEquals($testValue, $this->model->getReadyToShipWindow());

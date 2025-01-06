@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\SpdTrackingItemInput;
+use OpenAPI\Client\Model\fulfillmentInbound\SpdTrackingItemInput;
 
 /**
  * SpdTrackingItemInputTest Class Doc Comment

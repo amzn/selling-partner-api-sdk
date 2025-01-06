@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest;
 
 /**
  * InboundShipmentRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class InboundShipmentRequestTest extends TestCase
     public function testPropertyInboundShipmentHeader()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentHeader();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentHeader();
         
         $this->model->setInboundShipmentHeader($testValue);
         $this->assertEquals($testValue, $this->model->getInboundShipmentHeader());

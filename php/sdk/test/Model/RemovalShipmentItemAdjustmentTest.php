@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\RemovalShipmentItemAdjustment;
+use OpenAPI\Client\Model\financesV0\RemovalShipmentItemAdjustment;
 
 /**
  * RemovalShipmentItemAdjustmentTest Class Doc Comment
@@ -101,7 +101,7 @@ class RemovalShipmentItemAdjustmentTest extends TestCase
     public function testPropertyRevenueAdjustment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setRevenueAdjustment($testValue);
         $this->assertEquals($testValue, $this->model->getRevenueAdjustment());
@@ -113,7 +113,7 @@ class RemovalShipmentItemAdjustmentTest extends TestCase
     public function testPropertyTaxAmountAdjustment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxAmountAdjustment($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmountAdjustment());
@@ -125,7 +125,7 @@ class RemovalShipmentItemAdjustmentTest extends TestCase
     public function testPropertyTaxWithheldAdjustment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxWithheldAdjustment($testValue);
         $this->assertEquals($testValue, $this->model->getTaxWithheldAdjustment());

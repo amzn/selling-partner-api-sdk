@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\OfferCountType;
+use OpenAPI\Client\Model\pricingV0\OfferCountType;
 
 /**
  * OfferCountTypeTest Class Doc Comment
@@ -67,7 +67,7 @@ class OfferCountTypeTest extends TestCase
      */
     public function testPropertyFulfillmentChannel()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\FulfillmentChannelType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\FulfillmentChannelType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

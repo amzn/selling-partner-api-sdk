@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PrepDetails;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PrepDetails;
 
 /**
  * PrepDetailsTest Class Doc Comment
@@ -56,7 +56,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyPrepInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PrepInstruction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PrepInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PrepOwner();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

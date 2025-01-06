@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResponse;
+use OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResponse;
 
 /**
  * GetAdditionalSellerInputsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetAdditionalSellerInputsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResult();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

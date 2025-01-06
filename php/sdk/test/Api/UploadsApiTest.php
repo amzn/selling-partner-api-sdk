@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\UploadsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,83 +136,101 @@ class UploadsApiTest extends TestCase
 
     /**
      * Test case for createUploadDestinationForResource_201
-     * .
      */
     public function testCreateUploadDestinationForResource201()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateUploadDestinationForResource201', 'UploadsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('UploadsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'createUploadDestinationForResource'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createUploadDestinationForResourceWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(201, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 201);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for createUploadDestinationForResource_400
-     * .
      */
     public function testCreateUploadDestinationForResource400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_403
-     * .
      */
     public function testCreateUploadDestinationForResource403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_404
-     * .
      */
     public function testCreateUploadDestinationForResource404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_413
-     * .
      */
     public function testCreateUploadDestinationForResource413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_415
-     * .
      */
     public function testCreateUploadDestinationForResource415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_429
-     * .
      */
     public function testCreateUploadDestinationForResource429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_500
-     * .
      */
     public function testCreateUploadDestinationForResource500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUploadDestinationForResource_503
-     * .
      */
     public function testCreateUploadDestinationForResource503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

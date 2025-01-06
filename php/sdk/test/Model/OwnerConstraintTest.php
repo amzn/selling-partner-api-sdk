@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\OwnerConstraint;
+use OpenAPI\Client\Model\fulfillmentInbound\OwnerConstraint;
 
 /**
  * OwnerConstraintTest Class Doc Comment

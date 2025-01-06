@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **seller_store_name** | **string** | The store name where the payment event occurred. | [optional]
 **provider_id** | **string** | The Amazon-defined identifier of the solution provider. | [optional]
 **provider_store_name** | **string** | The store name where the payment event occurred. | [optional]
-**transaction_amount** | [**\OpenAPI\Client\Model\financesv0\Currency**](Currency.md) |  | [optional]
+**transaction_amount** | [**\OpenAPI\Client\Model\financesV0\Currency**](Currency.md) |  | [optional]
 **transaction_creation_date** | **\DateTime** | Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

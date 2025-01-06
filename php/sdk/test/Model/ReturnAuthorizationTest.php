@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\ReturnAuthorization;
+use OpenAPI\Client\Model\fulfillmentOutbound\ReturnAuthorization;
 
 /**
  * ReturnAuthorizationTest Class Doc Comment
@@ -79,7 +79,7 @@ class ReturnAuthorizationTest extends TestCase
     public function testPropertyReturnToAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Address();
         
         $this->model->setReturnToAddress($testValue);
         $this->assertEquals($testValue, $this->model->getReturnToAddress());

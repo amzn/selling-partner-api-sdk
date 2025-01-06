@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\InvalidReturnItem;
+use OpenAPI\Client\Model\fulfillmentOutbound\InvalidReturnItem;
 
 /**
  * InvalidReturnItemTest Class Doc Comment
@@ -79,7 +79,7 @@ class InvalidReturnItemTest extends TestCase
     public function testPropertyInvalidItemReason()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\InvalidItemReason();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\InvalidItemReason();
         
         $this->model->setInvalidItemReason($testValue);
         $this->assertEquals($testValue, $this->model->getInvalidItemReason());

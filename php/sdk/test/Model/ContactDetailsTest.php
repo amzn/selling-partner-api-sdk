@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\ContactDetails;
+use OpenAPI\Client\Model\supplySources\ContactDetails;
 
 /**
  * ContactDetailsTest Class Doc Comment
@@ -57,7 +57,7 @@ class ContactDetailsTest extends TestCase
     public function testPropertyPrimary()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplysources\ContactDetailsPrimary();
+        $testValue = new \OpenAPI\Client\Model\supplySources\ContactDetailsPrimary();
         
         $this->model->setPrimary($testValue);
         $this->assertEquals($testValue, $this->model->getPrimary());

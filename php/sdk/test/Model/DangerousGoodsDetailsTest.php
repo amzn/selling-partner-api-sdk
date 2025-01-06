@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\DangerousGoodsDetails;
+use OpenAPI\Client\Model\merchantFulfillment\DangerousGoodsDetails;
 
 /**
  * DangerousGoodsDetailsTest Class Doc Comment

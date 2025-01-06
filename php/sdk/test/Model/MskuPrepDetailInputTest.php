@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\MskuPrepDetailInput;
+use OpenAPI\Client\Model\fulfillmentInbound\MskuPrepDetailInput;
 
 /**
  * MskuPrepDetailInputTest Class Doc Comment
@@ -67,7 +67,7 @@ class MskuPrepDetailInputTest extends TestCase
      */
     public function testPropertyPrepCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\PrepCategory();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\PrepCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

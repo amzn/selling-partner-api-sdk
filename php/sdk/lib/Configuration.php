@@ -73,7 +73,7 @@ class Configuration
      *
      * @var string
      */
-    protected string $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
+    protected string $userAgent = 'selling-partner-api-sdk/PHP/1.0.0';
 
     /**
      * Debug switch (default set to false)

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbainventory\UnfulfillableQuantity;
+use OpenAPI\Client\Model\fbaInventory\UnfulfillableQuantity;
 
 /**
  * UnfulfillableQuantityTest Class Doc Comment

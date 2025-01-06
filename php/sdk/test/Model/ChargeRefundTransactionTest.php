@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ChargeRefundTransaction;
+use OpenAPI\Client\Model\financesV0\ChargeRefundTransaction;
 
 /**
  * ChargeRefundTransactionTest Class Doc Comment
@@ -57,7 +57,7 @@ class ChargeRefundTransactionTest extends TestCase
     public function testPropertyChargeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setChargeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getChargeAmount());

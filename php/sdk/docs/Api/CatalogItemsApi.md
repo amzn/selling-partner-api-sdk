@@ -11,7 +11,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getCatalogItem()`
 
 ```php
-getCatalogItem($asin, $marketplace_ids, $included_data, $locale): \OpenAPI\Client\Model\catalogitems\Item
+getCatalogItem($asin, $marketplace_ids, $included_data, $locale): \OpenAPI\Client\Model\catalogItems\Item
 ```
 
 getCatalogItem
@@ -55,7 +55,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\catalogitems\Item**](../Model/Item.md)
+[**\OpenAPI\Client\Model\catalogItems\Item**](../Model/Item.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ No authorization required
 ## `searchCatalogItems()`
 
 ```php
-searchCatalogItems($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale): \OpenAPI\Client\Model\catalogitems\ItemSearchResults
+searchCatalogItems($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale): \OpenAPI\Client\Model\catalogItems\ItemSearchResults
 ```
 
 searchCatalogItems
@@ -133,7 +133,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\catalogitems\ItemSearchResults**](../Model/ItemSearchResults.md)
+[**\OpenAPI\Client\Model\catalogItems\ItemSearchResults**](../Model/ItemSearchResults.md)
 
 ### Authorization
 

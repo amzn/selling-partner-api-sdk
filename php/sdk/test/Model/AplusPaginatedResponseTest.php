@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\AplusPaginatedResponse;
+use OpenAPI\Client\Model\aplusContent\AplusPaginatedResponse;
 
 /**
  * AplusPaginatedResponseTest Class Doc Comment

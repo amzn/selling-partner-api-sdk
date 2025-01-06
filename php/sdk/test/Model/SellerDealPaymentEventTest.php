@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\SellerDealPaymentEvent;
+use OpenAPI\Client\Model\financesV0\SellerDealPaymentEvent;
 
 /**
  * SellerDealPaymentEventTest Class Doc Comment
@@ -113,7 +113,7 @@ class SellerDealPaymentEventTest extends TestCase
     public function testPropertyFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getFeeAmount());
@@ -125,7 +125,7 @@ class SellerDealPaymentEventTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());
@@ -137,7 +137,7 @@ class SellerDealPaymentEventTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());

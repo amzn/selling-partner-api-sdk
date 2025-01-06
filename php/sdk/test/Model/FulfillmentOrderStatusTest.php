@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentOrderStatus;
+use OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentOrderStatus;
 
 /**
  * FulfillmentOrderStatusTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\OrderDetails;
+use OpenAPI\Client\Model\vendorDfOrders\OrderDetails;
 
 /**
  * OrderDetailsTest Class Doc Comment
@@ -92,7 +92,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyShipmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\ShipmentDetails();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\ShipmentDetails();
         
         $this->model->setShipmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentDetails());
@@ -104,7 +104,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyTaxTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\TaxItemDetails();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\TaxItemDetails();
         
         $this->model->setTaxTotal($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTotal());
@@ -116,7 +116,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -128,7 +128,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());
@@ -140,7 +140,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyShipToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\Address();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\Address();
         
         $this->model->setShipToParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipToParty());
@@ -152,7 +152,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyBillToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfOrders\PartyIdentification();
         
         $this->model->setBillToParty($testValue);
         $this->assertEquals($testValue, $this->model->getBillToParty());

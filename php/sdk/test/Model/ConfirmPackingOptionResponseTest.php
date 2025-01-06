@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ConfirmPackingOptionResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\ConfirmPackingOptionResponse;
 
 /**
  * ConfirmPackingOptionResponseTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\CancelInboundPlanResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\CancelInboundPlanResponse;
 
 /**
  * CancelInboundPlanResponseTest Class Doc Comment

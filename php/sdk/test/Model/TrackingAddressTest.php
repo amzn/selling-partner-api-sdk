@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\TrackingAddress;
+use OpenAPI\Client\Model\fulfillmentOutbound\TrackingAddress;
 
 /**
  * TrackingAddressTest Class Doc Comment

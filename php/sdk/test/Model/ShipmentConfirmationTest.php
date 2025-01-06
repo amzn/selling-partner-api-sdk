@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.shipping\ShipmentConfirmation;
+use OpenAPI\Client\Model\vendorDfShipping\ShipmentConfirmation;
 
 /**
  * ShipmentConfirmationTest Class Doc Comment
@@ -68,7 +68,7 @@ class ShipmentConfirmationTest extends TestCase
     public function testPropertyShipmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\ShipmentDetails();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\ShipmentDetails();
         
         $this->model->setShipmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentDetails());
@@ -80,7 +80,7 @@ class ShipmentConfirmationTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -92,7 +92,7 @@ class ShipmentConfirmationTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.shipping\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendorDfShipping\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());

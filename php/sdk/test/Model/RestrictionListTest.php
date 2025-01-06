@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.restrictions\RestrictionList;
+use OpenAPI\Client\Model\listingsRestrictions\RestrictionList;
 
 /**
  * RestrictionListTest Class Doc Comment

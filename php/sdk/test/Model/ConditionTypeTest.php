@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\ConditionType;
+use OpenAPI\Client\Model\pricingV0\ConditionType;
 
 /**
  * ConditionTypeTest Class Doc Comment

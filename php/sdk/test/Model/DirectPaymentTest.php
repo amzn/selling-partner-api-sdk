@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\DirectPayment;
+use OpenAPI\Client\Model\financesV0\DirectPayment;
 
 /**
  * DirectPaymentTest Class Doc Comment
@@ -68,7 +68,7 @@ class DirectPaymentTest extends TestCase
     public function testPropertyDirectPaymentAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setDirectPaymentAmount($testValue);
         $this->assertEquals($testValue, $this->model->getDirectPaymentAmount());

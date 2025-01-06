@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\BatchRequest;
+use OpenAPI\Client\Model\pricingV0\BatchRequest;
 
 /**
  * BatchRequestTest Class Doc Comment
@@ -67,7 +67,7 @@ class BatchRequestTest extends TestCase
      */
     public function testPropertyMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\HttpMethod();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\HttpMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `addInventory()`
 
 ```php
-addInventory($x_amzn_idempotency_token, $add_inventory_request_body): \OpenAPI\Client\Model\fbainventory\AddInventoryResponse
+addInventory($x_amzn_idempotency_token, $add_inventory_request_body): \OpenAPI\Client\Model\fbaInventory\AddInventoryResponse
 ```
 
 
@@ -34,7 +34,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaInventoryApi(
     new GuzzleHttp\Client()
 );
 $x_amzn_idempotency_token = 'x_amzn_idempotency_token_example'; // string | A unique token/requestId provided with each call to ensure idempotency.
-$add_inventory_request_body = new \OpenAPI\Client\Model\fbainventory\AddInventoryRequest(); // \OpenAPI\Client\Model\fbainventory\AddInventoryRequest | List of items to add to Sandbox inventory.
+$add_inventory_request_body = new \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest(); // \OpenAPI\Client\Model\fbaInventory\AddInventoryRequest | List of items to add to Sandbox inventory.
 
 try {
     $result = $apiInstance->addInventory($x_amzn_idempotency_token, $add_inventory_request_body);
@@ -49,11 +49,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **x_amzn_idempotency_token** | **string**| A unique token/requestId provided with each call to ensure idempotency. | |
-| **add_inventory_request_body** | [**\OpenAPI\Client\Model\fbainventory\AddInventoryRequest**](../Model/AddInventoryRequest.md)| List of items to add to Sandbox inventory. | |
+| **add_inventory_request_body** | [**\OpenAPI\Client\Model\fbaInventory\AddInventoryRequest**](../Model/AddInventoryRequest.md)| List of items to add to Sandbox inventory. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fbainventory\AddInventoryResponse**](../Model/AddInventoryResponse.md)
+[**\OpenAPI\Client\Model\fbaInventory\AddInventoryResponse**](../Model/AddInventoryResponse.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ No authorization required
 ## `createInventoryItem()`
 
 ```php
-createInventoryItem($create_inventory_item_request_body): \OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse
+createInventoryItem($create_inventory_item_request_body): \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse
 ```
 
 
@@ -91,7 +91,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaInventoryApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$create_inventory_item_request_body = new \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest(); // \OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest | CreateInventoryItem Request Body Parameter.
+$create_inventory_item_request_body = new \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest(); // \OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest | CreateInventoryItem Request Body Parameter.
 
 try {
     $result = $apiInstance->createInventoryItem($create_inventory_item_request_body);
@@ -105,11 +105,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_inventory_item_request_body** | [**\OpenAPI\Client\Model\fbainventory\CreateInventoryItemRequest**](../Model/CreateInventoryItemRequest.md)| CreateInventoryItem Request Body Parameter. | |
+| **create_inventory_item_request_body** | [**\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemRequest**](../Model/CreateInventoryItemRequest.md)| CreateInventoryItem Request Body Parameter. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fbainventory\CreateInventoryItemResponse**](../Model/CreateInventoryItemResponse.md)
+[**\OpenAPI\Client\Model\fbaInventory\CreateInventoryItemResponse**](../Model/CreateInventoryItemResponse.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ No authorization required
 ## `deleteInventoryItem()`
 
 ```php
-deleteInventoryItem($seller_sku, $marketplace_id): \OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse
+deleteInventoryItem($seller_sku, $marketplace_id): \OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse
 ```
 
 
@@ -167,7 +167,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fbainventory\DeleteInventoryItemResponse**](../Model/DeleteInventoryItemResponse.md)
+[**\OpenAPI\Client\Model\fbaInventory\DeleteInventoryItemResponse**](../Model/DeleteInventoryItemResponse.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ No authorization required
 ## `getInventorySummaries()`
 
 ```php
-getInventorySummaries($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token): \OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse
+getInventorySummaries($granularity_type, $granularity_id, $marketplace_ids, $details, $start_date_time, $seller_skus, $seller_sku, $next_token): \OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse
 ```
 
 
@@ -237,7 +237,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse**](../Model/GetInventorySummariesResponse.md)
+[**\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse**](../Model/GetInventorySummariesResponse.md)
 
 ### Authorization
 

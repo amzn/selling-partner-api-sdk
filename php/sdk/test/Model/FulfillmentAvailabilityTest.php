@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\FulfillmentAvailability;
+use OpenAPI\Client\Model\listingsItems\FulfillmentAvailability;
 
 /**
  * FulfillmentAvailabilityTest Class Doc Comment

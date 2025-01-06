@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentHeader;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentHeader;
 
 /**
  * InboundShipmentHeaderTest Class Doc Comment
@@ -68,7 +68,7 @@ class InboundShipmentHeaderTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());
@@ -101,7 +101,7 @@ class InboundShipmentHeaderTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\ShipmentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\ShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class InboundShipmentHeaderTest extends TestCase
      */
     public function testPropertyLabelPrepPreference()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\LabelPrepPreference();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\LabelPrepPreference();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -127,7 +127,7 @@ class InboundShipmentHeaderTest extends TestCase
      */
     public function testPropertyIntendedBoxContentsSource()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\IntendedBoxContentsSource();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\IntendedBoxContentsSource();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

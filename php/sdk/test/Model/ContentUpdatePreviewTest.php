@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ContentUpdatePreview;
+use OpenAPI\Client\Model\fulfillmentInbound\ContentUpdatePreview;
 
 /**
  * ContentUpdatePreviewTest Class Doc Comment
@@ -80,7 +80,7 @@ class ContentUpdatePreviewTest extends TestCase
     public function testPropertyRequestedUpdates()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\RequestedUpdates();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\RequestedUpdates();
         
         $this->model->setRequestedUpdates($testValue);
         $this->assertEquals($testValue, $this->model->getRequestedUpdates());
@@ -92,7 +92,7 @@ class ContentUpdatePreviewTest extends TestCase
     public function testPropertyTransportationOption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\TransportationOption();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\TransportationOption();
         
         $this->model->setTransportationOption($testValue);
         $this->assertEquals($testValue, $this->model->getTransportationOption());

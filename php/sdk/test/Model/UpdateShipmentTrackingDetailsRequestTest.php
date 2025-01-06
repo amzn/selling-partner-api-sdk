@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\UpdateShipmentTrackingDetailsRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsRequest;
 
 /**
  * UpdateShipmentTrackingDetailsRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class UpdateShipmentTrackingDetailsRequestTest extends TestCase
     public function testPropertyTrackingDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\TrackingDetailsInput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\TrackingDetailsInput();
         
         $this->model->setTrackingDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTrackingDetails());

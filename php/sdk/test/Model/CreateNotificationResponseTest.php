@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\appintegrations\CreateNotificationResponse;
+use OpenAPI\Client\Model\appIntegrations\CreateNotificationResponse;
 
 /**
  * CreateNotificationResponseTest Class Doc Comment

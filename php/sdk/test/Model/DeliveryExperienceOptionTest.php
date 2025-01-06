@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\DeliveryExperienceOption;
+use OpenAPI\Client\Model\merchantFulfillment\DeliveryExperienceOption;
 
 /**
  * DeliveryExperienceOptionTest Class Doc Comment

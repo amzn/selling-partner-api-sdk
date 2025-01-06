@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\FeeComponent;
+use OpenAPI\Client\Model\financesV0\FeeComponent;
 
 /**
  * FeeComponentTest Class Doc Comment
@@ -68,7 +68,7 @@ class FeeComponentTest extends TestCase
     public function testPropertyFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getFeeAmount());

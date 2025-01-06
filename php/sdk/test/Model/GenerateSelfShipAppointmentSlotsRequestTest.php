@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\GenerateSelfShipAppointmentSlotsRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\GenerateSelfShipAppointmentSlotsRequest;
 
 /**
  * GenerateSelfShipAppointmentSlotsRequestTest Class Doc Comment

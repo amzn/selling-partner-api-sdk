@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\PositionType;
+use OpenAPI\Client\Model\aplusContent\PositionType;
 
 /**
  * PositionTypeTest Class Doc Comment

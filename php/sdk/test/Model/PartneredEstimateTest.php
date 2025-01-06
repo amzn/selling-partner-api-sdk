@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PartneredEstimate;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PartneredEstimate;
 
 /**
  * PartneredEstimateTest Class Doc Comment
@@ -57,7 +57,7 @@ class PartneredEstimateTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Amount();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Amount();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

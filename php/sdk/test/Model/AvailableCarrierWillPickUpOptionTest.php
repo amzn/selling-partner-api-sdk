@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\AvailableCarrierWillPickUpOption;
+use OpenAPI\Client\Model\merchantFulfillment\AvailableCarrierWillPickUpOption;
 
 /**
  * AvailableCarrierWillPickUpOptionTest Class Doc Comment
@@ -56,7 +56,7 @@ class AvailableCarrierWillPickUpOptionTest extends TestCase
      */
     public function testPropertyCarrierWillPickUpOption()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\CarrierWillPickUpOption();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\CarrierWillPickUpOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class AvailableCarrierWillPickUpOptionTest extends TestCase
     public function testPropertyCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantfulfillment\CurrencyAmount();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount();
         
         $this->model->setCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCharge());

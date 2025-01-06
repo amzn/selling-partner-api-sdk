@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\GetPreorderInfoResponse;
+use OpenAPI\Client\Model\fulfillmentInboundV0\GetPreorderInfoResponse;
 
 /**
  * GetPreorderInfoResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetPreorderInfoResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\GetPreorderInfoResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\GetPreorderInfoResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

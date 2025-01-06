@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ItemLabelPageType;
+use OpenAPI\Client\Model\fulfillmentInbound\ItemLabelPageType;
 
 /**
  * ItemLabelPageTypeTest Class Doc Comment

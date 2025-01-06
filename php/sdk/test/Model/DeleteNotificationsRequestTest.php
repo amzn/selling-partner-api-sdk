@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\appintegrations\DeleteNotificationsRequest;
+use OpenAPI\Client\Model\appIntegrations\DeleteNotificationsRequest;
 
 /**
  * DeleteNotificationsRequestTest Class Doc Comment

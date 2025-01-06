@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\FBALiquidationEvent;
+use OpenAPI\Client\Model\financesV0\FBALiquidationEvent;
 
 /**
  * FBALiquidationEventTest Class Doc Comment
@@ -80,7 +80,7 @@ class FBALiquidationEventTest extends TestCase
     public function testPropertyLiquidationProceedsAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setLiquidationProceedsAmount($testValue);
         $this->assertEquals($testValue, $this->model->getLiquidationProceedsAmount());
@@ -92,7 +92,7 @@ class FBALiquidationEventTest extends TestCase
     public function testPropertyLiquidationFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setLiquidationFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getLiquidationFeeAmount());

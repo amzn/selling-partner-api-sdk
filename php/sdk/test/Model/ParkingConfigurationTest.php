@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\ParkingConfiguration;
+use OpenAPI\Client\Model\supplySources\ParkingConfiguration;
 
 /**
  * ParkingConfigurationTest Class Doc Comment
@@ -56,7 +56,7 @@ class ParkingConfigurationTest extends TestCase
      */
     public function testPropertyParkingCostType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplysources\ParkingCostType();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\ParkingCostType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ParkingConfigurationTest extends TestCase
      */
     public function testPropertyParkingSpotIdentificationType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplysources\ParkingSpotIdentificationType();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\ParkingSpotIdentificationType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

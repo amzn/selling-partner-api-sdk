@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\BatchOffersResponse;
+use OpenAPI\Client\Model\pricingV0\BatchOffersResponse;
 
 /**
  * BatchOffersResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class BatchOffersResponseTest extends TestCase
     public function testPropertyHeaders()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\HttpResponseHeaders();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\HttpResponseHeaders();
         
         $this->model->setHeaders($testValue);
         $this->assertEquals($testValue, $this->model->getHeaders());
@@ -69,7 +69,7 @@ class BatchOffersResponseTest extends TestCase
     public function testPropertyStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\GetOffersHttpStatusLine();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\GetOffersHttpStatusLine();
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());
@@ -81,7 +81,7 @@ class BatchOffersResponseTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\GetOffersResponse();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\GetOffersResponse();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

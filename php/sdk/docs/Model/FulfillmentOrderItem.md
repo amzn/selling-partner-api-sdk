@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **unfulfillable_quantity** | **int** | The item quantity. |
 **estimated_ship_date** | **\DateTime** | Date timestamp | [optional]
 **estimated_arrival_date** | **\DateTime** | Date timestamp | [optional]
-**per_unit_price** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Money**](Money.md) |  | [optional]
-**per_unit_tax** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Money**](Money.md) |  | [optional]
-**per_unit_declared_value** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Money**](Money.md) |  | [optional]
+**per_unit_price** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
+**per_unit_tax** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
+**per_unit_declared_value** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

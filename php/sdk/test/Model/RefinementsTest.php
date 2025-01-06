@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\Refinements;
+use OpenAPI\Client\Model\catalogItems\Refinements;
 
 /**
  * RefinementsTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbainventory\GetInventorySummariesResponse;
+use OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResponse;
 
 /**
  * GetInventorySummariesResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetInventorySummariesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fbainventory\GetInventorySummariesResult();
+        $testValue = new \OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());
@@ -69,7 +69,7 @@ class GetInventorySummariesResponseTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fbainventory\Pagination();
+        $testValue = new \OpenAPI\Client\Model\fbaInventory\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
