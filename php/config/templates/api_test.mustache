@@ -24,6 +24,7 @@ use PHPUnit\Framework\TestCase;
 use {{invokerPackage}}\Api\{{classname}};
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use {{invokerPackage}}\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -129,45 +130,79 @@ class {{classname}}Test extends TestCase
     {{#responses}}
     /**
      * Test case for {{{operationId}}}_{{code}}
-     * {{{description}}}.
      */
     public function test{{operationIdCamelCase}}{{code}}()
     {
         {{^vendorExtensions.x-amzn-api-sandbox.static}}
+        {{^vendorExtensions}}
         // Skip this test if no static sandbox extension is present
         $this->markTestSkipped('Static sandbox is not defined for this operation.');
-        {{/vendorExtensions.x-amzn-api-sandbox.static}}
-        {{#vendorExtensions.x-amzn-api-sandbox.static.0}}
+        {{/vendorExtensions}}
+        {{#vendorExtensions}}
+        {{^is2xx}}
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+        {{/is2xx}}
+        {{#is2xx}}
+        // Dynamic sandbox case
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('test{{operationIdCamelCase}}{{code}}')) {
+            if ($this->testHelper->shouldSkipTest('test{{operationIdCamelCase}}{{code}}', '{{classname}}')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{{#request}}{{parameters}}{{/request}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('{{classname}}')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
                 $this->apiInstance,
-                '{{operationId}}',
-                $invalidRequestJson
+                '{{operationId}}'
             );
-
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{{response}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                '{{operationId}}',
-                $invalidResponseJson
-            );
+            $requestParams = $result;
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->{{operationId}}WithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
+            $this->assertHttpStatusCode({{code}}, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, {{code}});
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+        {{/is2xx}}
+        {{/vendorExtensions}}
+        {{/vendorExtensions.x-amzn-api-sandbox.static}}
+        {{#vendorExtensions.x-amzn-api-sandbox.static.0}}
+        try {
+            // Skip test if it is in the skip list
+             if ($this->testHelper->shouldSkipTest('test{{operationIdCamelCase}}{{code}}', '{{classname}}')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{{jsonSchema}}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                '{{operationId}}'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('{{classname}}');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->{{operationId}}WithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
             $this->assertHttpStatusCode({{code}}, $statusCode);
 
             // Handle different response codes

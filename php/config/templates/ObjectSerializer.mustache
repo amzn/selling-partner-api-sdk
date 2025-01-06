@@ -613,14 +613,19 @@ class ObjectSerializer
                 }
                 $qs .= '&';
             } else {
+                $qs .= $k . '=';
+                $isFirst = true;
                 foreach ($v as $vv) {
-                    $qs .= $k;
                     $vv = is_bool($vv) ? $castBool($vv) : $vv;
                     if ($vv !== null) {
-                        $qs .= '=' . $encoder((string) $vv);
+                        if (!$isFirst) {
+                            $qs .= ',';
+                        }
+                        $qs .= $encoder((string) $vv);
+                        $isFirst = false;
                     }
-                    $qs .= '&';
                 }
+                $qs .= '&';
             }
         }
 

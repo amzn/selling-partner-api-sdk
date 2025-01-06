@@ -180,7 +180,7 @@ use {{invokerPackage}}\ObjectSerializer;
     public function {{operationId}}(
     {{^vendorExtensions.x-group-parameters}}{{#allParams}}    {{^required}}?{{/required}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}} ${{paramName}}{{^required}} = {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{^-last}},
     {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}}
-    ){{#returnType}}: {{#responses}}{{#-first}}{{{dataType}}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
+    ){{#returnType}}: {{#responses}}{{#-first}}{{#isArray}}array{{/isArray}}{{^isArray}}{{{dataType}}}{{/isArray}}{{/-first}}{{/responses}}{{/returnType}}{{^returnType}}: void{{/returnType}} {
         {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});{{#returnType}}
         return $response;{{/returnType}}
     }
