@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\CurrentStatus;
+use OpenAPI\Client\Model\fulfillmentOutbound\CurrentStatus;
 
 /**
  * CurrentStatusTest Class Doc Comment

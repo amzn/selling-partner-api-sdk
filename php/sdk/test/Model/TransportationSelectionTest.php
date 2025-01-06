@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\TransportationSelection;
+use OpenAPI\Client\Model\fulfillmentInbound\TransportationSelection;
 
 /**
  * TransportationSelectionTest Class Doc Comment
@@ -57,7 +57,7 @@ class TransportationSelectionTest extends TestCase
     public function testPropertyContactInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\ContactInformation();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\ContactInformation();
         
         $this->model->setContactInformation($testValue);
         $this->assertEquals($testValue, $this->model->getContactInformation());

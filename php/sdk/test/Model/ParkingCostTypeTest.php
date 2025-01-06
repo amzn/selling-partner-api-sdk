@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\ParkingCostType;
+use OpenAPI\Client\Model\supplySources\ParkingCostType;
 
 /**
  * ParkingCostTypeTest Class Doc Comment

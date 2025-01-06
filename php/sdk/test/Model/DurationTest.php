@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\Duration;
+use OpenAPI\Client\Model\supplySources\Duration;
 
 /**
  * DurationTest Class Doc Comment
@@ -67,7 +67,7 @@ class DurationTest extends TestCase
      */
     public function testPropertyTimeUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplysources\TimeUnit();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\TimeUnit();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

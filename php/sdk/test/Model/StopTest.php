@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.shipments\Stop;
+use OpenAPI\Client\Model\vendorShipments\Stop;
 
 /**
  * StopTest Class Doc Comment
@@ -69,7 +69,7 @@ class StopTest extends TestCase
     public function testPropertyLocationIdentification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.shipments\Location();
+        $testValue = new \OpenAPI\Client\Model\vendorShipments\Location();
         
         $this->model->setLocationIdentification($testValue);
         $this->assertEquals($testValue, $this->model->getLocationIdentification());

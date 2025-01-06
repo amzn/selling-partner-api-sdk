@@ -9,17 +9,17 @@ Name | Type | Description | Notes
 **displayable_order_id** | **string** | A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of &#x60;DisplayableOrderId&#x60; should match the order identifier that the seller provides to the recipient. The seller can use the &#x60;SellerFulfillmentOrderId&#x60; for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed. |
 **displayable_order_date** | **\DateTime** | Date timestamp |
 **displayable_order_comment** | **string** | Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip. |
-**shipping_speed_category** | [**\OpenAPI\Client\Model\fulfillmentoutbound\ShippingSpeedCategory**](ShippingSpeedCategory.md) |  |
-**delivery_window** | [**\OpenAPI\Client\Model\fulfillmentoutbound\DeliveryWindow**](DeliveryWindow.md) |  | [optional]
-**destination_address** | [**\OpenAPI\Client\Model\fulfillmentoutbound\Address**](Address.md) |  |
-**delivery_preferences** | [**\OpenAPI\Client\Model\fulfillmentoutbound\DeliveryPreferences**](DeliveryPreferences.md) |  | [optional]
-**fulfillment_action** | [**\OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentAction**](FulfillmentAction.md) |  | [optional]
-**fulfillment_policy** | [**\OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentPolicy**](FulfillmentPolicy.md) |  | [optional]
-**cod_settings** | [**\OpenAPI\Client\Model\fulfillmentoutbound\CODSettings**](CODSettings.md) |  | [optional]
+**shipping_speed_category** | [**\OpenAPI\Client\Model\fulfillmentOutbound\ShippingSpeedCategory**](ShippingSpeedCategory.md) |  |
+**delivery_window** | [**\OpenAPI\Client\Model\fulfillmentOutbound\DeliveryWindow**](DeliveryWindow.md) |  | [optional]
+**destination_address** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Address**](Address.md) |  |
+**delivery_preferences** | [**\OpenAPI\Client\Model\fulfillmentOutbound\DeliveryPreferences**](DeliveryPreferences.md) |  | [optional]
+**fulfillment_action** | [**\OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentAction**](FulfillmentAction.md) |  | [optional]
+**fulfillment_policy** | [**\OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentPolicy**](FulfillmentPolicy.md) |  | [optional]
+**cod_settings** | [**\OpenAPI\Client\Model\fulfillmentOutbound\CODSettings**](CODSettings.md) |  | [optional]
 **ship_from_country_code** | **string** | The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format. | [optional]
 **notification_emails** | **string[]** | A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller. | [optional]
-**feature_constraints** | [**\OpenAPI\Client\Model\fulfillmentoutbound\FeatureSettings[]**](FeatureSettings.md) | A list of features and their fulfillment policies to apply to the order. | [optional]
-**items** | [**\OpenAPI\Client\Model\fulfillmentoutbound\CreateFulfillmentOrderItem[]**](CreateFulfillmentOrderItem.md) | An array of item information for creating a fulfillment order. |
-**payment_information** | [**\OpenAPI\Client\Model\fulfillmentoutbound\PaymentInformation[]**](PaymentInformation.md) | An array of various payment attributes related to this fulfillment order. | [optional]
+**feature_constraints** | [**\OpenAPI\Client\Model\fulfillmentOutbound\FeatureSettings[]**](FeatureSettings.md) | A list of features and their fulfillment policies to apply to the order. | [optional]
+**items** | [**\OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderItem[]**](CreateFulfillmentOrderItem.md) | An array of item information for creating a fulfillment order. |
+**payment_information** | [**\OpenAPI\Client\Model\fulfillmentOutbound\PaymentInformation[]**](PaymentInformation.md) | An array of various payment attributes related to this fulfillment order. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

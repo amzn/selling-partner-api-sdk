@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\ImageComponent;
+use OpenAPI\Client\Model\aplusContent\ImageComponent;
 
 /**
  * ImageComponentTest Class Doc Comment
@@ -68,7 +68,7 @@ class ImageComponentTest extends TestCase
     public function testPropertyImageCropSpecification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ImageCropSpecification();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageCropSpecification();
         
         $this->model->setImageCropSpecification($testValue);
         $this->assertEquals($testValue, $this->model->getImageCropSpecification());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\TaxWithholdingEvent;
+use OpenAPI\Client\Model\financesV0\TaxWithholdingEvent;
 
 /**
  * TaxWithholdingEventTest Class Doc Comment
@@ -69,7 +69,7 @@ class TaxWithholdingEventTest extends TestCase
     public function testPropertyBaseAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setBaseAmount($testValue);
         $this->assertEquals($testValue, $this->model->getBaseAmount());
@@ -81,7 +81,7 @@ class TaxWithholdingEventTest extends TestCase
     public function testPropertyWithheldAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setWithheldAmount($testValue);
         $this->assertEquals($testValue, $this->model->getWithheldAmount());
@@ -93,7 +93,7 @@ class TaxWithholdingEventTest extends TestCase
     public function testPropertyTaxWithholdingPeriod()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\TaxWithholdingPeriod();
+        $testValue = new \OpenAPI\Client\Model\financesV0\TaxWithholdingPeriod();
         
         $this->model->setTaxWithholdingPeriod($testValue);
         $this->assertEquals($testValue, $this->model->getTaxWithholdingPeriod());

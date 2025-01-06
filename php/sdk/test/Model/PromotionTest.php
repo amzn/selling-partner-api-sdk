@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\Promotion;
+use OpenAPI\Client\Model\financesV0\Promotion;
 
 /**
  * PromotionTest Class Doc Comment
@@ -79,7 +79,7 @@ class PromotionTest extends TestCase
     public function testPropertyPromotionAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setPromotionAmount($testValue);
         $this->assertEquals($testValue, $this->model->getPromotionAmount());

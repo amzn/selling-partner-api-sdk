@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\ItemSummaryByMarketplace;
+use OpenAPI\Client\Model\catalogItems\ItemSummaryByMarketplace;
 
 /**
  * ItemSummaryByMarketplaceTest Class Doc Comment
@@ -101,7 +101,7 @@ class ItemSummaryByMarketplaceTest extends TestCase
     public function testPropertyBrowseClassification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogitems\ItemBrowseClassification();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\ItemBrowseClassification();
         
         $this->model->setBrowseClassification($testValue);
         $this->assertEquals($testValue, $this->model->getBrowseClassification());

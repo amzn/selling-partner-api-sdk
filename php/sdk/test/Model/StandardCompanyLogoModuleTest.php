@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardCompanyLogoModule;
+use OpenAPI\Client\Model\aplusContent\StandardCompanyLogoModule;
 
 /**
  * StandardCompanyLogoModuleTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardCompanyLogoModuleTest extends TestCase
     public function testPropertyCompanyLogo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\ImageComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageComponent();
         
         $this->model->setCompanyLogo($testValue);
         $this->assertEquals($testValue, $this->model->getCompanyLogo());

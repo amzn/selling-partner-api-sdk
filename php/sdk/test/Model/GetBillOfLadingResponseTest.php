@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\GetBillOfLadingResponse;
+use OpenAPI\Client\Model\fulfillmentInboundV0\GetBillOfLadingResponse;
 
 /**
  * GetBillOfLadingResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetBillOfLadingResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\BillOfLadingDownloadURL();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\BillOfLadingDownloadURL();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

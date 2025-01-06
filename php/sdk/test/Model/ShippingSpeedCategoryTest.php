@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\ShippingSpeedCategory;
+use OpenAPI\Client\Model\fulfillmentOutbound\ShippingSpeedCategory;
 
 /**
  * ShippingSpeedCategoryTest Class Doc Comment

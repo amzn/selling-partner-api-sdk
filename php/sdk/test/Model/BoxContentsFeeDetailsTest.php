@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\BoxContentsFeeDetails;
+use OpenAPI\Client\Model\fulfillmentInboundV0\BoxContentsFeeDetails;
 
 /**
  * BoxContentsFeeDetailsTest Class Doc Comment
@@ -68,7 +68,7 @@ class BoxContentsFeeDetailsTest extends TestCase
     public function testPropertyFeePerUnit()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Amount();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Amount();
         
         $this->model->setFeePerUnit($testValue);
         $this->assertEquals($testValue, $this->model->getFeePerUnit());
@@ -80,7 +80,7 @@ class BoxContentsFeeDetailsTest extends TestCase
     public function testPropertyTotalFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Amount();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Amount();
         
         $this->model->setTotalFee($testValue);
         $this->assertEquals($testValue, $this->model->getTotalFee());

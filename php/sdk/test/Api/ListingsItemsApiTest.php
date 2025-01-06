@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\ListingsItemsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,77 @@ class ListingsItemsApiTest extends TestCase
 
     /**
      * Test case for deleteListingsItem_200
-     * .
      */
     public function testDeleteListingsItem200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testDeleteListingsItem200')) {
+             if ($this->testHelper->shouldSkipTest('testDeleteListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully understood the listings item delete request. See the response to determine whether the submission has been accepted.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ListingsItemSubmissionResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;submissionId&quot; : &quot;f1dc2914-75dd-11ea-bc55-0242ac130003&quot;,
+        &quot;issues&quot; : [ ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;submissionId&quot; : &quot;f1dc2914-75dd-11ea-bc55-0242ac130003&quot;,
+        &quot;issues&quot; : [ ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'deleteListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'deleteListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{sku&#x3D;GM-ZDPI-9B4E, status&#x3D;ACCEPTED, submissionId&#x3D;f1dc2914-75dd-11ea-bc55-0242ac130003, issues&#x3D;[]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'deleteListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->deleteListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +219,76 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for deleteListingsItem_400
-     * .
      */
     public function testDeleteListingsItem400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testDeleteListingsItem400')) {
+             if ($this->testHelper->shouldSkipTest('testDeleteListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{sku&#x3D;{value&#x3D;BadSKU}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;BadSKU&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid input&quot;,
+          &quot;details&quot; : &quot;Invalid input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'deleteListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'deleteListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid input, details&#x3D;Invalid input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'deleteListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->deleteListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,94 +301,303 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for deleteListingsItem_403
-     * .
      */
     public function testDeleteListingsItem403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for deleteListingsItem_413
-     * .
      */
     public function testDeleteListingsItem413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for deleteListingsItem_415
-     * .
      */
     public function testDeleteListingsItem415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for deleteListingsItem_429
-     * .
      */
     public function testDeleteListingsItem429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for deleteListingsItem_500
-     * .
      */
     public function testDeleteListingsItem500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for deleteListingsItem_503
-     * .
      */
     public function testDeleteListingsItem503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_200
-     * .
      */
     public function testGetListingsItem200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingsItem200')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Item&quot;
+      },
+      &quot;example&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;summaries&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;asin&quot; : &quot;B071VG5N9D&quot;,
+          &quot;productType&quot; : &quot;LUGGAGE&quot;,
+          &quot;conditionType&quot; : &quot;new_new&quot;,
+          &quot;status&quot; : [ &quot;BUYABLE&quot; ],
+          &quot;itemName&quot; : &quot;Hardside Carry-On Spinner Suitcase Luggage&quot;,
+          &quot;createdDate&quot; : &quot;2021-02-01T00:00:00Z&quot;,
+          &quot;lastUpdatedDate&quot; : &quot;2021-03-01T00:00:00Z&quot;,
+          &quot;mainImage&quot; : {
+            &quot;link&quot; : &quot;https://www.example.com/luggage.png&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }
+        } ],
+        &quot;offers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;offerType&quot; : &quot;B2C&quot;,
+          &quot;price&quot; : {
+            &quot;currencyCode&quot; : &quot;USD&quot;,
+            &quot;amount&quot; : &quot;100.00&quot;
+          },
+          &quot;audience&quot; : {
+            &quot;value&quot; : &quot;ALL&quot;,
+            &quot;displayName&quot; : &quot;Sell on Amazon&quot;
+          }
+        } ],
+        &quot;fulfillmentAvailability&quot; : [ {
+          &quot;fulfillmentChannelCode&quot; : &quot;DEFAULT&quot;,
+          &quot;quantity&quot; : 100
+        } ],
+        &quot;issues&quot; : [ {
+          &quot;code&quot; : &quot;90220&quot;,
+          &quot;message&quot; : &quot;&#39;size&#39; is required but not supplied.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;attributeNames&quot; : [ &quot;size&quot; ],
+          &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ]
+        }, {
+          &quot;code&quot; : &quot;18027&quot;,
+          &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ &quot;INVALID_IMAGE&quot; ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;SEARCH_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;EXEMPT_UNTIL_EXPIRY_DATE&quot;,
+              &quot;expiryDate&quot; : &quot;2025-05-28T00:36:48.914Z&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;99300&quot;,
+          &quot;message&quot; : &quot;Product Detail Page Rules Violation (Inaccurate information on product detail page)&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;ATTRIBUTE_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;EXEMPT&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;18155&quot;,
+          &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Please review and update your price and/or minimum price.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ &quot;INVALID_PRICE&quot; ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;LISTING_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;NOT_EXEMPT&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;18742&quot;,
+          &quot;message&quot; : &quot;Restricted Products Policy Violation&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;CATALOG_ITEM_REMOVED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;NOT_EXEMPT&quot;
+            }
+          }
+        } ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : { }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;summaries&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;asin&quot; : &quot;B071VG5N9D&quot;,
+          &quot;productType&quot; : &quot;LUGGAGE&quot;,
+          &quot;conditionType&quot; : &quot;new_new&quot;,
+          &quot;status&quot; : [ &quot;BUYABLE&quot; ],
+          &quot;itemName&quot; : &quot;Hardside Carry-On Spinner Suitcase Luggage&quot;,
+          &quot;createdDate&quot; : &quot;2021-02-01T00:00:00Z&quot;,
+          &quot;lastUpdatedDate&quot; : &quot;2021-03-01T00:00:00Z&quot;,
+          &quot;mainImage&quot; : {
+            &quot;link&quot; : &quot;https://www.example.com/luggage.png&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }
+        } ],
+        &quot;offers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;offerType&quot; : &quot;B2C&quot;,
+          &quot;price&quot; : {
+            &quot;currencyCode&quot; : &quot;USD&quot;,
+            &quot;amount&quot; : &quot;100.00&quot;
+          },
+          &quot;audience&quot; : {
+            &quot;value&quot; : &quot;ALL&quot;,
+            &quot;displayName&quot; : &quot;Sell on Amazon&quot;
+          }
+        } ],
+        &quot;fulfillmentAvailability&quot; : [ {
+          &quot;fulfillmentChannelCode&quot; : &quot;DEFAULT&quot;,
+          &quot;quantity&quot; : 100
+        } ],
+        &quot;issues&quot; : [ {
+          &quot;code&quot; : &quot;90220&quot;,
+          &quot;message&quot; : &quot;&#39;size&#39; is required but not supplied.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;attributeNames&quot; : [ &quot;size&quot; ],
+          &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ]
+        }, {
+          &quot;code&quot; : &quot;18027&quot;,
+          &quot;message&quot; : &quot;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ &quot;INVALID_IMAGE&quot; ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;SEARCH_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;EXEMPT_UNTIL_EXPIRY_DATE&quot;,
+              &quot;expiryDate&quot; : &quot;2025-05-28T00:36:48.914Z&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;99300&quot;,
+          &quot;message&quot; : &quot;Product Detail Page Rules Violation (Inaccurate information on product detail page)&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;ATTRIBUTE_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;EXEMPT&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;18155&quot;,
+          &quot;message&quot; : &quot;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Please review and update your price and/or minimum price.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ &quot;INVALID_PRICE&quot; ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;LISTING_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;NOT_EXEMPT&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;18742&quot;,
+          &quot;message&quot; : &quot;Restricted Products Policy Violation&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;categories&quot; : [ ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;CATALOG_ITEM_REMOVED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;NOT_EXEMPT&quot;
+            }
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{sku&#x3D;GM-ZDPI-9B4E, summaries&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, asin&#x3D;B071VG5N9D, productType&#x3D;LUGGAGE, conditionType&#x3D;new_new, status&#x3D;[BUYABLE], itemName&#x3D;Hardside Carry-On Spinner Suitcase Luggage, createdDate&#x3D;2021-02-01T00:00:00Z, lastUpdatedDate&#x3D;2021-03-01T00:00:00Z, mainImage&#x3D;{link&#x3D;https://www.example.com/luggage.png, height&#x3D;500, width&#x3D;500}}], offers&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, offerType&#x3D;B2C, price&#x3D;{currencyCode&#x3D;USD, amount&#x3D;100.00}, audience&#x3D;{value&#x3D;ALL, displayName&#x3D;Sell on Amazon}}], fulfillmentAvailability&#x3D;[{fulfillmentChannelCode&#x3D;DEFAULT, quantity&#x3D;100}], issues&#x3D;[{code&#x3D;90220, message&#x3D;&#39;size&#39; is required but not supplied., severity&#x3D;ERROR, attributeNames&#x3D;[size], categories&#x3D;[MISSING_ATTRIBUTE]}, {code&#x3D;18027, message&#x3D;We believe the main image has text, logo, graphic or watermark which is not permitted for this product type. Please submit a compliant image to lift the suppression. Also refer to Product image requirements., severity&#x3D;ERROR, categories&#x3D;[INVALID_IMAGE], enforcements&#x3D;{actions&#x3D;[{action&#x3D;SEARCH_SUPPRESSED}], exemption&#x3D;{status&#x3D;EXEMPT_UNTIL_EXPIRY_DATE, expiryDate&#x3D;2025-05-28T00:36:48.914Z}}}, {code&#x3D;99300, message&#x3D;Product Detail Page Rules Violation (Inaccurate information on product detail page), severity&#x3D;ERROR, categories&#x3D;[], enforcements&#x3D;{actions&#x3D;[{action&#x3D;ATTRIBUTE_SUPPRESSED}], exemption&#x3D;{status&#x3D;EXEMPT}}}, {code&#x3D;18155, message&#x3D;The &#39;minimum price&#39; is greater than the selling price (excluding shipping) for the listing. Please review and update your price and/or minimum price., severity&#x3D;ERROR, categories&#x3D;[INVALID_PRICE], enforcements&#x3D;{actions&#x3D;[{action&#x3D;LISTING_SUPPRESSED}], exemption&#x3D;{status&#x3D;NOT_EXEMPT}}}, {code&#x3D;18742, message&#x3D;Restricted Products Policy Violation, severity&#x3D;ERROR, categories&#x3D;[], enforcements&#x3D;{actions&#x3D;[{action&#x3D;CATALOG_ITEM_REMOVED}], exemption&#x3D;{status&#x3D;NOT_EXEMPT}}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -327,40 +610,76 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for getListingsItem_400
-     * .
      */
     public function testGetListingsItem400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetListingsItem400')) {
+             if ($this->testHelper->shouldSkipTest('testGetListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{sku&#x3D;{value&#x3D;BadSKU}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;BadSKU&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid input&quot;,
+          &quot;details&quot; : &quot;Invalid input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'getListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid input, details&#x3D;Invalid input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -373,103 +692,200 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for getListingsItem_403
-     * .
      */
     public function testGetListingsItem403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_404
-     * .
      */
     public function testGetListingsItem404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_413
-     * .
      */
     public function testGetListingsItem413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_415
-     * .
      */
     public function testGetListingsItem415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_429
-     * .
      */
     public function testGetListingsItem429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_500
-     * .
      */
     public function testGetListingsItem500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getListingsItem_503
-     * .
      */
     public function testGetListingsItem503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for patchListingsItem_200
-     * .
      */
     public function testPatchListingsItem200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testPatchListingsItem200')) {
+             if ($this->testHelper->shouldSkipTest('testPatchListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully understood the listings item patch request. See the response to determine if the submission was accepted.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ListingsItemSubmissionResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;submissionId&quot; : &quot;f1dc2914-75dd-11ea-bc55-0242ac130003&quot;,
+        &quot;issues&quot; : [ ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : { }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;submissionId&quot; : &quot;f1dc2914-75dd-11ea-bc55-0242ac130003&quot;,
+        &quot;issues&quot; : [ ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_VALID&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;identifiers&quot;, &quot;issues&quot; ]
+          },
+          &quot;mode&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_PREVIEW&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;VALIDATION_VALID&quot;,
+        &quot;status&quot; : &quot;VALID&quot;,
+        &quot;submissionId&quot; : &quot;1edc94ea-a3d7-210b-42bc-0ec72c1384762&quot;,
+        &quot;identifiers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;asin&quot; : &quot;B07N4M94X4&quot;
+        } ],
+        &quot;issues&quot; : [ ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_INVALID&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;identifiers&quot;, &quot;issues&quot; ]
+          },
+          &quot;mode&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_PREVIEW&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;VALIDATION_INVALID&quot;,
+        &quot;status&quot; : &quot;INVALID&quot;,
+        &quot;submissionId&quot; : &quot;a1c562c2-1695-11ee-be56-0242ac120002&quot;,
+        &quot;identifiers&quot; : [ ],
+        &quot;issues&quot; : [ {
+          &quot;code&quot; : &quot;90000900&quot;,
+          &quot;message&quot; : &quot;The attributes are invalid.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;attributeNames&quot; : [ &quot;fake_attribute&quot; ],
+          &quot;categories&quot; : [ &quot;INVALID_ATTRIBUTE&quot; ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;ATTRIBUTE_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;NOT_EXEMPT&quot;
+            }
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'patchListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'patchListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{sku&#x3D;GM-ZDPI-9B4E, status&#x3D;ACCEPTED, submissionId&#x3D;f1dc2914-75dd-11ea-bc55-0242ac130003, issues&#x3D;[]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'patchListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->patchListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -482,40 +898,76 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for patchListingsItem_400
-     * .
      */
     public function testPatchListingsItem400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testPatchListingsItem400')) {
+             if ($this->testHelper->shouldSkipTest('testPatchListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{sku&#x3D;{value&#x3D;BadSKU}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;BadSKU&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid input&quot;,
+          &quot;details&quot; : &quot;Invalid input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'patchListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'patchListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid input, details&#x3D;Invalid input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'patchListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->patchListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -528,94 +980,198 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for patchListingsItem_403
-     * .
      */
     public function testPatchListingsItem403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for patchListingsItem_413
-     * .
      */
     public function testPatchListingsItem413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for patchListingsItem_415
-     * .
      */
     public function testPatchListingsItem415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for patchListingsItem_429
-     * .
      */
     public function testPatchListingsItem429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for patchListingsItem_500
-     * .
      */
     public function testPatchListingsItem500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for patchListingsItem_503
-     * .
      */
     public function testPatchListingsItem503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for putListingsItem_200
-     * .
      */
     public function testPutListingsItem200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testPutListingsItem200')) {
+             if ($this->testHelper->shouldSkipTest('testPutListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully understood the request to create or fully-update a listings item. See the response to determine if the submission has been accepted.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ListingsItemSubmissionResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;submissionId&quot; : &quot;f1dc2914-75dd-11ea-bc55-0242ac130003&quot;,
+        &quot;issues&quot; : [ ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : { }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;GM-ZDPI-9B4E&quot;,
+        &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;submissionId&quot; : &quot;f1dc2914-75dd-11ea-bc55-0242ac130003&quot;,
+        &quot;issues&quot; : [ ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_VALID&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;identifiers&quot;, &quot;issues&quot; ]
+          },
+          &quot;mode&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_PREVIEW&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;VALIDATION_VALID&quot;,
+        &quot;status&quot; : &quot;VALID&quot;,
+        &quot;submissionId&quot; : &quot;1edc94ea-a3d7-210b-42bc-0ec72c1384762&quot;,
+        &quot;identifiers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;asin&quot; : &quot;B07N4M94X4&quot;
+        } ],
+        &quot;issues&quot; : [ ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_INVALID&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;identifiers&quot;, &quot;issues&quot; ]
+          },
+          &quot;mode&quot; : {
+            &quot;value&quot; : &quot;VALIDATION_PREVIEW&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;sku&quot; : &quot;VALIDATION_INVALID&quot;,
+        &quot;status&quot; : &quot;INVALID&quot;,
+        &quot;submissionId&quot; : &quot;a1c562c2-1695-11ee-be56-0242ac120002&quot;,
+        &quot;identifiers&quot; : [ ],
+        &quot;issues&quot; : [ {
+          &quot;code&quot; : &quot;90220&quot;,
+          &quot;message&quot; : &quot;&#39;condition_type&#39; is required but not supplied.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;attributeNames&quot; : [ &quot;condition_type&quot; ],
+          &quot;categories&quot; : [ &quot;MISSING_ATTRIBUTE&quot; ],
+          &quot;enforcements&quot; : {
+            &quot;actions&quot; : [ {
+              &quot;action&quot; : &quot;LISTING_SUPPRESSED&quot;
+            } ],
+            &quot;exemption&quot; : {
+              &quot;status&quot; : &quot;NOT_EXEMPT&quot;
+            }
+          }
+        }, {
+          &quot;code&quot; : &quot;90000900&quot;,
+          &quot;message&quot; : &quot;The attributes are invalid.&quot;,
+          &quot;severity&quot; : &quot;ERROR&quot;,
+          &quot;attributeNames&quot; : [ &quot;fake_attribute&quot; ],
+          &quot;categories&quot; : [ ]
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'putListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'putListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{sku&#x3D;GM-ZDPI-9B4E, status&#x3D;ACCEPTED, submissionId&#x3D;f1dc2914-75dd-11ea-bc55-0242ac130003, issues&#x3D;[]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'putListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->putListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -628,40 +1184,76 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for putListingsItem_400
-     * .
      */
     public function testPutListingsItem400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testPutListingsItem400')) {
+             if ($this->testHelper->shouldSkipTest('testPutListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{sku&#x3D;{value&#x3D;BadSKU}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sku&quot; : {
+            &quot;value&quot; : &quot;BadSKU&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid input&quot;,
+          &quot;details&quot; : &quot;Invalid input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'putListingsItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'putListingsItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;BAD_REQUEST, message&#x3D;Invalid input, details&#x3D;Invalid input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'putListingsItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ListingsItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->putListingsItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -674,56 +1266,50 @@ class ListingsItemsApiTest extends TestCase
     }
     /**
      * Test case for putListingsItem_403
-     * .
      */
     public function testPutListingsItem403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for putListingsItem_413
-     * .
      */
     public function testPutListingsItem413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for putListingsItem_415
-     * .
      */
     public function testPutListingsItem415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for putListingsItem_429
-     * .
      */
     public function testPutListingsItem429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for putListingsItem_500
-     * .
      */
     public function testPutListingsItem500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for putListingsItem_503
-     * .
      */
     public function testPutListingsItem503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

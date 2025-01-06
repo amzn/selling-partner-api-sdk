@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogitems\ItemDimensionsByMarketplace;
+use OpenAPI\Client\Model\catalogItems\ItemDimensionsByMarketplace;
 
 /**
  * ItemDimensionsByMarketplaceTest Class Doc Comment
@@ -68,7 +68,7 @@ class ItemDimensionsByMarketplaceTest extends TestCase
     public function testPropertyItem()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogitems\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\Dimensions();
         
         $this->model->setItem($testValue);
         $this->assertEquals($testValue, $this->model->getItem());
@@ -80,7 +80,7 @@ class ItemDimensionsByMarketplaceTest extends TestCase
     public function testPropertyPackage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogitems\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\Dimensions();
         
         $this->model->setPackage($testValue);
         $this->assertEquals($testValue, $this->model->getPackage());

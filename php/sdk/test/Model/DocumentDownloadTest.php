@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\DocumentDownload;
+use OpenAPI\Client\Model\fulfillmentInbound\DocumentDownload;
 
 /**
  * DocumentDownloadTest Class Doc Comment

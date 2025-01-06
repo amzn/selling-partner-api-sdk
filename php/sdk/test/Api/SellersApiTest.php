@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\SellersApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,143 @@ class SellersApiTest extends TestCase
 
     /**
      * Test case for getAccount_200
-     * .
      */
     public function testGetAccount200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAccount200')) {
+             if ($this->testHelper->shouldSkipTest('testGetAccount200', 'SellersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = ';';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAccountResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;payload&quot; : {
+          &quot;businessType&quot; : &quot;PRIVATE_LIMITED&quot;,
+          &quot;marketplaceLevelAttributes&quot; : [ {
+            &quot;marketplace&quot; : {
+              &quot;id&quot; : &quot;ATVPDKIKX0DER&quot;,
+              &quot;name&quot; : &quot;United States&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;,
+              &quot;domainName&quot; : &quot;www.amazon.com&quot;
+            },
+            &quot;storeName&quot; : &quot;BestSellerStore&quot;,
+            &quot;listingStatus&quot; : &quot;ACTIVE&quot;,
+            &quot;sellingPlan&quot; : &quot;PROFESSIONAL&quot;
+          } ],
+          &quot;business&quot; : {
+            &quot;name&quot; : &quot;BestSeller Inc.&quot;,
+            &quot;nonLatinName&quot; : &quot;ベストセラー株式会社&quot;,
+            &quot;registeredBusinessAddress&quot; : {
+              &quot;addressLine1&quot; : &quot;123 Main St&quot;,
+              &quot;addressLine2&quot; : &quot;Suite 500&quot;,
+              &quot;city&quot; : &quot;Seattle&quot;,
+              &quot;stateOrProvinceCode&quot; : &quot;WA&quot;,
+              &quot;postalCode&quot; : &quot;98101&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;
+            },
+            &quot;companyRegistrationNumber&quot; : &quot;123456789&quot;
+          },
+          &quot;primaryContact&quot; : {
+            &quot;name&quot; : &quot;John Doe&quot;,
+            &quot;nonLatinName&quot; : &quot;ジョン・ドゥ&quot;,
+            &quot;address&quot; : {
+              &quot;addressLine1&quot; : &quot;456 Oak St&quot;,
+              &quot;addressLine2&quot; : &quot;Apt 12&quot;,
+              &quot;city&quot; : &quot;Seattle&quot;,
+              &quot;stateOrProvinceCode&quot; : &quot;WA&quot;,
+              &quot;postalCode&quot; : &quot;98102&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;marketplaceLevelAttributes&quot; : [ {
+            &quot;marketplace&quot; : {
+              &quot;id&quot; : &quot;ATVPDKIKX0DER&quot;,
+              &quot;name&quot; : &quot;United States&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;,
+              &quot;domainName&quot; : &quot;www.amazon.com&quot;
+            },
+            &quot;storeName&quot; : &quot;BestSellerStore&quot;,
+            &quot;listingStatus&quot; : &quot;ACTIVE&quot;,
+            &quot;sellingPlan&quot; : &quot;PROFESSIONAL&quot;
+          } ],
+          &quot;businessType&quot; : &quot;SOLE_PROPRIETORSHIP&quot;,
+          &quot;business&quot; : {
+            &quot;name&quot; : &quot;BestSeller Inc.&quot;,
+            &quot;registeredBusinessAddress&quot; : {
+              &quot;addressLine1&quot; : &quot;123 Main St&quot;,
+              &quot;addressLine2&quot; : &quot;Suite 500&quot;,
+              &quot;city&quot; : &quot;Seattle&quot;,
+              &quot;stateOrProvinceCode&quot; : &quot;WA&quot;,
+              &quot;postalCode&quot; : &quot;98101&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;
+            },
+            &quot;companyTaxIdentificationNumber&quot; : &quot;TAX123456&quot;
+          },
+          &quot;primaryContact&quot; : {
+            &quot;name&quot; : &quot;John Doe&quot;,
+            &quot;nonLatinName&quot; : &quot;ジョン・ドゥ&quot;,
+            &quot;address&quot; : {
+              &quot;addressLine1&quot; : &quot;456 Oak St&quot;,
+              &quot;addressLine2&quot; : &quot;Apt 12&quot;,
+              &quot;city&quot; : &quot;Seattle&quot;,
+              &quot;stateOrProvinceCode&quot; : &quot;WA&quot;,
+              &quot;postalCode&quot; : &quot;98102&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;
+            }
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAccount',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAccount'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{marketplaceLevelAttributes&#x3D;[{marketplace&#x3D;{id&#x3D;ATVPDKIKX0DER, name&#x3D;United States, countryCode&#x3D;US, domainName&#x3D;www.amazon.com}, storeName&#x3D;BestSellerStore, listingStatus&#x3D;ACTIVE, sellingPlan&#x3D;PROFESSIONAL}], businessType&#x3D;SOLE_PROPRIETORSHIP, business&#x3D;{name&#x3D;BestSeller Inc., registeredBusinessAddress&#x3D;{addressLine1&#x3D;123 Main St, addressLine2&#x3D;Suite 500, city&#x3D;Seattle, stateOrProvinceCode&#x3D;WA, postalCode&#x3D;98101, countryCode&#x3D;US}, companyTaxIdentificationNumber&#x3D;TAX123456}, primaryContact&#x3D;{name&#x3D;John Doe, nonLatinName&#x3D;ジョン・ドゥ, address&#x3D;{addressLine1&#x3D;456 Oak St, addressLine2&#x3D;Apt 12, city&#x3D;Seattle, stateOrProvinceCode&#x3D;WA, postalCode&#x3D;98102, countryCode&#x3D;US}}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAccount',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SellersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAccountWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +285,74 @@ class SellersApiTest extends TestCase
     }
     /**
      * Test case for getAccount_400
-     * .
      */
     public function testGetAccount400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAccount400')) {
+             if ($this->testHelper->shouldSkipTest('testGetAccount400', 'SellersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = ';';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAccountResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;message&quot; : &quot;Validation failed for obfuscatedId:ACUULBDVZHYZ1&quot;
+        } ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;message&quot; : &quot;Validation failed for obfuscatedId:ACUULBDVZHYZ1&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAccount',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAccount'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;400, message&#x3D;Validation failed for obfuscatedId:ACUULBDVZHYZ1}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAccount',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SellersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAccountWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,103 +365,153 @@ class SellersApiTest extends TestCase
     }
     /**
      * Test case for getAccount_403
-     * .
      */
     public function testGetAccount403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAccount_404
-     * .
      */
     public function testGetAccount404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAccount_413
-     * .
      */
     public function testGetAccount413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAccount_415
-     * .
      */
     public function testGetAccount415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAccount_429
-     * .
      */
     public function testGetAccount429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAccount_500
-     * .
      */
     public function testGetAccount500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAccount_503
-     * .
      */
     public function testGetAccount503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_200
-     * .
      */
     public function testGetMarketplaceParticipations200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMarketplaceParticipations200')) {
+             if ($this->testHelper->shouldSkipTest('testGetMarketplaceParticipations200', 'SellersApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Marketplace participations successfully retrieved.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMarketplaceParticipationsResponse&quot;
+      }
+    },
+    &quot;payload&quot; : {
+      &quot;example&quot; : [ {
+        &quot;marketplace&quot; : {
+          &quot;id&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;name&quot; : &quot;Amazon.com&quot;,
+          &quot;countryCode&quot; : &quot;US&quot;,
+          &quot;defaultCurrencyCode&quot; : &quot;USD&quot;,
+          &quot;defaultLanguageCode&quot; : &quot;en_US&quot;,
+          &quot;domainName&quot; : &quot;www.amazon.com&quot;
+        },
+        &quot;participation&quot; : {
+          &quot;isParticipating&quot; : true,
+          &quot;hasSuspendedListings&quot; : false
+        }
+      } ]
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;marketplace&quot; : {
+            &quot;id&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;countryCode&quot; : &quot;US&quot;,
+            &quot;name&quot; : &quot;Amazon.com&quot;,
+            &quot;defaultCurrencyCode&quot; : &quot;USD&quot;,
+            &quot;defaultLanguageCode&quot; : &quot;en_US&quot;,
+            &quot;domainName&quot; : &quot;www.amazon.com&quot;
+          },
+          &quot;participation&quot; : {
+            &quot;isParticipating&quot; : true,
+            &quot;hasSuspendedListings&quot; : false
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMarketplaceParticipations',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMarketplaceParticipations'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;[{marketplace&#x3D;{id&#x3D;ATVPDKIKX0DER, countryCode&#x3D;US, name&#x3D;Amazon.com, defaultCurrencyCode&#x3D;USD, defaultLanguageCode&#x3D;en_US, domainName&#x3D;www.amazon.com}, participation&#x3D;{isParticipating&#x3D;true, hasSuspendedListings&#x3D;false}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMarketplaceParticipations',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SellersApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMarketplaceParticipationsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -336,74 +524,66 @@ class SellersApiTest extends TestCase
     }
     /**
      * Test case for getMarketplaceParticipations_400
-     * .
      */
     public function testGetMarketplaceParticipations400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_403
-     * .
      */
     public function testGetMarketplaceParticipations403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_404
-     * .
      */
     public function testGetMarketplaceParticipations404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_413
-     * .
      */
     public function testGetMarketplaceParticipations413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_415
-     * .
      */
     public function testGetMarketplaceParticipations415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_429
-     * .
      */
     public function testGetMarketplaceParticipations429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_500
-     * .
      */
     public function testGetMarketplaceParticipations500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMarketplaceParticipations_503
-     * .
      */
     public function testGetMarketplaceParticipations503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

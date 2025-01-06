@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\FeatureSku;
+use OpenAPI\Client\Model\fulfillmentOutbound\FeatureSku;
 
 /**
  * FeatureSkuTest Class Doc Comment

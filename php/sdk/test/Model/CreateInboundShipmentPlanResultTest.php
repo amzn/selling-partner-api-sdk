@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanResult;
+use OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanResult;
 
 /**
  * CreateInboundShipmentPlanResultTest Class Doc Comment

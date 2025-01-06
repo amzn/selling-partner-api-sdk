@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\GetFulfillmentOrderResult;
+use OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentOrderResult;
 
 /**
  * GetFulfillmentOrderResultTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetFulfillmentOrderResultTest extends TestCase
     public function testPropertyFulfillmentOrder()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentOrder();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentOrder();
         
         $this->model->setFulfillmentOrder($testValue);
         $this->assertEquals($testValue, $this->model->getFulfillmentOrder());

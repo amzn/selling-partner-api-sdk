@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\SolutionProviderCreditEvent;
+use OpenAPI\Client\Model\financesV0\SolutionProviderCreditEvent;
 
 /**
  * SolutionProviderCreditEventTest Class Doc Comment
@@ -145,7 +145,7 @@ class SolutionProviderCreditEventTest extends TestCase
     public function testPropertyTransactionAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTransactionAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionAmount());

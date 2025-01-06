@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\producttypedefinitions\PropertyGroup;
+use OpenAPI\Client\Model\productTypeDefinitions\PropertyGroup;
 
 /**
  * PropertyGroupTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\Origin;
+use OpenAPI\Client\Model\fulfillmentOutbound\Origin;
 
 /**
  * OriginTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbainventory\ResearchingQuantity;
+use OpenAPI\Client\Model\fbaInventory\ResearchingQuantity;
 
 /**
  * ResearchingQuantityTest Class Doc Comment

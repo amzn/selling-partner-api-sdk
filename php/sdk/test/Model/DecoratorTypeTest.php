@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\DecoratorType;
+use OpenAPI\Client\Model\aplusContent\DecoratorType;
 
 /**
  * DecoratorTypeTest Class Doc Comment

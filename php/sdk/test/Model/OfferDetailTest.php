@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\OfferDetail;
+use OpenAPI\Client\Model\pricingV0\OfferDetail;
 
 /**
  * OfferDetailTest Class Doc Comment
@@ -67,7 +67,7 @@ class OfferDetailTest extends TestCase
      */
     public function testPropertyOfferType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\OfferCustomerType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\OfferCustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class OfferDetailTest extends TestCase
     public function testPropertySellerFeedbackRating()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\SellerFeedbackType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\SellerFeedbackType();
         
         $this->model->setSellerFeedbackRating($testValue);
         $this->assertEquals($testValue, $this->model->getSellerFeedbackRating());
@@ -126,7 +126,7 @@ class OfferDetailTest extends TestCase
     public function testPropertyShippingTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\DetailedShippingTimeType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\DetailedShippingTimeType();
         
         $this->model->setShippingTime($testValue);
         $this->assertEquals($testValue, $this->model->getShippingTime());
@@ -138,7 +138,7 @@ class OfferDetailTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -161,7 +161,7 @@ class OfferDetailTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\Points();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());
@@ -173,7 +173,7 @@ class OfferDetailTest extends TestCase
     public function testPropertyShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setShipping($testValue);
         $this->assertEquals($testValue, $this->model->getShipping());
@@ -185,7 +185,7 @@ class OfferDetailTest extends TestCase
     public function testPropertyShipsFrom()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\ShipsFromType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\ShipsFromType();
         
         $this->model->setShipsFrom($testValue);
         $this->assertEquals($testValue, $this->model->getShipsFrom());
@@ -208,7 +208,7 @@ class OfferDetailTest extends TestCase
     public function testPropertyPrimeInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\PrimeInformationType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\PrimeInformationType();
         
         $this->model->setPrimeInformation($testValue);
         $this->assertEquals($testValue, $this->model->getPrimeInformation());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\Amount;
+use OpenAPI\Client\Model\fulfillmentInboundV0\Amount;
 
 /**
  * AmountTest Class Doc Comment
@@ -56,7 +56,7 @@ class AmountTest extends TestCase
      */
     public function testPropertyCurrencyCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\CurrencyCode();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\CurrencyCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\NonPartneredSmallParcelDataOutput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredSmallParcelDataOutput;
 
 /**
  * NonPartneredSmallParcelDataOutputTest Class Doc Comment

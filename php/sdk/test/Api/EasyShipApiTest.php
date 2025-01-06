@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\EasyShipApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,109 @@ class EasyShipApiTest extends TestCase
 
     /**
      * Test case for createScheduledPackage_200
-     * .
      */
     public function testCreateScheduledPackage200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage200')) {
+             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, marketplaceId&#x3D;A21TJRUUN4KGV, packageDetails&#x3D;{packageDimensions&#x3D;{length&#x3D;12.0, width&#x3D;12.0, height&#x3D;12.0, unit&#x3D;Cm}, packageWeight&#x3D;{value&#x3D;23.0, unit&#x3D;G}, packageTimeSlot&#x3D;{slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Package&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+            &quot;marketplaceId&quot; : &quot;A21TJRUUN4KGV&quot;,
+            &quot;packageDetails&quot; : {
+              &quot;packageDimensions&quot; : {
+                &quot;length&quot; : 12.0,
+                &quot;width&quot; : 12.0,
+                &quot;height&quot; : 12.0,
+                &quot;unit&quot; : &quot;Cm&quot;
+              },
+              &quot;packageWeight&quot; : {
+                &quot;value&quot; : 23.0,
+                &quot;unit&quot; : &quot;G&quot;
+              },
+              &quot;packageTimeSlot&quot; : {
+                &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+                &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;scheduledPackageId&quot; : {
+          &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+          &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+        },
+        &quot;packageDimensions&quot; : {
+          &quot;length&quot; : 12.0,
+          &quot;width&quot; : 12.0,
+          &quot;height&quot; : 12.0,
+          &quot;unit&quot; : &quot;Cm&quot;
+        },
+        &quot;packageWeight&quot; : {
+          &quot;value&quot; : 23.0,
+          &quot;unit&quot; : &quot;G&quot;
+        },
+        &quot;packageTimeSlot&quot; : {
+          &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+          &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+        },
+        &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createScheduledPackage',
-                $invalidRequestJson
+                $jsonSchema,
+                'createScheduledPackage'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageId&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}, packageDimensions&#x3D;{length&#x3D;12.0, width&#x3D;12.0, height&#x3D;12.0, unit&#x3D;Cm}, packageWeight&#x3D;{value&#x3D;23.0, unit&#x3D;G}, packageTimeSlot&#x3D;{slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}, packageStatus&#x3D;ReadyForPickup}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createScheduledPackage',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createScheduledPackageWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +251,107 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for createScheduledPackage_400
-     * .
      */
     public function testCreateScheduledPackage400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageDetails&#x3D;{packageTimeSlot&#x3D;{slotId&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+              &quot;packageDetails&quot; : {
+                &quot;packageTimeSlot&quot; : {
+                  &quot;slotId&quot; : &quot;&quot;,
+                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;amazonOrderId&quot; : &quot;&quot;,
+              &quot;packageDetails&quot; : {
+                &quot;packageTimeSlot&quot; : {
+                  &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;ResourceNotFound&quot;,
+          &quot;message&quot; : &quot;The specified resource (for example, &#x60;AmazonOrderId&#x60; or &#x60;MarketplaceId&#x60;) does not exist.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createScheduledPackage',
-                $invalidRequestJson
+                $jsonSchema,
+                'createScheduledPackage'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Request has missing or invalid parameters and cannot be parsed.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createScheduledPackage',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createScheduledPackageWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,112 +364,215 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for createScheduledPackage_401
-     * .
      */
     public function testCreateScheduledPackage401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_403
-     * .
      */
     public function testCreateScheduledPackage403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_404
-     * .
      */
     public function testCreateScheduledPackage404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_413
-     * .
      */
     public function testCreateScheduledPackage413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_415
-     * .
      */
     public function testCreateScheduledPackage415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_429
-     * .
      */
     public function testCreateScheduledPackage429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_500
-     * .
      */
     public function testCreateScheduledPackage500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackage_503
-     * .
      */
     public function testCreateScheduledPackage503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_200
-     * .
      */
     public function testCreateScheduledPackageBulk200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk200')) {
+             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{marketplaceId&#x3D;A2XZLSVIQ0F4JT, orderScheduleDetailsList&#x3D;[{amazonOrderId&#x3D;903-1713775-3598252, packageDetails&#x3D;{packageItems&#x3D;[{orderItemId&#x3D;6195931986885, orderItemSerialNumbers&#x3D;[ABCDE1234, 56789FGHI]}], packageTimeSlot&#x3D;{slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z, handoverMethod&#x3D;Pickup}, packageIdentifier&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}}, {amazonOrderId&#x3D;903-5645781-4567521}, {amazonOrderId&#x3D;951-9026094-1233333}], labelFormat&#x3D;ZPL}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateScheduledPackagesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;marketplaceId&quot; : &quot;A2XZLSVIQ0F4JT&quot;,
+              &quot;orderScheduleDetailsList&quot; : [ {
+                &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+                &quot;packageDetails&quot; : {
+                  &quot;packageItems&quot; : [ {
+                    &quot;orderItemId&quot; : &quot;6195931986885&quot;,
+                    &quot;orderItemSerialNumbers&quot; : [ &quot;ABCDE1234&quot;, &quot;56789FGHI&quot; ]
+                  } ],
+                  &quot;packageTimeSlot&quot; : {
+                    &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+                    &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                    &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;,
+                    &quot;handoverMethod&quot; : &quot;Pickup&quot;
+                  },
+                  &quot;packageIdentifier&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+                }
+              }, {
+                &quot;amazonOrderId&quot; : &quot;903-5645781-4567521&quot;
+              }, {
+                &quot;amazonOrderId&quot; : &quot;951-9026094-1233333&quot;
+              } ],
+              &quot;labelFormat&quot; : &quot;ZPL&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;scheduledPackages&quot; : [ {
+          &quot;scheduledPackageId&quot; : {
+            &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+            &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+          },
+          &quot;packageTimeSlot&quot; : {
+            &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+            &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+          },
+          &quot;packageDimensions&quot; : {
+            &quot;length&quot; : 5.905511805,
+            &quot;width&quot; : 3.6220472404,
+            &quot;height&quot; : 3.4645669256,
+            &quot;unit&quot; : &quot;IN&quot;,
+            &quot;identifier&quot; : &quot;IN_SuggestedContainerDimension&quot;
+          },
+          &quot;packageWeight&quot; : {
+            &quot;value&quot; : 11.466,
+            &quot;unit&quot; : &quot;ounces&quot;
+          },
+          &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;,
+          &quot;trackingDetails&quot; : {
+            &quot;trackingId&quot; : &quot;1652969339691&quot;
+          }
+        }, {
+          &quot;scheduledPackageId&quot; : {
+            &quot;amazonOrderId&quot; : &quot;903-5645781-4567521&quot;,
+            &quot;packageId&quot; : &quot;80c06e53-3d96-f13f-30ca-85b50b1cb4ce&quot;
+          },
+          &quot;packageTimeSlot&quot; : {
+            &quot;startTime&quot; : &quot;2022-05-21T06:08:52.036Z&quot;,
+            &quot;endTime&quot; : &quot;2022-05-21T10:08:52.036Z&quot;
+          },
+          &quot;packageDimensions&quot; : {
+            &quot;length&quot; : 5.905511805,
+            &quot;width&quot; : 3.6220472404,
+            &quot;height&quot; : 3.4645669256,
+            &quot;unit&quot; : &quot;IN&quot;,
+            &quot;identifier&quot; : &quot;IN_SuggestedContainerDimension&quot;
+          },
+          &quot;packageWeight&quot; : {
+            &quot;value&quot; : 11.466,
+            &quot;unit&quot; : &quot;ounces&quot;
+          },
+          &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;,
+          &quot;trackingDetails&quot; : {
+            &quot;trackingId&quot; : &quot;1652969339693&quot;
+          }
+        } ],
+        &quot;rejectedOrders&quot; : [ {
+          &quot;amazonOrderId&quot; : &quot;951-9026094-1233333&quot;,
+          &quot;error&quot; : {
+            &quot;code&quot; : &quot;InvalidInput&quot;,
+            &quot;message&quot; : &quot;Couldn&#39;t find the order details for 951-9026094-1233333&quot;
+          }
+        } ],
+        &quot;printableDocumentsUrl&quot; : &quot;https://www.amazon.com/documents.zip&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createScheduledPackageBulk',
-                $invalidRequestJson
+                $jsonSchema,
+                'createScheduledPackageBulk'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{scheduledPackages&#x3D;[{scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageId&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}, packageTimeSlot&#x3D;{startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}, packageDimensions&#x3D;{length&#x3D;5.905511805, width&#x3D;3.6220472404, height&#x3D;3.4645669256, unit&#x3D;IN, identifier&#x3D;IN_SuggestedContainerDimension}, packageWeight&#x3D;{value&#x3D;11.466, unit&#x3D;ounces}, packageStatus&#x3D;ReadyForPickup, trackingDetails&#x3D;{trackingId&#x3D;1652969339691}}, {scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-5645781-4567521, packageId&#x3D;80c06e53-3d96-f13f-30ca-85b50b1cb4ce}, packageTimeSlot&#x3D;{startTime&#x3D;2022-05-21T06:08:52.036Z, endTime&#x3D;2022-05-21T10:08:52.036Z}, packageDimensions&#x3D;{length&#x3D;5.905511805, width&#x3D;3.6220472404, height&#x3D;3.4645669256, unit&#x3D;IN, identifier&#x3D;IN_SuggestedContainerDimension}, packageWeight&#x3D;{value&#x3D;11.466, unit&#x3D;ounces}, packageStatus&#x3D;ReadyForPickup, trackingDetails&#x3D;{trackingId&#x3D;1652969339693}}], rejectedOrders&#x3D;[{amazonOrderId&#x3D;951-9026094-1233333, error&#x3D;{code&#x3D;InvalidInput, message&#x3D;Couldn&#39;t find the order details for 951-9026094-1233333}}], printableDocumentsUrl&#x3D;https://www.amazon.com/documents.zip}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createScheduledPackageBulk',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createScheduledPackageBulkWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -345,40 +585,97 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for createScheduledPackageBulk_400
-     * .
      */
     public function testCreateScheduledPackageBulk400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{marketplaceId&#x3D;A2XZLSVIQ0F4JT, labelFormat&#x3D;ZPL}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;marketplaceId&quot; : &quot;A2XZLSVIQ0F4JT&quot;,
+              &quot;labelFormat&quot; : &quot;ZPL&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;marketplaceId&quot; : &quot;an-invalid-marketplace-id&quot;,
+              &quot;orderScheduleDetailsList&quot; : [ {
+                &quot;amazonOrderId&quot; : &quot;903-1713775-3598200&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createScheduledPackageBulk',
-                $invalidRequestJson
+                $jsonSchema,
+                'createScheduledPackageBulk'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Request has missing or invalid parameters and cannot be parsed.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createScheduledPackageBulk',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createScheduledPackageBulkWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -391,112 +688,158 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for createScheduledPackageBulk_401
-     * .
      */
     public function testCreateScheduledPackageBulk401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_403
-     * .
      */
     public function testCreateScheduledPackageBulk403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_404
-     * .
      */
     public function testCreateScheduledPackageBulk404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_429
-     * .
      */
     public function testCreateScheduledPackageBulk429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_413
-     * .
      */
     public function testCreateScheduledPackageBulk413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_415
-     * .
      */
     public function testCreateScheduledPackageBulk415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_500
-     * .
      */
     public function testCreateScheduledPackageBulk500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createScheduledPackageBulk_503
-     * .
      */
     public function testCreateScheduledPackageBulk503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_200
-     * .
      */
     public function testGetScheduledPackage200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetScheduledPackage200')) {
+             if ($this->testHelper->shouldSkipTest('testGetScheduledPackage200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;903-1713775-3598252}, marketplaceId&#x3D;{value&#x3D;A21TJRUUN4KGV}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Package&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;903-1713775-3598252&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A21TJRUUN4KGV&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;scheduledPackageId&quot; : {
+          &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+          &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+        },
+        &quot;packageDimensions&quot; : {
+          &quot;length&quot; : 12.0,
+          &quot;width&quot; : 12.0,
+          &quot;height&quot; : 12.0,
+          &quot;unit&quot; : &quot;Cm&quot;
+        },
+        &quot;packageWeight&quot; : {
+          &quot;value&quot; : 23.0,
+          &quot;unit&quot; : &quot;G&quot;
+        },
+        &quot;packageTimeSlot&quot; : {
+          &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+          &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+        },
+        &quot;packageStatus&quot; : &quot;Scheduled&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getScheduledPackage',
-                $invalidRequestJson
+                $jsonSchema,
+                'getScheduledPackage'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageId&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}, packageDimensions&#x3D;{length&#x3D;12.0, width&#x3D;12.0, height&#x3D;12.0, unit&#x3D;Cm}, packageWeight&#x3D;{value&#x3D;23.0, unit&#x3D;G}, packageTimeSlot&#x3D;{slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}, packageStatus&#x3D;Scheduled}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getScheduledPackage',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getScheduledPackageWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -509,40 +852,75 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for getScheduledPackage_400
-     * .
      */
     public function testGetScheduledPackage400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetScheduledPackage400')) {
+             if ($this->testHelper->shouldSkipTest('testGetScheduledPackage400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;903-1713775-1111111}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;903-1713775-1111111&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;ResourceNotFound&quot;,
+          &quot;message&quot; : &quot;The specified resource (for example, &#x60;AmazonOrderId&#x60; or &#x60;MarketplaceId&#x60;) does not exist.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getScheduledPackage',
-                $invalidRequestJson
+                $jsonSchema,
+                'getScheduledPackage'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;ResourceNotFound, message&#x3D;The specified resource (for example, &#x60;AmazonOrderId&#x60; or &#x60;MarketplaceId&#x60;) does not exist.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getScheduledPackage',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getScheduledPackageWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -555,112 +933,159 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for getScheduledPackage_401
-     * .
      */
     public function testGetScheduledPackage401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_403
-     * .
      */
     public function testGetScheduledPackage403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_404
-     * .
      */
     public function testGetScheduledPackage404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_413
-     * .
      */
     public function testGetScheduledPackage413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_415
-     * .
      */
     public function testGetScheduledPackage415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_429
-     * .
      */
     public function testGetScheduledPackage429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_500
-     * .
      */
     public function testGetScheduledPackage500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getScheduledPackage_503
-     * .
      */
     public function testGetScheduledPackage503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_200
-     * .
      */
     public function testListHandoverSlots200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testListHandoverSlots200')) {
+             if ($this->testHelper->shouldSkipTest('testListHandoverSlots200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{amazonOrderId&#x3D;931-2308757-7991048, marketplaceId&#x3D;A21TJRUUN4KGV, packageDimensions&#x3D;{length&#x3D;15.0, width&#x3D;10.0, height&#x3D;12.0, unit&#x3D;Cm, identifier&#x3D;test}, packageWeight&#x3D;{value&#x3D;50.0, unit&#x3D;G}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ListHandoverSlotsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;amazonOrderId&quot; : &quot;931-2308757-7991048&quot;,
+            &quot;marketplaceId&quot; : &quot;A21TJRUUN4KGV&quot;,
+            &quot;packageDimensions&quot; : {
+              &quot;length&quot; : 15.0,
+              &quot;width&quot; : 10.0,
+              &quot;height&quot; : 12.0,
+              &quot;unit&quot; : &quot;Cm&quot;,
+              &quot;identifier&quot; : &quot;test&quot;
+            },
+            &quot;packageWeight&quot; : {
+              &quot;value&quot; : 50.0,
+              &quot;unit&quot; : &quot;G&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;amazonOrderId&quot; : &quot;931-2308757-7991048&quot;,
+        &quot;timeSlots&quot; : [ {
+          &quot;handoverMethod&quot; : &quot;Pickup&quot;,
+          &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+          &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+        }, {
+          &quot;handoverMethod&quot; : &quot;Pickup&quot;,
+          &quot;slotId&quot; : &quot;AQef4K2CAAAAAGdIAEAAAAAA6kkAAAAAAAA&#x3D;&quot;,
+          &quot;startTime&quot; : &quot;2022-03-10T02:00:00Z&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T04:30:00Z&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'listHandoverSlots',
-                $invalidRequestJson
+                $jsonSchema,
+                'listHandoverSlots'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{amazonOrderId&#x3D;931-2308757-7991048, timeSlots&#x3D;[{handoverMethod&#x3D;Pickup, slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}, {handoverMethod&#x3D;Pickup, slotId&#x3D;AQef4K2CAAAAAGdIAEAAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-10T02:00:00Z, endTime&#x3D;2022-03-10T04:30:00Z}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'listHandoverSlots',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->listHandoverSlotsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -673,40 +1098,116 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for listHandoverSlots_400
-     * .
      */
     public function testListHandoverSlots400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testListHandoverSlots400')) {
+             if ($this->testHelper->shouldSkipTest('testListHandoverSlots400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{amazonOrderId&#x3D;, marketplaceId&#x3D;A21TJRUUN4KGV, packageDimensions&#x3D;{length&#x3D;15.0, width&#x3D;10.0, height&#x3D;12.0, unit&#x3D;Cm}, packageWeight&#x3D;{value&#x3D;50.0, unit&#x3D;G}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;amazonOrderId&quot; : &quot;&quot;,
+              &quot;marketplaceId&quot; : &quot;A21TJRUUN4KGV&quot;,
+              &quot;packageDimensions&quot; : {
+                &quot;length&quot; : 15.0,
+                &quot;width&quot; : 10.0,
+                &quot;height&quot; : 12.0,
+                &quot;unit&quot; : &quot;Cm&quot;
+              },
+              &quot;packageWeight&quot; : {
+                &quot;value&quot; : 50.0,
+                &quot;unit&quot; : &quot;G&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;amazonOrderId&quot; : &quot;931-2308757-7991048&quot;,
+              &quot;marketplaceId&quot; : &quot;&quot;,
+              &quot;packageDimensions&quot; : {
+                &quot;length&quot; : 15.0,
+                &quot;width&quot; : 10.0,
+                &quot;height&quot; : 12.0,
+                &quot;unit&quot; : &quot;Cm&quot;
+              },
+              &quot;packageWeight&quot; : {
+                &quot;value&quot; : 50.0,
+                &quot;unit&quot; : &quot;G&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;ResourceNotFound&quot;,
+          &quot;message&quot; : &quot;The specified resource (for example, &#x60;AmazonOrderId&#x60; or &#x60;MarketplaceId&#x60;) does not exist.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'listHandoverSlots',
-                $invalidRequestJson
+                $jsonSchema,
+                'listHandoverSlots'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Request has missing or invalid parameters and cannot be parsed., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'listHandoverSlots',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->listHandoverSlotsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -719,112 +1220,169 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for listHandoverSlots_401
-     * .
      */
     public function testListHandoverSlots401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_403
-     * .
      */
     public function testListHandoverSlots403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_404
-     * .
      */
     public function testListHandoverSlots404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_413
-     * .
      */
     public function testListHandoverSlots413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_415
-     * .
      */
     public function testListHandoverSlots415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_429
-     * .
      */
     public function testListHandoverSlots429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_500
-     * .
      */
     public function testListHandoverSlots500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for listHandoverSlots_503
-     * .
      */
     public function testListHandoverSlots503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_200
-     * .
      */
     public function testUpdateScheduledPackages200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages200')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{marketplaceId&#x3D;A21TJRUUN4KGV, updatePackageDetailsList&#x3D;[{scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageId&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}, packageTimeSlot&#x3D;{slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}}]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Packages&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;marketplaceId&quot; : &quot;A21TJRUUN4KGV&quot;,
+            &quot;updatePackageDetailsList&quot; : [ {
+              &quot;scheduledPackageId&quot; : {
+                &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+                &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+              },
+              &quot;packageTimeSlot&quot; : {
+                &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+                &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+              }
+            } ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;packages&quot; : [ {
+          &quot;scheduledPackageId&quot; : {
+            &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+            &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+          },
+          &quot;packageDimensions&quot; : {
+            &quot;length&quot; : 12.0,
+            &quot;width&quot; : 12.0,
+            &quot;height&quot; : 12.0,
+            &quot;unit&quot; : &quot;Cm&quot;
+          },
+          &quot;packageWeight&quot; : {
+            &quot;value&quot; : 23.0,
+            &quot;unit&quot; : &quot;G&quot;
+          },
+          &quot;packageTimeSlot&quot; : {
+            &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+            &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+            &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+          },
+          &quot;packageIdentifier&quot; : &quot;Scheduled&quot;,
+          &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateScheduledPackages',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateScheduledPackages'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{packages&#x3D;[{scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageId&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}, packageDimensions&#x3D;{length&#x3D;12.0, width&#x3D;12.0, height&#x3D;12.0, unit&#x3D;Cm}, packageWeight&#x3D;{value&#x3D;23.0, unit&#x3D;G}, packageTimeSlot&#x3D;{slotId&#x3D;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}, packageIdentifier&#x3D;Scheduled, packageStatus&#x3D;ReadyForPickup}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateScheduledPackages',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateScheduledPackagesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -837,40 +1395,142 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for updateScheduledPackages_400
-     * .
      */
     public function testUpdateScheduledPackages400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages400')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{marketplaceId&#x3D;, updatePackageDetailsList&#x3D;[{scheduledPackageId&#x3D;{amazonOrderId&#x3D;903-1713775-3598252, packageId&#x3D;1ab0f06a-9149-87e0-aba9-7098117872d6}, packageTimeSlot&#x3D;{slotId&#x3D;, startTime&#x3D;2022-03-09T23:30:00Z, endTime&#x3D;2022-03-10T02:00:00Z}}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;marketplaceId&quot; : &quot;&quot;,
+              &quot;updatePackageDetailsList&quot; : [ {
+                &quot;scheduledPackageId&quot; : {
+                  &quot;amazonOrderId&quot; : &quot;903-1713775-3598252&quot;,
+                  &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+                },
+                &quot;packageTimeSlot&quot; : {
+                  &quot;slotId&quot; : &quot;&quot;,
+                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;marketplaceId&quot; : &quot;A21TJRUUN4KGV&quot;,
+              &quot;updatePackageDetailsList&quot; : [ {
+                &quot;scheduledPackageId&quot; : {
+                  &quot;amazonOrderId&quot; : &quot;&quot;,
+                  &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+                },
+                &quot;packageTimeSlot&quot; : {
+                  &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;ResourceNotFound&quot;,
+          &quot;message&quot; : &quot;The specified resource (for example, &#x60;AmazonOrderId&#x60; or &#x60;MarketplaceId&#x60;) does not exist.&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;marketplaceId&quot; : &quot;A21TJRUUN4KGV&quot;,
+              &quot;updatePackageDetailsList&quot; : [ {
+                &quot;scheduledPackageId&quot; : {
+                  &quot;amazonOrderId&quot; : &quot;905-1713775-3598252&quot;,
+                  &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
+                },
+                &quot;packageTimeSlot&quot; : {
+                  &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;ScheduleWindowExpired&quot;,
+          &quot;message&quot; : &quot;The selected time slot has expired.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateScheduledPackages',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateScheduledPackages'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Request has missing or invalid parameters and cannot be parsed.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateScheduledPackages',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('EasyShipApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateScheduledPackagesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -883,74 +1543,66 @@ class EasyShipApiTest extends TestCase
     }
     /**
      * Test case for updateScheduledPackages_401
-     * .
      */
     public function testUpdateScheduledPackages401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_403
-     * .
      */
     public function testUpdateScheduledPackages403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_404
-     * .
      */
     public function testUpdateScheduledPackages404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_413
-     * .
      */
     public function testUpdateScheduledPackages413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_415
-     * .
      */
     public function testUpdateScheduledPackages415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_429
-     * .
      */
     public function testUpdateScheduledPackages429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_500
-     * .
      */
     public function testUpdateScheduledPackages500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateScheduledPackages_503
-     * .
      */
     public function testUpdateScheduledPackages503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

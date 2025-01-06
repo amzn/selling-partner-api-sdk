@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ValueAddedServiceChargeEvent;
+use OpenAPI\Client\Model\financesV0\ValueAddedServiceChargeEvent;
 
 /**
  * ValueAddedServiceChargeEventTest Class Doc Comment
@@ -91,7 +91,7 @@ class ValueAddedServiceChargeEventTest extends TestCase
     public function testPropertyTransactionAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTransactionAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionAmount());

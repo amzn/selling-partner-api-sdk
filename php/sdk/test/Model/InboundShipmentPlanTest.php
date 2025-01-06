@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentPlan;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentPlan;
 
 /**
  * InboundShipmentPlanTest Class Doc Comment
@@ -79,7 +79,7 @@ class InboundShipmentPlanTest extends TestCase
     public function testPropertyShipToAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Address();
         
         $this->model->setShipToAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipToAddress());
@@ -90,7 +90,7 @@ class InboundShipmentPlanTest extends TestCase
      */
     public function testPropertyLabelPrepType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\LabelPrepType();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\LabelPrepType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -115,7 +115,7 @@ class InboundShipmentPlanTest extends TestCase
     public function testPropertyEstimatedBoxContentsFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\BoxContentsFeeDetails();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\BoxContentsFeeDetails();
         
         $this->model->setEstimatedBoxContentsFee($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedBoxContentsFee());

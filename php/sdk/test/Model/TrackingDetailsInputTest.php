@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\TrackingDetailsInput;
+use OpenAPI\Client\Model\fulfillmentInbound\TrackingDetailsInput;
 
 /**
  * TrackingDetailsInputTest Class Doc Comment
@@ -57,7 +57,7 @@ class TrackingDetailsInputTest extends TestCase
     public function testPropertyLtlTrackingDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\LtlTrackingDetailInput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\LtlTrackingDetailInput();
         
         $this->model->setLtlTrackingDetail($testValue);
         $this->assertEquals($testValue, $this->model->getLtlTrackingDetail());
@@ -69,7 +69,7 @@ class TrackingDetailsInputTest extends TestCase
     public function testPropertySpdTrackingDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\SpdTrackingDetailInput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\SpdTrackingDetailInput();
         
         $this->model->setSpdTrackingDetail($testValue);
         $this->assertEquals($testValue, $this->model->getSpdTrackingDetail());

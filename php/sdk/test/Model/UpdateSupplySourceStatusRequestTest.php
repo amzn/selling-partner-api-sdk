@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest;
+use OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest;
 
 /**
  * UpdateSupplySourceStatusRequestTest Class Doc Comment
@@ -56,7 +56,7 @@ class UpdateSupplySourceStatusRequestTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplysources\SupplySourceStatus();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\SupplySourceStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

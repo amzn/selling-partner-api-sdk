@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\PackageTrackingDetails;
+use OpenAPI\Client\Model\fulfillmentOutbound\PackageTrackingDetails;
 
 /**
  * PackageTrackingDetailsTest Class Doc Comment
@@ -147,7 +147,7 @@ class PackageTrackingDetailsTest extends TestCase
     public function testPropertyShipToAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\TrackingAddress();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\TrackingAddress();
         
         $this->model->setShipToAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipToAddress());
@@ -158,7 +158,7 @@ class PackageTrackingDetailsTest extends TestCase
      */
     public function testPropertyCurrentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\CurrentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\CurrentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -193,7 +193,7 @@ class PackageTrackingDetailsTest extends TestCase
      */
     public function testPropertyAdditionalLocationInfo()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentoutbound\AdditionalLocationInfo();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentOutbound\AdditionalLocationInfo();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

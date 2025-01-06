@@ -10,7 +10,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getListingsRestrictions()`
 
 ```php
-getListingsRestrictions($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale): \OpenAPI\Client\Model\listings.restrictions\RestrictionList
+getListingsRestrictions($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale): \OpenAPI\Client\Model\listingsRestrictions\RestrictionList
 ```
 
 
@@ -56,7 +56,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\listings.restrictions\RestrictionList**](../Model/RestrictionList.md)
+[**\OpenAPI\Client\Model\listingsRestrictions\RestrictionList**](../Model/RestrictionList.md)
 
 ### Authorization
 

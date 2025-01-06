@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\GetFeaturesResponse;
+use OpenAPI\Client\Model\fulfillmentOutbound\GetFeaturesResponse;
 
 /**
  * GetFeaturesResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetFeaturesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\GetFeaturesResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\GetFeaturesResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

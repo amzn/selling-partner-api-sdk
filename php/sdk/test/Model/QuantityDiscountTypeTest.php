@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\QuantityDiscountType;
+use OpenAPI\Client\Model\pricingV0\QuantityDiscountType;
 
 /**
  * QuantityDiscountTypeTest Class Doc Comment

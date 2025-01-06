@@ -25,7 +25,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `confirmPreorder()`
 
 ```php
-confirmPreorder($shipment_id, $need_by_date, $marketplace_id): \OpenAPI\Client\Model\fulfillmentinboundv0\ConfirmPreorderResponse
+confirmPreorder($shipment_id, $need_by_date, $marketplace_id): \OpenAPI\Client\Model\fulfillmentInboundV0\ConfirmPreorderResponse
 ```
 
 
@@ -67,7 +67,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\ConfirmPreorderResponse**](../Model/ConfirmPreorderResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\ConfirmPreorderResponse**](../Model/ConfirmPreorderResponse.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ No authorization required
 ## `confirmTransport()`
 
 ```php
-confirmTransport($shipment_id): \OpenAPI\Client\Model\fulfillmentinboundv0\ConfirmTransportResponse
+confirmTransport($shipment_id): \OpenAPI\Client\Model\fulfillmentInboundV0\ConfirmTransportResponse
 ```
 
 
@@ -123,7 +123,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\ConfirmTransportResponse**](../Model/ConfirmTransportResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\ConfirmTransportResponse**](../Model/ConfirmTransportResponse.md)
 
 ### Authorization
 
@@ -141,7 +141,7 @@ No authorization required
 ## `createInboundShipment()`
 
 ```php
-createInboundShipment($shipment_id, $body): \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentResponse
+createInboundShipment($shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentResponse
 ```
 
 
@@ -162,7 +162,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaInboundApi(
     new GuzzleHttp\Client()
 );
 $shipment_id = 'shipment_id_example'; // string | A shipment identifier originally returned by the createInboundShipmentPlan operation.
-$body = new \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest(); // \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest | The request schema for the InboundShipmentRequest operation.
+$body = new \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest(); // \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest | The request schema for the InboundShipmentRequest operation.
 
 try {
     $result = $apiInstance->createInboundShipment($shipment_id, $body);
@@ -177,11 +177,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **shipment_id** | **string**| A shipment identifier originally returned by the createInboundShipmentPlan operation. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest**](../Model/InboundShipmentRequest.md)| The request schema for the InboundShipmentRequest operation. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest**](../Model/InboundShipmentRequest.md)| The request schema for the InboundShipmentRequest operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentResponse**](../Model/InboundShipmentResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentResponse**](../Model/InboundShipmentResponse.md)
 
 ### Authorization
 
@@ -199,7 +199,7 @@ No authorization required
 ## `createInboundShipmentPlan()`
 
 ```php
-createInboundShipmentPlan($body): \OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanResponse
+createInboundShipmentPlan($body): \OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanResponse
 ```
 
 
@@ -219,7 +219,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaInboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanRequest(); // \OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanRequest | The request schema for the CreateInboundShipmentPlanRequest operation.
+$body = new \OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanRequest(); // \OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanRequest | The request schema for the CreateInboundShipmentPlanRequest operation.
 
 try {
     $result = $apiInstance->createInboundShipmentPlan($body);
@@ -233,11 +233,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanRequest**](../Model/CreateInboundShipmentPlanRequest.md)| The request schema for the CreateInboundShipmentPlanRequest operation. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanRequest**](../Model/CreateInboundShipmentPlanRequest.md)| The request schema for the CreateInboundShipmentPlanRequest operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanResponse**](../Model/CreateInboundShipmentPlanResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanResponse**](../Model/CreateInboundShipmentPlanResponse.md)
 
 ### Authorization
 
@@ -255,7 +255,7 @@ No authorization required
 ## `estimateTransport()`
 
 ```php
-estimateTransport($shipment_id): \OpenAPI\Client\Model\fulfillmentinboundv0\EstimateTransportResponse
+estimateTransport($shipment_id): \OpenAPI\Client\Model\fulfillmentInboundV0\EstimateTransportResponse
 ```
 
 
@@ -293,7 +293,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\EstimateTransportResponse**](../Model/EstimateTransportResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\EstimateTransportResponse**](../Model/EstimateTransportResponse.md)
 
 ### Authorization
 
@@ -311,7 +311,7 @@ No authorization required
 ## `getBillOfLading()`
 
 ```php
-getBillOfLading($shipment_id): \OpenAPI\Client\Model\fulfillmentinboundv0\GetBillOfLadingResponse
+getBillOfLading($shipment_id): \OpenAPI\Client\Model\fulfillmentInboundV0\GetBillOfLadingResponse
 ```
 
 
@@ -349,7 +349,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetBillOfLadingResponse**](../Model/GetBillOfLadingResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetBillOfLadingResponse**](../Model/GetBillOfLadingResponse.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ No authorization required
 ## `getLabels()`
 
 ```php
-getLabels($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index): \OpenAPI\Client\Model\fulfillmentinboundv0\GetLabelsResponse
+getLabels($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index): \OpenAPI\Client\Model\fulfillmentInboundV0\GetLabelsResponse
 ```
 
 
@@ -419,7 +419,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetLabelsResponse**](../Model/GetLabelsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetLabelsResponse**](../Model/GetLabelsResponse.md)
 
 ### Authorization
 
@@ -437,7 +437,7 @@ No authorization required
 ## `getPreorderInfo()`
 
 ```php
-getPreorderInfo($shipment_id, $marketplace_id): \OpenAPI\Client\Model\fulfillmentinboundv0\GetPreorderInfoResponse
+getPreorderInfo($shipment_id, $marketplace_id): \OpenAPI\Client\Model\fulfillmentInboundV0\GetPreorderInfoResponse
 ```
 
 
@@ -477,7 +477,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetPreorderInfoResponse**](../Model/GetPreorderInfoResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetPreorderInfoResponse**](../Model/GetPreorderInfoResponse.md)
 
 ### Authorization
 
@@ -495,7 +495,7 @@ No authorization required
 ## `getPrepInstructions()`
 
 ```php
-getPrepInstructions($ship_to_country_code, $seller_sku_list, $asin_list): \OpenAPI\Client\Model\fulfillmentinboundv0\GetPrepInstructionsResponse
+getPrepInstructions($ship_to_country_code, $seller_sku_list, $asin_list): \OpenAPI\Client\Model\fulfillmentInboundV0\GetPrepInstructionsResponse
 ```
 
 
@@ -537,7 +537,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetPrepInstructionsResponse**](../Model/GetPrepInstructionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetPrepInstructionsResponse**](../Model/GetPrepInstructionsResponse.md)
 
 ### Authorization
 
@@ -555,7 +555,7 @@ No authorization required
 ## `getShipmentItems()`
 
 ```php
-getShipmentItems($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token): \OpenAPI\Client\Model\fulfillmentinboundv0\GetShipmentItemsResponse
+getShipmentItems($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token): \OpenAPI\Client\Model\fulfillmentInboundV0\GetShipmentItemsResponse
 ```
 
 
@@ -601,7 +601,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetShipmentItemsResponse**](../Model/GetShipmentItemsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetShipmentItemsResponse**](../Model/GetShipmentItemsResponse.md)
 
 ### Authorization
 
@@ -619,7 +619,7 @@ No authorization required
 ## `getShipmentItemsByShipmentId()`
 
 ```php
-getShipmentItemsByShipmentId($shipment_id, $marketplace_id): \OpenAPI\Client\Model\fulfillmentinboundv0\GetShipmentItemsResponse
+getShipmentItemsByShipmentId($shipment_id, $marketplace_id): \OpenAPI\Client\Model\fulfillmentInboundV0\GetShipmentItemsResponse
 ```
 
 
@@ -659,7 +659,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetShipmentItemsResponse**](../Model/GetShipmentItemsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetShipmentItemsResponse**](../Model/GetShipmentItemsResponse.md)
 
 ### Authorization
 
@@ -677,7 +677,7 @@ No authorization required
 ## `getShipments()`
 
 ```php
-getShipments($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token): \OpenAPI\Client\Model\fulfillmentinboundv0\GetShipmentsResponse
+getShipments($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token): \OpenAPI\Client\Model\fulfillmentInboundV0\GetShipmentsResponse
 ```
 
 
@@ -727,7 +727,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetShipmentsResponse**](../Model/GetShipmentsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetShipmentsResponse**](../Model/GetShipmentsResponse.md)
 
 ### Authorization
 
@@ -745,7 +745,7 @@ No authorization required
 ## `getTransportDetails()`
 
 ```php
-getTransportDetails($shipment_id): \OpenAPI\Client\Model\fulfillmentinboundv0\GetTransportDetailsResponse
+getTransportDetails($shipment_id): \OpenAPI\Client\Model\fulfillmentInboundV0\GetTransportDetailsResponse
 ```
 
 
@@ -783,7 +783,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\GetTransportDetailsResponse**](../Model/GetTransportDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\GetTransportDetailsResponse**](../Model/GetTransportDetailsResponse.md)
 
 ### Authorization
 
@@ -801,7 +801,7 @@ No authorization required
 ## `putTransportDetails()`
 
 ```php
-putTransportDetails($shipment_id, $body): \OpenAPI\Client\Model\fulfillmentinboundv0\PutTransportDetailsResponse
+putTransportDetails($shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInboundV0\PutTransportDetailsResponse
 ```
 
 
@@ -822,7 +822,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaInboundApi(
     new GuzzleHttp\Client()
 );
 $shipment_id = 'shipment_id_example'; // string | A shipment identifier originally returned by the createInboundShipmentPlan operation.
-$body = new \OpenAPI\Client\Model\fulfillmentinboundv0\PutTransportDetailsRequest(); // \OpenAPI\Client\Model\fulfillmentinboundv0\PutTransportDetailsRequest | The request schema for the PutTransportDetailsRequest operation.
+$body = new \OpenAPI\Client\Model\fulfillmentInboundV0\PutTransportDetailsRequest(); // \OpenAPI\Client\Model\fulfillmentInboundV0\PutTransportDetailsRequest | The request schema for the PutTransportDetailsRequest operation.
 
 try {
     $result = $apiInstance->putTransportDetails($shipment_id, $body);
@@ -837,11 +837,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **shipment_id** | **string**| A shipment identifier originally returned by the createInboundShipmentPlan operation. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentinboundv0\PutTransportDetailsRequest**](../Model/PutTransportDetailsRequest.md)| The request schema for the PutTransportDetailsRequest operation. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillmentInboundV0\PutTransportDetailsRequest**](../Model/PutTransportDetailsRequest.md)| The request schema for the PutTransportDetailsRequest operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\PutTransportDetailsResponse**](../Model/PutTransportDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\PutTransportDetailsResponse**](../Model/PutTransportDetailsResponse.md)
 
 ### Authorization
 
@@ -859,7 +859,7 @@ No authorization required
 ## `updateInboundShipment()`
 
 ```php
-updateInboundShipment($shipment_id, $body): \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentResponse
+updateInboundShipment($shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentResponse
 ```
 
 
@@ -880,7 +880,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaInboundApi(
     new GuzzleHttp\Client()
 );
 $shipment_id = 'shipment_id_example'; // string | A shipment identifier originally returned by the createInboundShipmentPlan operation.
-$body = new \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest(); // \OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest | The request schema for the InboundShipmentRequest operation.
+$body = new \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest(); // \OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest | The request schema for the InboundShipmentRequest operation.
 
 try {
     $result = $apiInstance->updateInboundShipment($shipment_id, $body);
@@ -895,11 +895,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **shipment_id** | **string**| A shipment identifier originally returned by the createInboundShipmentPlan operation. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentRequest**](../Model/InboundShipmentRequest.md)| The request schema for the InboundShipmentRequest operation. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentRequest**](../Model/InboundShipmentRequest.md)| The request schema for the InboundShipmentRequest operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\InboundShipmentResponse**](../Model/InboundShipmentResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\InboundShipmentResponse**](../Model/InboundShipmentResponse.md)
 
 ### Authorization
 
@@ -917,7 +917,7 @@ No authorization required
 ## `voidTransport()`
 
 ```php
-voidTransport($shipment_id): \OpenAPI\Client\Model\fulfillmentinboundv0\VoidTransportResponse
+voidTransport($shipment_id): \OpenAPI\Client\Model\fulfillmentInboundV0\VoidTransportResponse
 ```
 
 
@@ -955,7 +955,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentinboundv0\VoidTransportResponse**](../Model/VoidTransportResponse.md)
+[**\OpenAPI\Client\Model\fulfillmentInboundV0\VoidTransportResponse**](../Model/VoidTransportResponse.md)
 
 ### Authorization
 

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanResponse;
+use OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanResponse;
 
 /**
  * CreateInboundShipmentPlanResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateInboundShipmentPlanResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\CreateInboundShipmentPlanResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\CreateInboundShipmentPlanResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentOrderItem;
+use OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentOrderItem;
 
 /**
  * FulfillmentOrderItemTest Class Doc Comment
@@ -180,7 +180,7 @@ class FulfillmentOrderItemTest extends TestCase
     public function testPropertyPerUnitPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setPerUnitPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitPrice());
@@ -192,7 +192,7 @@ class FulfillmentOrderItemTest extends TestCase
     public function testPropertyPerUnitTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setPerUnitTax($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitTax());
@@ -204,7 +204,7 @@ class FulfillmentOrderItemTest extends TestCase
     public function testPropertyPerUnitDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setPerUnitDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitDeclaredValue());

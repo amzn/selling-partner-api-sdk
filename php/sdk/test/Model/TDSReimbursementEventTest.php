@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\TDSReimbursementEvent;
+use OpenAPI\Client\Model\financesV0\TDSReimbursementEvent;
 
 /**
  * TDSReimbursementEventTest Class Doc Comment
@@ -80,7 +80,7 @@ class TDSReimbursementEventTest extends TestCase
     public function testPropertyReimbursedAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setReimbursedAmount($testValue);
         $this->assertEquals($testValue, $this->model->getReimbursedAmount());

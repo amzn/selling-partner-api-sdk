@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\TokensApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,96 @@ class TokensApiTest extends TestCase
 
     /**
      * Test case for createRestrictedDataToken_200
-     * .
      */
     public function testCreateRestrictedDataToken200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateRestrictedDataToken200')) {
+             if ($this->testHelper->shouldSkipTest('testCreateRestrictedDataToken200', 'TokensApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{targetApplication&#x3D;amzn1.sellerapps.app.target-application, restrictedResources&#x3D;[{method&#x3D;GET, path&#x3D;/orders/v0/orders/{orderId}/address}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateRestrictedDataTokenResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;targetApplication&quot; : &quot;amzn1.sellerapps.app.target-application&quot;,
+              &quot;restrictedResources&quot; : [ {
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;path&quot; : &quot;/orders/v0/orders/{orderId}/address&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;restrictedDataToken&quot; : &quot;Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR&quot;,
+        &quot;expiresIn&quot; : 3600
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;restrictedResources&quot; : [ {
+                &quot;method&quot; : &quot;GET&quot;,
+                &quot;path&quot; : &quot;/orders/v0/orders/943-12-123434/address&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;restrictedDataToken&quot; : &quot;Atz.sprdt|AODFNESLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR&quot;,
+        &quot;expiresIn&quot; : 3600
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createRestrictedDataToken',
-                $invalidRequestJson
+                $jsonSchema,
+                'createRestrictedDataToken'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{restrictedDataToken&#x3D;Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR, expiresIn&#x3D;3600}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createRestrictedDataToken',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('TokensApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createRestrictedDataTokenWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +238,82 @@ class TokensApiTest extends TestCase
     }
     /**
      * Test case for createRestrictedDataToken_400
-     * .
      */
     public function testCreateRestrictedDataToken400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateRestrictedDataToken400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateRestrictedDataToken400', 'TokensApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{targetApplication&#x3D;amzn1.sellerapps.app.target-application, restrictedResources&#x3D;[{method&#x3D;, path&#x3D;/orders/v1/orders/902-1845936-5435065/address}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;targetApplication&quot; : &quot;amzn1.sellerapps.app.target-application&quot;,
+              &quot;restrictedResources&quot; : [ {
+                &quot;method&quot; : &quot;&quot;,
+                &quot;path&quot; : &quot;/orders/v1/orders/902-1845936-5435065/address&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidRequest&quot;,
+          &quot;message&quot; : &quot;Request is missing or has invalid parameters&quot;,
+          &quot;details&quot; : &quot;Resource not provided.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createRestrictedDataToken',
-                $invalidRequestJson
+                $jsonSchema,
+                'createRestrictedDataToken'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidRequest, message&#x3D;Request is missing or has invalid parameters, details&#x3D;Resource not provided.}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createRestrictedDataToken',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('TokensApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createRestrictedDataTokenWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,65 +326,58 @@ class TokensApiTest extends TestCase
     }
     /**
      * Test case for createRestrictedDataToken_401
-     * .
      */
     public function testCreateRestrictedDataToken401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createRestrictedDataToken_403
-     * .
      */
     public function testCreateRestrictedDataToken403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createRestrictedDataToken_404
-     * .
      */
     public function testCreateRestrictedDataToken404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createRestrictedDataToken_415
-     * .
      */
     public function testCreateRestrictedDataToken415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createRestrictedDataToken_429
-     * .
      */
     public function testCreateRestrictedDataToken429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createRestrictedDataToken_500
-     * .
      */
     public function testCreateRestrictedDataToken500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createRestrictedDataToken_503
-     * .
      */
     public function testCreateRestrictedDataToken503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

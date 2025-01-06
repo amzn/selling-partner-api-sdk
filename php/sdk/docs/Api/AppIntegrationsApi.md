@@ -12,7 +12,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `createNotification()`
 
 ```php
-createNotification($body): \OpenAPI\Client\Model\appintegrations\CreateNotificationResponse
+createNotification($body): \OpenAPI\Client\Model\appIntegrations\CreateNotificationResponse
 ```
 
 
@@ -32,7 +32,7 @@ $apiInstance = new OpenAPI\Client\Api\AppIntegrationsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\appintegrations\CreateNotificationRequest(); // \OpenAPI\Client\Model\appintegrations\CreateNotificationRequest | The request body for the `createNotification` operation.
+$body = new \OpenAPI\Client\Model\appIntegrations\CreateNotificationRequest(); // \OpenAPI\Client\Model\appIntegrations\CreateNotificationRequest | The request body for the `createNotification` operation.
 
 try {
     $result = $apiInstance->createNotification($body);
@@ -46,11 +46,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\appintegrations\CreateNotificationRequest**](../Model/CreateNotificationRequest.md)| The request body for the &#x60;createNotification&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\appIntegrations\CreateNotificationRequest**](../Model/CreateNotificationRequest.md)| The request body for the &#x60;createNotification&#x60; operation. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\appintegrations\CreateNotificationResponse**](../Model/CreateNotificationResponse.md)
+[**\OpenAPI\Client\Model\appIntegrations\CreateNotificationResponse**](../Model/CreateNotificationResponse.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ $apiInstance = new OpenAPI\Client\Api\AppIntegrationsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\appintegrations\DeleteNotificationsRequest(); // \OpenAPI\Client\Model\appintegrations\DeleteNotificationsRequest | The request body for the `deleteNotifications` operation.
+$body = new \OpenAPI\Client\Model\appIntegrations\DeleteNotificationsRequest(); // \OpenAPI\Client\Model\appIntegrations\DeleteNotificationsRequest | The request body for the `deleteNotifications` operation.
 
 try {
     $apiInstance->deleteNotifications($body);
@@ -101,7 +101,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\appintegrations\DeleteNotificationsRequest**](../Model/DeleteNotificationsRequest.md)| The request body for the &#x60;deleteNotifications&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\appIntegrations\DeleteNotificationsRequest**](../Model/DeleteNotificationsRequest.md)| The request body for the &#x60;deleteNotifications&#x60; operation. | |
 
 ### Return type
 
@@ -144,7 +144,7 @@ $apiInstance = new OpenAPI\Client\Api\AppIntegrationsApi(
     new GuzzleHttp\Client()
 );
 $notification_id = 'notification_id_example'; // string | A `notificationId` uniquely identifies a notification.
-$body = new \OpenAPI\Client\Model\appintegrations\RecordActionFeedbackRequest(); // \OpenAPI\Client\Model\appintegrations\RecordActionFeedbackRequest | The request body for the `recordActionFeedback` operation.
+$body = new \OpenAPI\Client\Model\appIntegrations\RecordActionFeedbackRequest(); // \OpenAPI\Client\Model\appIntegrations\RecordActionFeedbackRequest | The request body for the `recordActionFeedback` operation.
 
 try {
     $apiInstance->recordActionFeedback($notification_id, $body);
@@ -158,7 +158,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **notification_id** | **string**| A &#x60;notificationId&#x60; uniquely identifies a notification. | |
-| **body** | [**\OpenAPI\Client\Model\appintegrations\RecordActionFeedbackRequest**](../Model/RecordActionFeedbackRequest.md)| The request body for the &#x60;recordActionFeedback&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\appIntegrations\RecordActionFeedbackRequest**](../Model/RecordActionFeedbackRequest.md)| The request body for the &#x60;recordActionFeedback&#x60; operation. | |
 
 ### Return type
 

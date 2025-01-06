@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\OperatingHoursByDay;
+use OpenAPI\Client\Model\supplySources\OperatingHoursByDay;
 
 /**
  * OperatingHoursByDayTest Class Doc Comment

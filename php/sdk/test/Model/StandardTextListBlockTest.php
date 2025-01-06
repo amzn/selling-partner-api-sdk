@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardTextListBlock;
+use OpenAPI\Client\Model\aplusContent\StandardTextListBlock;
 
 /**
  * StandardTextListBlockTest Class Doc Comment

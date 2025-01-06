@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payload** | [**\OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResult**](GetAdditionalSellerInputsResult.md) |  | [optional]
-**errors** | [**\OpenAPI\Client\Model\merchantfulfillment\Error[]**](Error.md) | A list of error responses returned when a request is unsuccessful. | [optional]
+**payload** | [**\OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResult**](GetAdditionalSellerInputsResult.md) |  | [optional]
+**errors** | [**\OpenAPI\Client\Model\merchantFulfillment\Error[]**](Error.md) | A list of error responses returned when a request is unsuccessful. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

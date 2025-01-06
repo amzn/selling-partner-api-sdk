@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\InvalidSKU;
+use OpenAPI\Client\Model\fulfillmentInboundV0\InvalidSKU;
 
 /**
  * InvalidSKUTest Class Doc Comment
@@ -67,7 +67,7 @@ class InvalidSKUTest extends TestCase
      */
     public function testPropertyErrorReason()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\ErrorReason();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\ErrorReason();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

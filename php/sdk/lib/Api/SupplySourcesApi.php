@@ -157,11 +157,11 @@ class SupplySourcesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\supplysources\ErrorList
+     * @return \OpenAPI\Client\Model\supplySources\ErrorList
      */
     public function archiveSupplySource(
         string $supply_source_id
-    ): \OpenAPI\Client\Model\supplysources\ErrorList {
+    ): \OpenAPI\Client\Model\supplySources\ErrorList {
         list($response) = $this->archiveSupplySourceWithHttpInfo($supply_source_id);
         return $response;
     }
@@ -174,7 +174,7 @@ class SupplySourcesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\supplysources\ErrorList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\supplySources\ErrorList, HTTP status code, HTTP response headers (array of strings)
      */
     public function archiveSupplySourceWithHttpInfo(
         string $supply_source_id
@@ -220,143 +220,143 @@ class SupplySourcesApi
 
             switch($statusCode) {
                 case 204:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\supplysources\ErrorList';
+            $returnType = '\OpenAPI\Client\Model\supplySources\ErrorList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -377,7 +377,7 @@ class SupplySourcesApi
                 case 204:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class SupplySourcesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class SupplySourcesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -401,7 +401,7 @@ class SupplySourcesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class SupplySourcesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class SupplySourcesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class SupplySourcesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class SupplySourcesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class SupplySourcesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -483,7 +483,7 @@ class SupplySourcesApi
     public function archiveSupplySourceAsyncWithHttpInfo(
         string $supply_source_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\supplysources\ErrorList';
+        $returnType = '\OpenAPI\Client\Model\supplySources\ErrorList';
         $request = $this->archiveSupplySourceRequest($supply_source_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -624,16 +624,16 @@ class SupplySourcesApi
     /**
      * Operation createSupplySource
      *
-     * @param  \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+     * @param  \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
      *  A request to create a supply source. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse
+     * @return \OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse
      */
     public function createSupplySource(
-        \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
-    ): \OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse {
+        \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
+    ): \OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse {
         list($response) = $this->createSupplySourceWithHttpInfo($payload);
         return $response;
     }
@@ -641,15 +641,15 @@ class SupplySourcesApi
     /**
      * Operation createSupplySourceWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+     * @param  \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
      *  A request to create a supply source. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSupplySourceWithHttpInfo(
-        \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+        \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
     ): array {
         $request = $this->createSupplySourceRequest($payload);
         $request = $this->config->sign($request);
@@ -692,143 +692,143 @@ class SupplySourcesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse';
+            $returnType = '\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -849,7 +849,7 @@ class SupplySourcesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse',
+                        '\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -857,7 +857,7 @@ class SupplySourcesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -865,7 +865,7 @@ class SupplySourcesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -873,7 +873,7 @@ class SupplySourcesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -881,7 +881,7 @@ class SupplySourcesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -889,7 +889,7 @@ class SupplySourcesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -897,7 +897,7 @@ class SupplySourcesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -905,7 +905,7 @@ class SupplySourcesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -913,7 +913,7 @@ class SupplySourcesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -926,14 +926,14 @@ class SupplySourcesApi
     /**
      * Operation createSupplySourceAsync
      *
-     * @param  \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+     * @param  \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
      *  A request to create a supply source. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createSupplySourceAsync(
-        \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+        \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
     ): PromiseInterface {
         return $this->createSupplySourceAsyncWithHttpInfo($payload)
             ->then(
@@ -946,16 +946,16 @@ class SupplySourcesApi
     /**
      * Operation createSupplySourceAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+     * @param  \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
      *  A request to create a supply source. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createSupplySourceAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+        \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse';
+        $returnType = '\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse';
         $request = $this->createSupplySourceRequest($payload);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -999,14 +999,14 @@ class SupplySourcesApi
     /**
      * Create request for operation 'createSupplySource'
      *
-     * @param  \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+     * @param  \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
      *  A request to create a supply source. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createSupplySourceRequest(
-        \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest $payload
+        \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest $payload
     ): Request {
         // verify the required parameter 'payload' is set
         if ($payload === null || (is_array($payload) && count($payload) === 0)) {
@@ -1099,11 +1099,11 @@ class SupplySourcesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\supplysources\SupplySource
+     * @return \OpenAPI\Client\Model\supplySources\SupplySource
      */
     public function getSupplySource(
         string $supply_source_id
-    ): \OpenAPI\Client\Model\supplysources\SupplySource {
+    ): \OpenAPI\Client\Model\supplySources\SupplySource {
         list($response) = $this->getSupplySourceWithHttpInfo($supply_source_id);
         return $response;
     }
@@ -1116,7 +1116,7 @@ class SupplySourcesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\supplysources\SupplySource, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\supplySources\SupplySource, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSupplySourceWithHttpInfo(
         string $supply_source_id
@@ -1162,143 +1162,143 @@ class SupplySourcesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\supplysources\SupplySource' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\SupplySource' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\SupplySource' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\SupplySource' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\SupplySource', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\SupplySource', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\supplysources\SupplySource';
+            $returnType = '\OpenAPI\Client\Model\supplySources\SupplySource';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1319,7 +1319,7 @@ class SupplySourcesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\SupplySource',
+                        '\OpenAPI\Client\Model\supplySources\SupplySource',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1327,7 +1327,7 @@ class SupplySourcesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1335,7 +1335,7 @@ class SupplySourcesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1343,7 +1343,7 @@ class SupplySourcesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1351,7 +1351,7 @@ class SupplySourcesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1359,7 +1359,7 @@ class SupplySourcesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1367,7 +1367,7 @@ class SupplySourcesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1375,7 +1375,7 @@ class SupplySourcesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1383,7 +1383,7 @@ class SupplySourcesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1425,7 +1425,7 @@ class SupplySourcesApi
     public function getSupplySourceAsyncWithHttpInfo(
         string $supply_source_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\supplysources\SupplySource';
+        $returnType = '\OpenAPI\Client\Model\supplySources\SupplySource';
         $request = $this->getSupplySourceRequest($supply_source_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1573,12 +1573,12 @@ class SupplySourcesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse
+     * @return \OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse
      */
     public function getSupplySources(
         ?string $next_page_token = null,
         ?float $page_size = 10.0
-    ): \OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse {
+    ): \OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse {
         list($response) = $this->getSupplySourcesWithHttpInfo($next_page_token, $page_size);
         return $response;
     }
@@ -1593,7 +1593,7 @@ class SupplySourcesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSupplySourcesWithHttpInfo(
         ?string $next_page_token = null,
@@ -1640,143 +1640,143 @@ class SupplySourcesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse';
+            $returnType = '\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1797,7 +1797,7 @@ class SupplySourcesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse',
+                        '\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1805,7 +1805,7 @@ class SupplySourcesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1813,7 +1813,7 @@ class SupplySourcesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1821,7 +1821,7 @@ class SupplySourcesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1829,7 +1829,7 @@ class SupplySourcesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1837,7 +1837,7 @@ class SupplySourcesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1845,7 +1845,7 @@ class SupplySourcesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1853,7 +1853,7 @@ class SupplySourcesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1861,7 +1861,7 @@ class SupplySourcesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1909,7 +1909,7 @@ class SupplySourcesApi
         ?string $next_page_token = null,
         ?float $page_size = 10.0
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse';
+        $returnType = '\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse';
         $request = $this->getSupplySourcesRequest($next_page_token, $page_size);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2059,17 +2059,17 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identitier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest|null $payload
      *  payload (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\supplysources\ErrorList
+     * @return \OpenAPI\Client\Model\supplySources\ErrorList
      */
     public function updateSupplySource(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest $payload = null
-    ): \OpenAPI\Client\Model\supplysources\ErrorList {
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest $payload = null
+    ): \OpenAPI\Client\Model\supplySources\ErrorList {
         list($response) = $this->updateSupplySourceWithHttpInfo($supply_source_id, $payload);
         return $response;
     }
@@ -2079,16 +2079,16 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identitier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest|null $payload
      *  (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\supplysources\ErrorList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\supplySources\ErrorList, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateSupplySourceWithHttpInfo(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest $payload = null
     ): array {
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
@@ -2131,143 +2131,143 @@ class SupplySourcesApi
 
             switch($statusCode) {
                 case 204:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\supplysources\ErrorList';
+            $returnType = '\OpenAPI\Client\Model\supplySources\ErrorList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2288,7 +2288,7 @@ class SupplySourcesApi
                 case 204:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2296,7 +2296,7 @@ class SupplySourcesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2304,7 +2304,7 @@ class SupplySourcesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2312,7 +2312,7 @@ class SupplySourcesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2320,7 +2320,7 @@ class SupplySourcesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2328,7 +2328,7 @@ class SupplySourcesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2336,7 +2336,7 @@ class SupplySourcesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2344,7 +2344,7 @@ class SupplySourcesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2352,7 +2352,7 @@ class SupplySourcesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2367,7 +2367,7 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identitier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest|null $payload
      *  (optional)
      *
      * @throws \InvalidArgumentException
@@ -2375,7 +2375,7 @@ class SupplySourcesApi
      */
     public function updateSupplySourceAsync(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest $payload = null
     ): PromiseInterface {
         return $this->updateSupplySourceAsyncWithHttpInfo($supply_source_id, $payload)
             ->then(
@@ -2390,7 +2390,7 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identitier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest|null $payload
      *  (optional)
      *
      * @throws \InvalidArgumentException
@@ -2398,9 +2398,9 @@ class SupplySourcesApi
      */
     public function updateSupplySourceAsyncWithHttpInfo(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest $payload = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\supplysources\ErrorList';
+        $returnType = '\OpenAPI\Client\Model\supplySources\ErrorList';
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2446,7 +2446,7 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identitier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest|null $payload
      *  (optional)
      *
      * @throws \InvalidArgumentException
@@ -2454,7 +2454,7 @@ class SupplySourcesApi
      */
     public function updateSupplySourceRequest(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest $payload = null
     ): Request {
         // verify the required parameter 'supply_source_id' is set
         if ($supply_source_id === null || (is_array($supply_source_id) && count($supply_source_id) === 0)) {
@@ -2552,17 +2552,17 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identifier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest|null $payload
      *  payload (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\supplysources\ErrorList
+     * @return \OpenAPI\Client\Model\supplySources\ErrorList
      */
     public function updateSupplySourceStatus(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest $payload = null
-    ): \OpenAPI\Client\Model\supplysources\ErrorList {
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest $payload = null
+    ): \OpenAPI\Client\Model\supplySources\ErrorList {
         list($response) = $this->updateSupplySourceStatusWithHttpInfo($supply_source_id, $payload);
         return $response;
     }
@@ -2572,16 +2572,16 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identifier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest|null $payload
      *  (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\supplysources\ErrorList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\supplySources\ErrorList, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateSupplySourceStatusWithHttpInfo(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest $payload = null
     ): array {
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
@@ -2624,143 +2624,143 @@ class SupplySourcesApi
 
             switch($statusCode) {
                 case 204:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\supplysources\ErrorList' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\supplySources\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\supplysources\ErrorList' !== 'string') {
+                        if ('\OpenAPI\Client\Model\supplySources\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplysources\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\supplySources\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\supplysources\ErrorList';
+            $returnType = '\OpenAPI\Client\Model\supplySources\ErrorList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2781,7 +2781,7 @@ class SupplySourcesApi
                 case 204:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2789,7 +2789,7 @@ class SupplySourcesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2797,7 +2797,7 @@ class SupplySourcesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2805,7 +2805,7 @@ class SupplySourcesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2813,7 +2813,7 @@ class SupplySourcesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2821,7 +2821,7 @@ class SupplySourcesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2829,7 +2829,7 @@ class SupplySourcesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2837,7 +2837,7 @@ class SupplySourcesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2845,7 +2845,7 @@ class SupplySourcesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\supplysources\ErrorList',
+                        '\OpenAPI\Client\Model\supplySources\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2860,7 +2860,7 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identifier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest|null $payload
      *  (optional)
      *
      * @throws \InvalidArgumentException
@@ -2868,7 +2868,7 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusAsync(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest $payload = null
     ): PromiseInterface {
         return $this->updateSupplySourceStatusAsyncWithHttpInfo($supply_source_id, $payload)
             ->then(
@@ -2883,7 +2883,7 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identifier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest|null $payload
      *  (optional)
      *
      * @throws \InvalidArgumentException
@@ -2891,9 +2891,9 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusAsyncWithHttpInfo(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest $payload = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\supplysources\ErrorList';
+        $returnType = '\OpenAPI\Client\Model\supplySources\ErrorList';
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2939,7 +2939,7 @@ class SupplySourcesApi
      *
      * @param  string $supply_source_id
      *  The unique identifier of a supply source. (required)
-     * @param  \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest|null $payload
+     * @param  \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest|null $payload
      *  (optional)
      *
      * @throws \InvalidArgumentException
@@ -2947,7 +2947,7 @@ class SupplySourcesApi
      */
     public function updateSupplySourceStatusRequest(
         string $supply_source_id,
-        ?\OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest $payload = null
+        ?\OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest $payload = null
     ): Request {
         // verify the required parameter 'supply_source_id' is set
         if ($supply_source_id === null || (is_array($supply_source_id) && count($supply_source_id) === 0)) {

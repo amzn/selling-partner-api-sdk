@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.shipping\CarrierId;
+use OpenAPI\Client\Model\vendorDfShipping\CarrierId;
 
 /**
  * CarrierIdTest Class Doc Comment

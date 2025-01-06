@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\CreateMarketplaceItemLabelsRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsRequest;
 
 /**
  * CreateMarketplaceItemLabelsRequestTest Class Doc Comment
@@ -67,7 +67,7 @@ class CreateMarketplaceItemLabelsRequestTest extends TestCase
      */
     public function testPropertyLabelType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\LabelPrintType();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\LabelPrintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -113,7 +113,7 @@ class CreateMarketplaceItemLabelsRequestTest extends TestCase
      */
     public function testPropertyPageType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\ItemLabelPageType();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\ItemLabelPageType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

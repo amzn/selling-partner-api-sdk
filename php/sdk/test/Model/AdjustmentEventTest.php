@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\AdjustmentEvent;
+use OpenAPI\Client\Model\financesV0\AdjustmentEvent;
 
 /**
  * AdjustmentEventTest Class Doc Comment
@@ -80,7 +80,7 @@ class AdjustmentEventTest extends TestCase
     public function testPropertyAdjustmentAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setAdjustmentAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAdjustmentAmount());

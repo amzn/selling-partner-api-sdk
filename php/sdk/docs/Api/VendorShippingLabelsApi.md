@@ -13,7 +13,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `createShippingLabels()`
 
 ```php
-createShippingLabels($purchase_order_number, $body): \OpenAPI\Client\Model\vendor.df.shipping\ShippingLabel
+createShippingLabels($purchase_order_number, $body): \OpenAPI\Client\Model\vendorDfShipping\ShippingLabel
 ```
 
 
@@ -34,7 +34,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorShippingLabelsApi(
     new GuzzleHttp\Client()
 );
 $purchase_order_number = 'purchase_order_number_example'; // string | The purchase order number for which you want to return the shipping labels. It should be the same purchaseOrderNumber as received in the order.
-$body = new \OpenAPI\Client\Model\vendor.df.shipping\CreateShippingLabelsRequest(); // \OpenAPI\Client\Model\vendor.df.shipping\CreateShippingLabelsRequest | The request payload containing parameters for creating shipping labels.
+$body = new \OpenAPI\Client\Model\vendorDfShipping\CreateShippingLabelsRequest(); // \OpenAPI\Client\Model\vendorDfShipping\CreateShippingLabelsRequest | The request payload containing parameters for creating shipping labels.
 
 try {
     $result = $apiInstance->createShippingLabels($purchase_order_number, $body);
@@ -49,11 +49,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **purchase_order_number** | **string**| The purchase order number for which you want to return the shipping labels. It should be the same purchaseOrderNumber as received in the order. | |
-| **body** | [**\OpenAPI\Client\Model\vendor.df.shipping\CreateShippingLabelsRequest**](../Model/CreateShippingLabelsRequest.md)| The request payload containing parameters for creating shipping labels. | |
+| **body** | [**\OpenAPI\Client\Model\vendorDfShipping\CreateShippingLabelsRequest**](../Model/CreateShippingLabelsRequest.md)| The request payload containing parameters for creating shipping labels. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.df.shipping\ShippingLabel**](../Model/ShippingLabel.md)
+[**\OpenAPI\Client\Model\vendorDfShipping\ShippingLabel**](../Model/ShippingLabel.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ No authorization required
 ## `getShippingLabel()`
 
 ```php
-getShippingLabel($purchase_order_number): \OpenAPI\Client\Model\vendor.df.shipping\ShippingLabel
+getShippingLabel($purchase_order_number): \OpenAPI\Client\Model\vendorDfShipping\ShippingLabel
 ```
 
 
@@ -109,7 +109,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.df.shipping\ShippingLabel**](../Model/ShippingLabel.md)
+[**\OpenAPI\Client\Model\vendorDfShipping\ShippingLabel**](../Model/ShippingLabel.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ No authorization required
 ## `getShippingLabels()`
 
 ```php
-getShippingLabels($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token): \OpenAPI\Client\Model\vendor.df.shipping\ShippingLabelList
+getShippingLabels($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token): \OpenAPI\Client\Model\vendorDfShipping\ShippingLabelList
 ```
 
 
@@ -175,7 +175,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.df.shipping\ShippingLabelList**](../Model/ShippingLabelList.md)
+[**\OpenAPI\Client\Model\vendorDfShipping\ShippingLabelList**](../Model/ShippingLabelList.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ No authorization required
 ## `submitShippingLabelRequest()`
 
 ```php
-submitShippingLabelRequest($body): \OpenAPI\Client\Model\vendor.df.shipping\TransactionReference
+submitShippingLabelRequest($body): \OpenAPI\Client\Model\vendorDfShipping\TransactionReference
 ```
 
 
@@ -213,7 +213,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorShippingLabelsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendor.df.shipping\SubmitShippingLabelsRequest(); // \OpenAPI\Client\Model\vendor.df.shipping\SubmitShippingLabelsRequest | Request body containing the shipping labels data.
+$body = new \OpenAPI\Client\Model\vendorDfShipping\SubmitShippingLabelsRequest(); // \OpenAPI\Client\Model\vendorDfShipping\SubmitShippingLabelsRequest | Request body containing the shipping labels data.
 
 try {
     $result = $apiInstance->submitShippingLabelRequest($body);
@@ -227,11 +227,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendor.df.shipping\SubmitShippingLabelsRequest**](../Model/SubmitShippingLabelsRequest.md)| Request body containing the shipping labels data. | |
+| **body** | [**\OpenAPI\Client\Model\vendorDfShipping\SubmitShippingLabelsRequest**](../Model/SubmitShippingLabelsRequest.md)| Request body containing the shipping labels data. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendor.df.shipping\TransactionReference**](../Model/TransactionReference.md)
+[**\OpenAPI\Client\Model\vendorDfShipping\TransactionReference**](../Model/TransactionReference.md)
 
 ### Authorization
 

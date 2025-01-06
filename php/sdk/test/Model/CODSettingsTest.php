@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\CODSettings;
+use OpenAPI\Client\Model\fulfillmentOutbound\CODSettings;
 
 /**
  * CODSettingsTest Class Doc Comment
@@ -68,7 +68,7 @@ class CODSettingsTest extends TestCase
     public function testPropertyCodCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setCodCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCodCharge());
@@ -80,7 +80,7 @@ class CODSettingsTest extends TestCase
     public function testPropertyCodChargeTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setCodChargeTax($testValue);
         $this->assertEquals($testValue, $this->model->getCodChargeTax());
@@ -92,7 +92,7 @@ class CODSettingsTest extends TestCase
     public function testPropertyShippingCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setShippingCharge($testValue);
         $this->assertEquals($testValue, $this->model->getShippingCharge());
@@ -104,7 +104,7 @@ class CODSettingsTest extends TestCase
     public function testPropertyShippingChargeTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Money();
         
         $this->model->setShippingChargeTax($testValue);
         $this->assertEquals($testValue, $this->model->getShippingChargeTax());

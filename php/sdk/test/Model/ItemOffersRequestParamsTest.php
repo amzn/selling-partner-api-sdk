@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\ItemOffersRequestParams;
+use OpenAPI\Client\Model\pricingV0\ItemOffersRequestParams;
 
 /**
  * ItemOffersRequestParamsTest Class Doc Comment
@@ -67,7 +67,7 @@ class ItemOffersRequestParamsTest extends TestCase
      */
     public function testPropertyItemCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\ItemCondition();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\ItemCondition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -80,7 +80,7 @@ class ItemOffersRequestParamsTest extends TestCase
      */
     public function testPropertyCustomerType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\CustomerType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\CustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

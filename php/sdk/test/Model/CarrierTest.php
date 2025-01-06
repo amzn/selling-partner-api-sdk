@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\Carrier;
+use OpenAPI\Client\Model\fulfillmentInbound\Carrier;
 
 /**
  * CarrierTest Class Doc Comment

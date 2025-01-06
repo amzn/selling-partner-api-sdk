@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\StandardHeaderImageTextModule;
+use OpenAPI\Client\Model\aplusContent\StandardHeaderImageTextModule;
 
 /**
  * StandardHeaderImageTextModuleTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardHeaderImageTextModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardHeaderImageTextModuleTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\apluscontent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

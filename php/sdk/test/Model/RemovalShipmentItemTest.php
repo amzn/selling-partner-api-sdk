@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\RemovalShipmentItem;
+use OpenAPI\Client\Model\financesV0\RemovalShipmentItem;
 
 /**
  * RemovalShipmentItemTest Class Doc Comment
@@ -101,7 +101,7 @@ class RemovalShipmentItemTest extends TestCase
     public function testPropertyRevenue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setRevenue($testValue);
         $this->assertEquals($testValue, $this->model->getRevenue());
@@ -113,7 +113,7 @@ class RemovalShipmentItemTest extends TestCase
     public function testPropertyFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getFeeAmount());
@@ -125,7 +125,7 @@ class RemovalShipmentItemTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());
@@ -137,7 +137,7 @@ class RemovalShipmentItemTest extends TestCase
     public function testPropertyTaxWithheld()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxWithheld($testValue);
         $this->assertEquals($testValue, $this->model->getTaxWithheld());

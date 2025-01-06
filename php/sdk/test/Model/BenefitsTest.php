@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\Benefits;
+use OpenAPI\Client\Model\merchantFulfillment\Benefits;
 
 /**
  * BenefitsTest Class Doc Comment

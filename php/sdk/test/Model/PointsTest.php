@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\Points;
+use OpenAPI\Client\Model\listingsItems\Points;
 
 /**
  * PointsTest Class Doc Comment

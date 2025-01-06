@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\Length;
+use OpenAPI\Client\Model\merchantFulfillment\Length;
 
 /**
  * LengthTest Class Doc Comment
@@ -67,7 +67,7 @@ class LengthTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantfulfillment\UnitOfLength();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\UnitOfLength();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ShipmentTransportationConfiguration;
+use OpenAPI\Client\Model\fulfillmentInbound\ShipmentTransportationConfiguration;
 
 /**
  * ShipmentTransportationConfigurationTest Class Doc Comment
@@ -57,7 +57,7 @@ class ShipmentTransportationConfigurationTest extends TestCase
     public function testPropertyContactInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\ContactInformation();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\ContactInformation();
         
         $this->model->setContactInformation($testValue);
         $this->assertEquals($testValue, $this->model->getContactInformation());
@@ -69,7 +69,7 @@ class ShipmentTransportationConfigurationTest extends TestCase
     public function testPropertyFreightInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\FreightInformation();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\FreightInformation();
         
         $this->model->setFreightInformation($testValue);
         $this->assertEquals($testValue, $this->model->getFreightInformation());
@@ -92,7 +92,7 @@ class ShipmentTransportationConfigurationTest extends TestCase
     public function testPropertyReadyToShipWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\WindowInput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\WindowInput();
         
         $this->model->setReadyToShipWindow($testValue);
         $this->assertEquals($testValue, $this->model->getReadyToShipWindow());

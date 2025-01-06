@@ -15,7 +15,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `archiveSupplySource()`
 
 ```php
-archiveSupplySource($supply_source_id): \OpenAPI\Client\Model\supplysources\ErrorList
+archiveSupplySource($supply_source_id): \OpenAPI\Client\Model\supplySources\ErrorList
 ```
 
 
@@ -53,7 +53,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\supplysources\ErrorList**](../Model/ErrorList.md)
+[**\OpenAPI\Client\Model\supplySources\ErrorList**](../Model/ErrorList.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ No authorization required
 ## `createSupplySource()`
 
 ```php
-createSupplySource($payload): \OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse
+createSupplySource($payload): \OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse
 ```
 
 
@@ -91,7 +91,7 @@ $apiInstance = new OpenAPI\Client\Api\SupplySourcesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$payload = new \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest(); // \OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest | A request to create a supply source.
+$payload = new \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest(); // \OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest | A request to create a supply source.
 
 try {
     $result = $apiInstance->createSupplySource($payload);
@@ -105,11 +105,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **payload** | [**\OpenAPI\Client\Model\supplysources\CreateSupplySourceRequest**](../Model/CreateSupplySourceRequest.md)| A request to create a supply source. | |
+| **payload** | [**\OpenAPI\Client\Model\supplySources\CreateSupplySourceRequest**](../Model/CreateSupplySourceRequest.md)| A request to create a supply source. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse**](../Model/CreateSupplySourceResponse.md)
+[**\OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse**](../Model/CreateSupplySourceResponse.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ No authorization required
 ## `getSupplySource()`
 
 ```php
-getSupplySource($supply_source_id): \OpenAPI\Client\Model\supplysources\SupplySource
+getSupplySource($supply_source_id): \OpenAPI\Client\Model\supplySources\SupplySource
 ```
 
 
@@ -165,7 +165,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\supplysources\SupplySource**](../Model/SupplySource.md)
+[**\OpenAPI\Client\Model\supplySources\SupplySource**](../Model/SupplySource.md)
 
 ### Authorization
 
@@ -183,7 +183,7 @@ No authorization required
 ## `getSupplySources()`
 
 ```php
-getSupplySources($next_page_token, $page_size): \OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse
+getSupplySources($next_page_token, $page_size): \OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse
 ```
 
 
@@ -223,7 +223,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\supplysources\GetSupplySourcesResponse**](../Model/GetSupplySourcesResponse.md)
+[**\OpenAPI\Client\Model\supplySources\GetSupplySourcesResponse**](../Model/GetSupplySourcesResponse.md)
 
 ### Authorization
 
@@ -241,7 +241,7 @@ No authorization required
 ## `updateSupplySource()`
 
 ```php
-updateSupplySource($supply_source_id, $payload): \OpenAPI\Client\Model\supplysources\ErrorList
+updateSupplySource($supply_source_id, $payload): \OpenAPI\Client\Model\supplySources\ErrorList
 ```
 
 
@@ -262,7 +262,7 @@ $apiInstance = new OpenAPI\Client\Api\SupplySourcesApi(
     new GuzzleHttp\Client()
 );
 $supply_source_id = 'supply_source_id_example'; // string | The unique identitier of a supply source.
-$payload = new \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest(); // \OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest
+$payload = new \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest(); // \OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest
 
 try {
     $result = $apiInstance->updateSupplySource($supply_source_id, $payload);
@@ -277,11 +277,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **supply_source_id** | **string**| The unique identitier of a supply source. | |
-| **payload** | [**\OpenAPI\Client\Model\supplysources\UpdateSupplySourceRequest**](../Model/UpdateSupplySourceRequest.md)|  | [optional] |
+| **payload** | [**\OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest**](../Model/UpdateSupplySourceRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\supplysources\ErrorList**](../Model/ErrorList.md)
+[**\OpenAPI\Client\Model\supplySources\ErrorList**](../Model/ErrorList.md)
 
 ### Authorization
 
@@ -299,7 +299,7 @@ No authorization required
 ## `updateSupplySourceStatus()`
 
 ```php
-updateSupplySourceStatus($supply_source_id, $payload): \OpenAPI\Client\Model\supplysources\ErrorList
+updateSupplySourceStatus($supply_source_id, $payload): \OpenAPI\Client\Model\supplySources\ErrorList
 ```
 
 
@@ -320,7 +320,7 @@ $apiInstance = new OpenAPI\Client\Api\SupplySourcesApi(
     new GuzzleHttp\Client()
 );
 $supply_source_id = 'supply_source_id_example'; // string | The unique identifier of a supply source.
-$payload = new \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest(); // \OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest
+$payload = new \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest(); // \OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest
 
 try {
     $result = $apiInstance->updateSupplySourceStatus($supply_source_id, $payload);
@@ -335,11 +335,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **supply_source_id** | **string**| The unique identifier of a supply source. | |
-| **payload** | [**\OpenAPI\Client\Model\supplysources\UpdateSupplySourceStatusRequest**](../Model/UpdateSupplySourceStatusRequest.md)|  | [optional] |
+| **payload** | [**\OpenAPI\Client\Model\supplySources\UpdateSupplySourceStatusRequest**](../Model/UpdateSupplySourceStatusRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\supplysources\ErrorList**](../Model/ErrorList.md)
+[**\OpenAPI\Client\Model\supplySources\ErrorList**](../Model/ErrorList.md)
 
 ### Authorization
 

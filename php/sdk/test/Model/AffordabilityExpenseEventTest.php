@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\AffordabilityExpenseEvent;
+use OpenAPI\Client\Model\financesV0\AffordabilityExpenseEvent;
 
 /**
  * AffordabilityExpenseEventTest Class Doc Comment
@@ -102,7 +102,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyBaseExpense()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setBaseExpense($testValue);
         $this->assertEquals($testValue, $this->model->getBaseExpense());
@@ -114,7 +114,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTaxTypeCgst()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxTypeCgst($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTypeCgst());
@@ -126,7 +126,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTaxTypeSgst()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxTypeSgst($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTypeSgst());
@@ -138,7 +138,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTaxTypeIgst()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxTypeIgst($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTypeIgst());
@@ -150,7 +150,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTotalExpense()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTotalExpense($testValue);
         $this->assertEquals($testValue, $this->model->getTotalExpense());

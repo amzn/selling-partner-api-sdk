@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\NetworkComminglingTransactionEvent;
+use OpenAPI\Client\Model\financesV0\NetworkComminglingTransactionEvent;
 
 /**
  * NetworkComminglingTransactionEventTest Class Doc Comment
@@ -124,7 +124,7 @@ class NetworkComminglingTransactionEventTest extends TestCase
     public function testPropertyTaxExclusiveAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxExclusiveAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxExclusiveAmount());
@@ -136,7 +136,7 @@ class NetworkComminglingTransactionEventTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());

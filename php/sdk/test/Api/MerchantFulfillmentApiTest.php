@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\MerchantFulfillmentApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,146 @@ class MerchantFulfillmentApiTest extends TestCase
 
     /**
      * Test case for cancelShipment_200
-     * .
      */
     public function testCancelShipment200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelShipment200')) {
+             if ($this->testHelper->shouldSkipTest('testCancelShipment200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{shipmentId&#x3D;{value&#x3D;be7a0a53-00c3-4f6f-a63a-639f76ee9253}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelShipmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;be7a0a53-00c3-4f6f-a63a-639f76ee9253&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ShipmentId&quot; : &quot;be7a0a53-00c3-4f6f-a63a-639f76ee9253&quot;,
+          &quot;AmazonOrderId&quot; : &quot;903-5563053-5647845&quot;,
+          &quot;SellerOrderId&quot; : &quot;903-5563053-5647845&quot;,
+          &quot;Insurance&quot; : {
+            &quot;CurrencyCode&quot; : &quot;USD&quot;,
+            &quot;Amount&quot; : 0.0
+          },
+          &quot;ItemList&quot; : [ {
+            &quot;OrderItemId&quot; : &quot;12958298061782&quot;,
+            &quot;Quantity&quot; : 1
+          } ],
+          &quot;ShipFromAddress&quot; : {
+            &quot;Name&quot; : &quot;John Doe&quot;,
+            &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+            &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+            &quot;City&quot; : &quot;Detroit&quot;,
+            &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+            &quot;PostalCode&quot; : &quot;48123&quot;,
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;Phone&quot; : &quot;7132341234&quot;
+          },
+          &quot;ShipToAddress&quot; : {
+            &quot;Name&quot; : &quot;New York&quot;,
+            &quot;AddressLine1&quot; : &quot;TIME WARNER CENTER&quot;,
+            &quot;AddressLine2&quot; : &quot;10 COLUMBUS CIR&quot;,
+            &quot;Email&quot; : &quot;&quot;,
+            &quot;City&quot; : &quot;NEW YORK&quot;,
+            &quot;StateOrProvinceCode&quot; : &quot;NY&quot;,
+            &quot;PostalCode&quot; : &quot;10019-1158&quot;,
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;Phone&quot; : &quot;&quot;
+          },
+          &quot;PackageDimensions&quot; : {
+            &quot;Length&quot; : 10.25,
+            &quot;Width&quot; : 10.25,
+            &quot;Height&quot; : 10.25,
+            &quot;Unit&quot; : &quot;inches&quot;
+          },
+          &quot;Weight&quot; : {
+            &quot;Value&quot; : 10.25,
+            &quot;Unit&quot; : &quot;oz&quot;
+          },
+          &quot;ShippingService&quot; : {
+            &quot;ShippingServiceName&quot; : &quot;UPS 2nd Day Air®&quot;,
+            &quot;CarrierName&quot; : &quot;UPS®&quot;,
+            &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
+            &quot;ShippingServiceOfferId&quot; : &quot;&quot;,
+            &quot;ShipDate&quot; : &quot;2019-10-28T18:00:00Z&quot;,
+            &quot;Rate&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 34.73
+            },
+            &quot;ShippingServiceOptions&quot; : {
+              &quot;DeliveryExperience&quot; : &quot;DeliveryConfirmationWithoutSignature&quot;,
+              &quot;DeclaredValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0.0
+              }
+            },
+            &quot;RequiresAdditionalSellerInputs&quot; : false
+          },
+          &quot;Label&quot; : {
+            &quot;Dimensions&quot; : { },
+            &quot;FileContents&quot; : {
+              &quot;Contents&quot; : &quot;&quot;,
+              &quot;FileType&quot; : &quot;&quot;,
+              &quot;Checksum&quot; : &quot;&quot;
+            }
+          },
+          &quot;Status&quot; : &quot;RefundPending&quot;,
+          &quot;TrackingId&quot; : &quot;1Z17E2100206868939&quot;,
+          &quot;CreatedDate&quot; : &quot;2019-10-28T18:29:34Z&quot;,
+          &quot;LastUpdatedDate&quot; : &quot;2019-10-28T18:36:55Z&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelShipment',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelShipment'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{ShipmentId&#x3D;be7a0a53-00c3-4f6f-a63a-639f76ee9253, AmazonOrderId&#x3D;903-5563053-5647845, SellerOrderId&#x3D;903-5563053-5647845, Insurance&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}, ItemList&#x3D;[{OrderItemId&#x3D;12958298061782, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;US, Phone&#x3D;7132341234}, ShipToAddress&#x3D;{Name&#x3D;New York, AddressLine1&#x3D;TIME WARNER CENTER, AddressLine2&#x3D;10 COLUMBUS CIR, Email&#x3D;, City&#x3D;NEW YORK, StateOrProvinceCode&#x3D;NY, PostalCode&#x3D;10019-1158, CountryCode&#x3D;US, Phone&#x3D;}, PackageDimensions&#x3D;{Length&#x3D;10.25, Width&#x3D;10.25, Height&#x3D;10.25, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10.25, Unit&#x3D;oz}, ShippingService&#x3D;{ShippingServiceName&#x3D;UPS 2nd Day Air®, CarrierName&#x3D;UPS®, ShippingServiceId&#x3D;UPS_PTP_2ND_DAY_AIR, ShippingServiceOfferId&#x3D;, ShipDate&#x3D;2019-10-28T18:00:00Z, Rate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;34.73}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;DeliveryConfirmationWithoutSignature, DeclaredValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}}, RequiresAdditionalSellerInputs&#x3D;false}, Label&#x3D;{Dimensions&#x3D;{}, FileContents&#x3D;{Contents&#x3D;, FileType&#x3D;, Checksum&#x3D;}}, Status&#x3D;RefundPending, TrackingId&#x3D;1Z17E2100206868939, CreatedDate&#x3D;2019-10-28T18:29:34Z, LastUpdatedDate&#x3D;2019-10-28T18:36:55Z}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelShipment',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelShipmentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +288,76 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for cancelShipment_400
-     * .
      */
     public function testCancelShipment400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelShipment400')) {
+             if ($this->testHelper->shouldSkipTest('testCancelShipment400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{shipmentId&#x3D;{value&#x3D;87d20cf7-1beb-4cda-8bf4-7366cfddbec1}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelShipmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;87d20cf7-1beb-4cda-8bf4-7366cfddbec1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;1 validation error detected: Value &#39;TEST_CASE_400&#39; at &#39;shipmentId&#39; failed to satisfy constraint: Member must satisfy regular expression pattern: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelShipment',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelShipment'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;1 validation error detected: Value &#39;TEST_CASE_400&#39; at &#39;shipmentId&#39; failed to satisfy constraint: Member must satisfy regular expression pattern: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelShipment',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelShipmentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,94 +370,238 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for cancelShipment_401
-     * .
      */
     public function testCancelShipment401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelShipment_403
-     * .
      */
     public function testCancelShipment403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelShipment_404
-     * .
      */
     public function testCancelShipment404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelShipment_429
-     * .
      */
     public function testCancelShipment429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelShipment_500
-     * .
      */
     public function testCancelShipment500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelShipment_503
-     * .
      */
     public function testCancelShipment503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShipment_200
-     * .
      */
     public function testCreateShipment200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateShipment200')) {
+             if ($this->testHelper->shouldSkipTest('testCreateShipment200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{ShipmentRequestDetails&#x3D;{AmazonOrderId&#x3D;903-5563053-5647845, ItemList&#x3D;[{OrderItemId&#x3D;52986411826454, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;US, Phone&#x3D;7132341234}, PackageDimensions&#x3D;{Length&#x3D;10.25, Width&#x3D;10.25, Height&#x3D;10.25, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10.25, Unit&#x3D;oz}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, CarrierWillPickUp&#x3D;false, CarrierWillPickUpOption&#x3D;ShipperWillDropOff}}, ShippingServiceId&#x3D;UPS_PTP_2ND_DAY_AIR, ShippingServiceOfferId&#x3D;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateShipmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;ShipmentRequestDetails&quot; : {
+                &quot;AmazonOrderId&quot; : &quot;903-5563053-5647845&quot;,
+                &quot;ItemList&quot; : [ {
+                  &quot;OrderItemId&quot; : &quot;52986411826454&quot;,
+                  &quot;Quantity&quot; : 1
+                } ],
+                &quot;ShipFromAddress&quot; : {
+                  &quot;Name&quot; : &quot;John Doe&quot;,
+                  &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+                  &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+                  &quot;City&quot; : &quot;Detroit&quot;,
+                  &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+                  &quot;PostalCode&quot; : &quot;48123&quot;,
+                  &quot;CountryCode&quot; : &quot;US&quot;,
+                  &quot;Phone&quot; : &quot;7132341234&quot;
+                },
+                &quot;PackageDimensions&quot; : {
+                  &quot;Length&quot; : 10.25,
+                  &quot;Width&quot; : 10.25,
+                  &quot;Height&quot; : 10.25,
+                  &quot;Unit&quot; : &quot;inches&quot;
+                },
+                &quot;Weight&quot; : {
+                  &quot;Value&quot; : 10.25,
+                  &quot;Unit&quot; : &quot;oz&quot;
+                },
+                &quot;ShippingServiceOptions&quot; : {
+                  &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+                  &quot;CarrierWillPickUp&quot; : false,
+                  &quot;CarrierWillPickUpOption&quot; : &quot;ShipperWillDropOff&quot;
+                }
+              },
+              &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
+              &quot;ShippingServiceOfferId&quot; : &quot;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ShipmentId&quot; : &quot;be7a0a53-00c3-4f6f-a63a-639f76ee9253&quot;,
+          &quot;AmazonOrderId&quot; : &quot;903-5563053-5647845&quot;,
+          &quot;Insurance&quot; : {
+            &quot;CurrencyCode&quot; : &quot;USD&quot;,
+            &quot;Amount&quot; : 0
+          },
+          &quot;ItemList&quot; : [ {
+            &quot;OrderItemId&quot; : &quot;12958298061782&quot;,
+            &quot;Quantity&quot; : 1
+          } ],
+          &quot;ShipFromAddress&quot; : {
+            &quot;Name&quot; : &quot;John Doe&quot;,
+            &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+            &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+            &quot;City&quot; : &quot;Detroit&quot;,
+            &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+            &quot;PostalCode&quot; : &quot;48123&quot;,
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;Phone&quot; : &quot;7132341234&quot;
+          },
+          &quot;ShipToAddress&quot; : {
+            &quot;Name&quot; : &quot;New York&quot;,
+            &quot;AddressLine1&quot; : &quot;TIME WARNER CENTER&quot;,
+            &quot;AddressLine2&quot; : &quot;10 COLUMBUS CIR&quot;,
+            &quot;Email&quot; : &quot;&quot;,
+            &quot;City&quot; : &quot;NEW YORK&quot;,
+            &quot;StateOrProvinceCode&quot; : &quot;NY&quot;,
+            &quot;PostalCode&quot; : &quot;10019-1158&quot;,
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;Phone&quot; : &quot;&quot;
+          },
+          &quot;PackageDimensions&quot; : {
+            &quot;Length&quot; : 10.25,
+            &quot;Width&quot; : 10.25,
+            &quot;Height&quot; : 10.25,
+            &quot;Unit&quot; : &quot;inches&quot;
+          },
+          &quot;Weight&quot; : {
+            &quot;Value&quot; : 10.25,
+            &quot;Unit&quot; : &quot;oz&quot;
+          },
+          &quot;ShippingService&quot; : {
+            &quot;ShippingServiceName&quot; : &quot;UPS 2nd Day Air®&quot;,
+            &quot;CarrierName&quot; : &quot;UPS®&quot;,
+            &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
+            &quot;ShippingServiceOfferId&quot; : &quot;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t&quot;,
+            &quot;ShipDate&quot; : &quot;2019-10-28T16:37:37Z&quot;,
+            &quot;EarliestEstimatedDeliveryDate&quot; : &quot;2019-10-30T07:00:00Z&quot;,
+            &quot;LatestEstimatedDeliveryDate&quot; : &quot;2019-10-30T07:00:00Z&quot;,
+            &quot;Rate&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 34.73
+            },
+            &quot;ShippingServiceOptions&quot; : {
+              &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+              &quot;DeclaredValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0
+              }
+            },
+            &quot;RequiresAdditionalSellerInputs&quot; : false,
+            &quot;Benefits&quot; : {
+              &quot;IncludedBenefits&quot; : [ &quot;CLAIMS_PROTECTED&quot; ],
+              &quot;ExcludedBenefits&quot; : [ ]
+            }
+          },
+          &quot;Label&quot; : {
+            &quot;Dimensions&quot; : {
+              &quot;Length&quot; : 6.0,
+              &quot;Width&quot; : 4.0,
+              &quot;Unit&quot; : &quot;inches&quot;
+            },
+            &quot;FileContents&quot; : {
+              &quot;Contents&quot; : &quot;H4sIAAAAAAAAAOR&quot;,
+              &quot;FileType&quot; : &quot;image/png&quot;,
+              &quot;Checksum&quot; : &quot;d+eUxK5WTGxkGsTF0pmefQ&#x3D;&#x3D;&quot;
+            },
+            &quot;LabelFormat&quot; : &quot;PNG&quot;
+          },
+          &quot;Status&quot; : &quot;Purchased&quot;,
+          &quot;TrackingId&quot; : &quot;1Z17E2100217295733&quot;,
+          &quot;CreatedDate&quot; : &quot;2019-10-28T16:37:43Z&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createShipment',
-                $invalidRequestJson
+                $jsonSchema,
+                'createShipment'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{ShipmentId&#x3D;be7a0a53-00c3-4f6f-a63a-639f76ee9253, AmazonOrderId&#x3D;903-5563053-5647845, Insurance&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}, ItemList&#x3D;[{OrderItemId&#x3D;12958298061782, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;US, Phone&#x3D;7132341234}, ShipToAddress&#x3D;{Name&#x3D;New York, AddressLine1&#x3D;TIME WARNER CENTER, AddressLine2&#x3D;10 COLUMBUS CIR, Email&#x3D;, City&#x3D;NEW YORK, StateOrProvinceCode&#x3D;NY, PostalCode&#x3D;10019-1158, CountryCode&#x3D;US, Phone&#x3D;}, PackageDimensions&#x3D;{Length&#x3D;10.25, Width&#x3D;10.25, Height&#x3D;10.25, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10.25, Unit&#x3D;oz}, ShippingService&#x3D;{ShippingServiceName&#x3D;UPS 2nd Day Air®, CarrierName&#x3D;UPS®, ShippingServiceId&#x3D;UPS_PTP_2ND_DAY_AIR, ShippingServiceOfferId&#x3D;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t, ShipDate&#x3D;2019-10-28T16:37:37Z, EarliestEstimatedDeliveryDate&#x3D;2019-10-30T07:00:00Z, LatestEstimatedDeliveryDate&#x3D;2019-10-30T07:00:00Z, Rate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;34.73}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, DeclaredValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0}}, RequiresAdditionalSellerInputs&#x3D;false, Benefits&#x3D;{IncludedBenefits&#x3D;[CLAIMS_PROTECTED], ExcludedBenefits&#x3D;[]}}, Label&#x3D;{Dimensions&#x3D;{Length&#x3D;6.0, Width&#x3D;4.0, Unit&#x3D;inches}, FileContents&#x3D;{Contents&#x3D;H4sIAAAAAAAAAOR, FileType&#x3D;image/png, Checksum&#x3D;d+eUxK5WTGxkGsTF0pmefQ&#x3D;&#x3D;}, LabelFormat&#x3D;PNG}, Status&#x3D;Purchased, TrackingId&#x3D;1Z17E2100217295733, CreatedDate&#x3D;2019-10-28T16:37:43Z}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createShipment',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createShipmentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -327,40 +614,111 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for createShipment_400
-     * .
      */
     public function testCreateShipment400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateShipment400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateShipment400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{ShipmentRequestDetails&#x3D;{AmazonOrderId&#x3D;TEST_CASE_400, ItemList&#x3D;[{OrderItemId&#x3D;52986411826454, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;USA, Phone&#x3D;7132341234}, PackageDimensions&#x3D;{Length&#x3D;10, Width&#x3D;10, Height&#x3D;10, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10, Unit&#x3D;oz}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, CarrierWillPickUp&#x3D;false, CarrierWillPickUpOption&#x3D;ShipperWillDropOff}}, ShippingServiceId&#x3D;UPS_PTP_2ND_DAY_AIR, ShippingServiceOfferId&#x3D;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateShipmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;ShipmentRequestDetails&quot; : {
+                &quot;AmazonOrderId&quot; : &quot;TEST_CASE_400&quot;,
+                &quot;ItemList&quot; : [ {
+                  &quot;OrderItemId&quot; : &quot;52986411826454&quot;,
+                  &quot;Quantity&quot; : 1
+                } ],
+                &quot;ShipFromAddress&quot; : {
+                  &quot;Name&quot; : &quot;John Doe&quot;,
+                  &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+                  &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+                  &quot;City&quot; : &quot;Detroit&quot;,
+                  &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+                  &quot;PostalCode&quot; : &quot;48123&quot;,
+                  &quot;CountryCode&quot; : &quot;USA&quot;,
+                  &quot;Phone&quot; : &quot;7132341234&quot;
+                },
+                &quot;PackageDimensions&quot; : {
+                  &quot;Length&quot; : 10,
+                  &quot;Width&quot; : 10,
+                  &quot;Height&quot; : 10,
+                  &quot;Unit&quot; : &quot;inches&quot;
+                },
+                &quot;Weight&quot; : {
+                  &quot;Value&quot; : 10,
+                  &quot;Unit&quot; : &quot;oz&quot;
+                },
+                &quot;ShippingServiceOptions&quot; : {
+                  &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+                  &quot;CarrierWillPickUp&quot; : false,
+                  &quot;CarrierWillPickUpOption&quot; : &quot;ShipperWillDropOff&quot;
+                }
+              },
+              &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
+              &quot;ShippingServiceOfferId&quot; : &quot;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;1 validation error detected: Value &#39;USA&#39; at &#39;shipmentRequestDetails.shipFromAddress.countryCode&#39; failed to satisfy constraint: Member must have length less than or equal to 2&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createShipment',
-                $invalidRequestJson
+                $jsonSchema,
+                'createShipment'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;1 validation error detected: Value &#39;USA&#39; at &#39;shipmentRequestDetails.shipFromAddress.countryCode&#39; failed to satisfy constraint: Member must have length less than or equal to 2, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createShipment',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createShipmentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -373,94 +731,141 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for createShipment_401
-     * .
      */
     public function testCreateShipment401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShipment_403
-     * .
      */
     public function testCreateShipment403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShipment_404
-     * .
      */
     public function testCreateShipment404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShipment_429
-     * .
      */
     public function testCreateShipment429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShipment_500
-     * .
      */
     public function testCreateShipment500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShipment_503
-     * .
      */
     public function testCreateShipment503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAdditionalSellerInputs_200
-     * .
      */
     public function testGetAdditionalSellerInputs200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs200')) {
+             if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{ShippingServiceId&#x3D;UPS_PTP_GND, ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;US, Phone&#x3D;7132341234}, OrderId&#x3D;903-5563053-5647845}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAdditionalSellerInputsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;ShippingServiceId&quot; : &quot;UPS_PTP_GND&quot;,
+              &quot;ShipFromAddress&quot; : {
+                &quot;Name&quot; : &quot;John Doe&quot;,
+                &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+                &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+                &quot;City&quot; : &quot;Detroit&quot;,
+                &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+                &quot;PostalCode&quot; : &quot;48123&quot;,
+                &quot;CountryCode&quot; : &quot;US&quot;,
+                &quot;Phone&quot; : &quot;7132341234&quot;
+              },
+              &quot;OrderId&quot; : &quot;903-5563053-5647845&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ShipmentLevelFields&quot; : [ {
+            &quot;AdditionalInputFieldName&quot; : &quot;John Doe&quot;
+          } ],
+          &quot;ItemLevelFieldsList&quot; : [ {
+            &quot;Asin&quot; : &quot;ASIN_ID_200&quot;,
+            &quot;AdditionalInputs&quot; : [ ]
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAdditionalSellerInputs',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAdditionalSellerInputs'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{ShipmentLevelFields&#x3D;[{AdditionalInputFieldName&#x3D;John Doe}], ItemLevelFieldsList&#x3D;[{Asin&#x3D;ASIN_ID_200, AdditionalInputs&#x3D;[]}]}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAdditionalSellerInputs',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAdditionalSellerInputsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -473,40 +878,89 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for getAdditionalSellerInputs_400
-     * .
      */
     public function testGetAdditionalSellerInputs400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs400')) {
+             if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{ShippingServiceId&#x3D;UPS_PTP_GND, ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;XX, Phone&#x3D;7132341234}, OrderId&#x3D;901-5563053-5647845}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAdditionalSellerInputsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;ShippingServiceId&quot; : &quot;UPS_PTP_GND&quot;,
+              &quot;ShipFromAddress&quot; : {
+                &quot;Name&quot; : &quot;John Doe&quot;,
+                &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+                &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+                &quot;City&quot; : &quot;Detroit&quot;,
+                &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+                &quot;PostalCode&quot; : &quot;48123&quot;,
+                &quot;CountryCode&quot; : &quot;XX&quot;,
+                &quot;Phone&quot; : &quot;7132341234&quot;
+              },
+              &quot;OrderId&quot; : &quot;901-5563053-5647845&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Ship From Address when calling GetAdditionalSellerInputs&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAdditionalSellerInputs',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAdditionalSellerInputs'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Ship From Address when calling GetAdditionalSellerInputs, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAdditionalSellerInputs',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAdditionalSellerInputsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -519,94 +973,230 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for getAdditionalSellerInputs_401
-     * .
      */
     public function testGetAdditionalSellerInputs401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAdditionalSellerInputs_403
-     * .
      */
     public function testGetAdditionalSellerInputs403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAdditionalSellerInputs_404
-     * .
      */
     public function testGetAdditionalSellerInputs404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAdditionalSellerInputs_429
-     * .
      */
     public function testGetAdditionalSellerInputs429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAdditionalSellerInputs_500
-     * .
      */
     public function testGetAdditionalSellerInputs500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAdditionalSellerInputs_503
-     * .
      */
     public function testGetAdditionalSellerInputs503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getEligibleShipmentServices_200
-     * .
      */
     public function testGetEligibleShipmentServices200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices200')) {
+             if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{ShipmentRequestDetails&#x3D;{AmazonOrderId&#x3D;903-5563053-5647845, ItemList&#x3D;[{OrderItemId&#x3D;52986411826454, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;US, Phone&#x3D;7132341234}, PackageDimensions&#x3D;{Length&#x3D;10.25, Width&#x3D;10.25, Height&#x3D;10.25, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10.25, Unit&#x3D;oz}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, CarrierWillPickUp&#x3D;false, CarrierWillPickUpOption&#x3D;ShipperWillDropOff}}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetEligibleShipmentServicesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;ShipmentRequestDetails&quot; : {
+                &quot;AmazonOrderId&quot; : &quot;903-5563053-5647845&quot;,
+                &quot;ItemList&quot; : [ {
+                  &quot;OrderItemId&quot; : &quot;52986411826454&quot;,
+                  &quot;Quantity&quot; : 1
+                } ],
+                &quot;ShipFromAddress&quot; : {
+                  &quot;Name&quot; : &quot;John Doe&quot;,
+                  &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+                  &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+                  &quot;City&quot; : &quot;Detroit&quot;,
+                  &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+                  &quot;PostalCode&quot; : &quot;48123&quot;,
+                  &quot;CountryCode&quot; : &quot;US&quot;,
+                  &quot;Phone&quot; : &quot;7132341234&quot;
+                },
+                &quot;PackageDimensions&quot; : {
+                  &quot;Length&quot; : 10.25,
+                  &quot;Width&quot; : 10.25,
+                  &quot;Height&quot; : 10.25,
+                  &quot;Unit&quot; : &quot;inches&quot;
+                },
+                &quot;Weight&quot; : {
+                  &quot;Value&quot; : 10.25,
+                  &quot;Unit&quot; : &quot;oz&quot;
+                },
+                &quot;ShippingServiceOptions&quot; : {
+                  &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+                  &quot;CarrierWillPickUp&quot; : false,
+                  &quot;CarrierWillPickUpOption&quot; : &quot;ShipperWillDropOff&quot;
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ShippingServiceList&quot; : [ {
+            &quot;ShippingServiceName&quot; : &quot;UPS 2nd Day Air®&quot;,
+            &quot;CarrierName&quot; : &quot;UPS®&quot;,
+            &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
+            &quot;ShippingServiceOfferId&quot; : &quot;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t&quot;,
+            &quot;ShipDate&quot; : &quot;2019-10-28T16:36:36Z&quot;,
+            &quot;EarliestEstimatedDeliveryDate&quot; : &quot;2019-10-31T06:00:00Z&quot;,
+            &quot;LatestEstimatedDeliveryDate&quot; : &quot;2019-10-31T06:00:00Z&quot;,
+            &quot;Rate&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 34.73
+            },
+            &quot;ShippingServiceOptions&quot; : {
+              &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+              &quot;CarrierWillPickUp&quot; : false,
+              &quot;LabelFormat&quot; : &quot;&quot;
+            },
+            &quot;AvailableLabelFormats&quot; : [ &quot;ZPL203&quot;, &quot;ShippingServiceDefault&quot;, &quot;PDF&quot;, &quot;PNG&quot; ],
+            &quot;AvailableFormatOptionsForLabel&quot; : [ {
+              &quot;LabelFormat&quot; : &quot;ZPL203&quot;
+            }, {
+              &quot;LabelFormat&quot; : &quot;ShippingServiceDefault&quot;
+            }, {
+              &quot;LabelFormat&quot; : &quot;PDF&quot;
+            }, {
+              &quot;LabelFormat&quot; : &quot;PNG&quot;
+            } ],
+            &quot;Benefits&quot; : {
+              &quot;IncludedBenefits&quot; : [ &quot;CLAIMS_PROTECTED&quot; ],
+              &quot;ExcludedBenefits&quot; : [ ]
+            }
+          }, {
+            &quot;ShippingServiceName&quot; : &quot;UPS Next Day Air Saver®&quot;,
+            &quot;CarrierName&quot; : &quot;UPS®&quot;,
+            &quot;ShippingServiceId&quot; : &quot;UPS_PTP_NEXT_DAY_AIR_SAVER&quot;,
+            &quot;ShippingServiceOfferId&quot; : &quot;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKqqhKGQ2YZmuxsXKVXmdgdWNvfxb1qfm5bGm8NuqlqnNT3eTiJ4viTctepggbeUKUSykClJ+Qmw43zdA8wsgREhQCmb4Bbo/skapLQS1F9uwH2FgY5SfMsj/egudyocpVRT45KSQAT0H5YiXW3OyyRAae9fZ0RzDJAABHiisOyYyXnB1mtWOZqc7rlGR4yyqN7jmiT4t8dmuGPX7ptY4qskrN+6VHZO9bM9tdDS0ysHhAVv4jO3Q5sWFg4nEPaARWSsrpa6zSGMLxAOj56O3tcP&quot;,
+            &quot;ShipDate&quot; : &quot;2019-10-28T16:36:36Z&quot;,
+            &quot;EarliestEstimatedDeliveryDate&quot; : &quot;2019-10-30T06:00:00Z&quot;,
+            &quot;LatestEstimatedDeliveryDate&quot; : &quot;2019-10-30T06:00:00Z&quot;,
+            &quot;Rate&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 98.75
+            },
+            &quot;ShippingServiceOptions&quot; : {
+              &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+              &quot;CarrierWillPickUp&quot; : false,
+              &quot;LabelFormat&quot; : &quot;&quot;
+            },
+            &quot;AvailableLabelFormats&quot; : [ &quot;ZPL203&quot;, &quot;ShippingServiceDefault&quot;, &quot;PDF&quot;, &quot;PNG&quot; ],
+            &quot;AvailableFormatOptionsForLabel&quot; : [ {
+              &quot;LabelFormat&quot; : &quot;ZPL203&quot;
+            }, {
+              &quot;LabelFormat&quot; : &quot;ShippingServiceDefault&quot;
+            }, {
+              &quot;LabelFormat&quot; : &quot;PDF&quot;
+            }, {
+              &quot;LabelFormat&quot; : &quot;PNG&quot;
+            } ],
+            &quot;Benefits&quot; : {
+              &quot;IncludedBenefits&quot; : [ ],
+              &quot;ExcludedBenefits&quot; : [ {
+                &quot;Benefit&quot; : &quot;CLAIMS_PROTECTED&quot;,
+                &quot;ReasonCodes&quot; : [ &quot;LATE_DELIVERY_RISK&quot; ]
+              } ]
+            }
+          } ],
+          &quot;TemporarilyUnavailableCarrierList&quot; : [ {
+            &quot;CarrierName&quot; : &quot;UPS®&quot;
+          }, {
+            &quot;CarrierName&quot; : &quot;DHLECOMMERCE&quot;
+          } ],
+          &quot;TermsAndConditionsNotAcceptedCarrierList&quot; : [ {
+            &quot;CarrierName&quot; : &quot;YANWEN&quot;
+          }, {
+            &quot;CarrierName&quot; : &quot;CHINA_POST&quot;
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getEligibleShipmentServices',
-                $invalidRequestJson
+                $jsonSchema,
+                'getEligibleShipmentServices'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{ShippingServiceList&#x3D;[{ShippingServiceName&#x3D;UPS 2nd Day Air®, CarrierName&#x3D;UPS®, ShippingServiceId&#x3D;UPS_PTP_2ND_DAY_AIR, ShippingServiceOfferId&#x3D;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t, ShipDate&#x3D;2019-10-28T16:36:36Z, EarliestEstimatedDeliveryDate&#x3D;2019-10-31T06:00:00Z, LatestEstimatedDeliveryDate&#x3D;2019-10-31T06:00:00Z, Rate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;34.73}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, CarrierWillPickUp&#x3D;false, LabelFormat&#x3D;}, AvailableLabelFormats&#x3D;[ZPL203, ShippingServiceDefault, PDF, PNG], AvailableFormatOptionsForLabel&#x3D;[{LabelFormat&#x3D;ZPL203}, {LabelFormat&#x3D;ShippingServiceDefault}, {LabelFormat&#x3D;PDF}, {LabelFormat&#x3D;PNG}], Benefits&#x3D;{IncludedBenefits&#x3D;[CLAIMS_PROTECTED], ExcludedBenefits&#x3D;[]}}, {ShippingServiceName&#x3D;UPS Next Day Air Saver®, CarrierName&#x3D;UPS®, ShippingServiceId&#x3D;UPS_PTP_NEXT_DAY_AIR_SAVER, ShippingServiceOfferId&#x3D;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKqqhKGQ2YZmuxsXKVXmdgdWNvfxb1qfm5bGm8NuqlqnNT3eTiJ4viTctepggbeUKUSykClJ+Qmw43zdA8wsgREhQCmb4Bbo/skapLQS1F9uwH2FgY5SfMsj/egudyocpVRT45KSQAT0H5YiXW3OyyRAae9fZ0RzDJAABHiisOyYyXnB1mtWOZqc7rlGR4yyqN7jmiT4t8dmuGPX7ptY4qskrN+6VHZO9bM9tdDS0ysHhAVv4jO3Q5sWFg4nEPaARWSsrpa6zSGMLxAOj56O3tcP, ShipDate&#x3D;2019-10-28T16:36:36Z, EarliestEstimatedDeliveryDate&#x3D;2019-10-30T06:00:00Z, LatestEstimatedDeliveryDate&#x3D;2019-10-30T06:00:00Z, Rate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;98.75}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, CarrierWillPickUp&#x3D;false, LabelFormat&#x3D;}, AvailableLabelFormats&#x3D;[ZPL203, ShippingServiceDefault, PDF, PNG], AvailableFormatOptionsForLabel&#x3D;[{LabelFormat&#x3D;ZPL203}, {LabelFormat&#x3D;ShippingServiceDefault}, {LabelFormat&#x3D;PDF}, {LabelFormat&#x3D;PNG}], Benefits&#x3D;{IncludedBenefits&#x3D;[], ExcludedBenefits&#x3D;[{Benefit&#x3D;CLAIMS_PROTECTED, ReasonCodes&#x3D;[LATE_DELIVERY_RISK]}]}}], TemporarilyUnavailableCarrierList&#x3D;[{CarrierName&#x3D;UPS®}, {CarrierName&#x3D;DHLECOMMERCE}], TermsAndConditionsNotAcceptedCarrierList&#x3D;[{CarrierName&#x3D;YANWEN}, {CarrierName&#x3D;CHINA_POST}]}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getEligibleShipmentServices',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getEligibleShipmentServicesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -619,40 +1209,109 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for getEligibleShipmentServices_400
-     * .
      */
     public function testGetEligibleShipmentServices400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices400')) {
+             if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{ShipmentRequestDetails&#x3D;{AmazonOrderId&#x3D;TEST_CASE_400, ItemList&#x3D;[{OrderItemId&#x3D;52986411826454, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;USA, Phone&#x3D;7132341234}, PackageDimensions&#x3D;{Length&#x3D;10.25, Width&#x3D;10.25, Height&#x3D;10.25, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10.25, Unit&#x3D;oz}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;NoTracking, CarrierWillPickUp&#x3D;false, CarrierWillPickUpOption&#x3D;ShipperWillDropOff}}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetEligibleShipmentServicesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;ShipmentRequestDetails&quot; : {
+                &quot;AmazonOrderId&quot; : &quot;TEST_CASE_400&quot;,
+                &quot;ItemList&quot; : [ {
+                  &quot;OrderItemId&quot; : &quot;52986411826454&quot;,
+                  &quot;Quantity&quot; : 1
+                } ],
+                &quot;ShipFromAddress&quot; : {
+                  &quot;Name&quot; : &quot;John Doe&quot;,
+                  &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+                  &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+                  &quot;City&quot; : &quot;Detroit&quot;,
+                  &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+                  &quot;PostalCode&quot; : &quot;48123&quot;,
+                  &quot;CountryCode&quot; : &quot;USA&quot;,
+                  &quot;Phone&quot; : &quot;7132341234&quot;
+                },
+                &quot;PackageDimensions&quot; : {
+                  &quot;Length&quot; : 10.25,
+                  &quot;Width&quot; : 10.25,
+                  &quot;Height&quot; : 10.25,
+                  &quot;Unit&quot; : &quot;inches&quot;
+                },
+                &quot;Weight&quot; : {
+                  &quot;Value&quot; : 10.25,
+                  &quot;Unit&quot; : &quot;oz&quot;
+                },
+                &quot;ShippingServiceOptions&quot; : {
+                  &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+                  &quot;CarrierWillPickUp&quot; : false,
+                  &quot;CarrierWillPickUpOption&quot; : &quot;ShipperWillDropOff&quot;
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;1 validation error detected: Value &#39;USA&#39; at &#39;shipmentRequestDetails.shipFromAddress.countryCode&#39; failed to satisfy constraint: Member must have length less than or equal to 2&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getEligibleShipmentServices',
-                $invalidRequestJson
+                $jsonSchema,
+                'getEligibleShipmentServices'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;1 validation error detected: Value &#39;USA&#39; at &#39;shipmentRequestDetails.shipFromAddress.countryCode&#39; failed to satisfy constraint: Member must have length less than or equal to 2, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getEligibleShipmentServices',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getEligibleShipmentServicesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -665,94 +1324,205 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for getEligibleShipmentServices_401
-     * .
      */
     public function testGetEligibleShipmentServices401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getEligibleShipmentServices_403
-     * .
      */
     public function testGetEligibleShipmentServices403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getEligibleShipmentServices_404
-     * .
      */
     public function testGetEligibleShipmentServices404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getEligibleShipmentServices_429
-     * .
      */
     public function testGetEligibleShipmentServices429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getEligibleShipmentServices_500
-     * .
      */
     public function testGetEligibleShipmentServices500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getEligibleShipmentServices_503
-     * .
      */
     public function testGetEligibleShipmentServices503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShipment_200
-     * .
      */
     public function testGetShipment200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetShipment200')) {
+             if ($this->testHelper->shouldSkipTest('testGetShipment200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{shipmentId&#x3D;{value&#x3D;abcddcba-00c3-4f6f-a63a-639f76ee9253}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetShipmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;abcddcba-00c3-4f6f-a63a-639f76ee9253&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;ShipmentId&quot; : &quot;abcddcba-00c3-4f6f-a63a-639f76ee9253&quot;,
+          &quot;AmazonOrderId&quot; : &quot;903-5563053-5647845&quot;,
+          &quot;SellerOrderId&quot; : &quot;903-5563053-5647845&quot;,
+          &quot;Insurance&quot; : {
+            &quot;CurrencyCode&quot; : &quot;USD&quot;,
+            &quot;Amount&quot; : 0.0
+          },
+          &quot;ItemList&quot; : [ {
+            &quot;OrderItemId&quot; : &quot;12958298061782&quot;,
+            &quot;Quantity&quot; : 1
+          } ],
+          &quot;ShipFromAddress&quot; : {
+            &quot;Name&quot; : &quot;John Doe&quot;,
+            &quot;AddressLine1&quot; : &quot;300 Turnbull Ave&quot;,
+            &quot;Email&quot; : &quot;jdoeasdfllkj@yahoo.com&quot;,
+            &quot;City&quot; : &quot;Detroit&quot;,
+            &quot;StateOrProvinceCode&quot; : &quot;MI&quot;,
+            &quot;PostalCode&quot; : &quot;48123&quot;,
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;Phone&quot; : &quot;7132341234&quot;
+          },
+          &quot;ShipToAddress&quot; : {
+            &quot;Name&quot; : &quot;New York&quot;,
+            &quot;AddressLine1&quot; : &quot;TIME WARNER CENTER&quot;,
+            &quot;AddressLine2&quot; : &quot;10 COLUMBUS CIR&quot;,
+            &quot;Email&quot; : &quot;&quot;,
+            &quot;City&quot; : &quot;NEW YORK&quot;,
+            &quot;StateOrProvinceCode&quot; : &quot;NY&quot;,
+            &quot;PostalCode&quot; : &quot;10019-1158&quot;,
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;Phone&quot; : &quot;&quot;
+          },
+          &quot;PackageDimensions&quot; : {
+            &quot;Length&quot; : 10.25,
+            &quot;Width&quot; : 10.25,
+            &quot;Height&quot; : 10.25,
+            &quot;Unit&quot; : &quot;inches&quot;
+          },
+          &quot;Weight&quot; : {
+            &quot;Value&quot; : 10.25,
+            &quot;Unit&quot; : &quot;oz&quot;
+          },
+          &quot;ShippingService&quot; : {
+            &quot;ShippingServiceName&quot; : &quot;UPS 2nd Day Air®&quot;,
+            &quot;CarrierName&quot; : &quot;UPS®&quot;,
+            &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
+            &quot;ShippingServiceOfferId&quot; : &quot;&quot;,
+            &quot;ShipDate&quot; : &quot;2019-10-28T18:00:00Z&quot;,
+            &quot;Rate&quot; : {
+              &quot;CurrencyCode&quot; : &quot;USD&quot;,
+              &quot;Amount&quot; : 34.73
+            },
+            &quot;ShippingServiceOptions&quot; : {
+              &quot;DeliveryExperience&quot; : &quot;DeliveryConfirmationWithoutSignature&quot;,
+              &quot;DeclaredValue&quot; : {
+                &quot;CurrencyCode&quot; : &quot;USD&quot;,
+                &quot;Amount&quot; : 0.0
+              }
+            },
+            &quot;RequiresAdditionalSellerInputs&quot; : false,
+            &quot;Benefits&quot; : {
+              &quot;IncludedBenefits&quot; : [ ],
+              &quot;ExcludedBenefits&quot; : [ {
+                &quot;Benefit&quot; : &quot;CLAIMS_PROTECTED&quot;,
+                &quot;ReasonCodes&quot; : [ &quot;LATE_DELIVERY_RISK&quot; ]
+              } ]
+            }
+          },
+          &quot;Label&quot; : {
+            &quot;Dimensions&quot; : {
+              &quot;Length&quot; : 6.0,
+              &quot;Width&quot; : 4.0,
+              &quot;Unit&quot; : &quot;inches&quot;
+            },
+            &quot;FileContents&quot; : {
+              &quot;Contents&quot; : &quot;H4sIAAAAAAAAAOS6dV&quot;,
+              &quot;FileType&quot; : &quot;image/png&quot;,
+              &quot;Checksum&quot; : &quot;9ALVyphCKfc3+Lb2ssyh8A&#x3D;&#x3D;&quot;
+            }
+          },
+          &quot;Status&quot; : &quot;Purchased&quot;,
+          &quot;TrackingId&quot; : &quot;1Z17E2100206868939&quot;,
+          &quot;CreatedDate&quot; : &quot;2019-10-28T18:29:34Z&quot;,
+          &quot;LastUpdatedDate&quot; : &quot;2019-10-28T18:30:35Z&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getShipment',
-                $invalidRequestJson
+                $jsonSchema,
+                'getShipment'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{ShipmentId&#x3D;abcddcba-00c3-4f6f-a63a-639f76ee9253, AmazonOrderId&#x3D;903-5563053-5647845, SellerOrderId&#x3D;903-5563053-5647845, Insurance&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}, ItemList&#x3D;[{OrderItemId&#x3D;12958298061782, Quantity&#x3D;1}], ShipFromAddress&#x3D;{Name&#x3D;John Doe, AddressLine1&#x3D;300 Turnbull Ave, Email&#x3D;jdoeasdfllkj@yahoo.com, City&#x3D;Detroit, StateOrProvinceCode&#x3D;MI, PostalCode&#x3D;48123, CountryCode&#x3D;US, Phone&#x3D;7132341234}, ShipToAddress&#x3D;{Name&#x3D;New York, AddressLine1&#x3D;TIME WARNER CENTER, AddressLine2&#x3D;10 COLUMBUS CIR, Email&#x3D;, City&#x3D;NEW YORK, StateOrProvinceCode&#x3D;NY, PostalCode&#x3D;10019-1158, CountryCode&#x3D;US, Phone&#x3D;}, PackageDimensions&#x3D;{Length&#x3D;10.25, Width&#x3D;10.25, Height&#x3D;10.25, Unit&#x3D;inches}, Weight&#x3D;{Value&#x3D;10.25, Unit&#x3D;oz}, ShippingService&#x3D;{ShippingServiceName&#x3D;UPS 2nd Day Air®, CarrierName&#x3D;UPS®, ShippingServiceId&#x3D;UPS_PTP_2ND_DAY_AIR, ShippingServiceOfferId&#x3D;, ShipDate&#x3D;2019-10-28T18:00:00Z, Rate&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;34.73}, ShippingServiceOptions&#x3D;{DeliveryExperience&#x3D;DeliveryConfirmationWithoutSignature, DeclaredValue&#x3D;{CurrencyCode&#x3D;USD, Amount&#x3D;0.0}}, RequiresAdditionalSellerInputs&#x3D;false, Benefits&#x3D;{IncludedBenefits&#x3D;[], ExcludedBenefits&#x3D;[{Benefit&#x3D;CLAIMS_PROTECTED, ReasonCodes&#x3D;[LATE_DELIVERY_RISK]}]}}, Label&#x3D;{Dimensions&#x3D;{Length&#x3D;6.0, Width&#x3D;4.0, Unit&#x3D;inches}, FileContents&#x3D;{Contents&#x3D;H4sIAAAAAAAAAOS6dV, FileType&#x3D;image/png, Checksum&#x3D;9ALVyphCKfc3+Lb2ssyh8A&#x3D;&#x3D;}}, Status&#x3D;Purchased, TrackingId&#x3D;1Z17E2100206868939, CreatedDate&#x3D;2019-10-28T18:29:34Z, LastUpdatedDate&#x3D;2019-10-28T18:30:35Z}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getShipment',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getShipmentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -765,40 +1535,76 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for getShipment_400
-     * .
      */
     public function testGetShipment400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetShipment400')) {
+             if ($this->testHelper->shouldSkipTest('testGetShipment400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{shipmentId&#x3D;{value&#x3D;aabbccdd-1beb-4cda-8bf4-7366cfddbec1}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetShipmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;aabbccdd-1beb-4cda-8bf4-7366cfddbec1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;1 validation error detected: Value &#39;TEST_CASE_400&#39; at &#39;shipmentId&#39; failed to satisfy constraint: Member must satisfy regular expression pattern: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getShipment',
-                $invalidRequestJson
+                $jsonSchema,
+                'getShipment'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;1 validation error detected: Value &#39;TEST_CASE_400&#39; at &#39;shipmentId&#39; failed to satisfy constraint: Member must satisfy regular expression pattern: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getShipment',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MerchantFulfillmentApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getShipmentWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -811,56 +1617,50 @@ class MerchantFulfillmentApiTest extends TestCase
     }
     /**
      * Test case for getShipment_401
-     * .
      */
     public function testGetShipment401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShipment_403
-     * .
      */
     public function testGetShipment403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShipment_404
-     * .
      */
     public function testGetShipment404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShipment_429
-     * .
      */
     public function testGetShipment429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShipment_500
-     * .
      */
     public function testGetShipment500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShipment_503
-     * .
      */
     public function testGetShipment503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

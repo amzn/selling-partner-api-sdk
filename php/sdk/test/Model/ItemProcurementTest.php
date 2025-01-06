@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\ItemProcurement;
+use OpenAPI\Client\Model\listingsItems\ItemProcurement;
 
 /**
  * ItemProcurementTest Class Doc Comment
@@ -57,7 +57,7 @@ class ItemProcurementTest extends TestCase
     public function testPropertyCostPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings.items\Money();
+        $testValue = new \OpenAPI\Client\Model\listingsItems\Money();
         
         $this->model->setCostPrice($testValue);
         $this->assertEquals($testValue, $this->model->getCostPrice());

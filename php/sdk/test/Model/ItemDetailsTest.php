@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.inventory\ItemDetails;
+use OpenAPI\Client\Model\vendorDfInventory\ItemDetails;
 
 /**
  * ItemDetailsTest Class Doc Comment
@@ -79,7 +79,7 @@ class ItemDetailsTest extends TestCase
     public function testPropertyAvailableQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.df.inventory\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendorDfInventory\ItemQuantity();
         
         $this->model->setAvailableQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAvailableQuantity());

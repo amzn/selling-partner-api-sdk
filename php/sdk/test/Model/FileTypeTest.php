@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\FileType;
+use OpenAPI\Client\Model\merchantFulfillment\FileType;
 
 /**
  * FileTypeTest Class Doc Comment

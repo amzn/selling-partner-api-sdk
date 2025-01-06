@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings.items\IssueExemption;
+use OpenAPI\Client\Model\listingsItems\IssueExemption;
 
 /**
  * IssueExemptionTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\QuantityDiscountPriceType;
+use OpenAPI\Client\Model\pricingV0\QuantityDiscountPriceType;
 
 /**
  * QuantityDiscountPriceTypeTest Class Doc Comment
@@ -67,7 +67,7 @@ class QuantityDiscountPriceTypeTest extends TestCase
      */
     public function testPropertyQuantityDiscountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingv0\QuantityDiscountType();
+        $enumInstance = new \OpenAPI\Client\Model\pricingV0\QuantityDiscountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -81,7 +81,7 @@ class QuantityDiscountPriceTypeTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());

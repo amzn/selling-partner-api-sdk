@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\GetFeatureInventoryResponse;
+use OpenAPI\Client\Model\fulfillmentOutbound\GetFeatureInventoryResponse;
 
 /**
  * GetFeatureInventoryResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetFeatureInventoryResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\GetFeatureInventoryResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\GetFeatureInventoryResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

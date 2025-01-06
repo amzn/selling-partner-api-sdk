@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\MessagingApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,82 @@ class MessagingApiTest extends TestCase
 
     /**
      * Test case for confirmCustomizationDetails_201
-     * .
      */
     public function testConfirmCustomizationDetails201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails201')) {
+             if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{text&#x3D;My Message, attachments&#x3D;[{uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}, {uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmCustomizationDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;text&quot; : &quot;My Message&quot;,
+              &quot;attachments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              }, {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'confirmCustomizationDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'confirmCustomizationDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'confirmCustomizationDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->confirmCustomizationDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -181,40 +224,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for confirmCustomizationDetails_400
-     * .
      */
     public function testConfirmCustomizationDetails400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails400')) {
+             if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmCustomizationDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'confirmCustomizationDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'confirmCustomizationDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'confirmCustomizationDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->confirmCustomizationDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,103 +306,134 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for confirmCustomizationDetails_403
-     * .
      */
     public function testConfirmCustomizationDetails403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for confirmCustomizationDetails_404
-     * .
      */
     public function testConfirmCustomizationDetails404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for confirmCustomizationDetails_413
-     * .
      */
     public function testConfirmCustomizationDetails413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for confirmCustomizationDetails_415
-     * .
      */
     public function testConfirmCustomizationDetails415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for confirmCustomizationDetails_429
-     * .
      */
     public function testConfirmCustomizationDetails429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for confirmCustomizationDetails_500
-     * .
      */
     public function testConfirmCustomizationDetails500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for confirmCustomizationDetails_503
-     * .
      */
     public function testConfirmCustomizationDetails503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_201
-     * .
      */
     public function testCreateAmazonMotors201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{attachments&#x3D;[{uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateAmazonMotorsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;attachments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createAmazonMotors',
-                $invalidRequestJson
+                $jsonSchema,
+                'createAmazonMotors'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createAmazonMotors',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createAmazonMotorsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -336,40 +446,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createAmazonMotors_400
-     * .
      */
     public function testCreateAmazonMotors400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateAmazonMotorsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createAmazonMotors',
-                $invalidRequestJson
+                $jsonSchema,
+                'createAmazonMotors'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createAmazonMotors',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createAmazonMotorsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -382,103 +528,131 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createAmazonMotors_403
-     * .
      */
     public function testCreateAmazonMotors403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_404
-     * .
      */
     public function testCreateAmazonMotors404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_413
-     * .
      */
     public function testCreateAmazonMotors413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_415
-     * .
      */
     public function testCreateAmazonMotors415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_429
-     * .
      */
     public function testCreateAmazonMotors429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_500
-     * .
      */
     public function testCreateAmazonMotors500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createAmazonMotors_503
-     * .
      */
     public function testCreateAmazonMotors503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_201
-     * .
      */
     public function testCreateConfirmDeliveryDetails201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{text&#x3D;My Message}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmDeliveryDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;text&quot; : &quot;My Message&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createConfirmDeliveryDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'createConfirmDeliveryDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createConfirmDeliveryDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createConfirmDeliveryDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -491,40 +665,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createConfirmDeliveryDetails_400
-     * .
      */
     public function testCreateConfirmDeliveryDetails400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmDeliveryDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createConfirmDeliveryDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'createConfirmDeliveryDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createConfirmDeliveryDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createConfirmDeliveryDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -537,103 +747,131 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createConfirmDeliveryDetails_403
-     * .
      */
     public function testCreateConfirmDeliveryDetails403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_404
-     * .
      */
     public function testCreateConfirmDeliveryDetails404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_413
-     * .
      */
     public function testCreateConfirmDeliveryDetails413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_415
-     * .
      */
     public function testCreateConfirmDeliveryDetails415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_429
-     * .
      */
     public function testCreateConfirmDeliveryDetails429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_500
-     * .
      */
     public function testCreateConfirmDeliveryDetails500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmDeliveryDetails_503
-     * .
      */
     public function testCreateConfirmDeliveryDetails503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_201
-     * .
      */
     public function testCreateConfirmOrderDetails201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{text&#x3D;My Message}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmOrderDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;text&quot; : &quot;My Message&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createConfirmOrderDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'createConfirmOrderDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createConfirmOrderDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createConfirmOrderDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -646,40 +884,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createConfirmOrderDetails_400
-     * .
      */
     public function testCreateConfirmOrderDetails400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmOrderDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createConfirmOrderDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'createConfirmOrderDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createConfirmOrderDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createConfirmOrderDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -692,103 +966,131 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createConfirmOrderDetails_403
-     * .
      */
     public function testCreateConfirmOrderDetails403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_404
-     * .
      */
     public function testCreateConfirmOrderDetails404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_413
-     * .
      */
     public function testCreateConfirmOrderDetails413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_415
-     * .
      */
     public function testCreateConfirmOrderDetails415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_429
-     * .
      */
     public function testCreateConfirmOrderDetails429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_500
-     * .
      */
     public function testCreateConfirmOrderDetails500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmOrderDetails_503
-     * .
      */
     public function testCreateConfirmOrderDetails503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_201
-     * .
      */
     public function testCreateConfirmServiceDetails201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{text&#x3D;My Message}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmServiceDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;text&quot; : &quot;My Message&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createConfirmServiceDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'createConfirmServiceDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createConfirmServiceDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createConfirmServiceDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -801,40 +1103,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createConfirmServiceDetails_400
-     * .
      */
     public function testCreateConfirmServiceDetails400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateConfirmServiceDetailsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createConfirmServiceDetails',
-                $invalidRequestJson
+                $jsonSchema,
+                'createConfirmServiceDetails'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createConfirmServiceDetails',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createConfirmServiceDetailsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -847,103 +1185,138 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createConfirmServiceDetails_403
-     * .
      */
     public function testCreateConfirmServiceDetails403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_404
-     * .
      */
     public function testCreateConfirmServiceDetails404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_413
-     * .
      */
     public function testCreateConfirmServiceDetails413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_415
-     * .
      */
     public function testCreateConfirmServiceDetails415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_429
-     * .
      */
     public function testCreateConfirmServiceDetails429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_500
-     * .
      */
     public function testCreateConfirmServiceDetails500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createConfirmServiceDetails_503
-     * .
      */
     public function testCreateConfirmServiceDetails503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_201
-     * .
      */
     public function testCreateDigitalAccessKey201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{text&#x3D;My Message, attachments&#x3D;[{uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}, {uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateDigitalAccessKeyResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;text&quot; : &quot;My Message&quot;,
+              &quot;attachments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              }, {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createDigitalAccessKey',
-                $invalidRequestJson
+                $jsonSchema,
+                'createDigitalAccessKey'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createDigitalAccessKey',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createDigitalAccessKeyWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -956,40 +1329,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createDigitalAccessKey_400
-     * .
      */
     public function testCreateDigitalAccessKey400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateDigitalAccessKeyResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createDigitalAccessKey',
-                $invalidRequestJson
+                $jsonSchema,
+                'createDigitalAccessKey'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createDigitalAccessKey',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createDigitalAccessKeyWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1002,103 +1411,137 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createDigitalAccessKey_403
-     * .
      */
     public function testCreateDigitalAccessKey403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_404
-     * .
      */
     public function testCreateDigitalAccessKey404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_413
-     * .
      */
     public function testCreateDigitalAccessKey413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_415
-     * .
      */
     public function testCreateDigitalAccessKey415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_429
-     * .
      */
     public function testCreateDigitalAccessKey429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_500
-     * .
      */
     public function testCreateDigitalAccessKey500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createDigitalAccessKey_503
-     * .
      */
     public function testCreateDigitalAccessKey503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_201
-     * .
      */
     public function testCreateLegalDisclosure201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{attachments&#x3D;[{uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}, {uploadDestinationId&#x3D;4e936e26-7b72-4b84-af27-e6baee1d546d, fileName&#x3D;AmazonMotors.txt}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The legal disclosure message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateLegalDisclosureResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;attachments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              }, {
+                &quot;uploadDestinationId&quot; : &quot;4e936e26-7b72-4b84-af27-e6baee1d546d&quot;,
+                &quot;fileName&quot; : &quot;AmazonMotors.txt&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createLegalDisclosure',
-                $invalidRequestJson
+                $jsonSchema,
+                'createLegalDisclosure'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createLegalDisclosure',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createLegalDisclosureWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -1111,40 +1554,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createLegalDisclosure_400
-     * .
      */
     public function testCreateLegalDisclosure400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateLegalDisclosureResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createLegalDisclosure',
-                $invalidRequestJson
+                $jsonSchema,
+                'createLegalDisclosure'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createLegalDisclosure',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createLegalDisclosureWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1157,103 +1636,126 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createLegalDisclosure_403
-     * .
      */
     public function testCreateLegalDisclosure403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_404
-     * .
      */
     public function testCreateLegalDisclosure404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_413
-     * .
      */
     public function testCreateLegalDisclosure413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_415
-     * .
      */
     public function testCreateLegalDisclosure415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_429
-     * .
      */
     public function testCreateLegalDisclosure429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_500
-     * .
      */
     public function testCreateLegalDisclosure500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createLegalDisclosure_503
-     * .
      */
     public function testCreateLegalDisclosure503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_201
-     * .
      */
     public function testCreateNegativeFeedbackRemoval201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The negativeFeedbackRemoval message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateNegativeFeedbackRemovalResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createNegativeFeedbackRemoval',
-                $invalidRequestJson
+                $jsonSchema,
+                'createNegativeFeedbackRemoval'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createNegativeFeedbackRemoval',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createNegativeFeedbackRemovalWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -1266,40 +1768,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createNegativeFeedbackRemoval_400
-     * .
      */
     public function testCreateNegativeFeedbackRemoval400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateNegativeFeedbackRemovalResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createNegativeFeedbackRemoval',
-                $invalidRequestJson
+                $jsonSchema,
+                'createNegativeFeedbackRemoval'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createNegativeFeedbackRemoval',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createNegativeFeedbackRemovalWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1312,103 +1850,131 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createNegativeFeedbackRemoval_403
-     * .
      */
     public function testCreateNegativeFeedbackRemoval403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_404
-     * .
      */
     public function testCreateNegativeFeedbackRemoval404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_413
-     * .
      */
     public function testCreateNegativeFeedbackRemoval413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_415
-     * .
      */
     public function testCreateNegativeFeedbackRemoval415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_429
-     * .
      */
     public function testCreateNegativeFeedbackRemoval429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_500
-     * .
      */
     public function testCreateNegativeFeedbackRemoval500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createNegativeFeedbackRemoval_503
-     * .
      */
     public function testCreateNegativeFeedbackRemoval503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_201
-     * .
      */
     public function testCreateUnexpectedProblem201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{text&#x3D;My Message}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateUnexpectedProblemResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;text&quot; : &quot;My Message&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createUnexpectedProblem',
-                $invalidRequestJson
+                $jsonSchema,
+                'createUnexpectedProblem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createUnexpectedProblem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createUnexpectedProblemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -1421,40 +1987,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createUnexpectedProblem_400
-     * .
      */
     public function testCreateUnexpectedProblem400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateUnexpectedProblemResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createUnexpectedProblem',
-                $invalidRequestJson
+                $jsonSchema,
+                'createUnexpectedProblem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createUnexpectedProblem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createUnexpectedProblemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1467,103 +2069,136 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createUnexpectedProblem_403
-     * .
      */
     public function testCreateUnexpectedProblem403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_404
-     * .
      */
     public function testCreateUnexpectedProblem404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_413
-     * .
      */
     public function testCreateUnexpectedProblem413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_415
-     * .
      */
     public function testCreateUnexpectedProblem415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_429
-     * .
      */
     public function testCreateUnexpectedProblem429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_500
-     * .
      */
     public function testCreateUnexpectedProblem500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createUnexpectedProblem_503
-     * .
      */
     public function testCreateUnexpectedProblem503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_201
-     * .
      */
     public function testCreateWarranty201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateWarranty201')) {
+             if ($this->testHelper->shouldSkipTest('testCreateWarranty201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}, body&#x3D;{value&#x3D;{attachments&#x3D;[{uploadDestinationId&#x3D;8634452c-4d4f-4703-8cea-2ecc9dcb3279, fileName&#x3D;warranty.txt}], coverageStartDate&#x3D;2004-12-13T21:39:45.618-08:00, coverageEndDate&#x3D;2005-12-13T21:39:45.618-08:00}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateWarrantyResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;attachments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;8634452c-4d4f-4703-8cea-2ecc9dcb3279&quot;,
+                &quot;fileName&quot; : &quot;warranty.txt&quot;
+              } ],
+              &quot;coverageStartDate&quot; : &quot;2004-12-13T21:39:45.618-08:00&quot;,
+              &quot;coverageEndDate&quot; : &quot;2005-12-13T21:39:45.618-08:00&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createWarranty',
-                $invalidRequestJson
+                $jsonSchema,
+                'createWarranty'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createWarranty',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createWarrantyWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -1576,40 +2211,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createWarranty_400
-     * .
      */
     public function testCreateWarranty400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateWarranty400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateWarranty400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateWarrantyResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createWarranty',
-                $invalidRequestJson
+                $jsonSchema,
+                'createWarranty'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createWarranty',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createWarrantyWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1622,103 +2293,135 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for createWarranty_403
-     * .
      */
     public function testCreateWarranty403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_404
-     * .
      */
     public function testCreateWarranty404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_413
-     * .
      */
     public function testCreateWarranty413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_415
-     * .
      */
     public function testCreateWarranty415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_429
-     * .
      */
     public function testCreateWarranty429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_500
-     * .
      */
     public function testCreateWarranty500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createWarranty_503
-     * .
      */
     public function testCreateWarranty503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_200
-     * .
      */
     public function testGetAttributes200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAttributes200')) {
+             if ($this->testHelper->shouldSkipTest('testGetAttributes200', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Response has successfully been returned.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAttributesResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;buyer&quot; : {
+          &quot;locale&quot; : &quot;en-US&quot;
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;buyer&quot; : {
+          &quot;locale&quot; : &quot;en-US&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAttributes',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAttributes'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{buyer&#x3D;{locale&#x3D;en-US}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAttributes',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAttributesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1731,40 +2434,83 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for getAttributes_400
-     * .
      */
     public function testGetAttributes400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAttributes400')) {
+             if ($this->testHelper->shouldSkipTest('testGetAttributes400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAttributesResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;string&quot;,
+          &quot;message&quot; : &quot;string&quot;,
+          &quot;details&quot; : &quot;string&quot;
+        } ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAttributes',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAttributes'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAttributes',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAttributesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1777,103 +2523,191 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for getAttributes_403
-     * .
      */
     public function testGetAttributes403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_404
-     * .
      */
     public function testGetAttributes404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_413
-     * .
      */
     public function testGetAttributes413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_415
-     * .
      */
     public function testGetAttributes415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_429
-     * .
      */
     public function testGetAttributes429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_500
-     * .
      */
     public function testGetAttributes500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAttributes_503
-     * .
      */
     public function testGetAttributes503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_200
-     * .
      */
     public function testGetMessagingActionsForOrder200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder200')) {
+             if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder200', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Returns hypermedia links under the _links.actions key that specify which messaging actions are allowed for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMessagingActionsForOrderResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;_links&quot; : {
+          &quot;actions&quot; : [ {
+            &quot;href&quot; : &quot;/messaging/v1/orders/903-1671087-0812628/messages/negativeFeedbackRemoval?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;negativeFeedbackRemoval&quot;
+          } ],
+          &quot;self&quot; : {
+            &quot;href&quot; : &quot;/messaging/v1/orders/903-1671087-0812628?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;
+          }
+        },
+        &quot;_embedded&quot; : {
+          &quot;actions&quot; : [ {
+            &quot;_links&quot; : {
+              &quot;schema&quot; : {
+                &quot;href&quot; : &quot;/messaging/v1/orders/903-1671087-0812628/messages/negativeFeedbackRemoval/schema&quot;,
+                &quot;name&quot; : &quot;negativeFeedbackRemoval&quot;
+              },
+              &quot;self&quot; : {
+                &quot;href&quot; : &quot;/messaging/v1/orders/903-1671087-0812628/messages/negativeFeedbackRemoval?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+                &quot;name&quot; : &quot;negativeFeedbackRemoval&quot;
+              }
+            }
+          } ]
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;_links&quot; : {
+          &quot;actions&quot; : [ {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/confirmCustomizationDetails?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;confirmCustomizationDetails&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/confirmDeliveryDetails?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;confirmDeliveryDetails&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/legalDisclosure?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;legalDisclosure&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/negativeFeedbackRemoval?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;negativeFeedbackRemoval&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/confirmOrderDetails?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;confirmOrderDetails&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/confirmServiceDetails?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;confirmServiceDetails&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/amazonMotors?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;amazonMotors&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/digitalAccessKey?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;digitalAccessKey&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/unexpectedProblem?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;unexpectedProblem&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/messages/warranty?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;warranty&quot;
+          }, {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567/attributes?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;,
+            &quot;name&quot; : &quot;attributes&quot;
+          } ],
+          &quot;self&quot; : {
+            &quot;href&quot; : &quot;/messaging/v1/orders/123-1234567-1234567?marketplaceIds&#x3D;ATVPDKIKX0DER&quot;
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMessagingActionsForOrder',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMessagingActionsForOrder'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{_links&#x3D;{actions&#x3D;[{href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/confirmCustomizationDetails?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;confirmCustomizationDetails}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/confirmDeliveryDetails?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;confirmDeliveryDetails}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/legalDisclosure?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;legalDisclosure}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/negativeFeedbackRemoval?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;negativeFeedbackRemoval}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/confirmOrderDetails?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;confirmOrderDetails}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/confirmServiceDetails?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;confirmServiceDetails}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/amazonMotors?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;amazonMotors}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/digitalAccessKey?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;digitalAccessKey}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/unexpectedProblem?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;unexpectedProblem}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/messages/warranty?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;warranty}, {href&#x3D;/messaging/v1/orders/123-1234567-1234567/attributes?marketplaceIds&#x3D;ATVPDKIKX0DER, name&#x3D;attributes}], self&#x3D;{href&#x3D;/messaging/v1/orders/123-1234567-1234567?marketplaceIds&#x3D;ATVPDKIKX0DER}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMessagingActionsForOrder',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMessagingActionsForOrderWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1886,40 +2720,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for getMessagingActionsForOrder_400
-     * .
      */
     public function testGetMessagingActionsForOrder400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder400')) {
+             if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-0000000}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetMessagingActionsForOrderResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-0000000&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getMessagingActionsForOrder',
-                $invalidRequestJson
+                $jsonSchema,
+                'getMessagingActionsForOrder'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getMessagingActionsForOrder',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getMessagingActionsForOrderWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1932,103 +2802,126 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for getMessagingActionsForOrder_403
-     * .
      */
     public function testGetMessagingActionsForOrder403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_404
-     * .
      */
     public function testGetMessagingActionsForOrder404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_413
-     * .
      */
     public function testGetMessagingActionsForOrder413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_415
-     * .
      */
     public function testGetMessagingActionsForOrder415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_429
-     * .
      */
     public function testGetMessagingActionsForOrder429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_500
-     * .
      */
     public function testGetMessagingActionsForOrder500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getMessagingActionsForOrder_503
-     * .
      */
     public function testGetMessagingActionsForOrder503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_201
-     * .
      */
     public function testSendInvoice201()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSendInvoice201')) {
+             if ($this->testHelper->shouldSkipTest('testSendInvoice201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;123-1234567-1234567}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The message was created for the order.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/InvoiceResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;123-1234567-1234567&quot;
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'sendInvoice',
-                $invalidRequestJson
+                $jsonSchema,
+                'sendInvoice'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'sendInvoice',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->sendInvoiceWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(201, $statusCode);
 
             // Handle different response codes
@@ -2041,40 +2934,76 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for sendInvoice_400
-     * .
      */
     public function testSendInvoice400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSendInvoice400')) {
+             if ($this->testHelper->shouldSkipTest('testSendInvoice400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{amazonOrderId&#x3D;{value&#x3D;badOrderId}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/hal+json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/InvoiceResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;amazonOrderId&quot; : {
+            &quot;value&quot; : &quot;badOrderId&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'sendInvoice',
-                $invalidRequestJson
+                $jsonSchema,
+                'sendInvoice'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'sendInvoice',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('MessagingApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->sendInvoiceWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2087,65 +3016,58 @@ class MessagingApiTest extends TestCase
     }
     /**
      * Test case for sendInvoice_403
-     * .
      */
     public function testSendInvoice403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_404
-     * .
      */
     public function testSendInvoice404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_413
-     * .
      */
     public function testSendInvoice413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_415
-     * .
      */
     public function testSendInvoice415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_429
-     * .
      */
     public function testSendInvoice429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_500
-     * .
      */
     public function testSendInvoice500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for sendInvoice_503
-     * .
      */
     public function testSendInvoice503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\TextComponent;
+use OpenAPI\Client\Model\aplusContent\TextComponent;
 
 /**
  * TextComponentTest Class Doc Comment

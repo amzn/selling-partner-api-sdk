@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\PostContentDocumentSuspendSubmissionResponse;
+use OpenAPI\Client\Model\aplusContent\PostContentDocumentSuspendSubmissionResponse;
 
 /**
  * PostContentDocumentSuspendSubmissionResponseTest Class Doc Comment

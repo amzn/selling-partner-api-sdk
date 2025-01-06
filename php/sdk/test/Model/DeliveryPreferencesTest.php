@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\DeliveryPreferences;
+use OpenAPI\Client\Model\fulfillmentOutbound\DeliveryPreferences;
 
 /**
  * DeliveryPreferencesTest Class Doc Comment
@@ -68,7 +68,7 @@ class DeliveryPreferencesTest extends TestCase
     public function testPropertyDropOffLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\DropOffLocation();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\DropOffLocation();
         
         $this->model->setDropOffLocation($testValue);
         $this->assertEquals($testValue, $this->model->getDropOffLocation());

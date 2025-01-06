@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\CustomerInvoicesApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,155 +136,192 @@ class CustomerInvoicesApiTest extends TestCase
 
     /**
      * Test case for getCustomerInvoice_200
-     * .
      */
     public function testGetCustomerInvoice200()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetCustomerInvoice200', 'CustomerInvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('CustomerInvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'getCustomerInvoice'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getCustomerInvoiceWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for getCustomerInvoice_400
-     * .
      */
     public function testGetCustomerInvoice400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_401
-     * .
      */
     public function testGetCustomerInvoice401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_403
-     * .
      */
     public function testGetCustomerInvoice403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_404
-     * .
      */
     public function testGetCustomerInvoice404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_415
-     * .
      */
     public function testGetCustomerInvoice415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_429
-     * .
      */
     public function testGetCustomerInvoice429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_500
-     * .
      */
     public function testGetCustomerInvoice500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoice_503
-     * .
      */
     public function testGetCustomerInvoice503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_200
-     * .
      */
     public function testGetCustomerInvoices200()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetCustomerInvoices200', 'CustomerInvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('CustomerInvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'getCustomerInvoices'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getCustomerInvoicesWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for getCustomerInvoices_400
-     * .
      */
     public function testGetCustomerInvoices400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_403
-     * .
      */
     public function testGetCustomerInvoices403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_404
-     * .
      */
     public function testGetCustomerInvoices404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_415
-     * .
      */
     public function testGetCustomerInvoices415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_429
-     * .
      */
     public function testGetCustomerInvoices429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_500
-     * .
      */
     public function testGetCustomerInvoices500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCustomerInvoices_503
-     * .
      */
     public function testGetCustomerInvoices503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

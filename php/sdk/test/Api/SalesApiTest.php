@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\SalesApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,267 @@ class SalesApiTest extends TestCase
 
     /**
      * Test case for getOrderMetrics_200
-     * .
      */
     public function testGetOrderMetrics200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderMetrics200')) {
+             if ($this->testHelper->shouldSkipTest('testGetOrderMetrics200', 'SalesApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{granularity&#x3D;{value&#x3D;Total}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;OrderMetric action taken on the resource OrderMetrics.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation..&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOrderMetricsResponse&quot;
+      }
+    },
+    &quot;payload&quot; : {
+      &quot;example&quot; : {
+        &quot;dayGranularity&quot; : {
+          &quot;metrics&quot; : [ {
+            &quot;interval&quot; : &quot;2018-05-01T00:00-07:00--2018-05-02T00:00-07:00&quot;,
+            &quot;unitCount&quot; : 1,
+            &quot;orderItemCount&quot; : 1,
+            &quot;orderCount&quot; : 1,
+            &quot;averageUnitPrice&quot; : {
+              &quot;amount&quot; : &quot;22.95&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            },
+            &quot;totalSales&quot; : {
+              &quot;amount&quot; : &quot;22.95&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            }
+          }, {
+            &quot;interval&quot; : &quot;2018-05-02T00:00-07:00--2018-05-03T00:00-07:00&quot;,
+            &quot;unitCount&quot; : 1,
+            &quot;orderItemCount&quot; : 1,
+            &quot;orderCount&quot; : 1,
+            &quot;averageUnitPrice&quot; : {
+              &quot;amount&quot; : &quot;2.05&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            },
+            &quot;totalSales&quot; : {
+              &quot;amount&quot; : &quot;2.05&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            }
+          } ]
+        },
+        &quot;totalGranularity&quot; : {
+          &quot;metrics&quot; : [ {
+            &quot;interval&quot; : &quot;2018-05-01T00:00-07:00--2018-05-03T00:00-07:00&quot;,
+            &quot;unitCount&quot; : 2,
+            &quot;orderItemCount&quot; : 2,
+            &quot;orderCount&quot; : 2,
+            &quot;averageUnitPrice&quot; : {
+              &quot;amount&quot; : &quot;12.5&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            },
+            &quot;totalSales&quot; : {
+              &quot;amount&quot; : &quot;25&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            }
+          } ]
+        },
+        &quot;asinFilter&quot; : {
+          &quot;metrics&quot; : [ {
+            &quot;interval&quot; : &quot;2018-05-01T00:00-07:00--2018-05-02T00:00-07:00&quot;,
+            &quot;unitCount&quot; : 1,
+            &quot;orderItemCount&quot; : 1,
+            &quot;orderCount&quot; : 1,
+            &quot;averageUnitPrice&quot; : {
+              &quot;amount&quot; : &quot;22.95&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            },
+            &quot;totalSales&quot; : {
+              &quot;amount&quot; : &quot;22.95&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            }
+          }, {
+            &quot;interval&quot; : &quot;2018-05-02T00:00-07:00--2018-05-03T00:00-07:00&quot;,
+            &quot;unitCount&quot; : 0,
+            &quot;orderItemCount&quot; : 0,
+            &quot;orderCount&quot; : 0,
+            &quot;averageUnitPrice&quot; : {
+              &quot;amount&quot; : &quot;0&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            },
+            &quot;totalSales&quot; : {
+              &quot;amount&quot; : &quot;0&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            }
+          } ]
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;granularity&quot; : {
+            &quot;value&quot; : &quot;Total&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;interval&quot; : &quot;2019-08-01T00:00-07:00--2018-08-03T00:00-07:00&quot;,
+          &quot;unitCount&quot; : 2,
+          &quot;orderItemCount&quot; : 2,
+          &quot;orderCount&quot; : 2,
+          &quot;averageUnitPrice&quot; : {
+            &quot;amount&quot; : &quot;12.5&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          },
+          &quot;totalSales&quot; : {
+            &quot;amount&quot; : &quot;25&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;granularity&quot; : {
+            &quot;value&quot; : &quot;Day&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;interval&quot; : &quot;2019-08-01T00:00-07:00--2018-08-02T00:00-07:00&quot;,
+          &quot;unitCount&quot; : 1,
+          &quot;orderItemCount&quot; : 1,
+          &quot;orderCount&quot; : 1,
+          &quot;averageUnitPrice&quot; : {
+            &quot;amount&quot; : &quot;22.95&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          },
+          &quot;totalSales&quot; : {
+            &quot;amount&quot; : &quot;22.95&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          }
+        }, {
+          &quot;interval&quot; : &quot;2019-08-02T00:00-07:00--2018-08-03T00:00-07:00&quot;,
+          &quot;unitCount&quot; : 1,
+          &quot;orderItemCount&quot; : 1,
+          &quot;orderCount&quot; : 1,
+          &quot;averageUnitPrice&quot; : {
+            &quot;amount&quot; : &quot;2.05&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          },
+          &quot;totalSales&quot; : {
+            &quot;amount&quot; : &quot;2.05&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;granularity&quot; : {
+            &quot;value&quot; : &quot;Total&quot;
+          },
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B008OLKVEW&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;interval&quot; : &quot;2018-05-01T00:00-07:00--2018-05-03T00:00-07:00&quot;,
+          &quot;unitCount&quot; : 1,
+          &quot;orderItemCount&quot; : 1,
+          &quot;orderCount&quot; : 1,
+          &quot;averageUnitPrice&quot; : {
+            &quot;amount&quot; : &quot;22.95&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          },
+          &quot;totalSales&quot; : {
+            &quot;amount&quot; : &quot;22.95&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          }
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;granularity&quot; : {
+            &quot;value&quot; : &quot;Day&quot;
+          },
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B008OLKVEW&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;interval&quot; : &quot;2018-05-01T00:00-07:00--2018-05-02T00:00-07:00&quot;,
+          &quot;unitCount&quot; : 1,
+          &quot;orderItemCount&quot; : 1,
+          &quot;orderCount&quot; : 1,
+          &quot;averageUnitPrice&quot; : {
+            &quot;amount&quot; : &quot;22.95&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          },
+          &quot;totalSales&quot; : {
+            &quot;amount&quot; : &quot;22.95&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          }
+        }, {
+          &quot;interval&quot; : &quot;2018-05-02T00:00-07:00--2018-05-03T00:00-07:00&quot;,
+          &quot;unitCount&quot; : 0,
+          &quot;orderItemCount&quot; : 0,
+          &quot;orderCount&quot; : 0,
+          &quot;averageUnitPrice&quot; : {
+            &quot;amount&quot; : &quot;0&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          },
+          &quot;totalSales&quot; : {
+            &quot;amount&quot; : &quot;0&quot;,
+            &quot;currencyCode&quot; : &quot;USD&quot;
+          }
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getOrderMetrics',
-                $invalidRequestJson
+                $jsonSchema,
+                'getOrderMetrics'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;[{interval&#x3D;2019-08-01T00:00-07:00--2018-08-03T00:00-07:00, unitCount&#x3D;2, orderItemCount&#x3D;2, orderCount&#x3D;2, averageUnitPrice&#x3D;{amount&#x3D;12.5, currencyCode&#x3D;USD}, totalSales&#x3D;{amount&#x3D;25, currencyCode&#x3D;USD}}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getOrderMetrics',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('SalesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getOrderMetricsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,74 +409,66 @@ class SalesApiTest extends TestCase
     }
     /**
      * Test case for getOrderMetrics_400
-     * .
      */
     public function testGetOrderMetrics400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_403
-     * .
      */
     public function testGetOrderMetrics403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_404
-     * .
      */
     public function testGetOrderMetrics404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_413
-     * .
      */
     public function testGetOrderMetrics413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_415
-     * .
      */
     public function testGetOrderMetrics415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_429
-     * .
      */
     public function testGetOrderMetrics429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_500
-     * .
      */
     public function testGetOrderMetrics500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getOrderMetrics_503
-     * .
      */
     public function testGetOrderMetrics503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

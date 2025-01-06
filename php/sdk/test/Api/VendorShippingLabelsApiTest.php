@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\VendorShippingLabelsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,326 +136,398 @@ class VendorShippingLabelsApiTest extends TestCase
 
     /**
      * Test case for createShippingLabels_200
-     * .
      */
     public function testCreateShippingLabels200()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateShippingLabels200', 'VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'createShippingLabels'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createShippingLabelsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for createShippingLabels_400
-     * .
      */
     public function testCreateShippingLabels400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_403
-     * .
      */
     public function testCreateShippingLabels403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_404
-     * .
      */
     public function testCreateShippingLabels404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_409
-     * .
      */
     public function testCreateShippingLabels409()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_413
-     * .
      */
     public function testCreateShippingLabels413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_415
-     * .
      */
     public function testCreateShippingLabels415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_429
-     * .
      */
     public function testCreateShippingLabels429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_500
-     * .
      */
     public function testCreateShippingLabels500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createShippingLabels_503
-     * .
      */
     public function testCreateShippingLabels503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_200
-     * .
      */
     public function testGetShippingLabel200()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetShippingLabel200', 'VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'getShippingLabel'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getShippingLabelWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for getShippingLabel_400
-     * .
      */
     public function testGetShippingLabel400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_401
-     * .
      */
     public function testGetShippingLabel401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_403
-     * .
      */
     public function testGetShippingLabel403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_404
-     * .
      */
     public function testGetShippingLabel404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_415
-     * .
      */
     public function testGetShippingLabel415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_429
-     * .
      */
     public function testGetShippingLabel429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_500
-     * .
      */
     public function testGetShippingLabel500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabel_503
-     * .
      */
     public function testGetShippingLabel503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_200
-     * .
      */
     public function testGetShippingLabels200()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetShippingLabels200', 'VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'getShippingLabels'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getShippingLabelsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for getShippingLabels_400
-     * .
      */
     public function testGetShippingLabels400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_403
-     * .
      */
     public function testGetShippingLabels403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_404
-     * .
      */
     public function testGetShippingLabels404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_415
-     * .
      */
     public function testGetShippingLabels415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_429
-     * .
      */
     public function testGetShippingLabels429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_500
-     * .
      */
     public function testGetShippingLabels500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getShippingLabels_503
-     * .
      */
     public function testGetShippingLabels503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_202
-     * .
      */
     public function testSubmitShippingLabelRequest202()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testSubmitShippingLabelRequest202', 'VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('VendorShippingLabelsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'submitShippingLabelRequest'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->submitShippingLabelRequestWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(202, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 202);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for submitShippingLabelRequest_400
-     * .
      */
     public function testSubmitShippingLabelRequest400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_403
-     * .
      */
     public function testSubmitShippingLabelRequest403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_404
-     * .
      */
     public function testSubmitShippingLabelRequest404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_413
-     * .
      */
     public function testSubmitShippingLabelRequest413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_415
-     * .
      */
     public function testSubmitShippingLabelRequest415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_429
-     * .
      */
     public function testSubmitShippingLabelRequest429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_500
-     * .
      */
     public function testSubmitShippingLabelRequest500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for submitShippingLabelRequest_503
-     * .
      */
     public function testSubmitShippingLabelRequest503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\ScheduleSelfShipAppointmentRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentRequest;
 
 /**
  * ScheduleSelfShipAppointmentRequestTest Class Doc Comment
@@ -56,7 +56,7 @@ class ScheduleSelfShipAppointmentRequestTest extends TestCase
      */
     public function testPropertyReasonComment()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\ReasonComment();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\ReasonComment();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

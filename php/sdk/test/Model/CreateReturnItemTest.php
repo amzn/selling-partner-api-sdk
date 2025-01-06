@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\CreateReturnItem;
+use OpenAPI\Client\Model\fulfillmentOutbound\CreateReturnItem;
 
 /**
  * CreateReturnItemTest Class Doc Comment

@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **value_as_boolean** | **bool** | The value when the data type is boolean. | [optional]
 **value_as_integer** | **int** | The value when the data type is integer. | [optional]
 **value_as_timestamp** | **\DateTime** | Date-time formatted timestamp. | [optional]
-**value_as_address** | [**\OpenAPI\Client\Model\merchantfulfillment\Address**](Address.md) |  | [optional]
-**value_as_weight** | [**\OpenAPI\Client\Model\merchantfulfillment\Weight**](Weight.md) |  | [optional]
-**value_as_dimension** | [**\OpenAPI\Client\Model\merchantfulfillment\Length**](Length.md) |  | [optional]
-**value_as_currency** | [**\OpenAPI\Client\Model\merchantfulfillment\CurrencyAmount**](CurrencyAmount.md) |  | [optional]
+**value_as_address** | [**\OpenAPI\Client\Model\merchantFulfillment\Address**](Address.md) |  | [optional]
+**value_as_weight** | [**\OpenAPI\Client\Model\merchantFulfillment\Weight**](Weight.md) |  | [optional]
+**value_as_dimension** | [**\OpenAPI\Client\Model\merchantFulfillment\Length**](Length.md) |  | [optional]
+**value_as_currency** | [**\OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount**](CurrencyAmount.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

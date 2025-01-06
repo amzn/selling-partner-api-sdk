@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\TaxItemDetails;
+use OpenAPI\Client\Model\vendorDfOrders\TaxItemDetails;
 
 /**
  * TaxItemDetailsTest Class Doc Comment

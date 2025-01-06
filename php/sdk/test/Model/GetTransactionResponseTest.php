@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.transactionstatus\GetTransactionResponse;
+use OpenAPI\Client\Model\vendorTransactionStatus\GetTransactionResponse;
 
 /**
  * GetTransactionResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetTransactionResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor.transactionstatus\TransactionStatus();
+        $testValue = new \OpenAPI\Client\Model\vendorTransactionStatus\TransactionStatus();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

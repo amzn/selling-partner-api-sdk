@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\UpdateInboundPlanNameRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\UpdateInboundPlanNameRequest;
 
 /**
  * UpdateInboundPlanNameRequestTest Class Doc Comment

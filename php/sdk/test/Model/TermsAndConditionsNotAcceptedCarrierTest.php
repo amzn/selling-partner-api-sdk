@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\TermsAndConditionsNotAcceptedCarrier;
+use OpenAPI\Client\Model\merchantFulfillment\TermsAndConditionsNotAcceptedCarrier;
 
 /**
  * TermsAndConditionsNotAcceptedCarrierTest Class Doc Comment

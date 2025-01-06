@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\ParagraphComponent;
+use OpenAPI\Client\Model\aplusContent\ParagraphComponent;
 
 /**
  * ParagraphComponentTest Class Doc Comment

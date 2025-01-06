@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ShipmentEvent;
+use OpenAPI\Client\Model\financesV0\ShipmentEvent;
 
 /**
  * ShipmentEventTest Class Doc Comment

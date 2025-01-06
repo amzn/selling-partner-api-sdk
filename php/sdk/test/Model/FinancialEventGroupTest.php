@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\FinancialEventGroup;
+use OpenAPI\Client\Model\financesV0\FinancialEventGroup;
 
 /**
  * FinancialEventGroupTest Class Doc Comment
@@ -90,7 +90,7 @@ class FinancialEventGroupTest extends TestCase
     public function testPropertyOriginalTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setOriginalTotal($testValue);
         $this->assertEquals($testValue, $this->model->getOriginalTotal());
@@ -102,7 +102,7 @@ class FinancialEventGroupTest extends TestCase
     public function testPropertyConvertedTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setConvertedTotal($testValue);
         $this->assertEquals($testValue, $this->model->getConvertedTotal());
@@ -148,7 +148,7 @@ class FinancialEventGroupTest extends TestCase
     public function testPropertyBeginningBalance()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setBeginningBalance($testValue);
         $this->assertEquals($testValue, $this->model->getBeginningBalance());

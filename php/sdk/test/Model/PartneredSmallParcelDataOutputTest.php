@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PartneredSmallParcelDataOutput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PartneredSmallParcelDataOutput;
 
 /**
  * PartneredSmallParcelDataOutputTest Class Doc Comment
@@ -68,7 +68,7 @@ class PartneredSmallParcelDataOutputTest extends TestCase
     public function testPropertyPartneredEstimate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\PartneredEstimate();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\PartneredEstimate();
         
         $this->model->setPartneredEstimate($testValue);
         $this->assertEquals($testValue, $this->model->getPartneredEstimate());

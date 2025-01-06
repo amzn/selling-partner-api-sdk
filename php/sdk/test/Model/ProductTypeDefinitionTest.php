@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\producttypedefinitions\ProductTypeDefinition;
+use OpenAPI\Client\Model\productTypeDefinitions\ProductTypeDefinition;
 
 /**
  * ProductTypeDefinitionTest Class Doc Comment
@@ -57,7 +57,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertyMetaSchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\producttypedefinitions\SchemaLink();
+        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\SchemaLink();
         
         $this->model->setMetaSchema($testValue);
         $this->assertEquals($testValue, $this->model->getMetaSchema());
@@ -69,7 +69,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertySchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\producttypedefinitions\SchemaLink();
+        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\SchemaLink();
         
         $this->model->setSchema($testValue);
         $this->assertEquals($testValue, $this->model->getSchema());
@@ -105,7 +105,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertyPropertyGroups()
     {
         
-        $testValue = new array<string,\OpenAPI\Client\Model\producttypedefinitions\PropertyGroup>();
+        $testValue = new array<string,\OpenAPI\Client\Model\productTypeDefinitions\PropertyGroup>();
         
         $this->model->setPropertyGroups($testValue);
         $this->assertEquals($testValue, $this->model->getPropertyGroups());
@@ -161,7 +161,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertyProductTypeVersion()
     {
         
-        $testValue = new \OpenAPI\Client\Model\producttypedefinitions\ProductTypeVersion();
+        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\ProductTypeVersion();
         
         $this->model->setProductTypeVersion($testValue);
         $this->assertEquals($testValue, $this->model->getProductTypeVersion());

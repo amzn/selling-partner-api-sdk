@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\ASINIdentifier;
+use OpenAPI\Client\Model\pricingV0\ASINIdentifier;
 
 /**
  * ASINIdentifierTest Class Doc Comment

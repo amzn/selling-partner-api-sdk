@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\AdjustmentItem;
+use OpenAPI\Client\Model\financesV0\AdjustmentItem;
 
 /**
  * AdjustmentItemTest Class Doc Comment
@@ -68,7 +68,7 @@ class AdjustmentItemTest extends TestCase
     public function testPropertyPerUnitAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setPerUnitAmount($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitAmount());
@@ -80,7 +80,7 @@ class AdjustmentItemTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());

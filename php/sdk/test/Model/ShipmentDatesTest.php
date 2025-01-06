@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.orders\ShipmentDates;
+use OpenAPI\Client\Model\vendorDfOrders\ShipmentDates;
 
 /**
  * ShipmentDatesTest Class Doc Comment

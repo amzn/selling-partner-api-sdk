@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\DropOffLocation;
+use OpenAPI\Client\Model\fulfillmentOutbound\DropOffLocation;
 
 /**
  * DropOffLocationTest Class Doc Comment

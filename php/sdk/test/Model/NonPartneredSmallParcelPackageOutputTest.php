@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\NonPartneredSmallParcelPackageOutput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredSmallParcelPackageOutput;
 
 /**
  * NonPartneredSmallParcelPackageOutputTest Class Doc Comment
@@ -78,7 +78,7 @@ class NonPartneredSmallParcelPackageOutputTest extends TestCase
      */
     public function testPropertyPackageStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PackageStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PackageStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

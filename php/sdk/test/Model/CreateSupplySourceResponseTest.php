@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplysources\CreateSupplySourceResponse;
+use OpenAPI\Client\Model\supplySources\CreateSupplySourceResponse;
 
 /**
  * CreateSupplySourceResponseTest Class Doc Comment

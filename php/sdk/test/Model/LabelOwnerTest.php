@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\LabelOwner;
+use OpenAPI\Client\Model\fulfillmentInbound\LabelOwner;
 
 /**
  * LabelOwnerTest Class Doc Comment

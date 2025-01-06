@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\TransportContent;
+use OpenAPI\Client\Model\fulfillmentInboundV0\TransportContent;
 
 /**
  * TransportContentTest Class Doc Comment
@@ -57,7 +57,7 @@ class TransportContentTest extends TestCase
     public function testPropertyTransportHeader()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\TransportHeader();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\TransportHeader();
         
         $this->model->setTransportHeader($testValue);
         $this->assertEquals($testValue, $this->model->getTransportHeader());
@@ -69,7 +69,7 @@ class TransportContentTest extends TestCase
     public function testPropertyTransportDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\TransportDetailOutput();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\TransportDetailOutput();
         
         $this->model->setTransportDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTransportDetails());
@@ -81,7 +81,7 @@ class TransportContentTest extends TestCase
     public function testPropertyTransportResult()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\TransportResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\TransportResult();
         
         $this->model->setTransportResult($testValue);
         $this->assertEquals($testValue, $this->model->getTransportResult());

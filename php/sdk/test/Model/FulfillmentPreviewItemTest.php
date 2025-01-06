@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentoutbound\FulfillmentPreviewItem;
+use OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentPreviewItem;
 
 /**
  * FulfillmentPreviewItemTest Class Doc Comment
@@ -90,7 +90,7 @@ class FulfillmentPreviewItemTest extends TestCase
     public function testPropertyEstimatedShippingWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentoutbound\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentOutbound\Weight();
         
         $this->model->setEstimatedShippingWeight($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedShippingWeight());

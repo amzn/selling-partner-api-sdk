@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\SetPrepDetailsRequest;
+use OpenAPI\Client\Model\fulfillmentInbound\SetPrepDetailsRequest;
 
 /**
  * SetPrepDetailsRequestTest Class Doc Comment

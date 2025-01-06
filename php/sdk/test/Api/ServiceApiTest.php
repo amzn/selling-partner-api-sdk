@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\ServiceApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,98 @@ class ServiceApiTest extends TestCase
 
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_200
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId200')) {
+             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000Z}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;appointmentId&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-2-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;appointmentId&quot; : &quot;validJobId-2-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'addAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{appointmentId&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,40 +240,84 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_400
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId400')) {
+             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000Z, durationInMinutes&#x3D;60}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'addAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId], details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -227,40 +330,77 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_403
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId403()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId403')) {
+             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000Z}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;UnauthorizedAction&quot;,
+          &quot;message&quot; : &quot;Not authorized to access this resource. Please check your input again.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'addAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;UnauthorizedAction, message&#x3D;Not authorized to access this resource. Please check your input again., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(403, $statusCode);
 
             // Handle different response codes
@@ -273,67 +413,261 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_404
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_413
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_415
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_422
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId422')) {
+             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000+05:30}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000+05:30&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;ISO8601 time 2021-01-01T10:00:00.000+05:30 is not in UTC.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10-00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to parse ISO8601 input: 2021-01-01T10-00:00.000Z&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;No job exist with jobId : invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;completedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Operation not allowed on job with jobId : completedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468 and jobState : COMPLETED&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;withActiveAppointmentJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : withActiveAppointmentJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Job already has an active appointmentId.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2019-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Start time of appointment should be in the future.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2022-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Start time for appointment is beyond the maximum allowed period of 365 days.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:15:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Appointment slot is not available.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'addAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;ISO8601 time 2021-01-01T10:00:00.000+05:30 is not in UTC., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'addAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -346,67 +680,151 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_429
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_500
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for addAppointmentForServiceJobByServiceJobId_503
-     * .
      */
     public function testAddAppointmentForServiceJobByServiceJobId503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for assignAppointmentResources_200
-     * .
      */
     public function testAssignAppointmentResources200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources200')) {
+             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687}, appointmentId&#x3D;{value&#x3D;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d}, body&#x3D;{value&#x3D;{resources&#x3D;[{resourceId&#x3D;validResourceId-A8B3M999LMHF2}, {resourceId&#x3D;validResourceId-AMIDIAX1H5V}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/AssignAppointmentResourcesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ { } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;overBookedResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;warnings&quot; : [ {
+            &quot;code&quot; : &quot;RESOURCES_OVERBOOKED&quot;,
+            &quot;message&quot; : &quot;Resources overbooked for this time window.&quot;
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidRequestJson
+                $jsonSchema,
+                'assignAppointmentResources'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->assignAppointmentResourcesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -419,40 +837,186 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for assignAppointmentResources_400
-     * .
      */
     public function testAssignAppointmentResources400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources400')) {
+             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}, appointmentId&#x3D;{value&#x3D;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d}, body&#x3D;{value&#x3D;{resources&#x3D;[{resourceId&#x3D;validResourceId-A8B3M999LMHF2}, {resourceId&#x3D;validResourceId-AMIDIAX1H5V}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/AssignAppointmentResourcesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;nullAppointmentId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [appointmentId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;nullAppointmentId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [appointmentId, serviceJobId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : { }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Resources not provided in input JSON payload.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Resources must have size greater than or equal to 1.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidRequestJson
+                $jsonSchema,
+                'assignAppointmentResources'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId], details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->assignAppointmentResourcesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -465,40 +1029,82 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for assignAppointmentResources_403
-     * .
      */
     public function testAssignAppointmentResources403()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources403')) {
+             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;unauthorizedJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687}, appointmentId&#x3D;{value&#x3D;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d}, body&#x3D;{value&#x3D;{resources&#x3D;[{resourceId&#x3D;validResourceId-A8B3M999LMHF2}, {resourceId&#x3D;validResourceId-AMIDIAX1H5V}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/AssignAppointmentResourcesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;UnauthorizedAction&quot;,
+          &quot;message&quot; : &quot;Not authorized to access this resource. Please check your input again.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidRequestJson
+                $jsonSchema,
+                'assignAppointmentResources'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;UnauthorizedAction, message&#x3D;Not authorized to access this resource. Please check your input again., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->assignAppointmentResourcesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(403, $statusCode);
 
             // Handle different response codes
@@ -511,67 +1117,292 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for assignAppointmentResources_404
-     * .
      */
     public function testAssignAppointmentResources404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for assignAppointmentResources_413
-     * .
      */
     public function testAssignAppointmentResources413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for assignAppointmentResources_415
-     * .
      */
     public function testAssignAppointmentResources415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for assignAppointmentResources_422
-     * .
      */
     public function testAssignAppointmentResources422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources422')) {
+             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;invalidJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687}, appointmentId&#x3D;{value&#x3D;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d}, body&#x3D;{value&#x3D;{resources&#x3D;[{resourceId&#x3D;validResourceId-A8B3M999LMHF2}, {resourceId&#x3D;validResourceId-AMIDIAX1H5V}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/AssignAppointmentResourcesResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;No job exists with jobId : invalidJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;invalidAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to Update Appointment for jobId : invalidJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687, appointmentId : invalidAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d, reason : No appointment exists with appointmentId: invalidAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;badResourceId&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid resourceId : badResourceId provided in the input.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;completedJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;completedAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Operation not allowed on job with jobId : completedJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687 and jobState : COMPLETED&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;cancelledJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;cancelledAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Operation not allowed on job with jobId : cancelledJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687 and jobState : CANCELLED&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;cancelledAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Appointment metadata update is not allowed for appointmentId cancelledAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resources&quot; : [ {
+                &quot;resourceId&quot; : &quot;invalidResourceId-A8B3M999LMHF2&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;invalidResourceId-AMIDIAX1H5V&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;RESOURCES_MISMATCHED_SERVICE_LOCATION_TYPE&quot;,
+          &quot;message&quot; : &quot;Resources do not have same service location type as job. Applicable resources: A8B3M999LMHF2,AMIDIAX1H5V&quot;,
+          &quot;details&quot; : &quot;&quot;
+        }, {
+          &quot;code&quot; : &quot;RESOURCES_MISSING_REQUIRED_SKILLS&quot;,
+          &quot;message&quot; : &quot;Resources Missing required XYZ skills. Applicable resources: A8B3M999LMHF2,AMIDIAX1H5V&quot;,
+          &quot;details&quot; : &quot;&quot;
+        }, {
+          &quot;code&quot; : &quot;RESOURCES_NOT_AVAILABLE_IN_LOCATION&quot;,
+          &quot;message&quot; : &quot;Resources are not available in the store. Applicable resources: A8B3M999LMHF2,AMIDIAX1H5V&quot;,
+          &quot;details&quot; : &quot;&quot;
+        }, {
+          &quot;code&quot; : &quot;RESOURCES_NOT_REGISTERED_UNDER_MERCHANT&quot;,
+          &quot;message&quot; : &quot;Resources are not registered under this Merchant. Applicable resources: A8B3M999LMHF2,AMIDIAX1H5V&quot;,
+          &quot;details&quot; : &quot;&quot;
+        }, {
+          &quot;code&quot; : &quot;RESOURCES_BACKGROUND_CHECK_INCOMPLETE&quot;,
+          &quot;message&quot; : &quot;Resources background check is incomplete. Applicable resources: A8B3M999LMHF2,AMIDIAX1H5V&quot;,
+          &quot;details&quot; : &quot;&quot;
+        }, {
+          &quot;code&quot; : &quot;RESOURCES_NOT_AVAILABLE_IN_TIME_WINDOW&quot;,
+          &quot;message&quot; : &quot;Resources do not have sufficient available capacity. Applicable resources: A8B3M999LMHF2,AMIDIAX1H5V&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidRequestJson
+                $jsonSchema,
+                'assignAppointmentResources'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;No job exists with jobId : invalidJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'assignAppointmentResources',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->assignAppointmentResourcesWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -584,67 +1415,94 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for assignAppointmentResources_429
-     * .
      */
     public function testAssignAppointmentResources429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for assignAppointmentResources_500
-     * .
      */
     public function testAssignAppointmentResources500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for assignAppointmentResources_503
-     * .
      */
     public function testAssignAppointmentResources503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelReservation_204
-     * .
      */
     public function testCancelReservation204()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelReservation204')) {
+             if ($this->testHelper->shouldSkipTest('testCancelReservation204', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{reservationId&#x3D;{value&#x3D;validReservationId-9c156c44-8315-4aeb-bb36-e056fa827e36}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;reservationId&quot; : {
+            &quot;value&quot; : &quot;validReservationId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(204, $statusCode);
 
             // Handle different response codes
@@ -657,40 +1515,75 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelReservation_400
-     * .
      */
     public function testCancelReservation400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelReservation400')) {
+             if ($this->testHelper->shouldSkipTest('testCancelReservation400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{reservationId&#x3D;{value&#x3D;invalidReservationId-a654baa-8315-4aeb-bb36-e056fa827e36}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;reservationId&quot; : {
+            &quot;value&quot; : &quot;invalidReservationId-a654baa-8315-4aeb-bb36-e056fa827e36&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [reservationId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{message&#x3D;Missing or invalid request parameters: [reservationId], code&#x3D;InvalidInput}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -703,49 +1596,83 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelReservation_403
-     * .
      */
     public function testCancelReservation403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelReservation_404
-     * .
      */
     public function testCancelReservation404()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelReservation404')) {
+             if ($this->testHelper->shouldSkipTest('testCancelReservation404', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{reservationId&#x3D;{value&#x3D;nonExistingReservationId-a3726c44-8315-4aeb-bb36-e056fa827e36}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The reservation specified does not exist.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;reservationId&quot; : {
+            &quot;value&quot; : &quot;nonExistingReservationId-a3726c44-8315-4aeb-bb36-e056fa827e36&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Reservation does not exist&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{message&#x3D;Reservation does not exist, code&#x3D;InvalidInput}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(404, $statusCode);
 
             // Handle different response codes
@@ -758,85 +1685,113 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelReservation_413
-     * .
      */
     public function testCancelReservation413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelReservation_415
-     * .
      */
     public function testCancelReservation415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelReservation_429
-     * .
      */
     public function testCancelReservation429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelReservation_500
-     * .
      */
     public function testCancelReservation500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelReservation_503
-     * .
      */
     public function testCancelReservation503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_200
-     * .
      */
     public function testCancelServiceJobByServiceJobId200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId200')) {
+             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}, cancellationReasonCode&#x3D;{value&#x3D;V1}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;V1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -849,40 +1804,115 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_400
-     * .
      */
     public function testCancelServiceJobByServiceJobId400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId400')) {
+             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}, cancellationReasonCode&#x3D;{value&#x3D;V1}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;V1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;NULL&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [cancellationReasonCode]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;NULL&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId, cancellationReasonCode]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId], details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -895,40 +1925,78 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_403
-     * .
      */
     public function testCancelServiceJobByServiceJobId403()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId403')) {
+             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;unauthorizedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}, cancellationReasonCode&#x3D;{value&#x3D;V1}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;V1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;UnauthorizedAction&quot;,
+          &quot;message&quot; : &quot;Not authorized to access this resource.Please check your input again&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;UnauthorizedAction, message&#x3D;Not authorized to access this resource.Please check your input again, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(403, $statusCode);
 
             // Handle different response codes
@@ -941,67 +2009,139 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_404
-     * .
      */
     public function testCancelServiceJobByServiceJobId404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_413
-     * .
      */
     public function testCancelServiceJobByServiceJobId413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_415
-     * .
      */
     public function testCancelServiceJobByServiceJobId415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_422
-     * .
      */
     public function testCancelServiceJobByServiceJobId422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId422')) {
+             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;completedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}, cancellationReasonCode&#x3D;{value&#x3D;V1}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CancelServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;completedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;V1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Job with jobId completedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut and jobStatus COMPLETED cannot be cancelled&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;INV1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Received invalid input reason code IV1 for jobId validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          },
+          &quot;cancellationReasonCode&quot; : {
+            &quot;value&quot; : &quot;V1&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Job not found for jobId invalidJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'cancelServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Job with jobId completedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut and jobStatus COMPLETED cannot be cancelled, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'cancelServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->cancelServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -1014,67 +2154,94 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_429
-     * .
      */
     public function testCancelServiceJobByServiceJobId429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_500
-     * .
      */
     public function testCancelServiceJobByServiceJobId500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for cancelServiceJobByServiceJobId_503
-     * .
      */
     public function testCancelServiceJobByServiceJobId503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for completeServiceJobByServiceJobId_200
-     * .
      */
     public function testCompleteServiceJobByServiceJobId200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId200')) {
+             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CompleteServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'completeServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->completeServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1087,40 +2254,76 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for completeServiceJobByServiceJobId_400
-     * .
      */
     public function testCompleteServiceJobByServiceJobId400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId400')) {
+             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CompleteServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'completeServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId], details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->completeServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1133,40 +2336,70 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for completeServiceJobByServiceJobId_403
-     * .
      */
     public function testCompleteServiceJobByServiceJobId403()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId403')) {
+             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;unauthorizedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CompleteServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;UnauthorizedAction&quot;,
+          &quot;message&quot; : &quot;Not authorized to access this resource.Please check your input again&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'completeServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;UnauthorizedAction, message&#x3D;Not authorized to access this resource.Please check your input again, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->completeServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(403, $statusCode);
 
             // Handle different response codes
@@ -1179,67 +2412,115 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for completeServiceJobByServiceJobId_404
-     * .
      */
     public function testCompleteServiceJobByServiceJobId404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for completeServiceJobByServiceJobId_413
-     * .
      */
     public function testCompleteServiceJobByServiceJobId413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for completeServiceJobByServiceJobId_415
-     * .
      */
     public function testCompleteServiceJobByServiceJobId415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for completeServiceJobByServiceJobId_422
-     * .
      */
     public function testCompleteServiceJobByServiceJobId422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId422')) {
+             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;cancelledJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CompleteServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;cancelledJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Operation not allowed on job with jobId : cancelledJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut and jobState : CANCELLED&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Job not found for jobId invalidJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'completeServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Operation not allowed on job with jobId : cancelledJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut and jobState : CANCELLED, details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'completeServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->completeServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -1252,67 +2533,132 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for completeServiceJobByServiceJobId_429
-     * .
      */
     public function testCompleteServiceJobByServiceJobId429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for completeServiceJobByServiceJobId_500
-     * .
      */
     public function testCompleteServiceJobByServiceJobId500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for completeServiceJobByServiceJobId_503
-     * .
      */
     public function testCompleteServiceJobByServiceJobId503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_200
-     * .
      */
     public function testCreateReservation200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateReservation200')) {
+             if ($this->testHelper->shouldSkipTest('testCreateReservation200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{resourceId&#x3D;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36, reservation&#x3D;{availability&#x3D;{startTime&#x3D;2020-04-01T10:00:00.00-07, endTime&#x3D;2020-04-01T11:00:00.00-07}, type&#x3D;BREAK}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : {
+                &quot;availability&quot; : {
+                  &quot;startTime&quot; : &quot;2020-04-01T10:00:00.00-07&quot;,
+                  &quot;endTime&quot; : &quot;2020-04-01T11:00:00.00-07&quot;
+                },
+                &quot;type&quot; : &quot;BREAK&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;reservation&quot; : {
+            &quot;reservationId&quot; : &quot;457&quot;
+          }
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;invalidResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : {
+                &quot;availability&quot; : {
+                  &quot;startTime&quot; : &quot;2020-04-01T10:00:00.00-07&quot;,
+                  &quot;endTime&quot; : &quot;2020-04-01T11:00:00.00-07&quot;
+                },
+                &quot;type&quot; : &quot;BREAK&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Invalid request parameters: [resourceId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'createReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{reservation&#x3D;{reservationId&#x3D;457}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1325,40 +2671,95 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for createReservation_400
-     * .
      */
     public function testCreateReservation400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateReservation400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateReservation400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{resourceId&#x3D;null, reservation&#x3D;{}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;null&quot;,
+              &quot;reservation&quot; : { }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [resourceId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : { }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [reservation]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'createReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{message&#x3D;Missing or invalid request parameters: [resourceId], code&#x3D;InvalidInput}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1371,103 +2772,140 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for createReservation_403
-     * .
      */
     public function testCreateReservation403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_404
-     * .
      */
     public function testCreateReservation404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_413
-     * .
      */
     public function testCreateReservation413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_415
-     * .
      */
     public function testCreateReservation415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_429
-     * .
      */
     public function testCreateReservation429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_500
-     * .
      */
     public function testCreateReservation500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createReservation_503
-     * .
      */
     public function testCreateReservation503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_200
-     * .
      */
     public function testCreateServiceDocumentUploadDestination200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination200')) {
+             if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{contentType&#x3D;PNG, contentLength&#x3D;1386437, contentMD5&#x3D;97WrSKv9ffHkDopCdB32mw&#x3D;&#x3D;}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully created an upload destination for the given resource.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-requestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateServiceDocumentUploadDestination&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;contentType&quot; : &quot;PNG&quot;,
+              &quot;contentLength&quot; : 1386437,
+              &quot;contentMD5&quot; : &quot;97WrSKv9ffHkDopCdB32mw&#x3D;&#x3D;&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;encryptionDetails&quot; : {
+            &quot;standard&quot; : &quot;AES&quot;,
+            &quot;initializationVector&quot; : &quot;paPlpo1iBBLmyOhU0mIo5g&#x3D;&#x3D;&quot;,
+            &quot;key&quot; : &quot;PDuDJm2l+0ydObrRpS48tB+t2qbtOmWhSEOiFWKnH2k&#x3D;&quot;
+          },
+          &quot;uploadDestinationId&quot; : &quot;amzn1.tortuga.3.15ba627d-8e24-42ad-89d1-5eb01f5ba0af.T15MXQRST78UTC&lt;-&gt;amzn1.tortuga.1.token.DizquVc+EoX/lWAV/7WTlw&#x3D;&#x3D;&quot;,
+          &quot;url&quot; : &quot;https://tortuga-devo.s3-us-west-2.amazonaws.com/%2FThirtyDays/amzn1.tortuga.3.15ba627d-8e24-42ad-89d1-5eb01f5ba0af.T15MXQRST78UTC?X-Amz-Algorithm&#x3D;AWS4-HMAC-SHA256&amp;X-Amz-Date&#x3D;20210108T103450Z&amp;X-Amz-SignedHeaders&#x3D;content-type%3Bhost&amp;X-Amz-Expires&#x3D;300&amp;X-Amz-Credential&#x3D;AKIAUR3X5C6O5CADVWED%2F20210108%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Signature&#x3D;dd2fefe6c6102aba14bab1481b33cf07dcc0385bd49f7eb5796d77b082ea5ba3&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createServiceDocumentUploadDestination',
-                $invalidRequestJson
+                $jsonSchema,
+                'createServiceDocumentUploadDestination'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{encryptionDetails&#x3D;{standard&#x3D;AES, initializationVector&#x3D;paPlpo1iBBLmyOhU0mIo5g&#x3D;&#x3D;, key&#x3D;PDuDJm2l+0ydObrRpS48tB+t2qbtOmWhSEOiFWKnH2k&#x3D;}, uploadDestinationId&#x3D;amzn1.tortuga.3.15ba627d-8e24-42ad-89d1-5eb01f5ba0af.T15MXQRST78UTC&lt;-&gt;amzn1.tortuga.1.token.DizquVc+EoX/lWAV/7WTlw&#x3D;&#x3D;, url&#x3D;https://tortuga-devo.s3-us-west-2.amazonaws.com/%2FThirtyDays/amzn1.tortuga.3.15ba627d-8e24-42ad-89d1-5eb01f5ba0af.T15MXQRST78UTC?X-Amz-Algorithm&#x3D;AWS4-HMAC-SHA256&amp;X-Amz-Date&#x3D;20210108T103450Z&amp;X-Amz-SignedHeaders&#x3D;content-type%3Bhost&amp;X-Amz-Expires&#x3D;300&amp;X-Amz-Credential&#x3D;AKIAUR3X5C6O5CADVWED%2F20210108%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Signature&#x3D;dd2fefe6c6102aba14bab1481b33cf07dcc0385bd49f7eb5796d77b082ea5ba3}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createServiceDocumentUploadDestination',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createServiceDocumentUploadDestinationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1480,40 +2918,110 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for createServiceDocumentUploadDestination_400
-     * .
      */
     public function testCreateServiceDocumentUploadDestination400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination400')) {
+             if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateServiceDocumentUploadDestination&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : { }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [contentType, contentLength].&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;contentType&quot; : &quot;PNG&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [contentLength].&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;contentLength&quot; : 123
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [contentType].&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createServiceDocumentUploadDestination',
-                $invalidRequestJson
+                $jsonSchema,
+                'createServiceDocumentUploadDestination'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [contentType, contentLength]., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createServiceDocumentUploadDestination',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createServiceDocumentUploadDestinationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1526,76 +3034,112 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for createServiceDocumentUploadDestination_403
-     * .
      */
     public function testCreateServiceDocumentUploadDestination403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_404
-     * .
      */
     public function testCreateServiceDocumentUploadDestination404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_413
-     * .
      */
     public function testCreateServiceDocumentUploadDestination413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_415
-     * .
      */
     public function testCreateServiceDocumentUploadDestination415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_422
-     * .
      */
     public function testCreateServiceDocumentUploadDestination422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination422')) {
+             if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{contentType&#x3D;PNGr, contentLength&#x3D;1386437, contentMD5&#x3D;97WrSKv9ffHkDopCdB32mw&#x3D;&#x3D;}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateServiceDocumentUploadDestination&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;contentType&quot; : &quot;PNGr&quot;,
+              &quot;contentLength&quot; : 1386437,
+              &quot;contentMD5&quot; : &quot;97WrSKv9ffHkDopCdB32mw&#x3D;&#x3D;&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;contentType parameter is invalid. Use one of [&#39;TIFF&#39;, &#39;JPG&#39;, &#39;PNG&#39;, &#39;JPEG&#39;, &#39;GIF&#39;, &#39;PDF&#39;]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'createServiceDocumentUploadDestination',
-                $invalidRequestJson
+                $jsonSchema,
+                'createServiceDocumentUploadDestination'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;contentType parameter is invalid. Use one of [&#39;TIFF&#39;, &#39;JPG&#39;, &#39;PNG&#39;, &#39;JPEG&#39;, &#39;GIF&#39;, &#39;PDF&#39;], details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'createServiceDocumentUploadDestination',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->createServiceDocumentUploadDestinationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -1608,67 +3152,145 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for createServiceDocumentUploadDestination_429
-     * .
      */
     public function testCreateServiceDocumentUploadDestination429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_500
-     * .
      */
     public function testCreateServiceDocumentUploadDestination500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for createServiceDocumentUploadDestination_503
-     * .
      */
     public function testCreateServiceDocumentUploadDestination503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_200
-     * .
      */
     public function testGetAppointmentSlots200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots200')) {
+             if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{asin&#x3D;{value&#x3D;B07BB1RGT5}, storeId&#x3D;{value&#x3D;53694163-6dc8-4f80-b6b1-ec47b7b9747e}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAppointmentSlotsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B07BB1RGT5&quot;
+          },
+          &quot;storeId&quot; : {
+            &quot;value&quot; : &quot;53694163-6dc8-4f80-b6b1-ec47b7b9747e&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+          &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+          &quot;schedulingType&quot; : &quot;REAL_TIME_SCHEDULING&quot;,
+          &quot;appointmentSlots&quot; : [ {
+            &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;capacity&quot; : 20
+          }, {
+            &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;capacity&quot; : 0
+          } ]
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B07BB1RGT6&quot;
+          },
+          &quot;storeId&quot; : {
+            &quot;value&quot; : &quot;53694163-6dc8-4f80-b6b1-ec47b7b9747f&quot;
+          },
+          &quot;startTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T00:00:00Z&quot;
+          },
+          &quot;endTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T02:00:00Z&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+          &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+          &quot;schedulingType&quot; : &quot;NON_REAL_TIME_SCHEDULING&quot;,
+          &quot;appointmentSlots&quot; : [ {
+            &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;capacity&quot; : 20
+          }, {
+            &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;capacity&quot; : 0
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAppointmentSlots',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAppointmentSlots'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{startTime&#x3D;2021-04-04T00:00:00Z, endTime&#x3D;2021-04-04T02:00:00Z, schedulingType&#x3D;REAL_TIME_SCHEDULING, appointmentSlots&#x3D;[{startTime&#x3D;2021-04-04T00:00:00Z, endTime&#x3D;2021-04-04T01:0:00Z, capacity&#x3D;20}, {startTime&#x3D;2021-04-04T01:00:00Z, endTime&#x3D;2021-04-04T02:0:00Z, capacity&#x3D;0}]}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAppointmentSlots',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAppointmentSlotsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1681,40 +3303,121 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getAppointmentSlots_400
-     * .
      */
     public function testGetAppointmentSlots400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots400')) {
+             if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{asin&#x3D;{value&#x3D;nullValue}, storeId&#x3D;{value&#x3D;53694163-6dc8-4f80-b6b1-ec47b7b9747e}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAppointmentSlotsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;nullValue&quot;
+          },
+          &quot;storeId&quot; : {
+            &quot;value&quot; : &quot;53694163-6dc8-4f80-b6b1-ec47b7b9747e&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [asin]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B07BB1RGT5&quot;
+          },
+          &quot;storeId&quot; : {
+            &quot;value&quot; : &quot;53694163-6dc8-4f80-b6b1-ec47b7b9747e&quot;
+          },
+          &quot;endTime&quot; : {
+            &quot;value&quot; : &quot;20-21-04-04T01:00:00Z&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Range End Time is not a valid ISO date/time object&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B07BB1RGT5&quot;
+          },
+          &quot;storeId&quot; : {
+            &quot;value&quot; : &quot;53694163-6dc8-4f80-b6b1-ec47b7b9747e&quot;
+          },
+          &quot;startTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T05:00:00Z&quot;
+          },
+          &quot;endTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T02:00:00Z&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Range End Time should be after Range Start Time&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAppointmentSlots',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAppointmentSlots'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [asin]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAppointmentSlots',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAppointmentSlotsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1727,103 +3430,171 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getAppointmentSlots_403
-     * .
      */
     public function testGetAppointmentSlots403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_404
-     * .
      */
     public function testGetAppointmentSlots404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_415
-     * .
      */
     public function testGetAppointmentSlots415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_422
-     * .
      */
     public function testGetAppointmentSlots422()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_429
-     * .
      */
     public function testGetAppointmentSlots429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_500
-     * .
      */
     public function testGetAppointmentSlots500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmentSlots_503
-     * .
      */
     public function testGetAppointmentSlots503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_200
-     * .
      */
     public function testGetAppointmmentSlotsByJobId200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId200')) {
+             if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJob-9c156c44-8315-4aeb-bb36-e056fa827e36}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAppointmentSlotsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJob-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+          &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+          &quot;schedulingType&quot; : &quot;REAL_TIME_SCHEDULING&quot;,
+          &quot;appointmentSlots&quot; : [ {
+            &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;capacity&quot; : 20
+          }, {
+            &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;capacity&quot; : 0
+          } ]
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJob-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;startTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T00:00:00Z&quot;
+          },
+          &quot;endTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T02:00:00Z&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+          &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+          &quot;schedulingType&quot; : &quot;REAL_TIME_SCHEDULING&quot;,
+          &quot;appointmentSlots&quot; : [ {
+            &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;capacity&quot; : 20
+          }, {
+            &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;capacity&quot; : 0
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAppointmmentSlotsByJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAppointmmentSlotsByJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{startTime&#x3D;2021-04-04T00:00:00Z, endTime&#x3D;2021-04-04T02:00:00Z, schedulingType&#x3D;REAL_TIME_SCHEDULING, appointmentSlots&#x3D;[{startTime&#x3D;2021-04-04T00:00:00Z, endTime&#x3D;2021-04-04T01:0:00Z, capacity&#x3D;20}, {startTime&#x3D;2021-04-04T01:00:00Z, endTime&#x3D;2021-04-04T02:0:00Z, capacity&#x3D;0}]}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAppointmmentSlotsByJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAppointmmentSlotsByJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1836,40 +3607,112 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_400
-     * .
      */
     public function testGetAppointmmentSlotsByJobId400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId400')) {
+             if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetAppointmentSlotsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJob-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;endTime&quot; : {
+            &quot;value&quot; : &quot;20-21-04-04T01:00:00Z&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;End Time is not a valid ISO date/time object&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJob-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;startTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T05:00:00Z&quot;
+          },
+          &quot;endTime&quot; : {
+            &quot;value&quot; : &quot;2021-04-04T02:00:00Z&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;End Time should be after Start Time&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getAppointmmentSlotsByJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'getAppointmmentSlotsByJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getAppointmmentSlotsByJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getAppointmmentSlotsByJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -1882,103 +3725,154 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_403
-     * .
      */
     public function testGetAppointmmentSlotsByJobId403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_404
-     * .
      */
     public function testGetAppointmmentSlotsByJobId404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_415
-     * .
      */
     public function testGetAppointmmentSlotsByJobId415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_422
-     * .
      */
     public function testGetAppointmmentSlotsByJobId422()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_429
-     * .
      */
     public function testGetAppointmmentSlotsByJobId429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_500
-     * .
      */
     public function testGetAppointmmentSlotsByJobId500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getAppointmmentSlotsByJobId_503
-     * .
      */
     public function testGetAppointmmentSlotsByJobId503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_200
-     * .
      */
     public function testGetFixedSlotCapacity200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity200')) {
+             if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{resourceId&#x3D;{value&#x3D;validResourceId-9e378g66-9537-6ggq-dd48-f167gb969f48}, body&#x3D;{value&#x3D;{capacityTypes&#x3D;[SCHEDULED_CAPACITY, RESERVED_CAPACITY], startDateTime&#x3D;2021-04-04T00:00:00Z, endDateTime&#x3D;2021-04-04T02:00:00Z, slotDuration&#x3D;30}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/FixedSlotCapacity&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9e378g66-9537-6ggq-dd48-f167gb969f48&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot;, &quot;RESERVED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+              &quot;slotDuration&quot; : 30
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;resourceId&quot; : &quot;validResourceId-9e378g66-9537-6ggq-dd48-f167gb969f48&quot;,
+        &quot;slotDuration&quot; : 30,
+        &quot;capacities&quot; : [ {
+          &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+          &quot;scheduledCapacity&quot; : 1,
+          &quot;reservedCapacity&quot; : 1
+        }, {
+          &quot;startDateTime&quot; : &quot;2021-04-04T00:30:00Z&quot;,
+          &quot;scheduledCapacity&quot; : 1,
+          &quot;reservedCapacity&quot; : 0
+        }, {
+          &quot;startDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+          &quot;scheduledCapacity&quot; : 0,
+          &quot;reservedCapacity&quot; : 0
+        }, {
+          &quot;startDateTime&quot; : &quot;2021-04-04T01:30:00Z&quot;,
+          &quot;scheduledCapacity&quot; : 0,
+          &quot;reservedCapacity&quot; : 0
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getFixedSlotCapacity',
-                $invalidRequestJson
+                $jsonSchema,
+                'getFixedSlotCapacity'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{resourceId&#x3D;validResourceId-9e378g66-9537-6ggq-dd48-f167gb969f48, slotDuration&#x3D;30, capacities&#x3D;[{startDateTime&#x3D;2021-04-04T00:00:00Z, scheduledCapacity&#x3D;1, reservedCapacity&#x3D;1}, {startDateTime&#x3D;2021-04-04T00:30:00Z, scheduledCapacity&#x3D;1, reservedCapacity&#x3D;0}, {startDateTime&#x3D;2021-04-04T01:00:00Z, scheduledCapacity&#x3D;0, reservedCapacity&#x3D;0}, {startDateTime&#x3D;2021-04-04T01:30:00Z, scheduledCapacity&#x3D;0, reservedCapacity&#x3D;0}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getFixedSlotCapacity',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getFixedSlotCapacityWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -1991,40 +3885,168 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getFixedSlotCapacity_400
-     * .
      */
     public function testGetFixedSlotCapacity400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity400')) {
+             if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{capacityTypes&#x3D;[SCHEDULED_CAPACITY], startDateTime&#x3D;2021-04-04T00:00:00Z, endDateTime&#x3D;2021-04-04T02:00:00Z}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/FixedSlotCapacityErrors&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [Missing or invalid request parameters: [resourceId]]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9dfa-5bfp-cc47-f167gb969f48a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+              &quot;slotDuration&quot; : 400
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [Slot duration is not valid, it should be a multiple of 5 and within allowed range.]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9e378g66-9537-6ggq-dd48-f1klmb969f48&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [endDateTime should be after Start Time]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;resourceId&quot; : {
+              &quot;value&quot; : &quot;validResourceId-9e378g66-9537-6ggq-dd48-f1klmb969f482&quot;
+            },
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [startDateTime or endDateTime are not present]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9e378g66-9537-6ggq-dd48-f1klmb969f483&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-0&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [startDateTime is not a valid ISO date/time object]&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getFixedSlotCapacity',
-                $invalidRequestJson
+                $jsonSchema,
+                'getFixedSlotCapacity'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;This is invalid input, details&#x3D;Received the following errors: [Missing or invalid request parameters: [resourceId]]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getFixedSlotCapacity',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getFixedSlotCapacityWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2037,112 +4059,277 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getFixedSlotCapacity_401
-     * .
      */
     public function testGetFixedSlotCapacity401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_403
-     * .
      */
     public function testGetFixedSlotCapacity403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_404
-     * .
      */
     public function testGetFixedSlotCapacity404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_413
-     * .
      */
     public function testGetFixedSlotCapacity413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_415
-     * .
      */
     public function testGetFixedSlotCapacity415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_429
-     * .
      */
     public function testGetFixedSlotCapacity429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_500
-     * .
      */
     public function testGetFixedSlotCapacity500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getFixedSlotCapacity_503
-     * .
      */
     public function testGetFixedSlotCapacity503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_200
-     * .
      */
     public function testGetRangeSlotCapacity200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity200')) {
+             if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{resourceId&#x3D;{value&#x3D;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48}, body&#x3D;{value&#x3D;{capacityTypes&#x3D;[SCHEDULED_CAPACITY, AVAILABLE_CAPACITY], startDateTime&#x3D;2021-04-04T00:00:00Z, endDateTime&#x3D;2021-04-04T02:00:00Z}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/RangeSlotCapacity&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot;, &quot;AVAILABLE_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;resourceId&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48&quot;,
+        &quot;capacities&quot; : [ {
+          &quot;capacityType&quot; : &quot;SCHEDULED_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        }, {
+          &quot;capacityType&quot; : &quot;AVAILABLE_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;capacity&quot; : 0
+          }, {
+            &quot;startDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f29&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot;, &quot;AVAILABLE_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2022-03-01T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2022-05-30T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;resourceId&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48&quot;,
+        &quot;nextPageToken&quot; : &quot;MjAyMi0wNC0wNVQwMDowMDowMFo%3D&quot;,
+        &quot;capacities&quot; : [ {
+          &quot;capacityType&quot; : &quot;SCHEDULED_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2022-03-01T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2022-04-05T00:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        }, {
+          &quot;capacityType&quot; : &quot;AVAILABLE_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2022-03-01T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2022-03-01T10:00:00Z&quot;,
+            &quot;capacity&quot; : 0
+          }, {
+            &quot;startDateTime&quot; : &quot;2022-03-01T10:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2022-04-05T00:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f29&quot;
+          },
+          &quot;nextPageToken&quot; : {
+            &quot;value&quot; : &quot;MjAyMi0wNC0wNVQwMDowMDowMFo%3D&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot;, &quot;AVAILABLE_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2022-03-01T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2022-05-30T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;resourceId&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48&quot;,
+        &quot;capacities&quot; : [ {
+          &quot;capacityType&quot; : &quot;SCHEDULED_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2022-04-05T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2022-05-30T00:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        }, {
+          &quot;capacityType&quot; : &quot;AVAILABLE_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2022-04-05T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2022-05-30T10:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gbadfhak32&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;RESERVED_CAPACITY&quot;, &quot;AVAILABLE_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;resourceId&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gbadfhak32&quot;,
+        &quot;capacities&quot; : [ {
+          &quot;capacityType&quot; : &quot;AVAILABLE_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;capacity&quot; : 0
+          }, {
+            &quot;startDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          } ]
+        }, {
+          &quot;capacityType&quot; : &quot;RESERVED_CAPACITY&quot;,
+          &quot;slots&quot; : [ {
+            &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;capacity&quot; : 1
+          }, {
+            &quot;startDateTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
+            &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+            &quot;capacity&quot; : 0
+          } ]
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getRangeSlotCapacity',
-                $invalidRequestJson
+                $jsonSchema,
+                'getRangeSlotCapacity'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{resourceId&#x3D;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48, capacities&#x3D;[{capacityType&#x3D;SCHEDULED_CAPACITY, slots&#x3D;[{startDateTime&#x3D;2021-04-04T00:00:00Z, endDateTime&#x3D;2021-04-04T02:00:00Z, capacity&#x3D;1}]}, {capacityType&#x3D;AVAILABLE_CAPACITY, slots&#x3D;[{startDateTime&#x3D;2021-04-04T00:00:00Z, endDateTime&#x3D;2021-04-04T01:00:00Z, capacity&#x3D;0}, {startDateTime&#x3D;2021-04-04T01:00:00Z, endDateTime&#x3D;2021-04-04T02:00:00Z, capacity&#x3D;1}]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getRangeSlotCapacity',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getRangeSlotCapacityWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -2155,40 +4342,145 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getRangeSlotCapacity_400
-     * .
      */
     public function testGetRangeSlotCapacity400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity400')) {
+             if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{capacityTypes&#x3D;[SCHEDULED_CAPACITY], startDateTime&#x3D;2021-04-04T00:00:00Z, endDateTime&#x3D;2021-04-04T02:00:00Z}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/RangeSlotCapacityErrors&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [Missing or invalid request parameters: [resourceId]]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [startDateTime or endDateTime are not present]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48b&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [endDateTime should be after Start Time]&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9d267d55-9426-5bfp-cc47-f167gb969f48c&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;capacityTypes&quot; : [ &quot;SCHEDULED_CAPACITY&quot; ],
+              &quot;startDateTime&quot; : &quot;2021-0&quot;,
+              &quot;endDateTime&quot; : &quot;2021-04-04T00:00:00Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;This is invalid input&quot;,
+          &quot;details&quot; : &quot;Received the following errors: [startDateTime is not a valid ISO date/time object]&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getRangeSlotCapacity',
-                $invalidRequestJson
+                $jsonSchema,
+                'getRangeSlotCapacity'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;This is invalid input, details&#x3D;Received the following errors: [Missing or invalid request parameters: [resourceId]]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getRangeSlotCapacity',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getRangeSlotCapacityWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2201,112 +4493,132 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getRangeSlotCapacity_401
-     * .
      */
     public function testGetRangeSlotCapacity401()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_403
-     * .
      */
     public function testGetRangeSlotCapacity403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_404
-     * .
      */
     public function testGetRangeSlotCapacity404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_413
-     * .
      */
     public function testGetRangeSlotCapacity413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_415
-     * .
      */
     public function testGetRangeSlotCapacity415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_429
-     * .
      */
     public function testGetRangeSlotCapacity429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_500
-     * .
      */
     public function testGetRangeSlotCapacity500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getRangeSlotCapacity_503
-     * .
      */
     public function testGetRangeSlotCapacity503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_200
-     * .
      */
     public function testGetServiceJobByServiceJobId200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId200')) {
+             if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : { }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'getServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -2319,40 +4631,72 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getServiceJobByServiceJobId_400
-     * .
      */
     public function testGetServiceJobByServiceJobId400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId400')) {
+             if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetServiceJobByServiceJobIdResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-48b6d5a3-b708-dbe9-038d-dd95e8d74iut&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : { }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'getServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2365,112 +4709,157 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getServiceJobByServiceJobId_403
-     * .
      */
     public function testGetServiceJobByServiceJobId403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_404
-     * .
      */
     public function testGetServiceJobByServiceJobId404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_413
-     * .
      */
     public function testGetServiceJobByServiceJobId413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_415
-     * .
      */
     public function testGetServiceJobByServiceJobId415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_422
-     * .
      */
     public function testGetServiceJobByServiceJobId422()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_429
-     * .
      */
     public function testGetServiceJobByServiceJobId429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_500
-     * .
      */
     public function testGetServiceJobByServiceJobId500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobByServiceJobId_503
-     * .
      */
     public function testGetServiceJobByServiceJobId503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_200
-     * .
      */
     public function testGetServiceJobs200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetServiceJobs200')) {
+             if ($this->testHelper->shouldSkipTest('testGetServiceJobs200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetServiceJobsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;totalResultSize&quot; : 1,
+          &quot;nextPageToken&quot; : &quot;merchantSklktoreIdbcdcd2ad-5883-4e48-b114-f13328a9e9f&quot;,
+          &quot;previousPageToken&quot; : &quot;merchantSklktoreIdbcdcd2ad-5883-4e48-b114-f13328a9e9f&quot;,
+          &quot;jobs&quot; : [ {
+            &quot;serviceOrderId&quot; : &quot;2345324&quot;,
+            &quot;serviceJobId&quot; : &quot;34534399990035&quot;,
+            &quot;createTime&quot; : &quot;2019-12-11T14:49:53.952Z&quot;,
+            &quot;serviceJobStatus&quot; : &quot;COMPLETED&quot;,
+            &quot;buyer&quot; : {
+              &quot;name&quot; : &quot;nameExample&quot;
+            },
+            &quot;appointments&quot; : [ {
+              &quot;appointmentId&quot; : &quot;appointmentIdExample&quot;,
+              &quot;appointmentStatus&quot; : &quot;COMPLETED&quot;,
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-31T06:38:56.961Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              },
+              &quot;assignedTechnicians&quot; : [ {
+                &quot;technicianId&quot; : &quot;technicianIdExample&quot;,
+                &quot;name&quot; : &quot;nameExample&quot;
+              } ]
+            } ]
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getServiceJobs',
-                $invalidRequestJson
+                $jsonSchema,
+                'getServiceJobs'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{totalResultSize&#x3D;1, nextPageToken&#x3D;merchantSklktoreIdbcdcd2ad-5883-4e48-b114-f13328a9e9f, previousPageToken&#x3D;merchantSklktoreIdbcdcd2ad-5883-4e48-b114-f13328a9e9f, jobs&#x3D;[{serviceOrderId&#x3D;2345324, serviceJobId&#x3D;34534399990035, createTime&#x3D;2019-12-11T14:49:53.952Z, serviceJobStatus&#x3D;COMPLETED, buyer&#x3D;{name&#x3D;nameExample}, appointments&#x3D;[{appointmentId&#x3D;appointmentIdExample, appointmentStatus&#x3D;COMPLETED, appointmentTime&#x3D;{startTime&#x3D;2020-01-31T06:38:56.961Z, durationInMinutes&#x3D;60}, assignedTechnicians&#x3D;[{technicianId&#x3D;technicianIdExample, name&#x3D;nameExample}]}]}]}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getServiceJobs',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getServiceJobsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -2483,40 +4872,75 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getServiceJobs_400
-     * .
      */
     public function testGetServiceJobs400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetServiceJobs400')) {
+             if ($this->testHelper->shouldSkipTest('testGetServiceJobs400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{createdAfter&#x3D;{value&#x3D;TEST_CASE_400}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetServiceJobsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;createdAfter&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_400&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getServiceJobs',
-                $invalidRequestJson
+                $jsonSchema,
+                'getServiceJobs'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Invalid Input}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getServiceJobs',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getServiceJobsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2529,103 +4953,189 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for getServiceJobs_403
-     * .
      */
     public function testGetServiceJobs403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_404
-     * .
      */
     public function testGetServiceJobs404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_413
-     * .
      */
     public function testGetServiceJobs413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_415
-     * .
      */
     public function testGetServiceJobs415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_429
-     * .
      */
     public function testGetServiceJobs429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_500
-     * .
      */
     public function testGetServiceJobs500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getServiceJobs_503
-     * .
      */
     public function testGetServiceJobs503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_200
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId200')) {
+             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468}, appointmentId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000Z}, rescheduleReasonCode&#x3D;R1}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;appointmentId&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_new_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-2-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-2-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;appointmentId&quot; : &quot;validJobId-2-9cb9bc29-3d7d-5e49-5709-efb693d34468_new_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-3-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-3-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;appointmentId&quot; : &quot;validJobId-3-9cb9bc29-3d7d-5e49-5709-efb693d34468_new_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;,
+        &quot;warnings&quot; : [ {
+          &quot;code&quot; : &quot;RESOURCES_UNASSIGNED&quot;,
+          &quot;message&quot; : &quot;Unassigned resources : ATechnicianId,BTechnicianId&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'rescheduleAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{appointmentId&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_new_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -2638,40 +5148,115 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_400
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId400')) {
+             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}, appointmentId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000Z, durationInMinutes&#x3D;60}, rescheduleReasonCode&#x3D;R1}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;nullAppointmentId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;,
+                &quot;durationInMinutes&quot; : 60
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [appointmentId]&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'rescheduleAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId], details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2684,40 +5269,81 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_403
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId403()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId403')) {
+             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468}, appointmentId&#x3D;{value&#x3D;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000Z}, rescheduleReasonCode&#x3D;R1}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;UnauthorizedAction&quot;,
+          &quot;message&quot; : &quot;Not authorized to access this resource. Please check your input again.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'rescheduleAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;UnauthorizedAction, message&#x3D;Not authorized to access this resource. Please check your input again., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(403, $statusCode);
 
             // Handle different response codes
@@ -2730,67 +5356,293 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_404
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_413
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_415
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_422
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId422')) {
+             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468}, appointmentId&#x3D;{value&#x3D;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{appointmentTime&#x3D;{startTime&#x3D;2021-01-01T10:00:00.000+05:30}, rescheduleReasonCode&#x3D;R1}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/SetAppointmentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000+05:30&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;ISO8601 time 2021-01-01T10:00:00.000+05:30 is not in UTC.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10-00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to parse ISO8601 input: 2021-01-01T10-00:00.000Z&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;No job exist with jobId : invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;completedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;completedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Operation not allowed on job with jobId : completedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468 and jobState : COMPLETED&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2019-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Start time of appointment should be in the future.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2022-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Start time for appointment is beyond the maximum allowed period of 365 days.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:15:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;R1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Appointment slot is not available.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              },
+              &quot;rescheduleReasonCode&quot; : &quot;U1&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Failed to add appointment for jobId : validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, reason : Appointment reschedule reason code is not valid.&quot;,
+          &quot;details&quot; : &quot;&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidRequestJson
+                $jsonSchema,
+                'rescheduleAppointmentForServiceJobByServiceJobId'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{code&#x3D;InvalidInput, message&#x3D;ISO8601 time 2021-01-01T10:00:00.000+05:30 is not in UTC., details&#x3D;}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'rescheduleAppointmentForServiceJobByServiceJobId',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -2803,67 +5655,249 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_429
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_500
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for rescheduleAppointmentForServiceJobByServiceJobId_503
-     * .
      */
     public function testRescheduleAppointmentForServiceJobByServiceJobId503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for setAppointmentFulfillmentData_204
-     * .
      */
     public function testSetAppointmentFulfillmentData204()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData204')) {
+             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData204', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687}, appointmentId&#x3D;{value&#x3D;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d}, body&#x3D;{value&#x3D;{fulfillmentTime&#x3D;{startTime&#x3D;2020-01-02T13:18:10.668Z, endTime&#x3D;2022-01-03T13:18:10.668Z}, appointmentResources&#x3D;[{resourceId&#x3D;validResourceId-20334421900}, {resourceId&#x3D;validResourceId-82309484378}], fulfillmentDocuments&#x3D;[{uploadDestinationId&#x3D;validUploadDesitnationID348293-2384982-239847982379, contentSha256&#x3D;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidRequestJson
+                $jsonSchema,
+                'setAppointmentFulfillmentData'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->setAppointmentFulfillmentDataWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(204, $statusCode);
 
             // Handle different response codes
@@ -2876,40 +5910,144 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for setAppointmentFulfillmentData_400
-     * .
      */
     public function testSetAppointmentFulfillmentData400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData400')) {
+             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;nullJobId}, appointmentId&#x3D;{value&#x3D;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{fulfillmentTime&#x3D;{startTime&#x3D;2020-01-02T13:18:10.668Z, endTime&#x3D;2022-01-03T13:18:10.668Z}, appointmentResources&#x3D;[{resourceId&#x3D;validResourceId-20334421900}, {resourceId&#x3D;validResourceId-82309484378}], fulfillmentDocuments&#x3D;[{uploadDestinationId&#x3D;validUploadDesitnationID348293-2384982-239847982379, contentSha256&#x3D;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;nullJobId&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Missing or invalid request parameters: [serviceJobId]&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;nullAppointmentId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Missing or invalid request parameters: [appointmentId]&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;nullAppointmentId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : { }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;No fulfillment artifacts provided in JSON payload.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidRequestJson
+                $jsonSchema,
+                'setAppointmentFulfillmentData'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '[{code&#x3D;InvalidInput, message&#x3D;Missing or invalid request parameters: [serviceJobId]}]';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->setAppointmentFulfillmentDataWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -2922,40 +6060,88 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for setAppointmentFulfillmentData_403
-     * .
      */
     public function testSetAppointmentFulfillmentData403()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData403')) {
+             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468}, appointmentId&#x3D;{value&#x3D;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{fulfillmentTime&#x3D;{startTime&#x3D;2020-01-02T13:18:10.668Z, endTime&#x3D;2022-01-03T13:18:10.668Z}, appointmentResources&#x3D;[{resourceId&#x3D;validResourceId-20334421900}, {resourceId&#x3D;validResourceId-82309484378}], fulfillmentDocuments&#x3D;[{uploadDestinationId&#x3D;348293-2384982-239847982379, contentSha256&#x3D;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;unauthorizedJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;UnauthorizedAction&quot;,
+        &quot;message&quot; : &quot;Not authorized to access this resource. Please check your input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidRequestJson
+                $jsonSchema,
+                'setAppointmentFulfillmentData'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '[{code&#x3D;UnauthorizedAction, message&#x3D;Not authorized to access this resource. Please check your input again., details&#x3D;}]';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->setAppointmentFulfillmentDataWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(403, $statusCode);
 
             // Handle different response codes
@@ -2968,67 +6154,823 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for setAppointmentFulfillmentData_404
-     * .
      */
     public function testSetAppointmentFulfillmentData404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for setAppointmentFulfillmentData_413
-     * .
      */
     public function testSetAppointmentFulfillmentData413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for setAppointmentFulfillmentData_415
-     * .
      */
     public function testSetAppointmentFulfillmentData415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for setAppointmentFulfillmentData_422
-     * .
      */
     public function testSetAppointmentFulfillmentData422()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData422')) {
+             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{serviceJobId&#x3D;{value&#x3D;invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468}, appointmentId&#x3D;{value&#x3D;invalidAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a}, body&#x3D;{value&#x3D;{fulfillmentTime&#x3D;{startTime&#x3D;2020-01-02T13:18:10.668Z, endTime&#x3D;2022-01-03T13:18:10.668Z}, appointmentResources&#x3D;[{resourceId&#x3D;validResourceId-20334421900}, {resourceId&#x3D;validResourceId-82309484378}], fulfillmentDocuments&#x3D;[{uploadDestinationId&#x3D;validUploadDesitnationID348293-2384982-239847982379, contentSha256&#x3D;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;invalidAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;No job exist with jobId : invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;InvalidStatusJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;invalidStatusAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Job with id InvalidStatusJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468 can not be updated. Please check if the job is in valid status.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;invalidAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment with id invalidAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468 is not present in the job. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;InvalidStatusCancelledAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment with appointment id InvalidStatusCancelledAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468 is not valid to update. Please check the input again&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;endTime&quot; : &quot;2021-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment start time is required. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000+05:30&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment end time is required. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000+05:30&quot;,
+                &quot;endTime&quot; : &quot;2021-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;ISO8601 time 2021-01-01T10:00:00.000+05:30 is not in UTC format. Please provide time in UTC&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10-00:00.000Z&quot;,
+                &quot;endTime&quot; : &quot;2021-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Could not parse given time input 2021-01-01T10-00:00.000Z. Please provide time in ISO8601 format&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;9999-01-01T10:00:00.000Z&quot;,
+                &quot;endTime&quot; : &quot;2021-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment start time should not be in future. Please check the input again&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-01T10:00:00.000+05:30&quot;,
+                &quot;endTime&quot; : &quot;9999-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment end time should not be in future. Please check the input again&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2020-01-04T10:00:00.000+05:30&quot;,
+                &quot;endTime&quot; : &quot;2020-01-03T13:18:10.668Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment end time should be after start time. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;InValidResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;One or more resources provided is invalid. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;ResourceIdNotExist-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;One or more resources provided does not exist or is deleted. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;InvalidUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Input document id does not exist. Please check the input&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;UploadDestinationIdExpired-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Input document parameters are invalid. Please check the input.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;InvalidDocumentTypeUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document failed to meet content type restrictions. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;InvalidDocumentLengthUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Failed to retrieve document content length. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;ExceededDcoumentLengthUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document failed to meet content length restrictions. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;DocumentNotUploadedUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document encrypted not found or exist. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;IncorrectEncryptedDocumentUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document failed to decrypt or decipher. Please review the uploaded document&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDestinationId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;,
+                &quot;contentSha256&quot; : &quot;InvalidSHA256GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document failed to meet sanity check. Could not get a Sha256 Message Digest instance. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;UploadedFileDetectedMalwareUploadeDestinationId-348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;validSHA256GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document failed to meet malware check. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;InValidResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;InValidUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;ne or more resources provided is invalid. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      }, {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment start time is required. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      }, {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Input document id does not exist. Please check the input&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;InValidUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment start time is required. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      }, {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Input document id does not exist. Please check the input&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Appointment start time is required. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;ResourceIdNotExist-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;validUploadDesitnationID348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;One or more resources provided does not exist or is deleted. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;fulfillmentTime&quot; : {
+                &quot;startTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;,
+                &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
+              },
+              &quot;appointmentResources&quot; : [ {
+                &quot;resourceId&quot; : &quot;validResourceId-20334421900&quot;
+              }, {
+                &quot;resourceId&quot; : &quot;validResourceId-82309484378&quot;
+              } ],
+              &quot;fulfillmentDocuments&quot; : [ {
+                &quot;uploadDestinationId&quot; : &quot;UploadedFileDetectedMalwareUploadeDestinationId-348293-2384982-239847982379&quot;,
+                &quot;contentSha256&quot; : &quot;z06EuBzgzc7GiDNVqcxMqYEr7n0BCS9EtNN7szHe0RT&#x3D;&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process proof of appointment input. Reason: Document failed to meet malware check. Please review document uploaded&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidRequestJson
+                $jsonSchema,
+                'setAppointmentFulfillmentData'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '[{code&#x3D;InvalidInput, message&#x3D;No job exist with jobId : invalidJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468, details&#x3D;}]';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'setAppointmentFulfillmentData',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->setAppointmentFulfillmentDataWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(422, $statusCode);
 
             // Handle different response codes
@@ -3041,67 +6983,138 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for setAppointmentFulfillmentData_429
-     * .
      */
     public function testSetAppointmentFulfillmentData429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for setAppointmentFulfillmentData_500
-     * .
      */
     public function testSetAppointmentFulfillmentData500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for setAppointmentFulfillmentData_503
-     * .
      */
     public function testSetAppointmentFulfillmentData503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateReservation_200
-     * .
      */
     public function testUpdateReservation200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateReservation200')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateReservation200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{reservationId&#x3D;{value&#x3D;456}, body&#x3D;{value&#x3D;{resourceId&#x3D;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36, reservation&#x3D;{availability&#x3D;{startTime&#x3D;2020-04-01T10:00:00.00-07, endTime&#x3D;2020-04-01T11:00:00.00-07}, type&#x3D;BREAK}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/UpdateReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;reservationId&quot; : {
+            &quot;value&quot; : &quot;456&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : {
+                &quot;availability&quot; : {
+                  &quot;startTime&quot; : &quot;2020-04-01T10:00:00.00-07&quot;,
+                  &quot;endTime&quot; : &quot;2020-04-01T11:00:00.00-07&quot;
+                },
+                &quot;type&quot; : &quot;BREAK&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;reservation&quot; : {
+            &quot;reservationId&quot; : &quot;457&quot;
+          }
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;reservationId&quot; : {
+            &quot;value&quot; : &quot;456&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;invalidResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : {
+                &quot;availability&quot; : {
+                  &quot;startTime&quot; : &quot;2020-04-01T10:00:00.00-07&quot;,
+                  &quot;endTime&quot; : &quot;2020-04-01T11:00:00.00-07&quot;
+                },
+                &quot;type&quot; : &quot;BREAK&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Invalid request parameters: [resourceId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{payload&#x3D;{reservation&#x3D;{reservationId&#x3D;457}}}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -3114,40 +7127,95 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for updateReservation_400
-     * .
      */
     public function testUpdateReservation400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateReservation400')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateReservation400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{body&#x3D;{value&#x3D;{resourceId&#x3D;null, reservation&#x3D;{}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/UpdateReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;null&quot;,
+              &quot;reservation&quot; : { }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [resourceId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : { }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [reservation]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{message&#x3D;Missing or invalid request parameters: [resourceId], code&#x3D;InvalidInput}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -3160,49 +7228,95 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for updateReservation_403
-     * .
      */
     public function testUpdateReservation403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateReservation_404
-     * .
      */
     public function testUpdateReservation404()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateReservation404')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateReservation404', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{reservationId&#x3D;{value&#x3D;not-existent-456}, body&#x3D;{value&#x3D;{resourceId&#x3D;invalidResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36, reservation&#x3D;{availability&#x3D;{startTime&#x3D;2020-04-01T10:00:00.00-07, endTime&#x3D;2020-04-01T11:00:00.00-07}, type&#x3D;BREAK}}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The reservation specified does not exist.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/UpdateReservationResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;reservationId&quot; : {
+            &quot;value&quot; : &quot;not-existent-456&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;resourceId&quot; : &quot;invalidResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;,
+              &quot;reservation&quot; : {
+                &quot;availability&quot; : {
+                  &quot;startTime&quot; : &quot;2020-04-01T10:00:00.00-07&quot;,
+                  &quot;endTime&quot; : &quot;2020-04-01T11:00:00.00-07&quot;
+                },
+                &quot;type&quot; : &quot;BREAK&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Could not find reservation with ID: [not-existent-456]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateReservation',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateReservation'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{message&#x3D;Could not find reservation with ID: [not-existent-456], code&#x3D;InvalidInput}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateReservation',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateReservationWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(404, $statusCode);
 
             // Handle different response codes
@@ -3215,85 +7329,205 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for updateReservation_413
-     * .
      */
     public function testUpdateReservation413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateReservation_415
-     * .
      */
     public function testUpdateReservation415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateReservation_429
-     * .
      */
     public function testUpdateReservation429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateReservation_500
-     * .
      */
     public function testUpdateReservation500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateReservation_503
-     * .
      */
     public function testUpdateReservation503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_200
-     * .
      */
     public function testUpdateSchedule200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateSchedule200')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateSchedule200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{resourceId&#x3D;{value&#x3D;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36}, body&#x3D;{value&#x3D;{schedules&#x3D;[{startTime&#x3D;2020-01-01T00:00:00.00-07, endTime&#x3D;2020-01-01T23:59:00.00-07, recurrence&#x3D;{endTime&#x3D;2020-01-06T23:59:00.00-07, daysOfWeek&#x3D;[MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]}}, {startTime&#x3D;2020-01-11T00:00:00.00-07, endTime&#x3D;2020-01-11T23:59:00.00-07, recurrence&#x3D;{endTime&#x3D;2020-01-16T23:59:00.00-07, daysOfWeek&#x3D;[MONDAY, TUESDAY, WEDNESDAY]}}]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/UpdateScheduleResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;schedules&quot; : [ {
+                &quot;startTime&quot; : &quot;2020-01-01T00:00:00.00-07&quot;,
+                &quot;endTime&quot; : &quot;2020-01-01T23:59:00.00-07&quot;,
+                &quot;recurrence&quot; : {
+                  &quot;endTime&quot; : &quot;2020-01-06T23:59:00.00-07&quot;,
+                  &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot;, &quot;THURSDAY&quot;, &quot;FRIDAY&quot; ]
+                }
+              }, {
+                &quot;startTime&quot; : &quot;2020-01-11T00:00:00.00-07&quot;,
+                &quot;endTime&quot; : &quot;2020-01-11T23:59:00.00-07&quot;,
+                &quot;recurrence&quot; : {
+                  &quot;endTime&quot; : &quot;2020-01-16T23:59:00.00-07&quot;,
+                  &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot; ]
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;schedules&quot; : [ {
+                &quot;startTime&quot; : &quot;2020-01-01T12:00:00.00-07&quot;,
+                &quot;endTime&quot; : &quot;2020-01-01T23:59:00.00-07&quot;,
+                &quot;recurrence&quot; : {
+                  &quot;endTime&quot; : &quot;2020-01-06T23:59:00.00-07&quot;,
+                  &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot;, &quot;THURSDAY&quot;, &quot;FRIDAY&quot; ]
+                }
+              }, {
+                &quot;startTime&quot; : &quot;2020-01-11T00:00:00.00-07&quot;,
+                &quot;endTime&quot; : &quot;2020-01-11T23:59:00.00-07&quot;,
+                &quot;recurrence&quot; : {
+                  &quot;endTime&quot; : &quot;2020-01-16T23:59:00.00-07&quot;,
+                  &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot; ]
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : [ {
+          &quot;availability&quot; : {
+            &quot;startTime&quot; : &quot;2020-01-01T12:00:00.00-07&quot;,
+            &quot;endTime&quot; : &quot;2020-01-01T23:59:00.00-07&quot;,
+            &quot;recurrence&quot; : {
+              &quot;endTime&quot; : &quot;2020-01-06T23:59:00.00-07&quot;,
+              &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot;, &quot;THURSDAY&quot;, &quot;FRIDAY&quot; ]
+            }
+          },
+          &quot;warnings&quot; : [ {
+            &quot;code&quot; : &quot;ScheduleOverride&quot;,
+            &quot;message&quot; : &quot;This AvailabilityRecord will override the current schedule as the time-ranges overlap&quot;
+          } ]
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;invalidResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;schedules&quot; : [ {
+                &quot;startTime&quot; : &quot;2020-01-01T00:00:00.00-07&quot;,
+                &quot;endTime&quot; : &quot;2020-01-01T23:59:00.00-07&quot;,
+                &quot;recurrence&quot; : {
+                  &quot;endTime&quot; : &quot;2020-01-06T23:59:00.00-07&quot;,
+                  &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot;, &quot;THURSDAY&quot;, &quot;FRIDAY&quot; ]
+                }
+              }, {
+                &quot;startTime&quot; : &quot;2020-01-11T00:00:00.00-07&quot;,
+                &quot;endTime&quot; : &quot;2020-01-11T23:59:00.00-07&quot;,
+                &quot;recurrence&quot; : {
+                  &quot;endTime&quot; : &quot;2020-01-16T23:59:00.00-07&quot;,
+                  &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot; ]
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Invalid request parameters: [resourceId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateSchedule',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateSchedule'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateSchedule',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateScheduleWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -3306,40 +7540,99 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for updateSchedule_400
-     * .
      */
     public function testUpdateSchedule400()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateSchedule400')) {
+             if ($this->testHelper->shouldSkipTest('testUpdateSchedule400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{resourceId&#x3D;{value&#x3D;null}, body&#x3D;{value&#x3D;{schedules&#x3D;[]}}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/UpdateScheduleResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;null&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;schedules&quot; : [ ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [resourceId]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;resourceId&quot; : {
+            &quot;value&quot; : &quot;validResourceId-9c156c44-8315-4aeb-bb36-e056fa827e36&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;schedules&quot; : [ ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;message&quot; : &quot;Missing or invalid request parameters: [schedule]&quot;,
+          &quot;code&quot; : &quot;InvalidInput&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'updateSchedule',
-                $invalidRequestJson
+                $jsonSchema,
+                'updateSchedule'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{errors&#x3D;[{message&#x3D;Missing or invalid request parameters: [resourceId], code&#x3D;InvalidInput}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'updateSchedule',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('ServiceApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->updateScheduleWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(400, $statusCode);
 
             // Handle different response codes
@@ -3352,65 +7645,58 @@ class ServiceApiTest extends TestCase
     }
     /**
      * Test case for updateSchedule_403
-     * .
      */
     public function testUpdateSchedule403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_404
-     * .
      */
     public function testUpdateSchedule404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_413
-     * .
      */
     public function testUpdateSchedule413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_415
-     * .
      */
     public function testUpdateSchedule415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_429
-     * .
      */
     public function testUpdateSchedule429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_500
-     * .
      */
     public function testUpdateSchedule500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for updateSchedule_503
-     * .
      */
     public function testUpdateSchedule503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\DebtRecoveryItem;
+use OpenAPI\Client\Model\financesV0\DebtRecoveryItem;
 
 /**
  * DebtRecoveryItemTest Class Doc Comment
@@ -57,7 +57,7 @@ class DebtRecoveryItemTest extends TestCase
     public function testPropertyRecoveryAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setRecoveryAmount($testValue);
         $this->assertEquals($testValue, $this->model->getRecoveryAmount());
@@ -69,7 +69,7 @@ class DebtRecoveryItemTest extends TestCase
     public function testPropertyOriginalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\Currency();
+        $testValue = new \OpenAPI\Client\Model\financesV0\Currency();
         
         $this->model->setOriginalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getOriginalAmount());

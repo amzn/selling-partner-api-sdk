@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\GetAdditionalSellerInputsResult;
+use OpenAPI\Client\Model\merchantFulfillment\GetAdditionalSellerInputsResult;
 
 /**
  * GetAdditionalSellerInputsResultTest Class Doc Comment

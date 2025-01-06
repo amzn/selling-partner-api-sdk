@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\Summary;
+use OpenAPI\Client\Model\pricingV0\Summary;
 
 /**
  * SummaryTest Class Doc Comment
@@ -101,7 +101,7 @@ class SummaryTest extends TestCase
     public function testPropertyListPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setListPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListPrice());
@@ -113,7 +113,7 @@ class SummaryTest extends TestCase
     public function testPropertyCompetitivePriceThreshold()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setCompetitivePriceThreshold($testValue);
         $this->assertEquals($testValue, $this->model->getCompetitivePriceThreshold());
@@ -125,7 +125,7 @@ class SummaryTest extends TestCase
     public function testPropertySuggestedLowerPricePlusShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setSuggestedLowerPricePlusShipping($testValue);
         $this->assertEquals($testValue, $this->model->getSuggestedLowerPricePlusShipping());

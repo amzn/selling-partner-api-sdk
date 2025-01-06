@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ChargeRefundEvent;
+use OpenAPI\Client\Model\financesV0\ChargeRefundEvent;
 
 /**
  * ChargeRefundEventTest Class Doc Comment

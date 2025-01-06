@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\Box;
+use OpenAPI\Client\Model\fulfillmentInbound\Box;
 
 /**
  * BoxTest Class Doc Comment
@@ -67,7 +67,7 @@ class BoxTest extends TestCase
      */
     public function testPropertyContentInformationSource()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinbound\BoxContentInformationSource();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInbound\BoxContentInformationSource();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -81,7 +81,7 @@ class BoxTest extends TestCase
     public function testPropertyDestinationRegion()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Region();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Region();
         
         $this->model->setDestinationRegion($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationRegion());
@@ -93,7 +93,7 @@ class BoxTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -149,7 +149,7 @@ class BoxTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

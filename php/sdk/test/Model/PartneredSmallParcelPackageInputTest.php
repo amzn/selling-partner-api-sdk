@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PartneredSmallParcelPackageInput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PartneredSmallParcelPackageInput;
 
 /**
  * PartneredSmallParcelPackageInputTest Class Doc Comment
@@ -57,7 +57,7 @@ class PartneredSmallParcelPackageInputTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -69,7 +69,7 @@ class PartneredSmallParcelPackageInputTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

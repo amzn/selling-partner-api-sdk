@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\GetDeliveryChallanDocumentResponse;
+use OpenAPI\Client\Model\fulfillmentInbound\GetDeliveryChallanDocumentResponse;
 
 /**
  * GetDeliveryChallanDocumentResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetDeliveryChallanDocumentResponseTest extends TestCase
     public function testPropertyDocumentDownload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\DocumentDownload();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\DocumentDownload();
         
         $this->model->setDocumentDownload($testValue);
         $this->assertEquals($testValue, $this->model->getDocumentDownload());

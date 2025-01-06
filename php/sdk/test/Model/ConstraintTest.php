@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantfulfillment\Constraint;
+use OpenAPI\Client\Model\merchantFulfillment\Constraint;
 
 /**
  * ConstraintTest Class Doc Comment

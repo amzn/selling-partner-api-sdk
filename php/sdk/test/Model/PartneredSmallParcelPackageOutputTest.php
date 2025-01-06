@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinboundv0\PartneredSmallParcelPackageOutput;
+use OpenAPI\Client\Model\fulfillmentInboundV0\PartneredSmallParcelPackageOutput;
 
 /**
  * PartneredSmallParcelPackageOutputTest Class Doc Comment
@@ -57,7 +57,7 @@ class PartneredSmallParcelPackageOutputTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -69,7 +69,7 @@ class PartneredSmallParcelPackageOutputTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinboundv0\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInboundV0\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
@@ -102,7 +102,7 @@ class PartneredSmallParcelPackageOutputTest extends TestCase
      */
     public function testPropertyPackageStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillmentinboundv0\PackageStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillmentInboundV0\PackageStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

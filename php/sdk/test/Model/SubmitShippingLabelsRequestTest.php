@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.shipping\SubmitShippingLabelsRequest;
+use OpenAPI\Client\Model\vendorDfShipping\SubmitShippingLabelsRequest;
 
 /**
  * SubmitShippingLabelsRequestTest Class Doc Comment

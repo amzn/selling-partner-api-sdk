@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor.df.shipping\ContainerLabelFormat;
+use OpenAPI\Client\Model\vendorDfShipping\ContainerLabelFormat;
 
 /**
  * ContainerLabelFormatTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\SearchContentDocumentsResponse;
+use OpenAPI\Client\Model\aplusContent\SearchContentDocumentsResponse;
 
 /**
  * SearchContentDocumentsResponseTest Class Doc Comment

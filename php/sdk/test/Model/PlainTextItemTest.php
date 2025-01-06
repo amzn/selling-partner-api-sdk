@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\apluscontent\PlainTextItem;
+use OpenAPI\Client\Model\aplusContent\PlainTextItem;
 
 /**
  * PlainTextItemTest Class Doc Comment

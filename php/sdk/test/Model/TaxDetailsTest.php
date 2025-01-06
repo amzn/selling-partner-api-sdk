@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillmentinbound\TaxDetails;
+use OpenAPI\Client\Model\fulfillmentInbound\TaxDetails;
 
 /**
  * TaxDetailsTest Class Doc Comment
@@ -57,7 +57,7 @@ class TaxDetailsTest extends TestCase
     public function testPropertyDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillmentinbound\Currency();
+        $testValue = new \OpenAPI\Client\Model\fulfillmentInbound\Currency();
         
         $this->model->setDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getDeclaredValue());

@@ -33,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 use OpenAPI\Client\Api\CatalogItemsApi;
 use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
+use OpenAPI\Client\ObjectSerializer;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable('../../../sdk');
@@ -135,40 +136,1002 @@ class CatalogItemsApiTest extends TestCase
 
     /**
      * Test case for getCatalogItem_200
-     * .
      */
     public function testGetCatalogItem200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetCatalogItem200')) {
+             if ($this->testHelper->shouldSkipTest('testGetCatalogItem200', 'CatalogItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{asin&#x3D;{value&#x3D;B07N4M94X4}, marketplaceIds&#x3D;{value&#x3D;[ATVPDKIKX0DER]}, includedData&#x3D;{value&#x3D;[classifications, dimensions, identifiers, images, productTypes, relationships, salesRanks, summaries, vendorDetails]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/Item&quot;
+      },
+      &quot;example&quot; : {
+        &quot;asin&quot; : &quot;B07N4M94X4&quot;,
+        &quot;attributes&quot; : {
+          &quot;total_hdmi_ports&quot; : [ {
+            &quot;value&quot; : 4,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;resolution&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;4K&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_weight&quot; : [ {
+            &quot;unit&quot; : &quot;pounds&quot;,
+            &quot;value&quot; : 107.6,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;product_subcategory&quot; : [ {
+            &quot;value&quot; : &quot;50400120&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;bullet_point&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;SMART TV WITH UNIVERSAL GUIDE: Simple on-screen Guide is an easy way to find streaming content and live TV shows&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;100% COLOR VOLUME WITH QUANTUM DOTS: Powered by Quantum dots, Samsung’s 4K QLED TV offers over a billion shades of brilliant color and 100% color volume for exceptional depth of detail that will draw you in to the picture for the best 4K TV experience&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;QUANTUM PROCESSOR 4K: Intelligently powered processor instantly upscales content to 4K for sharp detail and refined color&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;QUANTUM HDR 4X: 4K depth of detail with high dynamic range powered by HDR10+ delivers the lightest to darkest colors, scene by scene, for amazing picture realism&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;AMBIENT MODE: Customizes and complements your living space by turning a blank screen of this big screen TV into enticing visuals including décor, info, photos and artwork&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;SMART TV FEATURES: OneRemote to control all compatible devices, Bixby voice command, on-screen universal guide, SmartThings to control compatible home appliances and devices, smart speaker expandability with Alexa and Google Assistant compatibility, and more&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_dimensions&quot; : [ {
+            &quot;width&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 72.4
+            },
+            &quot;length&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 2.4
+            },
+            &quot;height&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 41.4
+            },
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;brand&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;SAMSUNG&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;control_method&quot; : [ {
+            &quot;value&quot; : &quot;voice&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_package_dimensions&quot; : [ {
+            &quot;length&quot; : {
+              &quot;unit&quot; : &quot;centimeters&quot;,
+              &quot;value&quot; : 26.67
+            },
+            &quot;width&quot; : {
+              &quot;unit&quot; : &quot;centimeters&quot;,
+              &quot;value&quot; : 121.92
+            },
+            &quot;height&quot; : {
+              &quot;unit&quot; : &quot;centimeters&quot;,
+              &quot;value&quot; : 203.2
+            },
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;image_aspect_ratio&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;16:9&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;part_number&quot; : [ {
+            &quot;value&quot; : &quot;QN82Q60RAFXZA&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;includes_remote&quot; : [ {
+            &quot;value&quot; : true,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;style&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;TV only&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_type_name&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;TV&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;battery&quot; : [ {
+            &quot;cell_composition&quot; : [ {
+              &quot;value&quot; : &quot;alkaline&quot;
+            } ],
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;image_contrast_ratio&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;QLED 4K&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;manufacturer&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Samsung&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;number_of_boxes&quot; : [ {
+            &quot;value&quot; : 1,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;total_usb_ports&quot; : [ {
+            &quot;value&quot; : 2,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;model_number&quot; : [ {
+            &quot;value&quot; : &quot;QN82Q60RAFXZA&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;supplier_declared_dg_hz_regulation&quot; : [ {
+            &quot;value&quot; : &quot;not_applicable&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;num_batteries&quot; : [ {
+            &quot;quantity&quot; : 2,
+            &quot;type&quot; : &quot;aaa&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;california_proposition_65&quot; : [ {
+            &quot;compliance_type&quot; : &quot;on_product_combined_cancer_reproductive&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;compliance_type&quot; : &quot;chemical&quot;,
+            &quot;chemical_names&quot; : [ &quot;di_2_ethylhexyl_phthalate_dehp&quot; ],
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;display&quot; : [ {
+            &quot;resolution_maximum&quot; : [ {
+              &quot;unit&quot; : &quot;pixels&quot;,
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;3840 x 2160&quot;
+            } ],
+            &quot;size&quot; : [ {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 82
+            } ],
+            &quot;type&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;QLED&quot;
+            } ],
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_name&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;list_price&quot; : [ {
+            &quot;currency&quot; : &quot;USD&quot;,
+            &quot;value&quot; : 3799.99,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;batteries_required&quot; : [ {
+            &quot;value&quot; : false,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;includes_rechargable_battery&quot; : [ {
+            &quot;value&quot; : false,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;product_site_launch_date&quot; : [ {
+            &quot;value&quot; : &quot;2019-03-11T08:00:01.000Z&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;product_category&quot; : [ {
+            &quot;value&quot; : &quot;50400100&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;batteries_included&quot; : [ {
+            &quot;value&quot; : false,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;connectivity_technology&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Bluetooth&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;USB&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Wireless&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;HDMI&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;included_components&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;QLED Standard Smart Remote&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Power Cable&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Stand&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Samsung Smart Control&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;specification_met&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;parental_control_technology&quot; : [ {
+            &quot;value&quot; : &quot;V-Chip&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;power_consumption&quot; : [ {
+            &quot;unit&quot; : &quot;watts&quot;,
+            &quot;value&quot; : 120,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;cpsia_cautionary_statement&quot; : [ {
+            &quot;value&quot; : &quot;no_warning_applicable&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_type_keyword&quot; : [ {
+            &quot;value&quot; : &quot;qled-televisions&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;number_of_items&quot; : [ {
+            &quot;value&quot; : 1,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;warranty_description&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;1 year manufacturer&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;max_resolution&quot; : [ {
+            &quot;unit&quot; : &quot;pixels&quot;,
+            &quot;value&quot; : 8.3,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;color&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Black&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;screen_surface_description&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Flat&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;item_package_weight&quot; : [ {
+            &quot;unit&quot; : &quot;kilograms&quot;,
+            &quot;value&quot; : 62.142,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;speaker_type&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;2CH&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;supported_internet_services&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Amazon Instant Video&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;YouTube&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Netflix&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Hulu&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Browser&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;tuner_technology&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Analog Tuner&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;controller_type&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;SmartThings&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Voice Control&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;special_feature&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;100% Color Volume with Quantum Dot; Quantum Processor 4K; Ambient Mode; Quantum HDR 4X; Real Game Enhancer&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;wireless_communication_technology&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Wi-Fi::Wi-Fi Direct::Bluetooth&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;model_year&quot; : [ {
+            &quot;value&quot; : 2019,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;power_source_type&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Corded Electric&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;street_date&quot; : [ {
+            &quot;value&quot; : &quot;2019-03-21T00:00:01Z&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;mounting_type&quot; : [ {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Table Mount&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          }, {
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;Wall Mount&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ],
+          &quot;refresh_rate&quot; : [ {
+            &quot;unit&quot; : &quot;hertz&quot;,
+            &quot;language_tag&quot; : &quot;en_US&quot;,
+            &quot;value&quot; : &quot;120&quot;,
+            &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+          } ]
+        },
+        &quot;classifications&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;classifications&quot; : [ {
+            &quot;displayName&quot; : &quot;QLED TVs&quot;,
+            &quot;classificationId&quot; : &quot;21489946011&quot;,
+            &quot;parent&quot; : {
+              &quot;displayName&quot; : &quot;Televisions&quot;,
+              &quot;classificationId&quot; : &quot;172659&quot;,
+              &quot;parent&quot; : {
+                &quot;displayName&quot; : &quot;Television &amp; Video&quot;,
+                &quot;classificationId&quot; : &quot;1266092011&quot;,
+                &quot;parent&quot; : {
+                  &quot;displayName&quot; : &quot;Electronics&quot;,
+                  &quot;classificationId&quot; : &quot;172282&quot;
+                }
+              }
+            }
+          } ]
+        } ],
+        &quot;dimensions&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;item&quot; : {
+            &quot;height&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 41.4
+            },
+            &quot;length&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 2.4
+            },
+            &quot;weight&quot; : {
+              &quot;unit&quot; : &quot;pounds&quot;,
+              &quot;value&quot; : 107.6
+            },
+            &quot;width&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 72.4
+            }
+          },
+          &quot;package&quot; : {
+            &quot;height&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 10.49999998929
+            },
+            &quot;length&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 79.9999999184
+            },
+            &quot;weight&quot; : {
+              &quot;unit&quot; : &quot;kilograms&quot;,
+              &quot;value&quot; : 62.142
+            },
+            &quot;width&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 47.99999995104
+            }
+          }
+        } ],
+        &quot;identifiers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;identifiers&quot; : [ {
+            &quot;identifier&quot; : &quot;0887276302195&quot;,
+            &quot;identifierType&quot; : &quot;EAN&quot;
+          }, {
+            &quot;identifier&quot; : &quot;00887276302195&quot;,
+            &quot;identifierType&quot; : &quot;GTIN&quot;
+          }, {
+            &quot;identifier&quot; : &quot;887276302195&quot;,
+            &quot;identifierType&quot; : &quot;UPC&quot;
+          } ]
+        } ],
+        &quot;images&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;images&quot; : [ {
+            &quot;variant&quot; : &quot;MAIN&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/91uohwV+k3L.jpg&quot;,
+            &quot;height&quot; : 1707,
+            &quot;width&quot; : 2560
+          }, {
+            &quot;variant&quot; : &quot;MAIN&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51DZzp3w3vL.jpg&quot;,
+            &quot;height&quot; : 333,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT01&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/81w2rTVShlL.jpg&quot;,
+            &quot;height&quot; : 2560,
+            &quot;width&quot; : 2560
+          }, {
+            &quot;variant&quot; : &quot;PT01&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41Px9eq9tkL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT02&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51NTNhdhPyL.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT03&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51o4zpL+A3L.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT04&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71ux2k9GAZL.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT04&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61UUX63yw1L.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT05&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61LwHkljX-L.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT05&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51wJTQty3PL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT06&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61uvoB4VvoL.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT06&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51ZexIO628L.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT07&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/7121MGd2ncL.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT07&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61QK+JBMrGL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT08&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61ECcGlG4IL.jpg&quot;,
+            &quot;height&quot; : 1080,
+            &quot;width&quot; : 1920
+          }, {
+            &quot;variant&quot; : &quot;PT08&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
+            &quot;height&quot; : 281,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT09&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT10&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT11&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT12&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
+            &quot;height&quot; : 448,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT13&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
+            &quot;height&quot; : 314,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT14&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
+            &quot;height&quot; : 1097,
+            &quot;width&quot; : 1500
+          }, {
+            &quot;variant&quot; : &quot;PT14&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
+            &quot;height&quot; : 366,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT15&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 175
+          }, {
+            &quot;variant&quot; : &quot;EEGL&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+            &quot;height&quot; : 1375,
+            &quot;width&quot; : 370
+          }, {
+            &quot;variant&quot; : &quot;EEGL&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 135
+          }, {
+            &quot;variant&quot; : &quot;EGUS&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+            &quot;height&quot; : 1375,
+            &quot;width&quot; : 370
+          }, {
+            &quot;variant&quot; : &quot;EGUS&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 135
+          } ]
+        } ],
+        &quot;productTypes&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;productType&quot; : &quot;TELEVISION&quot;
+        } ],
+        &quot;salesRanks&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;classificationRanks&quot; : [ {
+            &quot;classificationId&quot; : &quot;21489946011&quot;,
+            &quot;title&quot; : &quot;QLED TVs&quot;,
+            &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics/21489946011&quot;,
+            &quot;rank&quot; : 113
+          } ],
+          &quot;displayGroupRanks&quot; : [ {
+            &quot;websiteDisplayGroup&quot; : &quot;ce_display_on_website&quot;,
+            &quot;title&quot; : &quot;Electronics&quot;,
+            &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics&quot;,
+            &quot;rank&quot; : 72855
+          } ]
+        } ],
+        &quot;summaries&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;brand&quot; : &quot;SAMSUNG&quot;,
+          &quot;browseClassification&quot; : {
+            &quot;displayName&quot; : &quot;QLED TVs&quot;,
+            &quot;classificationId&quot; : &quot;21489946011&quot;
+          },
+          &quot;color&quot; : &quot;Black&quot;,
+          &quot;itemClassification&quot; : &quot;BASE_PRODUCT&quot;,
+          &quot;itemName&quot; : &quot;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility&quot;,
+          &quot;manufacturer&quot; : &quot;Samsung&quot;,
+          &quot;modelNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+          &quot;packageQuantity&quot; : 1,
+          &quot;partNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+          &quot;size&quot; : &quot;82-Inch&quot;,
+          &quot;style&quot; : &quot;TV only&quot;,
+          &quot;websiteDisplayGroup&quot; : &quot;home_theater_display_on_website&quot;,
+          &quot;websiteDisplayGroupName&quot; : &quot;Home Theater&quot;
+        } ],
+        &quot;relationships&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;relationships&quot; : [ {
+            &quot;type&quot; : &quot;VARIATION&quot;,
+            &quot;parentAsins&quot; : [ &quot;B08J7TQ9FL&quot; ],
+            &quot;variationTheme&quot; : {
+              &quot;attributes&quot; : [ &quot;color&quot;, &quot;size&quot; ],
+              &quot;theme&quot; : &quot;SIZE_NAME/COLOR_NAME&quot;
+            }
+          } ]
+        } ],
+        &quot;vendorDetails&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;brandCode&quot; : &quot;SAMF9&quot;,
+          &quot;manufacturerCode&quot; : &quot;SAMF9&quot;,
+          &quot;manufacturerCodeParent&quot; : &quot;SAMF9&quot;,
+          &quot;productCategory&quot; : {
+            &quot;displayName&quot; : &quot;Televisions&quot;,
+            &quot;value&quot; : &quot;50400100&quot;
+          },
+          &quot;productGroup&quot; : &quot;Home Entertainment&quot;,
+          &quot;productSubcategory&quot; : {
+            &quot;displayName&quot; : &quot;Plasma TVs&quot;,
+            &quot;value&quot; : &quot;50400120&quot;
+          },
+          &quot;replenishmentCategory&quot; : &quot;OBSOLETE&quot;
+        } ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;B07N4M94X4&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;classifications&quot;, &quot;dimensions&quot;, &quot;identifiers&quot;, &quot;images&quot;, &quot;productTypes&quot;, &quot;relationships&quot;, &quot;salesRanks&quot;, &quot;summaries&quot;, &quot;vendorDetails&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;asin&quot; : &quot;B07N4M94X4&quot;,
+        &quot;classifications&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;classifications&quot; : [ {
+            &quot;displayName&quot; : &quot;QLED TVs&quot;,
+            &quot;classificationId&quot; : &quot;21489946011&quot;,
+            &quot;parent&quot; : {
+              &quot;displayName&quot; : &quot;Televisions&quot;,
+              &quot;classificationId&quot; : &quot;172659&quot;,
+              &quot;parent&quot; : {
+                &quot;displayName&quot; : &quot;Television &amp; Video&quot;,
+                &quot;classificationId&quot; : &quot;1266092011&quot;,
+                &quot;parent&quot; : {
+                  &quot;displayName&quot; : &quot;Electronics&quot;,
+                  &quot;classificationId&quot; : &quot;172282&quot;
+                }
+              }
+            }
+          } ]
+        } ],
+        &quot;dimensions&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;item&quot; : {
+            &quot;height&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 41.4
+            },
+            &quot;length&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 2.4
+            },
+            &quot;weight&quot; : {
+              &quot;unit&quot; : &quot;pounds&quot;,
+              &quot;value&quot; : 107.6
+            },
+            &quot;width&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 72.4
+            }
+          },
+          &quot;package&quot; : {
+            &quot;height&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 10.49999998929
+            },
+            &quot;length&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 79.9999999184
+            },
+            &quot;weight&quot; : {
+              &quot;unit&quot; : &quot;kilograms&quot;,
+              &quot;value&quot; : 62.142
+            },
+            &quot;width&quot; : {
+              &quot;unit&quot; : &quot;inches&quot;,
+              &quot;value&quot; : 47.99999995104
+            }
+          }
+        } ],
+        &quot;identifiers&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;identifiers&quot; : [ {
+            &quot;identifier&quot; : &quot;0887276302195&quot;,
+            &quot;identifierType&quot; : &quot;EAN&quot;
+          }, {
+            &quot;identifier&quot; : &quot;00887276302195&quot;,
+            &quot;identifierType&quot; : &quot;GTIN&quot;
+          }, {
+            &quot;identifier&quot; : &quot;887276302195&quot;,
+            &quot;identifierType&quot; : &quot;UPC&quot;
+          } ]
+        } ],
+        &quot;images&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;images&quot; : [ {
+            &quot;variant&quot; : &quot;MAIN&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/91uohwV+k3L.jpg&quot;,
+            &quot;height&quot; : 1707,
+            &quot;width&quot; : 2560
+          }, {
+            &quot;variant&quot; : &quot;MAIN&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51DZzp3w3vL.jpg&quot;,
+            &quot;height&quot; : 333,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT01&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/81w2rTVShlL.jpg&quot;,
+            &quot;height&quot; : 2560,
+            &quot;width&quot; : 2560
+          }, {
+            &quot;variant&quot; : &quot;PT01&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41Px9eq9tkL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT02&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51NTNhdhPyL.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT03&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51o4zpL+A3L.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT04&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71ux2k9GAZL.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT04&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61UUX63yw1L.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT05&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61LwHkljX-L.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT05&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51wJTQty3PL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT06&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61uvoB4VvoL.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT06&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51ZexIO628L.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT07&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/7121MGd2ncL.jpg&quot;,
+            &quot;height&quot; : 1000,
+            &quot;width&quot; : 1000
+          }, {
+            &quot;variant&quot; : &quot;PT07&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61QK+JBMrGL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT08&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61ECcGlG4IL.jpg&quot;,
+            &quot;height&quot; : 1080,
+            &quot;width&quot; : 1920
+          }, {
+            &quot;variant&quot; : &quot;PT08&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
+            &quot;height&quot; : 281,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT09&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT10&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT11&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
+            &quot;height&quot; : 375,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT12&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
+            &quot;height&quot; : 448,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT13&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
+            &quot;height&quot; : 314,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT14&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
+            &quot;height&quot; : 1097,
+            &quot;width&quot; : 1500
+          }, {
+            &quot;variant&quot; : &quot;PT14&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
+            &quot;height&quot; : 366,
+            &quot;width&quot; : 500
+          }, {
+            &quot;variant&quot; : &quot;PT15&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 175
+          }, {
+            &quot;variant&quot; : &quot;EEGL&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+            &quot;height&quot; : 1375,
+            &quot;width&quot; : 370
+          }, {
+            &quot;variant&quot; : &quot;EEGL&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 135
+          }, {
+            &quot;variant&quot; : &quot;EGUS&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+            &quot;height&quot; : 1375,
+            &quot;width&quot; : 370
+          }, {
+            &quot;variant&quot; : &quot;EGUS&quot;,
+            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+            &quot;height&quot; : 500,
+            &quot;width&quot; : 135
+          } ]
+        } ],
+        &quot;productTypes&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;productType&quot; : &quot;TELEVISION&quot;
+        } ],
+        &quot;salesRanks&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;classificationRanks&quot; : [ {
+            &quot;classificationId&quot; : &quot;21489946011&quot;,
+            &quot;title&quot; : &quot;QLED TVs&quot;,
+            &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics/21489946011&quot;,
+            &quot;rank&quot; : 113
+          } ],
+          &quot;displayGroupRanks&quot; : [ {
+            &quot;websiteDisplayGroup&quot; : &quot;ce_display_on_website&quot;,
+            &quot;title&quot; : &quot;Electronics&quot;,
+            &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics&quot;,
+            &quot;rank&quot; : 72855
+          } ]
+        } ],
+        &quot;summaries&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;brand&quot; : &quot;SAMSUNG&quot;,
+          &quot;browseClassification&quot; : {
+            &quot;displayName&quot; : &quot;QLED TVs&quot;,
+            &quot;classificationId&quot; : &quot;21489946011&quot;
+          },
+          &quot;color&quot; : &quot;Black&quot;,
+          &quot;itemClassification&quot; : &quot;BASE_PRODUCT&quot;,
+          &quot;itemName&quot; : &quot;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility&quot;,
+          &quot;manufacturer&quot; : &quot;Samsung&quot;,
+          &quot;modelNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+          &quot;packageQuantity&quot; : 1,
+          &quot;partNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+          &quot;size&quot; : &quot;82-Inch&quot;,
+          &quot;style&quot; : &quot;TV only&quot;,
+          &quot;websiteDisplayGroup&quot; : &quot;home_theater_display_on_website&quot;,
+          &quot;websiteDisplayGroupName&quot; : &quot;Home Theater&quot;
+        } ],
+        &quot;relationships&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;relationships&quot; : [ {
+            &quot;type&quot; : &quot;VARIATION&quot;,
+            &quot;parentAsins&quot; : [ &quot;B08J7TQ9FL&quot; ],
+            &quot;variationTheme&quot; : {
+              &quot;attributes&quot; : [ &quot;color&quot;, &quot;size&quot; ],
+              &quot;theme&quot; : &quot;SIZE_NAME/COLOR_NAME&quot;
+            }
+          } ]
+        } ],
+        &quot;vendorDetails&quot; : [ {
+          &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+          &quot;brandCode&quot; : &quot;SAMF9&quot;,
+          &quot;manufacturerCode&quot; : &quot;SAMF9&quot;,
+          &quot;manufacturerCodeParent&quot; : &quot;SAMF9&quot;,
+          &quot;productCategory&quot; : {
+            &quot;displayName&quot; : &quot;Televisions&quot;,
+            &quot;value&quot; : &quot;50400100&quot;
+          },
+          &quot;productGroup&quot; : &quot;Home Entertainment&quot;,
+          &quot;productSubcategory&quot; : {
+            &quot;displayName&quot; : &quot;Plasma TVs&quot;,
+            &quot;value&quot; : &quot;50400120&quot;
+          },
+          &quot;replenishmentCategory&quot; : &quot;OBSOLETE&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'getCatalogItem',
-                $invalidRequestJson
+                $jsonSchema,
+                'getCatalogItem'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{asin&#x3D;B07N4M94X4, classifications&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, classifications&#x3D;[{displayName&#x3D;QLED TVs, classificationId&#x3D;21489946011, parent&#x3D;{displayName&#x3D;Televisions, classificationId&#x3D;172659, parent&#x3D;{displayName&#x3D;Television &amp; Video, classificationId&#x3D;1266092011, parent&#x3D;{displayName&#x3D;Electronics, classificationId&#x3D;172282}}}}]}], dimensions&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, item&#x3D;{height&#x3D;{unit&#x3D;inches, value&#x3D;41.4}, length&#x3D;{unit&#x3D;inches, value&#x3D;2.4}, weight&#x3D;{unit&#x3D;pounds, value&#x3D;107.6}, width&#x3D;{unit&#x3D;inches, value&#x3D;72.4}}, package&#x3D;{height&#x3D;{unit&#x3D;inches, value&#x3D;10.49999998929}, length&#x3D;{unit&#x3D;inches, value&#x3D;79.9999999184}, weight&#x3D;{unit&#x3D;kilograms, value&#x3D;62.142}, width&#x3D;{unit&#x3D;inches, value&#x3D;47.99999995104}}}], identifiers&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, identifiers&#x3D;[{identifier&#x3D;0887276302195, identifierType&#x3D;EAN}, {identifier&#x3D;00887276302195, identifierType&#x3D;GTIN}, {identifier&#x3D;887276302195, identifierType&#x3D;UPC}]}], images&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, images&#x3D;[{variant&#x3D;MAIN, link&#x3D;https://m.media-amazon.com/images/I/91uohwV+k3L.jpg, height&#x3D;1707, width&#x3D;2560}, {variant&#x3D;MAIN, link&#x3D;https://m.media-amazon.com/images/I/51DZzp3w3vL.jpg, height&#x3D;333, width&#x3D;500}, {variant&#x3D;PT01, link&#x3D;https://m.media-amazon.com/images/I/81w2rTVShlL.jpg, height&#x3D;2560, width&#x3D;2560}, {variant&#x3D;PT01, link&#x3D;https://m.media-amazon.com/images/I/41Px9eq9tkL.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT02, link&#x3D;https://m.media-amazon.com/images/I/51NTNhdhPyL.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT03, link&#x3D;https://m.media-amazon.com/images/I/51o4zpL+A3L.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT04, link&#x3D;https://m.media-amazon.com/images/I/71ux2k9GAZL.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT04, link&#x3D;https://m.media-amazon.com/images/I/61UUX63yw1L.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT05, link&#x3D;https://m.media-amazon.com/images/I/61LwHkljX-L.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT05, link&#x3D;https://m.media-amazon.com/images/I/51wJTQty3PL.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT06, link&#x3D;https://m.media-amazon.com/images/I/61uvoB4VvoL.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT06, link&#x3D;https://m.media-amazon.com/images/I/51ZexIO628L.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT07, link&#x3D;https://m.media-amazon.com/images/I/7121MGd2ncL.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT07, link&#x3D;https://m.media-amazon.com/images/I/61QK+JBMrGL.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT08, link&#x3D;https://m.media-amazon.com/images/I/61ECcGlG4IL.jpg, height&#x3D;1080, width&#x3D;1920}, {variant&#x3D;PT08, link&#x3D;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg, height&#x3D;281, width&#x3D;500}, {variant&#x3D;PT09, link&#x3D;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT10, link&#x3D;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT11, link&#x3D;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT12, link&#x3D;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg, height&#x3D;448, width&#x3D;500}, {variant&#x3D;PT13, link&#x3D;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg, height&#x3D;314, width&#x3D;500}, {variant&#x3D;PT14, link&#x3D;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg, height&#x3D;1097, width&#x3D;1500}, {variant&#x3D;PT14, link&#x3D;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg, height&#x3D;366, width&#x3D;500}, {variant&#x3D;PT15, link&#x3D;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg, height&#x3D;500, width&#x3D;175}, {variant&#x3D;EEGL, link&#x3D;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg, height&#x3D;1375, width&#x3D;370}, {variant&#x3D;EEGL, link&#x3D;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg, height&#x3D;500, width&#x3D;135}, {variant&#x3D;EGUS, link&#x3D;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg, height&#x3D;1375, width&#x3D;370}, {variant&#x3D;EGUS, link&#x3D;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg, height&#x3D;500, width&#x3D;135}]}], productTypes&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, productType&#x3D;TELEVISION}], salesRanks&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, classificationRanks&#x3D;[{classificationId&#x3D;21489946011, title&#x3D;QLED TVs, link&#x3D;http://www.amazon.com/gp/bestsellers/electronics/21489946011, rank&#x3D;113}], displayGroupRanks&#x3D;[{websiteDisplayGroup&#x3D;ce_display_on_website, title&#x3D;Electronics, link&#x3D;http://www.amazon.com/gp/bestsellers/electronics, rank&#x3D;72855}]}], summaries&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, brand&#x3D;SAMSUNG, browseClassification&#x3D;{displayName&#x3D;QLED TVs, classificationId&#x3D;21489946011}, color&#x3D;Black, itemClassification&#x3D;BASE_PRODUCT, itemName&#x3D;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility, manufacturer&#x3D;Samsung, modelNumber&#x3D;QN82Q60RAFXZA, packageQuantity&#x3D;1, partNumber&#x3D;QN82Q60RAFXZA, size&#x3D;82-Inch, style&#x3D;TV only, websiteDisplayGroup&#x3D;home_theater_display_on_website, websiteDisplayGroupName&#x3D;Home Theater}], relationships&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, relationships&#x3D;[{type&#x3D;VARIATION, parentAsins&#x3D;[B08J7TQ9FL], variationTheme&#x3D;{attributes&#x3D;[color, size], theme&#x3D;SIZE_NAME/COLOR_NAME}}]}], vendorDetails&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, brandCode&#x3D;SAMF9, manufacturerCode&#x3D;SAMF9, manufacturerCodeParent&#x3D;SAMF9, productCategory&#x3D;{displayName&#x3D;Televisions, value&#x3D;50400100}, productGroup&#x3D;Home Entertainment, productSubcategory&#x3D;{displayName&#x3D;Plasma TVs, value&#x3D;50400120}, replenishmentCategory&#x3D;OBSOLETE}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'getCatalogItem',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->getCatalogItemWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -181,112 +1144,1102 @@ class CatalogItemsApiTest extends TestCase
     }
     /**
      * Test case for getCatalogItem_400
-     * .
      */
     public function testGetCatalogItem400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_403
-     * .
      */
     public function testGetCatalogItem403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_404
-     * .
      */
     public function testGetCatalogItem404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_413
-     * .
      */
     public function testGetCatalogItem413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_415
-     * .
      */
     public function testGetCatalogItem415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_429
-     * .
      */
     public function testGetCatalogItem429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_500
-     * .
      */
     public function testGetCatalogItem500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for getCatalogItem_503
-     * .
      */
     public function testGetCatalogItem503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_200
-     * .
      */
     public function testSearchCatalogItems200()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSearchCatalogItems200')) {
+             if ($this->testHelper->shouldSkipTest('testSearchCatalogItems200', 'CatalogItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
-
-            //　Build Request Json for Request to static SandBox
-            $invalidRequestJson = '{keywords&#x3D;{value&#x3D;[samsung, tv]}, marketplaceIds&#x3D;{value&#x3D;[ATVPDKIKX0DER]}, includedData&#x3D;{value&#x3D;[classifications, dimensions, identifiers, images, productTypes, relationships, salesRanks, summaries, vendorDetails]}};';
-            // Prepare request parameters
-            $requestParams = $this->testHelper->prepareRequestParamsFromMethod(
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ItemSearchResults&quot;
+      },
+      &quot;example&quot; : {
+        &quot;numberOfResults&quot; : 1,
+        &quot;pagination&quot; : {
+          &quot;nextToken&quot; : &quot;xsdflkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjl234&quot;,
+          &quot;previousToken&quot; : &quot;ilkjsdflkj234lkjds234234lkjl234lksjdflkj234234lkjsfsdflkj333d&quot;
+        },
+        &quot;refinements&quot; : {
+          &quot;brands&quot; : [ {
+            &quot;numberOfResults&quot; : 1,
+            &quot;brandName&quot; : &quot;SAMSUNG&quot;
+          } ],
+          &quot;classifications&quot; : [ {
+            &quot;numberOfResults&quot; : 1,
+            &quot;displayName&quot; : &quot;Electronics&quot;,
+            &quot;classificationId&quot; : &quot;493964&quot;
+          } ]
+        },
+        &quot;items&quot; : [ {
+          &quot;asin&quot; : &quot;B07N4M94X4&quot;,
+          &quot;attributes&quot; : {
+            &quot;total_hdmi_ports&quot; : [ {
+              &quot;value&quot; : 4,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;resolution&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;4K&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_weight&quot; : [ {
+              &quot;unit&quot; : &quot;pounds&quot;,
+              &quot;value&quot; : 107.6,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;product_subcategory&quot; : [ {
+              &quot;value&quot; : &quot;50400120&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;bullet_point&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;SMART TV WITH UNIVERSAL GUIDE: Simple on-screen Guide is an easy way to find streaming content and live TV shows&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;100% COLOR VOLUME WITH QUANTUM DOTS: Powered by Quantum dots, Samsung’s 4K QLED TV offers over a billion shades of brilliant color and 100% color volume for exceptional depth of detail that will draw you in to the picture for the best 4K TV experience&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;QUANTUM PROCESSOR 4K: Intelligently powered processor instantly upscales content to 4K for sharp detail and refined color&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;QUANTUM HDR 4X: 4K depth of detail with high dynamic range powered by HDR10+ delivers the lightest to darkest colors, scene by scene, for amazing picture realism&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;AMBIENT MODE: Customizes and complements your living space by turning a blank screen of this big screen TV into enticing visuals including décor, info, photos and artwork&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;SMART TV FEATURES: OneRemote to control all compatible devices, Bixby voice command, on-screen universal guide, SmartThings to control compatible home appliances and devices, smart speaker expandability with Alexa and Google Assistant compatibility, and more&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_dimensions&quot; : [ {
+              &quot;width&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 72.4
+              },
+              &quot;length&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 2.4
+              },
+              &quot;height&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 41.4
+              },
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;brand&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;SAMSUNG&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;control_method&quot; : [ {
+              &quot;value&quot; : &quot;voice&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_package_dimensions&quot; : [ {
+              &quot;length&quot; : {
+                &quot;unit&quot; : &quot;centimeters&quot;,
+                &quot;value&quot; : 26.67
+              },
+              &quot;width&quot; : {
+                &quot;unit&quot; : &quot;centimeters&quot;,
+                &quot;value&quot; : 121.92
+              },
+              &quot;height&quot; : {
+                &quot;unit&quot; : &quot;centimeters&quot;,
+                &quot;value&quot; : 203.2
+              },
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;image_aspect_ratio&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;16:9&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;part_number&quot; : [ {
+              &quot;value&quot; : &quot;QN82Q60RAFXZA&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;includes_remote&quot; : [ {
+              &quot;value&quot; : true,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;style&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;TV only&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_type_name&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;TV&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;battery&quot; : [ {
+              &quot;cell_composition&quot; : [ {
+                &quot;value&quot; : &quot;alkaline&quot;
+              } ],
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;image_contrast_ratio&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;QLED 4K&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;manufacturer&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Samsung&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;number_of_boxes&quot; : [ {
+              &quot;value&quot; : 1,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;total_usb_ports&quot; : [ {
+              &quot;value&quot; : 2,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;model_number&quot; : [ {
+              &quot;value&quot; : &quot;QN82Q60RAFXZA&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;supplier_declared_dg_hz_regulation&quot; : [ {
+              &quot;value&quot; : &quot;not_applicable&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;num_batteries&quot; : [ {
+              &quot;quantity&quot; : 2,
+              &quot;type&quot; : &quot;aaa&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;california_proposition_65&quot; : [ {
+              &quot;compliance_type&quot; : &quot;on_product_combined_cancer_reproductive&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;compliance_type&quot; : &quot;chemical&quot;,
+              &quot;chemical_names&quot; : [ &quot;di_2_ethylhexyl_phthalate_dehp&quot; ],
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;display&quot; : [ {
+              &quot;resolution_maximum&quot; : [ {
+                &quot;unit&quot; : &quot;pixels&quot;,
+                &quot;language_tag&quot; : &quot;en_US&quot;,
+                &quot;value&quot; : &quot;3840 x 2160&quot;
+              } ],
+              &quot;size&quot; : [ {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 82
+              } ],
+              &quot;type&quot; : [ {
+                &quot;language_tag&quot; : &quot;en_US&quot;,
+                &quot;value&quot; : &quot;QLED&quot;
+              } ],
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_name&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;list_price&quot; : [ {
+              &quot;currency&quot; : &quot;USD&quot;,
+              &quot;value&quot; : 3799.99,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;batteries_required&quot; : [ {
+              &quot;value&quot; : false,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;includes_rechargable_battery&quot; : [ {
+              &quot;value&quot; : false,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;product_site_launch_date&quot; : [ {
+              &quot;value&quot; : &quot;2019-03-11T08:00:01.000Z&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;product_category&quot; : [ {
+              &quot;value&quot; : &quot;50400100&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;batteries_included&quot; : [ {
+              &quot;value&quot; : false,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;connectivity_technology&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Bluetooth&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;USB&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Wireless&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;HDMI&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;included_components&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;QLED Standard Smart Remote&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Power Cable&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Stand&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Samsung Smart Control&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;specification_met&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;parental_control_technology&quot; : [ {
+              &quot;value&quot; : &quot;V-Chip&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;power_consumption&quot; : [ {
+              &quot;unit&quot; : &quot;watts&quot;,
+              &quot;value&quot; : 120,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;cpsia_cautionary_statement&quot; : [ {
+              &quot;value&quot; : &quot;no_warning_applicable&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_type_keyword&quot; : [ {
+              &quot;value&quot; : &quot;qled-televisions&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;number_of_items&quot; : [ {
+              &quot;value&quot; : 1,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;warranty_description&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;1 year manufacturer&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;max_resolution&quot; : [ {
+              &quot;unit&quot; : &quot;pixels&quot;,
+              &quot;value&quot; : 8.3,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;color&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Black&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;screen_surface_description&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Flat&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;item_package_weight&quot; : [ {
+              &quot;unit&quot; : &quot;kilograms&quot;,
+              &quot;value&quot; : 62.142,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;speaker_type&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;2CH&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;supported_internet_services&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Amazon Instant Video&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;YouTube&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Netflix&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Hulu&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Browser&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;tuner_technology&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Analog Tuner&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;controller_type&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;SmartThings&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Voice Control&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;special_feature&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;100% Color Volume with Quantum Dot; Quantum Processor 4K; Ambient Mode; Quantum HDR 4X; Real Game Enhancer&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;wireless_communication_technology&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Wi-Fi::Wi-Fi Direct::Bluetooth&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;model_year&quot; : [ {
+              &quot;value&quot; : 2019,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;power_source_type&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Corded Electric&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;street_date&quot; : [ {
+              &quot;value&quot; : &quot;2019-03-21T00:00:01Z&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;mounting_type&quot; : [ {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Table Mount&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            }, {
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;Wall Mount&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ],
+            &quot;refresh_rate&quot; : [ {
+              &quot;unit&quot; : &quot;hertz&quot;,
+              &quot;language_tag&quot; : &quot;en_US&quot;,
+              &quot;value&quot; : &quot;120&quot;,
+              &quot;marketplace_id&quot; : &quot;ATVPDKIKX0DER&quot;
+            } ]
+          },
+          &quot;classifications&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;classifications&quot; : [ {
+              &quot;displayName&quot; : &quot;QLED TVs&quot;,
+              &quot;classificationId&quot; : &quot;21489946011&quot;,
+              &quot;parent&quot; : {
+                &quot;displayName&quot; : &quot;Televisions&quot;,
+                &quot;classificationId&quot; : &quot;172659&quot;,
+                &quot;parent&quot; : {
+                  &quot;displayName&quot; : &quot;Television &amp; Video&quot;,
+                  &quot;classificationId&quot; : &quot;1266092011&quot;,
+                  &quot;parent&quot; : {
+                    &quot;displayName&quot; : &quot;Electronics&quot;,
+                    &quot;classificationId&quot; : &quot;172282&quot;
+                  }
+                }
+              }
+            } ]
+          } ],
+          &quot;dimensions&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;item&quot; : {
+              &quot;height&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 41.4
+              },
+              &quot;length&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 2.4
+              },
+              &quot;weight&quot; : {
+                &quot;unit&quot; : &quot;pounds&quot;,
+                &quot;value&quot; : 107.6
+              },
+              &quot;width&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 72.4
+              }
+            },
+            &quot;package&quot; : {
+              &quot;height&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 10.49999998929
+              },
+              &quot;length&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 79.9999999184
+              },
+              &quot;weight&quot; : {
+                &quot;unit&quot; : &quot;kilograms&quot;,
+                &quot;value&quot; : 62.142
+              },
+              &quot;width&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 47.99999995104
+              }
+            }
+          } ],
+          &quot;identifiers&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;identifiers&quot; : [ {
+              &quot;identifier&quot; : &quot;0887276302195&quot;,
+              &quot;identifierType&quot; : &quot;EAN&quot;
+            }, {
+              &quot;identifier&quot; : &quot;00887276302195&quot;,
+              &quot;identifierType&quot; : &quot;GTIN&quot;
+            }, {
+              &quot;identifier&quot; : &quot;887276302195&quot;,
+              &quot;identifierType&quot; : &quot;UPC&quot;
+            } ]
+          } ],
+          &quot;images&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;images&quot; : [ {
+              &quot;variant&quot; : &quot;MAIN&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/91uohwV+k3L.jpg&quot;,
+              &quot;height&quot; : 1707,
+              &quot;width&quot; : 2560
+            }, {
+              &quot;variant&quot; : &quot;MAIN&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51DZzp3w3vL.jpg&quot;,
+              &quot;height&quot; : 333,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT01&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/81w2rTVShlL.jpg&quot;,
+              &quot;height&quot; : 2560,
+              &quot;width&quot; : 2560
+            }, {
+              &quot;variant&quot; : &quot;PT01&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41Px9eq9tkL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT02&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51NTNhdhPyL.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT03&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51o4zpL+A3L.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT04&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71ux2k9GAZL.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT04&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61UUX63yw1L.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT05&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61LwHkljX-L.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT05&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51wJTQty3PL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT06&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61uvoB4VvoL.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT06&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51ZexIO628L.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT07&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/7121MGd2ncL.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT07&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61QK+JBMrGL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT08&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61ECcGlG4IL.jpg&quot;,
+              &quot;height&quot; : 1080,
+              &quot;width&quot; : 1920
+            }, {
+              &quot;variant&quot; : &quot;PT08&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
+              &quot;height&quot; : 281,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT09&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT10&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT11&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT12&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
+              &quot;height&quot; : 448,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT13&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
+              &quot;height&quot; : 314,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT14&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
+              &quot;height&quot; : 1097,
+              &quot;width&quot; : 1500
+            }, {
+              &quot;variant&quot; : &quot;PT14&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
+              &quot;height&quot; : 366,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT15&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 175
+            }, {
+              &quot;variant&quot; : &quot;EEGL&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+              &quot;height&quot; : 1375,
+              &quot;width&quot; : 370
+            }, {
+              &quot;variant&quot; : &quot;EEGL&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 135
+            }, {
+              &quot;variant&quot; : &quot;EGUS&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+              &quot;height&quot; : 1375,
+              &quot;width&quot; : 370
+            }, {
+              &quot;variant&quot; : &quot;EGUS&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 135
+            } ]
+          } ],
+          &quot;productTypes&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;productType&quot; : &quot;TELEVISION&quot;
+          } ],
+          &quot;salesRanks&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;classificationRanks&quot; : [ {
+              &quot;classificationId&quot; : &quot;21489946011&quot;,
+              &quot;title&quot; : &quot;QLED TVs&quot;,
+              &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics/21489946011&quot;,
+              &quot;rank&quot; : 113
+            } ],
+            &quot;displayGroupRanks&quot; : [ {
+              &quot;websiteDisplayGroup&quot; : &quot;ce_display_on_website&quot;,
+              &quot;title&quot; : &quot;Electronics&quot;,
+              &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics&quot;,
+              &quot;rank&quot; : 72855
+            } ]
+          } ],
+          &quot;summaries&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;brand&quot; : &quot;SAMSUNG&quot;,
+            &quot;browseClassification&quot; : {
+              &quot;displayName&quot; : &quot;QLED TVs&quot;,
+              &quot;classificationId&quot; : &quot;21489946011&quot;
+            },
+            &quot;color&quot; : &quot;Black&quot;,
+            &quot;itemClassification&quot; : &quot;BASE_PRODUCT&quot;,
+            &quot;itemName&quot; : &quot;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility&quot;,
+            &quot;manufacturer&quot; : &quot;Samsung&quot;,
+            &quot;modelNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+            &quot;packageQuantity&quot; : 1,
+            &quot;partNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+            &quot;size&quot; : &quot;82-Inch&quot;,
+            &quot;style&quot; : &quot;TV only&quot;,
+            &quot;websiteDisplayGroup&quot; : &quot;home_theater_display_on_website&quot;,
+            &quot;websiteDisplayGroupName&quot; : &quot;Home Theater&quot;
+          } ],
+          &quot;relationships&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;relationships&quot; : [ {
+              &quot;type&quot; : &quot;VARIATION&quot;,
+              &quot;parentAsins&quot; : [ &quot;B08J7TQ9FL&quot; ],
+              &quot;variationTheme&quot; : {
+                &quot;attributes&quot; : [ &quot;color&quot;, &quot;size&quot; ],
+                &quot;theme&quot; : &quot;SIZE_NAME/COLOR_NAME&quot;
+              }
+            } ]
+          } ],
+          &quot;vendorDetails&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;brandCode&quot; : &quot;SAMF9&quot;,
+            &quot;manufacturerCode&quot; : &quot;SAMF9&quot;,
+            &quot;manufacturerCodeParent&quot; : &quot;SAMF9&quot;,
+            &quot;productCategory&quot; : {
+              &quot;displayName&quot; : &quot;Televisions&quot;,
+              &quot;value&quot; : &quot;50400100&quot;
+            },
+            &quot;productGroup&quot; : &quot;Home Entertainment&quot;,
+            &quot;productSubcategory&quot; : {
+              &quot;displayName&quot; : &quot;Plasma TVs&quot;,
+              &quot;value&quot; : &quot;50400120&quot;
+            },
+            &quot;replenishmentCategory&quot; : &quot;OBSOLETE&quot;
+          } ]
+        } ]
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;keywords&quot; : {
+            &quot;value&quot; : [ &quot;samsung&quot;, &quot;tv&quot; ]
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;classifications&quot;, &quot;dimensions&quot;, &quot;identifiers&quot;, &quot;images&quot;, &quot;productTypes&quot;, &quot;relationships&quot;, &quot;salesRanks&quot;, &quot;summaries&quot;, &quot;vendorDetails&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;numberOfResults&quot; : 1,
+        &quot;pagination&quot; : {
+          &quot;nextToken&quot; : &quot;xsdflkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjl234&quot;,
+          &quot;previousToken&quot; : &quot;ilkjsdflkj234lkjds234234lkjl234lksjdflkj234234lkjsfsdflkj333d&quot;
+        },
+        &quot;refinements&quot; : {
+          &quot;brands&quot; : [ {
+            &quot;numberOfResults&quot; : 1,
+            &quot;brandName&quot; : &quot;SAMSUNG&quot;
+          } ],
+          &quot;classifications&quot; : [ {
+            &quot;numberOfResults&quot; : 1,
+            &quot;displayName&quot; : &quot;Electronics&quot;,
+            &quot;classificationId&quot; : &quot;493964&quot;
+          } ]
+        },
+        &quot;items&quot; : [ {
+          &quot;asin&quot; : &quot;B07N4M94X4&quot;,
+          &quot;classifications&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;classifications&quot; : [ {
+              &quot;displayName&quot; : &quot;QLED TVs&quot;,
+              &quot;classificationId&quot; : &quot;21489946011&quot;,
+              &quot;parent&quot; : {
+                &quot;displayName&quot; : &quot;Televisions&quot;,
+                &quot;classificationId&quot; : &quot;172659&quot;,
+                &quot;parent&quot; : {
+                  &quot;displayName&quot; : &quot;Television &amp; Video&quot;,
+                  &quot;classificationId&quot; : &quot;1266092011&quot;,
+                  &quot;parent&quot; : {
+                    &quot;displayName&quot; : &quot;Electronics&quot;,
+                    &quot;classificationId&quot; : &quot;172282&quot;
+                  }
+                }
+              }
+            } ]
+          } ],
+          &quot;dimensions&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;item&quot; : {
+              &quot;height&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 41.4
+              },
+              &quot;length&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 2.4
+              },
+              &quot;weight&quot; : {
+                &quot;unit&quot; : &quot;pounds&quot;,
+                &quot;value&quot; : 107.6
+              },
+              &quot;width&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 72.4
+              }
+            },
+            &quot;package&quot; : {
+              &quot;height&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 10.49999998929
+              },
+              &quot;length&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 79.9999999184
+              },
+              &quot;weight&quot; : {
+                &quot;unit&quot; : &quot;kilograms&quot;,
+                &quot;value&quot; : 62.142
+              },
+              &quot;width&quot; : {
+                &quot;unit&quot; : &quot;inches&quot;,
+                &quot;value&quot; : 47.99999995104
+              }
+            }
+          } ],
+          &quot;identifiers&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;identifiers&quot; : [ {
+              &quot;identifier&quot; : &quot;0887276302195&quot;,
+              &quot;identifierType&quot; : &quot;EAN&quot;
+            }, {
+              &quot;identifier&quot; : &quot;00887276302195&quot;,
+              &quot;identifierType&quot; : &quot;GTIN&quot;
+            }, {
+              &quot;identifier&quot; : &quot;887276302195&quot;,
+              &quot;identifierType&quot; : &quot;UPC&quot;
+            } ]
+          } ],
+          &quot;images&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;images&quot; : [ {
+              &quot;variant&quot; : &quot;MAIN&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/91uohwV+k3L.jpg&quot;,
+              &quot;height&quot; : 1707,
+              &quot;width&quot; : 2560
+            }, {
+              &quot;variant&quot; : &quot;MAIN&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51DZzp3w3vL.jpg&quot;,
+              &quot;height&quot; : 333,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT01&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/81w2rTVShlL.jpg&quot;,
+              &quot;height&quot; : 2560,
+              &quot;width&quot; : 2560
+            }, {
+              &quot;variant&quot; : &quot;PT01&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41Px9eq9tkL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT02&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51NTNhdhPyL.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT03&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51o4zpL+A3L.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT04&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71ux2k9GAZL.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT04&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61UUX63yw1L.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT05&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61LwHkljX-L.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT05&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51wJTQty3PL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT06&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61uvoB4VvoL.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT06&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51ZexIO628L.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT07&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/7121MGd2ncL.jpg&quot;,
+              &quot;height&quot; : 1000,
+              &quot;width&quot; : 1000
+            }, {
+              &quot;variant&quot; : &quot;PT07&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61QK+JBMrGL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT08&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61ECcGlG4IL.jpg&quot;,
+              &quot;height&quot; : 1080,
+              &quot;width&quot; : 1920
+            }, {
+              &quot;variant&quot; : &quot;PT08&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
+              &quot;height&quot; : 281,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT09&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT10&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT11&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
+              &quot;height&quot; : 375,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT12&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
+              &quot;height&quot; : 448,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT13&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
+              &quot;height&quot; : 314,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT14&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
+              &quot;height&quot; : 1097,
+              &quot;width&quot; : 1500
+            }, {
+              &quot;variant&quot; : &quot;PT14&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
+              &quot;height&quot; : 366,
+              &quot;width&quot; : 500
+            }, {
+              &quot;variant&quot; : &quot;PT15&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 175
+            }, {
+              &quot;variant&quot; : &quot;EEGL&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+              &quot;height&quot; : 1375,
+              &quot;width&quot; : 370
+            }, {
+              &quot;variant&quot; : &quot;EEGL&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 135
+            }, {
+              &quot;variant&quot; : &quot;EGUS&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
+              &quot;height&quot; : 1375,
+              &quot;width&quot; : 370
+            }, {
+              &quot;variant&quot; : &quot;EGUS&quot;,
+              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
+              &quot;height&quot; : 500,
+              &quot;width&quot; : 135
+            } ]
+          } ],
+          &quot;productTypes&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;productType&quot; : &quot;TELEVISION&quot;
+          } ],
+          &quot;salesRanks&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;classificationRanks&quot; : [ {
+              &quot;classificationId&quot; : &quot;21489946011&quot;,
+              &quot;title&quot; : &quot;QLED TVs&quot;,
+              &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics/21489946011&quot;,
+              &quot;rank&quot; : 113
+            } ],
+            &quot;displayGroupRanks&quot; : [ {
+              &quot;websiteDisplayGroup&quot; : &quot;ce_display_on_website&quot;,
+              &quot;title&quot; : &quot;Electronics&quot;,
+              &quot;link&quot; : &quot;http://www.amazon.com/gp/bestsellers/electronics&quot;,
+              &quot;rank&quot; : 72855
+            } ]
+          } ],
+          &quot;summaries&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;brand&quot; : &quot;SAMSUNG&quot;,
+            &quot;browseClassification&quot; : {
+              &quot;displayName&quot; : &quot;QLED TVs&quot;,
+              &quot;classificationId&quot; : &quot;21489946011&quot;
+            },
+            &quot;color&quot; : &quot;Black&quot;,
+            &quot;itemClassification&quot; : &quot;BASE_PRODUCT&quot;,
+            &quot;itemName&quot; : &quot;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility&quot;,
+            &quot;manufacturer&quot; : &quot;Samsung&quot;,
+            &quot;modelNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+            &quot;packageQuantity&quot; : 1,
+            &quot;partNumber&quot; : &quot;QN82Q60RAFXZA&quot;,
+            &quot;size&quot; : &quot;82-Inch&quot;,
+            &quot;style&quot; : &quot;TV only&quot;,
+            &quot;websiteDisplayGroup&quot; : &quot;home_theater_display_on_website&quot;,
+            &quot;websiteDisplayGroupName&quot; : &quot;Home Theater&quot;
+          } ],
+          &quot;relationships&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;relationships&quot; : [ {
+              &quot;type&quot; : &quot;VARIATION&quot;,
+              &quot;parentAsins&quot; : [ &quot;B08J7TQ9FL&quot; ],
+              &quot;variationTheme&quot; : {
+                &quot;attributes&quot; : [ &quot;color&quot;, &quot;size&quot; ],
+                &quot;theme&quot; : &quot;SIZE_NAME/COLOR_NAME&quot;
+              }
+            } ]
+          } ],
+          &quot;vendorDetails&quot; : [ {
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;brandCode&quot; : &quot;SAMF9&quot;,
+            &quot;manufacturerCode&quot; : &quot;SAMF9&quot;,
+            &quot;manufacturerCodeParent&quot; : &quot;SAMF9&quot;,
+            &quot;productCategory&quot; : {
+              &quot;displayName&quot; : &quot;Televisions&quot;,
+              &quot;value&quot; : &quot;50400100&quot;
+            },
+            &quot;productGroup&quot; : &quot;Home Entertainment&quot;,
+            &quot;productSubcategory&quot; : {
+              &quot;displayName&quot; : &quot;Plasma TVs&quot;,
+              &quot;value&quot; : &quot;50400120&quot;
+            },
+            &quot;replenishmentCategory&quot; : &quot;OBSOLETE&quot;
+          } ]
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
                 $this->apiInstance,
-                'searchCatalogItems',
-                $invalidRequestJson
+                $jsonSchema,
+                'searchCatalogItems'
             );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
 
-            //Build Expected Response Json for Assert
-            $invalidResponseJson = '{numberOfResults&#x3D;1, pagination&#x3D;{nextToken&#x3D;xsdflkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjl234, previousToken&#x3D;ilkjsdflkj234lkjds234234lkjl234lksjdflkj234234lkjsfsdflkj333d}, refinements&#x3D;{brands&#x3D;[{numberOfResults&#x3D;1, brandName&#x3D;SAMSUNG}], classifications&#x3D;[{numberOfResults&#x3D;1, displayName&#x3D;Electronics, classificationId&#x3D;493964}]}, items&#x3D;[{asin&#x3D;B07N4M94X4, classifications&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, classifications&#x3D;[{displayName&#x3D;QLED TVs, classificationId&#x3D;21489946011, parent&#x3D;{displayName&#x3D;Televisions, classificationId&#x3D;172659, parent&#x3D;{displayName&#x3D;Television &amp; Video, classificationId&#x3D;1266092011, parent&#x3D;{displayName&#x3D;Electronics, classificationId&#x3D;172282}}}}]}], dimensions&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, item&#x3D;{height&#x3D;{unit&#x3D;inches, value&#x3D;41.4}, length&#x3D;{unit&#x3D;inches, value&#x3D;2.4}, weight&#x3D;{unit&#x3D;pounds, value&#x3D;107.6}, width&#x3D;{unit&#x3D;inches, value&#x3D;72.4}}, package&#x3D;{height&#x3D;{unit&#x3D;inches, value&#x3D;10.49999998929}, length&#x3D;{unit&#x3D;inches, value&#x3D;79.9999999184}, weight&#x3D;{unit&#x3D;kilograms, value&#x3D;62.142}, width&#x3D;{unit&#x3D;inches, value&#x3D;47.99999995104}}}], identifiers&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, identifiers&#x3D;[{identifier&#x3D;0887276302195, identifierType&#x3D;EAN}, {identifier&#x3D;00887276302195, identifierType&#x3D;GTIN}, {identifier&#x3D;887276302195, identifierType&#x3D;UPC}]}], images&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, images&#x3D;[{variant&#x3D;MAIN, link&#x3D;https://m.media-amazon.com/images/I/91uohwV+k3L.jpg, height&#x3D;1707, width&#x3D;2560}, {variant&#x3D;MAIN, link&#x3D;https://m.media-amazon.com/images/I/51DZzp3w3vL.jpg, height&#x3D;333, width&#x3D;500}, {variant&#x3D;PT01, link&#x3D;https://m.media-amazon.com/images/I/81w2rTVShlL.jpg, height&#x3D;2560, width&#x3D;2560}, {variant&#x3D;PT01, link&#x3D;https://m.media-amazon.com/images/I/41Px9eq9tkL.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT02, link&#x3D;https://m.media-amazon.com/images/I/51NTNhdhPyL.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT03, link&#x3D;https://m.media-amazon.com/images/I/51o4zpL+A3L.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT04, link&#x3D;https://m.media-amazon.com/images/I/71ux2k9GAZL.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT04, link&#x3D;https://m.media-amazon.com/images/I/61UUX63yw1L.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT05, link&#x3D;https://m.media-amazon.com/images/I/61LwHkljX-L.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT05, link&#x3D;https://m.media-amazon.com/images/I/51wJTQty3PL.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT06, link&#x3D;https://m.media-amazon.com/images/I/61uvoB4VvoL.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT06, link&#x3D;https://m.media-amazon.com/images/I/51ZexIO628L.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT07, link&#x3D;https://m.media-amazon.com/images/I/7121MGd2ncL.jpg, height&#x3D;1000, width&#x3D;1000}, {variant&#x3D;PT07, link&#x3D;https://m.media-amazon.com/images/I/61QK+JBMrGL.jpg, height&#x3D;500, width&#x3D;500}, {variant&#x3D;PT08, link&#x3D;https://m.media-amazon.com/images/I/61ECcGlG4IL.jpg, height&#x3D;1080, width&#x3D;1920}, {variant&#x3D;PT08, link&#x3D;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg, height&#x3D;281, width&#x3D;500}, {variant&#x3D;PT09, link&#x3D;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT10, link&#x3D;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT11, link&#x3D;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg, height&#x3D;375, width&#x3D;500}, {variant&#x3D;PT12, link&#x3D;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg, height&#x3D;448, width&#x3D;500}, {variant&#x3D;PT13, link&#x3D;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg, height&#x3D;314, width&#x3D;500}, {variant&#x3D;PT14, link&#x3D;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg, height&#x3D;1097, width&#x3D;1500}, {variant&#x3D;PT14, link&#x3D;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg, height&#x3D;366, width&#x3D;500}, {variant&#x3D;PT15, link&#x3D;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg, height&#x3D;500, width&#x3D;175}, {variant&#x3D;EEGL, link&#x3D;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg, height&#x3D;1375, width&#x3D;370}, {variant&#x3D;EEGL, link&#x3D;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg, height&#x3D;500, width&#x3D;135}, {variant&#x3D;EGUS, link&#x3D;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg, height&#x3D;1375, width&#x3D;370}, {variant&#x3D;EGUS, link&#x3D;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg, height&#x3D;500, width&#x3D;135}]}], productTypes&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, productType&#x3D;TELEVISION}], salesRanks&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, classificationRanks&#x3D;[{classificationId&#x3D;21489946011, title&#x3D;QLED TVs, link&#x3D;http://www.amazon.com/gp/bestsellers/electronics/21489946011, rank&#x3D;113}], displayGroupRanks&#x3D;[{websiteDisplayGroup&#x3D;ce_display_on_website, title&#x3D;Electronics, link&#x3D;http://www.amazon.com/gp/bestsellers/electronics, rank&#x3D;72855}]}], summaries&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, brand&#x3D;SAMSUNG, browseClassification&#x3D;{displayName&#x3D;QLED TVs, classificationId&#x3D;21489946011}, color&#x3D;Black, itemClassification&#x3D;BASE_PRODUCT, itemName&#x3D;Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility, manufacturer&#x3D;Samsung, modelNumber&#x3D;QN82Q60RAFXZA, packageQuantity&#x3D;1, partNumber&#x3D;QN82Q60RAFXZA, size&#x3D;82-Inch, style&#x3D;TV only, websiteDisplayGroup&#x3D;home_theater_display_on_website, websiteDisplayGroupName&#x3D;Home Theater}], relationships&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, relationships&#x3D;[{type&#x3D;VARIATION, parentAsins&#x3D;[B08J7TQ9FL], variationTheme&#x3D;{attributes&#x3D;[color, size], theme&#x3D;SIZE_NAME/COLOR_NAME}}]}], vendorDetails&#x3D;[{marketplaceId&#x3D;ATVPDKIKX0DER, brandCode&#x3D;SAMF9, manufacturerCode&#x3D;SAMF9, manufacturerCodeParent&#x3D;SAMF9, productCategory&#x3D;{displayName&#x3D;Televisions, value&#x3D;50400100}, productGroup&#x3D;Home Entertainment, productSubcategory&#x3D;{displayName&#x3D;Plasma TVs, value&#x3D;50400120}, replenishmentCategory&#x3D;OBSOLETE}]}]}';
-            // Prepare expected response
-            $expectedResponse = $this->testHelper->prepareExpectedResponse(
-                $this->apiInstance,
-                'searchCatalogItems',
-                $invalidResponseJson
-            );
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogItemsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
 
             // Act: Call API
             list($response, $statusCode, $headers) =
                 $this->apiInstance->searchCatalogItemsWithHttpInfo(...array_values($requestParams));
 
-            // Assert the response
+            // Assert the response code
             $this->assertHttpStatusCode(200, $statusCode);
 
             // Handle different response codes
@@ -299,74 +2252,66 @@ class CatalogItemsApiTest extends TestCase
     }
     /**
      * Test case for searchCatalogItems_400
-     * .
      */
     public function testSearchCatalogItems400()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_403
-     * .
      */
     public function testSearchCatalogItems403()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_404
-     * .
      */
     public function testSearchCatalogItems404()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_413
-     * .
      */
     public function testSearchCatalogItems413()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_415
-     * .
      */
     public function testSearchCatalogItems415()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_429
-     * .
      */
     public function testSearchCatalogItems429()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_500
-     * .
      */
     public function testSearchCatalogItems500()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
     /**
      * Test case for searchCatalogItems_503
-     * .
      */
     public function testSearchCatalogItems503()
     {
-        // Skip this test if no static sandbox extension is present
-        $this->markTestSkipped('Static sandbox is not defined for this operation.');
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
     }
 }

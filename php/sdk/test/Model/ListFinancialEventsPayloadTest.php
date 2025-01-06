@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\financesv0\ListFinancialEventsPayload;
+use OpenAPI\Client\Model\financesV0\ListFinancialEventsPayload;
 
 /**
  * ListFinancialEventsPayloadTest Class Doc Comment
@@ -68,7 +68,7 @@ class ListFinancialEventsPayloadTest extends TestCase
     public function testPropertyFinancialEvents()
     {
         
-        $testValue = new \OpenAPI\Client\Model\financesv0\FinancialEvents();
+        $testValue = new \OpenAPI\Client\Model\financesV0\FinancialEvents();
         
         $this->model->setFinancialEvents($testValue);
         $this->assertEquals($testValue, $this->model->getFinancialEvents());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingv0\CompetitivePricingType;
+use OpenAPI\Client\Model\pricingV0\CompetitivePricingType;
 
 /**
  * CompetitivePricingTypeTest Class Doc Comment
@@ -79,7 +79,7 @@ class CompetitivePricingTypeTest extends TestCase
     public function testPropertyTradeInValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingv0\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricingV0\MoneyType();
         
         $this->model->setTradeInValue($testValue);
         $this->assertEquals($testValue, $this->model->getTradeInValue());
