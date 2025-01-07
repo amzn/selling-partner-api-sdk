@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -25,9 +25,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * The request body schema for the createContainerLabel operation.
+ * The request body schema for the &#x60;createContainerLabel&#x60; operation.
  */
-@Schema(description = "The request body schema for the createContainerLabel operation.")
+@Schema(description = "The request body schema for the `createContainerLabel` operation.")
 
 
 public class CreateContainerLabelRequest {

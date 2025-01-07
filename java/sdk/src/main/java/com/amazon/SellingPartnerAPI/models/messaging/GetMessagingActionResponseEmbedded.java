@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * GetMessagingActionResponseEmbedded
+ * The embedded response associated with the messaging action.
  */
-
+@Schema(description = "The embedded response associated with the messaging action.")
 
 
 public class GetMessagingActionResponseEmbedded {

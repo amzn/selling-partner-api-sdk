@@ -25,9 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * The request schema for the sendInvoice operation.
+ * The request schema for the &#x60;sendInvoice&#x60; operation.
  */
-@Schema(description = "The request schema for the sendInvoice operation.")
+@Schema(description = "The request schema for the `sendInvoice` operation.")
 
 
 public class InvoiceRequest {

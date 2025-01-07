@@ -24,9 +24,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * GetSchemaResponse
+ * The &#x60;GET&#x60; request schema response.
  */
-
+@Schema(description = "The `GET` request schema response.")
 
 
 public class GetSchemaResponse {

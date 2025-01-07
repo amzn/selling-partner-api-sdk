@@ -37,10 +37,10 @@ public class MessagingAction {
   }
 
    /**
-   * Get name
+   * The name of the template.
    * @return name
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "The name of the template.")
   public String getName() {
     return name;
   }

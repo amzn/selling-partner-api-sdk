@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -19,9 +19,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Array of package object in order to associate shipments packages with given container.
+ * An array of package objects in a container.
  */
-@Schema(description = "Array of package object in order to associate shipments packages with given container.")
+@Schema(description = "An array of package objects in a container.")
 
 
 public class Packages extends ArrayList<ModelPackage> {

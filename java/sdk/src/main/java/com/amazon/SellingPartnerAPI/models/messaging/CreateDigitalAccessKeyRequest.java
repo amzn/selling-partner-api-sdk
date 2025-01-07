@@ -25,9 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * The request schema for the createDigitalAccessKey operation.
+ * The request schema for the &#x60;createDigitalAccessKey&#x60; operation.
  */
-@Schema(description = "The request schema for the createDigitalAccessKey operation.")
+@Schema(description = "The request schema for the `createDigitalAccessKey` operation.")
 
 
 public class CreateDigitalAccessKeyRequest {
@@ -43,10 +43,10 @@ public class CreateDigitalAccessKeyRequest {
   }
 
    /**
-   * The text to be sent to the buyer. Only links related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer&#x27;s language of preference, which can be retrieved from the GetAttributes operation.
+   * The text that is sent to the buyer. Only links that are related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer&#x27;s preferred language, which you can retrieve from the &#x60;GetAttributes&#x60; operation.
    * @return text
   **/
-  @Schema(description = "The text to be sent to the buyer. Only links related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.")
+  @Schema(description = "The text that is sent to the buyer. Only links that are related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's preferred language, which you can retrieve from the `GetAttributes` operation.")
   public String getText() {
     return text;
   }
@@ -69,10 +69,10 @@ public class CreateDigitalAccessKeyRequest {
   }
 
    /**
-   * Attachments to include in the message to the buyer.
+   * Attachments that you want to include in the message to the buyer.
    * @return attachments
   **/
-  @Schema(description = "Attachments to include in the message to the buyer.")
+  @Schema(description = "Attachments that you want to include in the message to the buyer.")
   public List<Attachment> getAttachments() {
     return attachments;
   }

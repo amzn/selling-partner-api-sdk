@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Name, address and tax details of a party.
+ * The name, address, and tax details of a party.
  */
-@Schema(description = "Name, address and tax details of a party.")
+@Schema(description = "The name, address, and tax details of a party.")
 
 
 public class PartyIdentification {
@@ -47,10 +47,10 @@ public class PartyIdentification {
   }
 
    /**
-   * Assigned Identification for the party.
+   * The identifier of the party.
    * @return partyId
   **/
-  @Schema(required = true, description = "Assigned Identification for the party.")
+  @Schema(required = true, description = "The identifier of the party.")
   public String getPartyId() {
     return partyId;
   }
@@ -91,10 +91,10 @@ public class PartyIdentification {
   }
 
    /**
-   * Tax registration details of the entity.
+   * The tax registration details of the party.
    * @return taxRegistrationDetails
   **/
-  @Schema(description = "Tax registration details of the entity.")
+  @Schema(description = "The tax registration details of the party.")
   public List<TaxRegistrationDetails> getTaxRegistrationDetails() {
     return taxRegistrationDetails;
   }

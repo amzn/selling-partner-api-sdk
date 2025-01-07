@@ -70,6 +70,9 @@ public class InboundShipment {
   @SerializedName("shipmentSkuQuantities")
   private List<SkuQuantity> shipmentSkuQuantities = null;
 
+  @SerializedName("destinationRegion")
+  private String destinationRegion = null;
+
   @SerializedName("shipmentStatus")
   private InboundShipmentStatus shipmentStatus = null;
 
@@ -301,6 +304,24 @@ public class InboundShipment {
     this.shipmentSkuQuantities = shipmentSkuQuantities;
   }
 
+  public InboundShipment destinationRegion(String destinationRegion) {
+    this.destinationRegion = destinationRegion;
+    return this;
+  }
+
+   /**
+   * Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east]
+   * @return destinationRegion
+  **/
+  @Schema(example = "us-west", description = "Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east]")
+  public String getDestinationRegion() {
+    return destinationRegion;
+  }
+
+  public void setDestinationRegion(String destinationRegion) {
+    this.destinationRegion = destinationRegion;
+  }
+
   public InboundShipment shipmentStatus(InboundShipmentStatus shipmentStatus) {
     this.shipmentStatus = shipmentStatus;
     return this;
@@ -394,6 +415,7 @@ public class InboundShipment {
         Objects.equals(this.shipmentContainerQuantities, inboundShipment.shipmentContainerQuantities) &&
         Objects.equals(this.shipmentId, inboundShipment.shipmentId) &&
         Objects.equals(this.shipmentSkuQuantities, inboundShipment.shipmentSkuQuantities) &&
+        Objects.equals(this.destinationRegion, inboundShipment.destinationRegion) &&
         Objects.equals(this.shipmentStatus, inboundShipment.shipmentStatus) &&
         Objects.equals(this.trackingId, inboundShipment.trackingId) &&
         Objects.equals(this.updatedAt, inboundShipment.updatedAt) &&
@@ -402,7 +424,7 @@ public class InboundShipment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(carrierCode, createdAt, destinationAddress, externalReferenceId, orderId, originAddress, receivedQuantity, shipBy, shipmentContainerQuantities, shipmentId, shipmentSkuQuantities, shipmentStatus, trackingId, updatedAt, warehouseReferenceId);
+    return Objects.hash(carrierCode, createdAt, destinationAddress, externalReferenceId, orderId, originAddress, receivedQuantity, shipBy, shipmentContainerQuantities, shipmentId, shipmentSkuQuantities, destinationRegion, shipmentStatus, trackingId, updatedAt, warehouseReferenceId);
   }
 
 
@@ -422,6 +444,7 @@ public class InboundShipment {
     sb.append("    shipmentContainerQuantities: ").append(toIndentedString(shipmentContainerQuantities)).append("\n");
     sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
     sb.append("    shipmentSkuQuantities: ").append(toIndentedString(shipmentSkuQuantities)).append("\n");
+    sb.append("    destinationRegion: ").append(toIndentedString(destinationRegion)).append("\n");
     sb.append("    shipmentStatus: ").append(toIndentedString(shipmentStatus)).append("\n");
     sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");

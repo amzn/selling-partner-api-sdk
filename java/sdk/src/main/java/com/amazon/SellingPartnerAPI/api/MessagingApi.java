@@ -85,9 +85,9 @@ public class MessagingApi {
 
     /**
      * Build call for confirmCustomizationDetails
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -160,10 +160,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateConfirmCustomizationDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -175,10 +175,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateConfirmCustomizationDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -191,10 +191,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -228,9 +228,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createAmazonMotors
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -303,10 +303,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateAmazonMotorsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -318,10 +318,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateAmazonMotorsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -334,10 +334,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -371,9 +371,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createConfirmDeliveryDetails
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -446,10 +446,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateConfirmDeliveryDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -461,10 +461,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateConfirmDeliveryDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -477,10 +477,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -514,9 +514,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createConfirmOrderDetails
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -589,10 +589,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateConfirmOrderDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -604,10 +604,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateConfirmOrderDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -620,10 +620,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -657,9 +657,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createConfirmServiceDetails
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -732,10 +732,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateConfirmServiceDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -747,10 +747,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateConfirmServiceDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -763,10 +763,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -800,9 +800,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createDigitalAccessKey
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -875,10 +875,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to share a digital access key needed to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateDigitalAccessKeyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -890,10 +890,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to share a digital access key needed to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateDigitalAccessKeyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -906,10 +906,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message to a buyer to share a digital access key needed to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -943,9 +943,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createLegalDisclosure
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1018,10 +1018,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateLegalDisclosureResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1033,10 +1033,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateLegalDisclosureResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1049,10 +1049,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1086,8 +1086,8 @@ public class MessagingApi {
     }
     /**
      * Build call for createNegativeFeedbackRemoval
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1156,9 +1156,9 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#x27;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#x27;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateNegativeFeedbackRemovalResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1170,9 +1170,9 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#x27;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#x27;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateNegativeFeedbackRemovalResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1185,9 +1185,9 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#x27;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#x27;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1221,9 +1221,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createUnexpectedProblem
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1296,10 +1296,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateUnexpectedProblemResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1311,10 +1311,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateUnexpectedProblemResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1327,10 +1327,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1364,9 +1364,9 @@ public class MessagingApi {
     }
     /**
      * Build call for createWarranty
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1439,10 +1439,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return CreateWarrantyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1454,10 +1454,10 @@ public class MessagingApi {
 
     /**
      * 
-     * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;CreateWarrantyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1470,10 +1470,10 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1507,8 +1507,8 @@ public class MessagingApi {
     }
     /**
      * Build call for getAttributes
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1578,8 +1578,8 @@ public class MessagingApi {
     /**
      * 
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return GetAttributesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1592,8 +1592,8 @@ public class MessagingApi {
     /**
      * 
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;GetAttributesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1607,8 +1607,8 @@ public class MessagingApi {
     /**
      *  (asynchronously)
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1643,7 +1643,7 @@ public class MessagingApi {
     /**
      * Build call for getMessagingActionsForOrder
      * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1712,9 +1712,9 @@ public class MessagingApi {
 
     /**
      * 
-     * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return GetMessagingActionsForOrderResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1726,9 +1726,9 @@ public class MessagingApi {
 
     /**
      * 
-     * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;GetMessagingActionsForOrderResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1741,9 +1741,9 @@ public class MessagingApi {
 
     /**
      *  (asynchronously)
-     * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1777,9 +1777,9 @@ public class MessagingApi {
     }
     /**
      * Build call for sendInvoice
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1853,9 +1853,9 @@ public class MessagingApi {
     /**
      * 
      * Sends a message providing the buyer an invoice
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return InvoiceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1868,9 +1868,9 @@ public class MessagingApi {
     /**
      * 
      * Sends a message providing the buyer an invoice
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @return ApiResponse&lt;InvoiceResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1884,9 +1884,9 @@ public class MessagingApi {
     /**
      *  (asynchronously)
      * Sends a message providing the buyer an invoice
-     * @param body  (required)
-     * @param amazonOrderId An Amazon order identifier. This specifies the order for which a message is sent. (required)
-     * @param marketplaceIds A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     * @param body This contains the message body for a message. (required)
+     * @param amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent. (required)
+     * @param marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

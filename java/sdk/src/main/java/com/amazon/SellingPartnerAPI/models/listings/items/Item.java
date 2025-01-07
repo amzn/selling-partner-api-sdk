@@ -1,5 +1,5 @@
 /*
- * Listings Items v2021-08-01
+ * Selling Partner API for Listings Items
  * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
@@ -19,6 +19,8 @@ import com.amazon.SellingPartnerAPI.models.listings.items.ItemAttributes;
 import com.amazon.SellingPartnerAPI.models.listings.items.ItemIssues;
 import com.amazon.SellingPartnerAPI.models.listings.items.ItemOffers;
 import com.amazon.SellingPartnerAPI.models.listings.items.ItemProcurement;
+import com.amazon.SellingPartnerAPI.models.listings.items.ItemProductTypes;
+import com.amazon.SellingPartnerAPI.models.listings.items.ItemRelationships;
 import com.amazon.SellingPartnerAPI.models.listings.items.ItemSummaries;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -56,6 +58,12 @@ public class Item {
 
   @SerializedName("procurement")
   private List<ItemProcurement> procurement = null;
+
+  @SerializedName("relationships")
+  private ItemRelationships relationships = null;
+
+  @SerializedName("productTypes")
+  private ItemProductTypes productTypes = null;
 
   public Item sku(String sku) {
     this.sku = sku;
@@ -199,6 +207,42 @@ public class Item {
     this.procurement = procurement;
   }
 
+  public Item relationships(ItemRelationships relationships) {
+    this.relationships = relationships;
+    return this;
+  }
+
+   /**
+   * Get relationships
+   * @return relationships
+  **/
+  @Schema(description = "")
+  public ItemRelationships getRelationships() {
+    return relationships;
+  }
+
+  public void setRelationships(ItemRelationships relationships) {
+    this.relationships = relationships;
+  }
+
+  public Item productTypes(ItemProductTypes productTypes) {
+    this.productTypes = productTypes;
+    return this;
+  }
+
+   /**
+   * Get productTypes
+   * @return productTypes
+  **/
+  @Schema(description = "")
+  public ItemProductTypes getProductTypes() {
+    return productTypes;
+  }
+
+  public void setProductTypes(ItemProductTypes productTypes) {
+    this.productTypes = productTypes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -215,12 +259,14 @@ public class Item {
         Objects.equals(this.issues, item.issues) &&
         Objects.equals(this.offers, item.offers) &&
         Objects.equals(this.fulfillmentAvailability, item.fulfillmentAvailability) &&
-        Objects.equals(this.procurement, item.procurement);
+        Objects.equals(this.procurement, item.procurement) &&
+        Objects.equals(this.relationships, item.relationships) &&
+        Objects.equals(this.productTypes, item.productTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sku, summaries, attributes, issues, offers, fulfillmentAvailability, procurement);
+    return Objects.hash(sku, summaries, attributes, issues, offers, fulfillmentAvailability, procurement, relationships, productTypes);
   }
 
 
@@ -236,6 +282,8 @@ public class Item {
     sb.append("    offers: ").append(toIndentedString(offers)).append("\n");
     sb.append("    fulfillmentAvailability: ").append(toIndentedString(fulfillmentAvailability)).append("\n");
     sb.append("    procurement: ").append(toIndentedString(procurement)).append("\n");
+    sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
+    sb.append("    productTypes: ").append(toIndentedString(productTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

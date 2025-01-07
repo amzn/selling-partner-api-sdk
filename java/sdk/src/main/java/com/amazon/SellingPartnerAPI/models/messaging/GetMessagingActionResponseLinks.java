@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * GetMessagingActionResponseLinks
+ * The links response that is associated with the messaging action.
  */
-
+@Schema(description = "The links response that is associated with the messaging action.")
 
 
 public class GetMessagingActionResponseLinks {

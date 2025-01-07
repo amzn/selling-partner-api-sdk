@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Represents an item that has been packed into a container for shipping.
+ * An item that has been packed into a container for shipping.
  */
-@Schema(description = "Represents an item that has been packed into a container for shipping.")
+@Schema(description = "An item that has been packed into a container for shipping.")
 
 
 public class PackedItem {
@@ -50,10 +50,10 @@ public class PackedItem {
   }
 
    /**
-   * Item Sequence Number for the item. This must be the same value as sent in the order for a given item.
+   * The sequence number of the item. The number must be the same as the order number of the item.
    * @return itemSequenceNumber
   **/
-  @Schema(required = true, description = "Item Sequence Number for the item. This must be the same value as sent in the order for a given item.")
+  @Schema(required = true, description = "The sequence number of the item. The number must be the same as the order number of the item.")
   public Integer getItemSequenceNumber() {
     return itemSequenceNumber;
   }
@@ -68,10 +68,10 @@ public class PackedItem {
   }
 
    /**
-   * Buyer&#x27;s Standard Identification Number (ASIN) of an item. Either buyerProductIdentifier or vendorProductIdentifier is required.
+   * The buyer&#x27;s Amazon Standard Identification Number (ASIN) of an item. Either &#x60;buyerProductIdentifier&#x60; or &#x60;vendorProductIdentifier&#x60; is required.
    * @return buyerProductIdentifier
   **/
-  @Schema(description = "Buyer's Standard Identification Number (ASIN) of an item. Either buyerProductIdentifier or vendorProductIdentifier is required.")
+  @Schema(description = "The buyer's Amazon Standard Identification Number (ASIN) of an item. Either `buyerProductIdentifier` or `vendorProductIdentifier` is required.")
   public String getBuyerProductIdentifier() {
     return buyerProductIdentifier;
   }
@@ -104,10 +104,10 @@ public class PackedItem {
   }
 
    /**
-   * The vendor selected product identification of the item. Should be the same as was sent in the Purchase Order, like SKU Number.
+   * An item&#x27;s product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.
    * @return vendorProductIdentifier
   **/
-  @Schema(description = "The vendor selected product identification of the item. Should be the same as was sent in the Purchase Order, like SKU Number.")
+  @Schema(description = "An item's product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.")
   public String getVendorProductIdentifier() {
     return vendorProductIdentifier;
   }

@@ -25,9 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * GetMessagingActionsForOrderResponseLinks
+ * The links response that is associated with the specified &#x60;amazonOrderId&#x60;.
  */
-
+@Schema(description = "The links response that is associated with the specified `amazonOrderId`.")
 
 
 public class GetMessagingActionsForOrderResponseLinks {

@@ -14,6 +14,7 @@ package com.amazon.SellingPartnerAPI.models.awd;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.amazon.SellingPartnerAPI.models.awd.ExpirationDetails;
 import com.amazon.SellingPartnerAPI.models.awd.InventoryDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,6 +23,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Summary of inventory per SKU.
  */
@@ -29,6 +32,9 @@ import java.io.IOException;
 
 
 public class InventorySummary {
+  @SerializedName("expirationDetails")
+  private List<ExpirationDetails> expirationDetails = null;
+
   @SerializedName("inventoryDetails")
   private InventoryDetails inventoryDetails = null;
 
@@ -40,6 +46,32 @@ public class InventorySummary {
 
   @SerializedName("totalOnhandQuantity")
   private Long totalOnhandQuantity = null;
+
+  public InventorySummary expirationDetails(List<ExpirationDetails> expirationDetails) {
+    this.expirationDetails = expirationDetails;
+    return this;
+  }
+
+  public InventorySummary addExpirationDetailsItem(ExpirationDetails expirationDetailsItem) {
+    if (this.expirationDetails == null) {
+      this.expirationDetails = new ArrayList<ExpirationDetails>();
+    }
+    this.expirationDetails.add(expirationDetailsItem);
+    return this;
+  }
+
+   /**
+   * The expiration details of the inventory. This object will only appear if the &#x60;details&#x60; parameter in the request is set to &#x60;SHOW&#x60;.
+   * @return expirationDetails
+  **/
+  @Schema(description = "The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.")
+  public List<ExpirationDetails> getExpirationDetails() {
+    return expirationDetails;
+  }
+
+  public void setExpirationDetails(List<ExpirationDetails> expirationDetails) {
+    this.expirationDetails = expirationDetails;
+  }
 
   public InventorySummary inventoryDetails(InventoryDetails inventoryDetails) {
     this.inventoryDetails = inventoryDetails;
@@ -123,7 +155,8 @@ public class InventorySummary {
       return false;
     }
     InventorySummary inventorySummary = (InventorySummary) o;
-    return Objects.equals(this.inventoryDetails, inventorySummary.inventoryDetails) &&
+    return Objects.equals(this.expirationDetails, inventorySummary.expirationDetails) &&
+        Objects.equals(this.inventoryDetails, inventorySummary.inventoryDetails) &&
         Objects.equals(this.sku, inventorySummary.sku) &&
         Objects.equals(this.totalInboundQuantity, inventorySummary.totalInboundQuantity) &&
         Objects.equals(this.totalOnhandQuantity, inventorySummary.totalOnhandQuantity);
@@ -131,7 +164,7 @@ public class InventorySummary {
 
   @Override
   public int hashCode() {
-    return Objects.hash(inventoryDetails, sku, totalInboundQuantity, totalOnhandQuantity);
+    return Objects.hash(expirationDetails, inventoryDetails, sku, totalInboundQuantity, totalOnhandQuantity);
   }
 
 
@@ -140,6 +173,7 @@ public class InventorySummary {
     StringBuilder sb = new StringBuilder();
     sb.append("class InventorySummary {\n");
     
+    sb.append("    expirationDetails: ").append(toIndentedString(expirationDetails)).append("\n");
     sb.append("    inventoryDetails: ").append(toIndentedString(inventoryDetails)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    totalInboundQuantity: ").append(toIndentedString(totalInboundQuantity)).append("\n");

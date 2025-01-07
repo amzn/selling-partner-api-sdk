@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Object describing Package that is going to be associated with given container.
+ * The package that is associated with the container.
  */
-@Schema(description = "Object describing Package that is going to be associated with given container.")
+@Schema(description = "The package that is associated with the container.")
 
 
 public class ModelPackage {
@@ -37,10 +37,10 @@ public class ModelPackage {
   }
 
    /**
-   * tracking identifier present on label of shipment package. Tracking number can be fetched from fetched from shippingLabels API response. Alternatively bar code on the shipping label can be scanned by the scanner to get the tracking number.
+   * The tracking number on the label of shipment package, that you can fetch from the &#x60;shippingLabels&#x60; response. You can also scan the bar code on the shipping label to get the tracking number.
    * @return packageTrackingNumber
   **/
-  @Schema(required = true, description = "tracking identifier present on label of shipment package. Tracking number can be fetched from fetched from shippingLabels API response. Alternatively bar code on the shipping label can be scanned by the scanner to get the tracking number.")
+  @Schema(required = true, description = "The tracking number on the label of shipment package, that you can fetch from the `shippingLabels` response. You can also scan the bar code on the shipping label to get the tracking number.")
   public String getPackageTrackingNumber() {
     return packageTrackingNumber;
   }

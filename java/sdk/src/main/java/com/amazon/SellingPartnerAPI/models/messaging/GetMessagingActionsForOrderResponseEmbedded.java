@@ -25,9 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * GetMessagingActionsForOrderResponseEmbedded
+ * The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.
  */
-
+@Schema(description = "The messaging actions response that is associated with the specified `amazonOrderId`.")
 
 
 public class GetMessagingActionsForOrderResponseEmbedded {

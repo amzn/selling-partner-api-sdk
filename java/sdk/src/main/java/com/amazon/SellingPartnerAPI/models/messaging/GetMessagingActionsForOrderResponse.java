@@ -25,9 +25,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * The response schema for the getMessagingActionsForOrder operation.
+ * The response schema for the &#x60;getMessagingActionsForOrder&#x60; operation.
  */
-@Schema(description = "The response schema for the getMessagingActionsForOrder operation.")
+@Schema(description = "The response schema for the `getMessagingActionsForOrder` operation.")
 
 
 public class GetMessagingActionsForOrderResponse {

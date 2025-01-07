@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -25,9 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * The request schema for the submitShipmentStatusUpdates operation.
+ * The request schema for the &#x60;submitShipmentStatusUpdates&#x60; operation.
  */
-@Schema(description = "The request schema for the submitShipmentStatusUpdates operation.")
+@Schema(description = "The request schema for the `submitShipmentStatusUpdates` operation.")
 
 
 public class SubmitShipmentStatusUpdatesRequest {
@@ -48,10 +48,10 @@ public class SubmitShipmentStatusUpdatesRequest {
   }
 
    /**
-   * Contains a list of one or more ShipmentStatusUpdate objects, each representing an update to the status of a specific shipment.
+   * Contains a list of one or more &#x60;ShipmentStatusUpdate&#x60; objects. Each &#x60;ShipmentStatusUpdate&#x60; object represents an update to the status of a specific shipment.
    * @return shipmentStatusUpdates
   **/
-  @Schema(description = "Contains a list of one or more ShipmentStatusUpdate objects, each representing an update to the status of a specific shipment.")
+  @Schema(description = "Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.")
   public List<ShipmentStatusUpdate> getShipmentStatusUpdates() {
     return shipmentStatusUpdates;
   }

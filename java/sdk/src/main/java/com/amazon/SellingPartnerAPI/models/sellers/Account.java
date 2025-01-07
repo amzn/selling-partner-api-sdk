@@ -1,6 +1,6 @@
 /*
- * Selling Partner API for Sellers
- * The [Selling Partner API for Sellers](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) (Sellers API) provides essential information about seller accounts, such as:  - The marketplaces a seller can list in - The default language and currency of a marketplace - Whether the seller has suspended listings  Refer to the [Sellers API reference](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) for details about this API's operations, data types, and schemas.
+ * The Selling Partner API for Sellers
+ * The Selling Partner API for Sellers lets you retrieve information on behalf of sellers about their seller account, such as the marketplaces they participate in. Along with listing the marketplaces that a seller can sell in, the API also provides additional information about the marketplace such as the default language and the default currency. The API also provides seller-specific information such as whether the seller has suspended listings in that marketplace.
  *
  * OpenAPI spec version: v1
  * 
@@ -15,7 +15,7 @@ package com.amazon.SellingPartnerAPI.models.sellers;
 import java.util.Objects;
 import java.util.Arrays;
 import com.amazon.SellingPartnerAPI.models.sellers.Business;
-import com.amazon.SellingPartnerAPI.models.sellers.MarketplaceLevelAttributes;
+import com.amazon.SellingPartnerAPI.models.sellers.MarketplaceParticipationList;
 import com.amazon.SellingPartnerAPI.models.sellers.PrimaryContact;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -24,8 +24,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
  * The response schema for the &#x60;getAccount&#x60; operation.
  */
@@ -33,8 +31,8 @@ import java.util.List;
 
 
 public class Account {
-  @SerializedName("marketplaceLevelAttributes")
-  private List<MarketplaceLevelAttributes> marketplaceLevelAttributes = new ArrayList<MarketplaceLevelAttributes>();
+  @SerializedName("marketplaceParticipationList")
+  private MarketplaceParticipationList marketplaceParticipationList = null;
 
   /**
    * The type of business registered for the seller account.
@@ -94,33 +92,74 @@ public class Account {
   }  @SerializedName("businessType")
   private BusinessTypeEnum businessType = null;
 
+  /**
+   * The selling plan details.
+   */
+  @JsonAdapter(SellingPlanEnum.Adapter.class)
+  public enum SellingPlanEnum {
+    @SerializedName("PROFESSIONAL")
+    PROFESSIONAL("PROFESSIONAL"),
+    @SerializedName("INDIVIDUAL")
+    INDIVIDUAL("INDIVIDUAL");
+
+    private String value;
+
+    SellingPlanEnum(String value) {
+      this.value = value;
+    }
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+    public static SellingPlanEnum fromValue(String input) {
+      for (SellingPlanEnum b : SellingPlanEnum.values()) {
+        if (b.value.equals(input)) {
+          return b;
+        }
+      }
+      return null;
+    }
+    public static class Adapter extends TypeAdapter<SellingPlanEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SellingPlanEnum enumeration) throws IOException {
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
+      }
+
+      @Override
+      public SellingPlanEnum read(final JsonReader jsonReader) throws IOException {
+        Object value = jsonReader.nextString();
+        return SellingPlanEnum.fromValue((String)(value));
+      }
+    }
+  }  @SerializedName("sellingPlan")
+  private SellingPlanEnum sellingPlan = null;
+
   @SerializedName("business")
   private Business business = null;
 
   @SerializedName("primaryContact")
   private PrimaryContact primaryContact = null;
 
-  public Account marketplaceLevelAttributes(List<MarketplaceLevelAttributes> marketplaceLevelAttributes) {
-    this.marketplaceLevelAttributes = marketplaceLevelAttributes;
-    return this;
-  }
-
-  public Account addMarketplaceLevelAttributesItem(MarketplaceLevelAttributes marketplaceLevelAttributesItem) {
-    this.marketplaceLevelAttributes.add(marketplaceLevelAttributesItem);
+  public Account marketplaceParticipationList(MarketplaceParticipationList marketplaceParticipationList) {
+    this.marketplaceParticipationList = marketplaceParticipationList;
     return this;
   }
 
    /**
-   * A list of details of the marketplaces where the seller account is active.
-   * @return marketplaceLevelAttributes
+   * Get marketplaceParticipationList
+   * @return marketplaceParticipationList
   **/
-  @Schema(required = true, description = "A list of details of the marketplaces where the seller account is active.")
-  public List<MarketplaceLevelAttributes> getMarketplaceLevelAttributes() {
-    return marketplaceLevelAttributes;
+  @Schema(required = true, description = "")
+  public MarketplaceParticipationList getMarketplaceParticipationList() {
+    return marketplaceParticipationList;
   }
 
-  public void setMarketplaceLevelAttributes(List<MarketplaceLevelAttributes> marketplaceLevelAttributes) {
-    this.marketplaceLevelAttributes = marketplaceLevelAttributes;
+  public void setMarketplaceParticipationList(MarketplaceParticipationList marketplaceParticipationList) {
+    this.marketplaceParticipationList = marketplaceParticipationList;
   }
 
   public Account businessType(BusinessTypeEnum businessType) {
@@ -139,6 +178,24 @@ public class Account {
 
   public void setBusinessType(BusinessTypeEnum businessType) {
     this.businessType = businessType;
+  }
+
+  public Account sellingPlan(SellingPlanEnum sellingPlan) {
+    this.sellingPlan = sellingPlan;
+    return this;
+  }
+
+   /**
+   * The selling plan details.
+   * @return sellingPlan
+  **/
+  @Schema(required = true, description = "The selling plan details.")
+  public SellingPlanEnum getSellingPlan() {
+    return sellingPlan;
+  }
+
+  public void setSellingPlan(SellingPlanEnum sellingPlan) {
+    this.sellingPlan = sellingPlan;
   }
 
   public Account business(Business business) {
@@ -187,15 +244,16 @@ public class Account {
       return false;
     }
     Account account = (Account) o;
-    return Objects.equals(this.marketplaceLevelAttributes, account.marketplaceLevelAttributes) &&
+    return Objects.equals(this.marketplaceParticipationList, account.marketplaceParticipationList) &&
         Objects.equals(this.businessType, account.businessType) &&
+        Objects.equals(this.sellingPlan, account.sellingPlan) &&
         Objects.equals(this.business, account.business) &&
         Objects.equals(this.primaryContact, account.primaryContact);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketplaceLevelAttributes, businessType, business, primaryContact);
+    return Objects.hash(marketplaceParticipationList, businessType, sellingPlan, business, primaryContact);
   }
 
 
@@ -204,8 +262,9 @@ public class Account {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
     
-    sb.append("    marketplaceLevelAttributes: ").append(toIndentedString(marketplaceLevelAttributes)).append("\n");
+    sb.append("    marketplaceParticipationList: ").append(toIndentedString(marketplaceParticipationList)).append("\n");
     sb.append("    businessType: ").append(toIndentedString(businessType)).append("\n");
+    sb.append("    sellingPlan: ").append(toIndentedString(sellingPlan)).append("\n");
     sb.append("    business: ").append(toIndentedString(business)).append("\n");
     sb.append("    primaryContact: ").append(toIndentedString(primaryContact)).append("\n");
     sb.append("}");

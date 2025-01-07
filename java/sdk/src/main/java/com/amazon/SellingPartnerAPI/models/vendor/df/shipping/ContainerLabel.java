@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Details of the container label.
+ * The details of the container label.
  */
-@Schema(description = "Details of the container label.")
+@Schema(description = "The details of the container label.")
 
 
 public class ContainerLabel {
@@ -44,10 +44,10 @@ public class ContainerLabel {
   }
 
    /**
-   * Container (pallet) tracking identifier from the shipping carrier.
+   * The container (pallet) tracking identifier from the shipping carrier.
    * @return containerTrackingNumber
   **/
-  @Schema(description = "Container (pallet) tracking identifier from the shipping carrier.")
+  @Schema(description = "The container (pallet) tracking identifier from the shipping carrier.")
   public String getContainerTrackingNumber() {
     return containerTrackingNumber;
   }
@@ -62,10 +62,10 @@ public class ContainerLabel {
   }
 
    /**
-   * This field will contain the Base64encoded string of the container label content.
+   * The &#x60;Base64encoded&#x60; string of the container label content.
    * @return content
   **/
-  @Schema(required = true, description = "This field will contain the Base64encoded string of the container label content.")
+  @Schema(required = true, description = "The `Base64encoded` string of the container label content.")
   public String getContent() {
     return content;
   }

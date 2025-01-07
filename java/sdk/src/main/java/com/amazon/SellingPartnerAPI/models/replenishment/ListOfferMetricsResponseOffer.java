@@ -54,6 +54,9 @@ public class ListOfferMetricsResponseOffer {
   @SerializedName("couponsRevenuePenetration")
   private Double couponsRevenuePenetration = null;
 
+  @SerializedName("shareOfCouponSubscriptions")
+  private Double shareOfCouponSubscriptions = null;
+
   @SerializedName("next30DayTotalSubscriptionsRevenue")
   private Double next30DayTotalSubscriptionsRevenue = null;
 
@@ -102,12 +105,12 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable only for the &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+   * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * maximum: 100
    * @return notDeliveredDueToOOS
   **/
-  @Schema(description = "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable only for the `PERFORMANCE` `timePeriodType`.")
+  @Schema(description = "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.")
   public Double getNotDeliveredDueToOOS() {
     return notDeliveredDueToOOS;
   }
@@ -122,11 +125,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The revenue generated from subscriptions over a period of time. Applicable only for the &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+   * The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * @return totalSubscriptionsRevenue
   **/
-  @Schema(description = "The revenue generated from subscriptions over a period of time. Applicable only for the `PERFORMANCE` `timePeriodType`.")
+  @Schema(description = "The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.")
   public Double getTotalSubscriptionsRevenue() {
     return totalSubscriptionsRevenue;
   }
@@ -141,11 +144,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The number of units shipped to the subscribers over a period of time. Applicable only for the &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+   * The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * @return shippedSubscriptionUnits
   **/
-  @Schema(description = "The number of units shipped to the subscribers over a period of time. Applicable only for the `PERFORMANCE` `timePeriodType`.")
+  @Schema(description = "The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.")
   public BigDecimal getShippedSubscriptionUnits() {
     return shippedSubscriptionUnits;
   }
@@ -160,11 +163,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The number of active subscriptions present at the end of the period. Applicable only for the &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+   * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * @return activeSubscriptions
   **/
-  @Schema(description = "The number of active subscriptions present at the end of the period. Applicable only for the `PERFORMANCE` `timePeriodType`.")
+  @Schema(description = "The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.")
   public BigDecimal getActiveSubscriptions() {
     return activeSubscriptions;
   }
@@ -179,12 +182,12 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The percentage of total program revenue out of total product revenue. Applicable only for the &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+   * The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * maximum: 100
    * @return revenuePenetration
   **/
-  @Schema(description = "The percentage of total program revenue out of total product revenue. Applicable only for the `PERFORMANCE` `timePeriodType`.")
+  @Schema(description = "The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.")
   public Double getRevenuePenetration() {
     return revenuePenetration;
   }
@@ -199,11 +202,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The revenue that would have been generated had there not been out of stock. Applicable only for the PERFORMANCE timePeriodType.
+   * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * @return lostRevenueDueToOOS
   **/
-  @Schema(description = "The revenue that would have been generated had there not been out of stock. Applicable only for the PERFORMANCE timePeriodType.")
+  @Schema(description = "The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.")
   public Double getLostRevenueDueToOOS() {
     return lostRevenueDueToOOS;
   }
@@ -218,12 +221,12 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable only for the PERFORMANCE timePeriodType.
+   * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
    * minimum: 0
    * maximum: 100
    * @return couponsRevenuePenetration
   **/
-  @Schema(description = "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable only for the PERFORMANCE timePeriodType.")
+  @Schema(description = "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.")
   public Double getCouponsRevenuePenetration() {
     return couponsRevenuePenetration;
   }
@@ -232,17 +235,37 @@ public class ListOfferMetricsResponseOffer {
     this.couponsRevenuePenetration = couponsRevenuePenetration;
   }
 
+  public ListOfferMetricsResponseOffer shareOfCouponSubscriptions(Double shareOfCouponSubscriptions) {
+    this.shareOfCouponSubscriptions = shareOfCouponSubscriptions;
+    return this;
+  }
+
+   /**
+   * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
+   * minimum: 0
+   * maximum: 100
+   * @return shareOfCouponSubscriptions
+  **/
+  @Schema(description = "The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.")
+  public Double getShareOfCouponSubscriptions() {
+    return shareOfCouponSubscriptions;
+  }
+
+  public void setShareOfCouponSubscriptions(Double shareOfCouponSubscriptions) {
+    this.shareOfCouponSubscriptions = shareOfCouponSubscriptions;
+  }
+
   public ListOfferMetricsResponseOffer next30DayTotalSubscriptionsRevenue(Double next30DayTotalSubscriptionsRevenue) {
     this.next30DayTotalSubscriptionsRevenue = next30DayTotalSubscriptionsRevenue;
     return this;
   }
 
    /**
-   * The forecasted total subscription revenue for the next 30 days. Applicable only for the &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+   * The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
    * minimum: 0
    * @return next30DayTotalSubscriptionsRevenue
   **/
-  @Schema(description = "The forecasted total subscription revenue for the next 30 days. Applicable only for the `FORECAST` `timePeriodType`.")
+  @Schema(description = "The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.")
   public Double getNext30DayTotalSubscriptionsRevenue() {
     return next30DayTotalSubscriptionsRevenue;
   }
@@ -257,11 +280,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The forecasted total subscription revenue for the next 60 days. Applicable only for the &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+   * The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
    * minimum: 0
    * @return next60DayTotalSubscriptionsRevenue
   **/
-  @Schema(description = "The forecasted total subscription revenue for the next 60 days. Applicable only for the `FORECAST` `timePeriodType`.")
+  @Schema(description = "The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.")
   public Double getNext60DayTotalSubscriptionsRevenue() {
     return next60DayTotalSubscriptionsRevenue;
   }
@@ -276,11 +299,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The forecasted total subscription revenue for the next 90 days. Applicable only for the &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+   * The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
    * minimum: 0
    * @return next90DayTotalSubscriptionsRevenue
   **/
-  @Schema(description = "The forecasted total subscription revenue for the next 90 days. Applicable only for the `FORECAST` `timePeriodType`.")
+  @Schema(description = "The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.")
   public Double getNext90DayTotalSubscriptionsRevenue() {
     return next90DayTotalSubscriptionsRevenue;
   }
@@ -295,11 +318,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The forecasted shipped subscription units for the next 30 days. Applicable only for the &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+   * The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
    * minimum: 0
    * @return next30DayShippedSubscriptionUnits
   **/
-  @Schema(description = "The forecasted shipped subscription units for the next 30 days. Applicable only for the `FORECAST` `timePeriodType`.")
+  @Schema(description = "The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.")
   public BigDecimal getNext30DayShippedSubscriptionUnits() {
     return next30DayShippedSubscriptionUnits;
   }
@@ -314,11 +337,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The forecasted shipped subscription units for the next 60 days. Applicable only for the &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+   * The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
    * minimum: 0
    * @return next60DayShippedSubscriptionUnits
   **/
-  @Schema(description = "The forecasted shipped subscription units for the next 60 days. Applicable only for the `FORECAST` `timePeriodType`.")
+  @Schema(description = "The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.")
   public BigDecimal getNext60DayShippedSubscriptionUnits() {
     return next60DayShippedSubscriptionUnits;
   }
@@ -333,11 +356,11 @@ public class ListOfferMetricsResponseOffer {
   }
 
    /**
-   * The forecasted shipped subscription units for the next 90 days. Applicable only for the &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+   * The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
    * minimum: 0
    * @return next90DayShippedSubscriptionUnits
   **/
-  @Schema(description = "The forecasted shipped subscription units for the next 90 days. Applicable only for the `FORECAST` `timePeriodType`.")
+  @Schema(description = "The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.")
   public BigDecimal getNext90DayShippedSubscriptionUnits() {
     return next90DayShippedSubscriptionUnits;
   }
@@ -400,6 +423,7 @@ public class ListOfferMetricsResponseOffer {
         Objects.equals(this.revenuePenetration, listOfferMetricsResponseOffer.revenuePenetration) &&
         Objects.equals(this.lostRevenueDueToOOS, listOfferMetricsResponseOffer.lostRevenueDueToOOS) &&
         Objects.equals(this.couponsRevenuePenetration, listOfferMetricsResponseOffer.couponsRevenuePenetration) &&
+        Objects.equals(this.shareOfCouponSubscriptions, listOfferMetricsResponseOffer.shareOfCouponSubscriptions) &&
         Objects.equals(this.next30DayTotalSubscriptionsRevenue, listOfferMetricsResponseOffer.next30DayTotalSubscriptionsRevenue) &&
         Objects.equals(this.next60DayTotalSubscriptionsRevenue, listOfferMetricsResponseOffer.next60DayTotalSubscriptionsRevenue) &&
         Objects.equals(this.next90DayTotalSubscriptionsRevenue, listOfferMetricsResponseOffer.next90DayTotalSubscriptionsRevenue) &&
@@ -412,7 +436,7 @@ public class ListOfferMetricsResponseOffer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asin, notDeliveredDueToOOS, totalSubscriptionsRevenue, shippedSubscriptionUnits, activeSubscriptions, revenuePenetration, lostRevenueDueToOOS, couponsRevenuePenetration, next30DayTotalSubscriptionsRevenue, next60DayTotalSubscriptionsRevenue, next90DayTotalSubscriptionsRevenue, next30DayShippedSubscriptionUnits, next60DayShippedSubscriptionUnits, next90DayShippedSubscriptionUnits, timeInterval, currencyCode);
+    return Objects.hash(asin, notDeliveredDueToOOS, totalSubscriptionsRevenue, shippedSubscriptionUnits, activeSubscriptions, revenuePenetration, lostRevenueDueToOOS, couponsRevenuePenetration, shareOfCouponSubscriptions, next30DayTotalSubscriptionsRevenue, next60DayTotalSubscriptionsRevenue, next90DayTotalSubscriptionsRevenue, next30DayShippedSubscriptionUnits, next60DayShippedSubscriptionUnits, next90DayShippedSubscriptionUnits, timeInterval, currencyCode);
   }
 
 
@@ -429,6 +453,7 @@ public class ListOfferMetricsResponseOffer {
     sb.append("    revenuePenetration: ").append(toIndentedString(revenuePenetration)).append("\n");
     sb.append("    lostRevenueDueToOOS: ").append(toIndentedString(lostRevenueDueToOOS)).append("\n");
     sb.append("    couponsRevenuePenetration: ").append(toIndentedString(couponsRevenuePenetration)).append("\n");
+    sb.append("    shareOfCouponSubscriptions: ").append(toIndentedString(shareOfCouponSubscriptions)).append("\n");
     sb.append("    next30DayTotalSubscriptionsRevenue: ").append(toIndentedString(next30DayTotalSubscriptionsRevenue)).append("\n");
     sb.append("    next60DayTotalSubscriptionsRevenue: ").append(toIndentedString(next60DayTotalSubscriptionsRevenue)).append("\n");
     sb.append("    next90DayTotalSubscriptionsRevenue: ").append(toIndentedString(next90DayTotalSubscriptionsRevenue)).append("\n");

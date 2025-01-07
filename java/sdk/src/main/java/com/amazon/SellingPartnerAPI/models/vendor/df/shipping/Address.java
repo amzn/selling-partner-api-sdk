@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -229,10 +229,10 @@ public class Address {
   }
 
    /**
-   * The two digit country code in ISO 3166-1 alpha-2 format.
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format.
    * @return countryCode
   **/
-  @Schema(required = true, description = "The two digit country code in ISO 3166-1 alpha-2 format.")
+  @Schema(required = true, description = "The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format.")
   public String getCountryCode() {
     return countryCode;
   }

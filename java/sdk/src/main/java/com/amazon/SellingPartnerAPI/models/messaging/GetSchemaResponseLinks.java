@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * GetSchemaResponseLinks
+ * The links response that is associated with the object.
  */
-
+@Schema(description = "The links response that is associated with the object.")
 
 
 public class GetSchemaResponseLinks {

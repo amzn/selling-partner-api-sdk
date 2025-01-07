@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Direct Fulfillment Shipping
- * The Selling Partner API for Direct Fulfillment Shipping provides programmatic access to a direct fulfillment vendor's shipping data.
+ * Use the Selling Partner API for Direct Fulfillment Shipping to access a direct fulfillment vendor's shipping data.
  *
  * OpenAPI spec version: 2021-12-28
  * 
@@ -50,10 +50,10 @@ public class ShippingLabelRequest {
   }
 
    /**
-   * Purchase order number of the order for which to create a shipping label.
+   * The purchase order number of the order for which to create a shipping label.
    * @return purchaseOrderNumber
   **/
-  @Schema(required = true, description = "Purchase order number of the order for which to create a shipping label.")
+  @Schema(required = true, description = "The purchase order number of the order for which to create a shipping label.")
   public String getPurchaseOrderNumber() {
     return purchaseOrderNumber;
   }
