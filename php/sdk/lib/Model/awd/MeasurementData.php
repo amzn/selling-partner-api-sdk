@@ -82,8 +82,8 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dimensions' => false,
-        'volume' => false,
+        'dimensions' => true,
+        'volume' => true,
         'weight' => false
     ];
 
@@ -328,7 +328,14 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\awd\PackageDimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -355,7 +362,14 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVolume(?\OpenAPI\Client\Model\awd\PackageVolume $volume): self
     {
         if (is_null($volume)) {
-            throw new \InvalidArgumentException('non-nullable volume cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'volume');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('volume', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['volume'] = $volume;
 

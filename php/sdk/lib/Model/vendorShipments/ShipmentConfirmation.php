@@ -112,21 +112,21 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'shipment_identifier' => false,
         'shipment_confirmation_type' => false,
-        'shipment_type' => false,
-        'shipment_structure' => false,
-        'transportation_details' => false,
-        'amazon_reference_number' => false,
+        'shipment_type' => true,
+        'shipment_structure' => true,
+        'transportation_details' => true,
+        'amazon_reference_number' => true,
         'shipment_confirmation_date' => false,
-        'shipped_date' => false,
-        'estimated_delivery_date' => false,
+        'shipped_date' => true,
+        'estimated_delivery_date' => true,
         'selling_party' => false,
         'ship_from_party' => false,
         'ship_to_party' => false,
-        'shipment_measurements' => false,
-        'import_details' => false,
+        'shipment_measurements' => true,
+        'import_details' => true,
         'shipped_items' => false,
-        'cartons' => false,
-        'pallets' => false
+        'cartons' => true,
+        'pallets' => true
     ];
 
     /**
@@ -592,10 +592,17 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setShipmentType(?string $shipment_type): self
     {
         if (is_null($shipment_type)) {
-            throw new \InvalidArgumentException('non-nullable shipment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getShipmentTypeAllowableValues();
-        if (!in_array($shipment_type, $allowedValues, true)) {
+        if (!is_null($shipment_type) && !in_array($shipment_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'shipment_type', must be one of '%s'",
@@ -629,10 +636,17 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setShipmentStructure(?string $shipment_structure): self
     {
         if (is_null($shipment_structure)) {
-            throw new \InvalidArgumentException('non-nullable shipment_structure cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_structure');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_structure', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getShipmentStructureAllowableValues();
-        if (!in_array($shipment_structure, $allowedValues, true)) {
+        if (!is_null($shipment_structure) && !in_array($shipment_structure, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'shipment_structure', must be one of '%s'",
@@ -666,7 +680,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTransportationDetails(?\OpenAPI\Client\Model\vendorShipments\TransportationDetailsForShipmentConfirmation $transportation_details): self
     {
         if (is_null($transportation_details)) {
-            throw new \InvalidArgumentException('non-nullable transportation_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transportation_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transportation_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transportation_details'] = $transportation_details;
 
@@ -693,7 +714,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setAmazonReferenceNumber(?string $amazon_reference_number): self
     {
         if (is_null($amazon_reference_number)) {
-            throw new \InvalidArgumentException('non-nullable amazon_reference_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_reference_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_reference_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_reference_number'] = $amazon_reference_number;
 
@@ -747,7 +775,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setShippedDate(?\DateTime $shipped_date): self
     {
         if (is_null($shipped_date)) {
-            throw new \InvalidArgumentException('non-nullable shipped_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipped_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipped_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipped_date'] = $shipped_date;
 
@@ -774,7 +809,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setEstimatedDeliveryDate(?\DateTime $estimated_delivery_date): self
     {
         if (is_null($estimated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable estimated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_delivery_date'] = $estimated_delivery_date;
 
@@ -882,7 +924,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setShipmentMeasurements(?\OpenAPI\Client\Model\vendorShipments\ShipmentMeasurements $shipment_measurements): self
     {
         if (is_null($shipment_measurements)) {
-            throw new \InvalidArgumentException('non-nullable shipment_measurements cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_measurements');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_measurements', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_measurements'] = $shipment_measurements;
 
@@ -909,7 +958,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setImportDetails(?\OpenAPI\Client\Model\vendorShipments\ImportDetails $import_details): self
     {
         if (is_null($import_details)) {
-            throw new \InvalidArgumentException('non-nullable import_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'import_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('import_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['import_details'] = $import_details;
 
@@ -919,7 +975,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets shipped_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getShippedItems(): array
     {
@@ -946,7 +1002,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets cartons
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCartons(): ?array
     {
@@ -963,7 +1019,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCartons(?array $cartons): self
     {
         if (is_null($cartons)) {
-            throw new \InvalidArgumentException('non-nullable cartons cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cartons');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cartons', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cartons'] = $cartons;
 
@@ -973,7 +1036,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets pallets
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPallets(): ?array
     {
@@ -990,7 +1053,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPallets(?array $pallets): self
     {
         if (is_null($pallets)) {
-            throw new \InvalidArgumentException('non-nullable pallets cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pallets');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pallets', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pallets'] = $pallets;
 

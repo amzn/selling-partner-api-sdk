@@ -85,7 +85,7 @@ class ListingOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'marketplace_id' => false,
         'item_condition' => false,
-        'customer_type' => false,
+        'customer_type' => true,
         'seller_sku' => false
     ];
 
@@ -394,7 +394,14 @@ class ListingOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSe
     public function setCustomerType(?string $customer_type): self
     {
         if (is_null($customer_type)) {
-            throw new \InvalidArgumentException('non-nullable customer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_type'] = $customer_type;
 

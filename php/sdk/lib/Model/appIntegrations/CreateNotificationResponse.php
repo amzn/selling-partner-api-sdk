@@ -78,7 +78,7 @@ class CreateNotificationResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'notification_id' => false
+        'notification_id' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class CreateNotificationResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setNotificationId(?string $notification_id): self
     {
         if (is_null($notification_id)) {
-            throw new \InvalidArgumentException('non-nullable notification_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'notification_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('notification_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['notification_id'] = $notification_id;
 

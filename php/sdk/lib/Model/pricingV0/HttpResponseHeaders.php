@@ -80,8 +80,8 @@ class HttpResponseHeaders implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date' => false,
-        'x_amzn_request_id' => false
+        'date' => true,
+        'x_amzn_request_id' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class HttpResponseHeaders implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDate(?string $date): self
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 
@@ -345,7 +352,14 @@ class HttpResponseHeaders implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setXAmznRequestId(?string $x_amzn_request_id): self
     {
         if (is_null($x_amzn_request_id)) {
-            throw new \InvalidArgumentException('non-nullable x_amzn_request_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_amzn_request_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_amzn_request_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_amzn_request_id'] = $x_amzn_request_id;
 

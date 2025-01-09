@@ -86,11 +86,11 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'custom_text_for_label' => false,
+        'custom_text_for_label' => true,
         'dimensions' => false,
         'file_contents' => false,
-        'label_format' => false,
-        'standard_id_for_label' => false
+        'label_format' => true,
+        'standard_id_for_label' => true
     ];
 
     /**
@@ -349,9 +349,16 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCustomTextForLabel(?string $custom_text_for_label): self
     {
         if (is_null($custom_text_for_label)) {
-            throw new \InvalidArgumentException('non-nullable custom_text_for_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'custom_text_for_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('custom_text_for_label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($custom_text_for_label) > 14)) {
+        if (!is_null($custom_text_for_label) && (mb_strlen($custom_text_for_label) > 14)) {
             throw new \InvalidArgumentException('invalid length for $custom_text_for_label when calling Label., must be smaller than or equal to 14.');
         }
 
@@ -434,7 +441,14 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabelFormat(?string $label_format): self
     {
         if (is_null($label_format)) {
-            throw new \InvalidArgumentException('non-nullable label_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_format', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_format'] = $label_format;
 
@@ -461,7 +475,14 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStandardIdForLabel(?string $standard_id_for_label): self
     {
         if (is_null($standard_id_for_label)) {
-            throw new \InvalidArgumentException('non-nullable standard_id_for_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'standard_id_for_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('standard_id_for_label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['standard_id_for_label'] = $standard_id_for_label;
 

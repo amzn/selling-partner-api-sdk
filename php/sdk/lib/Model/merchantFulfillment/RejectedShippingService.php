@@ -90,7 +90,7 @@ class RejectedShippingService implements ModelInterface, ArrayAccess, \JsonSeria
         'shipping_service_name' => false,
         'shipping_service_id' => false,
         'rejection_reason_code' => false,
-        'rejection_reason_message' => false
+        'rejection_reason_message' => true
     ];
 
     /**
@@ -459,7 +459,14 @@ class RejectedShippingService implements ModelInterface, ArrayAccess, \JsonSeria
     public function setRejectionReasonMessage(?string $rejection_reason_message): self
     {
         if (is_null($rejection_reason_message)) {
-            throw new \InvalidArgumentException('non-nullable rejection_reason_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rejection_reason_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rejection_reason_message', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rejection_reason_message'] = $rejection_reason_message;
 

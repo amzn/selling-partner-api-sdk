@@ -84,10 +84,10 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'gross_shipment_weight' => false,
-        'shipment_volume' => false,
-        'carton_count' => false,
-        'pallet_count' => false
+        'gross_shipment_weight' => true,
+        'shipment_volume' => true,
+        'carton_count' => true,
+        'pallet_count' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setGrossShipmentWeight(?\OpenAPI\Client\Model\vendorShipments\Weight $gross_shipment_weight): self
     {
         if (is_null($gross_shipment_weight)) {
-            throw new \InvalidArgumentException('non-nullable gross_shipment_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gross_shipment_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gross_shipment_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gross_shipment_weight'] = $gross_shipment_weight;
 
@@ -359,7 +366,14 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setShipmentVolume(?\OpenAPI\Client\Model\vendorShipments\Volume $shipment_volume): self
     {
         if (is_null($shipment_volume)) {
-            throw new \InvalidArgumentException('non-nullable shipment_volume cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_volume');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_volume', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_volume'] = $shipment_volume;
 
@@ -386,7 +400,14 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCartonCount(?int $carton_count): self
     {
         if (is_null($carton_count)) {
-            throw new \InvalidArgumentException('non-nullable carton_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carton_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carton_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carton_count'] = $carton_count;
 
@@ -413,7 +434,14 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPalletCount(?int $pallet_count): self
     {
         if (is_null($pallet_count)) {
-            throw new \InvalidArgumentException('non-nullable pallet_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pallet_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pallet_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pallet_count'] = $pallet_count;
 

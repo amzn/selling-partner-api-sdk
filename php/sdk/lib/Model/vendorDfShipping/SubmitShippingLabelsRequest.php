@@ -78,7 +78,7 @@ class SubmitShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipping_label_requests' => false
+        'shipping_label_requests' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class SubmitShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets shipping_label_requests
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShippingLabelRequests(): ?array
     {
@@ -311,7 +311,14 @@ class SubmitShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
     public function setShippingLabelRequests(?array $shipping_label_requests): self
     {
         if (is_null($shipping_label_requests)) {
-            throw new \InvalidArgumentException('non-nullable shipping_label_requests cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_label_requests');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_label_requests', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_label_requests'] = $shipping_label_requests;
 

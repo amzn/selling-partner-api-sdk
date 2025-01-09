@@ -96,9 +96,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'dimensions' => false,
         'weight' => false,
         'insured_value' => false,
-        'is_hazmat' => false,
-        'seller_display_name' => false,
-        'charges' => false,
+        'is_hazmat' => true,
+        'seller_display_name' => true,
+        'charges' => true,
         'package_client_reference_id' => false,
         'items' => false
     ];
@@ -457,7 +457,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsHazmat(?bool $is_hazmat): self
     {
         if (is_null($is_hazmat)) {
-            throw new \InvalidArgumentException('non-nullable is_hazmat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_hazmat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_hazmat', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_hazmat'] = $is_hazmat;
 
@@ -484,7 +491,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerDisplayName(?string $seller_display_name): self
     {
         if (is_null($seller_display_name)) {
-            throw new \InvalidArgumentException('non-nullable seller_display_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_display_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_display_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_display_name'] = $seller_display_name;
 
@@ -494,7 +508,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets charges
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCharges(): ?array
     {
@@ -511,7 +525,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCharges(?array $charges): self
     {
         if (is_null($charges)) {
-            throw new \InvalidArgumentException('non-nullable charges cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charges');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charges', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charges'] = $charges;
 
@@ -548,7 +569,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

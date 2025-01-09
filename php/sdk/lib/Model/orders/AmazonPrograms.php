@@ -297,7 +297,7 @@ class AmazonPrograms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets programs
      *
-     * @return arrayA
+     * @return array
      */
     public function getPrograms(): array
     {

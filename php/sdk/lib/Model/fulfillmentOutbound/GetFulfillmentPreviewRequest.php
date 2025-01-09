@@ -90,13 +90,13 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'marketplace_id' => false,
+        'marketplace_id' => true,
         'address' => false,
         'items' => false,
-        'shipping_speed_categories' => false,
-        'include_cod_fulfillment_preview' => false,
-        'include_delivery_windows' => false,
-        'feature_constraints' => false
+        'shipping_speed_categories' => true,
+        'include_cod_fulfillment_preview' => true,
+        'include_delivery_windows' => true,
+        'feature_constraints' => true
     ];
 
     /**
@@ -359,7 +359,14 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -396,7 +403,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {
@@ -423,7 +430,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets shipping_speed_categories
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShippingSpeedCategories(): ?array
     {
@@ -440,7 +447,14 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     public function setShippingSpeedCategories(?array $shipping_speed_categories): self
     {
         if (is_null($shipping_speed_categories)) {
-            throw new \InvalidArgumentException('non-nullable shipping_speed_categories cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_speed_categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_speed_categories', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_speed_categories'] = $shipping_speed_categories;
 
@@ -467,7 +481,14 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     public function setIncludeCodFulfillmentPreview(?bool $include_cod_fulfillment_preview): self
     {
         if (is_null($include_cod_fulfillment_preview)) {
-            throw new \InvalidArgumentException('non-nullable include_cod_fulfillment_preview cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_cod_fulfillment_preview');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_cod_fulfillment_preview', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['include_cod_fulfillment_preview'] = $include_cod_fulfillment_preview;
 
@@ -494,7 +515,14 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     public function setIncludeDeliveryWindows(?bool $include_delivery_windows): self
     {
         if (is_null($include_delivery_windows)) {
-            throw new \InvalidArgumentException('non-nullable include_delivery_windows cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_delivery_windows');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_delivery_windows', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['include_delivery_windows'] = $include_delivery_windows;
 
@@ -504,7 +532,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets feature_constraints
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeatureConstraints(): ?array
     {
@@ -521,7 +549,14 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     public function setFeatureConstraints(?array $feature_constraints): self
     {
         if (is_null($feature_constraints)) {
-            throw new \InvalidArgumentException('non-nullable feature_constraints cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_constraints');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_constraints', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feature_constraints'] = $feature_constraints;
 

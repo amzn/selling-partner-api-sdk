@@ -55,6 +55,8 @@ class ProductPricingApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('ProductPricingApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class ProductPricingApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing200', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -793,7 +794,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing400', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetCompetitivePricing400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -922,7 +923,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemOffers200', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemOffers200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1222,7 +1223,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemOffers400', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemOffers400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1351,7 +1352,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch200', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3487,7 +3488,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch400', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemOffersBatch400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3624,7 +3625,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetListingOffers200', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetListingOffers200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3925,7 +3926,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetListingOffers400', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetListingOffers400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4054,7 +4055,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch200', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5611,7 +5612,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch400', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetListingOffersBatch400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5748,7 +5749,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetPricing200', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetPricing200', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6117,7 +6118,7 @@ class ProductPricingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetPricing400', 'ProductPricingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetPricing400', 'ProductPricingApi')) {
                 $this->assertTrue(true);
                 return;
             }

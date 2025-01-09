@@ -84,7 +84,7 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'uri' => false,
         'method' => false,
-        'headers' => false
+        'headers' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeaders(?array $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 

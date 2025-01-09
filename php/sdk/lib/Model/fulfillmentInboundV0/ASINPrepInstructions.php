@@ -84,10 +84,10 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'barcode_instruction' => false,
-        'prep_guidance' => false,
-        'prep_instruction_list' => false
+        'asin' => true,
+        'barcode_instruction' => true,
+        'prep_guidance' => true,
+        'prep_instruction_list' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -359,7 +366,14 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBarcodeInstruction(?string $barcode_instruction): self
     {
         if (is_null($barcode_instruction)) {
-            throw new \InvalidArgumentException('non-nullable barcode_instruction cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'barcode_instruction');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('barcode_instruction', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['barcode_instruction'] = $barcode_instruction;
 
@@ -386,7 +400,14 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPrepGuidance(?string $prep_guidance): self
     {
         if (is_null($prep_guidance)) {
-            throw new \InvalidArgumentException('non-nullable prep_guidance cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_guidance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_guidance', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_guidance'] = $prep_guidance;
 
@@ -396,7 +417,7 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets prep_instruction_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPrepInstructionList(): ?array
     {
@@ -413,7 +434,14 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPrepInstructionList(?array $prep_instruction_list): self
     {
         if (is_null($prep_instruction_list)) {
-            throw new \InvalidArgumentException('non-nullable prep_instruction_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_instruction_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_instruction_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_instruction_list'] = $prep_instruction_list;
 

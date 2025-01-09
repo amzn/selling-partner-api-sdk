@@ -99,13 +99,13 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         'marketplace_id' => false,
         'asin' => false,
         'product_type' => false,
-        'condition_type' => false,
+        'condition_type' => true,
         'status' => false,
-        'fn_sku' => false,
+        'fn_sku' => true,
         'item_name' => false,
         'created_date' => false,
         'last_updated_date' => false,
-        'main_image' => false
+        'main_image' => true
     ];
 
     /**
@@ -537,10 +537,17 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     public function setConditionType(?string $condition_type): self
     {
         if (is_null($condition_type)) {
-            throw new \InvalidArgumentException('non-nullable condition_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'condition_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getConditionTypeAllowableValues();
-        if (!in_array($condition_type, $allowedValues, true)) {
+        if (!is_null($condition_type) && !in_array($condition_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'condition_type', must be one of '%s'",
@@ -557,7 +564,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets status
      *
-     * @return arrayA
+     * @return array
      */
     public function getStatus(): array
     {
@@ -610,7 +617,14 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     public function setFnSku(?string $fn_sku): self
     {
         if (is_null($fn_sku)) {
-            throw new \InvalidArgumentException('non-nullable fn_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fn_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fn_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fn_sku'] = $fn_sku;
 
@@ -718,7 +732,14 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     public function setMainImage(?\OpenAPI\Client\Model\listingsItems\ItemImage $main_image): self
     {
         if (is_null($main_image)) {
-            throw new \InvalidArgumentException('non-nullable main_image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'main_image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('main_image', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['main_image'] = $main_image;
 

@@ -83,7 +83,7 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'expected_quantity' => false,
-        'received_quantity' => false,
+        'received_quantity' => true,
         'sku' => false
     ];
 
@@ -358,7 +358,14 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReceivedQuantity(?\OpenAPI\Client\Model\awd\InventoryQuantity $received_quantity): self
     {
         if (is_null($received_quantity)) {
-            throw new \InvalidArgumentException('non-nullable received_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'received_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('received_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['received_quantity'] = $received_quantity;
 

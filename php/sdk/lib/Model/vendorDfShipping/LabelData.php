@@ -86,10 +86,10 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'package_identifier' => false,
-        'tracking_number' => false,
-        'ship_method' => false,
-        'ship_method_name' => false,
+        'package_identifier' => true,
+        'tracking_number' => true,
+        'ship_method' => true,
+        'ship_method_name' => true,
         'content' => false
     ];
 
@@ -342,7 +342,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageIdentifier(?string $package_identifier): self
     {
         if (is_null($package_identifier)) {
-            throw new \InvalidArgumentException('non-nullable package_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_identifier'] = $package_identifier;
 
@@ -369,7 +376,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingNumber(?string $tracking_number): self
     {
         if (is_null($tracking_number)) {
-            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_number'] = $tracking_number;
 
@@ -396,7 +410,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipMethod(?string $ship_method): self
     {
         if (is_null($ship_method)) {
-            throw new \InvalidArgumentException('non-nullable ship_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_method'] = $ship_method;
 
@@ -423,7 +444,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipMethodName(?string $ship_method_name): self
     {
         if (is_null($ship_method_name)) {
-            throw new \InvalidArgumentException('non-nullable ship_method_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_method_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_method_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_method_name'] = $ship_method_name;
 

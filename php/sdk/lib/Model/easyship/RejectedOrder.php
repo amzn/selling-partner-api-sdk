@@ -81,7 +81,7 @@ class RejectedOrder implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
-        'error' => false
+        'error' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class RejectedOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setError(?\OpenAPI\Client\Model\easyship\Error $error): self
     {
         if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error'] = $error;
 

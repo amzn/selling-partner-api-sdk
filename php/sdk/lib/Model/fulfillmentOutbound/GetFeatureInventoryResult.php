@@ -86,8 +86,8 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'marketplace_id' => false,
         'feature_name' => false,
-        'next_token' => false,
-        'feature_skus' => false
+        'next_token' => true,
+        'feature_skus' => true
     ];
 
     /**
@@ -392,7 +392,14 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -402,7 +409,7 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets feature_skus
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeatureSkus(): ?array
     {
@@ -419,7 +426,14 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setFeatureSkus(?array $feature_skus): self
     {
         if (is_null($feature_skus)) {
-            throw new \InvalidArgumentException('non-nullable feature_skus cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_skus');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_skus', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feature_skus'] = $feature_skus;
 

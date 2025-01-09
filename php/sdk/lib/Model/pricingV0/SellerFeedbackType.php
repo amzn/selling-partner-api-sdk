@@ -80,7 +80,7 @@ class SellerFeedbackType implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_positive_feedback_rating' => false,
+        'seller_positive_feedback_rating' => true,
         'feedback_count' => false
     ];
 
@@ -321,7 +321,14 @@ class SellerFeedbackType implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setSellerPositiveFeedbackRating(?float $seller_positive_feedback_rating): self
     {
         if (is_null($seller_positive_feedback_rating)) {
-            throw new \InvalidArgumentException('non-nullable seller_positive_feedback_rating cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_positive_feedback_rating');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_positive_feedback_rating', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_positive_feedback_rating'] = $seller_positive_feedback_rating;
 

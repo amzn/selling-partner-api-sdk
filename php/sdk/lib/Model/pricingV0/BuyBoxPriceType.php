@@ -94,14 +94,14 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'condition' => false,
-        'offer_type' => false,
-        'quantity_tier' => false,
-        'quantity_discount_type' => false,
+        'offer_type' => true,
+        'quantity_tier' => true,
+        'quantity_discount_type' => true,
         'landed_price' => false,
         'listing_price' => false,
         'shipping' => false,
-        'points' => false,
-        'seller_id' => false
+        'points' => true,
+        'seller_id' => true
     ];
 
     /**
@@ -405,7 +405,14 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOfferType(?string $offer_type): self
     {
         if (is_null($offer_type)) {
-            throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_type'] = $offer_type;
 
@@ -432,7 +439,14 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityTier(?int $quantity_tier): self
     {
         if (is_null($quantity_tier)) {
-            throw new \InvalidArgumentException('non-nullable quantity_tier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_tier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_tier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_tier'] = $quantity_tier;
 
@@ -459,7 +473,14 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityDiscountType(?string $quantity_discount_type): self
     {
         if (is_null($quantity_discount_type)) {
-            throw new \InvalidArgumentException('non-nullable quantity_discount_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_discount_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_discount_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_discount_type'] = $quantity_discount_type;
 
@@ -567,7 +588,14 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPoints(?\OpenAPI\Client\Model\pricingV0\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 
@@ -594,7 +622,14 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerId(?string $seller_id): self
     {
         if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_id'] = $seller_id;
 

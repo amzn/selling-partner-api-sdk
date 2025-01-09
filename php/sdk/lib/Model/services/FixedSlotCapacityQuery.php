@@ -84,8 +84,8 @@ class FixedSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'capacity_types' => false,
-        'slot_duration' => false,
+        'capacity_types' => true,
+        'slot_duration' => true,
         'start_date_time' => false,
         'end_date_time' => false
     ];
@@ -321,7 +321,7 @@ class FixedSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets capacity_types
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCapacityTypes(): ?array
     {
@@ -338,7 +338,14 @@ class FixedSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCapacityTypes(?array $capacity_types): self
     {
         if (is_null($capacity_types)) {
-            throw new \InvalidArgumentException('non-nullable capacity_types cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacity_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacity_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capacity_types'] = $capacity_types;
 
@@ -365,7 +372,14 @@ class FixedSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSlotDuration(?float $slot_duration): self
     {
         if (is_null($slot_duration)) {
-            throw new \InvalidArgumentException('non-nullable slot_duration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'slot_duration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('slot_duration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

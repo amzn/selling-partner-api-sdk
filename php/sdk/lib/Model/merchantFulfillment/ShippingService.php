@@ -109,15 +109,15 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipping_service_id' => false,
         'shipping_service_offer_id' => false,
         'ship_date' => false,
-        'earliest_estimated_delivery_date' => false,
-        'latest_estimated_delivery_date' => false,
+        'earliest_estimated_delivery_date' => true,
+        'latest_estimated_delivery_date' => true,
         'rate' => false,
         'shipping_service_options' => false,
-        'available_shipping_service_options' => false,
-        'available_label_formats' => false,
-        'available_format_options_for_label' => false,
+        'available_shipping_service_options' => true,
+        'available_label_formats' => true,
+        'available_format_options_for_label' => true,
         'requires_additional_seller_inputs' => false,
-        'benefits' => false
+        'benefits' => true
     ];
 
     /**
@@ -561,7 +561,14 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEarliestEstimatedDeliveryDate(?\DateTime $earliest_estimated_delivery_date): self
     {
         if (is_null($earliest_estimated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable earliest_estimated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'earliest_estimated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('earliest_estimated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['earliest_estimated_delivery_date'] = $earliest_estimated_delivery_date;
 
@@ -588,7 +595,14 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLatestEstimatedDeliveryDate(?\DateTime $latest_estimated_delivery_date): self
     {
         if (is_null($latest_estimated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable latest_estimated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'latest_estimated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latest_estimated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['latest_estimated_delivery_date'] = $latest_estimated_delivery_date;
 
@@ -669,7 +683,14 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvailableShippingServiceOptions(?\OpenAPI\Client\Model\merchantFulfillment\AvailableShippingServiceOptions $available_shipping_service_options): self
     {
         if (is_null($available_shipping_service_options)) {
-            throw new \InvalidArgumentException('non-nullable available_shipping_service_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_shipping_service_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_shipping_service_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_shipping_service_options'] = $available_shipping_service_options;
 
@@ -679,7 +700,7 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available_label_formats
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAvailableLabelFormats(): ?array
     {
@@ -696,7 +717,14 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvailableLabelFormats(?array $available_label_formats): self
     {
         if (is_null($available_label_formats)) {
-            throw new \InvalidArgumentException('non-nullable available_label_formats cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_label_formats');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_label_formats', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_label_formats'] = $available_label_formats;
 
@@ -706,7 +734,7 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available_format_options_for_label
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAvailableFormatOptionsForLabel(): ?array
     {
@@ -723,7 +751,14 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvailableFormatOptionsForLabel(?array $available_format_options_for_label): self
     {
         if (is_null($available_format_options_for_label)) {
-            throw new \InvalidArgumentException('non-nullable available_format_options_for_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_format_options_for_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_format_options_for_label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_format_options_for_label'] = $available_format_options_for_label;
 
@@ -777,7 +812,14 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBenefits(?\OpenAPI\Client\Model\merchantFulfillment\Benefits $benefits): self
     {
         if (is_null($benefits)) {
-            throw new \InvalidArgumentException('non-nullable benefits cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'benefits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('benefits', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['benefits'] = $benefits;
 

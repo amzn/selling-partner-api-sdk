@@ -81,8 +81,8 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date_range' => false,
-        'operating_hours' => false
+        'date_range' => true,
+        'operating_hours' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDateRange(?\OpenAPI\Client\Model\shipping\DateRange $date_range): self
     {
         if (is_null($date_range)) {
-            throw new \InvalidArgumentException('non-nullable date_range cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date_range');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_range', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date_range'] = $date_range;
 
@@ -346,7 +353,14 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
     public function setOperatingHours(?\OpenAPI\Client\Model\shipping\OperatingHours $operating_hours): self
     {
         if (is_null($operating_hours)) {
-            throw new \InvalidArgumentException('non-nullable operating_hours cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'operating_hours');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('operating_hours', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['operating_hours'] = $operating_hours;
 

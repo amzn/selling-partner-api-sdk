@@ -82,9 +82,9 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fulfillment_time' => false,
-        'appointment_resources' => false,
-        'fulfillment_documents' => false
+        'fulfillment_time' => true,
+        'appointment_resources' => true,
+        'fulfillment_documents' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     public function setFulfillmentTime(?\OpenAPI\Client\Model\services\FulfillmentTime $fulfillment_time): self
     {
         if (is_null($fulfillment_time)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_time'] = $fulfillment_time;
 
@@ -335,7 +342,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Gets appointment_resources
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAppointmentResources(): ?array
     {
@@ -352,7 +359,14 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     public function setAppointmentResources(?array $appointment_resources): self
     {
         if (is_null($appointment_resources)) {
-            throw new \InvalidArgumentException('non-nullable appointment_resources cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_resources');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_resources', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointment_resources'] = $appointment_resources;
 
@@ -362,7 +376,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Gets fulfillment_documents
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFulfillmentDocuments(): ?array
     {
@@ -379,7 +393,14 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     public function setFulfillmentDocuments(?array $fulfillment_documents): self
     {
         if (is_null($fulfillment_documents)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_documents cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_documents');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_documents', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_documents'] = $fulfillment_documents;
 

@@ -89,11 +89,11 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'position' => false,
-        'image' => false,
-        'title' => false,
-        'asin' => false,
-        'highlight' => false,
-        'metrics' => false
+        'image' => true,
+        'title' => true,
+        'asin' => true,
+        'highlight' => true,
+        'metrics' => true
     ];
 
     /**
@@ -412,7 +412,14 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     public function setImage(?\OpenAPI\Client\Model\aplusContent\ImageComponent $image): self
     {
         if (is_null($image)) {
-            throw new \InvalidArgumentException('non-nullable image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image'] = $image;
 
@@ -439,12 +446,19 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($title) > 80)) {
+        if (!is_null($title) && (mb_strlen($title) > 80)) {
             throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be smaller than or equal to 80.');
         }
-        if ((mb_strlen($title) < 1)) {
+        if (!is_null($title) && (mb_strlen($title) < 1)) {
             throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be bigger than or equal to 1.');
         }
 
@@ -473,10 +487,17 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($asin) < 10)) {
+        if (!is_null($asin) && (mb_strlen($asin) < 10)) {
             throw new \InvalidArgumentException('invalid length for $asin when calling StandardComparisonProductBlock., must be bigger than or equal to 10.');
         }
 
@@ -505,7 +526,14 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     public function setHighlight(?bool $highlight): self
     {
         if (is_null($highlight)) {
-            throw new \InvalidArgumentException('non-nullable highlight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'highlight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('highlight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['highlight'] = $highlight;
 
@@ -515,7 +543,7 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets metrics
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMetrics(): ?array
     {
@@ -532,13 +560,20 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     public function setMetrics(?array $metrics): self
     {
         if (is_null($metrics)) {
-            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($metrics) > 10)) {
+        if (!is_null($metrics) && (count($metrics) > 10)) {
             throw new \InvalidArgumentException('invalid value for $metrics when calling StandardComparisonProductBlock., number of items must be less than or equal to 10.');
         }
-        if ((count($metrics) < 0)) {
+        if (!is_null($metrics) && (count($metrics) < 0)) {
             throw new \InvalidArgumentException('invalid length for $metrics when calling StandardComparisonProductBlock., number of items must be greater than or equal to 0.');
         }
         $this->container['metrics'] = $metrics;

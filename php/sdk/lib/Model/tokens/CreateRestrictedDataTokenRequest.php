@@ -80,7 +80,7 @@ class CreateRestrictedDataTokenRequest implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'target_application' => false,
+        'target_application' => true,
         'restricted_resources' => false
     ];
 
@@ -321,7 +321,14 @@ class CreateRestrictedDataTokenRequest implements ModelInterface, ArrayAccess, \
     public function setTargetApplication(?string $target_application): self
     {
         if (is_null($target_application)) {
-            throw new \InvalidArgumentException('non-nullable target_application cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'target_application');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('target_application', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['target_application'] = $target_application;
 
@@ -331,7 +338,7 @@ class CreateRestrictedDataTokenRequest implements ModelInterface, ArrayAccess, \
     /**
      * Gets restricted_resources
      *
-     * @return arrayA
+     * @return array
      */
     public function getRestrictedResources(): array
     {

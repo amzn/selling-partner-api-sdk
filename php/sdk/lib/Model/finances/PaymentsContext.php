@@ -84,10 +84,10 @@ class PaymentsContext implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'payment_type' => false,
-        'payment_method' => false,
-        'payment_reference' => false,
-        'payment_date' => false
+        'payment_type' => true,
+        'payment_method' => true,
+        'payment_reference' => true,
+        'payment_date' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class PaymentsContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentType(?string $payment_type): self
     {
         if (is_null($payment_type)) {
-            throw new \InvalidArgumentException('non-nullable payment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_type'] = $payment_type;
 
@@ -359,7 +366,14 @@ class PaymentsContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentMethod(?string $payment_method): self
     {
         if (is_null($payment_method)) {
-            throw new \InvalidArgumentException('non-nullable payment_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_method'] = $payment_method;
 
@@ -386,7 +400,14 @@ class PaymentsContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentReference(?string $payment_reference): self
     {
         if (is_null($payment_reference)) {
-            throw new \InvalidArgumentException('non-nullable payment_reference cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_reference', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_reference'] = $payment_reference;
 
@@ -413,7 +434,14 @@ class PaymentsContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentDate(?\DateTime $payment_date): self
     {
         if (is_null($payment_date)) {
-            throw new \InvalidArgumentException('non-nullable payment_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_date'] = $payment_date;
 

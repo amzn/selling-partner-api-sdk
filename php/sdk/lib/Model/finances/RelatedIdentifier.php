@@ -80,8 +80,8 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'related_identifier_name' => false,
-        'related_identifier_value' => false
+        'related_identifier_name' => true,
+        'related_identifier_value' => true
     ];
 
     /**
@@ -354,10 +354,17 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setRelatedIdentifierName(?string $related_identifier_name): self
     {
         if (is_null($related_identifier_name)) {
-            throw new \InvalidArgumentException('non-nullable related_identifier_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'related_identifier_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('related_identifier_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
-        if (!in_array($related_identifier_name, $allowedValues, true)) {
+        if (!is_null($related_identifier_name) && !in_array($related_identifier_name, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'related_identifier_name', must be one of '%s'",
@@ -391,7 +398,14 @@ class RelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setRelatedIdentifierValue(?string $related_identifier_value): self
     {
         if (is_null($related_identifier_value)) {
-            throw new \InvalidArgumentException('non-nullable related_identifier_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'related_identifier_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('related_identifier_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['related_identifier_value'] = $related_identifier_value;
 

@@ -80,8 +80,8 @@ class DeliveryMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false,
-        'locale' => false
+        'text' => true,
+        'locale' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class DeliveryMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setText(?string $text): self
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text'] = $text;
 
@@ -345,7 +352,14 @@ class DeliveryMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLocale(?string $locale): self
     {
         if (is_null($locale)) {
-            throw new \InvalidArgumentException('non-nullable locale cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'locale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['locale'] = $locale;
 

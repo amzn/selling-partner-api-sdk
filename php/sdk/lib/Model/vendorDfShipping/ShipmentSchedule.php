@@ -82,9 +82,9 @@ class ShipmentSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'estimated_delivery_date_time' => false,
-        'appt_window_start_date_time' => false,
-        'appt_window_end_date_time' => false
+        'estimated_delivery_date_time' => true,
+        'appt_window_start_date_time' => true,
+        'appt_window_end_date_time' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class ShipmentSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEstimatedDeliveryDateTime(?\DateTime $estimated_delivery_date_time): self
     {
         if (is_null($estimated_delivery_date_time)) {
-            throw new \InvalidArgumentException('non-nullable estimated_delivery_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_delivery_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_delivery_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_delivery_date_time'] = $estimated_delivery_date_time;
 
@@ -352,7 +359,14 @@ class ShipmentSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApptWindowStartDateTime(?\DateTime $appt_window_start_date_time): self
     {
         if (is_null($appt_window_start_date_time)) {
-            throw new \InvalidArgumentException('non-nullable appt_window_start_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appt_window_start_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appt_window_start_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appt_window_start_date_time'] = $appt_window_start_date_time;
 
@@ -379,7 +393,14 @@ class ShipmentSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApptWindowEndDateTime(?\DateTime $appt_window_end_date_time): self
     {
         if (is_null($appt_window_end_date_time)) {
-            throw new \InvalidArgumentException('non-nullable appt_window_end_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appt_window_end_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appt_window_end_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appt_window_end_date_time'] = $appt_window_end_date_time;
 

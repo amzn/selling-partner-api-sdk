@@ -78,7 +78,7 @@ class SubmitInvoiceRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoices' => false
+        'invoices' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class SubmitInvoiceRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets invoices
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvoices(): ?array
     {
@@ -311,7 +311,14 @@ class SubmitInvoiceRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setInvoices(?array $invoices): self
     {
         if (is_null($invoices)) {
-            throw new \InvalidArgumentException('non-nullable invoices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoices', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoices'] = $invoices;
 

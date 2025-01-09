@@ -82,9 +82,9 @@ class ShipmentDestination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'address' => false,
+        'address' => true,
         'destination_type' => false,
-        'warehouse_id' => false
+        'warehouse_id' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class ShipmentDestination implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAddress(?\OpenAPI\Client\Model\fulfillmentInbound\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 
@@ -405,12 +412,19 @@ class ShipmentDestination implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWarehouseId(?string $warehouse_id): self
     {
         if (is_null($warehouse_id)) {
-            throw new \InvalidArgumentException('non-nullable warehouse_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warehouse_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warehouse_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($warehouse_id) > 1024)) {
+        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $warehouse_id when calling ShipmentDestination., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($warehouse_id) < 1)) {
+        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $warehouse_id when calling ShipmentDestination., must be bigger than or equal to 1.');
         }
 

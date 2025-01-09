@@ -84,7 +84,7 @@ class ASINInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'asin' => false,
         'inbound_guidance' => false,
-        'guidance_reason_list' => false
+        'guidance_reason_list' => true
     ];
 
     /**
@@ -368,7 +368,7 @@ class ASINInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets guidance_reason_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getGuidanceReasonList(): ?array
     {
@@ -385,7 +385,14 @@ class ASINInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setGuidanceReasonList(?array $guidance_reason_list): self
     {
         if (is_null($guidance_reason_list)) {
-            throw new \InvalidArgumentException('non-nullable guidance_reason_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'guidance_reason_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('guidance_reason_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['guidance_reason_list'] = $guidance_reason_list;
 

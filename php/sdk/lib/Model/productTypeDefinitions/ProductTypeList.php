@@ -307,7 +307,7 @@ class ProductTypeList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getProductTypes(): array
     {

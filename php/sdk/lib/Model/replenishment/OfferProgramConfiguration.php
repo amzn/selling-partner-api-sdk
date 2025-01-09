@@ -82,9 +82,9 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'preferences' => false,
-        'promotions' => false,
-        'enrollment_method' => false
+        'preferences' => true,
+        'promotions' => true,
+        'enrollment_method' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     public function setPreferences(?\OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPreferences $preferences): self
     {
         if (is_null($preferences)) {
-            throw new \InvalidArgumentException('non-nullable preferences cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'preferences');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preferences', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['preferences'] = $preferences;
 
@@ -352,7 +359,14 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     public function setPromotions(?\OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotions $promotions): self
     {
         if (is_null($promotions)) {
-            throw new \InvalidArgumentException('non-nullable promotions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotions'] = $promotions;
 
@@ -379,7 +393,14 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     public function setEnrollmentMethod(?string $enrollment_method): self
     {
         if (is_null($enrollment_method)) {
-            throw new \InvalidArgumentException('non-nullable enrollment_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'enrollment_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enrollment_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['enrollment_method'] = $enrollment_method;
 

@@ -82,9 +82,9 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fee' => false,
-        'prep_owner' => false,
-        'prep_type' => false
+        'fee' => true,
+        'prep_owner' => true,
+        'prep_type' => true
     ];
 
     /**
@@ -341,7 +341,14 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFee(?\OpenAPI\Client\Model\fulfillmentInbound\Currency $fee): self
     {
         if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee'] = $fee;
 
@@ -368,12 +375,19 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrepOwner(?string $prep_owner): self
     {
         if (is_null($prep_owner)) {
-            throw new \InvalidArgumentException('non-nullable prep_owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_owner', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($prep_owner) > 1024)) {
+        if (!is_null($prep_owner) && (mb_strlen($prep_owner) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $prep_owner when calling PrepInstruction., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($prep_owner) < 1)) {
+        if (!is_null($prep_owner) && (mb_strlen($prep_owner) < 1)) {
             throw new \InvalidArgumentException('invalid length for $prep_owner when calling PrepInstruction., must be bigger than or equal to 1.');
         }
 
@@ -402,12 +416,19 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrepType(?string $prep_type): self
     {
         if (is_null($prep_type)) {
-            throw new \InvalidArgumentException('non-nullable prep_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($prep_type) > 1024)) {
+        if (!is_null($prep_type) && (mb_strlen($prep_type) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $prep_type when calling PrepInstruction., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($prep_type) < 1)) {
+        if (!is_null($prep_type) && (mb_strlen($prep_type) < 1)) {
             throw new \InvalidArgumentException('invalid length for $prep_type when calling PrepInstruction., must be bigger than or equal to 1.');
         }
 

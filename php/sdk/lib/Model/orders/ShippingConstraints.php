@@ -84,10 +84,10 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pallet_delivery' => false,
-        'signature_confirmation' => false,
-        'recipient_identity_verification' => false,
-        'recipient_age_verification' => false
+        'pallet_delivery' => true,
+        'signature_confirmation' => true,
+        'recipient_identity_verification' => true,
+        'recipient_age_verification' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPalletDelivery(?string $pallet_delivery): self
     {
         if (is_null($pallet_delivery)) {
-            throw new \InvalidArgumentException('non-nullable pallet_delivery cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pallet_delivery');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pallet_delivery', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pallet_delivery'] = $pallet_delivery;
 
@@ -359,7 +366,14 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSignatureConfirmation(?string $signature_confirmation): self
     {
         if (is_null($signature_confirmation)) {
-            throw new \InvalidArgumentException('non-nullable signature_confirmation cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'signature_confirmation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('signature_confirmation', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['signature_confirmation'] = $signature_confirmation;
 
@@ -386,7 +400,14 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setRecipientIdentityVerification(?string $recipient_identity_verification): self
     {
         if (is_null($recipient_identity_verification)) {
-            throw new \InvalidArgumentException('non-nullable recipient_identity_verification cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'recipient_identity_verification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('recipient_identity_verification', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['recipient_identity_verification'] = $recipient_identity_verification;
 
@@ -413,7 +434,14 @@ class ShippingConstraints implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setRecipientAgeVerification(?string $recipient_age_verification): self
     {
         if (is_null($recipient_age_verification)) {
-            throw new \InvalidArgumentException('non-nullable recipient_age_verification cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'recipient_age_verification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('recipient_age_verification', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['recipient_age_verification'] = $recipient_age_verification;
 

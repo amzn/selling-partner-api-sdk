@@ -301,7 +301,7 @@ class ConfirmTransportationOptionsRequest implements ModelInterface, ArrayAccess
     /**
      * Gets transportation_selections
      *
-     * @return arrayA
+     * @return array
      */
     public function getTransportationSelections(): array
     {

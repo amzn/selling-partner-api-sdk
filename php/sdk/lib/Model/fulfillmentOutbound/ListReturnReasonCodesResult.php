@@ -78,7 +78,7 @@ class ListReturnReasonCodesResult implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'reason_code_details' => false
+        'reason_code_details' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class ListReturnReasonCodesResult implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets reason_code_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReasonCodeDetails(): ?array
     {
@@ -311,7 +311,14 @@ class ListReturnReasonCodesResult implements ModelInterface, ArrayAccess, \JsonS
     public function setReasonCodeDetails(?array $reason_code_details): self
     {
         if (is_null($reason_code_details)) {
-            throw new \InvalidArgumentException('non-nullable reason_code_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_code_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_code_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_code_details'] = $reason_code_details;
 

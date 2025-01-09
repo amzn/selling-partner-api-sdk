@@ -80,7 +80,7 @@ class CartonReferenceDetails implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carton_count' => false,
+        'carton_count' => true,
         'carton_reference_numbers' => false
     ];
 
@@ -321,7 +321,14 @@ class CartonReferenceDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCartonCount(?int $carton_count): self
     {
         if (is_null($carton_count)) {
-            throw new \InvalidArgumentException('non-nullable carton_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carton_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carton_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carton_count'] = $carton_count;
 
@@ -331,7 +338,7 @@ class CartonReferenceDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets carton_reference_numbers
      *
-     * @return arrayA
+     * @return array
      */
     public function getCartonReferenceNumbers(): array
     {

@@ -91,9 +91,9 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'is_priority_shipment' => false,
-        'is_scheduled_delivery_shipment' => false,
+        'is_scheduled_delivery_shipment' => true,
         'is_pslip_required' => false,
-        'is_gift' => false,
+        'is_gift' => true,
         'ship_method' => false,
         'shipment_dates' => false,
         'message_to_customer' => false
@@ -395,7 +395,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsScheduledDeliveryShipment(?bool $is_scheduled_delivery_shipment): self
     {
         if (is_null($is_scheduled_delivery_shipment)) {
-            throw new \InvalidArgumentException('non-nullable is_scheduled_delivery_shipment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_scheduled_delivery_shipment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_scheduled_delivery_shipment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_scheduled_delivery_shipment'] = $is_scheduled_delivery_shipment;
 
@@ -449,7 +456,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsGift(?bool $is_gift): self
     {
         if (is_null($is_gift)) {
-            throw new \InvalidArgumentException('non-nullable is_gift cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_gift');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_gift', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_gift'] = $is_gift;
 

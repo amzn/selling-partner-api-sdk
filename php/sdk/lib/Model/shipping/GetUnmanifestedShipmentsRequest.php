@@ -79,7 +79,7 @@ class GetUnmanifestedShipmentsRequest implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'client_reference_details' => false
+        'client_reference_details' => true
     ];
 
     /**
@@ -295,7 +295,7 @@ class GetUnmanifestedShipmentsRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets client_reference_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClientReferenceDetails(): ?array
     {
@@ -312,7 +312,14 @@ class GetUnmanifestedShipmentsRequest implements ModelInterface, ArrayAccess, \J
     public function setClientReferenceDetails(?array $client_reference_details): self
     {
         if (is_null($client_reference_details)) {
-            throw new \InvalidArgumentException('non-nullable client_reference_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'client_reference_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('client_reference_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['client_reference_details'] = $client_reference_details;
 

@@ -95,13 +95,13 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'competitive_price_id' => false,
         'price' => false,
-        'condition' => false,
-        'subcondition' => false,
-        'offer_type' => false,
-        'quantity_tier' => false,
-        'quantity_discount_type' => false,
-        'seller_id' => false,
-        'belongs_to_requester' => false
+        'condition' => true,
+        'subcondition' => true,
+        'offer_type' => true,
+        'quantity_tier' => true,
+        'quantity_discount_type' => true,
+        'seller_id' => true,
+        'belongs_to_requester' => true
     ];
 
     /**
@@ -426,7 +426,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCondition(?string $condition): self
     {
         if (is_null($condition)) {
-            throw new \InvalidArgumentException('non-nullable condition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['condition'] = $condition;
 
@@ -453,7 +460,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setSubcondition(?string $subcondition): self
     {
         if (is_null($subcondition)) {
-            throw new \InvalidArgumentException('non-nullable subcondition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subcondition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subcondition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subcondition'] = $subcondition;
 
@@ -480,7 +494,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setOfferType(?string $offer_type): self
     {
         if (is_null($offer_type)) {
-            throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_type'] = $offer_type;
 
@@ -507,7 +528,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setQuantityTier(?int $quantity_tier): self
     {
         if (is_null($quantity_tier)) {
-            throw new \InvalidArgumentException('non-nullable quantity_tier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_tier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_tier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_tier'] = $quantity_tier;
 
@@ -534,7 +562,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setQuantityDiscountType(?string $quantity_discount_type): self
     {
         if (is_null($quantity_discount_type)) {
-            throw new \InvalidArgumentException('non-nullable quantity_discount_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_discount_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_discount_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_discount_type'] = $quantity_discount_type;
 
@@ -561,7 +596,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setSellerId(?string $seller_id): self
     {
         if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_id'] = $seller_id;
 
@@ -588,7 +630,14 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBelongsToRequester(?bool $belongs_to_requester): self
     {
         if (is_null($belongs_to_requester)) {
-            throw new \InvalidArgumentException('non-nullable belongs_to_requester cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'belongs_to_requester');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('belongs_to_requester', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['belongs_to_requester'] = $belongs_to_requester;
 

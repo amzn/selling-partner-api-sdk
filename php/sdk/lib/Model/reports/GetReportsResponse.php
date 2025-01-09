@@ -81,7 +81,7 @@ class GetReportsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'reports' => false,
-        'next_token' => false
+        'next_token' => true
     ];
 
     /**
@@ -304,7 +304,7 @@ class GetReportsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets reports
      *
-     * @return arrayA
+     * @return array
      */
     public function getReports(): array
     {
@@ -348,7 +348,14 @@ class GetReportsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 

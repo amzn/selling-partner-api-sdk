@@ -84,10 +84,10 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoice_status_options' => false,
-        'invoice_type_options' => false,
-        'transaction_identifier_name_options' => false,
-        'transaction_type_options' => false
+        'invoice_status_options' => true,
+        'invoice_type_options' => true,
+        'transaction_identifier_name_options' => true,
+        'transaction_type_options' => true
     ];
 
     /**
@@ -315,7 +315,7 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets invoice_status_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvoiceStatusOptions(): ?array
     {
@@ -332,7 +332,14 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setInvoiceStatusOptions(?array $invoice_status_options): self
     {
         if (is_null($invoice_status_options)) {
-            throw new \InvalidArgumentException('non-nullable invoice_status_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_status_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_status_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_status_options'] = $invoice_status_options;
 
@@ -342,7 +349,7 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets invoice_type_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvoiceTypeOptions(): ?array
     {
@@ -359,7 +366,14 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setInvoiceTypeOptions(?array $invoice_type_options): self
     {
         if (is_null($invoice_type_options)) {
-            throw new \InvalidArgumentException('non-nullable invoice_type_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_type_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_type_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_type_options'] = $invoice_type_options;
 
@@ -369,7 +383,7 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets transaction_identifier_name_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransactionIdentifierNameOptions(): ?array
     {
@@ -386,7 +400,14 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTransactionIdentifierNameOptions(?array $transaction_identifier_name_options): self
     {
         if (is_null($transaction_identifier_name_options)) {
-            throw new \InvalidArgumentException('non-nullable transaction_identifier_name_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_identifier_name_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_identifier_name_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_identifier_name_options'] = $transaction_identifier_name_options;
 
@@ -396,7 +417,7 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets transaction_type_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransactionTypeOptions(): ?array
     {
@@ -413,7 +434,14 @@ class InvoicesAttributes implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTransactionTypeOptions(?array $transaction_type_options): self
     {
         if (is_null($transaction_type_options)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type_options'] = $transaction_type_options;
 

@@ -90,13 +90,13 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'method_of_payment' => false,
-        'seal_number' => false,
-        'route' => false,
-        'import_containers' => false,
-        'billable_weight' => false,
-        'estimated_ship_by_date' => false,
-        'handling_instructions' => false
+        'method_of_payment' => true,
+        'seal_number' => true,
+        'route' => true,
+        'import_containers' => true,
+        'billable_weight' => true,
+        'estimated_ship_by_date' => true,
+        'handling_instructions' => true
     ];
 
     /**
@@ -417,10 +417,17 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMethodOfPayment(?string $method_of_payment): self
     {
         if (is_null($method_of_payment)) {
-            throw new \InvalidArgumentException('non-nullable method_of_payment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'method_of_payment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('method_of_payment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getMethodOfPaymentAllowableValues();
-        if (!in_array($method_of_payment, $allowedValues, true)) {
+        if (!is_null($method_of_payment) && !in_array($method_of_payment, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'method_of_payment', must be one of '%s'",
@@ -454,7 +461,14 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSealNumber(?string $seal_number): self
     {
         if (is_null($seal_number)) {
-            throw new \InvalidArgumentException('non-nullable seal_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seal_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seal_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seal_number'] = $seal_number;
 
@@ -481,7 +495,14 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRoute(?\OpenAPI\Client\Model\vendorShipments\Route $route): self
     {
         if (is_null($route)) {
-            throw new \InvalidArgumentException('non-nullable route cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'route');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('route', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['route'] = $route;
 
@@ -508,9 +529,16 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImportContainers(?string $import_containers): self
     {
         if (is_null($import_containers)) {
-            throw new \InvalidArgumentException('non-nullable import_containers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'import_containers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('import_containers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($import_containers) > 64)) {
+        if (!is_null($import_containers) && (mb_strlen($import_containers) > 64)) {
             throw new \InvalidArgumentException('invalid length for $import_containers when calling ImportDetails., must be smaller than or equal to 64.');
         }
 
@@ -539,7 +567,14 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBillableWeight(?\OpenAPI\Client\Model\vendorShipments\Weight $billable_weight): self
     {
         if (is_null($billable_weight)) {
-            throw new \InvalidArgumentException('non-nullable billable_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'billable_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billable_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['billable_weight'] = $billable_weight;
 
@@ -566,7 +601,14 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEstimatedShipByDate(?\DateTime $estimated_ship_by_date): self
     {
         if (is_null($estimated_ship_by_date)) {
-            throw new \InvalidArgumentException('non-nullable estimated_ship_by_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_ship_by_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_ship_by_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_ship_by_date'] = $estimated_ship_by_date;
 
@@ -593,10 +635,17 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHandlingInstructions(?string $handling_instructions): self
     {
         if (is_null($handling_instructions)) {
-            throw new \InvalidArgumentException('non-nullable handling_instructions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'handling_instructions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('handling_instructions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getHandlingInstructionsAllowableValues();
-        if (!in_array($handling_instructions, $allowedValues, true)) {
+        if (!is_null($handling_instructions) && !in_array($handling_instructions, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'handling_instructions', must be one of '%s'",

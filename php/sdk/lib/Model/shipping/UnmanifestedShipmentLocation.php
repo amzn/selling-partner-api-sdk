@@ -81,8 +81,8 @@ class UnmanifestedShipmentLocation implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'address' => false,
-        'last_manifest_date' => false
+        'address' => true,
+        'last_manifest_date' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class UnmanifestedShipmentLocation implements ModelInterface, ArrayAccess, \Json
     public function setAddress(?\OpenAPI\Client\Model\shipping\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 
@@ -346,7 +353,14 @@ class UnmanifestedShipmentLocation implements ModelInterface, ArrayAccess, \Json
     public function setLastManifestDate(?string $last_manifest_date): self
     {
         if (is_null($last_manifest_date)) {
-            throw new \InvalidArgumentException('non-nullable last_manifest_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_manifest_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_manifest_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_manifest_date'] = $last_manifest_date;
 

@@ -87,11 +87,11 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carrier_name' => false,
-        'creation_date' => false,
-        'generation_status' => false,
-        'collection_form_id' => false,
-        'ship_from_address' => false
+        'carrier_name' => true,
+        'creation_date' => true,
+        'generation_status' => true,
+        'collection_form_id' => true,
+        'ship_from_address' => true
     ];
 
     /**
@@ -340,7 +340,14 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     public function setCarrierName(?string $carrier_name): self
     {
         if (is_null($carrier_name)) {
-            throw new \InvalidArgumentException('non-nullable carrier_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_name'] = $carrier_name;
 
@@ -367,7 +374,14 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     public function setCreationDate(?string $creation_date): self
     {
         if (is_null($creation_date)) {
-            throw new \InvalidArgumentException('non-nullable creation_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'creation_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creation_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['creation_date'] = $creation_date;
 
@@ -394,7 +408,14 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     public function setGenerationStatus(?string $generation_status): self
     {
         if (is_null($generation_status)) {
-            throw new \InvalidArgumentException('non-nullable generation_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'generation_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('generation_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['generation_status'] = $generation_status;
 
@@ -421,7 +442,14 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     public function setCollectionFormId(?string $collection_form_id): self
     {
         if (is_null($collection_form_id)) {
-            throw new \InvalidArgumentException('non-nullable collection_form_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'collection_form_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('collection_form_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['collection_form_id'] = $collection_form_id;
 
@@ -448,7 +476,14 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     public function setShipFromAddress(?\OpenAPI\Client\Model\shipping\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
-            throw new \InvalidArgumentException('non-nullable ship_from_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_from_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_from_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_from_address'] = $ship_from_address;
 

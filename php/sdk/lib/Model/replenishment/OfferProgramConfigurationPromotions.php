@@ -84,10 +84,10 @@ class OfferProgramConfigurationPromotions implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'selling_partner_funded_base_discount' => false,
-        'selling_partner_funded_tiered_discount' => false,
-        'amazon_funded_base_discount' => false,
-        'amazon_funded_tiered_discount' => false
+        'selling_partner_funded_base_discount' => true,
+        'selling_partner_funded_tiered_discount' => true,
+        'amazon_funded_base_discount' => true,
+        'amazon_funded_tiered_discount' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class OfferProgramConfigurationPromotions implements ModelInterface, ArrayAccess
     public function setSellingPartnerFundedBaseDiscount(?\OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding $selling_partner_funded_base_discount): self
     {
         if (is_null($selling_partner_funded_base_discount)) {
-            throw new \InvalidArgumentException('non-nullable selling_partner_funded_base_discount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'selling_partner_funded_base_discount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('selling_partner_funded_base_discount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['selling_partner_funded_base_discount'] = $selling_partner_funded_base_discount;
 
@@ -359,7 +366,14 @@ class OfferProgramConfigurationPromotions implements ModelInterface, ArrayAccess
     public function setSellingPartnerFundedTieredDiscount(?\OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding $selling_partner_funded_tiered_discount): self
     {
         if (is_null($selling_partner_funded_tiered_discount)) {
-            throw new \InvalidArgumentException('non-nullable selling_partner_funded_tiered_discount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'selling_partner_funded_tiered_discount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('selling_partner_funded_tiered_discount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['selling_partner_funded_tiered_discount'] = $selling_partner_funded_tiered_discount;
 
@@ -386,7 +400,14 @@ class OfferProgramConfigurationPromotions implements ModelInterface, ArrayAccess
     public function setAmazonFundedBaseDiscount(?\OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding $amazon_funded_base_discount): self
     {
         if (is_null($amazon_funded_base_discount)) {
-            throw new \InvalidArgumentException('non-nullable amazon_funded_base_discount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_funded_base_discount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_funded_base_discount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_funded_base_discount'] = $amazon_funded_base_discount;
 
@@ -413,7 +434,14 @@ class OfferProgramConfigurationPromotions implements ModelInterface, ArrayAccess
     public function setAmazonFundedTieredDiscount(?\OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding $amazon_funded_tiered_discount): self
     {
         if (is_null($amazon_funded_tiered_discount)) {
-            throw new \InvalidArgumentException('non-nullable amazon_funded_tiered_discount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_funded_tiered_discount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_funded_tiered_discount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_funded_tiered_discount'] = $amazon_funded_tiered_discount;
 

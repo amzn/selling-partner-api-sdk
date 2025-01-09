@@ -84,10 +84,10 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_reserved_quantity' => false,
-        'pending_customer_order_quantity' => false,
-        'pending_transshipment_quantity' => false,
-        'fc_processing_quantity' => false
+        'total_reserved_quantity' => true,
+        'pending_customer_order_quantity' => true,
+        'pending_transshipment_quantity' => true,
+        'fc_processing_quantity' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalReservedQuantity(?int $total_reserved_quantity): self
     {
         if (is_null($total_reserved_quantity)) {
-            throw new \InvalidArgumentException('non-nullable total_reserved_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_reserved_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_reserved_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_reserved_quantity'] = $total_reserved_quantity;
 
@@ -359,7 +366,14 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPendingCustomerOrderQuantity(?int $pending_customer_order_quantity): self
     {
         if (is_null($pending_customer_order_quantity)) {
-            throw new \InvalidArgumentException('non-nullable pending_customer_order_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pending_customer_order_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pending_customer_order_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pending_customer_order_quantity'] = $pending_customer_order_quantity;
 
@@ -386,7 +400,14 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPendingTransshipmentQuantity(?int $pending_transshipment_quantity): self
     {
         if (is_null($pending_transshipment_quantity)) {
-            throw new \InvalidArgumentException('non-nullable pending_transshipment_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pending_transshipment_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pending_transshipment_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pending_transshipment_quantity'] = $pending_transshipment_quantity;
 
@@ -413,7 +434,14 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFcProcessingQuantity(?int $fc_processing_quantity): self
     {
         if (is_null($fc_processing_quantity)) {
-            throw new \InvalidArgumentException('non-nullable fc_processing_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fc_processing_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fc_processing_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fc_processing_quantity'] = $fc_processing_quantity;
 

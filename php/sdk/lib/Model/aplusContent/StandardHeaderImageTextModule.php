@@ -80,8 +80,8 @@ class StandardHeaderImageTextModule implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'block' => false
+        'headline' => true,
+        'block' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class StandardHeaderImageTextModule implements ModelInterface, ArrayAccess, \Jso
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -345,7 +352,14 @@ class StandardHeaderImageTextModule implements ModelInterface, ArrayAccess, \Jso
     public function setBlock(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block): self
     {
         if (is_null($block)) {
-            throw new \InvalidArgumentException('non-nullable block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block'] = $block;
 

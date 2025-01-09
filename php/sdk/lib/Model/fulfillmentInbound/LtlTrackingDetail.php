@@ -80,8 +80,8 @@ class LtlTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'bill_of_lading_number' => false,
-        'freight_bill_number' => false
+        'bill_of_lading_number' => true,
+        'freight_bill_number' => true
     ];
 
     /**
@@ -326,12 +326,19 @@ class LtlTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setBillOfLadingNumber(?string $bill_of_lading_number): self
     {
         if (is_null($bill_of_lading_number)) {
-            throw new \InvalidArgumentException('non-nullable bill_of_lading_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bill_of_lading_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_of_lading_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($bill_of_lading_number) > 1024)) {
+        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetail., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($bill_of_lading_number) < 1)) {
+        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) < 1)) {
             throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetail., must be bigger than or equal to 1.');
         }
 
@@ -343,7 +350,7 @@ class LtlTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets freight_bill_number
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFreightBillNumber(): ?array
     {
@@ -360,7 +367,14 @@ class LtlTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setFreightBillNumber(?array $freight_bill_number): self
     {
         if (is_null($freight_bill_number)) {
-            throw new \InvalidArgumentException('non-nullable freight_bill_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'freight_bill_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('freight_bill_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['freight_bill_number'] = $freight_bill_number;
 

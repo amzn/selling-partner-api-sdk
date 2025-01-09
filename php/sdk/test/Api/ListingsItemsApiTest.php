@@ -55,6 +55,8 @@ class ListingsItemsApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('ListingsItemsApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class ListingsItemsApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testDeleteListingsItem200', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testDeleteListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -224,7 +225,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testDeleteListingsItem400', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testDeleteListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -354,7 +355,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetListingsItem200', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -615,7 +616,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetListingsItem400', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -753,7 +754,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testPatchListingsItem200', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testPatchListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -903,7 +904,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testPatchListingsItem400', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testPatchListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1033,7 +1034,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testPutListingsItem200', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testPutListingsItem200', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1189,7 +1190,7 @@ class ListingsItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testPutListingsItem400', 'ListingsItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testPutListingsItem400', 'ListingsItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }

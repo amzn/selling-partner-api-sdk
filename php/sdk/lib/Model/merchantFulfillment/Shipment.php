@@ -108,7 +108,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'shipment_id' => false,
         'amazon_order_id' => false,
-        'seller_order_id' => false,
+        'seller_order_id' => true,
         'item_list' => false,
         'ship_from_address' => false,
         'ship_to_address' => false,
@@ -118,9 +118,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipping_service' => false,
         'label' => false,
         'status' => false,
-        'tracking_id' => false,
+        'tracking_id' => true,
         'created_date' => false,
-        'last_updated_date' => false
+        'last_updated_date' => true
     ];
 
     /**
@@ -503,9 +503,16 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerOrderId(?string $seller_order_id): self
     {
         if (is_null($seller_order_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($seller_order_id) > 64)) {
+        if (!is_null($seller_order_id) && (mb_strlen($seller_order_id) > 64)) {
             throw new \InvalidArgumentException('invalid length for $seller_order_id when calling Shipment., must be smaller than or equal to 64.');
         }
 
@@ -517,7 +524,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getItemList(): array
     {
@@ -777,7 +784,14 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingId(?string $tracking_id): self
     {
         if (is_null($tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_id'] = $tracking_id;
 
@@ -831,7 +845,14 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastUpdatedDate(?\DateTime $last_updated_date): self
     {
         if (is_null($last_updated_date)) {
-            throw new \InvalidArgumentException('non-nullable last_updated_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_updated_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_updated_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_updated_date'] = $last_updated_date;
 

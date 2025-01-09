@@ -81,8 +81,8 @@ class LinkableAccountType implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_type' => false,
-        'carrier_account_inputs' => false
+        'account_type' => true,
+        'carrier_account_inputs' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class LinkableAccountType implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAccountType(?string $account_type): self
     {
         if (is_null($account_type)) {
-            throw new \InvalidArgumentException('non-nullable account_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_type'] = $account_type;
 
@@ -329,7 +336,7 @@ class LinkableAccountType implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets carrier_account_inputs
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCarrierAccountInputs(): ?array
     {
@@ -346,7 +353,14 @@ class LinkableAccountType implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCarrierAccountInputs(?array $carrier_account_inputs): self
     {
         if (is_null($carrier_account_inputs)) {
-            throw new \InvalidArgumentException('non-nullable carrier_account_inputs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_account_inputs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_account_inputs', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_account_inputs'] = $carrier_account_inputs;
 

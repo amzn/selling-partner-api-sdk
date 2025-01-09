@@ -80,8 +80,8 @@ class InvalidASIN implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'error_reason' => false
+        'asin' => true,
+        'error_reason' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class InvalidASIN implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -345,7 +352,14 @@ class InvalidASIN implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorReason(?string $error_reason): self
     {
         if (is_null($error_reason)) {
-            throw new \InvalidArgumentException('non-nullable error_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_reason'] = $error_reason;
 

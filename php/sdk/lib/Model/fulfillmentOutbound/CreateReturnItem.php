@@ -90,7 +90,7 @@ class CreateReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_fulfillment_order_item_id' => false,
         'amazon_shipment_id' => false,
         'return_reason_code' => false,
-        'return_comment' => false
+        'return_comment' => true
     ];
 
     /**
@@ -471,9 +471,16 @@ class CreateReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReturnComment(?string $return_comment): self
     {
         if (is_null($return_comment)) {
-            throw new \InvalidArgumentException('non-nullable return_comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_comment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($return_comment) > 1000)) {
+        if (!is_null($return_comment) && (mb_strlen($return_comment) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $return_comment when calling CreateReturnItem., must be smaller than or equal to 1000.');
         }
 

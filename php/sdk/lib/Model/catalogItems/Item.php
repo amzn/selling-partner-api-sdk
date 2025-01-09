@@ -99,16 +99,16 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'asin' => false,
-        'attributes' => false,
-        'classifications' => false,
-        'dimensions' => false,
-        'identifiers' => false,
-        'images' => false,
-        'product_types' => false,
-        'relationships' => false,
-        'sales_ranks' => false,
-        'summaries' => false,
-        'vendor_details' => false
+        'attributes' => true,
+        'classifications' => true,
+        'dimensions' => true,
+        'identifiers' => true,
+        'images' => true,
+        'product_types' => true,
+        'relationships' => true,
+        'sales_ranks' => true,
+        'summaries' => true,
+        'vendor_details' => true
     ];
 
     /**
@@ -411,7 +411,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAttributes(?array $attributes): self
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 
@@ -421,7 +428,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets classifications
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClassifications(): ?array
     {
@@ -438,7 +445,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setClassifications(?array $classifications): self
     {
         if (is_null($classifications)) {
-            throw new \InvalidArgumentException('non-nullable classifications cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'classifications');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('classifications', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['classifications'] = $classifications;
 
@@ -448,7 +462,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDimensions(): ?array
     {
@@ -465,7 +479,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?array $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -475,7 +496,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identifiers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIdentifiers(): ?array
     {
@@ -492,7 +513,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdentifiers(?array $identifiers): self
     {
         if (is_null($identifiers)) {
-            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'identifiers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('identifiers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['identifiers'] = $identifiers;
 
@@ -502,7 +530,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets images
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getImages(): ?array
     {
@@ -519,7 +547,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImages(?array $images): self
     {
         if (is_null($images)) {
-            throw new \InvalidArgumentException('non-nullable images cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'images');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('images', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['images'] = $images;
 
@@ -529,7 +564,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_types
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getProductTypes(): ?array
     {
@@ -546,7 +581,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductTypes(?array $product_types): self
     {
         if (is_null($product_types)) {
-            throw new \InvalidArgumentException('non-nullable product_types cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_types'] = $product_types;
 
@@ -556,7 +598,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets relationships
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRelationships(): ?array
     {
@@ -573,7 +615,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRelationships(?array $relationships): self
     {
         if (is_null($relationships)) {
-            throw new \InvalidArgumentException('non-nullable relationships cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'relationships');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('relationships', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['relationships'] = $relationships;
 
@@ -583,7 +632,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sales_ranks
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSalesRanks(): ?array
     {
@@ -600,7 +649,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSalesRanks(?array $sales_ranks): self
     {
         if (is_null($sales_ranks)) {
-            throw new \InvalidArgumentException('non-nullable sales_ranks cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sales_ranks');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sales_ranks', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sales_ranks'] = $sales_ranks;
 
@@ -610,7 +666,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets summaries
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSummaries(): ?array
     {
@@ -627,7 +683,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSummaries(?array $summaries): self
     {
         if (is_null($summaries)) {
-            throw new \InvalidArgumentException('non-nullable summaries cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'summaries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('summaries', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['summaries'] = $summaries;
 
@@ -637,7 +700,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets vendor_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getVendorDetails(): ?array
     {
@@ -654,7 +717,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorDetails(?array $vendor_details): self
     {
         if (is_null($vendor_details)) {
-            throw new \InvalidArgumentException('non-nullable vendor_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_details'] = $vendor_details;
 

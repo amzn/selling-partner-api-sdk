@@ -81,7 +81,7 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'product_identifier' => false,
-        'amount' => false
+        'amount' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAmount(?\OpenAPI\Client\Model\fulfillmentOutbound\Amount $amount): self
     {
         if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amount'] = $amount;
 

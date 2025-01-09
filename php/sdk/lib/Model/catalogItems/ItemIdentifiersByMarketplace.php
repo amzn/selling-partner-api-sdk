@@ -334,7 +334,7 @@ class ItemIdentifiersByMarketplace implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets identifiers
      *
-     * @return arrayA
+     * @return array
      */
     public function getIdentifiers(): array
     {

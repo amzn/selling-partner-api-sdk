@@ -101,18 +101,18 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ship_to' => false,
+        'ship_to' => true,
         'ship_from' => false,
-        'return_to' => false,
-        'ship_date' => false,
+        'return_to' => true,
+        'ship_date' => true,
         'packages' => false,
-        'value_added_services_details' => false,
-        'tax_details' => false,
+        'value_added_services_details' => true,
+        'tax_details' => true,
         'channel_details' => false,
         'label_specifications' => false,
         'service_selection' => false,
-        'shipper_instruction' => false,
-        'destination_access_point_details' => false
+        'shipper_instruction' => true,
+        'destination_access_point_details' => true
     ];
 
     /**
@@ -404,7 +404,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setShipTo(?\OpenAPI\Client\Model\shipping\Address $ship_to): self
     {
         if (is_null($ship_to)) {
-            throw new \InvalidArgumentException('non-nullable ship_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to'] = $ship_to;
 
@@ -458,7 +465,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setReturnTo(?\OpenAPI\Client\Model\shipping\Address $return_to): self
     {
         if (is_null($return_to)) {
-            throw new \InvalidArgumentException('non-nullable return_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_to', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_to'] = $return_to;
 
@@ -485,7 +499,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setShipDate(?\DateTime $ship_date): self
     {
         if (is_null($ship_date)) {
-            throw new \InvalidArgumentException('non-nullable ship_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_date'] = $ship_date;
 
@@ -495,7 +516,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets packages
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackages(): array
     {
@@ -522,7 +543,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets value_added_services_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getValueAddedServicesDetails(): ?array
     {
@@ -539,7 +560,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setValueAddedServicesDetails(?array $value_added_services_details): self
     {
         if (is_null($value_added_services_details)) {
-            throw new \InvalidArgumentException('non-nullable value_added_services_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_added_services_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_added_services_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_added_services_details'] = $value_added_services_details;
 
@@ -549,7 +577,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets tax_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxDetails(): ?array
     {
@@ -566,7 +594,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTaxDetails(?array $tax_details): self
     {
         if (is_null($tax_details)) {
-            throw new \InvalidArgumentException('non-nullable tax_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_details'] = $tax_details;
 
@@ -674,7 +709,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setShipperInstruction(?\OpenAPI\Client\Model\shipping\ShipperInstruction $shipper_instruction): self
     {
         if (is_null($shipper_instruction)) {
-            throw new \InvalidArgumentException('non-nullable shipper_instruction cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipper_instruction');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipper_instruction', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipper_instruction'] = $shipper_instruction;
 
@@ -701,7 +743,14 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDestinationAccessPointDetails(?\OpenAPI\Client\Model\shipping\AccessPointDetails $destination_access_point_details): self
     {
         if (is_null($destination_access_point_details)) {
-            throw new \InvalidArgumentException('non-nullable destination_access_point_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'destination_access_point_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('destination_access_point_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['destination_access_point_details'] = $destination_access_point_details;
 

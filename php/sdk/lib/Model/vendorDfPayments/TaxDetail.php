@@ -85,9 +85,9 @@ class TaxDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'tax_type' => false,
-        'tax_rate' => false,
+        'tax_rate' => true,
         'tax_amount' => false,
-        'taxable_amount' => false
+        'taxable_amount' => true
     ];
 
     /**
@@ -423,7 +423,14 @@ class TaxDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxRate(?string $tax_rate): self
     {
         if (is_null($tax_rate)) {
-            throw new \InvalidArgumentException('non-nullable tax_rate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_rate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_rate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_rate'] = $tax_rate;
 
@@ -477,7 +484,14 @@ class TaxDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxableAmount(?\OpenAPI\Client\Model\vendorDfPayments\Money $taxable_amount): self
     {
         if (is_null($taxable_amount)) {
-            throw new \InvalidArgumentException('non-nullable taxable_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'taxable_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxable_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['taxable_amount'] = $taxable_amount;
 

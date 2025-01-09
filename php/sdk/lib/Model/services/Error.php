@@ -86,8 +86,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'code' => false,
         'message' => false,
-        'details' => false,
-        'error_level' => false
+        'details' => true,
+        'error_level' => true
     ];
 
     /**
@@ -416,7 +416,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDetails(?string $details): self
     {
         if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['details'] = $details;
 
@@ -443,10 +450,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorLevel(?string $error_level): self
     {
         if (is_null($error_level)) {
-            throw new \InvalidArgumentException('non-nullable error_level cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_level');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_level', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getErrorLevelAllowableValues();
-        if (!in_array($error_level, $allowedValues, true)) {
+        if (!is_null($error_level) && !in_array($error_level, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'error_level', must be one of '%s'",

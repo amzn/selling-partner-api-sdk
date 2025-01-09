@@ -81,7 +81,7 @@ class ItemBrowseClassificationsByMarketplace implements ModelInterface, ArrayAcc
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'classifications' => false
+        'classifications' => true
     ];
 
     /**
@@ -331,7 +331,7 @@ class ItemBrowseClassificationsByMarketplace implements ModelInterface, ArrayAcc
     /**
      * Gets classifications
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClassifications(): ?array
     {
@@ -348,7 +348,14 @@ class ItemBrowseClassificationsByMarketplace implements ModelInterface, ArrayAcc
     public function setClassifications(?array $classifications): self
     {
         if (is_null($classifications)) {
-            throw new \InvalidArgumentException('non-nullable classifications cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'classifications');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('classifications', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['classifications'] = $classifications;
 

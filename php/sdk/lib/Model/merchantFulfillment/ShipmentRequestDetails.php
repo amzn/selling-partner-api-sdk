@@ -97,15 +97,15 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
-        'seller_order_id' => false,
+        'seller_order_id' => true,
         'item_list' => false,
         'ship_from_address' => false,
         'package_dimensions' => false,
         'weight' => false,
-        'must_arrive_by_date' => false,
-        'ship_date' => false,
+        'must_arrive_by_date' => true,
+        'ship_date' => true,
         'shipping_service_options' => false,
-        'label_customization' => false
+        'label_customization' => true
     ];
 
     /**
@@ -423,9 +423,16 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSellerOrderId(?string $seller_order_id): self
     {
         if (is_null($seller_order_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($seller_order_id) > 64)) {
+        if (!is_null($seller_order_id) && (mb_strlen($seller_order_id) > 64)) {
             throw new \InvalidArgumentException('invalid length for $seller_order_id when calling ShipmentRequestDetails., must be smaller than or equal to 64.');
         }
 
@@ -437,7 +444,7 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets item_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getItemList(): array
     {
@@ -562,7 +569,14 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setMustArriveByDate(?\DateTime $must_arrive_by_date): self
     {
         if (is_null($must_arrive_by_date)) {
-            throw new \InvalidArgumentException('non-nullable must_arrive_by_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'must_arrive_by_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('must_arrive_by_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['must_arrive_by_date'] = $must_arrive_by_date;
 
@@ -589,7 +603,14 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setShipDate(?\DateTime $ship_date): self
     {
         if (is_null($ship_date)) {
-            throw new \InvalidArgumentException('non-nullable ship_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_date'] = $ship_date;
 
@@ -643,7 +664,14 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setLabelCustomization(?\OpenAPI\Client\Model\merchantFulfillment\LabelCustomization $label_customization): self
     {
         if (is_null($label_customization)) {
-            throw new \InvalidArgumentException('non-nullable label_customization cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_customization');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_customization', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_customization'] = $label_customization;
 

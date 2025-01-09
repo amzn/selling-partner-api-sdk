@@ -80,8 +80,8 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'unit_of_measure' => false
+        'amount' => true,
+        'unit_of_measure' => true
     ];
 
     /**
@@ -340,7 +340,14 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmount(?int $amount): self
     {
         if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amount'] = $amount;
 
@@ -367,10 +374,17 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUnitOfMeasure(?string $unit_of_measure): self
     {
         if (is_null($unit_of_measure)) {
-            throw new \InvalidArgumentException('non-nullable unit_of_measure cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit_of_measure');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit_of_measure', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getUnitOfMeasureAllowableValues();
-        if (!in_array($unit_of_measure, $allowedValues, true)) {
+        if (!is_null($unit_of_measure) && !in_array($unit_of_measure, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",

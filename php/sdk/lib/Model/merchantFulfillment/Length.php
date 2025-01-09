@@ -80,8 +80,8 @@ class Length implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => false,
-        'unit' => false
+        'value' => true,
+        'unit' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class Length implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue(?float $value): self
     {
         if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value'] = $value;
 
@@ -345,7 +352,14 @@ class Length implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUnit(?string $unit): self
     {
         if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit'] = $unit;
 

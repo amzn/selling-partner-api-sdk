@@ -87,10 +87,10 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'item_sequence_number' => false,
-        'buyer_product_identifier' => false,
-        'vendor_product_identifier' => false,
+        'buyer_product_identifier' => true,
+        'vendor_product_identifier' => true,
         'shipped_quantity' => false,
-        'maximum_retail_price' => false
+        'maximum_retail_price' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setBuyerProductIdentifier(?string $buyer_product_identifier): self
     {
         if (is_null($buyer_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable buyer_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_product_identifier'] = $buyer_product_identifier;
 
@@ -399,7 +406,14 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         if (is_null($vendor_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable vendor_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
@@ -453,7 +467,14 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMaximumRetailPrice(?\OpenAPI\Client\Model\vendorShipments\Money $maximum_retail_price): self
     {
         if (is_null($maximum_retail_price)) {
-            throw new \InvalidArgumentException('non-nullable maximum_retail_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maximum_retail_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maximum_retail_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maximum_retail_price'] = $maximum_retail_price;
 

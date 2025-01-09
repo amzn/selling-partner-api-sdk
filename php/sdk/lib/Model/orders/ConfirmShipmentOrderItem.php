@@ -84,7 +84,7 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'order_item_id' => false,
         'quantity' => false,
-        'transparency_codes' => false
+        'transparency_codes' => true
     ];
 
     /**
@@ -368,7 +368,7 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets transparency_codes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransparencyCodes(): ?array
     {
@@ -385,7 +385,14 @@ class ConfirmShipmentOrderItem implements ModelInterface, ArrayAccess, \JsonSeri
     public function setTransparencyCodes(?array $transparency_codes): self
     {
         if (is_null($transparency_codes)) {
-            throw new \InvalidArgumentException('non-nullable transparency_codes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transparency_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transparency_codes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transparency_codes'] = $transparency_codes;
 

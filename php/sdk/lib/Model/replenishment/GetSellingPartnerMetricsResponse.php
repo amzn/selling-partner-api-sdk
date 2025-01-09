@@ -78,7 +78,7 @@ class GetSellingPartnerMetricsResponse implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'metrics' => false
+        'metrics' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetSellingPartnerMetricsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets metrics
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMetrics(): ?array
     {
@@ -311,7 +311,14 @@ class GetSellingPartnerMetricsResponse implements ModelInterface, ArrayAccess, \
     public function setMetrics(?array $metrics): self
     {
         if (is_null($metrics)) {
-            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metrics'] = $metrics;
 

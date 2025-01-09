@@ -55,6 +55,8 @@ class FeedsApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('FeedsApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class FeedsApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelFeed200', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelFeed200', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -210,7 +211,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelFeed400', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelFeed400', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -348,7 +349,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateFeed202', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateFeed202', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -430,7 +431,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateFeed400', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateFeed400', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -571,7 +572,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateFeedDocument201', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateFeedDocument201', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -652,7 +653,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateFeedDocument400', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateFeedDocument400', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -790,7 +791,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFeed200', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFeed200', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -873,7 +874,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFeed400', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFeed400', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1011,7 +1012,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFeedDocument200', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFeedDocument200', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1090,7 +1091,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFeedDocument400', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFeedDocument400', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1228,7 +1229,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFeeds200', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFeeds200', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1320,7 +1321,7 @@ class FeedsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFeeds400', 'FeedsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFeeds400', 'FeedsApi')) {
                 $this->assertTrue(true);
                 return;
             }

@@ -80,8 +80,8 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false,
-        'transactions' => false
+        'next_token' => true,
+        'transactions' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -328,7 +335,7 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets transactions
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransactions(): ?array
     {
@@ -345,7 +352,14 @@ class ListTransactionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setTransactions(?array $transactions): self
     {
         if (is_null($transactions)) {
-            throw new \InvalidArgumentException('non-nullable transactions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transactions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transactions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transactions'] = $transactions;
 

@@ -80,8 +80,8 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_document_list' => false,
-        'drop_off_location' => false
+        'delivery_document_list' => true,
+        'drop_off_location' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets delivery_document_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDeliveryDocumentList(): ?array
     {
@@ -318,7 +318,14 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDeliveryDocumentList(?array $delivery_document_list): self
     {
         if (is_null($delivery_document_list)) {
-            throw new \InvalidArgumentException('non-nullable delivery_document_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_document_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_document_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_document_list'] = $delivery_document_list;
 
@@ -345,7 +352,14 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDropOffLocation(?\OpenAPI\Client\Model\fulfillmentOutbound\DropOffLocation $drop_off_location): self
     {
         if (is_null($drop_off_location)) {
-            throw new \InvalidArgumentException('non-nullable drop_off_location cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'drop_off_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('drop_off_location', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['drop_off_location'] = $drop_off_location;
 

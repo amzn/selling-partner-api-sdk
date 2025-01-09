@@ -334,7 +334,7 @@ class ValidVerificationDetail implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets valid_verification_statuses
      *
-     * @return arrayA
+     * @return array
      */
     public function getValidVerificationStatuses(): array
     {

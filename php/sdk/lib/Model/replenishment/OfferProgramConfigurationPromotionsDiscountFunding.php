@@ -78,7 +78,7 @@ class OfferProgramConfigurationPromotionsDiscountFunding implements ModelInterfa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'percentage' => false
+        'percentage' => true
     ];
 
     /**
@@ -319,13 +319,20 @@ class OfferProgramConfigurationPromotionsDiscountFunding implements ModelInterfa
     public function setPercentage(?float $percentage): self
     {
         if (is_null($percentage)) {
-            throw new \InvalidArgumentException('non-nullable percentage cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'percentage');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('percentage', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($percentage > 1E+2)) {
+        if (!is_null($percentage) && ($percentage > 1E+2)) {
             throw new \InvalidArgumentException('invalid value for $percentage when calling OfferProgramConfigurationPromotionsDiscountFunding., must be smaller than or equal to 1E+2.');
         }
-        if (($percentage < 0)) {
+        if (!is_null($percentage) && ($percentage < 0)) {
             throw new \InvalidArgumentException('invalid value for $percentage when calling OfferProgramConfigurationPromotionsDiscountFunding., must be bigger than or equal to 0.');
         }
 

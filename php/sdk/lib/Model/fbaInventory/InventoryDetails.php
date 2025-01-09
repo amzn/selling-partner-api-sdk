@@ -90,13 +90,13 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fulfillable_quantity' => false,
-        'inbound_working_quantity' => false,
-        'inbound_shipped_quantity' => false,
-        'inbound_receiving_quantity' => false,
-        'reserved_quantity' => false,
-        'researching_quantity' => false,
-        'unfulfillable_quantity' => false
+        'fulfillable_quantity' => true,
+        'inbound_working_quantity' => true,
+        'inbound_shipped_quantity' => true,
+        'inbound_receiving_quantity' => true,
+        'reserved_quantity' => true,
+        'researching_quantity' => true,
+        'unfulfillable_quantity' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillableQuantity(?int $fulfillable_quantity): self
     {
         if (is_null($fulfillable_quantity)) {
-            throw new \InvalidArgumentException('non-nullable fulfillable_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillable_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillable_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillable_quantity'] = $fulfillable_quantity;
 
@@ -380,7 +387,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInboundWorkingQuantity(?int $inbound_working_quantity): self
     {
         if (is_null($inbound_working_quantity)) {
-            throw new \InvalidArgumentException('non-nullable inbound_working_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inbound_working_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inbound_working_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inbound_working_quantity'] = $inbound_working_quantity;
 
@@ -407,7 +421,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInboundShippedQuantity(?int $inbound_shipped_quantity): self
     {
         if (is_null($inbound_shipped_quantity)) {
-            throw new \InvalidArgumentException('non-nullable inbound_shipped_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inbound_shipped_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inbound_shipped_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inbound_shipped_quantity'] = $inbound_shipped_quantity;
 
@@ -434,7 +455,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInboundReceivingQuantity(?int $inbound_receiving_quantity): self
     {
         if (is_null($inbound_receiving_quantity)) {
-            throw new \InvalidArgumentException('non-nullable inbound_receiving_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inbound_receiving_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inbound_receiving_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inbound_receiving_quantity'] = $inbound_receiving_quantity;
 
@@ -461,7 +489,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReservedQuantity(?\OpenAPI\Client\Model\fbaInventory\ReservedQuantity $reserved_quantity): self
     {
         if (is_null($reserved_quantity)) {
-            throw new \InvalidArgumentException('non-nullable reserved_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reserved_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reserved_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reserved_quantity'] = $reserved_quantity;
 
@@ -488,7 +523,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setResearchingQuantity(?\OpenAPI\Client\Model\fbaInventory\ResearchingQuantity $researching_quantity): self
     {
         if (is_null($researching_quantity)) {
-            throw new \InvalidArgumentException('non-nullable researching_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'researching_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('researching_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['researching_quantity'] = $researching_quantity;
 
@@ -515,7 +557,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUnfulfillableQuantity(?\OpenAPI\Client\Model\fbaInventory\UnfulfillableQuantity $unfulfillable_quantity): self
     {
         if (is_null($unfulfillable_quantity)) {
-            throw new \InvalidArgumentException('non-nullable unfulfillable_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unfulfillable_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unfulfillable_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unfulfillable_quantity'] = $unfulfillable_quantity;
 

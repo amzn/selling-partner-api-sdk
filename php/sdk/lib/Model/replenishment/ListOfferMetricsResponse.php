@@ -80,8 +80,8 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'offers' => false,
-        'pagination' => false
+        'offers' => true,
+        'pagination' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets offers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOffers(): ?array
     {
@@ -318,7 +318,14 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setOffers(?array $offers): self
     {
         if (is_null($offers)) {
-            throw new \InvalidArgumentException('non-nullable offers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offers'] = $offers;
 
@@ -345,7 +352,14 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPagination(?\OpenAPI\Client\Model\replenishment\PaginationResponse $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 

@@ -81,7 +81,7 @@ class ShipmentDates implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'required_ship_date' => false,
-        'promised_delivery_date' => false
+        'promised_delivery_date' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class ShipmentDates implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPromisedDeliveryDate(?\DateTime $promised_delivery_date): self
     {
         if (is_null($promised_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable promised_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promised_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promised_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promised_delivery_date'] = $promised_delivery_date;
 

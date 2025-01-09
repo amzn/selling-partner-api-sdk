@@ -296,7 +296,7 @@ class GetMessagingActionsForOrderResponseEmbedded implements ModelInterface, Arr
     /**
      * Gets actions
      *
-     * @return arrayA
+     * @return array
      */
     public function getActions(): array
     {

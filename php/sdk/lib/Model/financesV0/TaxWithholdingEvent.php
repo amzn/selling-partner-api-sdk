@@ -84,10 +84,10 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'base_amount' => false,
-        'withheld_amount' => false,
-        'tax_withholding_period' => false
+        'posted_date' => true,
+        'base_amount' => true,
+        'withheld_amount' => true,
+        'tax_withholding_period' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -359,7 +366,14 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBaseAmount(?\OpenAPI\Client\Model\financesV0\Currency $base_amount): self
     {
         if (is_null($base_amount)) {
-            throw new \InvalidArgumentException('non-nullable base_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'base_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('base_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['base_amount'] = $base_amount;
 
@@ -386,7 +400,14 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWithheldAmount(?\OpenAPI\Client\Model\financesV0\Currency $withheld_amount): self
     {
         if (is_null($withheld_amount)) {
-            throw new \InvalidArgumentException('non-nullable withheld_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'withheld_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('withheld_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['withheld_amount'] = $withheld_amount;
 
@@ -413,7 +434,14 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTaxWithholdingPeriod(?\OpenAPI\Client\Model\financesV0\TaxWithholdingPeriod $tax_withholding_period): self
     {
         if (is_null($tax_withholding_period)) {
-            throw new \InvalidArgumentException('non-nullable tax_withholding_period cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_withholding_period');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_withholding_period', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_withholding_period'] = $tax_withholding_period;
 

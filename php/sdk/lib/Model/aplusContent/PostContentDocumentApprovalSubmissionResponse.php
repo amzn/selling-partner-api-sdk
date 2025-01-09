@@ -77,7 +77,7 @@ class PostContentDocumentApprovalSubmissionResponse implements ModelInterface, A
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'warnings' => false
+        'warnings' => true
     ];
 
     /**
@@ -293,7 +293,7 @@ class PostContentDocumentApprovalSubmissionResponse implements ModelInterface, A
     /**
      * Gets warnings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWarnings(): ?array
     {
@@ -310,7 +310,14 @@ class PostContentDocumentApprovalSubmissionResponse implements ModelInterface, A
     public function setWarnings(?array $warnings): self
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

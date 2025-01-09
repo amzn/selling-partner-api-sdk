@@ -334,7 +334,7 @@ class ScheduledDeliveryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets delivery_windows
      *
-     * @return arrayA
+     * @return array
      */
     public function getDeliveryWindows(): array
     {

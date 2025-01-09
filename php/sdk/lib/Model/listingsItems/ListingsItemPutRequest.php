@@ -83,7 +83,7 @@ class ListingsItemPutRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'product_type' => false,
-        'requirements' => false,
+        'requirements' => true,
         'attributes' => false
     ];
 
@@ -384,10 +384,17 @@ class ListingsItemPutRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRequirements(?string $requirements): self
     {
         if (is_null($requirements)) {
-            throw new \InvalidArgumentException('non-nullable requirements cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'requirements');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requirements', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getRequirementsAllowableValues();
-        if (!in_array($requirements, $allowedValues, true)) {
+        if (!is_null($requirements) && !in_array($requirements, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'requirements', must be one of '%s'",

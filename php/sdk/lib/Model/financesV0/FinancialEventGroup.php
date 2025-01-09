@@ -98,17 +98,17 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'financial_event_group_id' => false,
-        'processing_status' => false,
-        'fund_transfer_status' => false,
-        'original_total' => false,
-        'converted_total' => false,
-        'fund_transfer_date' => false,
-        'trace_id' => false,
-        'account_tail' => false,
-        'beginning_balance' => false,
-        'financial_event_group_start' => false,
-        'financial_event_group_end' => false
+        'financial_event_group_id' => true,
+        'processing_status' => true,
+        'fund_transfer_status' => true,
+        'original_total' => true,
+        'converted_total' => true,
+        'fund_transfer_date' => true,
+        'trace_id' => true,
+        'account_tail' => true,
+        'beginning_balance' => true,
+        'financial_event_group_start' => true,
+        'financial_event_group_end' => true
     ];
 
     /**
@@ -381,7 +381,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFinancialEventGroupId(?string $financial_event_group_id): self
     {
         if (is_null($financial_event_group_id)) {
-            throw new \InvalidArgumentException('non-nullable financial_event_group_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'financial_event_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('financial_event_group_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['financial_event_group_id'] = $financial_event_group_id;
 
@@ -408,7 +415,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setProcessingStatus(?string $processing_status): self
     {
         if (is_null($processing_status)) {
-            throw new \InvalidArgumentException('non-nullable processing_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_status'] = $processing_status;
 
@@ -435,7 +449,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFundTransferStatus(?string $fund_transfer_status): self
     {
         if (is_null($fund_transfer_status)) {
-            throw new \InvalidArgumentException('non-nullable fund_transfer_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fund_transfer_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fund_transfer_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fund_transfer_status'] = $fund_transfer_status;
 
@@ -462,7 +483,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setOriginalTotal(?\OpenAPI\Client\Model\financesV0\Currency $original_total): self
     {
         if (is_null($original_total)) {
-            throw new \InvalidArgumentException('non-nullable original_total cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'original_total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('original_total', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['original_total'] = $original_total;
 
@@ -489,7 +517,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setConvertedTotal(?\OpenAPI\Client\Model\financesV0\Currency $converted_total): self
     {
         if (is_null($converted_total)) {
-            throw new \InvalidArgumentException('non-nullable converted_total cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'converted_total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('converted_total', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['converted_total'] = $converted_total;
 
@@ -516,7 +551,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFundTransferDate(?\DateTime $fund_transfer_date): self
     {
         if (is_null($fund_transfer_date)) {
-            throw new \InvalidArgumentException('non-nullable fund_transfer_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fund_transfer_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fund_transfer_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fund_transfer_date'] = $fund_transfer_date;
 
@@ -543,7 +585,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTraceId(?string $trace_id): self
     {
         if (is_null($trace_id)) {
-            throw new \InvalidArgumentException('non-nullable trace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trace_id'] = $trace_id;
 
@@ -570,7 +619,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAccountTail(?string $account_tail): self
     {
         if (is_null($account_tail)) {
-            throw new \InvalidArgumentException('non-nullable account_tail cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_tail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_tail', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_tail'] = $account_tail;
 
@@ -597,7 +653,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBeginningBalance(?\OpenAPI\Client\Model\financesV0\Currency $beginning_balance): self
     {
         if (is_null($beginning_balance)) {
-            throw new \InvalidArgumentException('non-nullable beginning_balance cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'beginning_balance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('beginning_balance', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['beginning_balance'] = $beginning_balance;
 
@@ -624,7 +687,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFinancialEventGroupStart(?\DateTime $financial_event_group_start): self
     {
         if (is_null($financial_event_group_start)) {
-            throw new \InvalidArgumentException('non-nullable financial_event_group_start cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'financial_event_group_start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('financial_event_group_start', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['financial_event_group_start'] = $financial_event_group_start;
 
@@ -651,7 +721,14 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFinancialEventGroupEnd(?\DateTime $financial_event_group_end): self
     {
         if (is_null($financial_event_group_end)) {
-            throw new \InvalidArgumentException('non-nullable financial_event_group_end cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'financial_event_group_end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('financial_event_group_end', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['financial_event_group_end'] = $financial_event_group_end;
 

@@ -519,7 +519,7 @@ class OrderAcknowledgementItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets item_acknowledgements
      *
-     * @return arrayA
+     * @return array
      */
     public function getItemAcknowledgements(): array
     {

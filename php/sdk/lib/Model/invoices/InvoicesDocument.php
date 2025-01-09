@@ -80,8 +80,8 @@ class InvoicesDocument implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoices_document_id' => false,
-        'invoices_document_url' => false
+        'invoices_document_id' => true,
+        'invoices_document_url' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class InvoicesDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoicesDocumentId(?string $invoices_document_id): self
     {
         if (is_null($invoices_document_id)) {
-            throw new \InvalidArgumentException('non-nullable invoices_document_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoices_document_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoices_document_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoices_document_id'] = $invoices_document_id;
 
@@ -345,7 +352,14 @@ class InvoicesDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoicesDocumentUrl(?string $invoices_document_url): self
     {
         if (is_null($invoices_document_url)) {
-            throw new \InvalidArgumentException('non-nullable invoices_document_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoices_document_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoices_document_url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoices_document_url'] = $invoices_document_url;
 

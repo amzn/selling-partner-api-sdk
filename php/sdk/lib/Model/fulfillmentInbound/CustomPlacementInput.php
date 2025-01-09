@@ -323,7 +323,7 @@ class CustomPlacementInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

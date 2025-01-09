@@ -81,8 +81,8 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_window' => false,
-        'pickup_window' => false
+        'delivery_window' => true,
+        'pickup_window' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeliveryWindow(?\OpenAPI\Client\Model\shipping\TimeWindow $delivery_window): self
     {
         if (is_null($delivery_window)) {
-            throw new \InvalidArgumentException('non-nullable delivery_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_window', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_window'] = $delivery_window;
 
@@ -346,7 +353,14 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPickupWindow(?\OpenAPI\Client\Model\shipping\TimeWindow $pickup_window): self
     {
         if (is_null($pickup_window)) {
-            throw new \InvalidArgumentException('non-nullable pickup_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pickup_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pickup_window', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pickup_window'] = $pickup_window;
 

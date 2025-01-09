@@ -80,8 +80,8 @@ class ListFinancialEventsPayload implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false,
-        'financial_events' => false
+        'next_token' => true,
+        'financial_events' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ListFinancialEventsPayload implements ModelInterface, ArrayAccess, \JsonSe
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -345,7 +352,14 @@ class ListFinancialEventsPayload implements ModelInterface, ArrayAccess, \JsonSe
     public function setFinancialEvents(?\OpenAPI\Client\Model\financesV0\FinancialEvents $financial_events): self
     {
         if (is_null($financial_events)) {
-            throw new \InvalidArgumentException('non-nullable financial_events cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'financial_events');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('financial_events', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['financial_events'] = $financial_events;
 

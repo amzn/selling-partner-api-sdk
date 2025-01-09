@@ -80,8 +80,8 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product_columns' => false,
-        'metric_row_labels' => false
+        'product_columns' => true,
+        'metric_row_labels' => true
     ];
 
     /**
@@ -317,7 +317,7 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets product_columns
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getProductColumns(): ?array
     {
@@ -334,13 +334,20 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
     public function setProductColumns(?array $product_columns): self
     {
         if (is_null($product_columns)) {
-            throw new \InvalidArgumentException('non-nullable product_columns cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_columns');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_columns', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($product_columns) > 6)) {
+        if (!is_null($product_columns) && (count($product_columns) > 6)) {
             throw new \InvalidArgumentException('invalid value for $product_columns when calling StandardComparisonTableModule., number of items must be less than or equal to 6.');
         }
-        if ((count($product_columns) < 0)) {
+        if (!is_null($product_columns) && (count($product_columns) < 0)) {
             throw new \InvalidArgumentException('invalid length for $product_columns when calling StandardComparisonTableModule., number of items must be greater than or equal to 0.');
         }
         $this->container['product_columns'] = $product_columns;
@@ -351,7 +358,7 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets metric_row_labels
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMetricRowLabels(): ?array
     {
@@ -368,13 +375,20 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
     public function setMetricRowLabels(?array $metric_row_labels): self
     {
         if (is_null($metric_row_labels)) {
-            throw new \InvalidArgumentException('non-nullable metric_row_labels cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metric_row_labels');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metric_row_labels', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($metric_row_labels) > 10)) {
+        if (!is_null($metric_row_labels) && (count($metric_row_labels) > 10)) {
             throw new \InvalidArgumentException('invalid value for $metric_row_labels when calling StandardComparisonTableModule., number of items must be less than or equal to 10.');
         }
-        if ((count($metric_row_labels) < 0)) {
+        if (!is_null($metric_row_labels) && (count($metric_row_labels) < 0)) {
             throw new \InvalidArgumentException('invalid length for $metric_row_labels when calling StandardComparisonTableModule., number of items must be greater than or equal to 0.');
         }
         $this->container['metric_row_labels'] = $metric_row_labels;

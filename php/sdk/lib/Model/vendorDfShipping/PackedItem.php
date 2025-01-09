@@ -87,9 +87,9 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'item_sequence_number' => false,
-        'buyer_product_identifier' => false,
-        'piece_number' => false,
-        'vendor_product_identifier' => false,
+        'buyer_product_identifier' => true,
+        'piece_number' => true,
+        'vendor_product_identifier' => true,
         'packed_quantity' => false
     ];
 
@@ -372,7 +372,14 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerProductIdentifier(?string $buyer_product_identifier): self
     {
         if (is_null($buyer_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable buyer_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_product_identifier'] = $buyer_product_identifier;
 
@@ -399,7 +406,14 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPieceNumber(?int $piece_number): self
     {
         if (is_null($piece_number)) {
-            throw new \InvalidArgumentException('non-nullable piece_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'piece_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('piece_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['piece_number'] = $piece_number;
 
@@ -426,7 +440,14 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         if (is_null($vendor_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable vendor_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 

@@ -80,8 +80,8 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'business_hours' => false,
-        'exception_dates' => false
+        'business_hours' => true,
+        'exception_dates' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets business_hours
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getBusinessHours(): ?array
     {
@@ -318,7 +318,14 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBusinessHours(?array $business_hours): self
     {
         if (is_null($business_hours)) {
-            throw new \InvalidArgumentException('non-nullable business_hours cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'business_hours');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('business_hours', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['business_hours'] = $business_hours;
 
@@ -328,7 +335,7 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets exception_dates
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getExceptionDates(): ?array
     {
@@ -345,7 +352,14 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setExceptionDates(?array $exception_dates): self
     {
         if (is_null($exception_dates)) {
-            throw new \InvalidArgumentException('non-nullable exception_dates cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'exception_dates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('exception_dates', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['exception_dates'] = $exception_dates;
 

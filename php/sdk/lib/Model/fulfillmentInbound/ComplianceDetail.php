@@ -84,10 +84,10 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'fnsku' => false,
-        'msku' => false,
-        'tax_details' => false
+        'asin' => true,
+        'fnsku' => true,
+        'msku' => true,
+        'tax_details' => true
     ];
 
     /**
@@ -356,12 +356,19 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($asin) > 10)) {
+        if (!is_null($asin) && (mb_strlen($asin) > 10)) {
             throw new \InvalidArgumentException('invalid length for $asin when calling ComplianceDetail., must be smaller than or equal to 10.');
         }
-        if ((mb_strlen($asin) < 1)) {
+        if (!is_null($asin) && (mb_strlen($asin) < 1)) {
             throw new \InvalidArgumentException('invalid length for $asin when calling ComplianceDetail., must be bigger than or equal to 1.');
         }
 
@@ -390,12 +397,19 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFnsku(?string $fnsku): self
     {
         if (is_null($fnsku)) {
-            throw new \InvalidArgumentException('non-nullable fnsku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fnsku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fnsku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($fnsku) > 10)) {
+        if (!is_null($fnsku) && (mb_strlen($fnsku) > 10)) {
             throw new \InvalidArgumentException('invalid length for $fnsku when calling ComplianceDetail., must be smaller than or equal to 10.');
         }
-        if ((mb_strlen($fnsku) < 1)) {
+        if (!is_null($fnsku) && (mb_strlen($fnsku) < 1)) {
             throw new \InvalidArgumentException('invalid length for $fnsku when calling ComplianceDetail., must be bigger than or equal to 1.');
         }
 
@@ -424,12 +438,19 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMsku(?string $msku): self
     {
         if (is_null($msku)) {
-            throw new \InvalidArgumentException('non-nullable msku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'msku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('msku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($msku) > 40)) {
+        if (!is_null($msku) && (mb_strlen($msku) > 40)) {
             throw new \InvalidArgumentException('invalid length for $msku when calling ComplianceDetail., must be smaller than or equal to 40.');
         }
-        if ((mb_strlen($msku) < 1)) {
+        if (!is_null($msku) && (mb_strlen($msku) < 1)) {
             throw new \InvalidArgumentException('invalid length for $msku when calling ComplianceDetail., must be bigger than or equal to 1.');
         }
 
@@ -458,7 +479,14 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxDetails(?\OpenAPI\Client\Model\fulfillmentInbound\TaxDetails $tax_details): self
     {
         if (is_null($tax_details)) {
-            throw new \InvalidArgumentException('non-nullable tax_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_details'] = $tax_details;
 

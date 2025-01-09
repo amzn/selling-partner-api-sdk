@@ -78,7 +78,7 @@ class GetInvoicesDocumentResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoices_document' => false
+        'invoices_document' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetInvoicesDocumentResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setInvoicesDocument(?\OpenAPI\Client\Model\invoices\InvoicesDocument $invoices_document): self
     {
         if (is_null($invoices_document)) {
-            throw new \InvalidArgumentException('non-nullable invoices_document cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoices_document');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoices_document', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoices_document'] = $invoices_document;
 

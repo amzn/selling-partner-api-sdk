@@ -84,7 +84,7 @@ class PackedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'amount' => false,
         'unit_of_measure' => false,
-        'unit_size' => false
+        'unit_size' => true
     ];
 
     /**
@@ -419,7 +419,14 @@ class PackedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUnitSize(?int $unit_size): self
     {
         if (is_null($unit_size)) {
-            throw new \InvalidArgumentException('non-nullable unit_size cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit_size');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit_size', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit_size'] = $unit_size;
 

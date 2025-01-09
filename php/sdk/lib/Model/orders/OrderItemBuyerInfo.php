@@ -89,11 +89,11 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'order_item_id' => false,
-        'buyer_customized_info' => false,
-        'gift_wrap_price' => false,
-        'gift_wrap_tax' => false,
-        'gift_message_text' => false,
-        'gift_wrap_level' => false
+        'buyer_customized_info' => true,
+        'gift_wrap_price' => true,
+        'gift_wrap_tax' => true,
+        'gift_message_text' => true,
+        'gift_wrap_level' => true
     ];
 
     /**
@@ -376,7 +376,14 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setBuyerCustomizedInfo(?\OpenAPI\Client\Model\orders\BuyerCustomizedInfoDetail $buyer_customized_info): self
     {
         if (is_null($buyer_customized_info)) {
-            throw new \InvalidArgumentException('non-nullable buyer_customized_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_customized_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_customized_info', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_customized_info'] = $buyer_customized_info;
 
@@ -403,7 +410,14 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setGiftWrapPrice(?\OpenAPI\Client\Model\orders\Money $gift_wrap_price): self
     {
         if (is_null($gift_wrap_price)) {
-            throw new \InvalidArgumentException('non-nullable gift_wrap_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_wrap_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_wrap_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gift_wrap_price'] = $gift_wrap_price;
 
@@ -430,7 +444,14 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setGiftWrapTax(?\OpenAPI\Client\Model\orders\Money $gift_wrap_tax): self
     {
         if (is_null($gift_wrap_tax)) {
-            throw new \InvalidArgumentException('non-nullable gift_wrap_tax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_wrap_tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_wrap_tax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gift_wrap_tax'] = $gift_wrap_tax;
 
@@ -457,7 +478,14 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setGiftMessageText(?string $gift_message_text): self
     {
         if (is_null($gift_message_text)) {
-            throw new \InvalidArgumentException('non-nullable gift_message_text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_message_text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_message_text', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gift_message_text'] = $gift_message_text;
 
@@ -484,7 +512,14 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setGiftWrapLevel(?string $gift_wrap_level): self
     {
         if (is_null($gift_wrap_level)) {
-            throw new \InvalidArgumentException('non-nullable gift_wrap_level cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_wrap_level');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_wrap_level', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gift_wrap_level'] = $gift_wrap_level;
 

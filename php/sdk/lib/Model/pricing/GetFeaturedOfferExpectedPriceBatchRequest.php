@@ -78,7 +78,7 @@ class GetFeaturedOfferExpectedPriceBatchRequest implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'requests' => false
+        'requests' => true
     ];
 
     /**
@@ -298,7 +298,7 @@ class GetFeaturedOfferExpectedPriceBatchRequest implements ModelInterface, Array
     /**
      * Gets requests
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRequests(): ?array
     {
@@ -315,11 +315,18 @@ class GetFeaturedOfferExpectedPriceBatchRequest implements ModelInterface, Array
     public function setRequests(?array $requests): self
     {
         if (is_null($requests)) {
-            throw new \InvalidArgumentException('non-nullable requests cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'requests');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requests', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($requests) < 1)) {
+        if (!is_null($requests) && (count($requests) < 1)) {
             throw new \InvalidArgumentException('invalid length for $requests when calling GetFeaturedOfferExpectedPriceBatchRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['requests'] = $requests;

@@ -82,9 +82,9 @@ class AmazonPayContext implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'store_name' => false,
-        'order_type' => false,
-        'channel' => false
+        'store_name' => true,
+        'order_type' => true,
+        'channel' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class AmazonPayContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStoreName(?string $store_name): self
     {
         if (is_null($store_name)) {
-            throw new \InvalidArgumentException('non-nullable store_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'store_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('store_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['store_name'] = $store_name;
 
@@ -352,7 +359,14 @@ class AmazonPayContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderType(?string $order_type): self
     {
         if (is_null($order_type)) {
-            throw new \InvalidArgumentException('non-nullable order_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_type'] = $order_type;
 
@@ -379,7 +393,14 @@ class AmazonPayContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChannel(?string $channel): self
     {
         if (is_null($channel)) {
-            throw new \InvalidArgumentException('non-nullable channel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'channel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('channel', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['channel'] = $channel;
 

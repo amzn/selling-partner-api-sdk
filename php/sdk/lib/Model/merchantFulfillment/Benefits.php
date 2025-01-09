@@ -80,8 +80,8 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'included_benefits' => false,
-        'excluded_benefits' => false
+        'included_benefits' => true,
+        'excluded_benefits' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets included_benefits
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIncludedBenefits(): ?array
     {
@@ -318,7 +318,14 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIncludedBenefits(?array $included_benefits): self
     {
         if (is_null($included_benefits)) {
-            throw new \InvalidArgumentException('non-nullable included_benefits cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'included_benefits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('included_benefits', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['included_benefits'] = $included_benefits;
 
@@ -328,7 +335,7 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets excluded_benefits
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getExcludedBenefits(): ?array
     {
@@ -345,7 +352,14 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExcludedBenefits(?array $excluded_benefits): self
     {
         if (is_null($excluded_benefits)) {
-            throw new \InvalidArgumentException('non-nullable excluded_benefits cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'excluded_benefits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('excluded_benefits', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['excluded_benefits'] = $excluded_benefits;
 

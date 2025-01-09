@@ -78,7 +78,7 @@ class SubmitShipmentConfirmationsRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_confirmations' => false
+        'shipment_confirmations' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class SubmitShipmentConfirmationsRequest implements ModelInterface, ArrayAccess,
     /**
      * Gets shipment_confirmations
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentConfirmations(): ?array
     {
@@ -311,7 +311,14 @@ class SubmitShipmentConfirmationsRequest implements ModelInterface, ArrayAccess,
     public function setShipmentConfirmations(?array $shipment_confirmations): self
     {
         if (is_null($shipment_confirmations)) {
-            throw new \InvalidArgumentException('non-nullable shipment_confirmations cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_confirmations');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_confirmations', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_confirmations'] = $shipment_confirmations;
 

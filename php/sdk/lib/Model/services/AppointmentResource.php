@@ -78,7 +78,7 @@ class AppointmentResource implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'resource_id' => false
+        'resource_id' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class AppointmentResource implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setResourceId(?string $resource_id): self
     {
         if (is_null($resource_id)) {
-            throw new \InvalidArgumentException('non-nullable resource_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'resource_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('resource_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['resource_id'] = $resource_id;
 

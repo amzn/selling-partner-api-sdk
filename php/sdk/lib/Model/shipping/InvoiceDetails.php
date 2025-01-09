@@ -81,8 +81,8 @@ class InvoiceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoice_number' => false,
-        'invoice_date' => false
+        'invoice_number' => true,
+        'invoice_date' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class InvoiceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoiceNumber(?string $invoice_number): self
     {
         if (is_null($invoice_number)) {
-            throw new \InvalidArgumentException('non-nullable invoice_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_number'] = $invoice_number;
 
@@ -346,7 +353,14 @@ class InvoiceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoiceDate(?\DateTime $invoice_date): self
     {
         if (is_null($invoice_date)) {
-            throw new \InvalidArgumentException('non-nullable invoice_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_date'] = $invoice_date;
 

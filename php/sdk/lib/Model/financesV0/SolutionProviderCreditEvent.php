@@ -96,16 +96,16 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'provider_transaction_type' => false,
-        'seller_order_id' => false,
-        'marketplace_id' => false,
-        'marketplace_country_code' => false,
-        'seller_id' => false,
-        'seller_store_name' => false,
-        'provider_id' => false,
-        'provider_store_name' => false,
-        'transaction_amount' => false,
-        'transaction_creation_date' => false
+        'provider_transaction_type' => true,
+        'seller_order_id' => true,
+        'marketplace_id' => true,
+        'marketplace_country_code' => true,
+        'seller_id' => true,
+        'seller_store_name' => true,
+        'provider_id' => true,
+        'provider_store_name' => true,
+        'transaction_amount' => true,
+        'transaction_creation_date' => true
     ];
 
     /**
@@ -374,7 +374,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setProviderTransactionType(?string $provider_transaction_type): self
     {
         if (is_null($provider_transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable provider_transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'provider_transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('provider_transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['provider_transaction_type'] = $provider_transaction_type;
 
@@ -401,7 +408,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setSellerOrderId(?string $seller_order_id): self
     {
         if (is_null($seller_order_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_order_id'] = $seller_order_id;
 
@@ -428,7 +442,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -455,7 +476,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setMarketplaceCountryCode(?string $marketplace_country_code): self
     {
         if (is_null($marketplace_country_code)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_country_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_country_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_country_code'] = $marketplace_country_code;
 
@@ -482,7 +510,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setSellerId(?string $seller_id): self
     {
         if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_id'] = $seller_id;
 
@@ -509,7 +544,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setSellerStoreName(?string $seller_store_name): self
     {
         if (is_null($seller_store_name)) {
-            throw new \InvalidArgumentException('non-nullable seller_store_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_store_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_store_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_store_name'] = $seller_store_name;
 
@@ -536,7 +578,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setProviderId(?string $provider_id): self
     {
         if (is_null($provider_id)) {
-            throw new \InvalidArgumentException('non-nullable provider_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'provider_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('provider_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['provider_id'] = $provider_id;
 
@@ -563,7 +612,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setProviderStoreName(?string $provider_store_name): self
     {
         if (is_null($provider_store_name)) {
-            throw new \InvalidArgumentException('non-nullable provider_store_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'provider_store_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('provider_store_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['provider_store_name'] = $provider_store_name;
 
@@ -590,7 +646,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setTransactionAmount(?\OpenAPI\Client\Model\financesV0\Currency $transaction_amount): self
     {
         if (is_null($transaction_amount)) {
-            throw new \InvalidArgumentException('non-nullable transaction_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_amount'] = $transaction_amount;
 
@@ -617,7 +680,14 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     public function setTransactionCreationDate(?\DateTime $transaction_creation_date): self
     {
         if (is_null($transaction_creation_date)) {
-            throw new \InvalidArgumentException('non-nullable transaction_creation_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_creation_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_creation_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_creation_date'] = $transaction_creation_date;
 

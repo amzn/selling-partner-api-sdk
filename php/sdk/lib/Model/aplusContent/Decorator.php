@@ -84,10 +84,10 @@ class Decorator implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'offset' => false,
-        'length' => false,
-        'depth' => false
+        'type' => true,
+        'offset' => true,
+        'length' => true,
+        'depth' => true
     ];
 
     /**
@@ -356,7 +356,14 @@ class Decorator implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType(?string $type): self
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 
@@ -383,13 +390,20 @@ class Decorator implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOffset(?int $offset): self
     {
         if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offset');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offset', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($offset > 10000)) {
+        if (!is_null($offset) && ($offset > 10000)) {
             throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be smaller than or equal to 10000.');
         }
-        if (($offset < 0)) {
+        if (!is_null($offset) && ($offset < 0)) {
             throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be bigger than or equal to 0.');
         }
 
@@ -418,13 +432,20 @@ class Decorator implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLength(?int $length): self
     {
         if (is_null($length)) {
-            throw new \InvalidArgumentException('non-nullable length cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'length');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('length', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($length > 10000)) {
+        if (!is_null($length) && ($length > 10000)) {
             throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be smaller than or equal to 10000.');
         }
-        if (($length < 0)) {
+        if (!is_null($length) && ($length < 0)) {
             throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be bigger than or equal to 0.');
         }
 
@@ -453,13 +474,20 @@ class Decorator implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDepth(?int $depth): self
     {
         if (is_null($depth)) {
-            throw new \InvalidArgumentException('non-nullable depth cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'depth');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('depth', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($depth > 100)) {
+        if (!is_null($depth) && ($depth > 100)) {
             throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be smaller than or equal to 100.');
         }
-        if (($depth < 0)) {
+        if (!is_null($depth) && ($depth < 0)) {
             throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be bigger than or equal to 0.');
         }
 

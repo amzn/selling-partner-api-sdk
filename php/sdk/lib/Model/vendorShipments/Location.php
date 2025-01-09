@@ -82,9 +82,9 @@ class Location implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'location_code' => false,
-        'country_code' => false
+        'type' => true,
+        'location_code' => true,
+        'country_code' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class Location implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType(?string $type): self
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 
@@ -352,7 +359,14 @@ class Location implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLocationCode(?string $location_code): self
     {
         if (is_null($location_code)) {
-            throw new \InvalidArgumentException('non-nullable location_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'location_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('location_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['location_code'] = $location_code;
 
@@ -379,7 +393,14 @@ class Location implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCountryCode(?string $country_code): self
     {
         if (is_null($country_code)) {
-            throw new \InvalidArgumentException('non-nullable country_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['country_code'] = $country_code;
 

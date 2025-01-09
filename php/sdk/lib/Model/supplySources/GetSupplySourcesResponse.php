@@ -80,8 +80,8 @@ class GetSupplySourcesResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supply_sources' => false,
-        'next_page_token' => false
+        'supply_sources' => true,
+        'next_page_token' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class GetSupplySourcesResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets supply_sources
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSupplySources(): ?array
     {
@@ -318,7 +318,14 @@ class GetSupplySourcesResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setSupplySources(?array $supply_sources): self
     {
         if (is_null($supply_sources)) {
-            throw new \InvalidArgumentException('non-nullable supply_sources cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supply_sources');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supply_sources', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supply_sources'] = $supply_sources;
 
@@ -345,7 +352,14 @@ class GetSupplySourcesResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setNextPageToken(?string $next_page_token): self
     {
         if (is_null($next_page_token)) {
-            throw new \InvalidArgumentException('non-nullable next_page_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_page_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_page_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_page_token'] = $next_page_token;
 

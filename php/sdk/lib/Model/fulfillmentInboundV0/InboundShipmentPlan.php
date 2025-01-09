@@ -93,7 +93,7 @@ class InboundShipmentPlan implements ModelInterface, ArrayAccess, \JsonSerializa
         'ship_to_address' => false,
         'label_prep_type' => false,
         'items' => false,
-        'estimated_box_contents_fee' => false
+        'estimated_box_contents_fee' => true
     ];
 
     /**
@@ -452,7 +452,7 @@ class InboundShipmentPlan implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {
@@ -496,7 +496,14 @@ class InboundShipmentPlan implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setEstimatedBoxContentsFee(?\OpenAPI\Client\Model\fulfillmentInboundV0\BoxContentsFeeDetails $estimated_box_contents_fee): self
     {
         if (is_null($estimated_box_contents_fee)) {
-            throw new \InvalidArgumentException('non-nullable estimated_box_contents_fee cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_box_contents_fee');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_box_contents_fee', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_box_contents_fee'] = $estimated_box_contents_fee;
 

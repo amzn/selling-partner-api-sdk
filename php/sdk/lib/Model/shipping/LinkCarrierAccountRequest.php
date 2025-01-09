@@ -85,10 +85,10 @@ class LinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'client_reference_details' => false,
+        'client_reference_details' => true,
         'carrier_account_type' => false,
         'carrier_account_attributes' => false,
-        'encrypted_carrier_account_attributes' => false
+        'encrypted_carrier_account_attributes' => true
     ];
 
     /**
@@ -322,7 +322,7 @@ class LinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets client_reference_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClientReferenceDetails(): ?array
     {
@@ -339,7 +339,14 @@ class LinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setClientReferenceDetails(?array $client_reference_details): self
     {
         if (is_null($client_reference_details)) {
-            throw new \InvalidArgumentException('non-nullable client_reference_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'client_reference_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('client_reference_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['client_reference_details'] = $client_reference_details;
 
@@ -376,7 +383,7 @@ class LinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets carrier_account_attributes
      *
-     * @return arrayA
+     * @return array
      */
     public function getCarrierAccountAttributes(): array
     {
@@ -403,7 +410,7 @@ class LinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets encrypted_carrier_account_attributes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getEncryptedCarrierAccountAttributes(): ?array
     {
@@ -420,7 +427,14 @@ class LinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setEncryptedCarrierAccountAttributes(?array $encrypted_carrier_account_attributes): self
     {
         if (is_null($encrypted_carrier_account_attributes)) {
-            throw new \InvalidArgumentException('non-nullable encrypted_carrier_account_attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'encrypted_carrier_account_attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('encrypted_carrier_account_attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['encrypted_carrier_account_attributes'] = $encrypted_carrier_account_attributes;
 

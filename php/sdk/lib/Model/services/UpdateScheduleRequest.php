@@ -297,7 +297,7 @@ class UpdateScheduleRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets schedules
      *
-     * @return arrayA
+     * @return array
      */
     public function getSchedules(): array
     {

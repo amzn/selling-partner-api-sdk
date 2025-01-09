@@ -83,8 +83,8 @@ class Quote implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'cost' => false,
-        'expiration' => false,
-        'voidable_until' => false
+        'expiration' => true,
+        'voidable_until' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class Quote implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiration(?\DateTime $expiration): self
     {
         if (is_null($expiration)) {
-            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiration'] = $expiration;
 
@@ -382,7 +389,14 @@ class Quote implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVoidableUntil(?\DateTime $voidable_until): self
     {
         if (is_null($voidable_until)) {
-            throw new \InvalidArgumentException('non-nullable voidable_until cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'voidable_until');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('voidable_until', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['voidable_until'] = $voidable_until;
 

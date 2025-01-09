@@ -80,8 +80,8 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false,
-        'financial_event_group_list' => false
+        'next_token' => true,
+        'financial_event_group_list' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -328,7 +335,7 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
     /**
      * Gets financial_event_group_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFinancialEventGroupList(): ?array
     {
@@ -345,7 +352,14 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
     public function setFinancialEventGroupList(?array $financial_event_group_list): self
     {
         if (is_null($financial_event_group_list)) {
-            throw new \InvalidArgumentException('non-nullable financial_event_group_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'financial_event_group_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('financial_event_group_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['financial_event_group_list'] = $financial_event_group_list;
 

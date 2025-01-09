@@ -82,9 +82,9 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'selling_partner_id' => false,
-        'account_type' => false,
-        'marketplace_id' => false
+        'selling_partner_id' => true,
+        'account_type' => true,
+        'marketplace_id' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSellingPartnerId(?string $selling_partner_id): self
     {
         if (is_null($selling_partner_id)) {
-            throw new \InvalidArgumentException('non-nullable selling_partner_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'selling_partner_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('selling_partner_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['selling_partner_id'] = $selling_partner_id;
 
@@ -352,7 +359,14 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAccountType(?string $account_type): self
     {
         if (is_null($account_type)) {
-            throw new \InvalidArgumentException('non-nullable account_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_type'] = $account_type;
 
@@ -379,7 +393,14 @@ class SellingPartnerMetadata implements ModelInterface, ArrayAccess, \JsonSerial
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 

@@ -84,8 +84,8 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'channel_type' => false,
-        'amazon_order_details' => false,
-        'amazon_shipment_details' => false
+        'amazon_order_details' => true,
+        'amazon_shipment_details' => true
     ];
 
     /**
@@ -356,7 +356,14 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmazonOrderDetails(?\OpenAPI\Client\Model\shipping\AmazonOrderDetails $amazon_order_details): self
     {
         if (is_null($amazon_order_details)) {
-            throw new \InvalidArgumentException('non-nullable amazon_order_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_order_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_order_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_order_details'] = $amazon_order_details;
 
@@ -383,7 +390,14 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmazonShipmentDetails(?\OpenAPI\Client\Model\shipping\AmazonShipmentDetails $amazon_shipment_details): self
     {
         if (is_null($amazon_shipment_details)) {
-            throw new \InvalidArgumentException('non-nullable amazon_shipment_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_shipment_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_shipment_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_shipment_details'] = $amazon_shipment_details;
 

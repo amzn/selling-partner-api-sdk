@@ -298,7 +298,7 @@ class ServiceSelection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_id
      *
-     * @return arrayA
+     * @return array
      */
     public function getServiceId(): array
     {

@@ -80,8 +80,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false,
-        'previous_token' => false
+        'next_token' => true,
+        'previous_token' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -345,7 +352,14 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPreviousToken(?string $previous_token): self
     {
         if (is_null($previous_token)) {
-            throw new \InvalidArgumentException('non-nullable previous_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'previous_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['previous_token'] = $previous_token;
 

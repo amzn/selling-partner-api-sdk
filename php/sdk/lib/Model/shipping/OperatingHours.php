@@ -83,9 +83,9 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'closing_time' => false,
-        'opening_time' => false,
-        'mid_day_closures' => false
+        'closing_time' => true,
+        'opening_time' => true,
+        'mid_day_closures' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setClosingTime(?\OpenAPI\Client\Model\shipping\TimeOfDay $closing_time): self
     {
         if (is_null($closing_time)) {
-            throw new \InvalidArgumentException('non-nullable closing_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'closing_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('closing_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['closing_time'] = $closing_time;
 
@@ -353,7 +360,14 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOpeningTime(?\OpenAPI\Client\Model\shipping\TimeOfDay $opening_time): self
     {
         if (is_null($opening_time)) {
-            throw new \InvalidArgumentException('non-nullable opening_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'opening_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('opening_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['opening_time'] = $opening_time;
 
@@ -363,7 +377,7 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets mid_day_closures
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMidDayClosures(): ?array
     {
@@ -380,7 +394,14 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMidDayClosures(?array $mid_day_closures): self
     {
         if (is_null($mid_day_closures)) {
-            throw new \InvalidArgumentException('non-nullable mid_day_closures cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mid_day_closures');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mid_day_closures', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mid_day_closures'] = $mid_day_closures;
 

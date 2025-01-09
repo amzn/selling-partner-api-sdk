@@ -80,8 +80,8 @@ class SelfShipAppointmentSlotsAvailability implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'expires_at' => false,
-        'slots' => false
+        'expires_at' => true,
+        'slots' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class SelfShipAppointmentSlotsAvailability implements ModelInterface, ArrayAcces
     public function setExpiresAt(?\DateTime $expires_at): self
     {
         if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expires_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expires_at'] = $expires_at;
 
@@ -328,7 +335,7 @@ class SelfShipAppointmentSlotsAvailability implements ModelInterface, ArrayAcces
     /**
      * Gets slots
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSlots(): ?array
     {
@@ -345,7 +352,14 @@ class SelfShipAppointmentSlotsAvailability implements ModelInterface, ArrayAcces
     public function setSlots(?array $slots): self
     {
         if (is_null($slots)) {
-            throw new \InvalidArgumentException('non-nullable slots cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'slots');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('slots', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['slots'] = $slots;
 

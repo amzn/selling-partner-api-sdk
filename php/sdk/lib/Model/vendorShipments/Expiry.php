@@ -82,9 +82,9 @@ class Expiry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'manufacturer_date' => false,
-        'expiry_date' => false,
-        'expiry_after_duration' => false
+        'manufacturer_date' => true,
+        'expiry_date' => true,
+        'expiry_after_duration' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class Expiry implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setManufacturerDate(?\DateTime $manufacturer_date): self
     {
         if (is_null($manufacturer_date)) {
-            throw new \InvalidArgumentException('non-nullable manufacturer_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'manufacturer_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('manufacturer_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['manufacturer_date'] = $manufacturer_date;
 
@@ -352,7 +359,14 @@ class Expiry implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiryDate(?\DateTime $expiry_date): self
     {
         if (is_null($expiry_date)) {
-            throw new \InvalidArgumentException('non-nullable expiry_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiry_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiry_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiry_date'] = $expiry_date;
 
@@ -379,7 +393,14 @@ class Expiry implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiryAfterDuration(?\OpenAPI\Client\Model\vendorShipments\Duration $expiry_after_duration): self
     {
         if (is_null($expiry_after_duration)) {
-            throw new \InvalidArgumentException('non-nullable expiry_after_duration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiry_after_duration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiry_after_duration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiry_after_duration'] = $expiry_after_duration;
 

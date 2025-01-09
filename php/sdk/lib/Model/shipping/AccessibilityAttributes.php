@@ -81,8 +81,8 @@ class AccessibilityAttributes implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'distance' => false,
-        'drive_time' => false
+        'distance' => true,
+        'drive_time' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class AccessibilityAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDistance(?string $distance): self
     {
         if (is_null($distance)) {
-            throw new \InvalidArgumentException('non-nullable distance cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'distance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('distance', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['distance'] = $distance;
 
@@ -346,7 +353,14 @@ class AccessibilityAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDriveTime(?int $drive_time): self
     {
         if (is_null($drive_time)) {
-            throw new \InvalidArgumentException('non-nullable drive_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'drive_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('drive_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['drive_time'] = $drive_time;
 

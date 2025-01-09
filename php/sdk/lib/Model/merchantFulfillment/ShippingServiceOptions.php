@@ -87,10 +87,10 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'delivery_experience' => false,
-        'declared_value' => false,
+        'declared_value' => true,
         'carrier_will_pick_up' => false,
-        'carrier_will_pick_up_option' => false,
-        'label_format' => false
+        'carrier_will_pick_up_option' => true,
+        'label_format' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     public function setDeclaredValue(?\OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount $declared_value): self
     {
         if (is_null($declared_value)) {
-            throw new \InvalidArgumentException('non-nullable declared_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'declared_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('declared_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['declared_value'] = $declared_value;
 
@@ -426,7 +433,14 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCarrierWillPickUpOption(?string $carrier_will_pick_up_option): self
     {
         if (is_null($carrier_will_pick_up_option)) {
-            throw new \InvalidArgumentException('non-nullable carrier_will_pick_up_option cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_will_pick_up_option');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_will_pick_up_option', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_will_pick_up_option'] = $carrier_will_pick_up_option;
 
@@ -453,7 +467,14 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     public function setLabelFormat(?string $label_format): self
     {
         if (is_null($label_format)) {
-            throw new \InvalidArgumentException('non-nullable label_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_format', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_format'] = $label_format;
 

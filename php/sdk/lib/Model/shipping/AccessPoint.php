@@ -97,16 +97,16 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'access_point_id' => false,
-        'name' => false,
-        'timezone' => false,
-        'type' => false,
-        'accessibility_attributes' => false,
-        'address' => false,
-        'exception_operating_hours' => false,
-        'assistance_type' => false,
-        'score' => false,
-        'standard_operating_hours' => false
+        'access_point_id' => true,
+        'name' => true,
+        'timezone' => true,
+        'type' => true,
+        'accessibility_attributes' => true,
+        'address' => true,
+        'exception_operating_hours' => true,
+        'assistance_type' => true,
+        'score' => true,
+        'standard_operating_hours' => true
     ];
 
     /**
@@ -399,7 +399,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAccessPointId(?string $access_point_id): self
     {
         if (is_null($access_point_id)) {
-            throw new \InvalidArgumentException('non-nullable access_point_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'access_point_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('access_point_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['access_point_id'] = $access_point_id;
 
@@ -426,7 +433,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -453,7 +467,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTimezone(?string $timezone): self
     {
         if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'timezone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('timezone', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['timezone'] = $timezone;
 
@@ -480,7 +501,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType(?string $type): self
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 
@@ -507,7 +535,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAccessibilityAttributes(?\OpenAPI\Client\Model\shipping\AccessibilityAttributes $accessibility_attributes): self
     {
         if (is_null($accessibility_attributes)) {
-            throw new \InvalidArgumentException('non-nullable accessibility_attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'accessibility_attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('accessibility_attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['accessibility_attributes'] = $accessibility_attributes;
 
@@ -534,7 +569,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddress(?\OpenAPI\Client\Model\shipping\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 
@@ -544,7 +586,7 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets exception_operating_hours
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getExceptionOperatingHours(): ?array
     {
@@ -561,7 +603,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExceptionOperatingHours(?array $exception_operating_hours): self
     {
         if (is_null($exception_operating_hours)) {
-            throw new \InvalidArgumentException('non-nullable exception_operating_hours cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'exception_operating_hours');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('exception_operating_hours', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['exception_operating_hours'] = $exception_operating_hours;
 
@@ -588,10 +637,17 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAssistanceType(?string $assistance_type): self
     {
         if (is_null($assistance_type)) {
-            throw new \InvalidArgumentException('non-nullable assistance_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'assistance_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('assistance_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getAssistanceTypeAllowableValues();
-        if (!in_array($assistance_type, $allowedValues, true)) {
+        if (!is_null($assistance_type) && !in_array($assistance_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'assistance_type', must be one of '%s'",
@@ -625,7 +681,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setScore(?string $score): self
     {
         if (is_null($score)) {
-            throw new \InvalidArgumentException('non-nullable score cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'score');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('score', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['score'] = $score;
 
@@ -652,7 +715,14 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStandardOperatingHours(?array $standard_operating_hours): self
     {
         if (is_null($standard_operating_hours)) {
-            throw new \InvalidArgumentException('non-nullable standard_operating_hours cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'standard_operating_hours');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('standard_operating_hours', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['standard_operating_hours'] = $standard_operating_hours;
 

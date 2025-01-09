@@ -1,10 +1,9 @@
 {
-    "name": "amzn/selling-partner-api-sdk-php",
-    "description": "Amazon Selling Partner APIs official PHP Client",
+    "name": "spapi/auth-and-auth",
+    "description": "This library provides helper classes for use when signing HTTP requests for Amazon Selling Partner APIs.",
     "type": "library",
     "keywords": [
         "sp-api",
-        "selling-partner-api",
         "amazon",
         "sdk",
         "openapi-generator",

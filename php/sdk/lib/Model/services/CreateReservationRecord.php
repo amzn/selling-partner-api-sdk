@@ -82,9 +82,9 @@ class CreateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'reservation' => false,
-        'warnings' => false,
-        'errors' => false
+        'reservation' => true,
+        'warnings' => true,
+        'errors' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class CreateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     public function setReservation(?\OpenAPI\Client\Model\services\Reservation $reservation): self
     {
         if (is_null($reservation)) {
-            throw new \InvalidArgumentException('non-nullable reservation cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reservation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reservation', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reservation'] = $reservation;
 
@@ -335,7 +342,7 @@ class CreateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets warnings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWarnings(): ?array
     {
@@ -352,7 +359,14 @@ class CreateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     public function setWarnings(?array $warnings): self
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warnings'] = $warnings;
 
@@ -362,7 +376,7 @@ class CreateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -379,7 +393,14 @@ class CreateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

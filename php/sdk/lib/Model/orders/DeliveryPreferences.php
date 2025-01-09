@@ -84,10 +84,10 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'drop_off_location' => false,
-        'preferred_delivery_time' => false,
-        'other_attributes' => false,
-        'address_instructions' => false
+        'drop_off_location' => true,
+        'preferred_delivery_time' => true,
+        'other_attributes' => true,
+        'address_instructions' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDropOffLocation(?string $drop_off_location): self
     {
         if (is_null($drop_off_location)) {
-            throw new \InvalidArgumentException('non-nullable drop_off_location cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'drop_off_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('drop_off_location', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['drop_off_location'] = $drop_off_location;
 
@@ -359,7 +366,14 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPreferredDeliveryTime(?\OpenAPI\Client\Model\orders\PreferredDeliveryTime $preferred_delivery_time): self
     {
         if (is_null($preferred_delivery_time)) {
-            throw new \InvalidArgumentException('non-nullable preferred_delivery_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'preferred_delivery_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preferred_delivery_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['preferred_delivery_time'] = $preferred_delivery_time;
 
@@ -369,7 +383,7 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets other_attributes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOtherAttributes(): ?array
     {
@@ -386,7 +400,14 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setOtherAttributes(?array $other_attributes): self
     {
         if (is_null($other_attributes)) {
-            throw new \InvalidArgumentException('non-nullable other_attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'other_attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('other_attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['other_attributes'] = $other_attributes;
 
@@ -413,7 +434,14 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAddressInstructions(?string $address_instructions): self
     {
         if (is_null($address_instructions)) {
-            throw new \InvalidArgumentException('non-nullable address_instructions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_instructions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_instructions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address_instructions'] = $address_instructions;
 

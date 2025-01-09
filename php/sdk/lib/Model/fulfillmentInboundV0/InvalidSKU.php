@@ -80,8 +80,8 @@ class InvalidSKU implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_sku' => false,
-        'error_reason' => false
+        'seller_sku' => true,
+        'error_reason' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class InvalidSKU implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -345,7 +352,14 @@ class InvalidSKU implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorReason(?string $error_reason): self
     {
         if (is_null($error_reason)) {
-            throw new \InvalidArgumentException('non-nullable error_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_reason'] = $error_reason;
 

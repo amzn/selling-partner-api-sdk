@@ -372,7 +372,7 @@ class SupportedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets print_options
      *
-     * @return arrayA
+     * @return array
      */
     public function getPrintOptions(): array
     {

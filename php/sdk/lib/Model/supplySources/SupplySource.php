@@ -94,15 +94,15 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supply_source_id' => false,
-        'supply_source_code' => false,
-        'alias' => false,
-        'status' => false,
-        'address' => false,
-        'configuration' => false,
-        'capabilities' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'supply_source_id' => true,
+        'supply_source_code' => true,
+        'alias' => true,
+        'status' => true,
+        'address' => true,
+        'configuration' => true,
+        'capabilities' => true,
+        'created_at' => true,
+        'updated_at' => true
     ];
 
     /**
@@ -367,7 +367,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSupplySourceId(?string $supply_source_id): self
     {
         if (is_null($supply_source_id)) {
-            throw new \InvalidArgumentException('non-nullable supply_source_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supply_source_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supply_source_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supply_source_id'] = $supply_source_id;
 
@@ -394,7 +401,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSupplySourceCode(?string $supply_source_code): self
     {
         if (is_null($supply_source_code)) {
-            throw new \InvalidArgumentException('non-nullable supply_source_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supply_source_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supply_source_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supply_source_code'] = $supply_source_code;
 
@@ -421,7 +435,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAlias(?string $alias): self
     {
         if (is_null($alias)) {
-            throw new \InvalidArgumentException('non-nullable alias cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'alias');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('alias', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['alias'] = $alias;
 
@@ -448,7 +469,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -475,7 +503,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddress(?\OpenAPI\Client\Model\supplySources\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 
@@ -502,7 +537,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setConfiguration(?\OpenAPI\Client\Model\supplySources\SupplySourceConfiguration $configuration): self
     {
         if (is_null($configuration)) {
-            throw new \InvalidArgumentException('non-nullable configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['configuration'] = $configuration;
 
@@ -529,7 +571,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCapabilities(?\OpenAPI\Client\Model\supplySources\SupplySourceCapabilities $capabilities): self
     {
         if (is_null($capabilities)) {
-            throw new \InvalidArgumentException('non-nullable capabilities cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capabilities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capabilities', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capabilities'] = $capabilities;
 
@@ -556,7 +605,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedAt(?string $created_at): self
     {
         if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_at'] = $created_at;
 
@@ -583,7 +639,14 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt(?string $updated_at): self
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 

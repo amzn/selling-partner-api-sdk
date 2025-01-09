@@ -78,7 +78,7 @@ class GetInvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoice' => false
+        'invoice' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetInvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setInvoice(?\OpenAPI\Client\Model\invoices\Invoice $invoice): self
     {
         if (is_null($invoice)) {
-            throw new \InvalidArgumentException('non-nullable invoice cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice'] = $invoice;
 

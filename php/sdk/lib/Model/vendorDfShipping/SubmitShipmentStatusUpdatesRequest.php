@@ -78,7 +78,7 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_status_updates' => false
+        'shipment_status_updates' => true
     ];
 
     /**
@@ -298,7 +298,7 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
     /**
      * Gets shipment_status_updates
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentStatusUpdates(): ?array
     {
@@ -315,11 +315,18 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
     public function setShipmentStatusUpdates(?array $shipment_status_updates): self
     {
         if (is_null($shipment_status_updates)) {
-            throw new \InvalidArgumentException('non-nullable shipment_status_updates cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_status_updates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_status_updates', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($shipment_status_updates) < 1)) {
+        if (!is_null($shipment_status_updates) && (count($shipment_status_updates) < 1)) {
             throw new \InvalidArgumentException('invalid length for $shipment_status_updates when calling SubmitShipmentStatusUpdatesRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['shipment_status_updates'] = $shipment_status_updates;

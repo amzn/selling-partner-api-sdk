@@ -308,7 +308,7 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets included_benefits
      *
-     * @return arrayA
+     * @return array
      */
     public function getIncludedBenefits(): array
     {
@@ -335,7 +335,7 @@ class Benefits implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets excluded_benefits
      *
-     * @return arrayA
+     * @return array
      */
     public function getExcludedBenefits(): array
     {

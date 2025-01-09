@@ -55,6 +55,8 @@ class ServiceApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('ServiceApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class ServiceApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -245,7 +246,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -335,7 +336,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId403', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -442,7 +443,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAddAppointmentForServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -709,7 +710,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -842,7 +843,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1034,7 +1035,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources403', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1146,7 +1147,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testAssignAppointmentResources422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1444,7 +1445,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelReservation204', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelReservation204', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1520,7 +1521,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelReservation400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelReservation400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1609,7 +1610,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelReservation404', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelReservation404', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1730,7 +1731,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1809,7 +1810,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1930,7 +1931,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId403', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2038,7 +2039,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2183,7 +2184,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2259,7 +2260,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2341,7 +2342,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId403', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2441,7 +2442,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCompleteServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2562,7 +2563,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateReservation200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateReservation200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2676,7 +2677,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateReservation400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateReservation400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2833,7 +2834,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2923,7 +2924,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3071,7 +3072,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateServiceDocumentUploadDestination422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3181,7 +3182,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3308,7 +3309,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAppointmentSlots400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3491,7 +3492,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3612,7 +3613,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAppointmmentSlotsByJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3786,7 +3787,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3890,7 +3891,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetFixedSlotCapacity400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4128,7 +4129,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4347,7 +4348,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetRangeSlotCapacity400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4562,7 +4563,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4636,7 +4637,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4778,7 +4779,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetServiceJobs200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetServiceJobs200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4877,7 +4878,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetServiceJobs400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetServiceJobs400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5014,7 +5015,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5153,7 +5154,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5274,7 +5275,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId403', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5385,7 +5386,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testRescheduleAppointmentForServiceJobByServiceJobId422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5684,7 +5685,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData204', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData204', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5915,7 +5916,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6065,7 +6066,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData403', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData403', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6183,7 +6184,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData422', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetAppointmentFulfillmentData422', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7012,7 +7013,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateReservation200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateReservation200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7132,7 +7133,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateReservation400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateReservation400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7241,7 +7242,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateReservation404', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateReservation404', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7374,7 +7375,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateSchedule200', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateSchedule200', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7545,7 +7546,7 @@ class ServiceApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateSchedule400', 'ServiceApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateSchedule400', 'ServiceApi')) {
                 $this->assertTrue(true);
                 return;
             }

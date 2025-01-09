@@ -88,11 +88,11 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carton_identifiers' => false,
+        'carton_identifiers' => true,
         'carton_sequence_number' => false,
-        'dimensions' => false,
-        'weight' => false,
-        'tracking_number' => false,
+        'dimensions' => true,
+        'weight' => true,
+        'tracking_number' => true,
         'items' => false
     ];
 
@@ -335,7 +335,7 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets carton_identifiers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCartonIdentifiers(): ?array
     {
@@ -352,7 +352,14 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCartonIdentifiers(?array $carton_identifiers): self
     {
         if (is_null($carton_identifiers)) {
-            throw new \InvalidArgumentException('non-nullable carton_identifiers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carton_identifiers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carton_identifiers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carton_identifiers'] = $carton_identifiers;
 
@@ -406,7 +413,14 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\vendorShipments\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -433,7 +447,14 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\vendorShipments\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 
@@ -460,7 +481,14 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingNumber(?string $tracking_number): self
     {
         if (is_null($tracking_number)) {
-            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_number'] = $tracking_number;
 
@@ -470,7 +498,7 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

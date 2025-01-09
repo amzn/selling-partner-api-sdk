@@ -86,8 +86,8 @@ class Link implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'resource' => false,
         'verb' => false,
-        'title' => false,
-        'type' => false
+        'title' => true,
+        'type' => true
     ];
 
     /**
@@ -424,7 +424,14 @@ class Link implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
@@ -451,7 +458,14 @@ class Link implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType(?string $type): self
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 

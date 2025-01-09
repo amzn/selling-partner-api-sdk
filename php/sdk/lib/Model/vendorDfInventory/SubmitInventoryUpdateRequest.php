@@ -78,7 +78,7 @@ class SubmitInventoryUpdateRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inventory' => false
+        'inventory' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class SubmitInventoryUpdateRequest implements ModelInterface, ArrayAccess, \Json
     public function setInventory(?\OpenAPI\Client\Model\vendorDfInventory\InventoryUpdate $inventory): self
     {
         if (is_null($inventory)) {
-            throw new \InvalidArgumentException('non-nullable inventory cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inventory');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inventory', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inventory'] = $inventory;
 

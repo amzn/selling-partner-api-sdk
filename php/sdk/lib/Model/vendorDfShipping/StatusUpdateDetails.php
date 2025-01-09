@@ -93,7 +93,7 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
         'reason_code' => false,
         'status_date_time' => false,
         'status_location_address' => false,
-        'shipment_schedule' => false
+        'shipment_schedule' => true
     ];
 
     /**
@@ -496,7 +496,14 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setShipmentSchedule(?\OpenAPI\Client\Model\vendorDfShipping\ShipmentSchedule $shipment_schedule): self
     {
         if (is_null($shipment_schedule)) {
-            throw new \InvalidArgumentException('non-nullable shipment_schedule cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_schedule');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_schedule', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_schedule'] = $shipment_schedule;
 

@@ -99,16 +99,16 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'shipping_speed_category' => false,
-        'scheduled_delivery_info' => false,
+        'scheduled_delivery_info' => true,
         'is_fulfillable' => false,
         'is_cod_capable' => false,
-        'estimated_shipping_weight' => false,
-        'estimated_fees' => false,
-        'fulfillment_preview_shipments' => false,
-        'unfulfillable_preview_items' => false,
-        'order_unfulfillable_reasons' => false,
+        'estimated_shipping_weight' => true,
+        'estimated_fees' => true,
+        'fulfillment_preview_shipments' => true,
+        'unfulfillable_preview_items' => true,
+        'order_unfulfillable_reasons' => true,
         'marketplace_id' => false,
-        'feature_constraints' => false
+        'feature_constraints' => true
     ];
 
     /**
@@ -420,7 +420,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setScheduledDeliveryInfo(?\OpenAPI\Client\Model\fulfillmentOutbound\ScheduledDeliveryInfo $scheduled_delivery_info): self
     {
         if (is_null($scheduled_delivery_info)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_delivery_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduled_delivery_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduled_delivery_info', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['scheduled_delivery_info'] = $scheduled_delivery_info;
 
@@ -501,7 +508,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setEstimatedShippingWeight(?\OpenAPI\Client\Model\fulfillmentOutbound\Weight $estimated_shipping_weight): self
     {
         if (is_null($estimated_shipping_weight)) {
-            throw new \InvalidArgumentException('non-nullable estimated_shipping_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_shipping_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_shipping_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_shipping_weight'] = $estimated_shipping_weight;
 
@@ -511,7 +525,7 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets estimated_fees
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getEstimatedFees(): ?array
     {
@@ -528,7 +542,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setEstimatedFees(?array $estimated_fees): self
     {
         if (is_null($estimated_fees)) {
-            throw new \InvalidArgumentException('non-nullable estimated_fees cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_fees');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_fees', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_fees'] = $estimated_fees;
 
@@ -538,7 +559,7 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets fulfillment_preview_shipments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFulfillmentPreviewShipments(): ?array
     {
@@ -555,7 +576,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFulfillmentPreviewShipments(?array $fulfillment_preview_shipments): self
     {
         if (is_null($fulfillment_preview_shipments)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_preview_shipments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_preview_shipments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_preview_shipments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_preview_shipments'] = $fulfillment_preview_shipments;
 
@@ -565,7 +593,7 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets unfulfillable_preview_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getUnfulfillablePreviewItems(): ?array
     {
@@ -582,7 +610,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUnfulfillablePreviewItems(?array $unfulfillable_preview_items): self
     {
         if (is_null($unfulfillable_preview_items)) {
-            throw new \InvalidArgumentException('non-nullable unfulfillable_preview_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unfulfillable_preview_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unfulfillable_preview_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unfulfillable_preview_items'] = $unfulfillable_preview_items;
 
@@ -592,7 +627,7 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets order_unfulfillable_reasons
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrderUnfulfillableReasons(): ?array
     {
@@ -609,7 +644,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setOrderUnfulfillableReasons(?array $order_unfulfillable_reasons): self
     {
         if (is_null($order_unfulfillable_reasons)) {
-            throw new \InvalidArgumentException('non-nullable order_unfulfillable_reasons cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_unfulfillable_reasons');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_unfulfillable_reasons', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_unfulfillable_reasons'] = $order_unfulfillable_reasons;
 
@@ -646,7 +688,7 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets feature_constraints
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeatureConstraints(): ?array
     {
@@ -663,7 +705,14 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFeatureConstraints(?array $feature_constraints): self
     {
         if (is_null($feature_constraints)) {
-            throw new \InvalidArgumentException('non-nullable feature_constraints cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_constraints');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_constraints', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feature_constraints'] = $feature_constraints;
 

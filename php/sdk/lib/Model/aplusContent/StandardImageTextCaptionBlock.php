@@ -80,8 +80,8 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'block' => false,
-        'caption' => false
+        'block' => true,
+        'caption' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
     public function setBlock(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block): self
     {
         if (is_null($block)) {
-            throw new \InvalidArgumentException('non-nullable block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block'] = $block;
 
@@ -345,7 +352,14 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
     public function setCaption(?\OpenAPI\Client\Model\aplusContent\TextComponent $caption): self
     {
         if (is_null($caption)) {
-            throw new \InvalidArgumentException('non-nullable caption cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'caption');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('caption', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['caption'] = $caption;
 

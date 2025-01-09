@@ -88,7 +88,7 @@ class ContentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
         'content_type' => false,
-        'content_sub_type' => false,
+        'content_sub_type' => true,
         'locale' => false,
         'content_module_list' => false
     ];
@@ -436,10 +436,17 @@ class ContentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContentSubType(?string $content_sub_type): self
     {
         if (is_null($content_sub_type)) {
-            throw new \InvalidArgumentException('non-nullable content_sub_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_sub_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_sub_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($content_sub_type) < 1)) {
+        if (!is_null($content_sub_type) && (mb_strlen($content_sub_type) < 1)) {
             throw new \InvalidArgumentException('invalid length for $content_sub_type when calling ContentDocument., must be bigger than or equal to 1.');
         }
 
@@ -483,7 +490,7 @@ class ContentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets content_module_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getContentModuleList(): array
     {

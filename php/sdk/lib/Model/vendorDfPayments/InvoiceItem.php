@@ -97,15 +97,15 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'item_sequence_number' => false,
-        'buyer_product_identifier' => false,
-        'vendor_product_identifier' => false,
+        'buyer_product_identifier' => true,
+        'vendor_product_identifier' => true,
         'invoiced_quantity' => false,
         'net_cost' => false,
         'purchase_order_number' => false,
-        'vendor_order_number' => false,
-        'hsn_code' => false,
-        'tax_details' => false,
-        'charge_details' => false
+        'vendor_order_number' => true,
+        'hsn_code' => true,
+        'tax_details' => true,
+        'charge_details' => true
     ];
 
     /**
@@ -413,7 +413,14 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerProductIdentifier(?string $buyer_product_identifier): self
     {
         if (is_null($buyer_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable buyer_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_product_identifier'] = $buyer_product_identifier;
 
@@ -440,7 +447,14 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         if (is_null($vendor_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable vendor_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
@@ -548,7 +562,14 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorOrderNumber(?string $vendor_order_number): self
     {
         if (is_null($vendor_order_number)) {
-            throw new \InvalidArgumentException('non-nullable vendor_order_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_order_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_order_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_order_number'] = $vendor_order_number;
 
@@ -575,7 +596,14 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHsnCode(?string $hsn_code): self
     {
         if (is_null($hsn_code)) {
-            throw new \InvalidArgumentException('non-nullable hsn_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hsn_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hsn_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['hsn_code'] = $hsn_code;
 
@@ -585,7 +613,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxDetails(): ?array
     {
@@ -602,7 +630,14 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxDetails(?array $tax_details): self
     {
         if (is_null($tax_details)) {
-            throw new \InvalidArgumentException('non-nullable tax_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_details'] = $tax_details;
 
@@ -612,7 +647,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets charge_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChargeDetails(): ?array
     {
@@ -629,7 +664,14 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChargeDetails(?array $charge_details): self
     {
         if (is_null($charge_details)) {
-            throw new \InvalidArgumentException('non-nullable charge_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_details'] = $charge_details;
 

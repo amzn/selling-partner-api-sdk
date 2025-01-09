@@ -80,8 +80,8 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'label' => false,
-        'description' => false
+        'label' => true,
+        'description' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setLabel(?\OpenAPI\Client\Model\aplusContent\TextComponent $label): self
     {
         if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label'] = $label;
 
@@ -345,7 +352,14 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDescription(?\OpenAPI\Client\Model\aplusContent\TextComponent $description): self
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 

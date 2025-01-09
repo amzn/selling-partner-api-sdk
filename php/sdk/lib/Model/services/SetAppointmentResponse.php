@@ -82,9 +82,9 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'appointment_id' => false,
-        'warnings' => false,
-        'errors' => false
+        'appointment_id' => true,
+        'warnings' => true,
+        'errors' => true
     ];
 
     /**
@@ -333,12 +333,19 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAppointmentId(?string $appointment_id): self
     {
         if (is_null($appointment_id)) {
-            throw new \InvalidArgumentException('non-nullable appointment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($appointment_id) > 100)) {
+        if (!is_null($appointment_id) && (mb_strlen($appointment_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($appointment_id) < 5)) {
+        if (!is_null($appointment_id) && (mb_strlen($appointment_id) < 5)) {
             throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be bigger than or equal to 5.');
         }
 
@@ -350,7 +357,7 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets warnings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWarnings(): ?array
     {
@@ -367,7 +374,14 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setWarnings(?array $warnings): self
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warnings'] = $warnings;
 
@@ -377,7 +391,7 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -394,7 +408,14 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

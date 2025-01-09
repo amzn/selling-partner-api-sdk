@@ -82,9 +82,9 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
+        'headline' => true,
         'specification_list' => false,
-        'table_count' => false
+        'table_count' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -354,7 +361,7 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets specification_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getSpecificationList(): array
     {
@@ -405,13 +412,20 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTableCount(?int $table_count): self
     {
         if (is_null($table_count)) {
-            throw new \InvalidArgumentException('non-nullable table_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'table_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('table_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($table_count > 2)) {
+        if (!is_null($table_count) && ($table_count > 2)) {
             throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be smaller than or equal to 2.');
         }
-        if (($table_count < 1)) {
+        if (!is_null($table_count) && ($table_count < 1)) {
             throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be bigger than or equal to 1.');
         }
 

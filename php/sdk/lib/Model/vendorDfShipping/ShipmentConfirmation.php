@@ -93,7 +93,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
         'selling_party' => false,
         'ship_from_party' => false,
         'items' => false,
-        'containers' => false
+        'containers' => true
     ];
 
     /**
@@ -461,7 +461,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {
@@ -488,7 +488,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets containers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getContainers(): ?array
     {
@@ -505,7 +505,14 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setContainers(?array $containers): self
     {
         if (is_null($containers)) {
-            throw new \InvalidArgumentException('non-nullable containers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'containers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('containers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['containers'] = $containers;
 

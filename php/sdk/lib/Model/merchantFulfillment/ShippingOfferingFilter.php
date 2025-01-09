@@ -84,10 +84,10 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'include_packing_slip_with_label' => false,
-        'include_complex_shipping_options' => false,
-        'carrier_will_pick_up' => false,
-        'delivery_experience' => false
+        'include_packing_slip_with_label' => true,
+        'include_complex_shipping_options' => true,
+        'carrier_will_pick_up' => true,
+        'delivery_experience' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {
         if (is_null($include_packing_slip_with_label)) {
-            throw new \InvalidArgumentException('non-nullable include_packing_slip_with_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_packing_slip_with_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_packing_slip_with_label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['include_packing_slip_with_label'] = $include_packing_slip_with_label;
 
@@ -359,7 +366,14 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIncludeComplexShippingOptions(?bool $include_complex_shipping_options): self
     {
         if (is_null($include_complex_shipping_options)) {
-            throw new \InvalidArgumentException('non-nullable include_complex_shipping_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_complex_shipping_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_complex_shipping_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['include_complex_shipping_options'] = $include_complex_shipping_options;
 
@@ -386,7 +400,14 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCarrierWillPickUp(?string $carrier_will_pick_up): self
     {
         if (is_null($carrier_will_pick_up)) {
-            throw new \InvalidArgumentException('non-nullable carrier_will_pick_up cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_will_pick_up');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_will_pick_up', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_will_pick_up'] = $carrier_will_pick_up;
 
@@ -413,7 +434,14 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
     public function setDeliveryExperience(?string $delivery_experience): self
     {
         if (is_null($delivery_experience)) {
-            throw new \InvalidArgumentException('non-nullable delivery_experience cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_experience');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_experience', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_experience'] = $delivery_experience;
 

@@ -88,7 +88,7 @@ class SelectedDeliveryWindow implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'availability_type' => false,
         'delivery_window_option_id' => false,
-        'editable_until' => false,
+        'editable_until' => true,
         'end_date' => false,
         'start_date' => false
     ];
@@ -427,7 +427,14 @@ class SelectedDeliveryWindow implements ModelInterface, ArrayAccess, \JsonSerial
     public function setEditableUntil(?\DateTime $editable_until): self
     {
         if (is_null($editable_until)) {
-            throw new \InvalidArgumentException('non-nullable editable_until cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'editable_until');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('editable_until', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['editable_until'] = $editable_until;
 

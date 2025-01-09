@@ -82,9 +82,9 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'declared_value' => false,
-        'hsn_code' => false,
-        'tax_rates' => false
+        'declared_value' => true,
+        'hsn_code' => true,
+        'tax_rates' => true
     ];
 
     /**
@@ -333,7 +333,14 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeclaredValue(?\OpenAPI\Client\Model\fulfillmentInbound\Currency $declared_value): self
     {
         if (is_null($declared_value)) {
-            throw new \InvalidArgumentException('non-nullable declared_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'declared_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('declared_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['declared_value'] = $declared_value;
 
@@ -360,12 +367,19 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHsnCode(?string $hsn_code): self
     {
         if (is_null($hsn_code)) {
-            throw new \InvalidArgumentException('non-nullable hsn_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hsn_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hsn_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($hsn_code) > 1024)) {
+        if (!is_null($hsn_code) && (mb_strlen($hsn_code) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $hsn_code when calling TaxDetails., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($hsn_code) < 1)) {
+        if (!is_null($hsn_code) && (mb_strlen($hsn_code) < 1)) {
             throw new \InvalidArgumentException('invalid length for $hsn_code when calling TaxDetails., must be bigger than or equal to 1.');
         }
 
@@ -377,7 +391,7 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_rates
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxRates(): ?array
     {
@@ -394,7 +408,14 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxRates(?array $tax_rates): self
     {
         if (is_null($tax_rates)) {
-            throw new \InvalidArgumentException('non-nullable tax_rates cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_rates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_rates', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_rates'] = $tax_rates;
 

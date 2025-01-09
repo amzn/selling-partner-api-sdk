@@ -80,8 +80,8 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'estimated_delivery_date' => false,
-        'item_delivery_promise' => false
+        'estimated_delivery_date' => true,
+        'item_delivery_promise' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEstimatedDeliveryDate(?\DateTime $estimated_delivery_date): self
     {
         if (is_null($estimated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable estimated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_delivery_date'] = $estimated_delivery_date;
 
@@ -345,7 +352,14 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemDeliveryPromise(?\OpenAPI\Client\Model\services\ItemDeliveryPromise $item_delivery_promise): self
     {
         if (is_null($item_delivery_promise)) {
-            throw new \InvalidArgumentException('non-nullable item_delivery_promise cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_delivery_promise');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_delivery_promise', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_delivery_promise'] = $item_delivery_promise;
 

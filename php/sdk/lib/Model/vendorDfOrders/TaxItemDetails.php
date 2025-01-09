@@ -78,7 +78,7 @@ class TaxItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tax_line_item' => false
+        'tax_line_item' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class TaxItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_line_item
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxLineItem(): ?array
     {
@@ -311,7 +311,14 @@ class TaxItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxLineItem(?array $tax_line_item): self
     {
         if (is_null($tax_line_item)) {
-            throw new \InvalidArgumentException('non-nullable tax_line_item cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_line_item');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_line_item', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_line_item'] = $tax_line_item;
 

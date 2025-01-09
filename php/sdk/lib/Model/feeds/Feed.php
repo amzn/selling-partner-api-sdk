@@ -94,12 +94,12 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'feed_id' => false,
         'feed_type' => false,
-        'marketplace_ids' => false,
+        'marketplace_ids' => true,
         'created_time' => false,
         'processing_status' => false,
-        'processing_start_time' => false,
-        'processing_end_time' => false,
-        'result_feed_document_id' => false
+        'processing_start_time' => true,
+        'processing_end_time' => true,
+        'result_feed_document_id' => true
     ];
 
     /**
@@ -439,7 +439,7 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMarketplaceIds(): ?array
     {
@@ -456,7 +456,14 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceIds(?array $marketplace_ids): self
     {
         if (is_null($marketplace_ids)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -547,7 +554,14 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingStartTime(?\DateTime $processing_start_time): self
     {
         if (is_null($processing_start_time)) {
-            throw new \InvalidArgumentException('non-nullable processing_start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_start_time'] = $processing_start_time;
 
@@ -574,7 +588,14 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingEndTime(?\DateTime $processing_end_time): self
     {
         if (is_null($processing_end_time)) {
-            throw new \InvalidArgumentException('non-nullable processing_end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_end_time'] = $processing_end_time;
 
@@ -601,7 +622,14 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setResultFeedDocumentId(?string $result_feed_document_id): self
     {
         if (is_null($result_feed_document_id)) {
-            throw new \InvalidArgumentException('non-nullable result_feed_document_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'result_feed_document_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('result_feed_document_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['result_feed_document_id'] = $result_feed_document_id;
 

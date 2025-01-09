@@ -92,14 +92,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_id' => false,
+        'shipment_id' => true,
         'seller_sku' => false,
-        'fulfillment_network_sku' => false,
+        'fulfillment_network_sku' => true,
         'quantity_shipped' => false,
-        'quantity_received' => false,
-        'quantity_in_case' => false,
-        'release_date' => false,
-        'prep_details_list' => false
+        'quantity_received' => true,
+        'quantity_in_case' => true,
+        'release_date' => true,
+        'prep_details_list' => true
     ];
 
     /**
@@ -366,7 +366,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setShipmentId(?string $shipment_id): self
     {
         if (is_null($shipment_id)) {
-            throw new \InvalidArgumentException('non-nullable shipment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_id'] = $shipment_id;
 
@@ -420,7 +427,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFulfillmentNetworkSku(?string $fulfillment_network_sku): self
     {
         if (is_null($fulfillment_network_sku)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_network_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_network_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_network_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_network_sku'] = $fulfillment_network_sku;
 
@@ -474,7 +488,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setQuantityReceived(?int $quantity_received): self
     {
         if (is_null($quantity_received)) {
-            throw new \InvalidArgumentException('non-nullable quantity_received cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_received');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_received', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_received'] = $quantity_received;
 
@@ -501,7 +522,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setQuantityInCase(?int $quantity_in_case): self
     {
         if (is_null($quantity_in_case)) {
-            throw new \InvalidArgumentException('non-nullable quantity_in_case cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_in_case');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_in_case', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_in_case'] = $quantity_in_case;
 
@@ -528,7 +556,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setReleaseDate(?\DateTime $release_date): self
     {
         if (is_null($release_date)) {
-            throw new \InvalidArgumentException('non-nullable release_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'release_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('release_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['release_date'] = $release_date;
 
@@ -538,7 +573,7 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets prep_details_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPrepDetailsList(): ?array
     {
@@ -555,7 +590,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPrepDetailsList(?array $prep_details_list): self
     {
         if (is_null($prep_details_list)) {
-            throw new \InvalidArgumentException('non-nullable prep_details_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_details_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_details_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_details_list'] = $prep_details_list;
 

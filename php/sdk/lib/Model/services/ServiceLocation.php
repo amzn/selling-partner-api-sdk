@@ -80,8 +80,8 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'service_location_type' => false,
-        'address' => false
+        'service_location_type' => true,
+        'address' => true
     ];
 
     /**
@@ -344,10 +344,17 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceLocationType(?string $service_location_type): self
     {
         if (is_null($service_location_type)) {
-            throw new \InvalidArgumentException('non-nullable service_location_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_location_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_location_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getServiceLocationTypeAllowableValues();
-        if (!in_array($service_location_type, $allowedValues, true)) {
+        if (!is_null($service_location_type) && !in_array($service_location_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'service_location_type', must be one of '%s'",
@@ -381,7 +388,14 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddress(?\OpenAPI\Client\Model\services\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 

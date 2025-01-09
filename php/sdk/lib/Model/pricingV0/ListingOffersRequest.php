@@ -89,10 +89,10 @@ class ListingOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'uri' => false,
         'method' => false,
-        'headers' => false,
+        'headers' => true,
         'marketplace_id' => false,
         'item_condition' => false,
-        'customer_type' => false
+        'customer_type' => true
     ];
 
     /**
@@ -411,7 +411,14 @@ class ListingOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setHeaders(?array $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 
@@ -492,7 +499,14 @@ class ListingOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCustomerType(?string $customer_type): self
     {
         if (is_null($customer_type)) {
-            throw new \InvalidArgumentException('non-nullable customer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_type'] = $customer_type;
 

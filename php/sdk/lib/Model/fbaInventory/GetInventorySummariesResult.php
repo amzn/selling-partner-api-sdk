@@ -334,7 +334,7 @@ class GetInventorySummariesResult implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets inventory_summaries
      *
-     * @return arrayA
+     * @return array
      */
     public function getInventorySummaries(): array
     {

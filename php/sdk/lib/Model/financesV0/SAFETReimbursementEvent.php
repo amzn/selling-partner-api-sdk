@@ -86,11 +86,11 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'safet_claim_id' => false,
-        'reimbursed_amount' => false,
-        'reason_code' => false,
-        'safet_reimbursement_item_list' => false
+        'posted_date' => true,
+        'safet_claim_id' => true,
+        'reimbursed_amount' => true,
+        'reason_code' => true,
+        'safet_reimbursement_item_list' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -366,7 +373,14 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSafetClaimId(?string $safet_claim_id): self
     {
         if (is_null($safet_claim_id)) {
-            throw new \InvalidArgumentException('non-nullable safet_claim_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'safet_claim_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('safet_claim_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['safet_claim_id'] = $safet_claim_id;
 
@@ -393,7 +407,14 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setReimbursedAmount(?\OpenAPI\Client\Model\financesV0\Currency $reimbursed_amount): self
     {
         if (is_null($reimbursed_amount)) {
-            throw new \InvalidArgumentException('non-nullable reimbursed_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reimbursed_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reimbursed_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reimbursed_amount'] = $reimbursed_amount;
 
@@ -420,7 +441,14 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setReasonCode(?string $reason_code): self
     {
         if (is_null($reason_code)) {
-            throw new \InvalidArgumentException('non-nullable reason_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_code'] = $reason_code;
 
@@ -430,7 +458,7 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets safet_reimbursement_item_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSafetReimbursementItemList(): ?array
     {
@@ -447,7 +475,14 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSafetReimbursementItemList(?array $safet_reimbursement_item_list): self
     {
         if (is_null($safet_reimbursement_item_list)) {
-            throw new \InvalidArgumentException('non-nullable safet_reimbursement_item_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'safet_reimbursement_item_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('safet_reimbursement_item_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['safet_reimbursement_item_list'] = $safet_reimbursement_item_list;
 

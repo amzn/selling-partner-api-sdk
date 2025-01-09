@@ -92,14 +92,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vendor_details' => false,
-        'buyer_reference_number' => false,
-        'ship_to_party' => false,
-        'ship_from_party' => false,
-        'warehouse_id' => false,
-        'master_tracking_id' => false,
-        'total_label_count' => false,
-        'ship_mode' => false
+        'vendor_details' => true,
+        'buyer_reference_number' => true,
+        'ship_to_party' => true,
+        'ship_from_party' => true,
+        'warehouse_id' => true,
+        'master_tracking_id' => true,
+        'total_label_count' => true,
+        'ship_mode' => true
     ];
 
     /**
@@ -384,7 +384,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVendorDetails(?\OpenAPI\Client\Model\vendorShipments\VendorDetails $vendor_details): self
     {
         if (is_null($vendor_details)) {
-            throw new \InvalidArgumentException('non-nullable vendor_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_details'] = $vendor_details;
 
@@ -411,7 +418,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBuyerReferenceNumber(?string $buyer_reference_number): self
     {
         if (is_null($buyer_reference_number)) {
-            throw new \InvalidArgumentException('non-nullable buyer_reference_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_reference_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_reference_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_reference_number'] = $buyer_reference_number;
 
@@ -438,7 +452,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setShipToParty(?\OpenAPI\Client\Model\vendorShipments\PartyIdentification $ship_to_party): self
     {
         if (is_null($ship_to_party)) {
-            throw new \InvalidArgumentException('non-nullable ship_to_party cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to_party'] = $ship_to_party;
 
@@ -465,7 +486,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setShipFromParty(?\OpenAPI\Client\Model\vendorShipments\PartyIdentification $ship_from_party): self
     {
         if (is_null($ship_from_party)) {
-            throw new \InvalidArgumentException('non-nullable ship_from_party cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_from_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_from_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_from_party'] = $ship_from_party;
 
@@ -492,7 +520,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWarehouseId(?string $warehouse_id): self
     {
         if (is_null($warehouse_id)) {
-            throw new \InvalidArgumentException('non-nullable warehouse_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warehouse_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warehouse_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warehouse_id'] = $warehouse_id;
 
@@ -519,7 +554,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setMasterTrackingId(?string $master_tracking_id): self
     {
         if (is_null($master_tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable master_tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'master_tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('master_tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['master_tracking_id'] = $master_tracking_id;
 
@@ -546,7 +588,14 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTotalLabelCount(?int $total_label_count): self
     {
         if (is_null($total_label_count)) {
-            throw new \InvalidArgumentException('non-nullable total_label_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_label_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_label_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_label_count'] = $total_label_count;
 
@@ -573,10 +622,17 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setShipMode(?string $ship_mode): self
     {
         if (is_null($ship_mode)) {
-            throw new \InvalidArgumentException('non-nullable ship_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_mode', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getShipModeAllowableValues();
-        if (!in_array($ship_mode, $allowedValues, true)) {
+        if (!is_null($ship_mode) && !in_array($ship_mode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'ship_mode', must be one of '%s'",

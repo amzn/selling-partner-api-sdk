@@ -83,8 +83,8 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'offer_identifier' => false,
-        'condition' => false,
-        'price' => false
+        'condition' => true,
+        'price' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCondition(?string $condition): self
     {
         if (is_null($condition)) {
-            throw new \InvalidArgumentException('non-nullable condition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['condition'] = $condition;
 
@@ -382,7 +389,14 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrice(?\OpenAPI\Client\Model\pricing\Price $price): self
     {
         if (is_null($price)) {
-            throw new \InvalidArgumentException('non-nullable price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['price'] = $price;
 

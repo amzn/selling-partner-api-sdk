@@ -82,7 +82,7 @@ class TransportationSelection implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_information' => false,
+        'contact_information' => true,
         'shipment_id' => false,
         'transportation_option_id' => false
     ];
@@ -355,7 +355,14 @@ class TransportationSelection implements ModelInterface, ArrayAccess, \JsonSeria
     public function setContactInformation(?\OpenAPI\Client\Model\fulfillmentInbound\ContactInformation $contact_information): self
     {
         if (is_null($contact_information)) {
-            throw new \InvalidArgumentException('non-nullable contact_information cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contact_information');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_information', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contact_information'] = $contact_information;
 

@@ -78,7 +78,7 @@ class GetFulfillmentPreviewResult implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fulfillment_previews' => false
+        'fulfillment_previews' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetFulfillmentPreviewResult implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets fulfillment_previews
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFulfillmentPreviews(): ?array
     {
@@ -311,7 +311,14 @@ class GetFulfillmentPreviewResult implements ModelInterface, ArrayAccess, \JsonS
     public function setFulfillmentPreviews(?array $fulfillment_previews): self
     {
         if (is_null($fulfillment_previews)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_previews cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_previews');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_previews', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_previews'] = $fulfillment_previews;
 

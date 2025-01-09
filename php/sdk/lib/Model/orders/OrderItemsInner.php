@@ -79,8 +79,8 @@ class OrderItemsInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order_item_id' => false,
-        'quantity' => false
+        'order_item_id' => true,
+        'quantity' => true
     ];
 
     /**
@@ -317,7 +317,14 @@ class OrderItemsInner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderItemId(?string $order_item_id): self
     {
         if (is_null($order_item_id)) {
-            throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_item_id'] = $order_item_id;
 
@@ -344,7 +351,14 @@ class OrderItemsInner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity'] = $quantity;
 

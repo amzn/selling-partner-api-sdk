@@ -80,7 +80,7 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
+        'headline' => true,
         'body' => false
     ];
 
@@ -321,7 +321,14 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 

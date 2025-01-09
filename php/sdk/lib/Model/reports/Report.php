@@ -98,17 +98,17 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'marketplace_ids' => false,
+        'marketplace_ids' => true,
         'report_id' => false,
         'report_type' => false,
-        'data_start_time' => false,
-        'data_end_time' => false,
-        'report_schedule_id' => false,
+        'data_start_time' => true,
+        'data_end_time' => true,
+        'report_schedule_id' => true,
         'created_time' => false,
         'processing_status' => false,
-        'processing_start_time' => false,
-        'processing_end_time' => false,
-        'report_document_id' => false
+        'processing_start_time' => true,
+        'processing_end_time' => true,
+        'report_document_id' => true
     ];
 
     /**
@@ -406,7 +406,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMarketplaceIds(): ?array
     {
@@ -423,7 +423,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceIds(?array $marketplace_ids): self
     {
         if (is_null($marketplace_ids)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -504,7 +511,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataStartTime(?\DateTime $data_start_time): self
     {
         if (is_null($data_start_time)) {
-            throw new \InvalidArgumentException('non-nullable data_start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_start_time'] = $data_start_time;
 
@@ -531,7 +545,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataEndTime(?\DateTime $data_end_time): self
     {
         if (is_null($data_end_time)) {
-            throw new \InvalidArgumentException('non-nullable data_end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_end_time'] = $data_end_time;
 
@@ -558,7 +579,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReportScheduleId(?string $report_schedule_id): self
     {
         if (is_null($report_schedule_id)) {
-            throw new \InvalidArgumentException('non-nullable report_schedule_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'report_schedule_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_schedule_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['report_schedule_id'] = $report_schedule_id;
 
@@ -649,7 +677,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingStartTime(?\DateTime $processing_start_time): self
     {
         if (is_null($processing_start_time)) {
-            throw new \InvalidArgumentException('non-nullable processing_start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_start_time'] = $processing_start_time;
 
@@ -676,7 +711,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingEndTime(?\DateTime $processing_end_time): self
     {
         if (is_null($processing_end_time)) {
-            throw new \InvalidArgumentException('non-nullable processing_end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_end_time'] = $processing_end_time;
 
@@ -703,7 +745,14 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReportDocumentId(?string $report_document_id): self
     {
         if (is_null($report_document_id)) {
-            throw new \InvalidArgumentException('non-nullable report_document_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'report_document_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_document_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['report_document_id'] = $report_document_id;
 

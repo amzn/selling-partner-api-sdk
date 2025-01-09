@@ -80,8 +80,8 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ltl_tracking_detail' => false,
-        'spd_tracking_detail' => false
+        'ltl_tracking_detail' => true,
+        'spd_tracking_detail' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLtlTrackingDetail(?\OpenAPI\Client\Model\fulfillmentInbound\LtlTrackingDetail $ltl_tracking_detail): self
     {
         if (is_null($ltl_tracking_detail)) {
-            throw new \InvalidArgumentException('non-nullable ltl_tracking_detail cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ltl_tracking_detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ltl_tracking_detail', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ltl_tracking_detail'] = $ltl_tracking_detail;
 
@@ -345,7 +352,14 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSpdTrackingDetail(?\OpenAPI\Client\Model\fulfillmentInbound\SpdTrackingDetail $spd_tracking_detail): self
     {
         if (is_null($spd_tracking_detail)) {
-            throw new \InvalidArgumentException('non-nullable spd_tracking_detail cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'spd_tracking_detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spd_tracking_detail', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['spd_tracking_detail'] = $spd_tracking_detail;
 

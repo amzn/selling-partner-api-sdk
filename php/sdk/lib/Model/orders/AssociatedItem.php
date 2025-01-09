@@ -82,9 +82,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order_id' => false,
-        'order_item_id' => false,
-        'association_type' => false
+        'order_id' => true,
+        'order_item_id' => true,
+        'association_type' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderId(?string $order_id): self
     {
         if (is_null($order_id)) {
-            throw new \InvalidArgumentException('non-nullable order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_id'] = $order_id;
 
@@ -352,7 +359,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderItemId(?string $order_item_id): self
     {
         if (is_null($order_item_id)) {
-            throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_item_id'] = $order_item_id;
 
@@ -379,7 +393,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAssociationType(?string $association_type): self
     {
         if (is_null($association_type)) {
-            throw new \InvalidArgumentException('non-nullable association_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'association_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('association_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['association_type'] = $association_type;
 

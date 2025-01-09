@@ -82,9 +82,9 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attachments' => false,
-        'coverage_start_date' => false,
-        'coverage_end_date' => false
+        'attachments' => true,
+        'coverage_start_date' => true,
+        'coverage_end_date' => true
     ];
 
     /**
@@ -308,7 +308,7 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets attachments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttachments(): ?array
     {
@@ -325,7 +325,14 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAttachments(?array $attachments): self
     {
         if (is_null($attachments)) {
-            throw new \InvalidArgumentException('non-nullable attachments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attachments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attachments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attachments'] = $attachments;
 
@@ -352,7 +359,14 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCoverageStartDate(?\DateTime $coverage_start_date): self
     {
         if (is_null($coverage_start_date)) {
-            throw new \InvalidArgumentException('non-nullable coverage_start_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'coverage_start_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('coverage_start_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['coverage_start_date'] = $coverage_start_date;
 
@@ -379,7 +393,14 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCoverageEndDate(?\DateTime $coverage_end_date): self
     {
         if (is_null($coverage_end_date)) {
-            throw new \InvalidArgumentException('non-nullable coverage_end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'coverage_end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('coverage_end_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['coverage_end_date'] = $coverage_end_date;
 

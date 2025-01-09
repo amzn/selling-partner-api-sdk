@@ -55,6 +55,8 @@ class DefaultApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('DefaultApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class DefaultApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEventGroups200', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEventGroups200', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -249,7 +250,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEventGroups400', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEventGroups400', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -370,7 +371,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEvents200', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEvents200', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -550,7 +551,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEvents400', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEvents400', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -671,7 +672,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEventsByGroupId200', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEventsByGroupId200', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1029,7 +1030,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEventsByGroupId400', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEventsByGroupId400', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1150,7 +1151,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEventsByOrderId200', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEventsByOrderId200', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1330,7 +1331,7 @@ class DefaultApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListFinancialEventsByOrderId400', 'DefaultApi')) {
+            if ($this->testHelper->shouldSkipTest('testListFinancialEventsByOrderId400', 'DefaultApi')) {
                 $this->assertTrue(true);
                 return;
             }

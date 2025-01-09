@@ -87,10 +87,10 @@ class OfferIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'seller_id' => false,
-        'sku' => false,
+        'seller_id' => true,
+        'sku' => true,
         'asin' => false,
-        'fulfillment_type' => false
+        'fulfillment_type' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class OfferIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerId(?string $seller_id): self
     {
         if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_id'] = $seller_id;
 
@@ -399,7 +406,14 @@ class OfferIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSku(?string $sku): self
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku'] = $sku;
 
@@ -453,7 +467,14 @@ class OfferIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentType(?string $fulfillment_type): self
     {
         if (is_null($fulfillment_type)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_type'] = $fulfillment_type;
 

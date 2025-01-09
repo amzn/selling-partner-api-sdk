@@ -82,9 +82,9 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'title' => false,
-        'description' => false,
-        'property_names' => false
+        'title' => true,
+        'description' => true,
+        'property_names' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
@@ -352,7 +359,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription(?string $description): self
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -362,7 +376,7 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets property_names
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPropertyNames(): ?array
     {
@@ -379,7 +393,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPropertyNames(?array $property_names): self
     {
         if (is_null($property_names)) {
-            throw new \InvalidArgumentException('non-nullable property_names cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'property_names');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('property_names', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['property_names'] = $property_names;
 

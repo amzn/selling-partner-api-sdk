@@ -78,7 +78,7 @@ class BillOfLadingDownloadURL implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'download_url' => false
+        'download_url' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class BillOfLadingDownloadURL implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDownloadUrl(?string $download_url): self
     {
         if (is_null($download_url)) {
-            throw new \InvalidArgumentException('non-nullable download_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'download_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('download_url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['download_url'] = $download_url;
 

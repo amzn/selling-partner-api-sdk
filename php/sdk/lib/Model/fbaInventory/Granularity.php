@@ -80,8 +80,8 @@ class Granularity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'granularity_type' => false,
-        'granularity_id' => false
+        'granularity_type' => true,
+        'granularity_id' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class Granularity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGranularityType(?string $granularity_type): self
     {
         if (is_null($granularity_type)) {
-            throw new \InvalidArgumentException('non-nullable granularity_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'granularity_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('granularity_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['granularity_type'] = $granularity_type;
 
@@ -345,7 +352,14 @@ class Granularity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGranularityId(?string $granularity_id): self
     {
         if (is_null($granularity_id)) {
-            throw new \InvalidArgumentException('non-nullable granularity_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'granularity_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('granularity_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['granularity_id'] = $granularity_id;
 

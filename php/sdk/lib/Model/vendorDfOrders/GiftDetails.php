@@ -80,8 +80,8 @@ class GiftDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'gift_message' => false,
-        'gift_wrap_id' => false
+        'gift_message' => true,
+        'gift_wrap_id' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class GiftDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGiftMessage(?string $gift_message): self
     {
         if (is_null($gift_message)) {
-            throw new \InvalidArgumentException('non-nullable gift_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_message', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gift_message'] = $gift_message;
 
@@ -345,7 +352,14 @@ class GiftDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGiftWrapId(?string $gift_wrap_id): self
     {
         if (is_null($gift_wrap_id)) {
-            throw new \InvalidArgumentException('non-nullable gift_wrap_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_wrap_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_wrap_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gift_wrap_id'] = $gift_wrap_id;
 

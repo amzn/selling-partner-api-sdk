@@ -82,9 +82,9 @@ class CollectFreightPickupDetails implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'requested_pick_up' => false,
-        'scheduled_pick_up' => false,
-        'carrier_assignment_date' => false
+        'requested_pick_up' => true,
+        'scheduled_pick_up' => true,
+        'carrier_assignment_date' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class CollectFreightPickupDetails implements ModelInterface, ArrayAccess, \JsonS
     public function setRequestedPickUp(?\DateTime $requested_pick_up): self
     {
         if (is_null($requested_pick_up)) {
-            throw new \InvalidArgumentException('non-nullable requested_pick_up cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'requested_pick_up');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requested_pick_up', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['requested_pick_up'] = $requested_pick_up;
 
@@ -352,7 +359,14 @@ class CollectFreightPickupDetails implements ModelInterface, ArrayAccess, \JsonS
     public function setScheduledPickUp(?\DateTime $scheduled_pick_up): self
     {
         if (is_null($scheduled_pick_up)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_pick_up cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduled_pick_up');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduled_pick_up', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['scheduled_pick_up'] = $scheduled_pick_up;
 
@@ -379,7 +393,14 @@ class CollectFreightPickupDetails implements ModelInterface, ArrayAccess, \JsonS
     public function setCarrierAssignmentDate(?\DateTime $carrier_assignment_date): self
     {
         if (is_null($carrier_assignment_date)) {
-            throw new \InvalidArgumentException('non-nullable carrier_assignment_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_assignment_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_assignment_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_assignment_date'] = $carrier_assignment_date;
 

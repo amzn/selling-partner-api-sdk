@@ -80,8 +80,8 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'selling_party' => false,
-        'vendor_shipment_id' => false
+        'selling_party' => true,
+        'vendor_shipment_id' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellingParty(?\OpenAPI\Client\Model\vendorShipments\PartyIdentification $selling_party): self
     {
         if (is_null($selling_party)) {
-            throw new \InvalidArgumentException('non-nullable selling_party cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'selling_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('selling_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['selling_party'] = $selling_party;
 
@@ -345,7 +352,14 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorShipmentId(?\DateTime $vendor_shipment_id): self
     {
         if (is_null($vendor_shipment_id)) {
-            throw new \InvalidArgumentException('non-nullable vendor_shipment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_shipment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_shipment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_shipment_id'] = $vendor_shipment_id;
 

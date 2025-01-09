@@ -93,10 +93,10 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
         'status' => false,
         'requires_merchant_action' => false,
         'valid_rejection_reasons' => false,
-        'rejection_reason' => false,
-        'review_date' => false,
-        'external_reviewer_id' => false,
-        'valid_verification_details' => false
+        'rejection_reason' => true,
+        'review_date' => true,
+        'external_reviewer_id' => true,
+        'valid_verification_details' => true
     ];
 
     /**
@@ -399,7 +399,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Gets valid_rejection_reasons
      *
-     * @return arrayA
+     * @return array
      */
     public function getValidRejectionReasons(): array
     {
@@ -443,7 +443,14 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     public function setRejectionReason(?\OpenAPI\Client\Model\orders\RejectionReason $rejection_reason): self
     {
         if (is_null($rejection_reason)) {
-            throw new \InvalidArgumentException('non-nullable rejection_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rejection_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rejection_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rejection_reason'] = $rejection_reason;
 
@@ -470,7 +477,14 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     public function setReviewDate(?string $review_date): self
     {
         if (is_null($review_date)) {
-            throw new \InvalidArgumentException('non-nullable review_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'review_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('review_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['review_date'] = $review_date;
 
@@ -497,7 +511,14 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     public function setExternalReviewerId(?string $external_reviewer_id): self
     {
         if (is_null($external_reviewer_id)) {
-            throw new \InvalidArgumentException('non-nullable external_reviewer_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'external_reviewer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_reviewer_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['external_reviewer_id'] = $external_reviewer_id;
 
@@ -507,7 +528,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Gets valid_verification_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getValidVerificationDetails(): ?array
     {
@@ -524,7 +545,14 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     public function setValidVerificationDetails(?array $valid_verification_details): self
     {
         if (is_null($valid_verification_details)) {
-            throw new \InvalidArgumentException('non-nullable valid_verification_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'valid_verification_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('valid_verification_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['valid_verification_details'] = $valid_verification_details;
 

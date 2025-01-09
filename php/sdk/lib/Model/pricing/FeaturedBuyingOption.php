@@ -370,7 +370,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets segmented_featured_offers
      *
-     * @return arrayA
+     * @return array
      */
     public function getSegmentedFeaturedOffers(): array
     {

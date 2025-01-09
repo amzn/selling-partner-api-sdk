@@ -81,8 +81,8 @@ class GetCollectionFormHistoryResponse implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'collection_forms_history_record_list' => false,
-        'last_refreshed_date' => false
+        'collection_forms_history_record_list' => true,
+        'last_refreshed_date' => true
     ];
 
     /**
@@ -302,7 +302,7 @@ class GetCollectionFormHistoryResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets collection_forms_history_record_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCollectionFormsHistoryRecordList(): ?array
     {
@@ -319,7 +319,14 @@ class GetCollectionFormHistoryResponse implements ModelInterface, ArrayAccess, \
     public function setCollectionFormsHistoryRecordList(?array $collection_forms_history_record_list): self
     {
         if (is_null($collection_forms_history_record_list)) {
-            throw new \InvalidArgumentException('non-nullable collection_forms_history_record_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'collection_forms_history_record_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('collection_forms_history_record_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['collection_forms_history_record_list'] = $collection_forms_history_record_list;
 
@@ -346,7 +353,14 @@ class GetCollectionFormHistoryResponse implements ModelInterface, ArrayAccess, \
     public function setLastRefreshedDate(?string $last_refreshed_date): self
     {
         if (is_null($last_refreshed_date)) {
-            throw new \InvalidArgumentException('non-nullable last_refreshed_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_refreshed_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_refreshed_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_refreshed_date'] = $last_refreshed_date;
 

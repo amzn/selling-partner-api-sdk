@@ -94,9 +94,9 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
         'data_type' => false,
         'constraints' => false,
         'input_display_text' => false,
-        'input_target' => false,
+        'input_target' => true,
         'stored_value' => false,
-        'restricted_set_values' => false
+        'restricted_set_values' => true
     ];
 
     /**
@@ -405,7 +405,7 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets constraints
      *
-     * @return arrayA
+     * @return array
      */
     public function getConstraints(): array
     {
@@ -476,7 +476,14 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setInputTarget(?string $input_target): self
     {
         if (is_null($input_target)) {
-            throw new \InvalidArgumentException('non-nullable input_target cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'input_target');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('input_target', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['input_target'] = $input_target;
 
@@ -513,7 +520,7 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets restricted_set_values
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRestrictedSetValues(): ?array
     {
@@ -530,7 +537,14 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRestrictedSetValues(?array $restricted_set_values): self
     {
         if (is_null($restricted_set_values)) {
-            throw new \InvalidArgumentException('non-nullable restricted_set_values cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'restricted_set_values');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('restricted_set_values', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['restricted_set_values'] = $restricted_set_values;
 

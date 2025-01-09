@@ -86,11 +86,11 @@ class TransportShipmentMeasurements implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_carton_count' => false,
-        'total_pallet_stackable' => false,
-        'total_pallet_non_stackable' => false,
-        'shipment_weight' => false,
-        'shipment_volume' => false
+        'total_carton_count' => true,
+        'total_pallet_stackable' => true,
+        'total_pallet_non_stackable' => true,
+        'shipment_weight' => true,
+        'shipment_volume' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class TransportShipmentMeasurements implements ModelInterface, ArrayAccess, \Jso
     public function setTotalCartonCount(?int $total_carton_count): self
     {
         if (is_null($total_carton_count)) {
-            throw new \InvalidArgumentException('non-nullable total_carton_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_carton_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_carton_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_carton_count'] = $total_carton_count;
 
@@ -366,7 +373,14 @@ class TransportShipmentMeasurements implements ModelInterface, ArrayAccess, \Jso
     public function setTotalPalletStackable(?int $total_pallet_stackable): self
     {
         if (is_null($total_pallet_stackable)) {
-            throw new \InvalidArgumentException('non-nullable total_pallet_stackable cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_pallet_stackable');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_pallet_stackable', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_pallet_stackable'] = $total_pallet_stackable;
 
@@ -393,7 +407,14 @@ class TransportShipmentMeasurements implements ModelInterface, ArrayAccess, \Jso
     public function setTotalPalletNonStackable(?int $total_pallet_non_stackable): self
     {
         if (is_null($total_pallet_non_stackable)) {
-            throw new \InvalidArgumentException('non-nullable total_pallet_non_stackable cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_pallet_non_stackable');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_pallet_non_stackable', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_pallet_non_stackable'] = $total_pallet_non_stackable;
 
@@ -420,7 +441,14 @@ class TransportShipmentMeasurements implements ModelInterface, ArrayAccess, \Jso
     public function setShipmentWeight(?\OpenAPI\Client\Model\vendorShipments\Weight $shipment_weight): self
     {
         if (is_null($shipment_weight)) {
-            throw new \InvalidArgumentException('non-nullable shipment_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_weight'] = $shipment_weight;
 
@@ -447,7 +475,14 @@ class TransportShipmentMeasurements implements ModelInterface, ArrayAccess, \Jso
     public function setShipmentVolume(?\OpenAPI\Client\Model\vendorShipments\Volume $shipment_volume): self
     {
         if (is_null($shipment_volume)) {
-            throw new \InvalidArgumentException('non-nullable shipment_volume cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_volume');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_volume', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_volume'] = $shipment_volume;
 

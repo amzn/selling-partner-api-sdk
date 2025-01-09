@@ -80,8 +80,8 @@ class OrderList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
-        'orders' => false
+        'pagination' => true,
+        'orders' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class OrderList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPagination(?\OpenAPI\Client\Model\vendorDfOrders\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -328,7 +335,7 @@ class OrderList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets orders
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrders(): ?array
     {
@@ -345,7 +352,14 @@ class OrderList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrders(?array $orders): self
     {
         if (is_null($orders)) {
-            throw new \InvalidArgumentException('non-nullable orders cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'orders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('orders', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['orders'] = $orders;
 

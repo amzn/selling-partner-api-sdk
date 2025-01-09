@@ -78,7 +78,7 @@ class GeneratePlacementOptionsRequest implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'custom_placement' => false
+        'custom_placement' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class GeneratePlacementOptionsRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets custom_placement
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCustomPlacement(): ?array
     {
@@ -311,7 +311,14 @@ class GeneratePlacementOptionsRequest implements ModelInterface, ArrayAccess, \J
     public function setCustomPlacement(?array $custom_placement): self
     {
         if (is_null($custom_placement)) {
-            throw new \InvalidArgumentException('non-nullable custom_placement cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'custom_placement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('custom_placement', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['custom_placement'] = $custom_placement;
 

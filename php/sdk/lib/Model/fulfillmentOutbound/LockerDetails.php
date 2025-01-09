@@ -80,8 +80,8 @@ class LockerDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'locker_number' => false,
-        'locker_access_code' => false
+        'locker_number' => true,
+        'locker_access_code' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class LockerDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLockerNumber(?string $locker_number): self
     {
         if (is_null($locker_number)) {
-            throw new \InvalidArgumentException('non-nullable locker_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'locker_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locker_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['locker_number'] = $locker_number;
 
@@ -345,7 +352,14 @@ class LockerDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLockerAccessCode(?string $locker_access_code): self
     {
         if (is_null($locker_access_code)) {
-            throw new \InvalidArgumentException('non-nullable locker_access_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'locker_access_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locker_access_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['locker_access_code'] = $locker_access_code;
 

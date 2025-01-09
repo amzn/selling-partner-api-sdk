@@ -88,12 +88,12 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'transaction_type' => false,
-        'invoice_id' => false,
-        'base_value' => false,
-        'tax_value' => false,
-        'transaction_value' => false
+        'posted_date' => true,
+        'transaction_type' => true,
+        'invoice_id' => true,
+        'base_value' => true,
+        'tax_value' => true,
+        'transaction_value' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -373,7 +380,14 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -400,7 +414,14 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setInvoiceId(?string $invoice_id): self
     {
         if (is_null($invoice_id)) {
-            throw new \InvalidArgumentException('non-nullable invoice_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_id'] = $invoice_id;
 
@@ -427,7 +448,14 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBaseValue(?\OpenAPI\Client\Model\financesV0\Currency $base_value): self
     {
         if (is_null($base_value)) {
-            throw new \InvalidArgumentException('non-nullable base_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'base_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('base_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['base_value'] = $base_value;
 
@@ -454,7 +482,14 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTaxValue(?\OpenAPI\Client\Model\financesV0\Currency $tax_value): self
     {
         if (is_null($tax_value)) {
-            throw new \InvalidArgumentException('non-nullable tax_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_value'] = $tax_value;
 
@@ -481,7 +516,14 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTransactionValue(?\OpenAPI\Client\Model\financesV0\Currency $transaction_value): self
     {
         if (is_null($transaction_value)) {
-            throw new \InvalidArgumentException('non-nullable transaction_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_value'] = $transaction_value;
 

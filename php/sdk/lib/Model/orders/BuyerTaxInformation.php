@@ -84,10 +84,10 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'buyer_legal_company_name' => false,
-        'buyer_business_address' => false,
-        'buyer_tax_registration_id' => false,
-        'buyer_tax_office' => false
+        'buyer_legal_company_name' => true,
+        'buyer_business_address' => true,
+        'buyer_tax_registration_id' => true,
+        'buyer_tax_office' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBuyerLegalCompanyName(?string $buyer_legal_company_name): self
     {
         if (is_null($buyer_legal_company_name)) {
-            throw new \InvalidArgumentException('non-nullable buyer_legal_company_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_legal_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_legal_company_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_legal_company_name'] = $buyer_legal_company_name;
 
@@ -359,7 +366,14 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBuyerBusinessAddress(?string $buyer_business_address): self
     {
         if (is_null($buyer_business_address)) {
-            throw new \InvalidArgumentException('non-nullable buyer_business_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_business_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_business_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_business_address'] = $buyer_business_address;
 
@@ -386,7 +400,14 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBuyerTaxRegistrationId(?string $buyer_tax_registration_id): self
     {
         if (is_null($buyer_tax_registration_id)) {
-            throw new \InvalidArgumentException('non-nullable buyer_tax_registration_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_tax_registration_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_tax_registration_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_tax_registration_id'] = $buyer_tax_registration_id;
 
@@ -413,7 +434,14 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBuyerTaxOffice(?string $buyer_tax_office): self
     {
         if (is_null($buyer_tax_office)) {
-            throw new \InvalidArgumentException('non-nullable buyer_tax_office cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_tax_office');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_tax_office', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_tax_office'] = $buyer_tax_office;
 

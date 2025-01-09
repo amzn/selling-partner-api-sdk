@@ -86,11 +86,11 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'purchase_order_number' => false,
-        'lot_number' => false,
-        'expiry' => false,
-        'maximum_retail_price' => false,
-        'handling_code' => false
+        'purchase_order_number' => true,
+        'lot_number' => true,
+        'expiry' => true,
+        'maximum_retail_price' => true,
+        'handling_code' => true
     ];
 
     /**
@@ -367,7 +367,14 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         if (is_null($purchase_order_number)) {
-            throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'purchase_order_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase_order_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -394,7 +401,14 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLotNumber(?string $lot_number): self
     {
         if (is_null($lot_number)) {
-            throw new \InvalidArgumentException('non-nullable lot_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lot_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lot_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['lot_number'] = $lot_number;
 
@@ -421,7 +435,14 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiry(?\OpenAPI\Client\Model\vendorShipments\Expiry $expiry): self
     {
         if (is_null($expiry)) {
-            throw new \InvalidArgumentException('non-nullable expiry cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiry');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiry', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiry'] = $expiry;
 
@@ -448,7 +469,14 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMaximumRetailPrice(?\OpenAPI\Client\Model\vendorShipments\Money $maximum_retail_price): self
     {
         if (is_null($maximum_retail_price)) {
-            throw new \InvalidArgumentException('non-nullable maximum_retail_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maximum_retail_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maximum_retail_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maximum_retail_price'] = $maximum_retail_price;
 
@@ -475,10 +503,17 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHandlingCode(?string $handling_code): self
     {
         if (is_null($handling_code)) {
-            throw new \InvalidArgumentException('non-nullable handling_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'handling_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('handling_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getHandlingCodeAllowableValues();
-        if (!in_array($handling_code, $allowedValues, true)) {
+        if (!is_null($handling_code) && !in_array($handling_code, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'handling_code', must be one of '%s'",

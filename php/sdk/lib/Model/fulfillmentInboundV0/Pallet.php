@@ -83,7 +83,7 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'dimensions' => false,
-        'weight' => false,
+        'weight' => true,
         'is_stacked' => false
     ];
 
@@ -358,7 +358,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\fulfillmentInboundV0\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 

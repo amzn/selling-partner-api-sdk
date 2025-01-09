@@ -79,7 +79,7 @@ class UnlinkCarrierAccountResponse implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_unlinked' => false
+        'is_unlinked' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class UnlinkCarrierAccountResponse implements ModelInterface, ArrayAccess, \Json
     public function setIsUnlinked(?bool $is_unlinked): self
     {
         if (is_null($is_unlinked)) {
-            throw new \InvalidArgumentException('non-nullable is_unlinked cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_unlinked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_unlinked', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_unlinked'] = $is_unlinked;
 

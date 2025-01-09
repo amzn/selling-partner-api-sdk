@@ -78,7 +78,7 @@ class OfferProgramConfigurationPreferences implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'auto_enrollment' => false
+        'auto_enrollment' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class OfferProgramConfigurationPreferences implements ModelInterface, ArrayAcces
     public function setAutoEnrollment(?string $auto_enrollment): self
     {
         if (is_null($auto_enrollment)) {
-            throw new \InvalidArgumentException('non-nullable auto_enrollment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'auto_enrollment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('auto_enrollment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['auto_enrollment'] = $auto_enrollment;
 

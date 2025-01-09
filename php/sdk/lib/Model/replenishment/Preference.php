@@ -78,7 +78,7 @@ class Preference implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'auto_enrollment' => false
+        'auto_enrollment' => true
     ];
 
     /**
@@ -298,7 +298,7 @@ class Preference implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets auto_enrollment
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAutoEnrollment(): ?array
     {
@@ -315,11 +315,18 @@ class Preference implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAutoEnrollment(?array $auto_enrollment): self
     {
         if (is_null($auto_enrollment)) {
-            throw new \InvalidArgumentException('non-nullable auto_enrollment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'auto_enrollment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('auto_enrollment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($auto_enrollment) < 1)) {
+        if (!is_null($auto_enrollment) && (count($auto_enrollment) < 1)) {
             throw new \InvalidArgumentException('invalid length for $auto_enrollment when calling Preference., number of items must be greater than or equal to 1.');
         }
         $this->container['auto_enrollment'] = $auto_enrollment;

@@ -82,7 +82,7 @@ class Reservation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'reservation_id' => false,
+        'reservation_id' => true,
         'type' => false,
         'availability' => false
     ];
@@ -361,7 +361,14 @@ class Reservation implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReservationId(?string $reservation_id): self
     {
         if (is_null($reservation_id)) {
-            throw new \InvalidArgumentException('non-nullable reservation_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reservation_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reservation_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reservation_id'] = $reservation_id;
 

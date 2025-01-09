@@ -82,9 +82,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'promotion_type' => false,
-        'promotion_id' => false,
-        'promotion_amount' => false
+        'promotion_type' => true,
+        'promotion_id' => true,
+        'promotion_amount' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPromotionType(?string $promotion_type): self
     {
         if (is_null($promotion_type)) {
-            throw new \InvalidArgumentException('non-nullable promotion_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotion_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotion_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotion_type'] = $promotion_type;
 
@@ -352,7 +359,14 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPromotionId(?string $promotion_id): self
     {
         if (is_null($promotion_id)) {
-            throw new \InvalidArgumentException('non-nullable promotion_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotion_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotion_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotion_id'] = $promotion_id;
 
@@ -379,7 +393,14 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPromotionAmount(?\OpenAPI\Client\Model\financesV0\Currency $promotion_amount): self
     {
         if (is_null($promotion_amount)) {
-            throw new \InvalidArgumentException('non-nullable promotion_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotion_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotion_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotion_amount'] = $promotion_amount;
 

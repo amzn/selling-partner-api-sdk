@@ -55,6 +55,8 @@ class MessagingApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('MessagingApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class MessagingApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -229,7 +230,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmCustomizationDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -367,7 +368,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -451,7 +452,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateAmazonMotors400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -589,7 +590,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -670,7 +671,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateConfirmDeliveryDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -808,7 +809,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -889,7 +890,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateConfirmOrderDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1027,7 +1028,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1108,7 +1109,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateConfirmServiceDetails400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1246,7 +1247,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1334,7 +1335,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateDigitalAccessKey400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1472,7 +1473,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1559,7 +1560,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateLegalDisclosure400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1697,7 +1698,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1773,7 +1774,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateNegativeFeedbackRemoval400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1911,7 +1912,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1992,7 +1993,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateUnexpectedProblem400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2130,7 +2131,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateWarranty201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateWarranty201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2216,7 +2217,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateWarranty400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateWarranty400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2354,7 +2355,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAttributes200', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAttributes200', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2439,7 +2440,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAttributes400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAttributes400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2584,7 +2585,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder200', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder200', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2725,7 +2726,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMessagingActionsForOrder400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2863,7 +2864,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSendInvoice201', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testSendInvoice201', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2939,7 +2940,7 @@ class MessagingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSendInvoice400', 'MessagingApi')) {
+            if ($this->testHelper->shouldSkipTest('testSendInvoice400', 'MessagingApi')) {
                 $this->assertTrue(true);
                 return;
             }

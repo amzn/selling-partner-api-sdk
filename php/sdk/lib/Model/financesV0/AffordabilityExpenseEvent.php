@@ -94,15 +94,15 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amazon_order_id' => false,
-        'posted_date' => false,
-        'marketplace_id' => false,
-        'transaction_type' => false,
-        'base_expense' => false,
+        'amazon_order_id' => true,
+        'posted_date' => true,
+        'marketplace_id' => true,
+        'transaction_type' => true,
+        'base_expense' => true,
         'tax_type_cgst' => false,
         'tax_type_sgst' => false,
         'tax_type_igst' => false,
-        'total_expense' => false
+        'total_expense' => true
     ];
 
     /**
@@ -376,7 +376,14 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     public function setAmazonOrderId(?string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
-            throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -403,7 +410,14 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -430,7 +444,14 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -457,7 +478,14 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -484,7 +512,14 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     public function setBaseExpense(?\OpenAPI\Client\Model\financesV0\Currency $base_expense): self
     {
         if (is_null($base_expense)) {
-            throw new \InvalidArgumentException('non-nullable base_expense cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'base_expense');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('base_expense', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['base_expense'] = $base_expense;
 
@@ -592,7 +627,14 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     public function setTotalExpense(?\OpenAPI\Client\Model\financesV0\Currency $total_expense): self
     {
         if (is_null($total_expense)) {
-            throw new \InvalidArgumentException('non-nullable total_expense cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_expense');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_expense', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_expense'] = $total_expense;
 

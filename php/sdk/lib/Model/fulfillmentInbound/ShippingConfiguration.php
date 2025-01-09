@@ -80,8 +80,8 @@ class ShippingConfiguration implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipping_mode' => false,
-        'shipping_solution' => false
+        'shipping_mode' => true,
+        'shipping_solution' => true
     ];
 
     /**
@@ -334,12 +334,19 @@ class ShippingConfiguration implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShippingMode(?string $shipping_mode): self
     {
         if (is_null($shipping_mode)) {
-            throw new \InvalidArgumentException('non-nullable shipping_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_mode', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($shipping_mode) > 1024)) {
+        if (!is_null($shipping_mode) && (mb_strlen($shipping_mode) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $shipping_mode when calling ShippingConfiguration., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($shipping_mode) < 1)) {
+        if (!is_null($shipping_mode) && (mb_strlen($shipping_mode) < 1)) {
             throw new \InvalidArgumentException('invalid length for $shipping_mode when calling ShippingConfiguration., must be bigger than or equal to 1.');
         }
 
@@ -368,12 +375,19 @@ class ShippingConfiguration implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShippingSolution(?string $shipping_solution): self
     {
         if (is_null($shipping_solution)) {
-            throw new \InvalidArgumentException('non-nullable shipping_solution cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_solution');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_solution', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($shipping_solution) > 1024)) {
+        if (!is_null($shipping_solution) && (mb_strlen($shipping_solution) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $shipping_solution when calling ShippingConfiguration., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($shipping_solution) < 1)) {
+        if (!is_null($shipping_solution) && (mb_strlen($shipping_solution) < 1)) {
             throw new \InvalidArgumentException('invalid length for $shipping_solution when calling ShippingConfiguration., must be bigger than or equal to 1.');
         }
 

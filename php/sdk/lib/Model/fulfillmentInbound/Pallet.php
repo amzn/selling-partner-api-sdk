@@ -86,11 +86,11 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dimensions' => false,
+        'dimensions' => true,
         'package_id' => false,
-        'quantity' => false,
-        'stackability' => false,
-        'weight' => false
+        'quantity' => true,
+        'stackability' => true,
+        'weight' => true
     ];
 
     /**
@@ -362,7 +362,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\fulfillmentInbound\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -426,13 +433,20 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($quantity > 10000)) {
+        if (!is_null($quantity) && ($quantity > 10000)) {
             throw new \InvalidArgumentException('invalid value for $quantity when calling Pallet., must be smaller than or equal to 10000.');
         }
-        if (($quantity < 1)) {
+        if (!is_null($quantity) && ($quantity < 1)) {
             throw new \InvalidArgumentException('invalid value for $quantity when calling Pallet., must be bigger than or equal to 1.');
         }
 
@@ -461,7 +475,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStackability(?string $stackability): self
     {
         if (is_null($stackability)) {
-            throw new \InvalidArgumentException('non-nullable stackability cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'stackability');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stackability', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['stackability'] = $stackability;
 
@@ -488,7 +509,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\fulfillmentInbound\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 

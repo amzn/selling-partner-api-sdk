@@ -90,8 +90,8 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'content_information_source' => false,
         'dimensions' => false,
-        'items' => false,
-        'package_id' => false,
+        'items' => true,
+        'package_id' => true,
         'quantity' => false,
         'weight' => false
     ];
@@ -415,7 +415,7 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -432,7 +432,14 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 
@@ -459,15 +466,22 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageId(?string $package_id): self
     {
         if (is_null($package_id)) {
-            throw new \InvalidArgumentException('non-nullable package_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($package_id) > 38)) {
+        if (!is_null($package_id) && (mb_strlen($package_id) > 38)) {
             throw new \InvalidArgumentException('invalid length for $package_id when calling BoxUpdateInput., must be smaller than or equal to 38.');
         }
-        if ((mb_strlen($package_id) < 38)) {
+        if (!is_null($package_id) && (mb_strlen($package_id) < 38)) {
             throw new \InvalidArgumentException('invalid length for $package_id when calling BoxUpdateInput., must be bigger than or equal to 38.');
         }
-        if ((!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($package_id)))) {
+        if (!is_null($package_id) && (!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($package_id)))) {
             throw new \InvalidArgumentException("invalid value for \$package_id when calling BoxUpdateInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.");
         }
 

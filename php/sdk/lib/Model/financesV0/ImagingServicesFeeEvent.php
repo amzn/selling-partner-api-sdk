@@ -84,10 +84,10 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'imaging_request_billing_item_id' => false,
-        'asin' => false,
-        'posted_date' => false,
-        'fee_list' => false
+        'imaging_request_billing_item_id' => true,
+        'asin' => true,
+        'posted_date' => true,
+        'fee_list' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setImagingRequestBillingItemId(?string $imaging_request_billing_item_id): self
     {
         if (is_null($imaging_request_billing_item_id)) {
-            throw new \InvalidArgumentException('non-nullable imaging_request_billing_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'imaging_request_billing_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('imaging_request_billing_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['imaging_request_billing_item_id'] = $imaging_request_billing_item_id;
 
@@ -359,7 +366,14 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -386,7 +400,14 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -396,7 +417,7 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets fee_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeeList(): ?array
     {
@@ -413,7 +434,14 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
     public function setFeeList(?array $fee_list): self
     {
         if (is_null($fee_list)) {
-            throw new \InvalidArgumentException('non-nullable fee_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_list'] = $fee_list;
 

@@ -78,7 +78,7 @@ class VerificationDetails implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'prescription_detail' => false
+        'prescription_detail' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class VerificationDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPrescriptionDetail(?\OpenAPI\Client\Model\orders\PrescriptionDetail $prescription_detail): self
     {
         if (is_null($prescription_detail)) {
-            throw new \InvalidArgumentException('non-nullable prescription_detail cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prescription_detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prescription_detail', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prescription_detail'] = $prescription_detail;
 

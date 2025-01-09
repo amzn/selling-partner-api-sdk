@@ -82,9 +82,9 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'alias' => false,
-        'configuration' => false,
-        'capabilities' => false
+        'alias' => true,
+        'configuration' => true,
+        'capabilities' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setAlias(?string $alias): self
     {
         if (is_null($alias)) {
-            throw new \InvalidArgumentException('non-nullable alias cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'alias');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('alias', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['alias'] = $alias;
 
@@ -352,7 +359,14 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setConfiguration(?\OpenAPI\Client\Model\supplySources\SupplySourceConfiguration $configuration): self
     {
         if (is_null($configuration)) {
-            throw new \InvalidArgumentException('non-nullable configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['configuration'] = $configuration;
 
@@ -379,7 +393,14 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setCapabilities(?\OpenAPI\Client\Model\supplySources\SupplySourceCapabilities $capabilities): self
     {
         if (is_null($capabilities)) {
-            throw new \InvalidArgumentException('non-nullable capabilities cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capabilities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capabilities', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capabilities'] = $capabilities;
 

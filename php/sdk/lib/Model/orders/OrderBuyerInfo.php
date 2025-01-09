@@ -89,11 +89,11 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
-        'buyer_email' => false,
-        'buyer_name' => false,
-        'buyer_county' => false,
-        'buyer_tax_info' => false,
-        'purchase_order_number' => false
+        'buyer_email' => true,
+        'buyer_name' => true,
+        'buyer_county' => true,
+        'buyer_tax_info' => true,
+        'purchase_order_number' => true
     ];
 
     /**
@@ -376,7 +376,14 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerEmail(?string $buyer_email): self
     {
         if (is_null($buyer_email)) {
-            throw new \InvalidArgumentException('non-nullable buyer_email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_email', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_email'] = $buyer_email;
 
@@ -403,7 +410,14 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerName(?string $buyer_name): self
     {
         if (is_null($buyer_name)) {
-            throw new \InvalidArgumentException('non-nullable buyer_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_name'] = $buyer_name;
 
@@ -430,7 +444,14 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerCounty(?string $buyer_county): self
     {
         if (is_null($buyer_county)) {
-            throw new \InvalidArgumentException('non-nullable buyer_county cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_county');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_county', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_county'] = $buyer_county;
 
@@ -457,7 +478,14 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerTaxInfo(?\OpenAPI\Client\Model\orders\BuyerTaxInfo $buyer_tax_info): self
     {
         if (is_null($buyer_tax_info)) {
-            throw new \InvalidArgumentException('non-nullable buyer_tax_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_tax_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_tax_info', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_tax_info'] = $buyer_tax_info;
 
@@ -484,7 +512,14 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         if (is_null($purchase_order_number)) {
-            throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'purchase_order_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase_order_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['purchase_order_number'] = $purchase_order_number;
 

@@ -84,10 +84,10 @@ class CapacityReservationBillingEvent implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transaction_type' => false,
-        'posted_date' => false,
-        'description' => false,
-        'transaction_amount' => false
+        'transaction_type' => true,
+        'posted_date' => true,
+        'description' => true,
+        'transaction_amount' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class CapacityReservationBillingEvent implements ModelInterface, ArrayAccess, \J
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -359,7 +366,14 @@ class CapacityReservationBillingEvent implements ModelInterface, ArrayAccess, \J
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -386,7 +400,14 @@ class CapacityReservationBillingEvent implements ModelInterface, ArrayAccess, \J
     public function setDescription(?string $description): self
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -413,7 +434,14 @@ class CapacityReservationBillingEvent implements ModelInterface, ArrayAccess, \J
     public function setTransactionAmount(?\OpenAPI\Client\Model\financesV0\Currency $transaction_amount): self
     {
         if (is_null($transaction_amount)) {
-            throw new \InvalidArgumentException('non-nullable transaction_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_amount'] = $transaction_amount;
 

@@ -84,7 +84,7 @@ class CreateNotificationRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'template_id' => false,
         'notification_parameters' => false,
-        'marketplace_id' => false
+        'marketplace_id' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class CreateNotificationRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 

@@ -84,9 +84,9 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'child_asins' => false,
-        'parent_asins' => false,
-        'variation_theme' => false,
+        'child_asins' => true,
+        'parent_asins' => true,
+        'variation_theme' => true,
         'type' => false
     ];
 
@@ -342,7 +342,7 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets child_asins
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChildAsins(): ?array
     {
@@ -359,7 +359,14 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChildAsins(?array $child_asins): self
     {
         if (is_null($child_asins)) {
-            throw new \InvalidArgumentException('non-nullable child_asins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'child_asins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('child_asins', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['child_asins'] = $child_asins;
 
@@ -369,7 +376,7 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets parent_asins
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getParentAsins(): ?array
     {
@@ -386,7 +393,14 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentAsins(?array $parent_asins): self
     {
         if (is_null($parent_asins)) {
-            throw new \InvalidArgumentException('non-nullable parent_asins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_asins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_asins', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_asins'] = $parent_asins;
 
@@ -413,7 +427,14 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVariationTheme(?\OpenAPI\Client\Model\catalogItems\ItemVariationTheme $variation_theme): self
     {
         if (is_null($variation_theme)) {
-            throw new \InvalidArgumentException('non-nullable variation_theme cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'variation_theme');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('variation_theme', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['variation_theme'] = $variation_theme;
 

@@ -82,9 +82,9 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_links' => false,
-        '_embedded' => false,
-        'errors' => false
+        '_links' => true,
+        '_embedded' => true,
+        'errors' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     public function setLinks(?\OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponseLinks $_links): self
     {
         if (is_null($_links)) {
-            throw new \InvalidArgumentException('non-nullable _links cannot be null');
+            array_push($this->openAPINullablesSetToNull, '_links');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('_links', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['_links'] = $_links;
 
@@ -352,7 +359,14 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     public function setEmbedded(?\OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponseEmbedded $_embedded): self
     {
         if (is_null($_embedded)) {
-            throw new \InvalidArgumentException('non-nullable _embedded cannot be null');
+            array_push($this->openAPINullablesSetToNull, '_embedded');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('_embedded', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['_embedded'] = $_embedded;
 
@@ -362,7 +376,7 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -379,7 +393,14 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

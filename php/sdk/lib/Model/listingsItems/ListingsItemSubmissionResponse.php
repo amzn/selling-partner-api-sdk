@@ -89,8 +89,8 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
         'sku' => false,
         'status' => false,
         'submission_id' => false,
-        'issues' => false,
-        'identifiers' => false
+        'issues' => true,
+        'identifiers' => true
     ];
 
     /**
@@ -448,7 +448,7 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets issues
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIssues(): ?array
     {
@@ -465,7 +465,14 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
     public function setIssues(?array $issues): self
     {
         if (is_null($issues)) {
-            throw new \InvalidArgumentException('non-nullable issues cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'issues');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('issues', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['issues'] = $issues;
 
@@ -475,7 +482,7 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets identifiers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIdentifiers(): ?array
     {
@@ -492,7 +499,14 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
     public function setIdentifiers(?array $identifiers): self
     {
         if (is_null($identifiers)) {
-            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'identifiers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('identifiers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['identifiers'] = $identifiers;
 

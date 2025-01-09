@@ -80,8 +80,8 @@ class ReturnLocation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supply_source_id' => false,
-        'address_with_contact' => false
+        'supply_source_id' => true,
+        'address_with_contact' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ReturnLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSupplySourceId(?string $supply_source_id): self
     {
         if (is_null($supply_source_id)) {
-            throw new \InvalidArgumentException('non-nullable supply_source_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supply_source_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supply_source_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supply_source_id'] = $supply_source_id;
 
@@ -345,7 +352,14 @@ class ReturnLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressWithContact(?\OpenAPI\Client\Model\supplySources\AddressWithContact $address_with_contact): self
     {
         if (is_null($address_with_contact)) {
-            throw new \InvalidArgumentException('non-nullable address_with_contact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_with_contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_with_contact', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address_with_contact'] = $address_with_contact;
 

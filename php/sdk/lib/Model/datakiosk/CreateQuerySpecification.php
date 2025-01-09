@@ -81,7 +81,7 @@ class CreateQuerySpecification implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'query' => false,
-        'pagination_token' => false
+        'pagination_token' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class CreateQuerySpecification implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPaginationToken(?string $pagination_token): self
     {
         if (is_null($pagination_token)) {
-            throw new \InvalidArgumentException('non-nullable pagination_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination_token'] = $pagination_token;
 

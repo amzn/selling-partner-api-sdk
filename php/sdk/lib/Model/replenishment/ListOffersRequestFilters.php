@@ -91,11 +91,11 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'skus' => false,
-        'asins' => false,
-        'eligibilities' => false,
-        'preferences' => false,
-        'promotions' => false,
+        'skus' => true,
+        'asins' => true,
+        'eligibilities' => true,
+        'preferences' => true,
+        'promotions' => true,
         'program_types' => false
     ];
 
@@ -393,7 +393,7 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets skus
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSkus(): ?array
     {
@@ -410,13 +410,20 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public function setSkus(?array $skus): self
     {
         if (is_null($skus)) {
-            throw new \InvalidArgumentException('non-nullable skus cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'skus');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('skus', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($skus) > 20)) {
+        if (!is_null($skus) && (count($skus) > 20)) {
             throw new \InvalidArgumentException('invalid value for $skus when calling ListOffersRequestFilters., number of items must be less than or equal to 20.');
         }
-        if ((count($skus) < 1)) {
+        if (!is_null($skus) && (count($skus) < 1)) {
             throw new \InvalidArgumentException('invalid length for $skus when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['skus'] = $skus;
@@ -427,7 +434,7 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets asins
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAsins(): ?array
     {
@@ -444,13 +451,20 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAsins(?array $asins): self
     {
         if (is_null($asins)) {
-            throw new \InvalidArgumentException('non-nullable asins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asins', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($asins) > 20)) {
+        if (!is_null($asins) && (count($asins) > 20)) {
             throw new \InvalidArgumentException('invalid value for $asins when calling ListOffersRequestFilters., number of items must be less than or equal to 20.');
         }
-        if ((count($asins) < 1)) {
+        if (!is_null($asins) && (count($asins) < 1)) {
             throw new \InvalidArgumentException('invalid length for $asins when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['asins'] = $asins;
@@ -461,7 +475,7 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets eligibilities
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getEligibilities(): ?array
     {
@@ -478,11 +492,18 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public function setEligibilities(?array $eligibilities): self
     {
         if (is_null($eligibilities)) {
-            throw new \InvalidArgumentException('non-nullable eligibilities cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'eligibilities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('eligibilities', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($eligibilities) < 1)) {
+        if (!is_null($eligibilities) && (count($eligibilities) < 1)) {
             throw new \InvalidArgumentException('invalid length for $eligibilities when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['eligibilities'] = $eligibilities;
@@ -510,7 +531,14 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPreferences(?\OpenAPI\Client\Model\replenishment\Preference $preferences): self
     {
         if (is_null($preferences)) {
-            throw new \InvalidArgumentException('non-nullable preferences cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'preferences');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preferences', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['preferences'] = $preferences;
 
@@ -537,7 +565,14 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPromotions(?\OpenAPI\Client\Model\replenishment\Promotion $promotions): self
     {
         if (is_null($promotions)) {
-            throw new \InvalidArgumentException('non-nullable promotions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotions'] = $promotions;
 
@@ -547,7 +582,7 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets program_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getProgramTypes(): array
     {

@@ -84,7 +84,7 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'marketplace_id' => false,
         'shipment_status' => false,
-        'order_items' => false
+        'order_items' => true
     ];
 
     /**
@@ -368,7 +368,7 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets order_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrderItems(): ?array
     {
@@ -385,7 +385,14 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
     public function setOrderItems(?array $order_items): self
     {
         if (is_null($order_items)) {
-            throw new \InvalidArgumentException('non-nullable order_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_items'] = $order_items;
 

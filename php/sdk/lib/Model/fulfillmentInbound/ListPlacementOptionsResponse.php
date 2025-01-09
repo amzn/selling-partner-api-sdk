@@ -80,7 +80,7 @@ class ListPlacementOptionsResponse implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
+        'pagination' => true,
         'placement_options' => false
     ];
 
@@ -321,7 +321,14 @@ class ListPlacementOptionsResponse implements ModelInterface, ArrayAccess, \Json
     public function setPagination(?\OpenAPI\Client\Model\fulfillmentInbound\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -331,7 +338,7 @@ class ListPlacementOptionsResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets placement_options
      *
-     * @return arrayA
+     * @return array
      */
     public function getPlacementOptions(): array
     {

@@ -297,7 +297,7 @@ class SpdTrackingDetailInput implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets spd_tracking_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getSpdTrackingItems(): array
     {

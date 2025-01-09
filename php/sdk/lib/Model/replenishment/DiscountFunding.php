@@ -78,7 +78,7 @@ class DiscountFunding implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'percentage' => false
+        'percentage' => true
     ];
 
     /**
@@ -302,7 +302,7 @@ class DiscountFunding implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets percentage
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPercentage(): ?array
     {
@@ -319,13 +319,20 @@ class DiscountFunding implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPercentage(?array $percentage): self
     {
         if (is_null($percentage)) {
-            throw new \InvalidArgumentException('non-nullable percentage cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'percentage');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('percentage', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($percentage) > 10)) {
+        if (!is_null($percentage) && (count($percentage) > 10)) {
             throw new \InvalidArgumentException('invalid value for $percentage when calling DiscountFunding., number of items must be less than or equal to 10.');
         }
-        if ((count($percentage) < 1)) {
+        if (!is_null($percentage) && (count($percentage) < 1)) {
             throw new \InvalidArgumentException('invalid length for $percentage when calling DiscountFunding., number of items must be greater than or equal to 1.');
         }
         $this->container['percentage'] = $percentage;

@@ -80,8 +80,8 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_details' => false,
-        'address' => false
+        'contact_details' => true,
+        'address' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setContactDetails(?\OpenAPI\Client\Model\supplySources\ContactDetails $contact_details): self
     {
         if (is_null($contact_details)) {
-            throw new \InvalidArgumentException('non-nullable contact_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contact_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contact_details'] = $contact_details;
 
@@ -345,7 +352,14 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setAddress(?\OpenAPI\Client\Model\supplySources\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 

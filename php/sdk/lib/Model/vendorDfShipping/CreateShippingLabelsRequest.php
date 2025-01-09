@@ -84,7 +84,7 @@ class CreateShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'selling_party' => false,
         'ship_from_party' => false,
-        'containers' => false
+        'containers' => true
     ];
 
     /**
@@ -368,7 +368,7 @@ class CreateShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets containers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getContainers(): ?array
     {
@@ -385,7 +385,14 @@ class CreateShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
     public function setContainers(?array $containers): self
     {
         if (is_null($containers)) {
-            throw new \InvalidArgumentException('non-nullable containers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'containers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('containers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['containers'] = $containers;
 

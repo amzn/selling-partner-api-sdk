@@ -80,8 +80,8 @@ class MarketplaceDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'marketplace_id' => false,
-        'marketplace_name' => false
+        'marketplace_id' => true,
+        'marketplace_name' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class MarketplaceDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -345,7 +352,14 @@ class MarketplaceDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMarketplaceName(?string $marketplace_name): self
     {
         if (is_null($marketplace_name)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_name'] = $marketplace_name;
 

@@ -79,7 +79,7 @@ class ShipperInstruction implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_notes' => false
+        'delivery_notes' => true
     ];
 
     /**
@@ -316,9 +316,16 @@ class ShipperInstruction implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setDeliveryNotes(?string $delivery_notes): self
     {
         if (is_null($delivery_notes)) {
-            throw new \InvalidArgumentException('non-nullable delivery_notes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_notes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_notes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($delivery_notes) > 256)) {
+        if (!is_null($delivery_notes) && (mb_strlen($delivery_notes) > 256)) {
             throw new \InvalidArgumentException('invalid length for $delivery_notes when calling ShipperInstruction., must be smaller than or equal to 256.');
         }
 

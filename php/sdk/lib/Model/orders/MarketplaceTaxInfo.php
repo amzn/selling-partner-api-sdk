@@ -78,7 +78,7 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tax_classifications' => false
+        'tax_classifications' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tax_classifications
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxClassifications(): ?array
     {
@@ -311,7 +311,14 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTaxClassifications(?array $tax_classifications): self
     {
         if (is_null($tax_classifications)) {
-            throw new \InvalidArgumentException('non-nullable tax_classifications cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_classifications');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_classifications', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_classifications'] = $tax_classifications;
 

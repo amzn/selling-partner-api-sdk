@@ -83,7 +83,7 @@ class DocumentDownload implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'download_type' => false,
-        'expiration' => false,
+        'expiration' => true,
         'uri' => false
     ];
 
@@ -358,7 +358,14 @@ class DocumentDownload implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiration(?\DateTime $expiration): self
     {
         if (is_null($expiration)) {
-            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiration'] = $expiration;
 

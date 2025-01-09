@@ -334,7 +334,7 @@ class NonPartneredSmallParcelDataInput implements ModelInterface, ArrayAccess, \
     /**
      * Gets package_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackageList(): array
     {

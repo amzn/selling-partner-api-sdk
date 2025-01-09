@@ -83,8 +83,8 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'classification_ranks' => false,
-        'display_group_ranks' => false
+        'classification_ranks' => true,
+        'display_group_ranks' => true
     ];
 
     /**
@@ -338,7 +338,7 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets classification_ranks
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClassificationRanks(): ?array
     {
@@ -355,7 +355,14 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     public function setClassificationRanks(?array $classification_ranks): self
     {
         if (is_null($classification_ranks)) {
-            throw new \InvalidArgumentException('non-nullable classification_ranks cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'classification_ranks');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('classification_ranks', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['classification_ranks'] = $classification_ranks;
 
@@ -365,7 +372,7 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets display_group_ranks
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDisplayGroupRanks(): ?array
     {
@@ -382,7 +389,14 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     public function setDisplayGroupRanks(?array $display_group_ranks): self
     {
         if (is_null($display_group_ranks)) {
-            throw new \InvalidArgumentException('non-nullable display_group_ranks cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'display_group_ranks');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_group_ranks', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['display_group_ranks'] = $display_group_ranks;
 

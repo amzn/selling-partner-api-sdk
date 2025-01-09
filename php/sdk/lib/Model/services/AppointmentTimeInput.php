@@ -81,7 +81,7 @@ class AppointmentTimeInput implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'start_time' => false,
-        'duration_in_minutes' => false
+        'duration_in_minutes' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class AppointmentTimeInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setDurationInMinutes(?int $duration_in_minutes): self
     {
         if (is_null($duration_in_minutes)) {
-            throw new \InvalidArgumentException('non-nullable duration_in_minutes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'duration_in_minutes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duration_in_minutes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['duration_in_minutes'] = $duration_in_minutes;
 
