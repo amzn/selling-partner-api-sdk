@@ -47,6 +47,8 @@ class {{classname}}Test extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('{{classname}}', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -77,8 +79,7 @@ class {{classname}}Test extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -179,7 +180,7 @@ class {{classname}}Test extends TestCase
         {{#vendorExtensions.x-amzn-api-sandbox.static.0}}
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('test{{operationIdCamelCase}}{{code}}', '{{classname}}')) {
+            if ($this->testHelper->shouldSkipTest('test{{operationIdCamelCase}}{{code}}', '{{classname}}')) {
                 $this->assertTrue(true);
                 return;
             }
