@@ -87,7 +87,7 @@ try {
 
 Class | Method                                           | HTTP request | Description
 ------------ |--------------------------------------------------| ------------- | -------------
-*Orders API* | [**getOrders**](docs/Api/OrdersAPI.md#getorders) | **GET** /orders/v0/orders | Returns orders that are created or updated during the specified time period. If you want to return specific types of orders, you can apply filters to your request. NextToken doesn't affect any filters that you include in your request; it only impacts the pagination for the filtered orders response.
+*Orders API* | [**getOrders**](docs/Api/OrdersApi.md#getorders) | **GET** /orders/v0/orders | Returns orders that are created or updated during the specified time period. If you want to return specific types of orders, you can apply filters to your request. NextToken doesn't affect any filters that you include in your request; it only impacts the pagination for the filtered orders response.
 
 
 ### Giving Feedback
