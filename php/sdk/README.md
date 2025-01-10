@@ -100,3 +100,9 @@ Articulate your feature request or upvote existing ones on our [Issues][sdk-issu
 [sdk-issues]: https://github.com/amzn/selling-partner-api-sdk/issues
 
 
+
+## Disclaimer
+
+Some of the FBA and Pricing operations are still not supported. We are currently working on to make it available soon.
+
+
