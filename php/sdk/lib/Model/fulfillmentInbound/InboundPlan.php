@@ -101,9 +101,9 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_updated_at' => false,
         'marketplace_ids' => false,
         'name' => false,
-        'packing_options' => false,
-        'placement_options' => false,
-        'shipments' => false,
+        'packing_options' => true,
+        'placement_options' => true,
+        'shipments' => true,
         'source_address' => false,
         'status' => false
     ];
@@ -489,7 +489,7 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceIds(): array
     {
@@ -543,7 +543,7 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packing_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackingOptions(): ?array
     {
@@ -560,7 +560,14 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackingOptions(?array $packing_options): self
     {
         if (is_null($packing_options)) {
-            throw new \InvalidArgumentException('non-nullable packing_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packing_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packing_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['packing_options'] = $packing_options;
 
@@ -570,7 +577,7 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets placement_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPlacementOptions(): ?array
     {
@@ -587,7 +594,14 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlacementOptions(?array $placement_options): self
     {
         if (is_null($placement_options)) {
-            throw new \InvalidArgumentException('non-nullable placement_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'placement_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('placement_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['placement_options'] = $placement_options;
 
@@ -597,7 +611,7 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipments(): ?array
     {
@@ -614,7 +628,14 @@ class InboundPlan implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipments(?array $shipments): self
     {
         if (is_null($shipments)) {
-            throw new \InvalidArgumentException('non-nullable shipments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipments'] = $shipments;
 

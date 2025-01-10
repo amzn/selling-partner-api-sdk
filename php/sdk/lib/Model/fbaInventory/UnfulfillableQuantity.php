@@ -90,13 +90,13 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_unfulfillable_quantity' => false,
-        'customer_damaged_quantity' => false,
-        'warehouse_damaged_quantity' => false,
-        'distributor_damaged_quantity' => false,
-        'carrier_damaged_quantity' => false,
-        'defective_quantity' => false,
-        'expired_quantity' => false
+        'total_unfulfillable_quantity' => true,
+        'customer_damaged_quantity' => true,
+        'warehouse_damaged_quantity' => true,
+        'distributor_damaged_quantity' => true,
+        'carrier_damaged_quantity' => true,
+        'defective_quantity' => true,
+        'expired_quantity' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTotalUnfulfillableQuantity(?int $total_unfulfillable_quantity): self
     {
         if (is_null($total_unfulfillable_quantity)) {
-            throw new \InvalidArgumentException('non-nullable total_unfulfillable_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_unfulfillable_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_unfulfillable_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_unfulfillable_quantity'] = $total_unfulfillable_quantity;
 
@@ -380,7 +387,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCustomerDamagedQuantity(?int $customer_damaged_quantity): self
     {
         if (is_null($customer_damaged_quantity)) {
-            throw new \InvalidArgumentException('non-nullable customer_damaged_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_damaged_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_damaged_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_damaged_quantity'] = $customer_damaged_quantity;
 
@@ -407,7 +421,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setWarehouseDamagedQuantity(?int $warehouse_damaged_quantity): self
     {
         if (is_null($warehouse_damaged_quantity)) {
-            throw new \InvalidArgumentException('non-nullable warehouse_damaged_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warehouse_damaged_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warehouse_damaged_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warehouse_damaged_quantity'] = $warehouse_damaged_quantity;
 
@@ -434,7 +455,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDistributorDamagedQuantity(?int $distributor_damaged_quantity): self
     {
         if (is_null($distributor_damaged_quantity)) {
-            throw new \InvalidArgumentException('non-nullable distributor_damaged_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'distributor_damaged_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('distributor_damaged_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['distributor_damaged_quantity'] = $distributor_damaged_quantity;
 
@@ -461,7 +489,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCarrierDamagedQuantity(?int $carrier_damaged_quantity): self
     {
         if (is_null($carrier_damaged_quantity)) {
-            throw new \InvalidArgumentException('non-nullable carrier_damaged_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_damaged_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_damaged_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_damaged_quantity'] = $carrier_damaged_quantity;
 
@@ -488,7 +523,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDefectiveQuantity(?int $defective_quantity): self
     {
         if (is_null($defective_quantity)) {
-            throw new \InvalidArgumentException('non-nullable defective_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'defective_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('defective_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['defective_quantity'] = $defective_quantity;
 
@@ -515,7 +557,14 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setExpiredQuantity(?int $expired_quantity): self
     {
         if (is_null($expired_quantity)) {
-            throw new \InvalidArgumentException('non-nullable expired_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expired_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expired_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expired_quantity'] = $expired_quantity;
 

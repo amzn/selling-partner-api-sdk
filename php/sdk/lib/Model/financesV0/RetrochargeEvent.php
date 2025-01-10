@@ -90,13 +90,13 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retrocharge_event_type' => false,
-        'amazon_order_id' => false,
-        'posted_date' => false,
-        'base_tax' => false,
-        'shipping_tax' => false,
-        'marketplace_name' => false,
-        'retrocharge_tax_withheld_list' => false
+        'retrocharge_event_type' => true,
+        'amazon_order_id' => true,
+        'posted_date' => true,
+        'base_tax' => true,
+        'shipping_tax' => true,
+        'marketplace_name' => true,
+        'retrocharge_tax_withheld_list' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRetrochargeEventType(?string $retrocharge_event_type): self
     {
         if (is_null($retrocharge_event_type)) {
-            throw new \InvalidArgumentException('non-nullable retrocharge_event_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'retrocharge_event_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retrocharge_event_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['retrocharge_event_type'] = $retrocharge_event_type;
 
@@ -380,7 +387,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmazonOrderId(?string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
-            throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -407,7 +421,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -434,7 +455,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBaseTax(?\OpenAPI\Client\Model\financesV0\Currency $base_tax): self
     {
         if (is_null($base_tax)) {
-            throw new \InvalidArgumentException('non-nullable base_tax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'base_tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('base_tax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['base_tax'] = $base_tax;
 
@@ -461,7 +489,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShippingTax(?\OpenAPI\Client\Model\financesV0\Currency $shipping_tax): self
     {
         if (is_null($shipping_tax)) {
-            throw new \InvalidArgumentException('non-nullable shipping_tax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_tax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_tax'] = $shipping_tax;
 
@@ -488,7 +523,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceName(?string $marketplace_name): self
     {
         if (is_null($marketplace_name)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_name'] = $marketplace_name;
 
@@ -498,7 +540,7 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets retrocharge_tax_withheld_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRetrochargeTaxWithheldList(): ?array
     {
@@ -515,7 +557,14 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRetrochargeTaxWithheldList(?array $retrocharge_tax_withheld_list): self
     {
         if (is_null($retrocharge_tax_withheld_list)) {
-            throw new \InvalidArgumentException('non-nullable retrocharge_tax_withheld_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'retrocharge_tax_withheld_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retrocharge_tax_withheld_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['retrocharge_tax_withheld_list'] = $retrocharge_tax_withheld_list;
 

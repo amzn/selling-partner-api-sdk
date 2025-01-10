@@ -88,12 +88,12 @@ class InboundShipmentSummary implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'created_at' => false,
-        'external_reference_id' => false,
+        'created_at' => true,
+        'external_reference_id' => true,
         'order_id' => false,
         'shipment_id' => false,
         'shipment_status' => false,
-        'updated_at' => false
+        'updated_at' => true
     ];
 
     /**
@@ -363,7 +363,14 @@ class InboundShipmentSummary implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCreatedAt(?\DateTime $created_at): self
     {
         if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_at'] = $created_at;
 
@@ -390,7 +397,14 @@ class InboundShipmentSummary implements ModelInterface, ArrayAccess, \JsonSerial
     public function setExternalReferenceId(?string $external_reference_id): self
     {
         if (is_null($external_reference_id)) {
-            throw new \InvalidArgumentException('non-nullable external_reference_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'external_reference_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_reference_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['external_reference_id'] = $external_reference_id;
 
@@ -508,7 +522,14 @@ class InboundShipmentSummary implements ModelInterface, ArrayAccess, \JsonSerial
     public function setUpdatedAt(?\DateTime $updated_at): self
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 

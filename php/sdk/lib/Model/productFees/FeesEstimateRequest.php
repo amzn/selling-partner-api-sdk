@@ -87,10 +87,10 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'is_amazon_fulfilled' => false,
+        'is_amazon_fulfilled' => true,
         'price_to_estimate_fees' => false,
         'identifier' => false,
-        'optional_fulfillment_program' => false
+        'optional_fulfillment_program' => true
     ];
 
     /**
@@ -375,7 +375,14 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIsAmazonFulfilled(?bool $is_amazon_fulfilled): self
     {
         if (is_null($is_amazon_fulfilled)) {
-            throw new \InvalidArgumentException('non-nullable is_amazon_fulfilled cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_amazon_fulfilled');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_amazon_fulfilled', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_amazon_fulfilled'] = $is_amazon_fulfilled;
 
@@ -456,7 +463,14 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setOptionalFulfillmentProgram(?string $optional_fulfillment_program): self
     {
         if (is_null($optional_fulfillment_program)) {
-            throw new \InvalidArgumentException('non-nullable optional_fulfillment_program cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'optional_fulfillment_program');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('optional_fulfillment_program', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['optional_fulfillment_program'] = $optional_fulfillment_program;
 

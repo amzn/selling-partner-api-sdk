@@ -82,9 +82,9 @@ class TaxRate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cess_rate' => false,
-        'gst_rate' => false,
-        'tax_type' => false
+        'cess_rate' => true,
+        'gst_rate' => true,
+        'tax_type' => true
     ];
 
     /**
@@ -333,7 +333,14 @@ class TaxRate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCessRate(?float $cess_rate): self
     {
         if (is_null($cess_rate)) {
-            throw new \InvalidArgumentException('non-nullable cess_rate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cess_rate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cess_rate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cess_rate'] = $cess_rate;
 
@@ -360,7 +367,14 @@ class TaxRate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGstRate(?float $gst_rate): self
     {
         if (is_null($gst_rate)) {
-            throw new \InvalidArgumentException('non-nullable gst_rate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gst_rate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gst_rate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gst_rate'] = $gst_rate;
 
@@ -387,12 +401,19 @@ class TaxRate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxType(?string $tax_type): self
     {
         if (is_null($tax_type)) {
-            throw new \InvalidArgumentException('non-nullable tax_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($tax_type) > 1024)) {
+        if (!is_null($tax_type) && (mb_strlen($tax_type) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $tax_type when calling TaxRate., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($tax_type) < 1)) {
+        if (!is_null($tax_type) && (mb_strlen($tax_type) < 1)) {
             throw new \InvalidArgumentException('invalid length for $tax_type when calling TaxRate., must be bigger than or equal to 1.');
         }
 

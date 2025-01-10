@@ -90,13 +90,13 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact' => false,
-        'box_count' => false,
-        'seller_freight_class' => false,
-        'freight_ready_date' => false,
-        'pallet_list' => false,
-        'total_weight' => false,
-        'seller_declared_value' => false
+        'contact' => true,
+        'box_count' => true,
+        'seller_freight_class' => true,
+        'freight_ready_date' => true,
+        'pallet_list' => true,
+        'total_weight' => true,
+        'seller_declared_value' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setContact(?\OpenAPI\Client\Model\fulfillmentInboundV0\Contact $contact): self
     {
         if (is_null($contact)) {
-            throw new \InvalidArgumentException('non-nullable contact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contact'] = $contact;
 
@@ -380,7 +387,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBoxCount(?int $box_count): self
     {
         if (is_null($box_count)) {
-            throw new \InvalidArgumentException('non-nullable box_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'box_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('box_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['box_count'] = $box_count;
 
@@ -407,7 +421,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSellerFreightClass(?string $seller_freight_class): self
     {
         if (is_null($seller_freight_class)) {
-            throw new \InvalidArgumentException('non-nullable seller_freight_class cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_freight_class');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_freight_class', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_freight_class'] = $seller_freight_class;
 
@@ -434,7 +455,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFreightReadyDate(?\DateTime $freight_ready_date): self
     {
         if (is_null($freight_ready_date)) {
-            throw new \InvalidArgumentException('non-nullable freight_ready_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'freight_ready_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('freight_ready_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['freight_ready_date'] = $freight_ready_date;
 
@@ -444,7 +472,7 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets pallet_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPalletList(): ?array
     {
@@ -461,7 +489,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPalletList(?array $pallet_list): self
     {
         if (is_null($pallet_list)) {
-            throw new \InvalidArgumentException('non-nullable pallet_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pallet_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pallet_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pallet_list'] = $pallet_list;
 
@@ -488,7 +523,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTotalWeight(?\OpenAPI\Client\Model\fulfillmentInboundV0\Weight $total_weight): self
     {
         if (is_null($total_weight)) {
-            throw new \InvalidArgumentException('non-nullable total_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_weight'] = $total_weight;
 
@@ -515,7 +557,14 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSellerDeclaredValue(?\OpenAPI\Client\Model\fulfillmentInboundV0\Amount $seller_declared_value): self
     {
         if (is_null($seller_declared_value)) {
-            throw new \InvalidArgumentException('non-nullable seller_declared_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_declared_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_declared_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_declared_value'] = $seller_declared_value;
 

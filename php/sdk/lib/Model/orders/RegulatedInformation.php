@@ -297,7 +297,7 @@ class RegulatedInformation implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets fields
      *
-     * @return arrayA
+     * @return array
      */
     public function getFields(): array
     {

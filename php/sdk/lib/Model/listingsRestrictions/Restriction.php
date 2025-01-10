@@ -83,8 +83,8 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'condition_type' => false,
-        'reasons' => false
+        'condition_type' => true,
+        'reasons' => true
     ];
 
     /**
@@ -401,10 +401,17 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setConditionType(?string $condition_type): self
     {
         if (is_null($condition_type)) {
-            throw new \InvalidArgumentException('non-nullable condition_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'condition_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getConditionTypeAllowableValues();
-        if (!in_array($condition_type, $allowedValues, true)) {
+        if (!is_null($condition_type) && !in_array($condition_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'condition_type', must be one of '%s'",
@@ -421,7 +428,7 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reasons
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReasons(): ?array
     {
@@ -438,7 +445,14 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReasons(?array $reasons): self
     {
         if (is_null($reasons)) {
-            throw new \InvalidArgumentException('non-nullable reasons cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reasons');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reasons', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reasons'] = $reasons;
 

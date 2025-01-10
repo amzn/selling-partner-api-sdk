@@ -90,13 +90,13 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'height' => false,
+        'height' => true,
         'label_type' => false,
-        'locale_code' => false,
+        'locale_code' => true,
         'marketplace_id' => false,
         'msku_quantities' => false,
-        'page_type' => false,
-        'width' => false
+        'page_type' => true,
+        'width' => true
     ];
 
     /**
@@ -398,13 +398,20 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
     public function setHeight(?float $height): self
     {
         if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'height');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('height', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($height > 1E+2)) {
+        if (!is_null($height) && ($height > 1E+2)) {
             throw new \InvalidArgumentException('invalid value for $height when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 1E+2.');
         }
-        if (($height < 25)) {
+        if (!is_null($height) && ($height < 25)) {
             throw new \InvalidArgumentException('invalid value for $height when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 25.');
         }
 
@@ -460,10 +467,17 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
     public function setLocaleCode(?string $locale_code): self
     {
         if (is_null($locale_code)) {
-            throw new \InvalidArgumentException('non-nullable locale_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'locale_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[a-z]{2}_[A-Z]{2}$/", ObjectSerializer::toString($locale_code)))) {
+        if (!is_null($locale_code) && (!preg_match("/^[a-z]{2}_[A-Z]{2}$/", ObjectSerializer::toString($locale_code)))) {
             throw new \InvalidArgumentException("invalid value for \$locale_code when calling CreateMarketplaceItemLabelsRequest., must conform to the pattern /^[a-z]{2}_[A-Z]{2}$/.");
         }
 
@@ -509,7 +523,7 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
     /**
      * Gets msku_quantities
      *
-     * @return arrayA
+     * @return array
      */
     public function getMskuQuantities(): array
     {
@@ -560,7 +574,14 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
     public function setPageType(?string $page_type): self
     {
         if (is_null($page_type)) {
-            throw new \InvalidArgumentException('non-nullable page_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'page_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['page_type'] = $page_type;
 
@@ -587,13 +608,20 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
     public function setWidth(?float $width): self
     {
         if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'width');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('width', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($width > 1E+2)) {
+        if (!is_null($width) && ($width > 1E+2)) {
             throw new \InvalidArgumentException('invalid value for $width when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 1E+2.');
         }
-        if (($width < 25)) {
+        if (!is_null($width) && ($width < 25)) {
             throw new \InvalidArgumentException('invalid value for $width when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 25.');
         }
 

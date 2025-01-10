@@ -78,7 +78,7 @@ class GetMyFeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fees_estimate_result' => false
+        'fees_estimate_result' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetMyFeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSeria
     public function setFeesEstimateResult(?\OpenAPI\Client\Model\productFees\FeesEstimateResult $fees_estimate_result): self
     {
         if (is_null($fees_estimate_result)) {
-            throw new \InvalidArgumentException('non-nullable fees_estimate_result cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fees_estimate_result');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fees_estimate_result', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fees_estimate_result'] = $fees_estimate_result;
 

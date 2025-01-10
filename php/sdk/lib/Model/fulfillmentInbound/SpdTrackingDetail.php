@@ -78,7 +78,7 @@ class SpdTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'spd_tracking_items' => false
+        'spd_tracking_items' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class SpdTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets spd_tracking_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSpdTrackingItems(): ?array
     {
@@ -311,7 +311,14 @@ class SpdTrackingDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setSpdTrackingItems(?array $spd_tracking_items): self
     {
         if (is_null($spd_tracking_items)) {
-            throw new \InvalidArgumentException('non-nullable spd_tracking_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'spd_tracking_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spd_tracking_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['spd_tracking_items'] = $spd_tracking_items;
 

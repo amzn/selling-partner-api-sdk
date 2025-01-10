@@ -88,9 +88,9 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
         'registered_business_address' => false,
-        'company_registration_number' => false,
-        'company_tax_identification_number' => false,
-        'non_latin_name' => false
+        'company_registration_number' => true,
+        'company_tax_identification_number' => true,
+        'non_latin_name' => true
     ];
 
     /**
@@ -399,7 +399,14 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCompanyRegistrationNumber(?string $company_registration_number): self
     {
         if (is_null($company_registration_number)) {
-            throw new \InvalidArgumentException('non-nullable company_registration_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'company_registration_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_registration_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['company_registration_number'] = $company_registration_number;
 
@@ -426,7 +433,14 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCompanyTaxIdentificationNumber(?string $company_tax_identification_number): self
     {
         if (is_null($company_tax_identification_number)) {
-            throw new \InvalidArgumentException('non-nullable company_tax_identification_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'company_tax_identification_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_tax_identification_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['company_tax_identification_number'] = $company_tax_identification_number;
 
@@ -453,7 +467,14 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNonLatinName(?string $non_latin_name): self
     {
         if (is_null($non_latin_name)) {
-            throw new \InvalidArgumentException('non-nullable non_latin_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'non_latin_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('non_latin_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['non_latin_name'] = $non_latin_name;
 

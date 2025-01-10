@@ -77,7 +77,7 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'schema' => false
+        'schema' => true
     ];
 
     /**
@@ -310,7 +310,14 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
     public function setSchema(?\OpenAPI\Client\Model\solicitations\GetSchemaResponse $schema): self
     {
         if (is_null($schema)) {
-            throw new \InvalidArgumentException('non-nullable schema cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'schema');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('schema', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['schema'] = $schema;
 

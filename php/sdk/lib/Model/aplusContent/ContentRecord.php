@@ -83,8 +83,8 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'content_reference_key' => false,
-        'content_metadata' => false,
-        'content_document' => false
+        'content_metadata' => true,
+        'content_document' => true
     ];
 
     /**
@@ -364,7 +364,14 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContentMetadata(?\OpenAPI\Client\Model\aplusContent\ContentMetadata $content_metadata): self
     {
         if (is_null($content_metadata)) {
-            throw new \InvalidArgumentException('non-nullable content_metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_metadata', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['content_metadata'] = $content_metadata;
 
@@ -391,7 +398,14 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContentDocument(?\OpenAPI\Client\Model\aplusContent\ContentDocument $content_document): self
     {
         if (is_null($content_document)) {
-            throw new \InvalidArgumentException('non-nullable content_document cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_document');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_document', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['content_document'] = $content_document;
 

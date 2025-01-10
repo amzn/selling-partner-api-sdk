@@ -81,7 +81,7 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'marketplace_asin' => false,
-        'sku_identifier' => false
+        'sku_identifier' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSkuIdentifier(?\OpenAPI\Client\Model\pricingV0\SellerSKUIdentifier $sku_identifier): self
     {
         if (is_null($sku_identifier)) {
-            throw new \InvalidArgumentException('non-nullable sku_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku_identifier'] = $sku_identifier;
 

@@ -55,6 +55,8 @@ class MerchantFulfillmentApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('MerchantFulfillmentApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class MerchantFulfillmentApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelShipment200', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelShipment200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -293,7 +294,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelShipment400', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelShipment400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -423,7 +424,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateShipment200', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateShipment200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -619,7 +620,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateShipment400', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateShipment400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -784,7 +785,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs200', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -883,7 +884,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs400', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAdditionalSellerInputs400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1026,7 +1027,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices200', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1214,7 +1215,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices400', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetEligibleShipmentServices400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1377,7 +1378,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetShipment200', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetShipment200', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1540,7 +1541,7 @@ class MerchantFulfillmentApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetShipment400', 'MerchantFulfillmentApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetShipment400', 'MerchantFulfillmentApi')) {
                 $this->assertTrue(true);
                 return;
             }

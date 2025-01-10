@@ -80,8 +80,8 @@ class ConfirmPreorderResult implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'confirmed_need_by_date' => false,
-        'confirmed_fulfillable_date' => false
+        'confirmed_need_by_date' => true,
+        'confirmed_fulfillable_date' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ConfirmPreorderResult implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setConfirmedNeedByDate(?\DateTime $confirmed_need_by_date): self
     {
         if (is_null($confirmed_need_by_date)) {
-            throw new \InvalidArgumentException('non-nullable confirmed_need_by_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'confirmed_need_by_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('confirmed_need_by_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['confirmed_need_by_date'] = $confirmed_need_by_date;
 
@@ -345,7 +352,14 @@ class ConfirmPreorderResult implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setConfirmedFulfillableDate(?\DateTime $confirmed_fulfillable_date): self
     {
         if (is_null($confirmed_fulfillable_date)) {
-            throw new \InvalidArgumentException('non-nullable confirmed_fulfillable_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'confirmed_fulfillable_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('confirmed_fulfillable_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['confirmed_fulfillable_date'] = $confirmed_fulfillable_date;
 

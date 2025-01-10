@@ -80,8 +80,8 @@ class DirectPayment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'direct_payment_type' => false,
-        'direct_payment_amount' => false
+        'direct_payment_type' => true,
+        'direct_payment_amount' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class DirectPayment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDirectPaymentType(?string $direct_payment_type): self
     {
         if (is_null($direct_payment_type)) {
-            throw new \InvalidArgumentException('non-nullable direct_payment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'direct_payment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('direct_payment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['direct_payment_type'] = $direct_payment_type;
 
@@ -345,7 +352,14 @@ class DirectPayment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDirectPaymentAmount(?\OpenAPI\Client\Model\financesV0\Currency $direct_payment_amount): self
     {
         if (is_null($direct_payment_amount)) {
-            throw new \InvalidArgumentException('non-nullable direct_payment_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'direct_payment_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('direct_payment_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['direct_payment_amount'] = $direct_payment_amount;
 

@@ -82,9 +82,9 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'breakdown_type' => false,
-        'breakdown_amount' => false,
-        'breakdowns' => false
+        'breakdown_type' => true,
+        'breakdown_amount' => true,
+        'breakdowns' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBreakdownType(?string $breakdown_type): self
     {
         if (is_null($breakdown_type)) {
-            throw new \InvalidArgumentException('non-nullable breakdown_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'breakdown_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('breakdown_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['breakdown_type'] = $breakdown_type;
 
@@ -352,7 +359,14 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBreakdownAmount(?\OpenAPI\Client\Model\finances\Currency $breakdown_amount): self
     {
         if (is_null($breakdown_amount)) {
-            throw new \InvalidArgumentException('non-nullable breakdown_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'breakdown_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('breakdown_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['breakdown_amount'] = $breakdown_amount;
 
@@ -379,7 +393,14 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBreakdowns(?\OpenAPI\Client\Model\finances\Breakdown $breakdowns): self
     {
         if (is_null($breakdowns)) {
-            throw new \InvalidArgumentException('non-nullable breakdowns cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'breakdowns');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('breakdowns', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['breakdowns'] = $breakdowns;
 

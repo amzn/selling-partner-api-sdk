@@ -87,11 +87,11 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'client_reference_details' => false,
-        'max_results' => false,
-        'carrier_id' => false,
-        'ship_from_address' => false,
-        'date_range' => false
+        'client_reference_details' => true,
+        'max_results' => true,
+        'carrier_id' => true,
+        'ship_from_address' => true,
+        'date_range' => true
     ];
 
     /**
@@ -323,7 +323,7 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets client_reference_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClientReferenceDetails(): ?array
     {
@@ -340,7 +340,14 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
     public function setClientReferenceDetails(?array $client_reference_details): self
     {
         if (is_null($client_reference_details)) {
-            throw new \InvalidArgumentException('non-nullable client_reference_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'client_reference_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('client_reference_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['client_reference_details'] = $client_reference_details;
 
@@ -367,7 +374,14 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
     public function setMaxResults(?int $max_results): self
     {
         if (is_null($max_results)) {
-            throw new \InvalidArgumentException('non-nullable max_results cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_results');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_results', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_results'] = $max_results;
 
@@ -394,7 +408,14 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
     public function setCarrierId(?string $carrier_id): self
     {
         if (is_null($carrier_id)) {
-            throw new \InvalidArgumentException('non-nullable carrier_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_id'] = $carrier_id;
 
@@ -421,7 +442,14 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
     public function setShipFromAddress(?\OpenAPI\Client\Model\shipping\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
-            throw new \InvalidArgumentException('non-nullable ship_from_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_from_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_from_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_from_address'] = $ship_from_address;
 
@@ -448,7 +476,14 @@ class GetCollectionFormHistoryRequest implements ModelInterface, ArrayAccess, \J
     public function setDateRange(?\OpenAPI\Client\Model\shipping\DateRange $date_range): self
     {
         if (is_null($date_range)) {
-            throw new \InvalidArgumentException('non-nullable date_range cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date_range');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_range', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date_range'] = $date_range;
 

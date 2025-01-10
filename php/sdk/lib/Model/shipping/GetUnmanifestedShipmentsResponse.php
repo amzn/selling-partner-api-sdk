@@ -79,7 +79,7 @@ class GetUnmanifestedShipmentsResponse implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'unmanifested_carrier_information_list' => false
+        'unmanifested_carrier_information_list' => true
     ];
 
     /**
@@ -295,7 +295,7 @@ class GetUnmanifestedShipmentsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets unmanifested_carrier_information_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getUnmanifestedCarrierInformationList(): ?array
     {
@@ -312,7 +312,14 @@ class GetUnmanifestedShipmentsResponse implements ModelInterface, ArrayAccess, \
     public function setUnmanifestedCarrierInformationList(?array $unmanifested_carrier_information_list): self
     {
         if (is_null($unmanifested_carrier_information_list)) {
-            throw new \InvalidArgumentException('non-nullable unmanifested_carrier_information_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unmanifested_carrier_information_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unmanifested_carrier_information_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unmanifested_carrier_information_list'] = $unmanifested_carrier_information_list;
 

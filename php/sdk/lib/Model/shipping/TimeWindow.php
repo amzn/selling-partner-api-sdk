@@ -81,8 +81,8 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start' => false,
-        'end' => false
+        'start' => true,
+        'end' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStart(?\DateTime $start): self
     {
         if (is_null($start)) {
-            throw new \InvalidArgumentException('non-nullable start cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start'] = $start;
 
@@ -346,7 +353,14 @@ class TimeWindow implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEnd(?\DateTime $end): self
     {
         if (is_null($end)) {
-            throw new \InvalidArgumentException('non-nullable end cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end'] = $end;
 

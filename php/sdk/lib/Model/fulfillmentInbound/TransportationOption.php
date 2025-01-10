@@ -93,9 +93,9 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'carrier' => false,
-        'carrier_appointment' => false,
+        'carrier_appointment' => true,
         'preconditions' => false,
-        'quote' => false,
+        'quote' => true,
         'shipment_id' => false,
         'shipping_mode' => false,
         'shipping_solution' => false,
@@ -445,7 +445,14 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCarrierAppointment(?\OpenAPI\Client\Model\fulfillmentInbound\CarrierAppointment $carrier_appointment): self
     {
         if (is_null($carrier_appointment)) {
-            throw new \InvalidArgumentException('non-nullable carrier_appointment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_appointment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_appointment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_appointment'] = $carrier_appointment;
 
@@ -455,7 +462,7 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets preconditions
      *
-     * @return arrayA
+     * @return array
      */
     public function getPreconditions(): array
     {
@@ -499,7 +506,14 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setQuote(?\OpenAPI\Client\Model\fulfillmentInbound\Quote $quote): self
     {
         if (is_null($quote)) {
-            throw new \InvalidArgumentException('non-nullable quote cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quote');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quote', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quote'] = $quote;
 

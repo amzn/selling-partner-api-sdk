@@ -80,8 +80,8 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
-        'transport_labels' => false
+        'pagination' => true,
+        'transport_labels' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPagination(?\OpenAPI\Client\Model\vendorShipments\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -328,7 +335,7 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets transport_labels
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransportLabels(): ?array
     {
@@ -345,7 +352,14 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTransportLabels(?array $transport_labels): self
     {
         if (is_null($transport_labels)) {
-            throw new \InvalidArgumentException('non-nullable transport_labels cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transport_labels');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transport_labels', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transport_labels'] = $transport_labels;
 

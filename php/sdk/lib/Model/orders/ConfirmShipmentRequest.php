@@ -83,7 +83,7 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'package_detail' => false,
-        'cod_collection_method' => false,
+        'cod_collection_method' => true,
         'marketplace_id' => false
     ];
 
@@ -380,10 +380,17 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCodCollectionMethod(?string $cod_collection_method): self
     {
         if (is_null($cod_collection_method)) {
-            throw new \InvalidArgumentException('non-nullable cod_collection_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_collection_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_collection_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getCodCollectionMethodAllowableValues();
-        if (!in_array($cod_collection_method, $allowedValues, true)) {
+        if (!is_null($cod_collection_method) && !in_array($cod_collection_method, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'cod_collection_method', must be one of '%s'",

@@ -83,7 +83,7 @@ class ListOfferMetricsRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'pagination' => false,
-        'sort' => false,
+        'sort' => true,
         'filters' => false
     ];
 
@@ -358,7 +358,14 @@ class ListOfferMetricsRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSort(?\OpenAPI\Client\Model\replenishment\ListOfferMetricsRequestSort $sort): self
     {
         if (is_null($sort)) {
-            throw new \InvalidArgumentException('non-nullable sort cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sort');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sort', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sort'] = $sort;
 

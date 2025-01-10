@@ -78,7 +78,7 @@ class ExportInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'export_id' => false
+        'export_id' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class ExportInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setExportId(?string $export_id): self
     {
         if (is_null($export_id)) {
-            throw new \InvalidArgumentException('non-nullable export_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'export_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('export_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['export_id'] = $export_id;
 

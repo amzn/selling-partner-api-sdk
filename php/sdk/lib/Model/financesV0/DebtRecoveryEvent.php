@@ -86,11 +86,11 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'debt_recovery_type' => false,
-        'recovery_amount' => false,
-        'over_payment_credit' => false,
-        'debt_recovery_item_list' => false,
-        'charge_instrument_list' => false
+        'debt_recovery_type' => true,
+        'recovery_amount' => true,
+        'over_payment_credit' => true,
+        'debt_recovery_item_list' => true,
+        'charge_instrument_list' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setDebtRecoveryType(?string $debt_recovery_type): self
     {
         if (is_null($debt_recovery_type)) {
-            throw new \InvalidArgumentException('non-nullable debt_recovery_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'debt_recovery_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('debt_recovery_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['debt_recovery_type'] = $debt_recovery_type;
 
@@ -366,7 +373,14 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setRecoveryAmount(?\OpenAPI\Client\Model\financesV0\Currency $recovery_amount): self
     {
         if (is_null($recovery_amount)) {
-            throw new \InvalidArgumentException('non-nullable recovery_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'recovery_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('recovery_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['recovery_amount'] = $recovery_amount;
 
@@ -393,7 +407,14 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setOverPaymentCredit(?\OpenAPI\Client\Model\financesV0\Currency $over_payment_credit): self
     {
         if (is_null($over_payment_credit)) {
-            throw new \InvalidArgumentException('non-nullable over_payment_credit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'over_payment_credit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('over_payment_credit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['over_payment_credit'] = $over_payment_credit;
 
@@ -403,7 +424,7 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets debt_recovery_item_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDebtRecoveryItemList(): ?array
     {
@@ -420,7 +441,14 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setDebtRecoveryItemList(?array $debt_recovery_item_list): self
     {
         if (is_null($debt_recovery_item_list)) {
-            throw new \InvalidArgumentException('non-nullable debt_recovery_item_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'debt_recovery_item_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('debt_recovery_item_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['debt_recovery_item_list'] = $debt_recovery_item_list;
 
@@ -430,7 +458,7 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets charge_instrument_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChargeInstrumentList(): ?array
     {
@@ -447,7 +475,14 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setChargeInstrumentList(?array $charge_instrument_list): self
     {
         if (is_null($charge_instrument_list)) {
-            throw new \InvalidArgumentException('non-nullable charge_instrument_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_instrument_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_instrument_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_instrument_list'] = $charge_instrument_list;
 

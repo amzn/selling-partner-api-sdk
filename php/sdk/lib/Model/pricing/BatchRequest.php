@@ -86,8 +86,8 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'uri' => false,
         'method' => false,
-        'body' => false,
-        'headers' => false
+        'body' => true,
+        'headers' => true
     ];
 
     /**
@@ -392,7 +392,14 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBody(?array $body): self
     {
         if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'body');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('body', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['body'] = $body;
 
@@ -419,7 +426,14 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeaders(?array $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 

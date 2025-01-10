@@ -80,8 +80,8 @@ class AplusPaginatedResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'warnings' => false,
-        'next_page_token' => false
+        'warnings' => true,
+        'next_page_token' => true
     ];
 
     /**
@@ -305,7 +305,7 @@ class AplusPaginatedResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets warnings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWarnings(): ?array
     {
@@ -322,7 +322,14 @@ class AplusPaginatedResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setWarnings(?array $warnings): self
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
@@ -351,10 +358,17 @@ class AplusPaginatedResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setNextPageToken(?string $next_page_token): self
     {
         if (is_null($next_page_token)) {
-            throw new \InvalidArgumentException('non-nullable next_page_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_page_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_page_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($next_page_token) < 1)) {
+        if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
             throw new \InvalidArgumentException('invalid length for $next_page_token when calling AplusPaginatedResponse., must be bigger than or equal to 1.');
         }
 

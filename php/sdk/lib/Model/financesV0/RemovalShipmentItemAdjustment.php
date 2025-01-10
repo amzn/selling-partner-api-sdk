@@ -90,13 +90,13 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'removal_shipment_item_id' => false,
-        'tax_collection_model' => false,
-        'fulfillment_network_sku' => false,
-        'adjusted_quantity' => false,
-        'revenue_adjustment' => false,
-        'tax_amount_adjustment' => false,
-        'tax_withheld_adjustment' => false
+        'removal_shipment_item_id' => true,
+        'tax_collection_model' => true,
+        'fulfillment_network_sku' => true,
+        'adjusted_quantity' => true,
+        'revenue_adjustment' => true,
+        'tax_amount_adjustment' => true,
+        'tax_withheld_adjustment' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setRemovalShipmentItemId(?string $removal_shipment_item_id): self
     {
         if (is_null($removal_shipment_item_id)) {
-            throw new \InvalidArgumentException('non-nullable removal_shipment_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'removal_shipment_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('removal_shipment_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['removal_shipment_item_id'] = $removal_shipment_item_id;
 
@@ -380,7 +387,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setTaxCollectionModel(?string $tax_collection_model): self
     {
         if (is_null($tax_collection_model)) {
-            throw new \InvalidArgumentException('non-nullable tax_collection_model cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_collection_model');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_collection_model', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_collection_model'] = $tax_collection_model;
 
@@ -407,7 +421,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setFulfillmentNetworkSku(?string $fulfillment_network_sku): self
     {
         if (is_null($fulfillment_network_sku)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_network_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_network_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_network_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_network_sku'] = $fulfillment_network_sku;
 
@@ -434,7 +455,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setAdjustedQuantity(?int $adjusted_quantity): self
     {
         if (is_null($adjusted_quantity)) {
-            throw new \InvalidArgumentException('non-nullable adjusted_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adjusted_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjusted_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adjusted_quantity'] = $adjusted_quantity;
 
@@ -461,7 +489,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setRevenueAdjustment(?\OpenAPI\Client\Model\financesV0\Currency $revenue_adjustment): self
     {
         if (is_null($revenue_adjustment)) {
-            throw new \InvalidArgumentException('non-nullable revenue_adjustment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'revenue_adjustment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_adjustment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['revenue_adjustment'] = $revenue_adjustment;
 
@@ -488,7 +523,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setTaxAmountAdjustment(?\OpenAPI\Client\Model\financesV0\Currency $tax_amount_adjustment): self
     {
         if (is_null($tax_amount_adjustment)) {
-            throw new \InvalidArgumentException('non-nullable tax_amount_adjustment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_amount_adjustment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_amount_adjustment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_amount_adjustment'] = $tax_amount_adjustment;
 
@@ -515,7 +557,14 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     public function setTaxWithheldAdjustment(?\OpenAPI\Client\Model\financesV0\Currency $tax_withheld_adjustment): self
     {
         if (is_null($tax_withheld_adjustment)) {
-            throw new \InvalidArgumentException('non-nullable tax_withheld_adjustment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_withheld_adjustment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_withheld_adjustment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_withheld_adjustment'] = $tax_withheld_adjustment;
 

@@ -386,7 +386,7 @@ class MskuPrepDetailInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets prep_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getPrepTypes(): array
     {

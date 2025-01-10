@@ -89,11 +89,11 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'asin' => false,
-        'badge_set' => false,
-        'parent' => false,
-        'title' => false,
-        'image_url' => false,
-        'content_reference_key_set' => false
+        'badge_set' => true,
+        'parent' => true,
+        'title' => true,
+        'image_url' => true,
+        'content_reference_key_set' => true
     ];
 
     /**
@@ -380,7 +380,7 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets badge_set
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getBadgeSet(): ?array
     {
@@ -397,7 +397,14 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBadgeSet(?array $badge_set): self
     {
         if (is_null($badge_set)) {
-            throw new \InvalidArgumentException('non-nullable badge_set cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'badge_set');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('badge_set', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
@@ -426,10 +433,17 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParent(?string $parent): self
     {
         if (is_null($parent)) {
-            throw new \InvalidArgumentException('non-nullable parent cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($parent) < 10)) {
+        if (!is_null($parent) && (mb_strlen($parent) < 10)) {
             throw new \InvalidArgumentException('invalid length for $parent when calling AsinMetadata., must be bigger than or equal to 10.');
         }
 
@@ -458,10 +472,17 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($title) < 1)) {
+        if (!is_null($title) && (mb_strlen($title) < 1)) {
             throw new \InvalidArgumentException('invalid length for $title when calling AsinMetadata., must be bigger than or equal to 1.');
         }
 
@@ -490,10 +511,17 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImageUrl(?string $image_url): self
     {
         if (is_null($image_url)) {
-            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image_url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($image_url) < 1)) {
+        if (!is_null($image_url) && (mb_strlen($image_url) < 1)) {
             throw new \InvalidArgumentException('invalid length for $image_url when calling AsinMetadata., must be bigger than or equal to 1.');
         }
 
@@ -505,7 +533,7 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets content_reference_key_set
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getContentReferenceKeySet(): ?array
     {
@@ -522,7 +550,14 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContentReferenceKeySet(?array $content_reference_key_set): self
     {
         if (is_null($content_reference_key_set)) {
-            throw new \InvalidArgumentException('non-nullable content_reference_key_set cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_reference_key_set');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_reference_key_set', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

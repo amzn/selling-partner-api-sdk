@@ -88,9 +88,9 @@ class CreateReportScheduleSpecification implements ModelInterface, ArrayAccess, 
     protected static array $openAPINullables = [
         'report_type' => false,
         'marketplace_ids' => false,
-        'report_options' => false,
+        'report_options' => true,
         'period' => false,
-        'next_report_creation_time' => false
+        'next_report_creation_time' => true
     ];
 
     /**
@@ -422,7 +422,7 @@ class CreateReportScheduleSpecification implements ModelInterface, ArrayAccess, 
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceIds(): array
     {
@@ -473,7 +473,14 @@ class CreateReportScheduleSpecification implements ModelInterface, ArrayAccess, 
     public function setReportOptions(?array $report_options): self
     {
         if (is_null($report_options)) {
-            throw new \InvalidArgumentException('non-nullable report_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'report_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['report_options'] = $report_options;
 
@@ -537,7 +544,14 @@ class CreateReportScheduleSpecification implements ModelInterface, ArrayAccess, 
     public function setNextReportCreationTime(?\DateTime $next_report_creation_time): self
     {
         if (is_null($next_report_creation_time)) {
-            throw new \InvalidArgumentException('non-nullable next_report_creation_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_report_creation_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_report_creation_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_report_creation_time'] = $next_report_creation_time;
 

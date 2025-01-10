@@ -80,8 +80,8 @@ class Technician implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'technician_id' => false,
-        'name' => false
+        'technician_id' => true,
+        'name' => true
     ];
 
     /**
@@ -326,12 +326,19 @@ class Technician implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTechnicianId(?string $technician_id): self
     {
         if (is_null($technician_id)) {
-            throw new \InvalidArgumentException('non-nullable technician_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'technician_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('technician_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($technician_id) > 50)) {
+        if (!is_null($technician_id) && (mb_strlen($technician_id) > 50)) {
             throw new \InvalidArgumentException('invalid length for $technician_id when calling Technician., must be smaller than or equal to 50.');
         }
-        if ((mb_strlen($technician_id) < 1)) {
+        if (!is_null($technician_id) && (mb_strlen($technician_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $technician_id when calling Technician., must be bigger than or equal to 1.');
         }
 
@@ -360,7 +367,14 @@ class Technician implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 

@@ -80,8 +80,8 @@ class Audience implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => false,
-        'display_name' => false
+        'value' => true,
+        'display_name' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class Audience implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue(?string $value): self
     {
         if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value'] = $value;
 
@@ -345,7 +352,14 @@ class Audience implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDisplayName(?string $display_name): self
     {
         if (is_null($display_name)) {
-            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'display_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['display_name'] = $display_name;
 

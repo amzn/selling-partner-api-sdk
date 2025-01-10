@@ -80,8 +80,8 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'currency_code' => false,
-        'currency_amount' => false
+        'currency_code' => true,
+        'currency_amount' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrencyCode(?string $currency_code): self
     {
         if (is_null($currency_code)) {
-            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency_code'] = $currency_code;
 
@@ -345,7 +352,14 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrencyAmount(?float $currency_amount): self
     {
         if (is_null($currency_amount)) {
-            throw new \InvalidArgumentException('non-nullable currency_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency_amount'] = $currency_amount;
 

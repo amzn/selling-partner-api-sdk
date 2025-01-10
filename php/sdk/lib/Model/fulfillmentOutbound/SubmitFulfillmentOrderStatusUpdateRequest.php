@@ -78,7 +78,7 @@ class SubmitFulfillmentOrderStatusUpdateRequest implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fulfillment_order_status' => false
+        'fulfillment_order_status' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class SubmitFulfillmentOrderStatusUpdateRequest implements ModelInterface, Array
     public function setFulfillmentOrderStatus(?string $fulfillment_order_status): self
     {
         if (is_null($fulfillment_order_status)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_order_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_order_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_order_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_order_status'] = $fulfillment_order_status;
 

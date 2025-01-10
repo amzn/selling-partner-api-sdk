@@ -297,7 +297,7 @@ class ReportScheduleList implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets report_schedules
      *
-     * @return arrayA
+     * @return array
      */
     public function getReportSchedules(): array
     {

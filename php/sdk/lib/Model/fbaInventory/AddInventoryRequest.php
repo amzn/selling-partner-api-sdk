@@ -78,7 +78,7 @@ class AddInventoryRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inventory_items' => false
+        'inventory_items' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class AddInventoryRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets inventory_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInventoryItems(): ?array
     {
@@ -311,7 +311,14 @@ class AddInventoryRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setInventoryItems(?array $inventory_items): self
     {
         if (is_null($inventory_items)) {
-            throw new \InvalidArgumentException('non-nullable inventory_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inventory_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inventory_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inventory_items'] = $inventory_items;
 

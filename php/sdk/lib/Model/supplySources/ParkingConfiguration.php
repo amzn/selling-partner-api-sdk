@@ -82,9 +82,9 @@ class ParkingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'parking_cost_type' => false,
-        'parking_spot_identification_type' => false,
-        'number_of_parking_spots' => false
+        'parking_cost_type' => true,
+        'parking_spot_identification_type' => true,
+        'number_of_parking_spots' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class ParkingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setParkingCostType(?string $parking_cost_type): self
     {
         if (is_null($parking_cost_type)) {
-            throw new \InvalidArgumentException('non-nullable parking_cost_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parking_cost_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parking_cost_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parking_cost_type'] = $parking_cost_type;
 
@@ -356,7 +363,14 @@ class ParkingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setParkingSpotIdentificationType(?string $parking_spot_identification_type): self
     {
         if (is_null($parking_spot_identification_type)) {
-            throw new \InvalidArgumentException('non-nullable parking_spot_identification_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parking_spot_identification_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parking_spot_identification_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parking_spot_identification_type'] = $parking_spot_identification_type;
 
@@ -383,10 +397,17 @@ class ParkingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNumberOfParkingSpots(?int $number_of_parking_spots): self
     {
         if (is_null($number_of_parking_spots)) {
-            throw new \InvalidArgumentException('non-nullable number_of_parking_spots cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'number_of_parking_spots');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('number_of_parking_spots', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($number_of_parking_spots < 0)) {
+        if (!is_null($number_of_parking_spots) && ($number_of_parking_spots < 0)) {
             throw new \InvalidArgumentException('invalid value for $number_of_parking_spots when calling ParkingConfiguration., must be bigger than or equal to 0.');
         }
 

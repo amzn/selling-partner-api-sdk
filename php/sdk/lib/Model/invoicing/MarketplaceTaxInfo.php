@@ -82,9 +82,9 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'company_legal_name' => false,
-        'taxing_region' => false,
-        'tax_classifications' => false
+        'company_legal_name' => true,
+        'taxing_region' => true,
+        'tax_classifications' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCompanyLegalName(?string $company_legal_name): self
     {
         if (is_null($company_legal_name)) {
-            throw new \InvalidArgumentException('non-nullable company_legal_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'company_legal_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_legal_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['company_legal_name'] = $company_legal_name;
 
@@ -352,7 +359,14 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTaxingRegion(?string $taxing_region): self
     {
         if (is_null($taxing_region)) {
-            throw new \InvalidArgumentException('non-nullable taxing_region cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'taxing_region');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxing_region', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['taxing_region'] = $taxing_region;
 
@@ -362,7 +376,7 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tax_classifications
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxClassifications(): ?array
     {
@@ -379,7 +393,14 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTaxClassifications(?array $tax_classifications): self
     {
         if (is_null($tax_classifications)) {
-            throw new \InvalidArgumentException('non-nullable tax_classifications cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_classifications');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_classifications', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_classifications'] = $tax_classifications;
 

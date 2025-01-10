@@ -78,7 +78,7 @@ class TransactionReference implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transaction_id' => false
+        'transaction_id' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class TransactionReference implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTransactionId(?string $transaction_id): self
     {
         if (is_null($transaction_id)) {
-            throw new \InvalidArgumentException('non-nullable transaction_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_id'] = $transaction_id;
 

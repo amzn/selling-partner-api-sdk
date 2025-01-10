@@ -81,7 +81,7 @@ class IssueExemption implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'expiry_date' => false
+        'expiry_date' => true
     ];
 
     /**
@@ -384,7 +384,14 @@ class IssueExemption implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiryDate(?\DateTime $expiry_date): self
     {
         if (is_null($expiry_date)) {
-            throw new \InvalidArgumentException('non-nullable expiry_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiry_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiry_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiry_date'] = $expiry_date;
 

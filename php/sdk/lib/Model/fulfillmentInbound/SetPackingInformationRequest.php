@@ -301,7 +301,7 @@ class SetPackingInformationRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets package_groupings
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackageGroupings(): array
     {

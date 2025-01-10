@@ -55,6 +55,8 @@ class FbaInboundApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('FbaInboundApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class FbaInboundApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview200', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview200', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -234,7 +235,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview400', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview400', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -315,7 +316,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview401', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview401', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -396,7 +397,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview403', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview403', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -471,7 +472,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview404', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview404', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -552,7 +553,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview429', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview429', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -633,7 +634,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview500', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview500', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -714,7 +715,7 @@ class FbaInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview503', 'FbaInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetItemEligibilityPreview503', 'FbaInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }

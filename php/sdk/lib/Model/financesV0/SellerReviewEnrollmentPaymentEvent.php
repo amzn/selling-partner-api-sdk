@@ -88,12 +88,12 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'enrollment_id' => false,
-        'parent_asin' => false,
-        'fee_component' => false,
-        'charge_component' => false,
-        'total_amount' => false
+        'posted_date' => true,
+        'enrollment_id' => true,
+        'parent_asin' => true,
+        'fee_component' => true,
+        'charge_component' => true,
+        'total_amount' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -373,7 +380,14 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     public function setEnrollmentId(?string $enrollment_id): self
     {
         if (is_null($enrollment_id)) {
-            throw new \InvalidArgumentException('non-nullable enrollment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'enrollment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enrollment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['enrollment_id'] = $enrollment_id;
 
@@ -400,7 +414,14 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     public function setParentAsin(?string $parent_asin): self
     {
         if (is_null($parent_asin)) {
-            throw new \InvalidArgumentException('non-nullable parent_asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_asin'] = $parent_asin;
 
@@ -427,7 +448,14 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     public function setFeeComponent(?\OpenAPI\Client\Model\financesV0\FeeComponent $fee_component): self
     {
         if (is_null($fee_component)) {
-            throw new \InvalidArgumentException('non-nullable fee_component cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_component');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_component', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_component'] = $fee_component;
 
@@ -454,7 +482,14 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     public function setChargeComponent(?\OpenAPI\Client\Model\financesV0\ChargeComponent $charge_component): self
     {
         if (is_null($charge_component)) {
-            throw new \InvalidArgumentException('non-nullable charge_component cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_component');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_component', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_component'] = $charge_component;
 
@@ -481,7 +516,14 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     public function setTotalAmount(?\OpenAPI\Client\Model\financesV0\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
-            throw new \InvalidArgumentException('non-nullable total_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_amount'] = $total_amount;
 

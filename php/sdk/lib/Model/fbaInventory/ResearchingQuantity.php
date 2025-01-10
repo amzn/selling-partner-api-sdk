@@ -80,8 +80,8 @@ class ResearchingQuantity implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_researching_quantity' => false,
-        'researching_quantity_breakdown' => false
+        'total_researching_quantity' => true,
+        'researching_quantity_breakdown' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ResearchingQuantity implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTotalResearchingQuantity(?int $total_researching_quantity): self
     {
         if (is_null($total_researching_quantity)) {
-            throw new \InvalidArgumentException('non-nullable total_researching_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_researching_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_researching_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_researching_quantity'] = $total_researching_quantity;
 
@@ -328,7 +335,7 @@ class ResearchingQuantity implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets researching_quantity_breakdown
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getResearchingQuantityBreakdown(): ?array
     {
@@ -345,7 +352,14 @@ class ResearchingQuantity implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setResearchingQuantityBreakdown(?array $researching_quantity_breakdown): self
     {
         if (is_null($researching_quantity_breakdown)) {
-            throw new \InvalidArgumentException('non-nullable researching_quantity_breakdown cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'researching_quantity_breakdown');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('researching_quantity_breakdown', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['researching_quantity_breakdown'] = $researching_quantity_breakdown;
 

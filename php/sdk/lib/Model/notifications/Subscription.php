@@ -87,7 +87,7 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
         'subscription_id' => false,
         'payload_version' => false,
         'destination_id' => false,
-        'processing_directive' => false
+        'processing_directive' => true
     ];
 
     /**
@@ -422,7 +422,14 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingDirective(?\OpenAPI\Client\Model\notifications\ProcessingDirective $processing_directive): self
     {
         if (is_null($processing_directive)) {
-            throw new \InvalidArgumentException('non-nullable processing_directive cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_directive');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_directive', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_directive'] = $processing_directive;
 

@@ -80,8 +80,8 @@ class ShipmentStatusDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_status' => false,
-        'shipment_status_date' => false
+        'shipment_status' => true,
+        'shipment_status_date' => true
     ];
 
     /**
@@ -346,10 +346,17 @@ class ShipmentStatusDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipmentStatus(?string $shipment_status): self
     {
         if (is_null($shipment_status)) {
-            throw new \InvalidArgumentException('non-nullable shipment_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getShipmentStatusAllowableValues();
-        if (!in_array($shipment_status, $allowedValues, true)) {
+        if (!is_null($shipment_status) && !in_array($shipment_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'shipment_status', must be one of '%s'",
@@ -383,7 +390,14 @@ class ShipmentStatusDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipmentStatusDate(?\DateTime $shipment_status_date): self
     {
         if (is_null($shipment_status_date)) {
-            throw new \InvalidArgumentException('non-nullable shipment_status_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_status_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_status_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_status_date'] = $shipment_status_date;
 

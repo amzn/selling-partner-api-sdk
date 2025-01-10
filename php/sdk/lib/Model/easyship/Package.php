@@ -97,12 +97,12 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
         'scheduled_package_id' => false,
         'package_dimensions' => false,
         'package_weight' => false,
-        'package_items' => false,
+        'package_items' => true,
         'package_time_slot' => false,
-        'package_identifier' => false,
-        'invoice' => false,
-        'package_status' => false,
-        'tracking_details' => false
+        'package_identifier' => true,
+        'invoice' => true,
+        'package_status' => true,
+        'tracking_details' => true
     ];
 
     /**
@@ -447,7 +447,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackageItems(): ?array
     {
@@ -464,10 +464,17 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageItems(?array $package_items): self
     {
         if (is_null($package_items)) {
-            throw new \InvalidArgumentException('non-nullable package_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($package_items) > 500)) {
+        if (!is_null($package_items) && (count($package_items) > 500)) {
             throw new \InvalidArgumentException('invalid value for $package_items when calling Package., number of items must be less than or equal to 500.');
         }
         $this->container['package_items'] = $package_items;
@@ -522,7 +529,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageIdentifier(?string $package_identifier): self
     {
         if (is_null($package_identifier)) {
-            throw new \InvalidArgumentException('non-nullable package_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_identifier'] = $package_identifier;
 
@@ -549,7 +563,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoice(?\OpenAPI\Client\Model\easyship\InvoiceData $invoice): self
     {
         if (is_null($invoice)) {
-            throw new \InvalidArgumentException('non-nullable invoice cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice'] = $invoice;
 
@@ -576,7 +597,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageStatus(?string $package_status): self
     {
         if (is_null($package_status)) {
-            throw new \InvalidArgumentException('non-nullable package_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_status'] = $package_status;
 
@@ -603,7 +631,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingDetails(?\OpenAPI\Client\Model\easyship\TrackingDetails $tracking_details): self
     {
         if (is_null($tracking_details)) {
-            throw new \InvalidArgumentException('non-nullable tracking_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_details'] = $tracking_details;
 

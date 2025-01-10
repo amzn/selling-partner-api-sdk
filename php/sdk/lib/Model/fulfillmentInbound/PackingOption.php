@@ -91,7 +91,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'discounts' => false,
-        'expiration' => false,
+        'expiration' => true,
         'fees' => false,
         'packing_groups' => false,
         'packing_option_id' => false,
@@ -374,7 +374,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets discounts
      *
-     * @return arrayA
+     * @return array
      */
     public function getDiscounts(): array
     {
@@ -418,7 +418,14 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiration(?\DateTime $expiration): self
     {
         if (is_null($expiration)) {
-            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiration'] = $expiration;
 
@@ -428,7 +435,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fees
      *
-     * @return arrayA
+     * @return array
      */
     public function getFees(): array
     {
@@ -455,7 +462,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packing_groups
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackingGroups(): array
     {
@@ -553,7 +560,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supported_shipping_configurations
      *
-     * @return arrayA
+     * @return array
      */
     public function getSupportedShippingConfigurations(): array
     {

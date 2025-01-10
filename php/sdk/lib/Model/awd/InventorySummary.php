@@ -84,10 +84,10 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inventory_details' => false,
+        'inventory_details' => true,
         'sku' => false,
-        'total_inbound_quantity' => false,
-        'total_onhand_quantity' => false
+        'total_inbound_quantity' => true,
+        'total_onhand_quantity' => true
     ];
 
     /**
@@ -335,7 +335,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInventoryDetails(?\OpenAPI\Client\Model\awd\InventoryDetails $inventory_details): self
     {
         if (is_null($inventory_details)) {
-            throw new \InvalidArgumentException('non-nullable inventory_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inventory_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inventory_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inventory_details'] = $inventory_details;
 
@@ -389,7 +396,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalInboundQuantity(?int $total_inbound_quantity): self
     {
         if (is_null($total_inbound_quantity)) {
-            throw new \InvalidArgumentException('non-nullable total_inbound_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_inbound_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_inbound_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_inbound_quantity'] = $total_inbound_quantity;
 
@@ -416,7 +430,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalOnhandQuantity(?int $total_onhand_quantity): self
     {
         if (is_null($total_onhand_quantity)) {
-            throw new \InvalidArgumentException('non-nullable total_onhand_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_onhand_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_onhand_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_onhand_quantity'] = $total_onhand_quantity;
 

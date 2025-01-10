@@ -55,6 +55,8 @@ class EasyShipApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('EasyShipApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class EasyShipApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage200', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -256,7 +257,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage400', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackage400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -433,7 +434,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk200', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -590,7 +591,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk400', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateScheduledPackageBulk400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -757,7 +758,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetScheduledPackage200', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetScheduledPackage200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -857,7 +858,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetScheduledPackage400', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetScheduledPackage400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1002,7 +1003,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListHandoverSlots200', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testListHandoverSlots200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1103,7 +1104,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListHandoverSlots400', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testListHandoverSlots400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1289,7 +1290,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages200', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages200', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1400,7 +1401,7 @@ class EasyShipApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages400', 'EasyShipApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateScheduledPackages400', 'EasyShipApi')) {
                 $this->assertTrue(true);
                 return;
             }

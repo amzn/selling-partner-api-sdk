@@ -86,11 +86,11 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'appointment_time' => false,
-        'technicians' => false,
-        'uploading_technician' => false,
-        'upload_time' => false,
-        'poa_type' => false
+        'appointment_time' => true,
+        'technicians' => true,
+        'uploading_technician' => true,
+        'upload_time' => true,
+        'poa_type' => true
     ];
 
     /**
@@ -375,7 +375,14 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAppointmentTime(?\OpenAPI\Client\Model\services\AppointmentTime $appointment_time): self
     {
         if (is_null($appointment_time)) {
-            throw new \InvalidArgumentException('non-nullable appointment_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointment_time'] = $appointment_time;
 
@@ -385,7 +392,7 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets technicians
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTechnicians(): ?array
     {
@@ -402,11 +409,18 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTechnicians(?array $technicians): self
     {
         if (is_null($technicians)) {
-            throw new \InvalidArgumentException('non-nullable technicians cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'technicians');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('technicians', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($technicians) < 1)) {
+        if (!is_null($technicians) && (count($technicians) < 1)) {
             throw new \InvalidArgumentException('invalid length for $technicians when calling Poa., number of items must be greater than or equal to 1.');
         }
         $this->container['technicians'] = $technicians;
@@ -434,10 +448,17 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUploadingTechnician(?string $uploading_technician): self
     {
         if (is_null($uploading_technician)) {
-            throw new \InvalidArgumentException('non-nullable uploading_technician cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uploading_technician');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uploading_technician', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($uploading_technician)))) {
+        if (!is_null($uploading_technician) && (!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($uploading_technician)))) {
             throw new \InvalidArgumentException("invalid value for \$uploading_technician when calling Poa., must conform to the pattern /^[A-Z0-9]*$/.");
         }
 
@@ -466,7 +487,14 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUploadTime(?\DateTime $upload_time): self
     {
         if (is_null($upload_time)) {
-            throw new \InvalidArgumentException('non-nullable upload_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'upload_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('upload_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['upload_time'] = $upload_time;
 
@@ -493,10 +521,17 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPoaType(?string $poa_type): self
     {
         if (is_null($poa_type)) {
-            throw new \InvalidArgumentException('non-nullable poa_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'poa_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('poa_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getPoaTypeAllowableValues();
-        if (!in_array($poa_type, $allowedValues, true)) {
+        if (!is_null($poa_type) && !in_array($poa_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'poa_type', must be one of '%s'",

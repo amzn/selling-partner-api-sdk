@@ -84,9 +84,9 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'aggregation_settings' => false,
-        'marketplace_ids' => false,
-        'order_change_types' => false,
+        'aggregation_settings' => true,
+        'marketplace_ids' => true,
+        'order_change_types' => true,
         'event_filter_type' => false
     ];
 
@@ -359,7 +359,14 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAggregationSettings(?\OpenAPI\Client\Model\notifications\AggregationSettings $aggregation_settings): self
     {
         if (is_null($aggregation_settings)) {
-            throw new \InvalidArgumentException('non-nullable aggregation_settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'aggregation_settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('aggregation_settings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['aggregation_settings'] = $aggregation_settings;
 
@@ -369,7 +376,7 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMarketplaceIds(): ?array
     {
@@ -386,7 +393,14 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceIds(?array $marketplace_ids): self
     {
         if (is_null($marketplace_ids)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -396,7 +410,7 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_change_types
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrderChangeTypes(): ?array
     {
@@ -413,7 +427,14 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderChangeTypes(?array $order_change_types): self
     {
         if (is_null($order_change_types)) {
-            throw new \InvalidArgumentException('non-nullable order_change_types cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_change_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_change_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_change_types'] = $order_change_types;
 

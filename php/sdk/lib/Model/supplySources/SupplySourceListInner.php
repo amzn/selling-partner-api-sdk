@@ -83,10 +83,10 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'alias' => false,
-        'supply_source_id' => false,
-        'supply_source_code' => false,
-        'address' => false
+        'alias' => true,
+        'supply_source_id' => true,
+        'supply_source_code' => true,
+        'address' => true
     ];
 
     /**
@@ -331,7 +331,14 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAlias(?string $alias): self
     {
         if (is_null($alias)) {
-            throw new \InvalidArgumentException('non-nullable alias cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'alias');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('alias', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['alias'] = $alias;
 
@@ -358,7 +365,14 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSupplySourceId(?string $supply_source_id): self
     {
         if (is_null($supply_source_id)) {
-            throw new \InvalidArgumentException('non-nullable supply_source_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supply_source_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supply_source_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supply_source_id'] = $supply_source_id;
 
@@ -385,7 +399,14 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSupplySourceCode(?string $supply_source_code): self
     {
         if (is_null($supply_source_code)) {
-            throw new \InvalidArgumentException('non-nullable supply_source_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supply_source_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supply_source_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supply_source_code'] = $supply_source_code;
 
@@ -412,7 +433,14 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAddress(?\OpenAPI\Client\Model\supplySources\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 

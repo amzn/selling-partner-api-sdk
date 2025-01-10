@@ -84,10 +84,10 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'adjustment_type' => false,
-        'posted_date' => false,
-        'adjustment_amount' => false,
-        'adjustment_item_list' => false
+        'adjustment_type' => true,
+        'posted_date' => true,
+        'adjustment_amount' => true,
+        'adjustment_item_list' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdjustmentType(?string $adjustment_type): self
     {
         if (is_null($adjustment_type)) {
-            throw new \InvalidArgumentException('non-nullable adjustment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adjustment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjustment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adjustment_type'] = $adjustment_type;
 
@@ -359,7 +366,14 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -386,7 +400,14 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdjustmentAmount(?\OpenAPI\Client\Model\financesV0\Currency $adjustment_amount): self
     {
         if (is_null($adjustment_amount)) {
-            throw new \InvalidArgumentException('non-nullable adjustment_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adjustment_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjustment_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adjustment_amount'] = $adjustment_amount;
 
@@ -396,7 +417,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets adjustment_item_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAdjustmentItemList(): ?array
     {
@@ -413,7 +434,14 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdjustmentItemList(?array $adjustment_item_list): self
     {
         if (is_null($adjustment_item_list)) {
-            throw new \InvalidArgumentException('non-nullable adjustment_item_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adjustment_item_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjustment_item_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adjustment_item_list'] = $adjustment_item_list;
 

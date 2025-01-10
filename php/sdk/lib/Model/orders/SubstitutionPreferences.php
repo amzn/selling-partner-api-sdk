@@ -81,7 +81,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'substitution_type' => false,
-        'substitution_options' => false
+        'substitution_options' => true
     ];
 
     /**
@@ -367,7 +367,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets substitution_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSubstitutionOptions(): ?array
     {
@@ -384,7 +384,14 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSubstitutionOptions(?array $substitution_options): self
     {
         if (is_null($substitution_options)) {
-            throw new \InvalidArgumentException('non-nullable substitution_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'substitution_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('substitution_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['substitution_options'] = $substitution_options;
 

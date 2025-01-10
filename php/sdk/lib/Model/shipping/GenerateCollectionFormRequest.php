@@ -83,9 +83,9 @@ class GenerateCollectionFormRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'client_reference_details' => false,
+        'client_reference_details' => true,
         'carrier_id' => false,
-        'ship_from_address' => false
+        'ship_from_address' => true
     ];
 
     /**
@@ -312,7 +312,7 @@ class GenerateCollectionFormRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets client_reference_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClientReferenceDetails(): ?array
     {
@@ -329,7 +329,14 @@ class GenerateCollectionFormRequest implements ModelInterface, ArrayAccess, \Jso
     public function setClientReferenceDetails(?array $client_reference_details): self
     {
         if (is_null($client_reference_details)) {
-            throw new \InvalidArgumentException('non-nullable client_reference_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'client_reference_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('client_reference_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['client_reference_details'] = $client_reference_details;
 
@@ -383,7 +390,14 @@ class GenerateCollectionFormRequest implements ModelInterface, ArrayAccess, \Jso
     public function setShipFromAddress(?\OpenAPI\Client\Model\shipping\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
-            throw new \InvalidArgumentException('non-nullable ship_from_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_from_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_from_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_from_address'] = $ship_from_address;
 

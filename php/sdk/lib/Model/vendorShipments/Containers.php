@@ -97,15 +97,15 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'container_type' => false,
-        'container_sequence_number' => false,
+        'container_sequence_number' => true,
         'container_identifiers' => false,
-        'tracking_number' => false,
-        'dimensions' => false,
-        'weight' => false,
-        'tier' => false,
-        'block' => false,
-        'inner_containers_details' => false,
-        'packed_items' => false
+        'tracking_number' => true,
+        'dimensions' => true,
+        'weight' => true,
+        'tier' => true,
+        'block' => true,
+        'inner_containers_details' => true,
+        'packed_items' => true
     ];
 
     /**
@@ -441,7 +441,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContainerSequenceNumber(?string $container_sequence_number): self
     {
         if (is_null($container_sequence_number)) {
-            throw new \InvalidArgumentException('non-nullable container_sequence_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'container_sequence_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('container_sequence_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['container_sequence_number'] = $container_sequence_number;
 
@@ -451,7 +458,7 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets container_identifiers
      *
-     * @return arrayA
+     * @return array
      */
     public function getContainerIdentifiers(): array
     {
@@ -495,7 +502,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingNumber(?string $tracking_number): self
     {
         if (is_null($tracking_number)) {
-            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_number'] = $tracking_number;
 
@@ -522,7 +536,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\vendorShipments\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -549,7 +570,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\vendorShipments\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 
@@ -576,7 +604,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTier(?int $tier): self
     {
         if (is_null($tier)) {
-            throw new \InvalidArgumentException('non-nullable tier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tier'] = $tier;
 
@@ -603,7 +638,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBlock(?int $block): self
     {
         if (is_null($block)) {
-            throw new \InvalidArgumentException('non-nullable block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block'] = $block;
 
@@ -630,7 +672,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInnerContainersDetails(?\OpenAPI\Client\Model\vendorShipments\InnerContainersDetails $inner_containers_details): self
     {
         if (is_null($inner_containers_details)) {
-            throw new \InvalidArgumentException('non-nullable inner_containers_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inner_containers_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inner_containers_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inner_containers_details'] = $inner_containers_details;
 
@@ -640,7 +689,7 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packed_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackedItems(): ?array
     {
@@ -657,7 +706,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackedItems(?array $packed_items): self
     {
         if (is_null($packed_items)) {
-            throw new \InvalidArgumentException('non-nullable packed_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packed_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packed_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['packed_items'] = $packed_items;
 

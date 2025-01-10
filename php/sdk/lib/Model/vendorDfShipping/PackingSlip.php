@@ -84,7 +84,7 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'purchase_order_number' => false,
         'content' => false,
-        'content_type' => false
+        'content_type' => true
     ];
 
     /**
@@ -416,10 +416,17 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContentType(?string $content_type): self
     {
         if (is_null($content_type)) {
-            throw new \InvalidArgumentException('non-nullable content_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getContentTypeAllowableValues();
-        if (!in_array($content_type, $allowedValues, true)) {
+        if (!is_null($content_type) && !in_array($content_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'content_type', must be one of '%s'",

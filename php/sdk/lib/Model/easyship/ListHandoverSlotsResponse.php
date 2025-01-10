@@ -342,7 +342,7 @@ class ListHandoverSlotsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets time_slots
      *
-     * @return arrayA
+     * @return array
      */
     public function getTimeSlots(): array
     {

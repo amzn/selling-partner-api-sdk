@@ -104,16 +104,16 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'invoice_number' => false,
         'invoice_date' => false,
-        'reference_number' => false,
+        'reference_number' => true,
         'remit_to_party' => false,
         'ship_from_party' => false,
-        'bill_to_party' => false,
-        'ship_to_country_code' => false,
-        'payment_terms_code' => false,
+        'bill_to_party' => true,
+        'ship_to_country_code' => true,
+        'payment_terms_code' => true,
         'invoice_total' => false,
-        'tax_totals' => false,
-        'additional_details' => false,
-        'charge_details' => false,
+        'tax_totals' => true,
+        'additional_details' => true,
+        'charge_details' => true,
         'items' => false
     ];
 
@@ -467,7 +467,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReferenceNumber(?string $reference_number): self
     {
         if (is_null($reference_number)) {
-            throw new \InvalidArgumentException('non-nullable reference_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reference_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reference_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reference_number'] = $reference_number;
 
@@ -548,7 +555,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBillToParty(?\OpenAPI\Client\Model\vendorDfPayments\PartyIdentification $bill_to_party): self
     {
         if (is_null($bill_to_party)) {
-            throw new \InvalidArgumentException('non-nullable bill_to_party cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bill_to_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_to_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bill_to_party'] = $bill_to_party;
 
@@ -575,7 +589,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipToCountryCode(?string $ship_to_country_code): self
     {
         if (is_null($ship_to_country_code)) {
-            throw new \InvalidArgumentException('non-nullable ship_to_country_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to_country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to_country_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to_country_code'] = $ship_to_country_code;
 
@@ -602,7 +623,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentTermsCode(?string $payment_terms_code): self
     {
         if (is_null($payment_terms_code)) {
-            throw new \InvalidArgumentException('non-nullable payment_terms_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_terms_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_terms_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_terms_code'] = $payment_terms_code;
 
@@ -639,7 +667,7 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_totals
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxTotals(): ?array
     {
@@ -656,7 +684,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxTotals(?array $tax_totals): self
     {
         if (is_null($tax_totals)) {
-            throw new \InvalidArgumentException('non-nullable tax_totals cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_totals');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_totals', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_totals'] = $tax_totals;
 
@@ -666,7 +701,7 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets additional_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAdditionalDetails(): ?array
     {
@@ -683,7 +718,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdditionalDetails(?array $additional_details): self
     {
         if (is_null($additional_details)) {
-            throw new \InvalidArgumentException('non-nullable additional_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'additional_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('additional_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['additional_details'] = $additional_details;
 
@@ -693,7 +735,7 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets charge_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChargeDetails(): ?array
     {
@@ -710,7 +752,14 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChargeDetails(?array $charge_details): self
     {
         if (is_null($charge_details)) {
-            throw new \InvalidArgumentException('non-nullable charge_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_details'] = $charge_details;
 
@@ -720,7 +769,7 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

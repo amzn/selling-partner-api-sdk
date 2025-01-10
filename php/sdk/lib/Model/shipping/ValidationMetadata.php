@@ -83,9 +83,9 @@ class ValidationMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error_message' => false,
-        'validation_strategy' => false,
-        'value' => false
+        'error_message' => true,
+        'validation_strategy' => true,
+        'value' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class ValidationMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setErrorMessage(?string $error_message): self
     {
         if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_message', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_message'] = $error_message;
 
@@ -353,7 +360,14 @@ class ValidationMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setValidationStrategy(?string $validation_strategy): self
     {
         if (is_null($validation_strategy)) {
-            throw new \InvalidArgumentException('non-nullable validation_strategy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'validation_strategy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('validation_strategy', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['validation_strategy'] = $validation_strategy;
 
@@ -380,7 +394,14 @@ class ValidationMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setValue(?string $value): self
     {
         if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value'] = $value;
 

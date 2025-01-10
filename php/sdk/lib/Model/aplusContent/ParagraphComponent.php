@@ -305,7 +305,7 @@ class ParagraphComponent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets text_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getTextList(): array
     {

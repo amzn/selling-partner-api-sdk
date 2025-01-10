@@ -98,11 +98,11 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
         'query' => false,
         'created_time' => false,
         'processing_status' => false,
-        'processing_start_time' => false,
-        'processing_end_time' => false,
-        'data_document_id' => false,
-        'error_document_id' => false,
-        'pagination' => false
+        'processing_start_time' => true,
+        'processing_end_time' => true,
+        'data_document_id' => true,
+        'error_document_id' => true,
+        'pagination' => true
     ];
 
     /**
@@ -527,7 +527,14 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingStartTime(?\DateTime $processing_start_time): self
     {
         if (is_null($processing_start_time)) {
-            throw new \InvalidArgumentException('non-nullable processing_start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_start_time'] = $processing_start_time;
 
@@ -554,7 +561,14 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProcessingEndTime(?\DateTime $processing_end_time): self
     {
         if (is_null($processing_end_time)) {
-            throw new \InvalidArgumentException('non-nullable processing_end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'processing_end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('processing_end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['processing_end_time'] = $processing_end_time;
 
@@ -581,7 +595,14 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDataDocumentId(?string $data_document_id): self
     {
         if (is_null($data_document_id)) {
-            throw new \InvalidArgumentException('non-nullable data_document_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_document_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_document_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_document_id'] = $data_document_id;
 
@@ -608,7 +629,14 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorDocumentId(?string $error_document_id): self
     {
         if (is_null($error_document_id)) {
-            throw new \InvalidArgumentException('non-nullable error_document_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_document_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_document_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_document_id'] = $error_document_id;
 
@@ -635,7 +663,14 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPagination(?\OpenAPI\Client\Model\datakiosk\QueryPagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 

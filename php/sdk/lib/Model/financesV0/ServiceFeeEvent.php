@@ -92,14 +92,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amazon_order_id' => false,
-        'fee_reason' => false,
-        'fee_list' => false,
-        'seller_sku' => false,
-        'fn_sku' => false,
-        'fee_description' => false,
-        'asin' => false,
-        'store_name' => false
+        'amazon_order_id' => true,
+        'fee_reason' => true,
+        'fee_list' => true,
+        'seller_sku' => true,
+        'fn_sku' => true,
+        'fee_description' => true,
+        'asin' => true,
+        'store_name' => true
     ];
 
     /**
@@ -360,7 +360,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmazonOrderId(?string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
-            throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -387,7 +394,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeeReason(?string $fee_reason): self
     {
         if (is_null($fee_reason)) {
-            throw new \InvalidArgumentException('non-nullable fee_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_reason'] = $fee_reason;
 
@@ -397,7 +411,7 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fee_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeeList(): ?array
     {
@@ -414,7 +428,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeeList(?array $fee_list): self
     {
         if (is_null($fee_list)) {
-            throw new \InvalidArgumentException('non-nullable fee_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_list'] = $fee_list;
 
@@ -441,7 +462,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -468,7 +496,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFnSku(?string $fn_sku): self
     {
         if (is_null($fn_sku)) {
-            throw new \InvalidArgumentException('non-nullable fn_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fn_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fn_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fn_sku'] = $fn_sku;
 
@@ -495,7 +530,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeeDescription(?string $fee_description): self
     {
         if (is_null($fee_description)) {
-            throw new \InvalidArgumentException('non-nullable fee_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_description'] = $fee_description;
 
@@ -522,7 +564,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -549,7 +598,14 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStoreName(?string $store_name): self
     {
         if (is_null($store_name)) {
-            throw new \InvalidArgumentException('non-nullable store_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'store_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('store_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['store_name'] = $store_name;
 

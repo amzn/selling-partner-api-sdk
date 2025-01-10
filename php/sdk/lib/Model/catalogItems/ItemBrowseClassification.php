@@ -84,7 +84,7 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'display_name' => false,
         'classification_id' => false,
-        'parent' => false
+        'parent' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     public function setParent(?\OpenAPI\Client\Model\catalogItems\ItemBrowseClassification $parent): self
     {
         if (is_null($parent)) {
-            throw new \InvalidArgumentException('non-nullable parent cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent'] = $parent;
 

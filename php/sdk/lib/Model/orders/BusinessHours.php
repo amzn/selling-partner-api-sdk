@@ -80,8 +80,8 @@ class BusinessHours implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'day_of_week' => false,
-        'open_intervals' => false
+        'day_of_week' => true,
+        'open_intervals' => true
     ];
 
     /**
@@ -352,10 +352,17 @@ class BusinessHours implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDayOfWeek(?string $day_of_week): self
     {
         if (is_null($day_of_week)) {
-            throw new \InvalidArgumentException('non-nullable day_of_week cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'day_of_week');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('day_of_week', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getDayOfWeekAllowableValues();
-        if (!in_array($day_of_week, $allowedValues, true)) {
+        if (!is_null($day_of_week) && !in_array($day_of_week, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'day_of_week', must be one of '%s'",
@@ -372,7 +379,7 @@ class BusinessHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets open_intervals
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOpenIntervals(): ?array
     {
@@ -389,7 +396,14 @@ class BusinessHours implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOpenIntervals(?array $open_intervals): self
     {
         if (is_null($open_intervals)) {
-            throw new \InvalidArgumentException('non-nullable open_intervals cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'open_intervals');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('open_intervals', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['open_intervals'] = $open_intervals;
 

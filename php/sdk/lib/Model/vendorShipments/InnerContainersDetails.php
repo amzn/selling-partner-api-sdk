@@ -80,8 +80,8 @@ class InnerContainersDetails implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'container_count' => false,
-        'container_sequence_numbers' => false
+        'container_count' => true,
+        'container_sequence_numbers' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class InnerContainersDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setContainerCount(?int $container_count): self
     {
         if (is_null($container_count)) {
-            throw new \InvalidArgumentException('non-nullable container_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'container_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('container_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['container_count'] = $container_count;
 
@@ -328,7 +335,7 @@ class InnerContainersDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets container_sequence_numbers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getContainerSequenceNumbers(): ?array
     {
@@ -345,7 +352,14 @@ class InnerContainersDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setContainerSequenceNumbers(?array $container_sequence_numbers): self
     {
         if (is_null($container_sequence_numbers)) {
-            throw new \InvalidArgumentException('non-nullable container_sequence_numbers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'container_sequence_numbers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('container_sequence_numbers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['container_sequence_numbers'] = $container_sequence_numbers;
 

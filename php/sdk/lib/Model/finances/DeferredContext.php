@@ -82,9 +82,9 @@ class DeferredContext implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'deferral_reason' => false,
-        'maturity_date' => false,
-        'deferral_status' => false
+        'deferral_reason' => true,
+        'maturity_date' => true,
+        'deferral_status' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class DeferredContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeferralReason(?string $deferral_reason): self
     {
         if (is_null($deferral_reason)) {
-            throw new \InvalidArgumentException('non-nullable deferral_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deferral_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deferral_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deferral_reason'] = $deferral_reason;
 
@@ -352,7 +359,14 @@ class DeferredContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMaturityDate(?\DateTime $maturity_date): self
     {
         if (is_null($maturity_date)) {
-            throw new \InvalidArgumentException('non-nullable maturity_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maturity_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maturity_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maturity_date'] = $maturity_date;
 
@@ -379,7 +393,14 @@ class DeferredContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeferralStatus(?string $deferral_status): self
     {
         if (is_null($deferral_status)) {
-            throw new \InvalidArgumentException('non-nullable deferral_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deferral_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deferral_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deferral_status'] = $deferral_status;
 

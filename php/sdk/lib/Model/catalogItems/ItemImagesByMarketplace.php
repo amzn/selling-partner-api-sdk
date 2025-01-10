@@ -334,7 +334,7 @@ class ItemImagesByMarketplace implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets images
      *
-     * @return arrayA
+     * @return array
      */
     public function getImages(): array
     {

@@ -84,10 +84,10 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
+        'status' => true,
         'external_reviewer_id' => false,
-        'rejection_reason_id' => false,
-        'verification_details' => false
+        'rejection_reason_id' => true,
+        'verification_details' => true
     ];
 
     /**
@@ -335,7 +335,14 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -389,7 +396,14 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     public function setRejectionReasonId(?string $rejection_reason_id): self
     {
         if (is_null($rejection_reason_id)) {
-            throw new \InvalidArgumentException('non-nullable rejection_reason_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rejection_reason_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rejection_reason_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rejection_reason_id'] = $rejection_reason_id;
 
@@ -416,7 +430,14 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     public function setVerificationDetails(?\OpenAPI\Client\Model\orders\VerificationDetails $verification_details): self
     {
         if (is_null($verification_details)) {
-            throw new \InvalidArgumentException('non-nullable verification_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'verification_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('verification_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['verification_details'] = $verification_details;
 

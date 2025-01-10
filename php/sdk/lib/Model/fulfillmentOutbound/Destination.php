@@ -80,8 +80,8 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_address' => false,
-        'ip_address' => false
+        'delivery_address' => true,
+        'ip_address' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeliveryAddress(?\OpenAPI\Client\Model\fulfillmentOutbound\VariablePrecisionAddress $delivery_address): self
     {
         if (is_null($delivery_address)) {
-            throw new \InvalidArgumentException('non-nullable delivery_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_address'] = $delivery_address;
 
@@ -345,7 +352,14 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIpAddress(?string $ip_address): self
     {
         if (is_null($ip_address)) {
-            throw new \InvalidArgumentException('non-nullable ip_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ip_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ip_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ip_address'] = $ip_address;
 

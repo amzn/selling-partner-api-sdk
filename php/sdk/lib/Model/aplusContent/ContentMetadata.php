@@ -442,7 +442,7 @@ class ContentMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets badge_set
      *
-     * @return arrayA
+     * @return array
      */
     public function getBadgeSet(): array
     {

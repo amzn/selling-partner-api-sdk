@@ -90,13 +90,13 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sku' => false,
-        'asin' => false,
-        'marketplace_id' => false,
-        'eligibility' => false,
-        'offer_program_configuration' => false,
-        'program_type' => false,
-        'vendor_codes' => false
+        'sku' => true,
+        'asin' => true,
+        'marketplace_id' => true,
+        'eligibility' => true,
+        'offer_program_configuration' => true,
+        'program_type' => true,
+        'vendor_codes' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSku(?string $sku): self
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku'] = $sku;
 
@@ -380,7 +387,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -407,7 +421,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -434,7 +455,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setEligibility(?string $eligibility): self
     {
         if (is_null($eligibility)) {
-            throw new \InvalidArgumentException('non-nullable eligibility cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'eligibility');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('eligibility', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['eligibility'] = $eligibility;
 
@@ -461,7 +489,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setOfferProgramConfiguration(?\OpenAPI\Client\Model\replenishment\OfferProgramConfiguration $offer_program_configuration): self
     {
         if (is_null($offer_program_configuration)) {
-            throw new \InvalidArgumentException('non-nullable offer_program_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_program_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_program_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_program_configuration'] = $offer_program_configuration;
 
@@ -488,7 +523,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setProgramType(?string $program_type): self
     {
         if (is_null($program_type)) {
-            throw new \InvalidArgumentException('non-nullable program_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'program_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('program_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['program_type'] = $program_type;
 
@@ -498,7 +540,7 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets vendor_codes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getVendorCodes(): ?array
     {
@@ -515,7 +557,14 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     public function setVendorCodes(?array $vendor_codes): self
     {
         if (is_null($vendor_codes)) {
-            throw new \InvalidArgumentException('non-nullable vendor_codes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_codes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_codes'] = $vendor_codes;
 

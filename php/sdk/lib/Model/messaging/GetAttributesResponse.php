@@ -80,8 +80,8 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'buyer' => false,
-        'errors' => false
+        'buyer' => true,
+        'errors' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBuyer(?\OpenAPI\Client\Model\messaging\GetAttributesResponseBuyer $buyer): self
     {
         if (is_null($buyer)) {
-            throw new \InvalidArgumentException('non-nullable buyer cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer'] = $buyer;
 
@@ -328,7 +335,7 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -345,7 +352,14 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

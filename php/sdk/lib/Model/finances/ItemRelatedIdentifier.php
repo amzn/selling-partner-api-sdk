@@ -80,8 +80,8 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'item_related_identifier_name' => false,
-        'item_related_identifier_value' => false
+        'item_related_identifier_name' => true,
+        'item_related_identifier_value' => true
     ];
 
     /**
@@ -346,10 +346,17 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setItemRelatedIdentifierName(?string $item_related_identifier_name): self
     {
         if (is_null($item_related_identifier_name)) {
-            throw new \InvalidArgumentException('non-nullable item_related_identifier_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_related_identifier_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_related_identifier_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getItemRelatedIdentifierNameAllowableValues();
-        if (!in_array($item_related_identifier_name, $allowedValues, true)) {
+        if (!is_null($item_related_identifier_name) && !in_array($item_related_identifier_name, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'item_related_identifier_name', must be one of '%s'",
@@ -383,7 +390,14 @@ class ItemRelatedIdentifier implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setItemRelatedIdentifierValue(?string $item_related_identifier_value): self
     {
         if (is_null($item_related_identifier_value)) {
-            throw new \InvalidArgumentException('non-nullable item_related_identifier_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_related_identifier_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_related_identifier_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_related_identifier_value'] = $item_related_identifier_value;
 

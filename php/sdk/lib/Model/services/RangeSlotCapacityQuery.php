@@ -82,7 +82,7 @@ class RangeSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'capacity_types' => false,
+        'capacity_types' => true,
         'start_date_time' => false,
         'end_date_time' => false
     ];
@@ -314,7 +314,7 @@ class RangeSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets capacity_types
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCapacityTypes(): ?array
     {
@@ -331,7 +331,14 @@ class RangeSlotCapacityQuery implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCapacityTypes(?array $capacity_types): self
     {
         if (is_null($capacity_types)) {
-            throw new \InvalidArgumentException('non-nullable capacity_types cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacity_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacity_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capacity_types'] = $capacity_types;
 

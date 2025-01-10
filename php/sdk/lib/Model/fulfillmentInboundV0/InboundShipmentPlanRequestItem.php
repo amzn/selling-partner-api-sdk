@@ -92,8 +92,8 @@ class InboundShipmentPlanRequestItem implements ModelInterface, ArrayAccess, \Js
         'asin' => false,
         'condition' => false,
         'quantity' => false,
-        'quantity_in_case' => false,
-        'prep_details_list' => false
+        'quantity_in_case' => true,
+        'prep_details_list' => true
     ];
 
     /**
@@ -466,7 +466,14 @@ class InboundShipmentPlanRequestItem implements ModelInterface, ArrayAccess, \Js
     public function setQuantityInCase(?int $quantity_in_case): self
     {
         if (is_null($quantity_in_case)) {
-            throw new \InvalidArgumentException('non-nullable quantity_in_case cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_in_case');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_in_case', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_in_case'] = $quantity_in_case;
 
@@ -476,7 +483,7 @@ class InboundShipmentPlanRequestItem implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets prep_details_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPrepDetailsList(): ?array
     {
@@ -493,7 +500,14 @@ class InboundShipmentPlanRequestItem implements ModelInterface, ArrayAccess, \Js
     public function setPrepDetailsList(?array $prep_details_list): self
     {
         if (is_null($prep_details_list)) {
-            throw new \InvalidArgumentException('non-nullable prep_details_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_details_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_details_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_details_list'] = $prep_details_list;
 

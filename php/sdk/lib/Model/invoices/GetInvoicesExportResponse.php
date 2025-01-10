@@ -78,7 +78,7 @@ class GetInvoicesExportResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'export' => false
+        'export' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetInvoicesExportResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setExport(?\OpenAPI\Client\Model\invoices\Export $export): self
     {
         if (is_null($export)) {
-            throw new \InvalidArgumentException('non-nullable export cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'export');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('export', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['export'] = $export;
 

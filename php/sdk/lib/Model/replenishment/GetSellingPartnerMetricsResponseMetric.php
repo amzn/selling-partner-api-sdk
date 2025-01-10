@@ -100,18 +100,18 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'not_delivered_due_to_oos' => false,
-        'total_subscriptions_revenue' => false,
-        'shipped_subscription_units' => false,
-        'active_subscriptions' => false,
-        'subscriber_average_revenue' => false,
-        'non_subscriber_average_revenue' => false,
-        'lost_revenue_due_to_oos' => false,
-        'subscriber_average_reorders' => false,
-        'non_subscriber_average_reorders' => false,
-        'coupons_revenue_penetration' => false,
-        'time_interval' => false,
-        'currency_code' => false
+        'not_delivered_due_to_oos' => true,
+        'total_subscriptions_revenue' => true,
+        'shipped_subscription_units' => true,
+        'active_subscriptions' => true,
+        'subscriber_average_revenue' => true,
+        'non_subscriber_average_revenue' => true,
+        'lost_revenue_due_to_oos' => true,
+        'subscriber_average_reorders' => true,
+        'non_subscriber_average_reorders' => true,
+        'coupons_revenue_penetration' => true,
+        'time_interval' => true,
+        'currency_code' => true
     ];
 
     /**
@@ -436,13 +436,20 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setNotDeliveredDueToOos(?float $not_delivered_due_to_oos): self
     {
         if (is_null($not_delivered_due_to_oos)) {
-            throw new \InvalidArgumentException('non-nullable not_delivered_due_to_oos cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'not_delivered_due_to_oos');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('not_delivered_due_to_oos', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($not_delivered_due_to_oos > 1E+2)) {
+        if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos > 1E+2)) {
             throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
         }
-        if (($not_delivered_due_to_oos < 0)) {
+        if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos < 0)) {
             throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -471,10 +478,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setTotalSubscriptionsRevenue(?float $total_subscriptions_revenue): self
     {
         if (is_null($total_subscriptions_revenue)) {
-            throw new \InvalidArgumentException('non-nullable total_subscriptions_revenue cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_subscriptions_revenue');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_subscriptions_revenue', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($total_subscriptions_revenue < 0)) {
+        if (!is_null($total_subscriptions_revenue) && ($total_subscriptions_revenue < 0)) {
             throw new \InvalidArgumentException('invalid value for $total_subscriptions_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -503,10 +517,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setShippedSubscriptionUnits(?float $shipped_subscription_units): self
     {
         if (is_null($shipped_subscription_units)) {
-            throw new \InvalidArgumentException('non-nullable shipped_subscription_units cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipped_subscription_units');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipped_subscription_units', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($shipped_subscription_units < 0)) {
+        if (!is_null($shipped_subscription_units) && ($shipped_subscription_units < 0)) {
             throw new \InvalidArgumentException('invalid value for $shipped_subscription_units when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -535,10 +556,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setActiveSubscriptions(?float $active_subscriptions): self
     {
         if (is_null($active_subscriptions)) {
-            throw new \InvalidArgumentException('non-nullable active_subscriptions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'active_subscriptions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('active_subscriptions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($active_subscriptions < 0)) {
+        if (!is_null($active_subscriptions) && ($active_subscriptions < 0)) {
             throw new \InvalidArgumentException('invalid value for $active_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -567,10 +595,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setSubscriberAverageRevenue(?float $subscriber_average_revenue): self
     {
         if (is_null($subscriber_average_revenue)) {
-            throw new \InvalidArgumentException('non-nullable subscriber_average_revenue cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subscriber_average_revenue');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscriber_average_revenue', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($subscriber_average_revenue < 0)) {
+        if (!is_null($subscriber_average_revenue) && ($subscriber_average_revenue < 0)) {
             throw new \InvalidArgumentException('invalid value for $subscriber_average_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -599,10 +634,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setNonSubscriberAverageRevenue(?float $non_subscriber_average_revenue): self
     {
         if (is_null($non_subscriber_average_revenue)) {
-            throw new \InvalidArgumentException('non-nullable non_subscriber_average_revenue cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'non_subscriber_average_revenue');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('non_subscriber_average_revenue', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($non_subscriber_average_revenue < 0)) {
+        if (!is_null($non_subscriber_average_revenue) && ($non_subscriber_average_revenue < 0)) {
             throw new \InvalidArgumentException('invalid value for $non_subscriber_average_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -631,10 +673,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setLostRevenueDueToOos(?float $lost_revenue_due_to_oos): self
     {
         if (is_null($lost_revenue_due_to_oos)) {
-            throw new \InvalidArgumentException('non-nullable lost_revenue_due_to_oos cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lost_revenue_due_to_oos');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lost_revenue_due_to_oos', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($lost_revenue_due_to_oos < 0)) {
+        if (!is_null($lost_revenue_due_to_oos) && ($lost_revenue_due_to_oos < 0)) {
             throw new \InvalidArgumentException('invalid value for $lost_revenue_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -663,10 +712,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setSubscriberAverageReorders(?float $subscriber_average_reorders): self
     {
         if (is_null($subscriber_average_reorders)) {
-            throw new \InvalidArgumentException('non-nullable subscriber_average_reorders cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subscriber_average_reorders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscriber_average_reorders', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($subscriber_average_reorders < 0)) {
+        if (!is_null($subscriber_average_reorders) && ($subscriber_average_reorders < 0)) {
             throw new \InvalidArgumentException('invalid value for $subscriber_average_reorders when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -695,10 +751,17 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setNonSubscriberAverageReorders(?float $non_subscriber_average_reorders): self
     {
         if (is_null($non_subscriber_average_reorders)) {
-            throw new \InvalidArgumentException('non-nullable non_subscriber_average_reorders cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'non_subscriber_average_reorders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('non_subscriber_average_reorders', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($non_subscriber_average_reorders < 0)) {
+        if (!is_null($non_subscriber_average_reorders) && ($non_subscriber_average_reorders < 0)) {
             throw new \InvalidArgumentException('invalid value for $non_subscriber_average_reorders when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -727,13 +790,20 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setCouponsRevenuePenetration(?float $coupons_revenue_penetration): self
     {
         if (is_null($coupons_revenue_penetration)) {
-            throw new \InvalidArgumentException('non-nullable coupons_revenue_penetration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'coupons_revenue_penetration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('coupons_revenue_penetration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($coupons_revenue_penetration > 1E+2)) {
+        if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration > 1E+2)) {
             throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
         }
-        if (($coupons_revenue_penetration < 0)) {
+        if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration < 0)) {
             throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
         }
 
@@ -762,7 +832,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setTimeInterval(?\OpenAPI\Client\Model\replenishment\TimeInterval $time_interval): self
     {
         if (is_null($time_interval)) {
-            throw new \InvalidArgumentException('non-nullable time_interval cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'time_interval');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('time_interval', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['time_interval'] = $time_interval;
 
@@ -789,7 +866,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     public function setCurrencyCode(?string $currency_code): self
     {
         if (is_null($currency_code)) {
-            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency_code'] = $currency_code;
 

@@ -91,12 +91,12 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'pallet_identifiers' => false,
-        'tier' => false,
-        'block' => false,
-        'dimensions' => false,
-        'weight' => false,
-        'carton_reference_details' => false,
-        'items' => false
+        'tier' => true,
+        'block' => true,
+        'dimensions' => true,
+        'weight' => true,
+        'carton_reference_details' => true,
+        'items' => true
     ];
 
     /**
@@ -339,7 +339,7 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pallet_identifiers
      *
-     * @return arrayA
+     * @return array
      */
     public function getPalletIdentifiers(): array
     {
@@ -383,7 +383,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTier(?int $tier): self
     {
         if (is_null($tier)) {
-            throw new \InvalidArgumentException('non-nullable tier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tier'] = $tier;
 
@@ -410,7 +417,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBlock(?int $block): self
     {
         if (is_null($block)) {
-            throw new \InvalidArgumentException('non-nullable block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block'] = $block;
 
@@ -437,7 +451,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\vendorShipments\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -464,7 +485,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\vendorShipments\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 
@@ -491,7 +519,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCartonReferenceDetails(?\OpenAPI\Client\Model\vendorShipments\CartonReferenceDetails $carton_reference_details): self
     {
         if (is_null($carton_reference_details)) {
-            throw new \InvalidArgumentException('non-nullable carton_reference_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carton_reference_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carton_reference_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carton_reference_details'] = $carton_reference_details;
 
@@ -501,7 +536,7 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -518,7 +553,14 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 

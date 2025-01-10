@@ -80,8 +80,8 @@ class ThroughputCap implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => false,
-        'time_unit' => false
+        'value' => true,
+        'time_unit' => true
     ];
 
     /**
@@ -322,10 +322,17 @@ class ThroughputCap implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue(?int $value): self
     {
         if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($value < 0)) {
+        if (!is_null($value) && ($value < 0)) {
             throw new \InvalidArgumentException('invalid value for $value when calling ThroughputCap., must be bigger than or equal to 0.');
         }
 
@@ -354,7 +361,14 @@ class ThroughputCap implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTimeUnit(?string $time_unit): self
     {
         if (is_null($time_unit)) {
-            throw new \InvalidArgumentException('non-nullable time_unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'time_unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('time_unit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['time_unit'] = $time_unit;
 

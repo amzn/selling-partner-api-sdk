@@ -82,9 +82,9 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'offer_identifier' => false,
-        'featured_offer_expected_price_results' => false,
-        'errors' => false
+        'offer_identifier' => true,
+        'featured_offer_expected_price_results' => true,
+        'errors' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     public function setOfferIdentifier(?\OpenAPI\Client\Model\pricing\OfferIdentifier $offer_identifier): self
     {
         if (is_null($offer_identifier)) {
-            throw new \InvalidArgumentException('non-nullable offer_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_identifier'] = $offer_identifier;
 
@@ -335,7 +342,7 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     /**
      * Gets featured_offer_expected_price_results
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeaturedOfferExpectedPriceResults(): ?array
     {
@@ -352,7 +359,14 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     public function setFeaturedOfferExpectedPriceResults(?array $featured_offer_expected_price_results): self
     {
         if (is_null($featured_offer_expected_price_results)) {
-            throw new \InvalidArgumentException('non-nullable featured_offer_expected_price_results cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'featured_offer_expected_price_results');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('featured_offer_expected_price_results', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['featured_offer_expected_price_results'] = $featured_offer_expected_price_results;
 
@@ -362,7 +376,7 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -379,7 +393,14 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

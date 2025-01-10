@@ -91,8 +91,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'format' => false,
         'size' => false,
-        'dpi' => false,
-        'page_layout' => false,
+        'dpi' => true,
+        'page_layout' => true,
         'need_file_joining' => false,
         'requested_document_types' => false
     ];
@@ -413,7 +413,14 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     public function setDpi(?int $dpi): self
     {
         if (is_null($dpi)) {
-            throw new \InvalidArgumentException('non-nullable dpi cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dpi');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dpi', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dpi'] = $dpi;
 
@@ -440,7 +447,14 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     public function setPageLayout(?string $page_layout): self
     {
         if (is_null($page_layout)) {
-            throw new \InvalidArgumentException('non-nullable page_layout cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'page_layout');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_layout', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['page_layout'] = $page_layout;
 
@@ -477,7 +491,7 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets requested_document_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getRequestedDocumentTypes(): array
     {

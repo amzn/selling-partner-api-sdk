@@ -80,8 +80,8 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'benefit' => false,
-        'reason_codes' => false
+        'benefit' => true,
+        'reason_codes' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBenefit(?string $benefit): self
     {
         if (is_null($benefit)) {
-            throw new \InvalidArgumentException('non-nullable benefit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'benefit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('benefit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['benefit'] = $benefit;
 
@@ -328,7 +335,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reason_codes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReasonCodes(): ?array
     {
@@ -345,7 +352,14 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReasonCodes(?array $reason_codes): self
     {
         if (is_null($reason_codes)) {
-            throw new \InvalidArgumentException('non-nullable reason_codes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_codes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_codes'] = $reason_codes;
 

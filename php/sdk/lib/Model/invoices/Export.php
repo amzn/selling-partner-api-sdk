@@ -88,12 +88,12 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error_message' => false,
-        'export_id' => false,
-        'generate_export_finished_at' => false,
-        'generate_export_started_at' => false,
-        'invoices_document_ids' => false,
-        'status' => false
+        'error_message' => true,
+        'export_id' => true,
+        'generate_export_finished_at' => true,
+        'generate_export_started_at' => true,
+        'invoices_document_ids' => true,
+        'status' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorMessage(?string $error_message): self
     {
         if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_message', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_message'] = $error_message;
 
@@ -373,7 +380,14 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExportId(?string $export_id): self
     {
         if (is_null($export_id)) {
-            throw new \InvalidArgumentException('non-nullable export_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'export_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('export_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['export_id'] = $export_id;
 
@@ -400,7 +414,14 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGenerateExportFinishedAt(?\DateTime $generate_export_finished_at): self
     {
         if (is_null($generate_export_finished_at)) {
-            throw new \InvalidArgumentException('non-nullable generate_export_finished_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'generate_export_finished_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('generate_export_finished_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['generate_export_finished_at'] = $generate_export_finished_at;
 
@@ -427,7 +448,14 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGenerateExportStartedAt(?\DateTime $generate_export_started_at): self
     {
         if (is_null($generate_export_started_at)) {
-            throw new \InvalidArgumentException('non-nullable generate_export_started_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'generate_export_started_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('generate_export_started_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['generate_export_started_at'] = $generate_export_started_at;
 
@@ -437,7 +465,7 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoices_document_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvoicesDocumentIds(): ?array
     {
@@ -454,7 +482,14 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoicesDocumentIds(?array $invoices_document_ids): self
     {
         if (is_null($invoices_document_ids)) {
-            throw new \InvalidArgumentException('non-nullable invoices_document_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoices_document_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoices_document_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoices_document_ids'] = $invoices_document_ids;
 
@@ -481,7 +516,14 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 

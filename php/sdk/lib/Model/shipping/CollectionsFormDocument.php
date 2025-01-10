@@ -81,8 +81,8 @@ class CollectionsFormDocument implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'base64_encoded_content' => false,
-        'document_format' => false
+        'base64_encoded_content' => true,
+        'document_format' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class CollectionsFormDocument implements ModelInterface, ArrayAccess, \JsonSeria
     public function setBase64EncodedContent(?string $base64_encoded_content): self
     {
         if (is_null($base64_encoded_content)) {
-            throw new \InvalidArgumentException('non-nullable base64_encoded_content cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'base64_encoded_content');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('base64_encoded_content', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['base64_encoded_content'] = $base64_encoded_content;
 
@@ -346,7 +353,14 @@ class CollectionsFormDocument implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDocumentFormat(?string $document_format): self
     {
         if (is_null($document_format)) {
-            throw new \InvalidArgumentException('non-nullable document_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'document_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('document_format', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['document_format'] = $document_format;
 

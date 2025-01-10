@@ -82,9 +82,9 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'scheduled_packages' => false,
-        'rejected_orders' => false,
-        'printable_documents_url' => false
+        'scheduled_packages' => true,
+        'rejected_orders' => true,
+        'printable_documents_url' => true
     ];
 
     /**
@@ -312,7 +312,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets scheduled_packages
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getScheduledPackages(): ?array
     {
@@ -329,10 +329,17 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     public function setScheduledPackages(?array $scheduled_packages): self
     {
         if (is_null($scheduled_packages)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_packages cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduled_packages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduled_packages', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($scheduled_packages) > 100)) {
+        if (!is_null($scheduled_packages) && (count($scheduled_packages) > 100)) {
             throw new \InvalidArgumentException('invalid value for $scheduled_packages when calling CreateScheduledPackagesResponse., number of items must be less than or equal to 100.');
         }
         $this->container['scheduled_packages'] = $scheduled_packages;
@@ -343,7 +350,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets rejected_orders
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRejectedOrders(): ?array
     {
@@ -360,7 +367,14 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     public function setRejectedOrders(?array $rejected_orders): self
     {
         if (is_null($rejected_orders)) {
-            throw new \InvalidArgumentException('non-nullable rejected_orders cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rejected_orders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rejected_orders', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rejected_orders'] = $rejected_orders;
 
@@ -387,7 +401,14 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     public function setPrintableDocumentsUrl(?string $printable_documents_url): self
     {
         if (is_null($printable_documents_url)) {
-            throw new \InvalidArgumentException('non-nullable printable_documents_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'printable_documents_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('printable_documents_url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['printable_documents_url'] = $printable_documents_url;
 

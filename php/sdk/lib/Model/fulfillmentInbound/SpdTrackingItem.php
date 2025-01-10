@@ -82,9 +82,9 @@ class SpdTrackingItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'box_id' => false,
-        'tracking_id' => false,
-        'tracking_number_validation_status' => false
+        'box_id' => true,
+        'tracking_id' => true,
+        'tracking_number_validation_status' => true
     ];
 
     /**
@@ -349,12 +349,19 @@ class SpdTrackingItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBoxId(?string $box_id): self
     {
         if (is_null($box_id)) {
-            throw new \InvalidArgumentException('non-nullable box_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'box_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('box_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($box_id) > 1024)) {
+        if (!is_null($box_id) && (mb_strlen($box_id) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItem., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($box_id) < 1)) {
+        if (!is_null($box_id) && (mb_strlen($box_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItem., must be bigger than or equal to 1.');
         }
 
@@ -383,12 +390,19 @@ class SpdTrackingItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingId(?string $tracking_id): self
     {
         if (is_null($tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($tracking_id) > 1024)) {
+        if (!is_null($tracking_id) && (mb_strlen($tracking_id) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItem., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($tracking_id) < 1)) {
+        if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItem., must be bigger than or equal to 1.');
         }
 
@@ -417,12 +431,19 @@ class SpdTrackingItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingNumberValidationStatus(?string $tracking_number_validation_status): self
     {
         if (is_null($tracking_number_validation_status)) {
-            throw new \InvalidArgumentException('non-nullable tracking_number_validation_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_number_validation_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_number_validation_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($tracking_number_validation_status) > 1024)) {
+        if (!is_null($tracking_number_validation_status) && (mb_strlen($tracking_number_validation_status) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $tracking_number_validation_status when calling SpdTrackingItem., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($tracking_number_validation_status) < 1)) {
+        if (!is_null($tracking_number_validation_status) && (mb_strlen($tracking_number_validation_status) < 1)) {
             throw new \InvalidArgumentException('invalid length for $tracking_number_validation_status when calling SpdTrackingItem., must be bigger than or equal to 1.');
         }
 

@@ -83,9 +83,9 @@ class UnmanifestedCarrierInformation implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carrier_id' => false,
-        'carrier_name' => false,
-        'unmanifested_shipment_location_list' => false
+        'carrier_id' => true,
+        'carrier_name' => true,
+        'unmanifested_shipment_location_list' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class UnmanifestedCarrierInformation implements ModelInterface, ArrayAccess, \Js
     public function setCarrierId(?string $carrier_id): self
     {
         if (is_null($carrier_id)) {
-            throw new \InvalidArgumentException('non-nullable carrier_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_id'] = $carrier_id;
 
@@ -353,7 +360,14 @@ class UnmanifestedCarrierInformation implements ModelInterface, ArrayAccess, \Js
     public function setCarrierName(?string $carrier_name): self
     {
         if (is_null($carrier_name)) {
-            throw new \InvalidArgumentException('non-nullable carrier_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_name'] = $carrier_name;
 
@@ -363,7 +377,7 @@ class UnmanifestedCarrierInformation implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets unmanifested_shipment_location_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getUnmanifestedShipmentLocationList(): ?array
     {
@@ -380,7 +394,14 @@ class UnmanifestedCarrierInformation implements ModelInterface, ArrayAccess, \Js
     public function setUnmanifestedShipmentLocationList(?array $unmanifested_shipment_location_list): self
     {
         if (is_null($unmanifested_shipment_location_list)) {
-            throw new \InvalidArgumentException('non-nullable unmanifested_shipment_location_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unmanifested_shipment_location_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unmanifested_shipment_location_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unmanifested_shipment_location_list'] = $unmanifested_shipment_location_list;
 

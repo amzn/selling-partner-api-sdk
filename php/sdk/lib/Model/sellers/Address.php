@@ -89,11 +89,11 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'address_line1' => false,
-        'address_line2' => false,
+        'address_line2' => true,
         'country_code' => false,
-        'state_or_province_code' => false,
-        'city' => false,
-        'postal_code' => false
+        'state_or_province_code' => true,
+        'city' => true,
+        'postal_code' => true
     ];
 
     /**
@@ -379,7 +379,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressLine2(?string $address_line2): self
     {
         if (is_null($address_line2)) {
-            throw new \InvalidArgumentException('non-nullable address_line2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_line2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_line2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address_line2'] = $address_line2;
 
@@ -433,7 +440,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStateOrProvinceCode(?string $state_or_province_code): self
     {
         if (is_null($state_or_province_code)) {
-            throw new \InvalidArgumentException('non-nullable state_or_province_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'state_or_province_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('state_or_province_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['state_or_province_code'] = $state_or_province_code;
 
@@ -460,7 +474,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCity(?string $city): self
     {
         if (is_null($city)) {
-            throw new \InvalidArgumentException('non-nullable city cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'city');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('city', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['city'] = $city;
 
@@ -487,7 +508,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPostalCode(?string $postal_code): self
     {
         if (is_null($postal_code)) {
-            throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'postal_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('postal_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['postal_code'] = $postal_code;
 

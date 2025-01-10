@@ -80,8 +80,8 @@ class GetShipmentsResult implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_data' => false,
-        'next_token' => false
+        'shipment_data' => true,
+        'next_token' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class GetShipmentsResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets shipment_data
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentData(): ?array
     {
@@ -318,7 +318,14 @@ class GetShipmentsResult implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setShipmentData(?array $shipment_data): self
     {
         if (is_null($shipment_data)) {
-            throw new \InvalidArgumentException('non-nullable shipment_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_data'] = $shipment_data;
 
@@ -345,7 +352,14 @@ class GetShipmentsResult implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 

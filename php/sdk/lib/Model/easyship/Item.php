@@ -80,8 +80,8 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order_item_id' => false,
-        'order_item_serial_numbers' => false
+        'order_item_id' => true,
+        'order_item_serial_numbers' => true
     ];
 
     /**
@@ -326,9 +326,16 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderItemId(?string $order_item_id): self
     {
         if (is_null($order_item_id)) {
-            throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($order_item_id) > 255)) {
+        if (!is_null($order_item_id) && (mb_strlen($order_item_id) > 255)) {
             throw new \InvalidArgumentException('invalid length for $order_item_id when calling Item., must be smaller than or equal to 255.');
         }
 
@@ -340,7 +347,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_item_serial_numbers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrderItemSerialNumbers(): ?array
     {
@@ -357,10 +364,17 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderItemSerialNumbers(?array $order_item_serial_numbers): self
     {
         if (is_null($order_item_serial_numbers)) {
-            throw new \InvalidArgumentException('non-nullable order_item_serial_numbers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_item_serial_numbers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_item_serial_numbers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($order_item_serial_numbers) > 100)) {
+        if (!is_null($order_item_serial_numbers) && (count($order_item_serial_numbers) > 100)) {
             throw new \InvalidArgumentException('invalid value for $order_item_serial_numbers when calling Item., number of items must be less than or equal to 100.');
         }
         $this->container['order_item_serial_numbers'] = $order_item_serial_numbers;

@@ -78,7 +78,7 @@ class ServiceJobProvider implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'service_job_provider_id' => false
+        'service_job_provider_id' => true
     ];
 
     /**
@@ -315,10 +315,17 @@ class ServiceJobProvider implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setServiceJobProviderId(?string $service_job_provider_id): self
     {
         if (is_null($service_job_provider_id)) {
-            throw new \InvalidArgumentException('non-nullable service_job_provider_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_job_provider_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_job_provider_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($service_job_provider_id)))) {
+        if (!is_null($service_job_provider_id) && (!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($service_job_provider_id)))) {
             throw new \InvalidArgumentException("invalid value for \$service_job_provider_id when calling ServiceJobProvider., must conform to the pattern /^[A-Z0-9]*$/.");
         }
 

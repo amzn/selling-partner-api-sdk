@@ -91,7 +91,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
         'asin' => false,
         'marketplace_id' => false,
         'included_data' => false,
-        'lowest_priced_offers_inputs' => false,
+        'lowest_priced_offers_inputs' => true,
         'method' => false,
         'uri' => false
     ];
@@ -418,7 +418,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets included_data
      *
-     * @return arrayA
+     * @return array
      */
     public function getIncludedData(): array
     {
@@ -450,7 +450,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets lowest_priced_offers_inputs
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLowestPricedOffersInputs(): ?array
     {
@@ -467,13 +467,20 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setLowestPricedOffersInputs(?array $lowest_priced_offers_inputs): self
     {
         if (is_null($lowest_priced_offers_inputs)) {
-            throw new \InvalidArgumentException('non-nullable lowest_priced_offers_inputs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lowest_priced_offers_inputs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lowest_priced_offers_inputs', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($lowest_priced_offers_inputs) > 5)) {
+        if (!is_null($lowest_priced_offers_inputs) && (count($lowest_priced_offers_inputs) > 5)) {
             throw new \InvalidArgumentException('invalid value for $lowest_priced_offers_inputs when calling CompetitiveSummaryRequest., number of items must be less than or equal to 5.');
         }
-        if ((count($lowest_priced_offers_inputs) < 0)) {
+        if (!is_null($lowest_priced_offers_inputs) && (count($lowest_priced_offers_inputs) < 0)) {
             throw new \InvalidArgumentException('invalid length for $lowest_priced_offers_inputs when calling CompetitiveSummaryRequest., number of items must be greater than or equal to 0.');
         }
         $this->container['lowest_priced_offers_inputs'] = $lowest_priced_offers_inputs;

@@ -297,7 +297,7 @@ class GetFeaturesResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets features
      *
-     * @return arrayA
+     * @return array
      */
     public function getFeatures(): array
     {

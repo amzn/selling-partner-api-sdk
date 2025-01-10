@@ -81,7 +81,7 @@ class FulfillmentAvailability implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'fulfillment_channel_code' => false,
-        'quantity' => false
+        'quantity' => true
     ];
 
     /**
@@ -352,10 +352,17 @@ class FulfillmentAvailability implements ModelInterface, ArrayAccess, \JsonSeria
     public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($quantity < 0)) {
+        if (!is_null($quantity) && ($quantity < 0)) {
             throw new \InvalidArgumentException('invalid value for $quantity when calling FulfillmentAvailability., must be bigger than or equal to 0.');
         }
 

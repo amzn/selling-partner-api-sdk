@@ -90,10 +90,10 @@ class ReportSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'report_schedule_id' => false,
         'report_type' => false,
-        'marketplace_ids' => false,
-        'report_options' => false,
+        'marketplace_ids' => true,
+        'report_options' => true,
         'period' => false,
-        'next_report_creation_time' => false
+        'next_report_creation_time' => true
     ];
 
     /**
@@ -392,7 +392,7 @@ class ReportSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMarketplaceIds(): ?array
     {
@@ -409,7 +409,14 @@ class ReportSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceIds(?array $marketplace_ids): self
     {
         if (is_null($marketplace_ids)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -436,7 +443,14 @@ class ReportSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReportOptions(?array $report_options): self
     {
         if (is_null($report_options)) {
-            throw new \InvalidArgumentException('non-nullable report_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'report_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['report_options'] = $report_options;
 
@@ -490,7 +504,14 @@ class ReportSchedule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextReportCreationTime(?\DateTime $next_report_creation_time): self
     {
         if (is_null($next_report_creation_time)) {
-            throw new \InvalidArgumentException('non-nullable next_report_creation_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_report_creation_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_report_creation_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_report_creation_time'] = $next_report_creation_time;
 

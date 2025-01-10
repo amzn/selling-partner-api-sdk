@@ -83,8 +83,8 @@ class TransportResult implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'transport_status' => false,
-        'error_code' => false,
-        'error_description' => false
+        'error_code' => true,
+        'error_description' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class TransportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorCode(?string $error_code): self
     {
         if (is_null($error_code)) {
-            throw new \InvalidArgumentException('non-nullable error_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_code'] = $error_code;
 
@@ -382,7 +389,14 @@ class TransportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorDescription(?string $error_description): self
     {
         if (is_null($error_description)) {
-            throw new \InvalidArgumentException('non-nullable error_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_description'] = $error_description;
 

@@ -55,6 +55,8 @@ class AwdApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('AwdApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class AwdApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class AwdApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInboundShipment200', 'AwdApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInboundShipment200', 'AwdApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -285,7 +286,7 @@ class AwdApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInboundShipment400', 'AwdApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInboundShipment400', 'AwdApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -423,7 +424,7 @@ class AwdApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundShipments200', 'AwdApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundShipments200', 'AwdApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -503,7 +504,7 @@ class AwdApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundShipments400', 'AwdApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundShipments400', 'AwdApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -641,7 +642,7 @@ class AwdApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInventory200', 'AwdApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInventory200', 'AwdApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -729,7 +730,7 @@ class AwdApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInventory400', 'AwdApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInventory400', 'AwdApi')) {
                 $this->assertTrue(true);
                 return;
             }

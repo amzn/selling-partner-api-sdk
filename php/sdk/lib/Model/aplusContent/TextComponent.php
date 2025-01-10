@@ -81,7 +81,7 @@ class TextComponent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'value' => false,
-        'decorator_set' => false
+        'decorator_set' => true
     ];
 
     /**
@@ -346,7 +346,7 @@ class TextComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets decorator_set
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDecoratorSet(): ?array
     {
@@ -363,7 +363,14 @@ class TextComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDecoratorSet(?array $decorator_set): self
     {
         if (is_null($decorator_set)) {
-            throw new \InvalidArgumentException('non-nullable decorator_set cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'decorator_set');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('decorator_set', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

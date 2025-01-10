@@ -85,8 +85,8 @@ class ItemOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'marketplace_id' => false,
         'item_condition' => false,
-        'customer_type' => false,
-        'asin' => false
+        'customer_type' => true,
+        'asin' => true
     ];
 
     /**
@@ -391,7 +391,14 @@ class ItemOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCustomerType(?string $customer_type): self
     {
         if (is_null($customer_type)) {
-            throw new \InvalidArgumentException('non-nullable customer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_type'] = $customer_type;
 
@@ -418,7 +425,14 @@ class ItemOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 

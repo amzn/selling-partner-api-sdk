@@ -89,12 +89,12 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ship_to' => false,
-        'ship_from' => false,
-        'return_to' => false,
-        'packages' => false,
+        'ship_to' => true,
+        'ship_from' => true,
+        'return_to' => true,
+        'packages' => true,
         'channel_details' => false,
-        'label_specifications' => false
+        'label_specifications' => true
     ];
 
     /**
@@ -350,7 +350,14 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipTo(?\OpenAPI\Client\Model\shipping\Address $ship_to): self
     {
         if (is_null($ship_to)) {
-            throw new \InvalidArgumentException('non-nullable ship_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to'] = $ship_to;
 
@@ -377,7 +384,14 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipFrom(?\OpenAPI\Client\Model\shipping\Address $ship_from): self
     {
         if (is_null($ship_from)) {
-            throw new \InvalidArgumentException('non-nullable ship_from cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_from');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_from', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_from'] = $ship_from;
 
@@ -404,7 +418,14 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setReturnTo(?\OpenAPI\Client\Model\shipping\Address $return_to): self
     {
         if (is_null($return_to)) {
-            throw new \InvalidArgumentException('non-nullable return_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_to', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_to'] = $return_to;
 
@@ -414,7 +435,7 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets packages
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackages(): ?array
     {
@@ -431,7 +452,14 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPackages(?array $packages): self
     {
         if (is_null($packages)) {
-            throw new \InvalidArgumentException('non-nullable packages cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packages', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['packages'] = $packages;
 
@@ -485,7 +513,14 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setLabelSpecifications(?\OpenAPI\Client\Model\shipping\RequestedDocumentSpecification $label_specifications): self
     {
         if (is_null($label_specifications)) {
-            throw new \InvalidArgumentException('non-nullable label_specifications cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_specifications');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_specifications', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_specifications'] = $label_specifications;
 

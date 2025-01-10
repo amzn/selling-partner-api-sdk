@@ -88,8 +88,8 @@ class CreateInboundShipmentPlanRequest implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'ship_from_address' => false,
         'label_prep_preference' => false,
-        'ship_to_country_code' => false,
-        'ship_to_country_subdivision_code' => false,
+        'ship_to_country_code' => true,
+        'ship_to_country_subdivision_code' => true,
         'inbound_shipment_plan_request_items' => false
     ];
 
@@ -402,7 +402,14 @@ class CreateInboundShipmentPlanRequest implements ModelInterface, ArrayAccess, \
     public function setShipToCountryCode(?string $ship_to_country_code): self
     {
         if (is_null($ship_to_country_code)) {
-            throw new \InvalidArgumentException('non-nullable ship_to_country_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to_country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to_country_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to_country_code'] = $ship_to_country_code;
 
@@ -429,7 +436,14 @@ class CreateInboundShipmentPlanRequest implements ModelInterface, ArrayAccess, \
     public function setShipToCountrySubdivisionCode(?string $ship_to_country_subdivision_code): self
     {
         if (is_null($ship_to_country_subdivision_code)) {
-            throw new \InvalidArgumentException('non-nullable ship_to_country_subdivision_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to_country_subdivision_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to_country_subdivision_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to_country_subdivision_code'] = $ship_to_country_subdivision_code;
 
@@ -439,7 +453,7 @@ class CreateInboundShipmentPlanRequest implements ModelInterface, ArrayAccess, \
     /**
      * Gets inbound_shipment_plan_request_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getInboundShipmentPlanRequestItems(): array
     {

@@ -84,10 +84,10 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_details' => false,
-        'throughput_config' => false,
-        'operating_hours_by_day' => false,
-        'handling_time' => false
+        'contact_details' => true,
+        'throughput_config' => true,
+        'operating_hours_by_day' => true,
+        'handling_time' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     public function setContactDetails(?\OpenAPI\Client\Model\supplySources\ContactDetails $contact_details): self
     {
         if (is_null($contact_details)) {
-            throw new \InvalidArgumentException('non-nullable contact_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contact_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contact_details'] = $contact_details;
 
@@ -359,7 +366,14 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     public function setThroughputConfig(?\OpenAPI\Client\Model\supplySources\ThroughputConfig $throughput_config): self
     {
         if (is_null($throughput_config)) {
-            throw new \InvalidArgumentException('non-nullable throughput_config cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'throughput_config');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('throughput_config', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['throughput_config'] = $throughput_config;
 
@@ -386,7 +400,14 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     public function setOperatingHoursByDay(?\OpenAPI\Client\Model\supplySources\OperatingHoursByDay $operating_hours_by_day): self
     {
         if (is_null($operating_hours_by_day)) {
-            throw new \InvalidArgumentException('non-nullable operating_hours_by_day cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'operating_hours_by_day');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('operating_hours_by_day', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['operating_hours_by_day'] = $operating_hours_by_day;
 
@@ -413,7 +434,14 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     public function setHandlingTime(?\OpenAPI\Client\Model\supplySources\Duration $handling_time): self
     {
         if (is_null($handling_time)) {
-            throw new \InvalidArgumentException('non-nullable handling_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'handling_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('handling_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['handling_time'] = $handling_time;
 

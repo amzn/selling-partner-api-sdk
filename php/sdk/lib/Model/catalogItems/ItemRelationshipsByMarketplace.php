@@ -334,7 +334,7 @@ class ItemRelationshipsByMarketplace implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets relationships
      *
-     * @return arrayA
+     * @return array
      */
     public function getRelationships(): array
     {

@@ -83,8 +83,8 @@ class PackageGroupingInput implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'boxes' => false,
-        'packing_group_id' => false,
-        'shipment_id' => false
+        'packing_group_id' => true,
+        'shipment_id' => true
     ];
 
     /**
@@ -343,7 +343,7 @@ class PackageGroupingInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets boxes
      *
-     * @return arrayA
+     * @return array
      */
     public function getBoxes(): array
     {
@@ -394,15 +394,22 @@ class PackageGroupingInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPackingGroupId(?string $packing_group_id): self
     {
         if (is_null($packing_group_id)) {
-            throw new \InvalidArgumentException('non-nullable packing_group_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packing_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packing_group_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($packing_group_id) > 38)) {
+        if (!is_null($packing_group_id) && (mb_strlen($packing_group_id) > 38)) {
             throw new \InvalidArgumentException('invalid length for $packing_group_id when calling PackageGroupingInput., must be smaller than or equal to 38.');
         }
-        if ((mb_strlen($packing_group_id) < 38)) {
+        if (!is_null($packing_group_id) && (mb_strlen($packing_group_id) < 38)) {
             throw new \InvalidArgumentException('invalid length for $packing_group_id when calling PackageGroupingInput., must be bigger than or equal to 38.');
         }
-        if ((!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($packing_group_id)))) {
+        if (!is_null($packing_group_id) && (!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($packing_group_id)))) {
             throw new \InvalidArgumentException("invalid value for \$packing_group_id when calling PackageGroupingInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.");
         }
 
@@ -431,15 +438,22 @@ class PackageGroupingInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setShipmentId(?string $shipment_id): self
     {
         if (is_null($shipment_id)) {
-            throw new \InvalidArgumentException('non-nullable shipment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($shipment_id) > 38)) {
+        if (!is_null($shipment_id) && (mb_strlen($shipment_id) > 38)) {
             throw new \InvalidArgumentException('invalid length for $shipment_id when calling PackageGroupingInput., must be smaller than or equal to 38.');
         }
-        if ((mb_strlen($shipment_id) < 38)) {
+        if (!is_null($shipment_id) && (mb_strlen($shipment_id) < 38)) {
             throw new \InvalidArgumentException('invalid length for $shipment_id when calling PackageGroupingInput., must be bigger than or equal to 38.');
         }
-        if ((!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($shipment_id)))) {
+        if (!is_null($shipment_id) && (!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($shipment_id)))) {
             throw new \InvalidArgumentException("invalid value for \$shipment_id when calling PackageGroupingInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.");
         }
 

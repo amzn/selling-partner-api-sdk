@@ -94,15 +94,15 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'fn_sku' => false,
-        'seller_sku' => false,
-        'condition' => false,
-        'inventory_details' => false,
-        'last_updated_time' => false,
-        'product_name' => false,
-        'total_quantity' => false,
-        'stores' => false
+        'asin' => true,
+        'fn_sku' => true,
+        'seller_sku' => true,
+        'condition' => true,
+        'inventory_details' => true,
+        'last_updated_time' => true,
+        'product_name' => true,
+        'total_quantity' => true,
+        'stores' => true
     ];
 
     /**
@@ -367,7 +367,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -394,7 +401,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFnSku(?string $fn_sku): self
     {
         if (is_null($fn_sku)) {
-            throw new \InvalidArgumentException('non-nullable fn_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fn_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fn_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fn_sku'] = $fn_sku;
 
@@ -421,7 +435,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -448,7 +469,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCondition(?string $condition): self
     {
         if (is_null($condition)) {
-            throw new \InvalidArgumentException('non-nullable condition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['condition'] = $condition;
 
@@ -475,7 +503,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInventoryDetails(?\OpenAPI\Client\Model\fbaInventory\InventoryDetails $inventory_details): self
     {
         if (is_null($inventory_details)) {
-            throw new \InvalidArgumentException('non-nullable inventory_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inventory_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inventory_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inventory_details'] = $inventory_details;
 
@@ -502,7 +537,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastUpdatedTime(?\DateTime $last_updated_time): self
     {
         if (is_null($last_updated_time)) {
-            throw new \InvalidArgumentException('non-nullable last_updated_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_updated_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_updated_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_updated_time'] = $last_updated_time;
 
@@ -529,7 +571,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductName(?string $product_name): self
     {
         if (is_null($product_name)) {
-            throw new \InvalidArgumentException('non-nullable product_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_name'] = $product_name;
 
@@ -556,7 +605,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalQuantity(?int $total_quantity): self
     {
         if (is_null($total_quantity)) {
-            throw new \InvalidArgumentException('non-nullable total_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_quantity'] = $total_quantity;
 
@@ -566,7 +622,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets stores
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getStores(): ?array
     {
@@ -583,7 +639,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStores(?array $stores): self
     {
         if (is_null($stores)) {
-            throw new \InvalidArgumentException('non-nullable stores cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'stores');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stores', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['stores'] = $stores;
 

@@ -80,8 +80,8 @@ class GetShipmentItemsResult implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'item_data' => false,
-        'next_token' => false
+        'item_data' => true,
+        'next_token' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class GetShipmentItemsResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets item_data
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemData(): ?array
     {
@@ -318,7 +318,14 @@ class GetShipmentItemsResult implements ModelInterface, ArrayAccess, \JsonSerial
     public function setItemData(?array $item_data): self
     {
         if (is_null($item_data)) {
-            throw new \InvalidArgumentException('non-nullable item_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_data'] = $item_data;
 
@@ -345,7 +352,14 @@ class GetShipmentItemsResult implements ModelInterface, ArrayAccess, \JsonSerial
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 

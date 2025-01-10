@@ -55,6 +55,8 @@ class OrdersApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('OrdersApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class OrdersApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmShipment204', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmShipment204', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -230,7 +231,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmShipment400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmShipment400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -378,7 +379,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrder200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrder200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -625,7 +626,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrder400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrder400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -746,7 +747,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderAddress200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderAddress200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -849,7 +850,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderAddress400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderAddress400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -970,7 +971,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1063,7 +1064,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1184,7 +1185,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderItems200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItems200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1385,7 +1386,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderItems400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItems400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1506,7 +1507,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1611,7 +1612,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1732,7 +1733,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2083,7 +2084,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2204,7 +2205,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrders200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrders200', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2499,7 +2500,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetOrders400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrders400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2620,7 +2621,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentStatus204', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentStatus204', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2686,7 +2687,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentStatus400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentStatus400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2827,7 +2828,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus204', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus204', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2933,7 +2934,7 @@ class OrdersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus400', 'OrdersApi')) {
                 $this->assertTrue(true);
                 return;
             }

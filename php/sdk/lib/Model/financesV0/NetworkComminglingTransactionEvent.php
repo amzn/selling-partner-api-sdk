@@ -92,14 +92,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transaction_type' => false,
-        'posted_date' => false,
-        'net_co_transaction_id' => false,
-        'swap_reason' => false,
-        'asin' => false,
-        'marketplace_id' => false,
-        'tax_exclusive_amount' => false,
-        'tax_amount' => false
+        'transaction_type' => true,
+        'posted_date' => true,
+        'net_co_transaction_id' => true,
+        'swap_reason' => true,
+        'asin' => true,
+        'marketplace_id' => true,
+        'tax_exclusive_amount' => true,
+        'tax_amount' => true
     ];
 
     /**
@@ -360,7 +360,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -387,7 +394,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -414,7 +428,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setNetCoTransactionId(?string $net_co_transaction_id): self
     {
         if (is_null($net_co_transaction_id)) {
-            throw new \InvalidArgumentException('non-nullable net_co_transaction_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'net_co_transaction_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('net_co_transaction_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['net_co_transaction_id'] = $net_co_transaction_id;
 
@@ -441,7 +462,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setSwapReason(?string $swap_reason): self
     {
         if (is_null($swap_reason)) {
-            throw new \InvalidArgumentException('non-nullable swap_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'swap_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('swap_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['swap_reason'] = $swap_reason;
 
@@ -468,7 +496,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -495,7 +530,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -522,7 +564,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setTaxExclusiveAmount(?\OpenAPI\Client\Model\financesV0\Currency $tax_exclusive_amount): self
     {
         if (is_null($tax_exclusive_amount)) {
-            throw new \InvalidArgumentException('non-nullable tax_exclusive_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_exclusive_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_exclusive_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_exclusive_amount'] = $tax_exclusive_amount;
 
@@ -549,7 +598,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     public function setTaxAmount(?\OpenAPI\Client\Model\financesV0\Currency $tax_amount): self
     {
         if (is_null($tax_amount)) {
-            throw new \InvalidArgumentException('non-nullable tax_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_amount'] = $tax_amount;
 

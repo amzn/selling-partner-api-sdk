@@ -78,7 +78,7 @@ class ListItemComplianceDetailsResponse implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'compliance_details' => false
+        'compliance_details' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class ListItemComplianceDetailsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets compliance_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getComplianceDetails(): ?array
     {
@@ -311,7 +311,14 @@ class ListItemComplianceDetailsResponse implements ModelInterface, ArrayAccess, 
     public function setComplianceDetails(?array $compliance_details): self
     {
         if (is_null($compliance_details)) {
-            throw new \InvalidArgumentException('non-nullable compliance_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'compliance_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('compliance_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['compliance_details'] = $compliance_details;
 

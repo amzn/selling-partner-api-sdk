@@ -78,7 +78,7 @@ class CommonTransportResult implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transport_result' => false
+        'transport_result' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class CommonTransportResult implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTransportResult(?\OpenAPI\Client\Model\fulfillmentInboundV0\TransportResult $transport_result): self
     {
         if (is_null($transport_result)) {
-            throw new \InvalidArgumentException('non-nullable transport_result cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transport_result');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transport_result', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transport_result'] = $transport_result;
 

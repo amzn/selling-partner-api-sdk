@@ -103,16 +103,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
         'address_line1' => false,
-        'address_line2' => false,
-        'address_line3' => false,
-        'company_name' => false,
+        'address_line2' => true,
+        'address_line3' => true,
+        'company_name' => true,
         'state_or_region' => false,
         'city' => false,
         'country_code' => false,
         'postal_code' => false,
-        'email' => false,
-        'phone_number' => false,
-        'geocode' => false
+        'email' => true,
+        'phone_number' => true,
+        'geocode' => true
     ];
 
     /**
@@ -519,12 +519,19 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressLine2(?string $address_line2): self
     {
         if (is_null($address_line2)) {
-            throw new \InvalidArgumentException('non-nullable address_line2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_line2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_line2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($address_line2) > 60)) {
+        if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be smaller than or equal to 60.');
         }
-        if ((mb_strlen($address_line2) < 1)) {
+        if (!is_null($address_line2) && (mb_strlen($address_line2) < 1)) {
             throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -553,12 +560,19 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressLine3(?string $address_line3): self
     {
         if (is_null($address_line3)) {
-            throw new \InvalidArgumentException('non-nullable address_line3 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_line3');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_line3', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($address_line3) > 60)) {
+        if (!is_null($address_line3) && (mb_strlen($address_line3) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line3 when calling Address., must be smaller than or equal to 60.');
         }
-        if ((mb_strlen($address_line3) < 1)) {
+        if (!is_null($address_line3) && (mb_strlen($address_line3) < 1)) {
             throw new \InvalidArgumentException('invalid length for $address_line3 when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -587,7 +601,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCompanyName(?string $company_name): self
     {
         if (is_null($company_name)) {
-            throw new \InvalidArgumentException('non-nullable company_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['company_name'] = $company_name;
 
@@ -722,9 +743,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEmail(?string $email): self
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($email) > 64)) {
+        if (!is_null($email) && (mb_strlen($email) > 64)) {
             throw new \InvalidArgumentException('invalid length for $email when calling Address., must be smaller than or equal to 64.');
         }
 
@@ -753,12 +781,19 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPhoneNumber(?string $phone_number): self
     {
         if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($phone_number) > 20)) {
+        if (!is_null($phone_number) && (mb_strlen($phone_number) > 20)) {
             throw new \InvalidArgumentException('invalid length for $phone_number when calling Address., must be smaller than or equal to 20.');
         }
-        if ((mb_strlen($phone_number) < 1)) {
+        if (!is_null($phone_number) && (mb_strlen($phone_number) < 1)) {
             throw new \InvalidArgumentException('invalid length for $phone_number when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -787,7 +822,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGeocode(?\OpenAPI\Client\Model\shipping\Geocode $geocode): self
     {
         if (is_null($geocode)) {
-            throw new \InvalidArgumentException('non-nullable geocode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'geocode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('geocode', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['geocode'] = $geocode;
 

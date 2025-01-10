@@ -86,11 +86,11 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inventory_hold_period' => false,
-        'is_supported' => false,
-        'operational_configuration' => false,
-        'in_store_pickup_configuration' => false,
-        'curbside_pickup_configuration' => false
+        'inventory_hold_period' => true,
+        'is_supported' => true,
+        'operational_configuration' => true,
+        'in_store_pickup_configuration' => true,
+        'curbside_pickup_configuration' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInventoryHoldPeriod(?\OpenAPI\Client\Model\supplySources\Duration $inventory_hold_period): self
     {
         if (is_null($inventory_hold_period)) {
-            throw new \InvalidArgumentException('non-nullable inventory_hold_period cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inventory_hold_period');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inventory_hold_period', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inventory_hold_period'] = $inventory_hold_period;
 
@@ -366,7 +373,14 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsSupported(?bool $is_supported): self
     {
         if (is_null($is_supported)) {
-            throw new \InvalidArgumentException('non-nullable is_supported cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_supported');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_supported', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_supported'] = $is_supported;
 
@@ -393,7 +407,14 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
-            throw new \InvalidArgumentException('non-nullable operational_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'operational_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('operational_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['operational_configuration'] = $operational_configuration;
 
@@ -420,7 +441,14 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInStorePickupConfiguration(?\OpenAPI\Client\Model\supplySources\InStorePickupConfiguration $in_store_pickup_configuration): self
     {
         if (is_null($in_store_pickup_configuration)) {
-            throw new \InvalidArgumentException('non-nullable in_store_pickup_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'in_store_pickup_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('in_store_pickup_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['in_store_pickup_configuration'] = $in_store_pickup_configuration;
 
@@ -447,7 +475,14 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurbsidePickupConfiguration(?\OpenAPI\Client\Model\supplySources\CurbsidePickupConfiguration $curbside_pickup_configuration): self
     {
         if (is_null($curbside_pickup_configuration)) {
-            throw new \InvalidArgumentException('non-nullable curbside_pickup_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'curbside_pickup_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('curbside_pickup_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['curbside_pickup_configuration'] = $curbside_pickup_configuration;
 

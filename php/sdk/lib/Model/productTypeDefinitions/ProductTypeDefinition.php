@@ -96,7 +96,7 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta_schema' => false,
+        'meta_schema' => true,
         'schema' => false,
         'requirements' => false,
         'requirements_enforced' => false,
@@ -451,7 +451,14 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setMetaSchema(?\OpenAPI\Client\Model\productTypeDefinitions\SchemaLink $meta_schema): self
     {
         if (is_null($meta_schema)) {
-            throw new \InvalidArgumentException('non-nullable meta_schema cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta_schema');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_schema', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta_schema'] = $meta_schema;
 
@@ -616,7 +623,7 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceIds(): array
     {

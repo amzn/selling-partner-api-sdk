@@ -80,8 +80,8 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
-        'shipping_labels' => false
+        'pagination' => true,
+        'shipping_labels' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPagination(?\OpenAPI\Client\Model\vendorDfShipping\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -328,7 +335,7 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets shipping_labels
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShippingLabels(): ?array
     {
@@ -345,7 +352,14 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setShippingLabels(?array $shipping_labels): self
     {
         if (is_null($shipping_labels)) {
-            throw new \InvalidArgumentException('non-nullable shipping_labels cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_labels');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_labels', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_labels'] = $shipping_labels;
 

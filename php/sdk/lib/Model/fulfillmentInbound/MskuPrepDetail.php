@@ -88,11 +88,11 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'all_owners_constraint' => false,
-        'label_owner_constraint' => false,
+        'all_owners_constraint' => true,
+        'label_owner_constraint' => true,
         'msku' => false,
         'prep_category' => false,
-        'prep_owner_constraint' => false,
+        'prep_owner_constraint' => true,
         'prep_types' => false
     ];
 
@@ -363,7 +363,14 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAllOwnersConstraint(?string $all_owners_constraint): self
     {
         if (is_null($all_owners_constraint)) {
-            throw new \InvalidArgumentException('non-nullable all_owners_constraint cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'all_owners_constraint');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('all_owners_constraint', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['all_owners_constraint'] = $all_owners_constraint;
 
@@ -390,7 +397,14 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabelOwnerConstraint(?string $label_owner_constraint): self
     {
         if (is_null($label_owner_constraint)) {
-            throw new \InvalidArgumentException('non-nullable label_owner_constraint cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_owner_constraint');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_owner_constraint', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_owner_constraint'] = $label_owner_constraint;
 
@@ -478,7 +492,14 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrepOwnerConstraint(?string $prep_owner_constraint): self
     {
         if (is_null($prep_owner_constraint)) {
-            throw new \InvalidArgumentException('non-nullable prep_owner_constraint cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_owner_constraint');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_owner_constraint', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_owner_constraint'] = $prep_owner_constraint;
 
@@ -488,7 +509,7 @@ class MskuPrepDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets prep_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getPrepTypes(): array
     {

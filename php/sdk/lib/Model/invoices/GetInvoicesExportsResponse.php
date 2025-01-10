@@ -80,8 +80,8 @@ class GetInvoicesExportsResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'exports' => false,
-        'next_token' => false
+        'exports' => true,
+        'next_token' => true
     ];
 
     /**
@@ -305,7 +305,7 @@ class GetInvoicesExportsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets exports
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getExports(): ?array
     {
@@ -322,10 +322,17 @@ class GetInvoicesExportsResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setExports(?array $exports): self
     {
         if (is_null($exports)) {
-            throw new \InvalidArgumentException('non-nullable exports cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'exports');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('exports', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($exports) > 100)) {
+        if (!is_null($exports) && (count($exports) > 100)) {
             throw new \InvalidArgumentException('invalid value for $exports when calling GetInvoicesExportsResponse., number of items must be less than or equal to 100.');
         }
         $this->container['exports'] = $exports;
@@ -353,7 +360,14 @@ class GetInvoicesExportsResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 

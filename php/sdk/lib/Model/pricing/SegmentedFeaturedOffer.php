@@ -96,12 +96,12 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'seller_id' => false,
         'condition' => false,
-        'sub_condition' => false,
+        'sub_condition' => true,
         'fulfillment_type' => false,
         'listing_price' => false,
-        'shipping_options' => false,
-        'points' => false,
-        'prime_details' => false,
+        'shipping_options' => true,
+        'points' => true,
+        'prime_details' => true,
         'featured_offer_segments' => false
     ];
 
@@ -482,10 +482,17 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSubCondition(?string $sub_condition): self
     {
         if (is_null($sub_condition)) {
-            throw new \InvalidArgumentException('non-nullable sub_condition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sub_condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sub_condition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getSubConditionAllowableValues();
-        if (!in_array($sub_condition, $allowedValues, true)) {
+        if (!is_null($sub_condition) && !in_array($sub_condition, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'sub_condition', must be one of '%s'",
@@ -556,7 +563,7 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets shipping_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShippingOptions(): ?array
     {
@@ -573,7 +580,14 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     public function setShippingOptions(?array $shipping_options): self
     {
         if (is_null($shipping_options)) {
-            throw new \InvalidArgumentException('non-nullable shipping_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_options'] = $shipping_options;
 
@@ -600,7 +614,14 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPoints(?\OpenAPI\Client\Model\pricing\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 
@@ -627,7 +648,14 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPrimeDetails(?\OpenAPI\Client\Model\pricing\PrimeDetails $prime_details): self
     {
         if (is_null($prime_details)) {
-            throw new \InvalidArgumentException('non-nullable prime_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prime_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prime_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prime_details'] = $prime_details;
 
@@ -637,7 +665,7 @@ class SegmentedFeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets featured_offer_segments
      *
-     * @return arrayA
+     * @return array
      */
     public function getFeaturedOfferSegments(): array
     {

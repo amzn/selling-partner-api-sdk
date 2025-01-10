@@ -78,7 +78,7 @@ class StandardMultipleImageTextModule implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'blocks' => false
+        'blocks' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class StandardMultipleImageTextModule implements ModelInterface, ArrayAccess, \J
     /**
      * Gets blocks
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getBlocks(): ?array
     {
@@ -311,7 +311,14 @@ class StandardMultipleImageTextModule implements ModelInterface, ArrayAccess, \J
     public function setBlocks(?array $blocks): self
     {
         if (is_null($blocks)) {
-            throw new \InvalidArgumentException('non-nullable blocks cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'blocks');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('blocks', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['blocks'] = $blocks;
 

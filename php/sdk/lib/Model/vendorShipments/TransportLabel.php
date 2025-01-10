@@ -82,9 +82,9 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'label_create_date_time' => false,
-        'shipment_information' => false,
-        'label_data' => false
+        'label_create_date_time' => true,
+        'shipment_information' => true,
+        'label_data' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabelCreateDateTime(?string $label_create_date_time): self
     {
         if (is_null($label_create_date_time)) {
-            throw new \InvalidArgumentException('non-nullable label_create_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_create_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_create_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_create_date_time'] = $label_create_date_time;
 
@@ -352,7 +359,14 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipmentInformation(?\OpenAPI\Client\Model\vendorShipments\ShipmentInformation $shipment_information): self
     {
         if (is_null($shipment_information)) {
-            throw new \InvalidArgumentException('non-nullable shipment_information cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_information');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_information', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_information'] = $shipment_information;
 
@@ -362,7 +376,7 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets label_data
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLabelData(): ?array
     {
@@ -379,7 +393,14 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabelData(?array $label_data): self
     {
         if (is_null($label_data)) {
-            throw new \InvalidArgumentException('non-nullable label_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_data'] = $label_data;
 

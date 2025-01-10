@@ -87,7 +87,7 @@ class SKUInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializab
         'seller_sku' => false,
         'asin' => false,
         'inbound_guidance' => false,
-        'guidance_reason_list' => false
+        'guidance_reason_list' => true
     ];
 
     /**
@@ -405,7 +405,7 @@ class SKUInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets guidance_reason_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getGuidanceReasonList(): ?array
     {
@@ -422,7 +422,14 @@ class SKUInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setGuidanceReasonList(?array $guidance_reason_list): self
     {
         if (is_null($guidance_reason_list)) {
-            throw new \InvalidArgumentException('non-nullable guidance_reason_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'guidance_reason_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('guidance_reason_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['guidance_reason_list'] = $guidance_reason_list;
 

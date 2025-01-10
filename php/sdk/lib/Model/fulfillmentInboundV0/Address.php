@@ -94,8 +94,8 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
         'address_line1' => false,
-        'address_line2' => false,
-        'district_or_county' => false,
+        'address_line2' => true,
+        'district_or_county' => true,
         'city' => false,
         'state_or_province_code' => false,
         'country_code' => false,
@@ -464,9 +464,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressLine2(?string $address_line2): self
     {
         if (is_null($address_line2)) {
-            throw new \InvalidArgumentException('non-nullable address_line2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_line2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_line2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($address_line2) > 60)) {
+        if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be smaller than or equal to 60.');
         }
 
@@ -495,9 +502,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDistrictOrCounty(?string $district_or_county): self
     {
         if (is_null($district_or_county)) {
-            throw new \InvalidArgumentException('non-nullable district_or_county cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'district_or_county');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('district_or_county', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($district_or_county) > 25)) {
+        if (!is_null($district_or_county) && (mb_strlen($district_or_county) > 25)) {
             throw new \InvalidArgumentException('invalid length for $district_or_county when calling Address., must be smaller than or equal to 25.');
         }
 

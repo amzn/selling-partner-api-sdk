@@ -80,8 +80,8 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'loan_amount' => false,
-        'source_business_event_type' => false
+        'loan_amount' => true,
+        'source_business_event_type' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setLoanAmount(?\OpenAPI\Client\Model\financesV0\Currency $loan_amount): self
     {
         if (is_null($loan_amount)) {
-            throw new \InvalidArgumentException('non-nullable loan_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'loan_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('loan_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['loan_amount'] = $loan_amount;
 
@@ -345,7 +352,14 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setSourceBusinessEventType(?string $source_business_event_type): self
     {
         if (is_null($source_business_event_type)) {
-            throw new \InvalidArgumentException('non-nullable source_business_event_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'source_business_event_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source_business_event_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['source_business_event_type'] = $source_business_event_type;
 

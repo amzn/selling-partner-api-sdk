@@ -83,8 +83,8 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'end_time' => false,
-        'days_of_week' => false,
-        'days_of_month' => false
+        'days_of_week' => true,
+        'days_of_month' => true
     ];
 
     /**
@@ -338,7 +338,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets days_of_week
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDaysOfWeek(): ?array
     {
@@ -355,7 +355,14 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDaysOfWeek(?array $days_of_week): self
     {
         if (is_null($days_of_week)) {
-            throw new \InvalidArgumentException('non-nullable days_of_week cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'days_of_week');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('days_of_week', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['days_of_week'] = $days_of_week;
 
@@ -365,7 +372,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets days_of_month
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDaysOfMonth(): ?array
     {
@@ -382,7 +389,14 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDaysOfMonth(?array $days_of_month): self
     {
         if (is_null($days_of_month)) {
-            throw new \InvalidArgumentException('non-nullable days_of_month cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'days_of_month');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('days_of_month', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['days_of_month'] = $days_of_month;
 

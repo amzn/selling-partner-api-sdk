@@ -94,15 +94,15 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data_type' => false,
-        'value_as_string' => false,
-        'value_as_boolean' => false,
-        'value_as_integer' => false,
-        'value_as_timestamp' => false,
-        'value_as_address' => false,
-        'value_as_weight' => false,
-        'value_as_dimension' => false,
-        'value_as_currency' => false
+        'data_type' => true,
+        'value_as_string' => true,
+        'value_as_boolean' => true,
+        'value_as_integer' => true,
+        'value_as_timestamp' => true,
+        'value_as_address' => true,
+        'value_as_weight' => true,
+        'value_as_dimension' => true,
+        'value_as_currency' => true
     ];
 
     /**
@@ -367,7 +367,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDataType(?string $data_type): self
     {
         if (is_null($data_type)) {
-            throw new \InvalidArgumentException('non-nullable data_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_type'] = $data_type;
 
@@ -394,7 +401,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsString(?string $value_as_string): self
     {
         if (is_null($value_as_string)) {
-            throw new \InvalidArgumentException('non-nullable value_as_string cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_string');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_string', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_string'] = $value_as_string;
 
@@ -421,7 +435,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsBoolean(?bool $value_as_boolean): self
     {
         if (is_null($value_as_boolean)) {
-            throw new \InvalidArgumentException('non-nullable value_as_boolean cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_boolean');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_boolean', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_boolean'] = $value_as_boolean;
 
@@ -448,7 +469,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsInteger(?int $value_as_integer): self
     {
         if (is_null($value_as_integer)) {
-            throw new \InvalidArgumentException('non-nullable value_as_integer cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_integer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_integer', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_integer'] = $value_as_integer;
 
@@ -475,7 +503,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsTimestamp(?\DateTime $value_as_timestamp): self
     {
         if (is_null($value_as_timestamp)) {
-            throw new \InvalidArgumentException('non-nullable value_as_timestamp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_timestamp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_timestamp', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_timestamp'] = $value_as_timestamp;
 
@@ -502,7 +537,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsAddress(?\OpenAPI\Client\Model\merchantFulfillment\Address $value_as_address): self
     {
         if (is_null($value_as_address)) {
-            throw new \InvalidArgumentException('non-nullable value_as_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_address'] = $value_as_address;
 
@@ -529,7 +571,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsWeight(?\OpenAPI\Client\Model\merchantFulfillment\Weight $value_as_weight): self
     {
         if (is_null($value_as_weight)) {
-            throw new \InvalidArgumentException('non-nullable value_as_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_weight'] = $value_as_weight;
 
@@ -556,7 +605,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsDimension(?\OpenAPI\Client\Model\merchantFulfillment\Length $value_as_dimension): self
     {
         if (is_null($value_as_dimension)) {
-            throw new \InvalidArgumentException('non-nullable value_as_dimension cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_dimension');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_dimension', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_dimension'] = $value_as_dimension;
 
@@ -583,7 +639,14 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setValueAsCurrency(?\OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount $value_as_currency): self
     {
         if (is_null($value_as_currency)) {
-            throw new \InvalidArgumentException('non-nullable value_as_currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_as_currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_as_currency', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_as_currency'] = $value_as_currency;
 

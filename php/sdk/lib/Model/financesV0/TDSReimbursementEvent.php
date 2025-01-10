@@ -82,9 +82,9 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'tds_order_id' => false,
-        'reimbursed_amount' => false
+        'posted_date' => true,
+        'tds_order_id' => true,
+        'reimbursed_amount' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -352,7 +359,14 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTdsOrderId(?string $tds_order_id): self
     {
         if (is_null($tds_order_id)) {
-            throw new \InvalidArgumentException('non-nullable tds_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tds_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tds_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tds_order_id'] = $tds_order_id;
 
@@ -379,7 +393,14 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setReimbursedAmount(?\OpenAPI\Client\Model\financesV0\Currency $reimbursed_amount): self
     {
         if (is_null($reimbursed_amount)) {
-            throw new \InvalidArgumentException('non-nullable reimbursed_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reimbursed_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reimbursed_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reimbursed_amount'] = $reimbursed_amount;
 

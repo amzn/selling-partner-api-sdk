@@ -84,10 +84,10 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'minimum_hours' => false,
-        'maximum_hours' => false,
-        'available_date' => false,
-        'availability_type' => false
+        'minimum_hours' => true,
+        'maximum_hours' => true,
+        'available_date' => true,
+        'availability_type' => true
     ];
 
     /**
@@ -358,7 +358,14 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
     public function setMinimumHours(?int $minimum_hours): self
     {
         if (is_null($minimum_hours)) {
-            throw new \InvalidArgumentException('non-nullable minimum_hours cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'minimum_hours');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('minimum_hours', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['minimum_hours'] = $minimum_hours;
 
@@ -385,7 +392,14 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
     public function setMaximumHours(?int $maximum_hours): self
     {
         if (is_null($maximum_hours)) {
-            throw new \InvalidArgumentException('non-nullable maximum_hours cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maximum_hours');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maximum_hours', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maximum_hours'] = $maximum_hours;
 
@@ -412,7 +426,14 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAvailableDate(?string $available_date): self
     {
         if (is_null($available_date)) {
-            throw new \InvalidArgumentException('non-nullable available_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_date'] = $available_date;
 
@@ -439,10 +460,17 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAvailabilityType(?string $availability_type): self
     {
         if (is_null($availability_type)) {
-            throw new \InvalidArgumentException('non-nullable availability_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'availability_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('availability_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getAvailabilityTypeAllowableValues();
-        if (!in_array($availability_type, $allowedValues, true)) {
+        if (!is_null($availability_type) && !in_array($availability_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'availability_type', must be one of '%s'",

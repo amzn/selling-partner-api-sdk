@@ -85,7 +85,7 @@ class GetRatesResult implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'request_token' => false,
         'rates' => false,
-        'ineligible_rates' => false
+        'ineligible_rates' => true
     ];
 
     /**
@@ -342,7 +342,7 @@ class GetRatesResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rates
      *
-     * @return arrayA
+     * @return array
      */
     public function getRates(): array
     {
@@ -369,7 +369,7 @@ class GetRatesResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ineligible_rates
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIneligibleRates(): ?array
     {
@@ -386,7 +386,14 @@ class GetRatesResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIneligibleRates(?array $ineligible_rates): self
     {
         if (is_null($ineligible_rates)) {
-            throw new \InvalidArgumentException('non-nullable ineligible_rates cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ineligible_rates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ineligible_rates', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ineligible_rates'] = $ineligible_rates;
 

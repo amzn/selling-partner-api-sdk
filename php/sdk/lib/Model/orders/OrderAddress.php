@@ -85,9 +85,9 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
-        'buyer_company_name' => false,
-        'shipping_address' => false,
-        'delivery_preferences' => false
+        'buyer_company_name' => true,
+        'shipping_address' => true,
+        'delivery_preferences' => true
     ];
 
     /**
@@ -362,7 +362,14 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerCompanyName(?string $buyer_company_name): self
     {
         if (is_null($buyer_company_name)) {
-            throw new \InvalidArgumentException('non-nullable buyer_company_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_company_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_company_name'] = $buyer_company_name;
 
@@ -389,7 +396,14 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShippingAddress(?\OpenAPI\Client\Model\orders\Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
-            throw new \InvalidArgumentException('non-nullable shipping_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_address'] = $shipping_address;
 
@@ -416,7 +430,14 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeliveryPreferences(?\OpenAPI\Client\Model\orders\DeliveryPreferences $delivery_preferences): self
     {
         if (is_null($delivery_preferences)) {
-            throw new \InvalidArgumentException('non-nullable delivery_preferences cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_preferences');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_preferences', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_preferences'] = $delivery_preferences;
 

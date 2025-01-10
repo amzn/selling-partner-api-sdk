@@ -81,8 +81,8 @@ class Geocode implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'latitude' => false,
-        'longitude' => false
+        'latitude' => true,
+        'longitude' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class Geocode implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLatitude(?string $latitude): self
     {
         if (is_null($latitude)) {
-            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'latitude');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latitude', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['latitude'] = $latitude;
 
@@ -346,7 +353,14 @@ class Geocode implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLongitude(?string $longitude): self
     {
         if (is_null($longitude)) {
-            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'longitude');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('longitude', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['longitude'] = $longitude;
 

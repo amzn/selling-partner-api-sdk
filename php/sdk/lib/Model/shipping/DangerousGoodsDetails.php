@@ -85,10 +85,10 @@ class DangerousGoodsDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'united_nations_regulatory_id' => false,
-        'transportation_regulatory_class' => false,
-        'packing_group' => false,
-        'packing_instruction' => false
+        'united_nations_regulatory_id' => true,
+        'transportation_regulatory_class' => true,
+        'packing_group' => true,
+        'packing_instruction' => true
     ];
 
     /**
@@ -413,10 +413,17 @@ class DangerousGoodsDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setUnitedNationsRegulatoryId(?string $united_nations_regulatory_id): self
     {
         if (is_null($united_nations_regulatory_id)) {
-            throw new \InvalidArgumentException('non-nullable united_nations_regulatory_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'united_nations_regulatory_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('united_nations_regulatory_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[0-9]{4}$/", ObjectSerializer::toString($united_nations_regulatory_id)))) {
+        if (!is_null($united_nations_regulatory_id) && (!preg_match("/^[0-9]{4}$/", ObjectSerializer::toString($united_nations_regulatory_id)))) {
             throw new \InvalidArgumentException("invalid value for \$united_nations_regulatory_id when calling DangerousGoodsDetails., must conform to the pattern /^[0-9]{4}$/.");
         }
 
@@ -445,10 +452,17 @@ class DangerousGoodsDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTransportationRegulatoryClass(?string $transportation_regulatory_class): self
     {
         if (is_null($transportation_regulatory_class)) {
-            throw new \InvalidArgumentException('non-nullable transportation_regulatory_class cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transportation_regulatory_class');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transportation_regulatory_class', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[1-9](\\.[1-9])?$/", ObjectSerializer::toString($transportation_regulatory_class)))) {
+        if (!is_null($transportation_regulatory_class) && (!preg_match("/^[1-9](\\.[1-9])?$/", ObjectSerializer::toString($transportation_regulatory_class)))) {
             throw new \InvalidArgumentException("invalid value for \$transportation_regulatory_class when calling DangerousGoodsDetails., must conform to the pattern /^[1-9](\\.[1-9])?$/.");
         }
 
@@ -477,10 +491,17 @@ class DangerousGoodsDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPackingGroup(?string $packing_group): self
     {
         if (is_null($packing_group)) {
-            throw new \InvalidArgumentException('non-nullable packing_group cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packing_group');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packing_group', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getPackingGroupAllowableValues();
-        if (!in_array($packing_group, $allowedValues, true)) {
+        if (!is_null($packing_group) && !in_array($packing_group, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'packing_group', must be one of '%s'",
@@ -514,10 +535,17 @@ class DangerousGoodsDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPackingInstruction(?string $packing_instruction): self
     {
         if (is_null($packing_instruction)) {
-            throw new \InvalidArgumentException('non-nullable packing_instruction cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packing_instruction');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packing_instruction', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getPackingInstructionAllowableValues();
-        if (!in_array($packing_instruction, $allowedValues, true)) {
+        if (!is_null($packing_instruction) && !in_array($packing_instruction, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'packing_instruction', must be one of '%s'",

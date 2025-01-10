@@ -445,7 +445,7 @@ class CreateContainerLabelRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets packages
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackages(): array
     {

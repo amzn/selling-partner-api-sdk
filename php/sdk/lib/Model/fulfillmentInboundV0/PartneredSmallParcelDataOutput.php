@@ -81,7 +81,7 @@ class PartneredSmallParcelDataOutput implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'package_list' => false,
-        'partnered_estimate' => false
+        'partnered_estimate' => true
     ];
 
     /**
@@ -304,7 +304,7 @@ class PartneredSmallParcelDataOutput implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets package_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackageList(): array
     {
@@ -348,7 +348,14 @@ class PartneredSmallParcelDataOutput implements ModelInterface, ArrayAccess, \Js
     public function setPartneredEstimate(?\OpenAPI\Client\Model\fulfillmentInboundV0\PartneredEstimate $partnered_estimate): self
     {
         if (is_null($partnered_estimate)) {
-            throw new \InvalidArgumentException('non-nullable partnered_estimate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'partnered_estimate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('partnered_estimate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['partnered_estimate'] = $partnered_estimate;
 

@@ -78,7 +78,7 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'aggregation_settings' => false
+        'aggregation_settings' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setAggregationSettings(?\OpenAPI\Client\Model\notifications\AggregationSettings $aggregation_settings): self
     {
         if (is_null($aggregation_settings)) {
-            throw new \InvalidArgumentException('non-nullable aggregation_settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'aggregation_settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('aggregation_settings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['aggregation_settings'] = $aggregation_settings;
 

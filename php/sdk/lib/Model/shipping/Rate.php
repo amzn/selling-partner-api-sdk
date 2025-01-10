@@ -110,15 +110,15 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
         'carrier_name' => false,
         'service_id' => false,
         'service_name' => false,
-        'billed_weight' => false,
+        'billed_weight' => true,
         'total_charge' => false,
         'promise' => false,
         'supported_document_specifications' => false,
-        'available_value_added_service_groups' => false,
+        'available_value_added_service_groups' => true,
         'requires_additional_inputs' => false,
-        'rate_item_list' => false,
-        'payment_type' => false,
-        'benefits' => false
+        'rate_item_list' => true,
+        'payment_type' => true,
+        'benefits' => true
     ];
 
     /**
@@ -565,7 +565,14 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBilledWeight(?\OpenAPI\Client\Model\shipping\Weight $billed_weight): self
     {
         if (is_null($billed_weight)) {
-            throw new \InvalidArgumentException('non-nullable billed_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'billed_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billed_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['billed_weight'] = $billed_weight;
 
@@ -629,7 +636,7 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supported_document_specifications
      *
-     * @return arrayA
+     * @return array
      */
     public function getSupportedDocumentSpecifications(): array
     {
@@ -656,7 +663,7 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available_value_added_service_groups
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAvailableValueAddedServiceGroups(): ?array
     {
@@ -673,7 +680,14 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvailableValueAddedServiceGroups(?array $available_value_added_service_groups): self
     {
         if (is_null($available_value_added_service_groups)) {
-            throw new \InvalidArgumentException('non-nullable available_value_added_service_groups cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_value_added_service_groups');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_value_added_service_groups', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_value_added_service_groups'] = $available_value_added_service_groups;
 
@@ -710,7 +724,7 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate_item_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRateItemList(): ?array
     {
@@ -727,7 +741,14 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRateItemList(?array $rate_item_list): self
     {
         if (is_null($rate_item_list)) {
-            throw new \InvalidArgumentException('non-nullable rate_item_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rate_item_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rate_item_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rate_item_list'] = $rate_item_list;
 
@@ -754,7 +775,14 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentType(?string $payment_type): self
     {
         if (is_null($payment_type)) {
-            throw new \InvalidArgumentException('non-nullable payment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_type'] = $payment_type;
 
@@ -781,7 +809,14 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBenefits(?\OpenAPI\Client\Model\shipping\Benefits $benefits): self
     {
         if (is_null($benefits)) {
-            throw new \InvalidArgumentException('non-nullable benefits cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'benefits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('benefits', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['benefits'] = $benefits;
 

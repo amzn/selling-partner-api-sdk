@@ -307,7 +307,7 @@ class Refinements implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets brands
      *
-     * @return arrayA
+     * @return array
      */
     public function getBrands(): array
     {
@@ -334,7 +334,7 @@ class Refinements implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets classifications
      *
-     * @return arrayA
+     * @return array
      */
     public function getClassifications(): array
     {

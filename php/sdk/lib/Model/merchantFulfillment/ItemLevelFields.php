@@ -334,7 +334,7 @@ class ItemLevelFields implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets additional_inputs
      *
-     * @return arrayA
+     * @return array
      */
     public function getAdditionalInputs(): array
     {

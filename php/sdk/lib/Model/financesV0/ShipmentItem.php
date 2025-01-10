@@ -102,19 +102,19 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_sku' => false,
-        'order_item_id' => false,
-        'order_adjustment_item_id' => false,
-        'quantity_shipped' => false,
-        'item_charge_list' => false,
-        'item_charge_adjustment_list' => false,
-        'item_fee_list' => false,
-        'item_fee_adjustment_list' => false,
-        'item_tax_withheld_list' => false,
-        'promotion_list' => false,
-        'promotion_adjustment_list' => false,
-        'cost_of_points_granted' => false,
-        'cost_of_points_returned' => false
+        'seller_sku' => true,
+        'order_item_id' => true,
+        'order_adjustment_item_id' => true,
+        'quantity_shipped' => true,
+        'item_charge_list' => true,
+        'item_charge_adjustment_list' => true,
+        'item_fee_list' => true,
+        'item_fee_adjustment_list' => true,
+        'item_tax_withheld_list' => true,
+        'promotion_list' => true,
+        'promotion_adjustment_list' => true,
+        'cost_of_points_granted' => true,
+        'cost_of_points_returned' => true
     ];
 
     /**
@@ -395,7 +395,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -422,7 +429,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderItemId(?string $order_item_id): self
     {
         if (is_null($order_item_id)) {
-            throw new \InvalidArgumentException('non-nullable order_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_item_id'] = $order_item_id;
 
@@ -449,7 +463,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderAdjustmentItemId(?string $order_adjustment_item_id): self
     {
         if (is_null($order_adjustment_item_id)) {
-            throw new \InvalidArgumentException('non-nullable order_adjustment_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_adjustment_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_adjustment_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_adjustment_item_id'] = $order_adjustment_item_id;
 
@@ -476,7 +497,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityShipped(?int $quantity_shipped): self
     {
         if (is_null($quantity_shipped)) {
-            throw new \InvalidArgumentException('non-nullable quantity_shipped cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_shipped');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_shipped', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_shipped'] = $quantity_shipped;
 
@@ -486,7 +514,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_charge_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemChargeList(): ?array
     {
@@ -503,7 +531,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemChargeList(?array $item_charge_list): self
     {
         if (is_null($item_charge_list)) {
-            throw new \InvalidArgumentException('non-nullable item_charge_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_charge_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_charge_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_charge_list'] = $item_charge_list;
 
@@ -513,7 +548,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_charge_adjustment_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemChargeAdjustmentList(): ?array
     {
@@ -530,7 +565,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemChargeAdjustmentList(?array $item_charge_adjustment_list): self
     {
         if (is_null($item_charge_adjustment_list)) {
-            throw new \InvalidArgumentException('non-nullable item_charge_adjustment_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_charge_adjustment_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_charge_adjustment_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_charge_adjustment_list'] = $item_charge_adjustment_list;
 
@@ -540,7 +582,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_fee_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemFeeList(): ?array
     {
@@ -557,7 +599,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemFeeList(?array $item_fee_list): self
     {
         if (is_null($item_fee_list)) {
-            throw new \InvalidArgumentException('non-nullable item_fee_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_fee_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_fee_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_fee_list'] = $item_fee_list;
 
@@ -567,7 +616,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_fee_adjustment_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemFeeAdjustmentList(): ?array
     {
@@ -584,7 +633,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemFeeAdjustmentList(?array $item_fee_adjustment_list): self
     {
         if (is_null($item_fee_adjustment_list)) {
-            throw new \InvalidArgumentException('non-nullable item_fee_adjustment_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_fee_adjustment_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_fee_adjustment_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_fee_adjustment_list'] = $item_fee_adjustment_list;
 
@@ -594,7 +650,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_tax_withheld_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemTaxWithheldList(): ?array
     {
@@ -611,7 +667,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemTaxWithheldList(?array $item_tax_withheld_list): self
     {
         if (is_null($item_tax_withheld_list)) {
-            throw new \InvalidArgumentException('non-nullable item_tax_withheld_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_tax_withheld_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_tax_withheld_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_tax_withheld_list'] = $item_tax_withheld_list;
 
@@ -621,7 +684,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotion_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPromotionList(): ?array
     {
@@ -638,7 +701,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPromotionList(?array $promotion_list): self
     {
         if (is_null($promotion_list)) {
-            throw new \InvalidArgumentException('non-nullable promotion_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotion_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotion_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotion_list'] = $promotion_list;
 
@@ -648,7 +718,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotion_adjustment_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPromotionAdjustmentList(): ?array
     {
@@ -665,7 +735,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPromotionAdjustmentList(?array $promotion_adjustment_list): self
     {
         if (is_null($promotion_adjustment_list)) {
-            throw new \InvalidArgumentException('non-nullable promotion_adjustment_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotion_adjustment_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotion_adjustment_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotion_adjustment_list'] = $promotion_adjustment_list;
 
@@ -692,7 +769,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCostOfPointsGranted(?\OpenAPI\Client\Model\financesV0\Currency $cost_of_points_granted): self
     {
         if (is_null($cost_of_points_granted)) {
-            throw new \InvalidArgumentException('non-nullable cost_of_points_granted cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cost_of_points_granted');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cost_of_points_granted', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cost_of_points_granted'] = $cost_of_points_granted;
 
@@ -719,7 +803,14 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCostOfPointsReturned(?\OpenAPI\Client\Model\financesV0\Currency $cost_of_points_returned): self
     {
         if (is_null($cost_of_points_returned)) {
-            throw new \InvalidArgumentException('non-nullable cost_of_points_returned cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cost_of_points_returned');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cost_of_points_returned', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cost_of_points_returned'] = $cost_of_points_returned;
 

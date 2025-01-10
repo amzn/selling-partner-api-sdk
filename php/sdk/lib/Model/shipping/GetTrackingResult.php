@@ -392,7 +392,7 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets event_history
      *
-     * @return arrayA
+     * @return array
      */
     public function getEventHistory(): array
     {

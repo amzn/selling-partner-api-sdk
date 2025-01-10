@@ -84,10 +84,10 @@ class AppointmentSlotReport implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'scheduling_type' => false,
-        'start_time' => false,
-        'end_time' => false,
-        'appointment_slots' => false
+        'scheduling_type' => true,
+        'start_time' => true,
+        'end_time' => true,
+        'appointment_slots' => true
     ];
 
     /**
@@ -356,10 +356,17 @@ class AppointmentSlotReport implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSchedulingType(?string $scheduling_type): self
     {
         if (is_null($scheduling_type)) {
-            throw new \InvalidArgumentException('non-nullable scheduling_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduling_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduling_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getSchedulingTypeAllowableValues();
-        if (!in_array($scheduling_type, $allowedValues, true)) {
+        if (!is_null($scheduling_type) && !in_array($scheduling_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'scheduling_type', must be one of '%s'",
@@ -393,7 +400,14 @@ class AppointmentSlotReport implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setStartTime(?\DateTime $start_time): self
     {
         if (is_null($start_time)) {
-            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_time'] = $start_time;
 
@@ -420,7 +434,14 @@ class AppointmentSlotReport implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEndTime(?\DateTime $end_time): self
     {
         if (is_null($end_time)) {
-            throw new \InvalidArgumentException('non-nullable end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_time'] = $end_time;
 
@@ -430,7 +451,7 @@ class AppointmentSlotReport implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets appointment_slots
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAppointmentSlots(): ?array
     {
@@ -447,7 +468,14 @@ class AppointmentSlotReport implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAppointmentSlots(?array $appointment_slots): self
     {
         if (is_null($appointment_slots)) {
-            throw new \InvalidArgumentException('non-nullable appointment_slots cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_slots');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_slots', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointment_slots'] = $appointment_slots;
 

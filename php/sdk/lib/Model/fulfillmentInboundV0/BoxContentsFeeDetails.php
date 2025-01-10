@@ -82,9 +82,9 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_units' => false,
-        'fee_per_unit' => false,
-        'total_fee' => false
+        'total_units' => true,
+        'fee_per_unit' => true,
+        'total_fee' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTotalUnits(?int $total_units): self
     {
         if (is_null($total_units)) {
-            throw new \InvalidArgumentException('non-nullable total_units cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_units');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_units', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_units'] = $total_units;
 
@@ -352,7 +359,14 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFeePerUnit(?\OpenAPI\Client\Model\fulfillmentInboundV0\Amount $fee_per_unit): self
     {
         if (is_null($fee_per_unit)) {
-            throw new \InvalidArgumentException('non-nullable fee_per_unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_per_unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_per_unit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_per_unit'] = $fee_per_unit;
 
@@ -379,7 +393,14 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTotalFee(?\OpenAPI\Client\Model\fulfillmentInboundV0\Amount $total_fee): self
     {
         if (is_null($total_fee)) {
-            throw new \InvalidArgumentException('non-nullable total_fee cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_fee');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_fee', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_fee'] = $total_fee;
 

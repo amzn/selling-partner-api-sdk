@@ -84,7 +84,7 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'competitive_prices' => false,
         'number_of_offer_listings' => false,
-        'trade_in_value' => false
+        'trade_in_value' => true
     ];
 
     /**
@@ -314,7 +314,7 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets competitive_prices
      *
-     * @return arrayA
+     * @return array
      */
     public function getCompetitivePrices(): array
     {
@@ -341,7 +341,7 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets number_of_offer_listings
      *
-     * @return arrayA
+     * @return array
      */
     public function getNumberOfOfferListings(): array
     {
@@ -385,7 +385,14 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTradeInValue(?\OpenAPI\Client\Model\pricingV0\MoneyType $trade_in_value): self
     {
         if (is_null($trade_in_value)) {
-            throw new \InvalidArgumentException('non-nullable trade_in_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trade_in_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trade_in_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trade_in_value'] = $trade_in_value;
 

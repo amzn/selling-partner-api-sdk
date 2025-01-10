@@ -78,7 +78,7 @@ class GetTransportDetailsResult implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transport_content' => false
+        'transport_content' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetTransportDetailsResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setTransportContent(?\OpenAPI\Client\Model\fulfillmentInboundV0\TransportContent $transport_content): self
     {
         if (is_null($transport_content)) {
-            throw new \InvalidArgumentException('non-nullable transport_content cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transport_content');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transport_content', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transport_content'] = $transport_content;
 

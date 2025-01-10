@@ -55,6 +55,8 @@ class SellersApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('SellersApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class SellersApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class SellersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAccount200', 'SellersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAccount200', 'SellersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -290,7 +291,7 @@ class SellersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAccount400', 'SellersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAccount400', 'SellersApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -426,7 +427,7 @@ class SellersApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMarketplaceParticipations200', 'SellersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMarketplaceParticipations200', 'SellersApi')) {
                 $this->assertTrue(true);
                 return;
             }

@@ -82,9 +82,9 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'item_charge_list' => false,
-        'product_description' => false,
-        'quantity' => false
+        'item_charge_list' => true,
+        'product_description' => true,
+        'quantity' => true
     ];
 
     /**
@@ -308,7 +308,7 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets item_charge_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemChargeList(): ?array
     {
@@ -325,7 +325,14 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setItemChargeList(?array $item_charge_list): self
     {
         if (is_null($item_charge_list)) {
-            throw new \InvalidArgumentException('non-nullable item_charge_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_charge_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_charge_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_charge_list'] = $item_charge_list;
 
@@ -352,7 +359,14 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setProductDescription(?string $product_description): self
     {
         if (is_null($product_description)) {
-            throw new \InvalidArgumentException('non-nullable product_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_description'] = $product_description;
 
@@ -379,7 +393,14 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setQuantity(?string $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity'] = $quantity;
 

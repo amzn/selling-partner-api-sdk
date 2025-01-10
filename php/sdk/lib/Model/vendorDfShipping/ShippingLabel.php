@@ -488,7 +488,7 @@ class ShippingLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets label_data
      *
-     * @return arrayA
+     * @return array
      */
     public function getLabelData(): array
     {

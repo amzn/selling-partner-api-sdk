@@ -82,9 +82,9 @@ class AppointmentSlot implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_time' => false,
-        'end_time' => false,
-        'capacity' => false
+        'start_time' => true,
+        'end_time' => true,
+        'capacity' => true
     ];
 
     /**
@@ -329,7 +329,14 @@ class AppointmentSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartTime(?\DateTime $start_time): self
     {
         if (is_null($start_time)) {
-            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_time'] = $start_time;
 
@@ -356,7 +363,14 @@ class AppointmentSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEndTime(?\DateTime $end_time): self
     {
         if (is_null($end_time)) {
-            throw new \InvalidArgumentException('non-nullable end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_time'] = $end_time;
 
@@ -383,10 +397,17 @@ class AppointmentSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCapacity(?int $capacity): self
     {
         if (is_null($capacity)) {
-            throw new \InvalidArgumentException('non-nullable capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($capacity < 0)) {
+        if (!is_null($capacity) && ($capacity < 0)) {
             throw new \InvalidArgumentException('invalid value for $capacity when calling AppointmentSlot., must be bigger than or equal to 0.');
         }
 

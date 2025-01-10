@@ -78,7 +78,7 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'glance_view_weight_percentage' => false
+        'glance_view_weight_percentage' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGlanceViewWeightPercentage(?float $glance_view_weight_percentage): self
     {
         if (is_null($glance_view_weight_percentage)) {
-            throw new \InvalidArgumentException('non-nullable glance_view_weight_percentage cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'glance_view_weight_percentage');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('glance_view_weight_percentage', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['glance_view_weight_percentage'] = $glance_view_weight_percentage;
 

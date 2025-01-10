@@ -344,7 +344,7 @@ class InboundShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets inbound_shipment_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getInboundShipmentItems(): array
     {

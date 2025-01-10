@@ -81,7 +81,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'purchase_order_number' => false,
-        'order_details' => false
+        'order_details' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderDetails(?\OpenAPI\Client\Model\vendorDfOrders\OrderDetails $order_details): self
     {
         if (is_null($order_details)) {
-            throw new \InvalidArgumentException('non-nullable order_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_details'] = $order_details;
 

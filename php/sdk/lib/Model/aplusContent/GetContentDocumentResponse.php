@@ -79,7 +79,7 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'warnings' => false,
+        'warnings' => true,
         'content_record' => false
     ];
 
@@ -303,7 +303,7 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets warnings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWarnings(): ?array
     {
@@ -320,7 +320,14 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setWarnings(?array $warnings): self
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

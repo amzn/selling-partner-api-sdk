@@ -408,7 +408,7 @@ class FeesEstimateError implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets detail
      *
-     * @return arrayA
+     * @return array
      */
     public function getDetail(): array
     {

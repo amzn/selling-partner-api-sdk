@@ -79,8 +79,8 @@ class ContactDetailsPrimary implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'email' => false,
-        'phone' => false
+        'email' => true,
+        'phone' => true
     ];
 
     /**
@@ -321,10 +321,17 @@ class ContactDetailsPrimary implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEmail(?string $email): self
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/", ObjectSerializer::toString($email)))) {
+        if (!is_null($email) && (!preg_match("/^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/", ObjectSerializer::toString($email)))) {
             throw new \InvalidArgumentException("invalid value for \$email when calling ContactDetailsPrimary., must conform to the pattern /^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/.");
         }
 
@@ -353,7 +360,14 @@ class ContactDetailsPrimary implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPhone(?string $phone): self
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 

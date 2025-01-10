@@ -86,7 +86,7 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'seller_sku' => false,
         'quantity' => false,
-        'per_unit_declared_value' => false,
+        'per_unit_declared_value' => true,
         'seller_fulfillment_order_item_id' => false
     ];
 
@@ -407,7 +407,14 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setPerUnitDeclaredValue(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $per_unit_declared_value): self
     {
         if (is_null($per_unit_declared_value)) {
-            throw new \InvalidArgumentException('non-nullable per_unit_declared_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'per_unit_declared_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('per_unit_declared_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['per_unit_declared_value'] = $per_unit_declared_value;
 

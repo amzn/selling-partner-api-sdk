@@ -78,7 +78,7 @@ class MarketplaceFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'marketplace_ids' => false
+        'marketplace_ids' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class MarketplaceFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMarketplaceIds(): ?array
     {
@@ -311,7 +311,14 @@ class MarketplaceFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setMarketplaceIds(?array $marketplace_ids): self
     {
         if (is_null($marketplace_ids)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 

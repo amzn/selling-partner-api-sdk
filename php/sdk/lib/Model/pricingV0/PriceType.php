@@ -83,10 +83,10 @@ class PriceType implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'landed_price' => false,
+        'landed_price' => true,
         'listing_price' => false,
-        'shipping' => false,
-        'points' => false
+        'shipping' => true,
+        'points' => true
     ];
 
     /**
@@ -334,7 +334,14 @@ class PriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLandedPrice(?\OpenAPI\Client\Model\pricingV0\MoneyType $landed_price): self
     {
         if (is_null($landed_price)) {
-            throw new \InvalidArgumentException('non-nullable landed_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'landed_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('landed_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['landed_price'] = $landed_price;
 
@@ -388,7 +395,14 @@ class PriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipping(?\OpenAPI\Client\Model\pricingV0\MoneyType $shipping): self
     {
         if (is_null($shipping)) {
-            throw new \InvalidArgumentException('non-nullable shipping cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping'] = $shipping;
 
@@ -415,7 +429,14 @@ class PriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPoints(?\OpenAPI\Client\Model\pricingV0\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 

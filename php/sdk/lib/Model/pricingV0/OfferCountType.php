@@ -82,9 +82,9 @@ class OfferCountType implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'condition' => false,
-        'fulfillment_channel' => false,
-        'offer_count' => false
+        'condition' => true,
+        'fulfillment_channel' => true,
+        'offer_count' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class OfferCountType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCondition(?string $condition): self
     {
         if (is_null($condition)) {
-            throw new \InvalidArgumentException('non-nullable condition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['condition'] = $condition;
 
@@ -352,7 +359,14 @@ class OfferCountType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentChannel(?string $fulfillment_channel): self
     {
         if (is_null($fulfillment_channel)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_channel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_channel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_channel', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_channel'] = $fulfillment_channel;
 
@@ -379,7 +393,14 @@ class OfferCountType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOfferCount(?int $offer_count): self
     {
         if (is_null($offer_count)) {
-            throw new \InvalidArgumentException('non-nullable offer_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_count'] = $offer_count;
 

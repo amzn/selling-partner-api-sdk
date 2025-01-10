@@ -106,21 +106,21 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carrier_code' => false,
-        'created_at' => false,
+        'carrier_code' => true,
+        'created_at' => true,
         'destination_address' => false,
-        'external_reference_id' => false,
+        'external_reference_id' => true,
         'order_id' => false,
         'origin_address' => false,
-        'received_quantity' => false,
-        'ship_by' => false,
+        'received_quantity' => true,
+        'ship_by' => true,
         'shipment_container_quantities' => false,
         'shipment_id' => false,
-        'shipment_sku_quantities' => false,
+        'shipment_sku_quantities' => true,
         'shipment_status' => false,
-        'tracking_id' => false,
-        'updated_at' => false,
-        'warehouse_reference_id' => false
+        'tracking_id' => true,
+        'updated_at' => true,
+        'warehouse_reference_id' => true
     ];
 
     /**
@@ -439,7 +439,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCarrierCode(?\OpenAPI\Client\Model\awd\CarrierCode $carrier_code): self
     {
         if (is_null($carrier_code)) {
-            throw new \InvalidArgumentException('non-nullable carrier_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_code'] = $carrier_code;
 
@@ -466,7 +473,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedAt(?\DateTime $created_at): self
     {
         if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_at'] = $created_at;
 
@@ -520,7 +534,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExternalReferenceId(?string $external_reference_id): self
     {
         if (is_null($external_reference_id)) {
-            throw new \InvalidArgumentException('non-nullable external_reference_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'external_reference_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_reference_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['external_reference_id'] = $external_reference_id;
 
@@ -589,7 +610,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets received_quantity
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReceivedQuantity(): ?array
     {
@@ -606,7 +627,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReceivedQuantity(?array $received_quantity): self
     {
         if (is_null($received_quantity)) {
-            throw new \InvalidArgumentException('non-nullable received_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'received_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('received_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['received_quantity'] = $received_quantity;
 
@@ -633,7 +661,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipBy(?\DateTime $ship_by): self
     {
         if (is_null($ship_by)) {
-            throw new \InvalidArgumentException('non-nullable ship_by cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_by');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_by', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_by'] = $ship_by;
 
@@ -643,7 +678,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipment_container_quantities
      *
-     * @return arrayA
+     * @return array
      */
     public function getShipmentContainerQuantities(): array
     {
@@ -702,7 +737,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipment_sku_quantities
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentSkuQuantities(): ?array
     {
@@ -719,7 +754,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipmentSkuQuantities(?array $shipment_sku_quantities): self
     {
         if (is_null($shipment_sku_quantities)) {
-            throw new \InvalidArgumentException('non-nullable shipment_sku_quantities cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_sku_quantities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_sku_quantities', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_sku_quantities'] = $shipment_sku_quantities;
 
@@ -773,10 +815,17 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingId(?string $tracking_id): self
     {
         if (is_null($tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($tracking_id) < 1)) {
+        if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling InboundShipment., must be bigger than or equal to 1.');
         }
 
@@ -805,7 +854,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt(?\DateTime $updated_at): self
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 
@@ -832,7 +888,14 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWarehouseReferenceId(?string $warehouse_reference_id): self
     {
         if (is_null($warehouse_reference_id)) {
-            throw new \InvalidArgumentException('non-nullable warehouse_reference_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warehouse_reference_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warehouse_reference_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warehouse_reference_id'] = $warehouse_reference_id;
 

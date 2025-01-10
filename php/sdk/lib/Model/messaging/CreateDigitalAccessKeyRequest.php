@@ -80,8 +80,8 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false,
-        'attachments' => false
+        'text' => true,
+        'attachments' => true
     ];
 
     /**
@@ -326,12 +326,19 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, ArrayAccess, \Jso
     public function setText(?string $text): self
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($text) > 400)) {
+        if (!is_null($text) && (mb_strlen($text) > 400)) {
             throw new \InvalidArgumentException('invalid length for $text when calling CreateDigitalAccessKeyRequest., must be smaller than or equal to 400.');
         }
-        if ((mb_strlen($text) < 1)) {
+        if (!is_null($text) && (mb_strlen($text) < 1)) {
             throw new \InvalidArgumentException('invalid length for $text when calling CreateDigitalAccessKeyRequest., must be bigger than or equal to 1.');
         }
 
@@ -343,7 +350,7 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets attachments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttachments(): ?array
     {
@@ -360,7 +367,14 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, ArrayAccess, \Jso
     public function setAttachments(?array $attachments): self
     {
         if (is_null($attachments)) {
-            throw new \InvalidArgumentException('non-nullable attachments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attachments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attachments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attachments'] = $attachments;
 

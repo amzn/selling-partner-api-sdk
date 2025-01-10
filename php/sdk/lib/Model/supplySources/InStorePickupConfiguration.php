@@ -80,8 +80,8 @@ class InStorePickupConfiguration implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_supported' => false,
-        'parking_configuration' => false
+        'is_supported' => true,
+        'parking_configuration' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class InStorePickupConfiguration implements ModelInterface, ArrayAccess, \JsonSe
     public function setIsSupported(?bool $is_supported): self
     {
         if (is_null($is_supported)) {
-            throw new \InvalidArgumentException('non-nullable is_supported cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_supported');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_supported', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_supported'] = $is_supported;
 
@@ -345,7 +352,14 @@ class InStorePickupConfiguration implements ModelInterface, ArrayAccess, \JsonSe
     public function setParkingConfiguration(?\OpenAPI\Client\Model\supplySources\ParkingConfiguration $parking_configuration): self
     {
         if (is_null($parking_configuration)) {
-            throw new \InvalidArgumentException('non-nullable parking_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parking_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parking_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parking_configuration'] = $parking_configuration;
 

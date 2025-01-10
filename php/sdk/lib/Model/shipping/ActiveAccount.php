@@ -81,8 +81,8 @@ class ActiveAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
-        'carrier_id' => false
+        'account_id' => true,
+        'carrier_id' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class ActiveAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAccountId(?string $account_id): self
     {
         if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_id'] = $account_id;
 
@@ -346,7 +353,14 @@ class ActiveAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCarrierId(?string $carrier_id): self
     {
         if (is_null($carrier_id)) {
-            throw new \InvalidArgumentException('non-nullable carrier_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_id'] = $carrier_id;
 

@@ -81,7 +81,7 @@ class ListDeliveryWindowOptionsResponse implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'delivery_window_options' => false,
-        'pagination' => false
+        'pagination' => true
     ];
 
     /**
@@ -304,7 +304,7 @@ class ListDeliveryWindowOptionsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets delivery_window_options
      *
-     * @return arrayA
+     * @return array
      */
     public function getDeliveryWindowOptions(): array
     {
@@ -348,7 +348,14 @@ class ListDeliveryWindowOptionsResponse implements ModelInterface, ArrayAccess, 
     public function setPagination(?\OpenAPI\Client\Model\fulfillmentInbound\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 

@@ -82,7 +82,7 @@ class ContainerLabel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'container_tracking_number' => false,
+        'container_tracking_number' => true,
         'content' => false,
         'format' => false
     ];
@@ -331,7 +331,14 @@ class ContainerLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContainerTrackingNumber(?string $container_tracking_number): self
     {
         if (is_null($container_tracking_number)) {
-            throw new \InvalidArgumentException('non-nullable container_tracking_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'container_tracking_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('container_tracking_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['container_tracking_number'] = $container_tracking_number;
 

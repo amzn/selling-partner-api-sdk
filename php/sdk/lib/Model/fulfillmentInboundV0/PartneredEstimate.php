@@ -83,8 +83,8 @@ class PartneredEstimate implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'amount' => false,
-        'confirm_deadline' => false,
-        'void_deadline' => false
+        'confirm_deadline' => true,
+        'void_deadline' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class PartneredEstimate implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setConfirmDeadline(?\DateTime $confirm_deadline): self
     {
         if (is_null($confirm_deadline)) {
-            throw new \InvalidArgumentException('non-nullable confirm_deadline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'confirm_deadline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('confirm_deadline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['confirm_deadline'] = $confirm_deadline;
 
@@ -382,7 +389,14 @@ class PartneredEstimate implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setVoidDeadline(?\DateTime $void_deadline): self
     {
         if (is_null($void_deadline)) {
-            throw new \InvalidArgumentException('non-nullable void_deadline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'void_deadline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('void_deadline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['void_deadline'] = $void_deadline;
 

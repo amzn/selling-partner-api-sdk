@@ -78,7 +78,7 @@ class LabelFormatOptionRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'include_packing_slip_with_label' => false
+        'include_packing_slip_with_label' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class LabelFormatOptionRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {
         if (is_null($include_packing_slip_with_label)) {
-            throw new \InvalidArgumentException('non-nullable include_packing_slip_with_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_packing_slip_with_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_packing_slip_with_label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['include_packing_slip_with_label'] = $include_packing_slip_with_label;
 

@@ -88,12 +88,12 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'image' => false,
-        'headline' => false,
-        'text_block1' => false,
-        'text_block2' => false,
-        'text_block3' => false,
-        'bulleted_list_block' => false
+        'image' => true,
+        'headline' => true,
+        'text_block1' => true,
+        'text_block2' => true,
+        'text_block3' => true,
+        'bulleted_list_block' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     public function setImage(?\OpenAPI\Client\Model\aplusContent\ImageComponent $image): self
     {
         if (is_null($image)) {
-            throw new \InvalidArgumentException('non-nullable image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image'] = $image;
 
@@ -373,7 +380,14 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -400,7 +414,14 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     public function setTextBlock1(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $text_block1): self
     {
         if (is_null($text_block1)) {
-            throw new \InvalidArgumentException('non-nullable text_block1 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text_block1');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text_block1', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text_block1'] = $text_block1;
 
@@ -427,7 +448,14 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     public function setTextBlock2(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $text_block2): self
     {
         if (is_null($text_block2)) {
-            throw new \InvalidArgumentException('non-nullable text_block2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text_block2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text_block2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text_block2'] = $text_block2;
 
@@ -454,7 +482,14 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     public function setTextBlock3(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $text_block3): self
     {
         if (is_null($text_block3)) {
-            throw new \InvalidArgumentException('non-nullable text_block3 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text_block3');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text_block3', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text_block3'] = $text_block3;
 
@@ -481,7 +516,14 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     public function setBulletedListBlock(?\OpenAPI\Client\Model\aplusContent\StandardHeaderTextListBlock $bulleted_list_block): self
     {
         if (is_null($bulleted_list_block)) {
-            throw new \InvalidArgumentException('non-nullable bulleted_list_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bulleted_list_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bulleted_list_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bulleted_list_block'] = $bulleted_list_block;
 

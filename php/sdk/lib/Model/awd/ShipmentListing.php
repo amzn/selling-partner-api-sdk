@@ -80,8 +80,8 @@ class ShipmentListing implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false,
-        'shipments' => false
+        'next_token' => true,
+        'shipments' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ShipmentListing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -328,7 +335,7 @@ class ShipmentListing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipments(): ?array
     {
@@ -345,7 +352,14 @@ class ShipmentListing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipments(?array $shipments): self
     {
         if (is_null($shipments)) {
-            throw new \InvalidArgumentException('non-nullable shipments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipments'] = $shipments;
 

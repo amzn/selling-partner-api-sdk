@@ -78,7 +78,7 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tracking_id' => false
+        'tracking_id' => true
     ];
 
     /**
@@ -319,12 +319,19 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingId(?string $tracking_id): self
     {
         if (is_null($tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($tracking_id) > 255)) {
+        if (!is_null($tracking_id) && (mb_strlen($tracking_id) > 255)) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingDetails., must be smaller than or equal to 255.');
         }
-        if ((mb_strlen($tracking_id) < 1)) {
+        if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingDetails., must be bigger than or equal to 1.');
         }
 

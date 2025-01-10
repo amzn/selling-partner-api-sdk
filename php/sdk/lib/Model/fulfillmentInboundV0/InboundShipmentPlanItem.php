@@ -87,7 +87,7 @@ class InboundShipmentPlanItem implements ModelInterface, ArrayAccess, \JsonSeria
         'seller_sku' => false,
         'fulfillment_network_sku' => false,
         'quantity' => false,
-        'prep_details_list' => false
+        'prep_details_list' => true
     ];
 
     /**
@@ -405,7 +405,7 @@ class InboundShipmentPlanItem implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets prep_details_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPrepDetailsList(): ?array
     {
@@ -422,7 +422,14 @@ class InboundShipmentPlanItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPrepDetailsList(?array $prep_details_list): self
     {
         if (is_null($prep_details_list)) {
-            throw new \InvalidArgumentException('non-nullable prep_details_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_details_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_details_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_details_list'] = $prep_details_list;
 

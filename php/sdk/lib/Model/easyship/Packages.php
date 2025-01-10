@@ -305,7 +305,7 @@ class Packages implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packages
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackages(): array
     {

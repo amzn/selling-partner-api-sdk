@@ -80,8 +80,8 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'model' => false,
-        'responsible_party' => false
+        'model' => true,
+        'responsible_party' => true
     ];
 
     /**
@@ -362,10 +362,17 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setModel(?string $model): self
     {
         if (is_null($model)) {
-            throw new \InvalidArgumentException('non-nullable model cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'model');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('model', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getModelAllowableValues();
-        if (!in_array($model, $allowedValues, true)) {
+        if (!is_null($model) && !in_array($model, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'model', must be one of '%s'",
@@ -399,10 +406,17 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setResponsibleParty(?string $responsible_party): self
     {
         if (is_null($responsible_party)) {
-            throw new \InvalidArgumentException('non-nullable responsible_party cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'responsible_party');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('responsible_party', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getResponsiblePartyAllowableValues();
-        if (!in_array($responsible_party, $allowedValues, true)) {
+        if (!is_null($responsible_party) && !in_array($responsible_party, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'responsible_party', must be one of '%s'",

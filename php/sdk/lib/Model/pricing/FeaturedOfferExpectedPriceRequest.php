@@ -90,8 +90,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
     protected static array $openAPINullables = [
         'uri' => false,
         'method' => false,
-        'body' => false,
-        'headers' => false,
+        'body' => true,
+        'headers' => true,
         'marketplace_id' => false,
         'sku' => false
     ];
@@ -412,7 +412,14 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
     public function setBody(?array $body): self
     {
         if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'body');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('body', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['body'] = $body;
 
@@ -439,7 +446,14 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
     public function setHeaders(?array $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 

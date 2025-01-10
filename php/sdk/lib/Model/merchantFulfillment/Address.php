@@ -100,12 +100,12 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
         'address_line1' => false,
-        'address_line2' => false,
-        'address_line3' => false,
-        'district_or_county' => false,
+        'address_line2' => true,
+        'address_line3' => true,
+        'district_or_county' => true,
         'email' => false,
         'city' => false,
-        'state_or_province_code' => false,
+        'state_or_province_code' => true,
         'postal_code' => false,
         'country_code' => false,
         'phone' => false
@@ -496,9 +496,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressLine2(?string $address_line2): self
     {
         if (is_null($address_line2)) {
-            throw new \InvalidArgumentException('non-nullable address_line2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_line2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_line2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($address_line2) > 60)) {
+        if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be smaller than or equal to 60.');
         }
 
@@ -527,9 +534,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddressLine3(?string $address_line3): self
     {
         if (is_null($address_line3)) {
-            throw new \InvalidArgumentException('non-nullable address_line3 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_line3');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_line3', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($address_line3) > 60)) {
+        if (!is_null($address_line3) && (mb_strlen($address_line3) > 60)) {
             throw new \InvalidArgumentException('invalid length for $address_line3 when calling Address., must be smaller than or equal to 60.');
         }
 
@@ -558,7 +572,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDistrictOrCounty(?string $district_or_county): self
     {
         if (is_null($district_or_county)) {
-            throw new \InvalidArgumentException('non-nullable district_or_county cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'district_or_county');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('district_or_county', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['district_or_county'] = $district_or_county;
 
@@ -643,9 +664,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStateOrProvinceCode(?string $state_or_province_code): self
     {
         if (is_null($state_or_province_code)) {
-            throw new \InvalidArgumentException('non-nullable state_or_province_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'state_or_province_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('state_or_province_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($state_or_province_code) > 30)) {
+        if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) > 30)) {
             throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling Address., must be smaller than or equal to 30.');
         }
 

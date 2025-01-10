@@ -81,7 +81,7 @@ class OrderScheduleDetails implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
-        'package_details' => false
+        'package_details' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class OrderScheduleDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPackageDetails(?\OpenAPI\Client\Model\easyship\PackageDetails $package_details): self
     {
         if (is_null($package_details)) {
-            throw new \InvalidArgumentException('non-nullable package_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_details'] = $package_details;
 

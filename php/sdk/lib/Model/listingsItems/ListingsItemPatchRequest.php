@@ -338,7 +338,7 @@ class ListingsItemPatchRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets patches
      *
-     * @return arrayA
+     * @return array
      */
     public function getPatches(): array
     {

@@ -80,8 +80,8 @@ class AdditionalInputs implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'additional_input_field_name' => false,
-        'seller_input_definition' => false
+        'additional_input_field_name' => true,
+        'seller_input_definition' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class AdditionalInputs implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdditionalInputFieldName(?string $additional_input_field_name): self
     {
         if (is_null($additional_input_field_name)) {
-            throw new \InvalidArgumentException('non-nullable additional_input_field_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'additional_input_field_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('additional_input_field_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['additional_input_field_name'] = $additional_input_field_name;
 
@@ -345,7 +352,14 @@ class AdditionalInputs implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerInputDefinition(?\OpenAPI\Client\Model\merchantFulfillment\SellerInputDefinition $seller_input_definition): self
     {
         if (is_null($seller_input_definition)) {
-            throw new \InvalidArgumentException('non-nullable seller_input_definition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_input_definition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_input_definition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_input_definition'] = $seller_input_definition;
 

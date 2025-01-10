@@ -88,7 +88,7 @@ class AvailableValueAddedServiceGroup implements ModelInterface, ArrayAccess, \J
         'group_id' => false,
         'group_description' => false,
         'is_required' => false,
-        'value_added_services' => false
+        'value_added_services' => true
     ];
 
     /**
@@ -406,7 +406,7 @@ class AvailableValueAddedServiceGroup implements ModelInterface, ArrayAccess, \J
     /**
      * Gets value_added_services
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getValueAddedServices(): ?array
     {
@@ -423,7 +423,14 @@ class AvailableValueAddedServiceGroup implements ModelInterface, ArrayAccess, \J
     public function setValueAddedServices(?array $value_added_services): self
     {
         if (is_null($value_added_services)) {
-            throw new \InvalidArgumentException('non-nullable value_added_services cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_added_services');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_added_services', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_added_services'] = $value_added_services;
 

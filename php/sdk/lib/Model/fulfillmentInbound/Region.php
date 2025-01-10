@@ -82,9 +82,9 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'country_code' => false,
-        'state' => false,
-        'warehouse_id' => false
+        'country_code' => true,
+        'state' => true,
+        'warehouse_id' => true
     ];
 
     /**
@@ -349,12 +349,19 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCountryCode(?string $country_code): self
     {
         if (is_null($country_code)) {
-            throw new \InvalidArgumentException('non-nullable country_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($country_code) > 1024)) {
+        if (!is_null($country_code) && (mb_strlen($country_code) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $country_code when calling Region., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($country_code) < 1)) {
+        if (!is_null($country_code) && (mb_strlen($country_code) < 1)) {
             throw new \InvalidArgumentException('invalid length for $country_code when calling Region., must be bigger than or equal to 1.');
         }
 
@@ -383,12 +390,19 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setState(?string $state): self
     {
         if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'state');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('state', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($state) > 1024)) {
+        if (!is_null($state) && (mb_strlen($state) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $state when calling Region., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($state) < 1)) {
+        if (!is_null($state) && (mb_strlen($state) < 1)) {
             throw new \InvalidArgumentException('invalid length for $state when calling Region., must be bigger than or equal to 1.');
         }
 
@@ -417,12 +431,19 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWarehouseId(?string $warehouse_id): self
     {
         if (is_null($warehouse_id)) {
-            throw new \InvalidArgumentException('non-nullable warehouse_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warehouse_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warehouse_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($warehouse_id) > 1024)) {
+        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $warehouse_id when calling Region., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($warehouse_id) < 1)) {
+        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $warehouse_id when calling Region., must be bigger than or equal to 1.');
         }
 

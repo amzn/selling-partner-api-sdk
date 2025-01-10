@@ -83,9 +83,9 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'hour_of_day' => false,
-        'minute_of_hour' => false,
-        'second_of_minute' => false
+        'hour_of_day' => true,
+        'minute_of_hour' => true,
+        'second_of_minute' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHourOfDay(?int $hour_of_day): self
     {
         if (is_null($hour_of_day)) {
-            throw new \InvalidArgumentException('non-nullable hour_of_day cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hour_of_day');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hour_of_day', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['hour_of_day'] = $hour_of_day;
 
@@ -353,7 +360,14 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMinuteOfHour(?int $minute_of_hour): self
     {
         if (is_null($minute_of_hour)) {
-            throw new \InvalidArgumentException('non-nullable minute_of_hour cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'minute_of_hour');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('minute_of_hour', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['minute_of_hour'] = $minute_of_hour;
 
@@ -380,7 +394,14 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSecondOfMinute(?int $second_of_minute): self
     {
         if (is_null($second_of_minute)) {
-            throw new \InvalidArgumentException('non-nullable second_of_minute cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'second_of_minute');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('second_of_minute', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['second_of_minute'] = $second_of_minute;
 

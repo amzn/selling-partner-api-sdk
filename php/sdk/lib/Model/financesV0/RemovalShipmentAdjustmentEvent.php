@@ -88,12 +88,12 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'adjustment_event_id' => false,
-        'merchant_order_id' => false,
-        'order_id' => false,
-        'transaction_type' => false,
-        'removal_shipment_item_adjustment_list' => false
+        'posted_date' => true,
+        'adjustment_event_id' => true,
+        'merchant_order_id' => true,
+        'order_id' => true,
+        'transaction_type' => true,
+        'removal_shipment_item_adjustment_list' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -373,7 +380,14 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     public function setAdjustmentEventId(?string $adjustment_event_id): self
     {
         if (is_null($adjustment_event_id)) {
-            throw new \InvalidArgumentException('non-nullable adjustment_event_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adjustment_event_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjustment_event_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adjustment_event_id'] = $adjustment_event_id;
 
@@ -400,7 +414,14 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     public function setMerchantOrderId(?string $merchant_order_id): self
     {
         if (is_null($merchant_order_id)) {
-            throw new \InvalidArgumentException('non-nullable merchant_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'merchant_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('merchant_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['merchant_order_id'] = $merchant_order_id;
 
@@ -427,7 +448,14 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     public function setOrderId(?string $order_id): self
     {
         if (is_null($order_id)) {
-            throw new \InvalidArgumentException('non-nullable order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_id'] = $order_id;
 
@@ -454,7 +482,14 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -464,7 +499,7 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets removal_shipment_item_adjustment_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRemovalShipmentItemAdjustmentList(): ?array
     {
@@ -481,7 +516,14 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     public function setRemovalShipmentItemAdjustmentList(?array $removal_shipment_item_adjustment_list): self
     {
         if (is_null($removal_shipment_item_adjustment_list)) {
-            throw new \InvalidArgumentException('non-nullable removal_shipment_item_adjustment_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'removal_shipment_item_adjustment_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('removal_shipment_item_adjustment_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['removal_shipment_item_adjustment_list'] = $removal_shipment_item_adjustment_list;
 

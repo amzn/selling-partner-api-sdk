@@ -28,7 +28,6 @@ namespace OpenAPI\Client\Test;
 
 use OpenAPI\Client\ObjectSerializer;
 use ReflectionClass;
-use ReflectionNamedType;
 use ReflectionException;
 use ReflectionMethod;
 use Dotenv\Dotenv;
@@ -47,90 +46,40 @@ class TestHelper
 {
     private static string $marketPlaceId = 'ATVPDKIKX0DER';
 
-    /**
-     * Maps the attributes of a given instance based on the expected response data.
-     *
-     * @param object $instance The instance to populate.
-     * @param array $expectedData The expected response data as an associative array.
-     * @return void
-     */
-    public static function mapAttributes(object $instance, array $expectedData): void
+    private static array $classSpecificValue;
+
+    public static function setSpecificValue(string $className, string $caseName): void
     {
-        foreach ($instance::attributeMap() as $property => $jsonKey) {
-            $setterMethod = $instance::setters()[$property] ?? null;
-            $type = $instance::openAPITypes()[$property] ?? null;
-
-            if (!isset($expectedData[$jsonKey])) {
-                continue;
-            }
-
-            try {
-                if (class_exists($type) && !is_a($type, \DateTime::class, true)) {
-                    self::handleComplexType($instance, $setterMethod, $type, $expectedData[$jsonKey]);
-                } elseif (str_ends_with($type, '[]')) {
-                    $objectType = substr($type, 0, -strlen('[]'));
-                    self::handleComplexType($instance, $setterMethod, $type, $expectedData[$jsonKey]);
-                } else {
-                    self::handleSimpleType($instance, $setterMethod, $type, $expectedData[$jsonKey]);
-                }
-            } catch (\Exception $e) {
-                echo "Error deserializing property: $property. " . $e->getMessage() . "\n";
+        self::$classSpecificValue = [];
+        self::$classSpecificValue['arn'] = 'arn:aws:sqs:test:test:test';
+        self::$classSpecificValue['notification_type'] = 'ANY_OFFER_CHANGED';
+        self::$classSpecificValue['event_filter_type'] = 'ANY_OFFER_CHANGED';
+        self::$classSpecificValue['offer_type'] = 'CONSUMER';
+        self::$classSpecificValue['expiration'] = '2024-01-01';
+        self::$classSpecificValue['country_code'] = 'JP';
+        self::$classSpecificValue['op'] = 'add';
+        self::$classSpecificValue['requirements'] = 'LISTING_OFFER_ONLY';
+        self::$classSpecificValue['attributes'] = [];
+        // Class Specific
+        if ($className === 'FbaInventoryApi') {
+            self::$classSpecificValue['marketplace_id'] = $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+            self::$classSpecificValue['quantity'] = 0;
+            self::$classSpecificValue['granularity_type'] = 'Marketplace';
+            self::$classSpecificValue['seller_sku'] = 'automation_test';
+            self::$classSpecificValue['x_amzn_idempotency_token'] = self::generateUuidV4();
+            self::$classSpecificValue['granularity_id'] = $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+        } elseif ($className === 'FbaOutboundApi') {
+            self::$classSpecificValue['marketplace_id'] = $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+            self::$classSpecificValue['seller_fulfillment_order_id'] = date('YmdHi');
+            self::$classSpecificValue['postal_code'] = '141-0021';
+            if ($caseName == 'testGetFeatureSKU200') {
+                self::$classSpecificValue['feature_name'] = 'BLANK_BOX';
+                self::$classSpecificValue['seller_sku'] = 'TEST_SKU';
+            } else {
+                self::$classSpecificValue['feature_name'] = 'TEST_FEATURE';
+                self::$classSpecificValue['seller_sku'] = 'test';
             }
         }
-    }
-
-    /**
-     * Handles mapping for complex types (nested structures or arrays).
-     *
-     * @param object $instance The parent instance.
-     * @param string|null $setterMethod The setter method for the property.
-     * @param string $type The type of the property.
-     * @param mixed $data The data to map.
-     * @return void
-     */
-    private static function handleComplexType(object $instance, ?string $setterMethod, string $type, mixed $data): void
-    {
-        if (!is_array($data)) {
-            $deserializedValue = ObjectSerializer::deserialize($data, $type);
-            $instance->$setterMethod($deserializedValue);
-            return;
-        }
-
-        if (array_keys($data) === range(0, count($data) - 1)) {
-            // When $data is Array
-            $nestedInstances = [];
-            $listType = substr($type, 0, -2);
-            foreach ($data as $itemData) {
-                if (class_exists($listType) && method_exists($listType, 'openAPITypes')) {
-                    $nestedNodeInstance = new $listType();
-                    self::mapAttributes($nestedNodeInstance, $itemData);
-                    $nestedInstances[] = $nestedNodeInstance;
-                } else {
-                    $deserializedValue = ObjectSerializer::deserialize($itemData, $listType);
-                    $nestedInstances[] = $deserializedValue;
-                }
-            }
-            $instance->$setterMethod($nestedInstances);
-        } else {
-            $nestedInstance = new $type();
-            self::mapAttributes($nestedInstance, $data);
-            $instance->$setterMethod($nestedInstance);
-        }
-    }
-
-    /**
-     * Handles mapping for simple types (primitives or DateTime).
-     *
-     * @param object $instance The instance to populate.
-     * @param string|null $setterMethod The setter method for the property.
-     * @param string $type The type of the property.
-     * @param mixed $data The data to map.
-     * @return void
-     */
-    private static function handleSimpleType(object $instance, ?string $setterMethod, string $type, mixed $data): void
-    {
-        $deserializedValue = ObjectSerializer::deserialize($data, $type);
-        $instance->$setterMethod($deserializedValue);
     }
 
     /**
@@ -173,12 +122,27 @@ class TestHelper
                 || $paramName === 'body'
                 || $paramName === 'requests'
                 || $paramName === 'get_featured_offer_expected_price_batch_request_body'
+                || $paramName === 'get_item_offers_batch_request_body'
+                || $paramName === 'get_listing_offers_batch_request_body'
+                || $paramName === 'create_inventory_item_request_body'
+                || $paramName === 'create_scheduled_package_request'
+                || $paramName === 'list_handover_slots_request'
+                || $paramName === 'update_scheduled_packages_request'
             ) {
                 $typeName = $param->getType()->getName();
                 if (class_exists($typeName)) {
                     $requestInstance = new $typeName();
                     if (isset($requestParameters['body']['value'])) {
-                        self::mapAttributes($requestInstance, $requestParameters['body']['value']);
+                        $requestInstance =
+                            ObjectSerializer::deserialize($requestParameters['body']['value'], $typeName, []);
+                    } elseif (
+                        // TODO This condition should be removed when EasyShip swagger is fixed
+                        isset($requestParameters['body'])
+                        && ($paramName === 'update_scheduled_packages_request'
+                            || $paramName === 'list_handover_slots_request')
+                    ) {
+                        $requestInstance =
+                            ObjectSerializer::deserialize($requestParameters['body'], $typeName, []);
                     } elseif (!$param->isOptional()) {
                         // Insert Dummy object
                         $openAPITypes = $typeName::openAPITypes();
@@ -213,13 +177,23 @@ class TestHelper
 
             // Process regular parameters with snake_case to camelCase conversion.
             $value = null;
-            foreach ([false, true] as $capitalizeFirst) {
-                $camelCaseName = self::snakeToCamelCase($paramName, $capitalizeFirst);
-                if (isset($requestParameters[$camelCaseName])) {
-                    $subArray = $requestParameters[$camelCaseName];
-                    if (is_array($subArray) && isset($subArray['value'])) {
-                        $value = $subArray['value'];
+            if ($requestParameters) {
+                foreach ([false, true] as $capitalizeFirst) {
+                    $camelCaseName = self::snakeToCamelCase($paramName, $capitalizeFirst);
+                    // Check for standard camelCase name
+                    $subArrayValue = self::extractValue($camelCaseName, $requestParameters);
+                    if ($subArrayValue !== null) {
+                        $value = $subArrayValue;
                         break;
+                    }
+                    // Special handling for 'Sku'
+                    if (str_contains($camelCaseName, 'Sku')) {
+                        $camelCaseName = str_replace('Sku', 'SKU', $camelCaseName);
+                        $subArrayValue = self::extractValue($camelCaseName, $requestParameters);
+                        if ($subArrayValue !== null) {
+                            $value = $subArrayValue;
+                            break;
+                        }
                     }
                 }
             }
@@ -234,6 +208,24 @@ class TestHelper
         return $requestParams;
     }
 
+    /**
+     * Helper method to extract a value from the request parameters.
+     *
+     * @param string $Name
+     * @param array $requestParameters The array of request parameters to search within.
+     * @return string|null The value if found and valid, otherwise null.
+     */
+    private static function extractValue(string $Name, array $requestParameters): mixed
+    {
+        if (isset($requestParameters[$Name])) {
+            $subArray = $requestParameters[$Name];
+            if (is_array($subArray) && isset($subArray['value'])) {
+                return $subArray['value'];
+            }
+        }
+
+        return null;
+    }
     private static function generateUuidV4(): string
     {
         $data = openssl_random_pseudo_bytes(16);
@@ -243,27 +235,6 @@ class TestHelper
 
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
-
-
-    /**
-     * Map for Domain Specific parameters
-     * @var array
-     */
-    private static array $domainSpecificParameterMap = [
-        'arn' => 'arn:aws:sqs:test:test:test',
-        'notification_type' => 'ANY_OFFER_CHANGED',
-        'event_filter_type' => 'ANY_OFFER_CHANGED',
-        'offer_type' => 'CONSUMER',
-        'expiration' => '2024-01-01',
-        'country_code' => 'US',
-        'op' => 'add',
-        'requirements' => 'LISTING_OFFER_ONLY',
-        'attributes' => [],
-        // FbaInventory
-        'granularity_type' => 'Marketplace',
-        'quantity' => 0,
-        'seller_sku' => 'automation_test'
-    ];
 
     /**
      * Returns a dummy value based on the given type.
@@ -276,23 +247,19 @@ class TestHelper
     private static function getDummyValueForType(string $typeName, string $paramName): mixed
     {
         // Handle domain specific case
-        if (isset(self::$domainSpecificParameterMap[$paramName])) {
-            return self::$domainSpecificParameterMap[$paramName];
+        if (isset(self::$classSpecificValue[$paramName])) {
+            return self::$classSpecificValue[$paramName];
         // Listing
         } elseif ($paramName === 'marketplace_ids') {
             return [$_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId];
-        // FbaInventory
-        } elseif ($paramName === 'marketplace_id') {
-            return $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
-        } elseif ($paramName === 'x_amzn_idempotency_token') {
-            return self::generateUuidV4();
-        } elseif ($paramName === 'granularity_id') {
-            return $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
         }
         // Handle array and specific object types
         if (str_ends_with($typeName, '[]')) {
             $elementType = substr($typeName, 0, -2);
             return [self::getDummyValueForType($elementType, $paramName)];
+        }
+        if ($typeName === '\DateTime') {
+            return new \DateTime();
         }
 
         if (class_exists($typeName)) {
@@ -352,30 +319,6 @@ class TestHelper
     }
 
     /**
-     * Prepares the request parameters for a specified method of an API instance.
-     *
-     * This method uses reflection to retrieve the parameters of a given method
-     * and matches them with the provided request array to prepare a structured
-     * array of parameters for the method invocation.
-     *
-     * @param object $apiInstance The instance of the API class that contains the method.
-     * @param string $methodName The name of the method for which parameters need to be prepared.
-     * @param array $request An associative array of request parameters to be matched
-     *                       with the method's defined parameters.
-     *
-     * @return array An array of parameters structured to match the specified method's signature.
-     *
-     * @throws ReflectionException If the reflection process fails, such as when the
-     *                             specified method does not exist in the given API instance.
-     */
-    public static function prepareRequestParameter(object $apiInstance, string $methodName, ?array $request): array
-    {
-        $reflection = self::getReflectionMethod($apiInstance, $methodName);
-        $params = $reflection->getParameters();
-        return self::prepareRequestParams($params, $request);
-    }
-
-    /**
      * Extracts the request parameters and expected response from a JSON schema.
      *
      * This method processes a JSON schema string, decodes it, and extracts the
@@ -414,14 +357,19 @@ class TestHelper
         $request = $data['x-amzn-api-sandbox']['static'][0]['request']['parameters'] ?? null;
 
         // Prepare request parameters
-        $requestParams = self::prepareRequestParameter(
-            $apiInstance,
-            $operationId,
-            $request
-        );
+        $reflection = self::getReflectionMethod($apiInstance, $operationId);
+        $params = $reflection->getParameters();
+        $requestParams = self::prepareRequestParams($params, $request);
 
         // Extract expected response
         $expectedResponse = $data['x-amzn-api-sandbox']['static'][0]['response'] ?? null;
+        if ($expectedResponse !== null) {
+            $returnType = $reflection->getReturnType();
+            if (class_exists($returnType)) {
+                $expectedResponse =
+                    ObjectSerializer::deserialize($expectedResponse, $returnType, []);
+            }
+        }
 
         return [
             'requestParams' => $requestParams,
@@ -435,11 +383,9 @@ class TestHelper
     public function buildRequestForDynamicSandBox(object $apiInstance, string $operationId): array
     {
         // Prepare request parameters
-        return self::prepareRequestParameter(
-            $apiInstance,
-            $operationId,
-            null
-        );
+        $reflection = self::getReflectionMethod($apiInstance, $operationId);
+        $params = $reflection->getParameters();
+        return self::prepareRequestParams($params, null);
     }
 
     /**
@@ -510,28 +456,17 @@ class TestHelper
     public static array $testSkipCasesList = [
         // Definition of Test Class which has not been tested
         'DefaultApi',
-        'AplusContentApi',
-        'AppIntegrationsApi',
-        'ApplicationsApi',
-        'AwdApi',
+        'AplusContentApi', // Doesn't support sandbox as of now.
+        'AppIntegrationsApi', // No role for my account yet
+        'ApplicationsApi', // Doesn't support sandbox as of now.
+        'AwdApi', // No role for my account yet
         'CustomerInvoicesApi',
-        'EasyShipApi',
-        'FbaOutboundApi',
-        'InvoicesApi',
-        'MessagingApi',
-        'OffersApi',
-        'QueriesApi',
-        'SalesApi',
-        'SellersApi',
-        'SellingpartnersApi',
-        'ServiceApi',
-        'ShipmentInvoiceApi',
-        'ShippingApi',
-        'SolicitationsApi',
-        'SupplySourcesApi',
-        'TokensApi',
+        'InvoicesApi', // No role for my account yet
+        'ServiceApi', // No role for my account yet
+        'ShipmentInvoiceApi', // No role for my account yet
+        'ShippingApi', // No role for my account yet
         'UpdateInventoryApi',
-        'UploadsApi',
+        'UploadsApi', // Doesn't support sandbox as of now.
         'VendorInvoiceApi',
         'VendorOrdersApi',
         'VendorShipmentsApi',
@@ -597,6 +532,49 @@ class TestHelper
         // ShippingService.ShippingServiceOptions.CarrierWillPickUp is mandatory, but not returned.
         'testCreateShipment200',
         //Response ShippingServiceList.ShippingServiceOptions.LabelFormat should be Enum value or removed
-        'testGetEligibleShipmentServices200'
+        'testGetEligibleShipmentServices200',
+        // fulfillmentOutbound
+        'testListReturnReasonCodes200', // The expected value of Seller_Sku is not written.
+        'testCancelFulfillmentOrder200', // Due to test execution order, it can not be passed
+        'testCreateFulfillmentReturn200', // Due to test execution order, it can not be passed
+        'testUpdateFulfillmentOrder200', // Due to test execution order, it can not be passed
+        'testGetPackageTrackingDetails200', // Due to test execution order, it can not be passed
+        'testSubmitFulfillmentOrderStatusUpdate200', // Due to test execution order, it can not be passed
+        'testDeliveryOffers200', // Due to complexity, skip for now
+        // EasyShip
+        'testCreateScheduledPackage400', // Skip due to mandatory filed "slotId" is null in the sample
+        'testCreateScheduledPackageBulk200', // packageDimensions.unit must be Cm (Maybe in JP?)
+        'testGetScheduledPackage200', // The expected and actual response is not a member of PackageStatus ENUM
+        'testListHandoverSlots400', // Due to Json structure is incorrect, need to be fixed
+        'testUpdateScheduledPackages400', // Due to Json structure is incorrect, need to be fixed
+        // DataKiosk
+        'testCancelQuery204', // Sandbox Returns 400
+        'testCancelQuery404', // Sandbox Returns 400
+        'testGetQuery200', // Sandbox Returns 400
+        'testGetQuery404', // Sandbox Returns 400
+        // Messaging API
+        // SandBox request timestamp format (2004-12-13T21:39:45.618-08:00) doesn't match with PHP.
+        // It will require dedicated customization to make 3 digit millisecond and doesn't match with auto Generation
+        'testCreateWarranty201',
+        // Replenishment Api sellingPartners
+        'testGetSellingPartnerMetrics200', // Request timestamp millisecond is 2 digits and requires string mutation
+        'testGetSellingPartnerMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
+        // Replenishment Api offers
+        'testListOfferMetrics200', // Request timestamp millisecond is 2 digits and requires string mutation
+        'testListOfferMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
+        'testListOffers200', // Sandbox Returns 400
+        'testListOffers400', // Request eligibilities is not member of Enum
+        // Sellers
+        'testGetAccount200', // Need some application which can be succeeded. Access is denied with my account.
+        'testGetAccount400', // Need some application which can be succeeded. Access is denied with my account.
+        // SolicitationsApi
+        // Need some application which can be succeeded. Access is denied with my account.
+        'testGetSolicitationActionsForOrder200',
+        // SupplySources
+        'testGetSupplySource200', // SandBox expected response.ThroughputUnit should be “Order” not “ORDER”.
+        'testUpdateSupplySource400', // Expected sandbox response is missing mandatory field "ThroughputUnit".
+        'testGetSupplySources400', // Expecting 400 to be returned, but 200 returned
+        // Tokens API
+        'testCreateRestrictedDataToken400' // SandBox request.method is not member of Enum
     ];
 }

@@ -101,18 +101,18 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ship_to' => false,
+        'ship_to' => true,
         'ship_from' => false,
-        'return_to' => false,
-        'ship_date' => false,
-        'shipper_instruction' => false,
+        'return_to' => true,
+        'ship_date' => true,
+        'shipper_instruction' => true,
         'packages' => false,
-        'value_added_services' => false,
-        'tax_details' => false,
+        'value_added_services' => true,
+        'tax_details' => true,
         'channel_details' => false,
-        'client_reference_details' => false,
-        'shipment_type' => false,
-        'destination_access_point_details' => false
+        'client_reference_details' => true,
+        'shipment_type' => true,
+        'destination_access_point_details' => true
     ];
 
     /**
@@ -398,7 +398,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipTo(?\OpenAPI\Client\Model\shipping\Address $ship_to): self
     {
         if (is_null($ship_to)) {
-            throw new \InvalidArgumentException('non-nullable ship_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to'] = $ship_to;
 
@@ -452,7 +459,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReturnTo(?\OpenAPI\Client\Model\shipping\Address $return_to): self
     {
         if (is_null($return_to)) {
-            throw new \InvalidArgumentException('non-nullable return_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_to', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_to'] = $return_to;
 
@@ -479,7 +493,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipDate(?\DateTime $ship_date): self
     {
         if (is_null($ship_date)) {
-            throw new \InvalidArgumentException('non-nullable ship_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_date'] = $ship_date;
 
@@ -506,7 +527,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipperInstruction(?\OpenAPI\Client\Model\shipping\ShipperInstruction $shipper_instruction): self
     {
         if (is_null($shipper_instruction)) {
-            throw new \InvalidArgumentException('non-nullable shipper_instruction cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipper_instruction');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipper_instruction', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipper_instruction'] = $shipper_instruction;
 
@@ -516,7 +544,7 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packages
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackages(): array
     {
@@ -560,7 +588,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValueAddedServices(?\OpenAPI\Client\Model\shipping\ValueAddedServiceDetails $value_added_services): self
     {
         if (is_null($value_added_services)) {
-            throw new \InvalidArgumentException('non-nullable value_added_services cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_added_services');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_added_services', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_added_services'] = $value_added_services;
 
@@ -570,7 +605,7 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxDetails(): ?array
     {
@@ -587,7 +622,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxDetails(?array $tax_details): self
     {
         if (is_null($tax_details)) {
-            throw new \InvalidArgumentException('non-nullable tax_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_details'] = $tax_details;
 
@@ -624,7 +666,7 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets client_reference_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getClientReferenceDetails(): ?array
     {
@@ -641,7 +683,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setClientReferenceDetails(?array $client_reference_details): self
     {
         if (is_null($client_reference_details)) {
-            throw new \InvalidArgumentException('non-nullable client_reference_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'client_reference_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('client_reference_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['client_reference_details'] = $client_reference_details;
 
@@ -668,7 +717,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipmentType(?string $shipment_type): self
     {
         if (is_null($shipment_type)) {
-            throw new \InvalidArgumentException('non-nullable shipment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_type'] = $shipment_type;
 
@@ -695,7 +751,14 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDestinationAccessPointDetails(?\OpenAPI\Client\Model\shipping\AccessPointDetails $destination_access_point_details): self
     {
         if (is_null($destination_access_point_details)) {
-            throw new \InvalidArgumentException('non-nullable destination_access_point_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'destination_access_point_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('destination_access_point_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['destination_access_point_details'] = $destination_access_point_details;
 

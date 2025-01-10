@@ -97,15 +97,15 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'total_offer_count' => false,
-        'number_of_offers' => false,
-        'lowest_prices' => false,
-        'buy_box_prices' => false,
-        'list_price' => false,
-        'competitive_price_threshold' => false,
-        'suggested_lower_price_plus_shipping' => false,
-        'sales_rankings' => false,
-        'buy_box_eligible_offers' => false,
-        'offers_available_time' => false
+        'number_of_offers' => true,
+        'lowest_prices' => true,
+        'buy_box_prices' => true,
+        'list_price' => true,
+        'competitive_price_threshold' => true,
+        'suggested_lower_price_plus_shipping' => true,
+        'sales_rankings' => true,
+        'buy_box_eligible_offers' => true,
+        'offers_available_time' => true
     ];
 
     /**
@@ -387,7 +387,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets number_of_offers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getNumberOfOffers(): ?array
     {
@@ -404,7 +404,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNumberOfOffers(?array $number_of_offers): self
     {
         if (is_null($number_of_offers)) {
-            throw new \InvalidArgumentException('non-nullable number_of_offers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'number_of_offers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('number_of_offers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['number_of_offers'] = $number_of_offers;
 
@@ -414,7 +421,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets lowest_prices
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLowestPrices(): ?array
     {
@@ -431,7 +438,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLowestPrices(?array $lowest_prices): self
     {
         if (is_null($lowest_prices)) {
-            throw new \InvalidArgumentException('non-nullable lowest_prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lowest_prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lowest_prices', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['lowest_prices'] = $lowest_prices;
 
@@ -441,7 +455,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buy_box_prices
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getBuyBoxPrices(): ?array
     {
@@ -458,7 +472,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyBoxPrices(?array $buy_box_prices): self
     {
         if (is_null($buy_box_prices)) {
-            throw new \InvalidArgumentException('non-nullable buy_box_prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buy_box_prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buy_box_prices', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buy_box_prices'] = $buy_box_prices;
 
@@ -485,7 +506,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setListPrice(?\OpenAPI\Client\Model\pricingV0\MoneyType $list_price): self
     {
         if (is_null($list_price)) {
-            throw new \InvalidArgumentException('non-nullable list_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'list_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('list_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['list_price'] = $list_price;
 
@@ -512,7 +540,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCompetitivePriceThreshold(?\OpenAPI\Client\Model\pricingV0\MoneyType $competitive_price_threshold): self
     {
         if (is_null($competitive_price_threshold)) {
-            throw new \InvalidArgumentException('non-nullable competitive_price_threshold cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'competitive_price_threshold');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('competitive_price_threshold', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['competitive_price_threshold'] = $competitive_price_threshold;
 
@@ -539,7 +574,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSuggestedLowerPricePlusShipping(?\OpenAPI\Client\Model\pricingV0\MoneyType $suggested_lower_price_plus_shipping): self
     {
         if (is_null($suggested_lower_price_plus_shipping)) {
-            throw new \InvalidArgumentException('non-nullable suggested_lower_price_plus_shipping cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'suggested_lower_price_plus_shipping');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('suggested_lower_price_plus_shipping', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['suggested_lower_price_plus_shipping'] = $suggested_lower_price_plus_shipping;
 
@@ -549,7 +591,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sales_rankings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSalesRankings(): ?array
     {
@@ -566,7 +608,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSalesRankings(?array $sales_rankings): self
     {
         if (is_null($sales_rankings)) {
-            throw new \InvalidArgumentException('non-nullable sales_rankings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sales_rankings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sales_rankings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sales_rankings'] = $sales_rankings;
 
@@ -576,7 +625,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buy_box_eligible_offers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getBuyBoxEligibleOffers(): ?array
     {
@@ -593,7 +642,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyBoxEligibleOffers(?array $buy_box_eligible_offers): self
     {
         if (is_null($buy_box_eligible_offers)) {
-            throw new \InvalidArgumentException('non-nullable buy_box_eligible_offers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buy_box_eligible_offers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buy_box_eligible_offers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buy_box_eligible_offers'] = $buy_box_eligible_offers;
 
@@ -620,7 +676,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOffersAvailableTime(?\DateTime $offers_available_time): self
     {
         if (is_null($offers_available_time)) {
-            throw new \InvalidArgumentException('non-nullable offers_available_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offers_available_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offers_available_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offers_available_time'] = $offers_available_time;
 

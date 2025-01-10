@@ -98,9 +98,9 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'customer_order_number' => false,
         'order_date' => false,
-        'order_status' => false,
+        'order_status' => true,
         'shipment_details' => false,
-        'tax_total' => false,
+        'tax_total' => true,
         'selling_party' => false,
         'ship_from_party' => false,
         'ship_to_party' => false,
@@ -480,10 +480,17 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderStatus(?string $order_status): self
     {
         if (is_null($order_status)) {
-            throw new \InvalidArgumentException('non-nullable order_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getOrderStatusAllowableValues();
-        if (!in_array($order_status, $allowedValues, true)) {
+        if (!is_null($order_status) && !in_array($order_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'order_status', must be one of '%s'",
@@ -544,7 +551,14 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxTotal(?\OpenAPI\Client\Model\vendorDfOrders\TaxItemDetails $tax_total): self
     {
         if (is_null($tax_total)) {
-            throw new \InvalidArgumentException('non-nullable tax_total cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_total', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_total'] = $tax_total;
 
@@ -662,7 +676,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

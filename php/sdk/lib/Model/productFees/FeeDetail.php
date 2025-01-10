@@ -90,10 +90,10 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'fee_type' => false,
         'fee_amount' => false,
-        'fee_promotion' => false,
-        'tax_amount' => false,
+        'fee_promotion' => true,
+        'tax_amount' => true,
         'final_fee' => false,
-        'included_fee_detail_list' => false
+        'included_fee_detail_list' => true
     ];
 
     /**
@@ -409,7 +409,14 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeePromotion(?\OpenAPI\Client\Model\productFees\MoneyType $fee_promotion): self
     {
         if (is_null($fee_promotion)) {
-            throw new \InvalidArgumentException('non-nullable fee_promotion cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_promotion');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_promotion', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_promotion'] = $fee_promotion;
 
@@ -436,7 +443,14 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxAmount(?\OpenAPI\Client\Model\productFees\MoneyType $tax_amount): self
     {
         if (is_null($tax_amount)) {
-            throw new \InvalidArgumentException('non-nullable tax_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_amount'] = $tax_amount;
 
@@ -473,7 +487,7 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets included_fee_detail_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIncludedFeeDetailList(): ?array
     {
@@ -490,7 +504,14 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIncludedFeeDetailList(?array $included_fee_detail_list): self
     {
         if (is_null($included_fee_detail_list)) {
-            throw new \InvalidArgumentException('non-nullable included_fee_detail_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'included_fee_detail_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('included_fee_detail_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['included_fee_detail_list'] = $included_fee_detail_list;
 

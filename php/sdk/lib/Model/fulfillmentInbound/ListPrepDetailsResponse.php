@@ -297,7 +297,7 @@ class ListPrepDetailsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets msku_prep_details
      *
-     * @return arrayA
+     * @return array
      */
     public function getMskuPrepDetails(): array
     {

@@ -105,19 +105,19 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'package_number' => false,
-        'tracking_number' => false,
-        'customer_tracking_link' => false,
-        'carrier_code' => false,
-        'carrier_phone_number' => false,
-        'carrier_url' => false,
-        'ship_date' => false,
-        'estimated_arrival_date' => false,
-        'ship_to_address' => false,
-        'current_status' => false,
-        'current_status_description' => false,
-        'signed_for_by' => false,
-        'additional_location_info' => false,
-        'tracking_events' => false
+        'tracking_number' => true,
+        'customer_tracking_link' => true,
+        'carrier_code' => true,
+        'carrier_phone_number' => true,
+        'carrier_url' => true,
+        'ship_date' => true,
+        'estimated_arrival_date' => true,
+        'ship_to_address' => true,
+        'current_status' => true,
+        'current_status_description' => true,
+        'signed_for_by' => true,
+        'additional_location_info' => true,
+        'tracking_events' => true
     ];
 
     /**
@@ -432,7 +432,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTrackingNumber(?string $tracking_number): self
     {
         if (is_null($tracking_number)) {
-            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_number'] = $tracking_number;
 
@@ -459,7 +466,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCustomerTrackingLink(?string $customer_tracking_link): self
     {
         if (is_null($customer_tracking_link)) {
-            throw new \InvalidArgumentException('non-nullable customer_tracking_link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_tracking_link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_tracking_link', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_tracking_link'] = $customer_tracking_link;
 
@@ -486,7 +500,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCarrierCode(?string $carrier_code): self
     {
         if (is_null($carrier_code)) {
-            throw new \InvalidArgumentException('non-nullable carrier_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_code'] = $carrier_code;
 
@@ -513,7 +534,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCarrierPhoneNumber(?string $carrier_phone_number): self
     {
         if (is_null($carrier_phone_number)) {
-            throw new \InvalidArgumentException('non-nullable carrier_phone_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_phone_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_phone_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_phone_number'] = $carrier_phone_number;
 
@@ -540,7 +568,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCarrierUrl(?string $carrier_url): self
     {
         if (is_null($carrier_url)) {
-            throw new \InvalidArgumentException('non-nullable carrier_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_url'] = $carrier_url;
 
@@ -567,7 +602,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setShipDate(?\DateTime $ship_date): self
     {
         if (is_null($ship_date)) {
-            throw new \InvalidArgumentException('non-nullable ship_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_date'] = $ship_date;
 
@@ -594,7 +636,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setEstimatedArrivalDate(?\DateTime $estimated_arrival_date): self
     {
         if (is_null($estimated_arrival_date)) {
-            throw new \InvalidArgumentException('non-nullable estimated_arrival_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_arrival_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_arrival_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_arrival_date'] = $estimated_arrival_date;
 
@@ -621,7 +670,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setShipToAddress(?\OpenAPI\Client\Model\fulfillmentOutbound\TrackingAddress $ship_to_address): self
     {
         if (is_null($ship_to_address)) {
-            throw new \InvalidArgumentException('non-nullable ship_to_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_to_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_to_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_to_address'] = $ship_to_address;
 
@@ -648,7 +704,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCurrentStatus(?string $current_status): self
     {
         if (is_null($current_status)) {
-            throw new \InvalidArgumentException('non-nullable current_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'current_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('current_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['current_status'] = $current_status;
 
@@ -675,7 +738,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCurrentStatusDescription(?string $current_status_description): self
     {
         if (is_null($current_status_description)) {
-            throw new \InvalidArgumentException('non-nullable current_status_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'current_status_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('current_status_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['current_status_description'] = $current_status_description;
 
@@ -702,7 +772,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSignedForBy(?string $signed_for_by): self
     {
         if (is_null($signed_for_by)) {
-            throw new \InvalidArgumentException('non-nullable signed_for_by cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'signed_for_by');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('signed_for_by', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['signed_for_by'] = $signed_for_by;
 
@@ -729,7 +806,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAdditionalLocationInfo(?string $additional_location_info): self
     {
         if (is_null($additional_location_info)) {
-            throw new \InvalidArgumentException('non-nullable additional_location_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'additional_location_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('additional_location_info', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['additional_location_info'] = $additional_location_info;
 
@@ -739,7 +823,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tracking_events
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTrackingEvents(): ?array
     {
@@ -756,7 +840,14 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTrackingEvents(?array $tracking_events): self
     {
         if (is_null($tracking_events)) {
-            throw new \InvalidArgumentException('non-nullable tracking_events cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_events');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_events', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_events'] = $tracking_events;
 

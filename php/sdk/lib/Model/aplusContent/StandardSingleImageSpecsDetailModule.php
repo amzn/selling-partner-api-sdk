@@ -92,14 +92,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'image' => false,
-        'description_headline' => false,
-        'description_block1' => false,
-        'description_block2' => false,
-        'specification_headline' => false,
-        'specification_list_block' => false,
-        'specification_text_block' => false
+        'headline' => true,
+        'image' => true,
+        'description_headline' => true,
+        'description_block1' => true,
+        'description_block2' => true,
+        'specification_headline' => true,
+        'specification_list_block' => true,
+        'specification_text_block' => true
     ];
 
     /**
@@ -360,7 +360,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -387,7 +394,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setImage(?\OpenAPI\Client\Model\aplusContent\ImageComponent $image): self
     {
         if (is_null($image)) {
-            throw new \InvalidArgumentException('non-nullable image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image'] = $image;
 
@@ -414,7 +428,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setDescriptionHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $description_headline): self
     {
         if (is_null($description_headline)) {
-            throw new \InvalidArgumentException('non-nullable description_headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description_headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description_headline'] = $description_headline;
 
@@ -441,7 +462,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setDescriptionBlock1(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $description_block1): self
     {
         if (is_null($description_block1)) {
-            throw new \InvalidArgumentException('non-nullable description_block1 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description_block1');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_block1', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description_block1'] = $description_block1;
 
@@ -468,7 +496,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setDescriptionBlock2(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $description_block2): self
     {
         if (is_null($description_block2)) {
-            throw new \InvalidArgumentException('non-nullable description_block2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description_block2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_block2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description_block2'] = $description_block2;
 
@@ -495,7 +530,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setSpecificationHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $specification_headline): self
     {
         if (is_null($specification_headline)) {
-            throw new \InvalidArgumentException('non-nullable specification_headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'specification_headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('specification_headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['specification_headline'] = $specification_headline;
 
@@ -522,7 +564,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setSpecificationListBlock(?\OpenAPI\Client\Model\aplusContent\StandardHeaderTextListBlock $specification_list_block): self
     {
         if (is_null($specification_list_block)) {
-            throw new \InvalidArgumentException('non-nullable specification_list_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'specification_list_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('specification_list_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['specification_list_block'] = $specification_list_block;
 
@@ -549,7 +598,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     public function setSpecificationTextBlock(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $specification_text_block): self
     {
         if (is_null($specification_text_block)) {
-            throw new \InvalidArgumentException('non-nullable specification_text_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'specification_text_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('specification_text_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['specification_text_block'] = $specification_text_block;
 

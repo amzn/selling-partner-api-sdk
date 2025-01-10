@@ -82,9 +82,9 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_supported' => false,
-        'operational_configuration' => false,
-        'parking_with_address_configuration' => false
+        'is_supported' => true,
+        'operational_configuration' => true,
+        'parking_with_address_configuration' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     public function setIsSupported(?bool $is_supported): self
     {
         if (is_null($is_supported)) {
-            throw new \InvalidArgumentException('non-nullable is_supported cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_supported');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_supported', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_supported'] = $is_supported;
 
@@ -352,7 +359,14 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
-            throw new \InvalidArgumentException('non-nullable operational_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'operational_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('operational_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['operational_configuration'] = $operational_configuration;
 
@@ -379,7 +393,14 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     public function setParkingWithAddressConfiguration(?\OpenAPI\Client\Model\supplySources\ParkingWithAddressConfiguration $parking_with_address_configuration): self
     {
         if (is_null($parking_with_address_configuration)) {
-            throw new \InvalidArgumentException('non-nullable parking_with_address_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parking_with_address_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parking_with_address_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parking_with_address_configuration'] = $parking_with_address_configuration;
 

@@ -55,6 +55,8 @@ class InvoicesApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('InvoicesApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class InvoicesApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport202', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport202', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -233,7 +234,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateInvoicesExport400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -375,7 +376,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoice200', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoice200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -470,7 +471,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoice400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoice400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -631,7 +632,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoices200', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoices200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -783,7 +784,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoices400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoices400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -935,7 +936,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes200', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1027,7 +1028,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesAttributes400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1169,7 +1170,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument200', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1250,7 +1251,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesDocument400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1392,7 +1393,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesExport200', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesExport200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1477,7 +1478,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesExport400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesExport400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1619,7 +1620,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesExports200', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesExports200', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1717,7 +1718,7 @@ class InvoicesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInvoicesExports400', 'InvoicesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInvoicesExports400', 'InvoicesApi')) {
                 $this->assertTrue(true);
                 return;
             }

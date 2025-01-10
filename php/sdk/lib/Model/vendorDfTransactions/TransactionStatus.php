@@ -78,7 +78,7 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transaction_status' => false
+        'transaction_status' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setTransactionStatus(?\OpenAPI\Client\Model\vendorDfTransactions\Transaction $transaction_status): self
     {
         if (is_null($transaction_status)) {
-            throw new \InvalidArgumentException('non-nullable transaction_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_status'] = $transaction_status;
 

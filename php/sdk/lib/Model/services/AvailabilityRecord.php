@@ -86,8 +86,8 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'start_time' => false,
         'end_time' => false,
-        'recurrence' => false,
-        'capacity' => false
+        'recurrence' => true,
+        'capacity' => true
     ];
 
     /**
@@ -396,7 +396,14 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setRecurrence(?\OpenAPI\Client\Model\services\Recurrence $recurrence): self
     {
         if (is_null($recurrence)) {
-            throw new \InvalidArgumentException('non-nullable recurrence cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'recurrence');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('recurrence', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['recurrence'] = $recurrence;
 
@@ -423,10 +430,17 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCapacity(?int $capacity): self
     {
         if (is_null($capacity)) {
-            throw new \InvalidArgumentException('non-nullable capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($capacity < 1)) {
+        if (!is_null($capacity) && ($capacity < 1)) {
             throw new \InvalidArgumentException('invalid value for $capacity when calling AvailabilityRecord., must be bigger than or equal to 1.');
         }
 

@@ -86,11 +86,11 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'quantity_ordered' => false,
-        'seller_sku' => false,
-        'title' => false,
-        'measurement' => false
+        'asin' => true,
+        'quantity_ordered' => true,
+        'seller_sku' => true,
+        'title' => true,
+        'measurement' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -366,7 +373,14 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setQuantityOrdered(?int $quantity_ordered): self
     {
         if (is_null($quantity_ordered)) {
-            throw new \InvalidArgumentException('non-nullable quantity_ordered cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_ordered');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_ordered', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_ordered'] = $quantity_ordered;
 
@@ -393,7 +407,14 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -420,7 +441,14 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
@@ -447,7 +475,14 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMeasurement(?\OpenAPI\Client\Model\orders\Measurement $measurement): self
     {
         if (is_null($measurement)) {
-            throw new \InvalidArgumentException('non-nullable measurement cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'measurement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('measurement', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['measurement'] = $measurement;
 

@@ -90,10 +90,10 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'shipment_request_details' => false,
         'shipping_service_id' => false,
-        'shipping_service_offer_id' => false,
-        'hazmat_type' => false,
-        'label_format_option' => false,
-        'shipment_level_seller_inputs_list' => false
+        'shipping_service_offer_id' => true,
+        'hazmat_type' => true,
+        'label_format_option' => true,
+        'shipment_level_seller_inputs_list' => true
     ];
 
     /**
@@ -406,7 +406,14 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShippingServiceOfferId(?string $shipping_service_offer_id): self
     {
         if (is_null($shipping_service_offer_id)) {
-            throw new \InvalidArgumentException('non-nullable shipping_service_offer_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_service_offer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_service_offer_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_service_offer_id'] = $shipping_service_offer_id;
 
@@ -433,7 +440,14 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setHazmatType(?string $hazmat_type): self
     {
         if (is_null($hazmat_type)) {
-            throw new \InvalidArgumentException('non-nullable hazmat_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hazmat_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hazmat_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['hazmat_type'] = $hazmat_type;
 
@@ -460,7 +474,14 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setLabelFormatOption(?\OpenAPI\Client\Model\merchantFulfillment\LabelFormatOptionRequest $label_format_option): self
     {
         if (is_null($label_format_option)) {
-            throw new \InvalidArgumentException('non-nullable label_format_option cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_format_option');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_format_option', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_format_option'] = $label_format_option;
 
@@ -470,7 +491,7 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets shipment_level_seller_inputs_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentLevelSellerInputsList(): ?array
     {
@@ -487,7 +508,14 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipmentLevelSellerInputsList(?array $shipment_level_seller_inputs_list): self
     {
         if (is_null($shipment_level_seller_inputs_list)) {
-            throw new \InvalidArgumentException('non-nullable shipment_level_seller_inputs_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_level_seller_inputs_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_level_seller_inputs_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_level_seller_inputs_list'] = $shipment_level_seller_inputs_list;
 

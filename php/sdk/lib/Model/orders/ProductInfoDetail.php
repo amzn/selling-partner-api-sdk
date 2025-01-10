@@ -78,7 +78,7 @@ class ProductInfoDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'number_of_items' => false
+        'number_of_items' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class ProductInfoDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNumberOfItems(?string $number_of_items): self
     {
         if (is_null($number_of_items)) {
-            throw new \InvalidArgumentException('non-nullable number_of_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'number_of_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('number_of_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['number_of_items'] = $number_of_items;
 

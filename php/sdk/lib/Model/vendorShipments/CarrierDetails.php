@@ -86,11 +86,11 @@ class CarrierDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'code' => false,
-        'phone' => false,
-        'email' => false,
-        'shipment_reference_number' => false
+        'name' => true,
+        'code' => true,
+        'phone' => true,
+        'email' => true,
+        'shipment_reference_number' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class CarrierDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -366,7 +373,14 @@ class CarrierDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCode(?string $code): self
     {
         if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['code'] = $code;
 
@@ -393,7 +407,14 @@ class CarrierDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPhone(?string $phone): self
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 
@@ -420,7 +441,14 @@ class CarrierDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEmail(?string $email): self
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['email'] = $email;
 
@@ -447,7 +475,14 @@ class CarrierDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipmentReferenceNumber(?string $shipment_reference_number): self
     {
         if (is_null($shipment_reference_number)) {
-            throw new \InvalidArgumentException('non-nullable shipment_reference_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_reference_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_reference_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_reference_number'] = $shipment_reference_number;
 

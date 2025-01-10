@@ -78,7 +78,7 @@ class OrderChangeTypeFilter implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order_change_types' => false
+        'order_change_types' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class OrderChangeTypeFilter implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets order_change_types
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrderChangeTypes(): ?array
     {
@@ -311,7 +311,14 @@ class OrderChangeTypeFilter implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setOrderChangeTypes(?array $order_change_types): self
     {
         if (is_null($order_change_types)) {
-            throw new \InvalidArgumentException('non-nullable order_change_types cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_change_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_change_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_change_types'] = $order_change_types;
 

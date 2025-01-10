@@ -80,8 +80,8 @@ class LabelFormatOption implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'include_packing_slip_with_label' => false,
-        'label_format' => false
+        'include_packing_slip_with_label' => true,
+        'label_format' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class LabelFormatOption implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setIncludePackingSlipWithLabel(?bool $include_packing_slip_with_label): self
     {
         if (is_null($include_packing_slip_with_label)) {
-            throw new \InvalidArgumentException('non-nullable include_packing_slip_with_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_packing_slip_with_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_packing_slip_with_label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['include_packing_slip_with_label'] = $include_packing_slip_with_label;
 
@@ -345,7 +352,14 @@ class LabelFormatOption implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setLabelFormat(?string $label_format): self
     {
         if (is_null($label_format)) {
-            throw new \InvalidArgumentException('non-nullable label_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_format', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_format'] = $label_format;
 

@@ -84,10 +84,10 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'street_name' => false,
-        'street_number' => false,
-        'complement' => false,
-        'neighborhood' => false
+        'street_name' => true,
+        'street_number' => true,
+        'complement' => true,
+        'neighborhood' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setStreetName(?string $street_name): self
     {
         if (is_null($street_name)) {
-            throw new \InvalidArgumentException('non-nullable street_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'street_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('street_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['street_name'] = $street_name;
 
@@ -359,7 +366,14 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setStreetNumber(?string $street_number): self
     {
         if (is_null($street_number)) {
-            throw new \InvalidArgumentException('non-nullable street_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'street_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('street_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['street_number'] = $street_number;
 
@@ -386,7 +400,14 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setComplement(?string $complement): self
     {
         if (is_null($complement)) {
-            throw new \InvalidArgumentException('non-nullable complement cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'complement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('complement', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['complement'] = $complement;
 
@@ -413,7 +434,14 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setNeighborhood(?string $neighborhood): self
     {
         if (is_null($neighborhood)) {
-            throw new \InvalidArgumentException('non-nullable neighborhood cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'neighborhood');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('neighborhood', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['neighborhood'] = $neighborhood;
 

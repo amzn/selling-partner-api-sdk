@@ -82,9 +82,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'purchase_order_number' => false,
-        'lot_number' => false,
-        'expiry' => false
+        'purchase_order_number' => true,
+        'lot_number' => true,
+        'expiry' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         if (is_null($purchase_order_number)) {
-            throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'purchase_order_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase_order_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -352,7 +359,14 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setLotNumber(?string $lot_number): self
     {
         if (is_null($lot_number)) {
-            throw new \InvalidArgumentException('non-nullable lot_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lot_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lot_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['lot_number'] = $lot_number;
 
@@ -379,7 +393,14 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setExpiry(?\OpenAPI\Client\Model\vendorShipments\Expiry $expiry): self
     {
         if (is_null($expiry)) {
-            throw new \InvalidArgumentException('non-nullable expiry cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiry');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiry', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiry'] = $expiry;
 

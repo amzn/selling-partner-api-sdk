@@ -79,7 +79,7 @@ class GetCarrierAccountFormInputsResponse implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'linkable_carriers_list' => false
+        'linkable_carriers_list' => true
     ];
 
     /**
@@ -295,7 +295,7 @@ class GetCarrierAccountFormInputsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets linkable_carriers_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLinkableCarriersList(): ?array
     {
@@ -312,7 +312,14 @@ class GetCarrierAccountFormInputsResponse implements ModelInterface, ArrayAccess
     public function setLinkableCarriersList(?array $linkable_carriers_list): self
     {
         if (is_null($linkable_carriers_list)) {
-            throw new \InvalidArgumentException('non-nullable linkable_carriers_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'linkable_carriers_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('linkable_carriers_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['linkable_carriers_list'] = $linkable_carriers_list;
 

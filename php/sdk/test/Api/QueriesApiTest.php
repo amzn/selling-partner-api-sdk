@@ -55,6 +55,8 @@ class QueriesApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('QueriesApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class QueriesApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelQuery204', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelQuery204', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -211,7 +212,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelQuery400', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelQuery400', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -301,7 +302,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelQuery404', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelQuery404', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -422,7 +423,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateQuery202', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateQuery202', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -502,7 +503,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateQuery400', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateQuery400', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -642,7 +643,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDocument200', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDocument200', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -721,7 +722,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDocument400', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDocument400', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -811,7 +812,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDocument404', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDocument404', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -932,7 +933,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetQueries200', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetQueries200', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1047,7 +1048,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetQueries400', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetQueries400', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1185,7 +1186,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetQuery200', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetQuery200', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1269,7 +1270,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetQuery400', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetQuery400', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1359,7 +1360,7 @@ class QueriesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetQuery404', 'QueriesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetQuery404', 'QueriesApi')) {
                 $this->assertTrue(true);
                 return;
             }

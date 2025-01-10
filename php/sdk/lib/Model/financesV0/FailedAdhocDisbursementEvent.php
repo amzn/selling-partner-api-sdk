@@ -90,13 +90,13 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'funds_transfers_type' => false,
-        'transfer_id' => false,
-        'disbursement_id' => false,
-        'payment_disbursement_type' => false,
-        'status' => false,
-        'transfer_amount' => false,
-        'posted_date' => false
+        'funds_transfers_type' => true,
+        'transfer_id' => true,
+        'disbursement_id' => true,
+        'payment_disbursement_type' => true,
+        'status' => true,
+        'transfer_amount' => true,
+        'posted_date' => true
     ];
 
     /**
@@ -353,7 +353,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setFundsTransfersType(?string $funds_transfers_type): self
     {
         if (is_null($funds_transfers_type)) {
-            throw new \InvalidArgumentException('non-nullable funds_transfers_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'funds_transfers_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('funds_transfers_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['funds_transfers_type'] = $funds_transfers_type;
 
@@ -380,7 +387,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setTransferId(?string $transfer_id): self
     {
         if (is_null($transfer_id)) {
-            throw new \InvalidArgumentException('non-nullable transfer_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transfer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transfer_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transfer_id'] = $transfer_id;
 
@@ -407,7 +421,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setDisbursementId(?string $disbursement_id): self
     {
         if (is_null($disbursement_id)) {
-            throw new \InvalidArgumentException('non-nullable disbursement_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'disbursement_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('disbursement_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['disbursement_id'] = $disbursement_id;
 
@@ -434,7 +455,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setPaymentDisbursementType(?string $payment_disbursement_type): self
     {
         if (is_null($payment_disbursement_type)) {
-            throw new \InvalidArgumentException('non-nullable payment_disbursement_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_disbursement_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_disbursement_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_disbursement_type'] = $payment_disbursement_type;
 
@@ -461,7 +489,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -488,7 +523,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setTransferAmount(?\OpenAPI\Client\Model\financesV0\Currency $transfer_amount): self
     {
         if (is_null($transfer_amount)) {
-            throw new \InvalidArgumentException('non-nullable transfer_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transfer_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transfer_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transfer_amount'] = $transfer_amount;
 
@@ -515,7 +557,14 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 

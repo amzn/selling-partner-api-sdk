@@ -81,7 +81,7 @@ class GetQueriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'queries' => false,
-        'pagination' => false
+        'pagination' => true
     ];
 
     /**
@@ -304,7 +304,7 @@ class GetQueriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets queries
      *
-     * @return arrayA
+     * @return array
      */
     public function getQueries(): array
     {
@@ -348,7 +348,14 @@ class GetQueriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPagination(?\OpenAPI\Client\Model\datakiosk\GetQueriesResponsePagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 

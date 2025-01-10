@@ -82,9 +82,9 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'payload' => false,
-        'pagination' => false,
-        'errors' => false
+        'payload' => true,
+        'pagination' => true,
+        'errors' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     public function setPayload(?\OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResult $payload): self
     {
         if (is_null($payload)) {
-            throw new \InvalidArgumentException('non-nullable payload cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payload');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payload', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payload'] = $payload;
 
@@ -352,7 +359,14 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     public function setPagination(?\OpenAPI\Client\Model\fbaInventory\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -362,7 +376,7 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -379,7 +393,14 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

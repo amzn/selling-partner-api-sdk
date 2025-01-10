@@ -83,8 +83,8 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'item' => false,
-        'package' => false
+        'item' => true,
+        'package' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     public function setItem(?\OpenAPI\Client\Model\catalogItems\Dimensions $item): self
     {
         if (is_null($item)) {
-            throw new \InvalidArgumentException('non-nullable item cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item'] = $item;
 
@@ -382,7 +389,14 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     public function setPackage(?\OpenAPI\Client\Model\catalogItems\Dimensions $package): self
     {
         if (is_null($package)) {
-            throw new \InvalidArgumentException('non-nullable package cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package'] = $package;
 

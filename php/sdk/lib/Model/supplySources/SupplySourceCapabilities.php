@@ -80,8 +80,8 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'outbound' => false,
-        'services' => false
+        'outbound' => true,
+        'services' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
     public function setOutbound(?\OpenAPI\Client\Model\supplySources\OutboundCapability $outbound): self
     {
         if (is_null($outbound)) {
-            throw new \InvalidArgumentException('non-nullable outbound cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'outbound');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('outbound', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['outbound'] = $outbound;
 
@@ -345,7 +352,14 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
     public function setServices(?\OpenAPI\Client\Model\supplySources\ServicesCapability $services): self
     {
         if (is_null($services)) {
-            throw new \InvalidArgumentException('non-nullable services cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'services');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('services', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['services'] = $services;
 

@@ -88,7 +88,7 @@ class BoxInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'content_information_source' => false,
         'dimensions' => false,
-        'items' => false,
+        'items' => true,
         'quantity' => false,
         'weight' => false
     ];
@@ -396,7 +396,7 @@ class BoxInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -413,7 +413,14 @@ class BoxInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 

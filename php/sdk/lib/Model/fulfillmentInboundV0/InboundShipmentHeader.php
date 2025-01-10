@@ -93,10 +93,10 @@ class InboundShipmentHeader implements ModelInterface, ArrayAccess, \JsonSeriali
         'shipment_name' => false,
         'ship_from_address' => false,
         'destination_fulfillment_center_id' => false,
-        'are_cases_required' => false,
+        'are_cases_required' => true,
         'shipment_status' => false,
         'label_prep_preference' => false,
-        'intended_box_contents_source' => false
+        'intended_box_contents_source' => true
     ];
 
     /**
@@ -449,7 +449,14 @@ class InboundShipmentHeader implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAreCasesRequired(?bool $are_cases_required): self
     {
         if (is_null($are_cases_required)) {
-            throw new \InvalidArgumentException('non-nullable are_cases_required cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'are_cases_required');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('are_cases_required', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['are_cases_required'] = $are_cases_required;
 
@@ -530,7 +537,14 @@ class InboundShipmentHeader implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setIntendedBoxContentsSource(?string $intended_box_contents_source): self
     {
         if (is_null($intended_box_contents_source)) {
-            throw new \InvalidArgumentException('non-nullable intended_box_contents_source cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'intended_box_contents_source');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('intended_box_contents_source', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['intended_box_contents_source'] = $intended_box_contents_source;
 

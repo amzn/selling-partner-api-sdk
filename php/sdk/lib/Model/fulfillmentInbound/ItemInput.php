@@ -88,9 +88,9 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'expiration' => false,
+        'expiration' => true,
         'label_owner' => false,
-        'manufacturing_lot_code' => false,
+        'manufacturing_lot_code' => true,
         'msku' => false,
         'prep_owner' => false,
         'quantity' => false
@@ -386,10 +386,17 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiration(?string $expiration): self
     {
         if (is_null($expiration)) {
-            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", ObjectSerializer::toString($expiration)))) {
+        if (!is_null($expiration) && (!preg_match("/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", ObjectSerializer::toString($expiration)))) {
             throw new \InvalidArgumentException("invalid value for \$expiration when calling ItemInput., must conform to the pattern /^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.");
         }
 
@@ -445,12 +452,19 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setManufacturingLotCode(?string $manufacturing_lot_code): self
     {
         if (is_null($manufacturing_lot_code)) {
-            throw new \InvalidArgumentException('non-nullable manufacturing_lot_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'manufacturing_lot_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('manufacturing_lot_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($manufacturing_lot_code) > 256)) {
+        if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) > 256)) {
             throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling ItemInput., must be smaller than or equal to 256.');
         }
-        if ((mb_strlen($manufacturing_lot_code) < 1)) {
+        if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) < 1)) {
             throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling ItemInput., must be bigger than or equal to 1.');
         }
 

@@ -86,9 +86,9 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_information' => false,
-        'freight_information' => false,
-        'pallets' => false,
+        'contact_information' => true,
+        'freight_information' => true,
+        'pallets' => true,
         'ready_to_ship_window' => false,
         'shipment_id' => false
     ];
@@ -357,7 +357,14 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     public function setContactInformation(?\OpenAPI\Client\Model\fulfillmentInbound\ContactInformation $contact_information): self
     {
         if (is_null($contact_information)) {
-            throw new \InvalidArgumentException('non-nullable contact_information cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contact_information');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_information', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contact_information'] = $contact_information;
 
@@ -384,7 +391,14 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     public function setFreightInformation(?\OpenAPI\Client\Model\fulfillmentInbound\FreightInformation $freight_information): self
     {
         if (is_null($freight_information)) {
-            throw new \InvalidArgumentException('non-nullable freight_information cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'freight_information');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('freight_information', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['freight_information'] = $freight_information;
 
@@ -394,7 +408,7 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Gets pallets
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPallets(): ?array
     {
@@ -411,7 +425,14 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     public function setPallets(?array $pallets): self
     {
         if (is_null($pallets)) {
-            throw new \InvalidArgumentException('non-nullable pallets cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pallets');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pallets', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pallets'] = $pallets;
 

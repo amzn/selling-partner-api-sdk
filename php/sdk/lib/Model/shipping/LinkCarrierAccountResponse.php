@@ -79,7 +79,7 @@ class LinkCarrierAccountResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'registration_status' => false
+        'registration_status' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class LinkCarrierAccountResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setRegistrationStatus(?string $registration_status): self
     {
         if (is_null($registration_status)) {
-            throw new \InvalidArgumentException('non-nullable registration_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'registration_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('registration_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['registration_status'] = $registration_status;
 

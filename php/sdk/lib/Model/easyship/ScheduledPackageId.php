@@ -81,7 +81,7 @@ class ScheduledPackageId implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
-        'package_id' => false
+        'package_id' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class ScheduledPackageId implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPackageId(?string $package_id): self
     {
         if (is_null($package_id)) {
-            throw new \InvalidArgumentException('non-nullable package_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_id'] = $package_id;
 

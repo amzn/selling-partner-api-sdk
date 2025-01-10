@@ -80,7 +80,7 @@ class Constraint implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'validation_reg_ex' => false,
+        'validation_reg_ex' => true,
         'validation_string' => false
     ];
 
@@ -321,7 +321,14 @@ class Constraint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValidationRegEx(?string $validation_reg_ex): self
     {
         if (is_null($validation_reg_ex)) {
-            throw new \InvalidArgumentException('non-nullable validation_reg_ex cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'validation_reg_ex');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('validation_reg_ex', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['validation_reg_ex'] = $validation_reg_ex;
 

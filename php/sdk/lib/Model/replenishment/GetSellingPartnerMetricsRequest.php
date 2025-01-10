@@ -88,9 +88,9 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'aggregation_frequency' => false,
+        'aggregation_frequency' => true,
         'time_interval' => false,
-        'metrics' => false,
+        'metrics' => true,
         'time_period_type' => false,
         'marketplace_id' => false,
         'program_types' => false
@@ -366,7 +366,14 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, ArrayAccess, \J
     public function setAggregationFrequency(?string $aggregation_frequency): self
     {
         if (is_null($aggregation_frequency)) {
-            throw new \InvalidArgumentException('non-nullable aggregation_frequency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'aggregation_frequency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('aggregation_frequency', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['aggregation_frequency'] = $aggregation_frequency;
 
@@ -403,7 +410,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets metrics
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMetrics(): ?array
     {
@@ -420,11 +427,18 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, ArrayAccess, \J
     public function setMetrics(?array $metrics): self
     {
         if (is_null($metrics)) {
-            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($metrics) < 1)) {
+        if (!is_null($metrics) && (count($metrics) < 1)) {
             throw new \InvalidArgumentException('invalid length for $metrics when calling GetSellingPartnerMetricsRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['metrics'] = $metrics;
@@ -489,7 +503,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets program_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getProgramTypes(): array
     {

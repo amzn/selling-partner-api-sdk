@@ -297,7 +297,7 @@ class CreateMarketplaceItemLabelsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets document_downloads
      *
-     * @return arrayA
+     * @return array
      */
     public function getDocumentDownloads(): array
     {

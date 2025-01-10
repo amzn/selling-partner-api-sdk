@@ -84,7 +84,7 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
         'address' => false,
-        'non_latin_name' => false
+        'non_latin_name' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNonLatinName(?string $non_latin_name): self
     {
         if (is_null($non_latin_name)) {
-            throw new \InvalidArgumentException('non-nullable non_latin_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'non_latin_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('non_latin_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['non_latin_name'] = $non_latin_name;
 

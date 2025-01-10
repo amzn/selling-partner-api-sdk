@@ -142,39 +142,39 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_event_list' => false,
-        'shipment_settle_event_list' => false,
-        'refund_event_list' => false,
-        'guarantee_claim_event_list' => false,
-        'chargeback_event_list' => false,
-        'pay_with_amazon_event_list' => false,
-        'service_provider_credit_event_list' => false,
-        'retrocharge_event_list' => false,
-        'rental_transaction_event_list' => false,
-        'product_ads_payment_event_list' => false,
-        'service_fee_event_list' => false,
-        'seller_deal_payment_event_list' => false,
-        'debt_recovery_event_list' => false,
-        'loan_servicing_event_list' => false,
-        'adjustment_event_list' => false,
-        'safet_reimbursement_event_list' => false,
-        'seller_review_enrollment_payment_event_list' => false,
-        'fba_liquidation_event_list' => false,
-        'coupon_payment_event_list' => false,
-        'imaging_services_fee_event_list' => false,
-        'network_commingling_transaction_event_list' => false,
-        'affordability_expense_event_list' => false,
-        'affordability_expense_reversal_event_list' => false,
-        'removal_shipment_event_list' => false,
-        'removal_shipment_adjustment_event_list' => false,
-        'trial_shipment_event_list' => false,
-        'tds_reimbursement_event_list' => false,
-        'adhoc_disbursement_event_list' => false,
-        'tax_withholding_event_list' => false,
-        'charge_refund_event_list' => false,
-        'failed_adhoc_disbursement_event_list' => false,
-        'value_added_service_charge_event_list' => false,
-        'capacity_reservation_billing_event_list' => false
+        'shipment_event_list' => true,
+        'shipment_settle_event_list' => true,
+        'refund_event_list' => true,
+        'guarantee_claim_event_list' => true,
+        'chargeback_event_list' => true,
+        'pay_with_amazon_event_list' => true,
+        'service_provider_credit_event_list' => true,
+        'retrocharge_event_list' => true,
+        'rental_transaction_event_list' => true,
+        'product_ads_payment_event_list' => true,
+        'service_fee_event_list' => true,
+        'seller_deal_payment_event_list' => true,
+        'debt_recovery_event_list' => true,
+        'loan_servicing_event_list' => true,
+        'adjustment_event_list' => true,
+        'safet_reimbursement_event_list' => true,
+        'seller_review_enrollment_payment_event_list' => true,
+        'fba_liquidation_event_list' => true,
+        'coupon_payment_event_list' => true,
+        'imaging_services_fee_event_list' => true,
+        'network_commingling_transaction_event_list' => true,
+        'affordability_expense_event_list' => true,
+        'affordability_expense_reversal_event_list' => true,
+        'removal_shipment_event_list' => true,
+        'removal_shipment_adjustment_event_list' => true,
+        'trial_shipment_event_list' => true,
+        'tds_reimbursement_event_list' => true,
+        'adhoc_disbursement_event_list' => true,
+        'tax_withholding_event_list' => true,
+        'charge_refund_event_list' => true,
+        'failed_adhoc_disbursement_event_list' => true,
+        'value_added_service_charge_event_list' => true,
+        'capacity_reservation_billing_event_list' => true
     ];
 
     /**
@@ -518,7 +518,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentEventList(): ?array
     {
@@ -535,7 +535,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipmentEventList(?array $shipment_event_list): self
     {
         if (is_null($shipment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable shipment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_event_list'] = $shipment_event_list;
 
@@ -545,7 +552,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipment_settle_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentSettleEventList(): ?array
     {
@@ -562,7 +569,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipmentSettleEventList(?array $shipment_settle_event_list): self
     {
         if (is_null($shipment_settle_event_list)) {
-            throw new \InvalidArgumentException('non-nullable shipment_settle_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_settle_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_settle_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_settle_event_list'] = $shipment_settle_event_list;
 
@@ -572,7 +586,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets refund_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRefundEventList(): ?array
     {
@@ -589,7 +603,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRefundEventList(?array $refund_event_list): self
     {
         if (is_null($refund_event_list)) {
-            throw new \InvalidArgumentException('non-nullable refund_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'refund_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('refund_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['refund_event_list'] = $refund_event_list;
 
@@ -599,7 +620,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets guarantee_claim_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getGuaranteeClaimEventList(): ?array
     {
@@ -616,7 +637,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGuaranteeClaimEventList(?array $guarantee_claim_event_list): self
     {
         if (is_null($guarantee_claim_event_list)) {
-            throw new \InvalidArgumentException('non-nullable guarantee_claim_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'guarantee_claim_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('guarantee_claim_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['guarantee_claim_event_list'] = $guarantee_claim_event_list;
 
@@ -626,7 +654,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets chargeback_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChargebackEventList(): ?array
     {
@@ -643,7 +671,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChargebackEventList(?array $chargeback_event_list): self
     {
         if (is_null($chargeback_event_list)) {
-            throw new \InvalidArgumentException('non-nullable chargeback_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'chargeback_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('chargeback_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['chargeback_event_list'] = $chargeback_event_list;
 
@@ -653,7 +688,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pay_with_amazon_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPayWithAmazonEventList(): ?array
     {
@@ -670,7 +705,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPayWithAmazonEventList(?array $pay_with_amazon_event_list): self
     {
         if (is_null($pay_with_amazon_event_list)) {
-            throw new \InvalidArgumentException('non-nullable pay_with_amazon_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pay_with_amazon_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pay_with_amazon_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pay_with_amazon_event_list'] = $pay_with_amazon_event_list;
 
@@ -680,7 +722,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_provider_credit_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getServiceProviderCreditEventList(): ?array
     {
@@ -697,7 +739,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceProviderCreditEventList(?array $service_provider_credit_event_list): self
     {
         if (is_null($service_provider_credit_event_list)) {
-            throw new \InvalidArgumentException('non-nullable service_provider_credit_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_provider_credit_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_provider_credit_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['service_provider_credit_event_list'] = $service_provider_credit_event_list;
 
@@ -707,7 +756,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets retrocharge_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRetrochargeEventList(): ?array
     {
@@ -724,7 +773,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRetrochargeEventList(?array $retrocharge_event_list): self
     {
         if (is_null($retrocharge_event_list)) {
-            throw new \InvalidArgumentException('non-nullable retrocharge_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'retrocharge_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retrocharge_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['retrocharge_event_list'] = $retrocharge_event_list;
 
@@ -734,7 +790,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rental_transaction_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRentalTransactionEventList(): ?array
     {
@@ -751,7 +807,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRentalTransactionEventList(?array $rental_transaction_event_list): self
     {
         if (is_null($rental_transaction_event_list)) {
-            throw new \InvalidArgumentException('non-nullable rental_transaction_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_transaction_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_transaction_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_transaction_event_list'] = $rental_transaction_event_list;
 
@@ -761,7 +824,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_ads_payment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getProductAdsPaymentEventList(): ?array
     {
@@ -778,7 +841,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductAdsPaymentEventList(?array $product_ads_payment_event_list): self
     {
         if (is_null($product_ads_payment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable product_ads_payment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_ads_payment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_ads_payment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_ads_payment_event_list'] = $product_ads_payment_event_list;
 
@@ -788,7 +858,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_fee_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getServiceFeeEventList(): ?array
     {
@@ -805,7 +875,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceFeeEventList(?array $service_fee_event_list): self
     {
         if (is_null($service_fee_event_list)) {
-            throw new \InvalidArgumentException('non-nullable service_fee_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_fee_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_fee_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['service_fee_event_list'] = $service_fee_event_list;
 
@@ -815,7 +892,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets seller_deal_payment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSellerDealPaymentEventList(): ?array
     {
@@ -832,7 +909,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerDealPaymentEventList(?array $seller_deal_payment_event_list): self
     {
         if (is_null($seller_deal_payment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable seller_deal_payment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_deal_payment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_deal_payment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_deal_payment_event_list'] = $seller_deal_payment_event_list;
 
@@ -842,7 +926,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets debt_recovery_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDebtRecoveryEventList(): ?array
     {
@@ -859,7 +943,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDebtRecoveryEventList(?array $debt_recovery_event_list): self
     {
         if (is_null($debt_recovery_event_list)) {
-            throw new \InvalidArgumentException('non-nullable debt_recovery_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'debt_recovery_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('debt_recovery_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['debt_recovery_event_list'] = $debt_recovery_event_list;
 
@@ -869,7 +960,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets loan_servicing_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLoanServicingEventList(): ?array
     {
@@ -886,7 +977,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLoanServicingEventList(?array $loan_servicing_event_list): self
     {
         if (is_null($loan_servicing_event_list)) {
-            throw new \InvalidArgumentException('non-nullable loan_servicing_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'loan_servicing_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('loan_servicing_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['loan_servicing_event_list'] = $loan_servicing_event_list;
 
@@ -896,7 +994,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets adjustment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAdjustmentEventList(): ?array
     {
@@ -913,7 +1011,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdjustmentEventList(?array $adjustment_event_list): self
     {
         if (is_null($adjustment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable adjustment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adjustment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjustment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adjustment_event_list'] = $adjustment_event_list;
 
@@ -923,7 +1028,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets safet_reimbursement_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSafetReimbursementEventList(): ?array
     {
@@ -940,7 +1045,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSafetReimbursementEventList(?array $safet_reimbursement_event_list): self
     {
         if (is_null($safet_reimbursement_event_list)) {
-            throw new \InvalidArgumentException('non-nullable safet_reimbursement_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'safet_reimbursement_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('safet_reimbursement_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['safet_reimbursement_event_list'] = $safet_reimbursement_event_list;
 
@@ -950,7 +1062,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets seller_review_enrollment_payment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSellerReviewEnrollmentPaymentEventList(): ?array
     {
@@ -967,7 +1079,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerReviewEnrollmentPaymentEventList(?array $seller_review_enrollment_payment_event_list): self
     {
         if (is_null($seller_review_enrollment_payment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable seller_review_enrollment_payment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_review_enrollment_payment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_review_enrollment_payment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_review_enrollment_payment_event_list'] = $seller_review_enrollment_payment_event_list;
 
@@ -977,7 +1096,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fba_liquidation_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFbaLiquidationEventList(): ?array
     {
@@ -994,7 +1113,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFbaLiquidationEventList(?array $fba_liquidation_event_list): self
     {
         if (is_null($fba_liquidation_event_list)) {
-            throw new \InvalidArgumentException('non-nullable fba_liquidation_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fba_liquidation_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fba_liquidation_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fba_liquidation_event_list'] = $fba_liquidation_event_list;
 
@@ -1004,7 +1130,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets coupon_payment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCouponPaymentEventList(): ?array
     {
@@ -1021,7 +1147,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCouponPaymentEventList(?array $coupon_payment_event_list): self
     {
         if (is_null($coupon_payment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable coupon_payment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'coupon_payment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('coupon_payment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['coupon_payment_event_list'] = $coupon_payment_event_list;
 
@@ -1031,7 +1164,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imaging_services_fee_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getImagingServicesFeeEventList(): ?array
     {
@@ -1048,7 +1181,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImagingServicesFeeEventList(?array $imaging_services_fee_event_list): self
     {
         if (is_null($imaging_services_fee_event_list)) {
-            throw new \InvalidArgumentException('non-nullable imaging_services_fee_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'imaging_services_fee_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('imaging_services_fee_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['imaging_services_fee_event_list'] = $imaging_services_fee_event_list;
 
@@ -1058,7 +1198,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets network_commingling_transaction_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getNetworkComminglingTransactionEventList(): ?array
     {
@@ -1075,7 +1215,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNetworkComminglingTransactionEventList(?array $network_commingling_transaction_event_list): self
     {
         if (is_null($network_commingling_transaction_event_list)) {
-            throw new \InvalidArgumentException('non-nullable network_commingling_transaction_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'network_commingling_transaction_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('network_commingling_transaction_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['network_commingling_transaction_event_list'] = $network_commingling_transaction_event_list;
 
@@ -1085,7 +1232,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets affordability_expense_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAffordabilityExpenseEventList(): ?array
     {
@@ -1102,7 +1249,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAffordabilityExpenseEventList(?array $affordability_expense_event_list): self
     {
         if (is_null($affordability_expense_event_list)) {
-            throw new \InvalidArgumentException('non-nullable affordability_expense_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'affordability_expense_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('affordability_expense_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['affordability_expense_event_list'] = $affordability_expense_event_list;
 
@@ -1112,7 +1266,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets affordability_expense_reversal_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAffordabilityExpenseReversalEventList(): ?array
     {
@@ -1129,7 +1283,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAffordabilityExpenseReversalEventList(?array $affordability_expense_reversal_event_list): self
     {
         if (is_null($affordability_expense_reversal_event_list)) {
-            throw new \InvalidArgumentException('non-nullable affordability_expense_reversal_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'affordability_expense_reversal_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('affordability_expense_reversal_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['affordability_expense_reversal_event_list'] = $affordability_expense_reversal_event_list;
 
@@ -1139,7 +1300,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets removal_shipment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRemovalShipmentEventList(): ?array
     {
@@ -1156,7 +1317,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRemovalShipmentEventList(?array $removal_shipment_event_list): self
     {
         if (is_null($removal_shipment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable removal_shipment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'removal_shipment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('removal_shipment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['removal_shipment_event_list'] = $removal_shipment_event_list;
 
@@ -1166,7 +1334,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets removal_shipment_adjustment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRemovalShipmentAdjustmentEventList(): ?array
     {
@@ -1183,7 +1351,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRemovalShipmentAdjustmentEventList(?array $removal_shipment_adjustment_event_list): self
     {
         if (is_null($removal_shipment_adjustment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable removal_shipment_adjustment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'removal_shipment_adjustment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('removal_shipment_adjustment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['removal_shipment_adjustment_event_list'] = $removal_shipment_adjustment_event_list;
 
@@ -1193,7 +1368,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets trial_shipment_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTrialShipmentEventList(): ?array
     {
@@ -1210,7 +1385,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrialShipmentEventList(?array $trial_shipment_event_list): self
     {
         if (is_null($trial_shipment_event_list)) {
-            throw new \InvalidArgumentException('non-nullable trial_shipment_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trial_shipment_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trial_shipment_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trial_shipment_event_list'] = $trial_shipment_event_list;
 
@@ -1220,7 +1402,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tds_reimbursement_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTdsReimbursementEventList(): ?array
     {
@@ -1237,7 +1419,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTdsReimbursementEventList(?array $tds_reimbursement_event_list): self
     {
         if (is_null($tds_reimbursement_event_list)) {
-            throw new \InvalidArgumentException('non-nullable tds_reimbursement_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tds_reimbursement_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tds_reimbursement_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tds_reimbursement_event_list'] = $tds_reimbursement_event_list;
 
@@ -1247,7 +1436,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets adhoc_disbursement_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAdhocDisbursementEventList(): ?array
     {
@@ -1264,7 +1453,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdhocDisbursementEventList(?array $adhoc_disbursement_event_list): self
     {
         if (is_null($adhoc_disbursement_event_list)) {
-            throw new \InvalidArgumentException('non-nullable adhoc_disbursement_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adhoc_disbursement_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adhoc_disbursement_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adhoc_disbursement_event_list'] = $adhoc_disbursement_event_list;
 
@@ -1274,7 +1470,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_withholding_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxWithholdingEventList(): ?array
     {
@@ -1291,7 +1487,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxWithholdingEventList(?array $tax_withholding_event_list): self
     {
         if (is_null($tax_withholding_event_list)) {
-            throw new \InvalidArgumentException('non-nullable tax_withholding_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_withholding_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_withholding_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_withholding_event_list'] = $tax_withholding_event_list;
 
@@ -1301,7 +1504,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets charge_refund_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChargeRefundEventList(): ?array
     {
@@ -1318,7 +1521,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChargeRefundEventList(?array $charge_refund_event_list): self
     {
         if (is_null($charge_refund_event_list)) {
-            throw new \InvalidArgumentException('non-nullable charge_refund_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_refund_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_refund_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_refund_event_list'] = $charge_refund_event_list;
 
@@ -1328,7 +1538,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets failed_adhoc_disbursement_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFailedAdhocDisbursementEventList(): ?array
     {
@@ -1345,7 +1555,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFailedAdhocDisbursementEventList(?array $failed_adhoc_disbursement_event_list): self
     {
         if (is_null($failed_adhoc_disbursement_event_list)) {
-            throw new \InvalidArgumentException('non-nullable failed_adhoc_disbursement_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'failed_adhoc_disbursement_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('failed_adhoc_disbursement_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['failed_adhoc_disbursement_event_list'] = $failed_adhoc_disbursement_event_list;
 
@@ -1355,7 +1572,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value_added_service_charge_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getValueAddedServiceChargeEventList(): ?array
     {
@@ -1372,7 +1589,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValueAddedServiceChargeEventList(?array $value_added_service_charge_event_list): self
     {
         if (is_null($value_added_service_charge_event_list)) {
-            throw new \InvalidArgumentException('non-nullable value_added_service_charge_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value_added_service_charge_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value_added_service_charge_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value_added_service_charge_event_list'] = $value_added_service_charge_event_list;
 
@@ -1382,7 +1606,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets capacity_reservation_billing_event_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCapacityReservationBillingEventList(): ?array
     {
@@ -1399,7 +1623,14 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCapacityReservationBillingEventList(?array $capacity_reservation_billing_event_list): self
     {
         if (is_null($capacity_reservation_billing_event_list)) {
-            throw new \InvalidArgumentException('non-nullable capacity_reservation_billing_event_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacity_reservation_billing_event_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacity_reservation_billing_event_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capacity_reservation_billing_event_list'] = $capacity_reservation_billing_event_list;
 

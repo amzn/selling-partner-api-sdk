@@ -87,7 +87,7 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
         'headers' => false,
         'status' => false,
         'request' => false,
-        'body' => false
+        'body' => true
     ];
 
     /**
@@ -422,7 +422,14 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     public function setBody(?\OpenAPI\Client\Model\pricing\FeaturedOfferExpectedPriceResponseBody $body): self
     {
         if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'body');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('body', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['body'] = $body;
 

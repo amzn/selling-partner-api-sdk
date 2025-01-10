@@ -80,8 +80,8 @@ class ShipmentInvoiceStatusInfo implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amazon_shipment_id' => false,
-        'invoice_status' => false
+        'amazon_shipment_id' => true,
+        'invoice_status' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ShipmentInvoiceStatusInfo implements ModelInterface, ArrayAccess, \JsonSer
     public function setAmazonShipmentId(?string $amazon_shipment_id): self
     {
         if (is_null($amazon_shipment_id)) {
-            throw new \InvalidArgumentException('non-nullable amazon_shipment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_shipment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_shipment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_shipment_id'] = $amazon_shipment_id;
 
@@ -345,7 +352,14 @@ class ShipmentInvoiceStatusInfo implements ModelInterface, ArrayAccess, \JsonSer
     public function setInvoiceStatus(?string $invoice_status): self
     {
         if (is_null($invoice_status)) {
-            throw new \InvalidArgumentException('non-nullable invoice_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_status'] = $invoice_status;
 

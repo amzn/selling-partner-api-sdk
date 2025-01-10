@@ -323,7 +323,7 @@ class GenerateShipmentContentUpdatePreviewsRequest implements ModelInterface, Ar
     /**
      * Gets boxes
      *
-     * @return arrayA
+     * @return array
      */
     public function getBoxes(): array
     {
@@ -357,7 +357,7 @@ class GenerateShipmentContentUpdatePreviewsRequest implements ModelInterface, Ar
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

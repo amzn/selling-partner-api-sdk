@@ -78,7 +78,7 @@ class CreateConfirmDeliveryDetailsRequest implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false
+        'text' => true
     ];
 
     /**
@@ -319,12 +319,19 @@ class CreateConfirmDeliveryDetailsRequest implements ModelInterface, ArrayAccess
     public function setText(?string $text): self
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($text) > 2000)) {
+        if (!is_null($text) && (mb_strlen($text) > 2000)) {
             throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmDeliveryDetailsRequest., must be smaller than or equal to 2000.');
         }
-        if ((mb_strlen($text) < 1)) {
+        if (!is_null($text) && (mb_strlen($text) < 1)) {
             throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmDeliveryDetailsRequest., must be bigger than or equal to 1.');
         }
 

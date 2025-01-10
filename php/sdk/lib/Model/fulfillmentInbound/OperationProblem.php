@@ -85,7 +85,7 @@ class OperationProblem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'code' => false,
-        'details' => false,
+        'details' => true,
         'message' => false,
         'severity' => false
     ];
@@ -407,12 +407,19 @@ class OperationProblem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDetails(?string $details): self
     {
         if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($details) > 8192)) {
+        if (!is_null($details) && (mb_strlen($details) > 8192)) {
             throw new \InvalidArgumentException('invalid length for $details when calling OperationProblem., must be smaller than or equal to 8192.');
         }
-        if ((mb_strlen($details) < 0)) {
+        if (!is_null($details) && (mb_strlen($details) < 0)) {
             throw new \InvalidArgumentException('invalid length for $details when calling OperationProblem., must be bigger than or equal to 0.');
         }
 

@@ -80,8 +80,8 @@ class TaxWithheldComponent implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tax_collection_model' => false,
-        'taxes_withheld' => false
+        'tax_collection_model' => true,
+        'taxes_withheld' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class TaxWithheldComponent implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTaxCollectionModel(?string $tax_collection_model): self
     {
         if (is_null($tax_collection_model)) {
-            throw new \InvalidArgumentException('non-nullable tax_collection_model cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_collection_model');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_collection_model', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_collection_model'] = $tax_collection_model;
 
@@ -328,7 +335,7 @@ class TaxWithheldComponent implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets taxes_withheld
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxesWithheld(): ?array
     {
@@ -345,7 +352,14 @@ class TaxWithheldComponent implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTaxesWithheld(?array $taxes_withheld): self
     {
         if (is_null($taxes_withheld)) {
-            throw new \InvalidArgumentException('non-nullable taxes_withheld cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'taxes_withheld');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxes_withheld', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['taxes_withheld'] = $taxes_withheld;
 

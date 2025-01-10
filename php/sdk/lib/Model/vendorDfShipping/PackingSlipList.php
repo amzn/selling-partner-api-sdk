@@ -80,8 +80,8 @@ class PackingSlipList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
-        'packing_slips' => false
+        'pagination' => true,
+        'packing_slips' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class PackingSlipList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPagination(?\OpenAPI\Client\Model\vendorDfShipping\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -328,7 +335,7 @@ class PackingSlipList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packing_slips
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackingSlips(): ?array
     {
@@ -345,7 +352,14 @@ class PackingSlipList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackingSlips(?array $packing_slips): self
     {
         if (is_null($packing_slips)) {
-            throw new \InvalidArgumentException('non-nullable packing_slips cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packing_slips');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packing_slips', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['packing_slips'] = $packing_slips;
 

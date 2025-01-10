@@ -333,7 +333,7 @@ class GetMessagingActionsForOrderResponseLinks implements ModelInterface, ArrayA
     /**
      * Gets actions
      *
-     * @return arrayA
+     * @return array
      */
     public function getActions(): array
     {

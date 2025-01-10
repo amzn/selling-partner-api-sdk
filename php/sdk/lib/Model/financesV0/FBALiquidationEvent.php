@@ -84,10 +84,10 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'original_removal_order_id' => false,
-        'liquidation_proceeds_amount' => false,
-        'liquidation_fee_amount' => false
+        'posted_date' => true,
+        'original_removal_order_id' => true,
+        'liquidation_proceeds_amount' => true,
+        'liquidation_fee_amount' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -359,7 +366,14 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setOriginalRemovalOrderId(?string $original_removal_order_id): self
     {
         if (is_null($original_removal_order_id)) {
-            throw new \InvalidArgumentException('non-nullable original_removal_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'original_removal_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('original_removal_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['original_removal_order_id'] = $original_removal_order_id;
 
@@ -386,7 +400,14 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setLiquidationProceedsAmount(?\OpenAPI\Client\Model\financesV0\Currency $liquidation_proceeds_amount): self
     {
         if (is_null($liquidation_proceeds_amount)) {
-            throw new \InvalidArgumentException('non-nullable liquidation_proceeds_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'liquidation_proceeds_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('liquidation_proceeds_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['liquidation_proceeds_amount'] = $liquidation_proceeds_amount;
 
@@ -413,7 +434,14 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setLiquidationFeeAmount(?\OpenAPI\Client\Model\financesV0\Currency $liquidation_fee_amount): self
     {
         if (is_null($liquidation_fee_amount)) {
-            throw new \InvalidArgumentException('non-nullable liquidation_fee_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'liquidation_fee_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('liquidation_fee_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['liquidation_fee_amount'] = $liquidation_fee_amount;
 

@@ -297,7 +297,7 @@ class AssignAppointmentResourcesRequest implements ModelInterface, ArrayAccess, 
     /**
      * Gets resources
      *
-     * @return arrayA
+     * @return array
      */
     public function getResources(): array
     {
