@@ -56,6 +56,8 @@ class ShippingApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('ShippingApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -86,8 +88,7 @@ class ShippingApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -570,7 +571,7 @@ class ShippingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAdditionalInputs200', 'ShippingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAdditionalInputs200', 'ShippingApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -668,7 +669,7 @@ class ShippingApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetAdditionalInputs400', 'ShippingApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetAdditionalInputs400', 'ShippingApi')) {
                 $this->assertTrue(true);
                 return;
             }

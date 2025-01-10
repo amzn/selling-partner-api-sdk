@@ -78,7 +78,7 @@ class AccessPointDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'access_point_id' => false
+        'access_point_id' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class AccessPointDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setAccessPointId(?string $access_point_id): self
     {
         if (is_null($access_point_id)) {
-            throw new \InvalidArgumentException('non-nullable access_point_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'access_point_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('access_point_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['access_point_id'] = $access_point_id;
 

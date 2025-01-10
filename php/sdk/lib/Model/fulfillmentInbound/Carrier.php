@@ -80,8 +80,8 @@ class Carrier implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'alpha_code' => false,
-        'name' => false
+        'alpha_code' => true,
+        'name' => true
     ];
 
     /**
@@ -334,12 +334,19 @@ class Carrier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAlphaCode(?string $alpha_code): self
     {
         if (is_null($alpha_code)) {
-            throw new \InvalidArgumentException('non-nullable alpha_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'alpha_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('alpha_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($alpha_code) > 1024)) {
+        if (!is_null($alpha_code) && (mb_strlen($alpha_code) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $alpha_code when calling Carrier., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($alpha_code) < 1)) {
+        if (!is_null($alpha_code) && (mb_strlen($alpha_code) < 1)) {
             throw new \InvalidArgumentException('invalid length for $alpha_code when calling Carrier., must be bigger than or equal to 1.');
         }
 
@@ -368,12 +375,19 @@ class Carrier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($name) > 1024)) {
+        if (!is_null($name) && (mb_strlen($name) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Carrier., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($name) < 1)) {
+        if (!is_null($name) && (mb_strlen($name) < 1)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Carrier., must be bigger than or equal to 1.');
         }
 

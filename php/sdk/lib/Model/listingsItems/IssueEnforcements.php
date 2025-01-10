@@ -307,7 +307,7 @@ class IssueEnforcements implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets actions
      *
-     * @return arrayA
+     * @return array
      */
     public function getActions(): array
     {

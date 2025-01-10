@@ -83,8 +83,8 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'time_of_fees_estimation' => false,
-        'total_fees_estimate' => false,
-        'fee_detail_list' => false
+        'total_fees_estimate' => true,
+        'fee_detail_list' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalFeesEstimate(?\OpenAPI\Client\Model\productFees\MoneyType $total_fees_estimate): self
     {
         if (is_null($total_fees_estimate)) {
-            throw new \InvalidArgumentException('non-nullable total_fees_estimate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_fees_estimate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_fees_estimate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_fees_estimate'] = $total_fees_estimate;
 
@@ -365,7 +372,7 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fee_detail_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeeDetailList(): ?array
     {
@@ -382,7 +389,14 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeeDetailList(?array $fee_detail_list): self
     {
         if (is_null($fee_detail_list)) {
-            throw new \InvalidArgumentException('non-nullable fee_detail_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_detail_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_detail_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_detail_list'] = $fee_detail_list;
 

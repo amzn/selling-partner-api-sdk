@@ -82,7 +82,7 @@ class ContactInformation implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'email' => false,
+        'email' => true,
         'name' => false,
         'phone_number' => false
     ];
@@ -355,12 +355,19 @@ class ContactInformation implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setEmail(?string $email): self
     {
         if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($email) > 1024)) {
+        if (!is_null($email) && (mb_strlen($email) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $email when calling ContactInformation., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($email) < 1)) {
+        if (!is_null($email) && (mb_strlen($email) < 1)) {
             throw new \InvalidArgumentException('invalid length for $email when calling ContactInformation., must be bigger than or equal to 1.');
         }
 

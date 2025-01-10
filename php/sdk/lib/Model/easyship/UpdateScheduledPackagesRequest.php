@@ -357,7 +357,7 @@ class UpdateScheduledPackagesRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets update_package_details_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getUpdatePackageDetailsList(): array
     {

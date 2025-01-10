@@ -297,7 +297,7 @@ class CreateFulfillmentReturnRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {

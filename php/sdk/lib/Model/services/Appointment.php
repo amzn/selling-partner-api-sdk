@@ -88,12 +88,12 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'appointment_id' => false,
-        'appointment_status' => false,
-        'appointment_time' => false,
-        'assigned_technicians' => false,
-        'rescheduled_appointment_id' => false,
-        'poa' => false
+        'appointment_id' => true,
+        'appointment_status' => true,
+        'appointment_time' => true,
+        'assigned_technicians' => true,
+        'rescheduled_appointment_id' => true,
+        'poa' => true
     ];
 
     /**
@@ -392,12 +392,19 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAppointmentId(?string $appointment_id): self
     {
         if (is_null($appointment_id)) {
-            throw new \InvalidArgumentException('non-nullable appointment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($appointment_id) > 100)) {
+        if (!is_null($appointment_id) && (mb_strlen($appointment_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $appointment_id when calling Appointment., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($appointment_id) < 5)) {
+        if (!is_null($appointment_id) && (mb_strlen($appointment_id) < 5)) {
             throw new \InvalidArgumentException('invalid length for $appointment_id when calling Appointment., must be bigger than or equal to 5.');
         }
 
@@ -426,10 +433,17 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAppointmentStatus(?string $appointment_status): self
     {
         if (is_null($appointment_status)) {
-            throw new \InvalidArgumentException('non-nullable appointment_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getAppointmentStatusAllowableValues();
-        if (!in_array($appointment_status, $allowedValues, true)) {
+        if (!is_null($appointment_status) && !in_array($appointment_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'appointment_status', must be one of '%s'",
@@ -463,7 +477,14 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAppointmentTime(?\OpenAPI\Client\Model\services\AppointmentTime $appointment_time): self
     {
         if (is_null($appointment_time)) {
-            throw new \InvalidArgumentException('non-nullable appointment_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointment_time'] = $appointment_time;
 
@@ -473,7 +494,7 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets assigned_technicians
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAssignedTechnicians(): ?array
     {
@@ -490,11 +511,18 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAssignedTechnicians(?array $assigned_technicians): self
     {
         if (is_null($assigned_technicians)) {
-            throw new \InvalidArgumentException('non-nullable assigned_technicians cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'assigned_technicians');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('assigned_technicians', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($assigned_technicians) < 1)) {
+        if (!is_null($assigned_technicians) && (count($assigned_technicians) < 1)) {
             throw new \InvalidArgumentException('invalid length for $assigned_technicians when calling Appointment., number of items must be greater than or equal to 1.');
         }
         $this->container['assigned_technicians'] = $assigned_technicians;
@@ -522,12 +550,19 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRescheduledAppointmentId(?string $rescheduled_appointment_id): self
     {
         if (is_null($rescheduled_appointment_id)) {
-            throw new \InvalidArgumentException('non-nullable rescheduled_appointment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rescheduled_appointment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rescheduled_appointment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($rescheduled_appointment_id) > 100)) {
+        if (!is_null($rescheduled_appointment_id) && (mb_strlen($rescheduled_appointment_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $rescheduled_appointment_id when calling Appointment., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($rescheduled_appointment_id) < 5)) {
+        if (!is_null($rescheduled_appointment_id) && (mb_strlen($rescheduled_appointment_id) < 5)) {
             throw new \InvalidArgumentException('invalid length for $rescheduled_appointment_id when calling Appointment., must be bigger than or equal to 5.');
         }
 
@@ -556,7 +591,14 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPoa(?\OpenAPI\Client\Model\services\Poa $poa): self
     {
         if (is_null($poa)) {
-            throw new \InvalidArgumentException('non-nullable poa cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'poa');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('poa', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['poa'] = $poa;
 

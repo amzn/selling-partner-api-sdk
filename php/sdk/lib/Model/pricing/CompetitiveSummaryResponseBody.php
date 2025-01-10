@@ -90,10 +90,10 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'asin' => false,
         'marketplace_id' => false,
-        'featured_buying_options' => false,
-        'lowest_priced_offers' => false,
-        'reference_prices' => false,
-        'errors' => false
+        'featured_buying_options' => true,
+        'lowest_priced_offers' => true,
+        'reference_prices' => true,
+        'errors' => true
     ];
 
     /**
@@ -389,7 +389,7 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets featured_buying_options
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeaturedBuyingOptions(): ?array
     {
@@ -406,7 +406,14 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     public function setFeaturedBuyingOptions(?array $featured_buying_options): self
     {
         if (is_null($featured_buying_options)) {
-            throw new \InvalidArgumentException('non-nullable featured_buying_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'featured_buying_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('featured_buying_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['featured_buying_options'] = $featured_buying_options;
 
@@ -416,7 +423,7 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets lowest_priced_offers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLowestPricedOffers(): ?array
     {
@@ -433,7 +440,14 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     public function setLowestPricedOffers(?array $lowest_priced_offers): self
     {
         if (is_null($lowest_priced_offers)) {
-            throw new \InvalidArgumentException('non-nullable lowest_priced_offers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lowest_priced_offers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lowest_priced_offers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['lowest_priced_offers'] = $lowest_priced_offers;
 
@@ -443,7 +457,7 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets reference_prices
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReferencePrices(): ?array
     {
@@ -460,7 +474,14 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     public function setReferencePrices(?array $reference_prices): self
     {
         if (is_null($reference_prices)) {
-            throw new \InvalidArgumentException('non-nullable reference_prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reference_prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reference_prices', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reference_prices'] = $reference_prices;
 
@@ -470,7 +491,7 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -487,7 +508,14 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

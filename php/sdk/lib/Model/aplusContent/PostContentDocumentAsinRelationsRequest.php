@@ -296,7 +296,7 @@ class PostContentDocumentAsinRelationsRequest implements ModelInterface, ArrayAc
     /**
      * Gets asin_set
      *
-     * @return arrayA
+     * @return array
      */
     public function getAsinSet(): array
     {

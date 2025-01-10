@@ -82,9 +82,9 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'expires_at' => false,
-        'date_range' => false,
-        'policy' => false
+        'expires_at' => true,
+        'date_range' => true,
+        'policy' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiresAt(?\DateTime $expires_at): self
     {
         if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expires_at', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expires_at'] = $expires_at;
 
@@ -352,7 +359,14 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDateRange(?\OpenAPI\Client\Model\fulfillmentOutbound\DateRange $date_range): self
     {
         if (is_null($date_range)) {
-            throw new \InvalidArgumentException('non-nullable date_range cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date_range');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_range', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date_range'] = $date_range;
 
@@ -379,7 +393,14 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPolicy(?\OpenAPI\Client\Model\fulfillmentOutbound\DeliveryPolicy $policy): self
     {
         if (is_null($policy)) {
-            throw new \InvalidArgumentException('non-nullable policy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'policy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('policy', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['policy'] = $policy;
 

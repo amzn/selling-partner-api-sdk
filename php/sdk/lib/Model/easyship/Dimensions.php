@@ -86,11 +86,11 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'length' => false,
-        'width' => false,
-        'height' => false,
-        'unit' => false,
-        'identifier' => false
+        'length' => true,
+        'width' => true,
+        'height' => true,
+        'unit' => true,
+        'identifier' => true
     ];
 
     /**
@@ -359,10 +359,17 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLength(?float $length): self
     {
         if (is_null($length)) {
-            throw new \InvalidArgumentException('non-nullable length cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'length');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('length', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($length < 0.01)) {
+        if (!is_null($length) && ($length < 0.01)) {
             throw new \InvalidArgumentException('invalid value for $length when calling Dimensions., must be bigger than or equal to 0.01.');
         }
 
@@ -391,10 +398,17 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWidth(?float $width): self
     {
         if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'width');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('width', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($width < 0.01)) {
+        if (!is_null($width) && ($width < 0.01)) {
             throw new \InvalidArgumentException('invalid value for $width when calling Dimensions., must be bigger than or equal to 0.01.');
         }
 
@@ -423,10 +437,17 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeight(?float $height): self
     {
         if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'height');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('height', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($height < 0.01)) {
+        if (!is_null($height) && ($height < 0.01)) {
             throw new \InvalidArgumentException('invalid value for $height when calling Dimensions., must be bigger than or equal to 0.01.');
         }
 
@@ -455,7 +476,14 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUnit(?string $unit): self
     {
         if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit'] = $unit;
 
@@ -482,12 +510,19 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdentifier(?string $identifier): self
     {
         if (is_null($identifier)) {
-            throw new \InvalidArgumentException('non-nullable identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($identifier) > 255)) {
+        if (!is_null($identifier) && (mb_strlen($identifier) > 255)) {
             throw new \InvalidArgumentException('invalid length for $identifier when calling Dimensions., must be smaller than or equal to 255.');
         }
-        if ((mb_strlen($identifier) < 1)) {
+        if (!is_null($identifier) && (mb_strlen($identifier) < 1)) {
             throw new \InvalidArgumentException('invalid length for $identifier when calling Dimensions., must be bigger than or equal to 1.');
         }
 

@@ -84,7 +84,7 @@ class PatchOperation implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'op' => false,
         'path' => false,
-        'value' => false
+        'value' => true
     ];
 
     /**
@@ -404,7 +404,7 @@ class PatchOperation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getValue(): ?array
     {
@@ -421,7 +421,14 @@ class PatchOperation implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue(?array $value): self
     {
         if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value'] = $value;
 

@@ -80,7 +80,7 @@ class ThroughputConfig implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'throughput_cap' => false,
+        'throughput_cap' => true,
         'throughput_unit' => false
     ];
 
@@ -321,7 +321,14 @@ class ThroughputConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setThroughputCap(?\OpenAPI\Client\Model\supplySources\ThroughputCap $throughput_cap): self
     {
         if (is_null($throughput_cap)) {
-            throw new \InvalidArgumentException('non-nullable throughput_cap cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'throughput_cap');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('throughput_cap', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['throughput_cap'] = $throughput_cap;
 

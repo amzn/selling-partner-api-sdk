@@ -86,7 +86,7 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'destination_marketplaces' => false,
         'items' => false,
-        'name' => false,
+        'name' => true,
         'source_address' => false
     ];
 
@@ -348,7 +348,7 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets destination_marketplaces
      *
-     * @return arrayA
+     * @return array
      */
     public function getDestinationMarketplaces(): array
     {
@@ -382,7 +382,7 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets items
      *
-     * @return arrayA
+     * @return array
      */
     public function getItems(): array
     {
@@ -433,12 +433,19 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($name) > 40)) {
+        if (!is_null($name) && (mb_strlen($name) > 40)) {
             throw new \InvalidArgumentException('invalid length for $name when calling CreateInboundPlanRequest., must be smaller than or equal to 40.');
         }
-        if ((mb_strlen($name) < 1)) {
+        if (!is_null($name) && (mb_strlen($name) < 1)) {
             throw new \InvalidArgumentException('invalid length for $name when calling CreateInboundPlanRequest., must be bigger than or equal to 1.');
         }
 

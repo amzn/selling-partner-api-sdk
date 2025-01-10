@@ -91,9 +91,9 @@ class Issue implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => false,
         'message' => false,
         'severity' => false,
-        'attribute_names' => false,
+        'attribute_names' => true,
         'categories' => false,
-        'enforcements' => false
+        'enforcements' => true
     ];
 
     /**
@@ -458,7 +458,7 @@ class Issue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attribute_names
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttributeNames(): ?array
     {
@@ -475,7 +475,14 @@ class Issue implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAttributeNames(?array $attribute_names): self
     {
         if (is_null($attribute_names)) {
-            throw new \InvalidArgumentException('non-nullable attribute_names cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attribute_names');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attribute_names', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attribute_names'] = $attribute_names;
 
@@ -485,7 +492,7 @@ class Issue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets categories
      *
-     * @return arrayA
+     * @return array
      */
     public function getCategories(): array
     {
@@ -529,7 +536,14 @@ class Issue implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEnforcements(?\OpenAPI\Client\Model\listingsItems\IssueEnforcements $enforcements): self
     {
         if (is_null($enforcements)) {
-            throw new \InvalidArgumentException('non-nullable enforcements cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'enforcements');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('enforcements', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['enforcements'] = $enforcements;
 

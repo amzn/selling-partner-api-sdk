@@ -87,7 +87,7 @@ class ServiceDocumentUploadDestination implements ModelInterface, ArrayAccess, \
         'upload_destination_id' => false,
         'url' => false,
         'encryption_details' => false,
-        'headers' => false
+        'headers' => true
     ];
 
     /**
@@ -422,7 +422,14 @@ class ServiceDocumentUploadDestination implements ModelInterface, ArrayAccess, \
     public function setHeaders(?object $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 

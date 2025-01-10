@@ -86,11 +86,11 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amazon_order_id' => false,
-        'financial_event_group_id' => false,
-        'posted_date' => false,
-        'sku' => false,
-        'fee_list' => false
+        'amazon_order_id' => true,
+        'financial_event_group_id' => true,
+        'posted_date' => true,
+        'sku' => true,
+        'fee_list' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setAmazonOrderId(?string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
-            throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -366,7 +373,14 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFinancialEventGroupId(?string $financial_event_group_id): self
     {
         if (is_null($financial_event_group_id)) {
-            throw new \InvalidArgumentException('non-nullable financial_event_group_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'financial_event_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('financial_event_group_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['financial_event_group_id'] = $financial_event_group_id;
 
@@ -393,7 +407,14 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -420,7 +441,14 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setSku(?string $sku): self
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku'] = $sku;
 
@@ -430,7 +458,7 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets fee_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeeList(): ?array
     {
@@ -447,7 +475,14 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFeeList(?array $fee_list): self
     {
         if (is_null($fee_list)) {
-            throw new \InvalidArgumentException('non-nullable fee_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_list'] = $fee_list;
 

@@ -81,8 +81,8 @@ class LinkableCarrier implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carrier_id' => false,
-        'linkable_account_types' => false
+        'carrier_id' => true,
+        'linkable_account_types' => true
     ];
 
     /**
@@ -319,7 +319,14 @@ class LinkableCarrier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCarrierId(?string $carrier_id): self
     {
         if (is_null($carrier_id)) {
-            throw new \InvalidArgumentException('non-nullable carrier_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_id'] = $carrier_id;
 
@@ -329,7 +336,7 @@ class LinkableCarrier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets linkable_account_types
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLinkableAccountTypes(): ?array
     {
@@ -346,7 +353,14 @@ class LinkableCarrier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLinkableAccountTypes(?array $linkable_account_types): self
     {
         if (is_null($linkable_account_types)) {
-            throw new \InvalidArgumentException('non-nullable linkable_account_types cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'linkable_account_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('linkable_account_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['linkable_account_types'] = $linkable_account_types;
 

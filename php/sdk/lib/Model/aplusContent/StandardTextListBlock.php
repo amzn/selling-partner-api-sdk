@@ -305,7 +305,7 @@ class StandardTextListBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets text_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getTextList(): array
     {

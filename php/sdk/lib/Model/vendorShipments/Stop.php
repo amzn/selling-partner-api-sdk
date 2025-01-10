@@ -85,9 +85,9 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'function_code' => false,
-        'location_identification' => false,
-        'arrival_time' => false,
-        'departure_time' => false
+        'location_identification' => true,
+        'arrival_time' => true,
+        'departure_time' => true
     ];
 
     /**
@@ -398,7 +398,14 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLocationIdentification(?\OpenAPI\Client\Model\vendorShipments\Location $location_identification): self
     {
         if (is_null($location_identification)) {
-            throw new \InvalidArgumentException('non-nullable location_identification cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'location_identification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('location_identification', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['location_identification'] = $location_identification;
 
@@ -425,7 +432,14 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setArrivalTime(?\DateTime $arrival_time): self
     {
         if (is_null($arrival_time)) {
-            throw new \InvalidArgumentException('non-nullable arrival_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'arrival_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('arrival_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['arrival_time'] = $arrival_time;
 
@@ -452,7 +466,14 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDepartureTime(?\DateTime $departure_time): self
     {
         if (is_null($departure_time)) {
-            throw new \InvalidArgumentException('non-nullable departure_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'departure_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('departure_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['departure_time'] = $departure_time;
 

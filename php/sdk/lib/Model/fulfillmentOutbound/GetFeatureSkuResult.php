@@ -89,8 +89,8 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
         'marketplace_id' => false,
         'feature_name' => false,
         'is_eligible' => false,
-        'ineligible_reasons' => false,
-        'sku_info' => false
+        'ineligible_reasons' => true,
+        'sku_info' => true
     ];
 
     /**
@@ -412,7 +412,7 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets ineligible_reasons
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIneligibleReasons(): ?array
     {
@@ -429,7 +429,14 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIneligibleReasons(?array $ineligible_reasons): self
     {
         if (is_null($ineligible_reasons)) {
-            throw new \InvalidArgumentException('non-nullable ineligible_reasons cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ineligible_reasons');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ineligible_reasons', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ineligible_reasons'] = $ineligible_reasons;
 
@@ -456,7 +463,14 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSkuInfo(?\OpenAPI\Client\Model\fulfillmentOutbound\FeatureSku $sku_info): self
     {
         if (is_null($sku_info)) {
-            throw new \InvalidArgumentException('non-nullable sku_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_info', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku_info'] = $sku_info;
 

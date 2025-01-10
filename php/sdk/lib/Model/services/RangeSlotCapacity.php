@@ -82,9 +82,9 @@ class RangeSlotCapacity implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'resource_id' => false,
-        'capacities' => false,
-        'next_page_token' => false
+        'resource_id' => true,
+        'capacities' => true,
+        'next_page_token' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class RangeSlotCapacity implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setResourceId(?string $resource_id): self
     {
         if (is_null($resource_id)) {
-            throw new \InvalidArgumentException('non-nullable resource_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'resource_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('resource_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['resource_id'] = $resource_id;
 
@@ -335,7 +342,7 @@ class RangeSlotCapacity implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets capacities
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCapacities(): ?array
     {
@@ -352,7 +359,14 @@ class RangeSlotCapacity implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCapacities(?array $capacities): self
     {
         if (is_null($capacities)) {
-            throw new \InvalidArgumentException('non-nullable capacities cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacities', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capacities'] = $capacities;
 
@@ -379,7 +393,14 @@ class RangeSlotCapacity implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setNextPageToken(?string $next_page_token): self
     {
         if (is_null($next_page_token)) {
-            throw new \InvalidArgumentException('non-nullable next_page_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_page_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_page_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_page_token'] = $next_page_token;
 

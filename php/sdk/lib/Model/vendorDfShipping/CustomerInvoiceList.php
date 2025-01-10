@@ -80,8 +80,8 @@ class CustomerInvoiceList implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
-        'customer_invoices' => false
+        'pagination' => true,
+        'customer_invoices' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class CustomerInvoiceList implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPagination(?\OpenAPI\Client\Model\vendorDfShipping\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -328,7 +335,7 @@ class CustomerInvoiceList implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets customer_invoices
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getCustomerInvoices(): ?array
     {
@@ -345,7 +352,14 @@ class CustomerInvoiceList implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCustomerInvoices(?array $customer_invoices): self
     {
         if (is_null($customer_invoices)) {
-            throw new \InvalidArgumentException('non-nullable customer_invoices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_invoices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_invoices', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_invoices'] = $customer_invoices;
 

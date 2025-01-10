@@ -84,10 +84,10 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'height' => false,
-        'length' => false,
-        'weight' => false,
-        'width' => false
+        'height' => true,
+        'length' => true,
+        'weight' => true,
+        'width' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeight(?\OpenAPI\Client\Model\catalogItems\Dimension $height): self
     {
         if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'height');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('height', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['height'] = $height;
 
@@ -359,7 +366,14 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLength(?\OpenAPI\Client\Model\catalogItems\Dimension $length): self
     {
         if (is_null($length)) {
-            throw new \InvalidArgumentException('non-nullable length cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'length');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('length', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['length'] = $length;
 
@@ -386,7 +400,14 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\catalogItems\Dimension $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 
@@ -413,7 +434,14 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWidth(?\OpenAPI\Client\Model\catalogItems\Dimension $width): self
     {
         if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'width');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('width', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['width'] = $width;
 

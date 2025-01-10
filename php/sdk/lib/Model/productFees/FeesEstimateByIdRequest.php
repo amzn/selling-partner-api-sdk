@@ -82,7 +82,7 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fees_estimate_request' => false,
+        'fees_estimate_request' => true,
         'id_type' => false,
         'id_value' => false
     ];
@@ -331,7 +331,14 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setFeesEstimateRequest(?\OpenAPI\Client\Model\productFees\FeesEstimateRequest $fees_estimate_request): self
     {
         if (is_null($fees_estimate_request)) {
-            throw new \InvalidArgumentException('non-nullable fees_estimate_request cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fees_estimate_request');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fees_estimate_request', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fees_estimate_request'] = $fees_estimate_request;
 

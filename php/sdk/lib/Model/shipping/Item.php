@@ -101,18 +101,18 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'item_value' => false,
-        'description' => false,
-        'item_identifier' => false,
+        'item_value' => true,
+        'description' => true,
+        'item_identifier' => true,
         'quantity' => false,
-        'weight' => false,
-        'liquid_volume' => false,
-        'is_hazmat' => false,
-        'dangerous_goods_details' => false,
-        'product_type' => false,
-        'invoice_details' => false,
-        'serial_numbers' => false,
-        'direct_fulfillment_item_identifiers' => false
+        'weight' => true,
+        'liquid_volume' => true,
+        'is_hazmat' => true,
+        'dangerous_goods_details' => true,
+        'product_type' => true,
+        'invoice_details' => true,
+        'serial_numbers' => true,
+        'direct_fulfillment_item_identifiers' => true
     ];
 
     /**
@@ -392,7 +392,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemValue(?\OpenAPI\Client\Model\shipping\Currency $item_value): self
     {
         if (is_null($item_value)) {
-            throw new \InvalidArgumentException('non-nullable item_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_value'] = $item_value;
 
@@ -419,7 +426,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription(?string $description): self
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -446,7 +460,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemIdentifier(?string $item_identifier): self
     {
         if (is_null($item_identifier)) {
-            throw new \InvalidArgumentException('non-nullable item_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_identifier'] = $item_identifier;
 
@@ -500,7 +521,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\shipping\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 
@@ -527,7 +555,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLiquidVolume(?\OpenAPI\Client\Model\shipping\LiquidVolume $liquid_volume): self
     {
         if (is_null($liquid_volume)) {
-            throw new \InvalidArgumentException('non-nullable liquid_volume cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'liquid_volume');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('liquid_volume', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['liquid_volume'] = $liquid_volume;
 
@@ -554,7 +589,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsHazmat(?bool $is_hazmat): self
     {
         if (is_null($is_hazmat)) {
-            throw new \InvalidArgumentException('non-nullable is_hazmat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_hazmat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_hazmat', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_hazmat'] = $is_hazmat;
 
@@ -581,7 +623,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDangerousGoodsDetails(?\OpenAPI\Client\Model\shipping\DangerousGoodsDetails $dangerous_goods_details): self
     {
         if (is_null($dangerous_goods_details)) {
-            throw new \InvalidArgumentException('non-nullable dangerous_goods_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dangerous_goods_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dangerous_goods_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dangerous_goods_details'] = $dangerous_goods_details;
 
@@ -608,7 +657,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductType(?string $product_type): self
     {
         if (is_null($product_type)) {
-            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_type'] = $product_type;
 
@@ -635,7 +691,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoiceDetails(?\OpenAPI\Client\Model\shipping\InvoiceDetails $invoice_details): self
     {
         if (is_null($invoice_details)) {
-            throw new \InvalidArgumentException('non-nullable invoice_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_details'] = $invoice_details;
 
@@ -645,7 +708,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets serial_numbers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSerialNumbers(): ?array
     {
@@ -662,7 +725,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSerialNumbers(?array $serial_numbers): self
     {
         if (is_null($serial_numbers)) {
-            throw new \InvalidArgumentException('non-nullable serial_numbers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serial_numbers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serial_numbers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serial_numbers'] = $serial_numbers;
 
@@ -689,7 +759,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDirectFulfillmentItemIdentifiers(?\OpenAPI\Client\Model\shipping\DirectFulfillmentItemIdentifiers $direct_fulfillment_item_identifiers): self
     {
         if (is_null($direct_fulfillment_item_identifiers)) {
-            throw new \InvalidArgumentException('non-nullable direct_fulfillment_item_identifiers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'direct_fulfillment_item_identifiers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('direct_fulfillment_item_identifiers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['direct_fulfillment_item_identifiers'] = $direct_fulfillment_item_identifiers;
 

@@ -305,7 +305,7 @@ class CompetitiveSummaryBatchRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets requests
      *
-     * @return arrayA
+     * @return array
      */
     public function getRequests(): array
     {

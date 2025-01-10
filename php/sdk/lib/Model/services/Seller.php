@@ -78,7 +78,7 @@ class Seller implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_id' => false
+        'seller_id' => true
     ];
 
     /**
@@ -315,10 +315,17 @@ class Seller implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerId(?string $seller_id): self
     {
         if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($seller_id)))) {
+        if (!is_null($seller_id) && (!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($seller_id)))) {
             throw new \InvalidArgumentException("invalid value for \$seller_id when calling Seller., must conform to the pattern /^[A-Z0-9]*$/.");
         }
 

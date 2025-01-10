@@ -297,7 +297,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets errors
      *
-     * @return arrayA
+     * @return array
      */
     public function getErrors(): array
     {

@@ -78,7 +78,7 @@ class ProcessingDirective implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'event_filter' => false
+        'event_filter' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class ProcessingDirective implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setEventFilter(?\OpenAPI\Client\Model\notifications\EventFilter $event_filter): self
     {
         if (is_null($event_filter)) {
-            throw new \InvalidArgumentException('non-nullable event_filter cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'event_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('event_filter', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['event_filter'] = $event_filter;
 

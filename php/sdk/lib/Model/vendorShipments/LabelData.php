@@ -86,11 +86,11 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'label_sequence_number' => false,
-        'label_format' => false,
-        'carrier_code' => false,
-        'tracking_id' => false,
-        'label' => false
+        'label_sequence_number' => true,
+        'label_format' => true,
+        'carrier_code' => true,
+        'tracking_id' => true,
+        'label' => true
     ];
 
     /**
@@ -361,7 +361,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabelSequenceNumber(?int $label_sequence_number): self
     {
         if (is_null($label_sequence_number)) {
-            throw new \InvalidArgumentException('non-nullable label_sequence_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_sequence_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_sequence_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label_sequence_number'] = $label_sequence_number;
 
@@ -388,10 +395,17 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabelFormat(?string $label_format): self
     {
         if (is_null($label_format)) {
-            throw new \InvalidArgumentException('non-nullable label_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_format', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getLabelFormatAllowableValues();
-        if (!in_array($label_format, $allowedValues, true)) {
+        if (!is_null($label_format) && !in_array($label_format, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'label_format', must be one of '%s'",
@@ -425,7 +439,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCarrierCode(?string $carrier_code): self
     {
         if (is_null($carrier_code)) {
-            throw new \InvalidArgumentException('non-nullable carrier_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_code'] = $carrier_code;
 
@@ -452,7 +473,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrackingId(?string $tracking_id): self
     {
         if (is_null($tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_id'] = $tracking_id;
 
@@ -479,7 +507,14 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabel(?string $label): self
     {
         if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['label'] = $label;
 

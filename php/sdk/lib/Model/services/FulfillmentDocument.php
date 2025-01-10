@@ -80,8 +80,8 @@ class FulfillmentDocument implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'upload_destination_id' => false,
-        'content_sha256' => false
+        'upload_destination_id' => true,
+        'content_sha256' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class FulfillmentDocument implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setUploadDestinationId(?string $upload_destination_id): self
     {
         if (is_null($upload_destination_id)) {
-            throw new \InvalidArgumentException('non-nullable upload_destination_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'upload_destination_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('upload_destination_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['upload_destination_id'] = $upload_destination_id;
 
@@ -345,7 +352,14 @@ class FulfillmentDocument implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setContentSha256(?string $content_sha256): self
     {
         if (is_null($content_sha256)) {
-            throw new \InvalidArgumentException('non-nullable content_sha256 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_sha256');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_sha256', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['content_sha256'] = $content_sha256;
 

@@ -104,20 +104,20 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'create_time' => false,
-        'service_job_id' => false,
-        'service_job_status' => false,
-        'scope_of_work' => false,
-        'seller' => false,
-        'service_job_provider' => false,
-        'preferred_appointment_times' => false,
-        'appointments' => false,
-        'service_order_id' => false,
-        'marketplace_id' => false,
-        'store_id' => false,
-        'buyer' => false,
-        'associated_items' => false,
-        'service_location' => false
+        'create_time' => true,
+        'service_job_id' => true,
+        'service_job_status' => true,
+        'scope_of_work' => true,
+        'seller' => true,
+        'service_job_provider' => true,
+        'preferred_appointment_times' => true,
+        'appointments' => true,
+        'service_order_id' => true,
+        'marketplace_id' => true,
+        'store_id' => true,
+        'buyer' => true,
+        'associated_items' => true,
+        'service_location' => true
     ];
 
     /**
@@ -464,7 +464,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreateTime(?\DateTime $create_time): self
     {
         if (is_null($create_time)) {
-            throw new \InvalidArgumentException('non-nullable create_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'create_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('create_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['create_time'] = $create_time;
 
@@ -491,12 +498,19 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceJobId(?string $service_job_id): self
     {
         if (is_null($service_job_id)) {
-            throw new \InvalidArgumentException('non-nullable service_job_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_job_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_job_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($service_job_id) > 100)) {
+        if (!is_null($service_job_id) && (mb_strlen($service_job_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($service_job_id) < 1)) {
+        if (!is_null($service_job_id) && (mb_strlen($service_job_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be bigger than or equal to 1.');
         }
 
@@ -525,10 +539,17 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceJobStatus(?string $service_job_status): self
     {
         if (is_null($service_job_status)) {
-            throw new \InvalidArgumentException('non-nullable service_job_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_job_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_job_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getServiceJobStatusAllowableValues();
-        if (!in_array($service_job_status, $allowedValues, true)) {
+        if (!is_null($service_job_status) && !in_array($service_job_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'service_job_status', must be one of '%s'",
@@ -562,7 +583,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setScopeOfWork(?\OpenAPI\Client\Model\services\ScopeOfWork $scope_of_work): self
     {
         if (is_null($scope_of_work)) {
-            throw new \InvalidArgumentException('non-nullable scope_of_work cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scope_of_work');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scope_of_work', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['scope_of_work'] = $scope_of_work;
 
@@ -589,7 +617,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSeller(?\OpenAPI\Client\Model\services\Seller $seller): self
     {
         if (is_null($seller)) {
-            throw new \InvalidArgumentException('non-nullable seller cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller'] = $seller;
 
@@ -616,7 +651,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceJobProvider(?\OpenAPI\Client\Model\services\ServiceJobProvider $service_job_provider): self
     {
         if (is_null($service_job_provider)) {
-            throw new \InvalidArgumentException('non-nullable service_job_provider cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_job_provider');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_job_provider', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['service_job_provider'] = $service_job_provider;
 
@@ -626,7 +668,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets preferred_appointment_times
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPreferredAppointmentTimes(): ?array
     {
@@ -643,7 +685,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPreferredAppointmentTimes(?array $preferred_appointment_times): self
     {
         if (is_null($preferred_appointment_times)) {
-            throw new \InvalidArgumentException('non-nullable preferred_appointment_times cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'preferred_appointment_times');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preferred_appointment_times', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['preferred_appointment_times'] = $preferred_appointment_times;
 
@@ -653,7 +702,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets appointments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAppointments(): ?array
     {
@@ -670,7 +719,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAppointments(?array $appointments): self
     {
         if (is_null($appointments)) {
-            throw new \InvalidArgumentException('non-nullable appointments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointments'] = $appointments;
 
@@ -697,12 +753,19 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceOrderId(?string $service_order_id): self
     {
         if (is_null($service_order_id)) {
-            throw new \InvalidArgumentException('non-nullable service_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($service_order_id) > 20)) {
+        if (!is_null($service_order_id) && (mb_strlen($service_order_id) > 20)) {
             throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be smaller than or equal to 20.');
         }
-        if ((mb_strlen($service_order_id) < 5)) {
+        if (!is_null($service_order_id) && (mb_strlen($service_order_id) < 5)) {
             throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be bigger than or equal to 5.');
         }
 
@@ -731,10 +794,17 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($marketplace_id)))) {
+        if (!is_null($marketplace_id) && (!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($marketplace_id)))) {
             throw new \InvalidArgumentException("invalid value for \$marketplace_id when calling ServiceJob., must conform to the pattern /^[A-Z0-9]*$/.");
         }
 
@@ -763,12 +833,19 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStoreId(?string $store_id): self
     {
         if (is_null($store_id)) {
-            throw new \InvalidArgumentException('non-nullable store_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'store_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('store_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($store_id) > 100)) {
+        if (!is_null($store_id) && (mb_strlen($store_id) > 100)) {
             throw new \InvalidArgumentException('invalid length for $store_id when calling ServiceJob., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($store_id) < 1)) {
+        if (!is_null($store_id) && (mb_strlen($store_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $store_id when calling ServiceJob., must be bigger than or equal to 1.');
         }
 
@@ -797,7 +874,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyer(?\OpenAPI\Client\Model\services\Buyer $buyer): self
     {
         if (is_null($buyer)) {
-            throw new \InvalidArgumentException('non-nullable buyer cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer'] = $buyer;
 
@@ -807,7 +891,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets associated_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAssociatedItems(): ?array
     {
@@ -824,7 +908,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAssociatedItems(?array $associated_items): self
     {
         if (is_null($associated_items)) {
-            throw new \InvalidArgumentException('non-nullable associated_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'associated_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('associated_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['associated_items'] = $associated_items;
 
@@ -851,7 +942,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceLocation(?\OpenAPI\Client\Model\services\ServiceLocation $service_location): self
     {
         if (is_null($service_location)) {
-            throw new \InvalidArgumentException('non-nullable service_location cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_location', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['service_location'] = $service_location;
 

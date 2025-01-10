@@ -84,10 +84,10 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'recovery_amount' => false,
-        'original_amount' => false,
-        'group_begin_date' => false,
-        'group_end_date' => false
+        'recovery_amount' => true,
+        'original_amount' => true,
+        'group_begin_date' => true,
+        'group_end_date' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRecoveryAmount(?\OpenAPI\Client\Model\financesV0\Currency $recovery_amount): self
     {
         if (is_null($recovery_amount)) {
-            throw new \InvalidArgumentException('non-nullable recovery_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'recovery_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('recovery_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['recovery_amount'] = $recovery_amount;
 
@@ -359,7 +366,14 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOriginalAmount(?\OpenAPI\Client\Model\financesV0\Currency $original_amount): self
     {
         if (is_null($original_amount)) {
-            throw new \InvalidArgumentException('non-nullable original_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'original_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('original_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['original_amount'] = $original_amount;
 
@@ -386,7 +400,14 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGroupBeginDate(?\DateTime $group_begin_date): self
     {
         if (is_null($group_begin_date)) {
-            throw new \InvalidArgumentException('non-nullable group_begin_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'group_begin_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_begin_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['group_begin_date'] = $group_begin_date;
 
@@ -413,7 +434,14 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGroupEndDate(?\DateTime $group_end_date): self
     {
         if (is_null($group_end_date)) {
-            throw new \InvalidArgumentException('non-nullable group_end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'group_end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_end_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['group_end_date'] = $group_end_date;
 

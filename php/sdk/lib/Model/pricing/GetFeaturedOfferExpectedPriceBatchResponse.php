@@ -78,7 +78,7 @@ class GetFeaturedOfferExpectedPriceBatchResponse implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'responses' => false
+        'responses' => true
     ];
 
     /**
@@ -298,7 +298,7 @@ class GetFeaturedOfferExpectedPriceBatchResponse implements ModelInterface, Arra
     /**
      * Gets responses
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getResponses(): ?array
     {
@@ -315,11 +315,18 @@ class GetFeaturedOfferExpectedPriceBatchResponse implements ModelInterface, Arra
     public function setResponses(?array $responses): self
     {
         if (is_null($responses)) {
-            throw new \InvalidArgumentException('non-nullable responses cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'responses');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('responses', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($responses) < 1)) {
+        if (!is_null($responses) && (count($responses) < 1)) {
             throw new \InvalidArgumentException('invalid length for $responses when calling GetFeaturedOfferExpectedPriceBatchResponse., number of items must be greater than or equal to 1.');
         }
         $this->container['responses'] = $responses;

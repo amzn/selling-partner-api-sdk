@@ -94,15 +94,15 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'box_id' => false,
-        'content_information_source' => false,
-        'destination_region' => false,
-        'dimensions' => false,
-        'items' => false,
+        'box_id' => true,
+        'content_information_source' => true,
+        'destination_region' => true,
+        'dimensions' => true,
+        'items' => true,
         'package_id' => false,
-        'quantity' => false,
-        'template_name' => false,
-        'weight' => false
+        'quantity' => true,
+        'template_name' => true,
+        'weight' => true
     ];
 
     /**
@@ -406,12 +406,19 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBoxId(?string $box_id): self
     {
         if (is_null($box_id)) {
-            throw new \InvalidArgumentException('non-nullable box_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'box_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('box_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($box_id) > 1024)) {
+        if (!is_null($box_id) && (mb_strlen($box_id) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $box_id when calling Box., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($box_id) < 1)) {
+        if (!is_null($box_id) && (mb_strlen($box_id) < 1)) {
             throw new \InvalidArgumentException('invalid length for $box_id when calling Box., must be bigger than or equal to 1.');
         }
 
@@ -440,7 +447,14 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContentInformationSource(?string $content_information_source): self
     {
         if (is_null($content_information_source)) {
-            throw new \InvalidArgumentException('non-nullable content_information_source cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_information_source');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_information_source', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['content_information_source'] = $content_information_source;
 
@@ -467,7 +481,14 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDestinationRegion(?\OpenAPI\Client\Model\fulfillmentInbound\Region $destination_region): self
     {
         if (is_null($destination_region)) {
-            throw new \InvalidArgumentException('non-nullable destination_region cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'destination_region');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('destination_region', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['destination_region'] = $destination_region;
 
@@ -494,7 +515,14 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\fulfillmentInbound\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -504,7 +532,7 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -521,7 +549,14 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 
@@ -585,13 +620,20 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($quantity > 10000)) {
+        if (!is_null($quantity) && ($quantity > 10000)) {
             throw new \InvalidArgumentException('invalid value for $quantity when calling Box., must be smaller than or equal to 10000.');
         }
-        if (($quantity < 1)) {
+        if (!is_null($quantity) && ($quantity < 1)) {
             throw new \InvalidArgumentException('invalid value for $quantity when calling Box., must be bigger than or equal to 1.');
         }
 
@@ -620,12 +662,19 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTemplateName(?string $template_name): self
     {
         if (is_null($template_name)) {
-            throw new \InvalidArgumentException('non-nullable template_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'template_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('template_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($template_name) > 1024)) {
+        if (!is_null($template_name) && (mb_strlen($template_name) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $template_name when calling Box., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($template_name) < 1)) {
+        if (!is_null($template_name) && (mb_strlen($template_name) < 1)) {
             throw new \InvalidArgumentException('invalid length for $template_name when calling Box., must be bigger than or equal to 1.');
         }
 
@@ -654,7 +703,14 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\fulfillmentInbound\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 

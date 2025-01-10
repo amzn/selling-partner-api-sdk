@@ -82,9 +82,9 @@ class ScheduledDeliveryShipment implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'scheduled_delivery_service_type' => false,
-        'earliest_nominated_delivery_date' => false,
-        'latest_nominated_delivery_date' => false
+        'scheduled_delivery_service_type' => true,
+        'earliest_nominated_delivery_date' => true,
+        'latest_nominated_delivery_date' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class ScheduledDeliveryShipment implements ModelInterface, ArrayAccess, \JsonSer
     public function setScheduledDeliveryServiceType(?string $scheduled_delivery_service_type): self
     {
         if (is_null($scheduled_delivery_service_type)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_delivery_service_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduled_delivery_service_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduled_delivery_service_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['scheduled_delivery_service_type'] = $scheduled_delivery_service_type;
 
@@ -352,7 +359,14 @@ class ScheduledDeliveryShipment implements ModelInterface, ArrayAccess, \JsonSer
     public function setEarliestNominatedDeliveryDate(?\DateTime $earliest_nominated_delivery_date): self
     {
         if (is_null($earliest_nominated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable earliest_nominated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'earliest_nominated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('earliest_nominated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['earliest_nominated_delivery_date'] = $earliest_nominated_delivery_date;
 
@@ -379,7 +393,14 @@ class ScheduledDeliveryShipment implements ModelInterface, ArrayAccess, \JsonSer
     public function setLatestNominatedDeliveryDate(?\DateTime $latest_nominated_delivery_date): self
     {
         if (is_null($latest_nominated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable latest_nominated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'latest_nominated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latest_nominated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['latest_nominated_delivery_date'] = $latest_nominated_delivery_date;
 

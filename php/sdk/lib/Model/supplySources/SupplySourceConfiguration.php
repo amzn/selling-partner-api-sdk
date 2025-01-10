@@ -80,8 +80,8 @@ class SupplySourceConfiguration implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'operational_configuration' => false,
-        'timezone' => false
+        'operational_configuration' => true,
+        'timezone' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class SupplySourceConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
-            throw new \InvalidArgumentException('non-nullable operational_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'operational_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('operational_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['operational_configuration'] = $operational_configuration;
 
@@ -345,7 +352,14 @@ class SupplySourceConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     public function setTimezone(?string $timezone): self
     {
         if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'timezone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('timezone', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['timezone'] = $timezone;
 

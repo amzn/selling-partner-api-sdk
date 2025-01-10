@@ -80,8 +80,8 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fee_type' => false,
-        'fee_amount' => false
+        'fee_type' => true,
+        'fee_amount' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeeType(?string $fee_type): self
     {
         if (is_null($fee_type)) {
-            throw new \InvalidArgumentException('non-nullable fee_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_type'] = $fee_type;
 
@@ -345,7 +352,14 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeeAmount(?\OpenAPI\Client\Model\financesV0\Currency $fee_amount): self
     {
         if (is_null($fee_amount)) {
-            throw new \InvalidArgumentException('non-nullable fee_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_amount'] = $fee_amount;
 

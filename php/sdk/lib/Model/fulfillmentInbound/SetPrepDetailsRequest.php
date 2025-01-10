@@ -357,7 +357,7 @@ class SetPrepDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets msku_prep_details
      *
-     * @return arrayA
+     * @return array
      */
     public function getMskuPrepDetails(): array
     {

@@ -80,8 +80,8 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_buyer_requested_cancel' => false,
-        'buyer_cancel_reason' => false
+        'is_buyer_requested_cancel' => true,
+        'buyer_cancel_reason' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setIsBuyerRequestedCancel(?string $is_buyer_requested_cancel): self
     {
         if (is_null($is_buyer_requested_cancel)) {
-            throw new \InvalidArgumentException('non-nullable is_buyer_requested_cancel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_buyer_requested_cancel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_buyer_requested_cancel', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_buyer_requested_cancel'] = $is_buyer_requested_cancel;
 
@@ -345,7 +352,14 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBuyerCancelReason(?string $buyer_cancel_reason): self
     {
         if (is_null($buyer_cancel_reason)) {
-            throw new \InvalidArgumentException('non-nullable buyer_cancel_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_cancel_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_cancel_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_cancel_reason'] = $buyer_cancel_reason;
 

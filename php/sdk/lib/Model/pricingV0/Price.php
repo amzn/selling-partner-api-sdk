@@ -84,9 +84,9 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'seller_sku' => false,
-        'asin' => false,
-        'product' => false
+        'seller_sku' => true,
+        'asin' => true,
+        'product' => true
     ];
 
     /**
@@ -361,7 +361,14 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -388,7 +395,14 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -415,7 +429,14 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProduct(?\OpenAPI\Client\Model\pricingV0\Product $product): self
     {
         if (is_null($product)) {
-            throw new \InvalidArgumentException('non-nullable product cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product'] = $product;
 

@@ -81,7 +81,7 @@ class ListShipmentContentUpdatePreviewsResponse implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'content_update_previews' => false,
-        'pagination' => false
+        'pagination' => true
     ];
 
     /**
@@ -304,7 +304,7 @@ class ListShipmentContentUpdatePreviewsResponse implements ModelInterface, Array
     /**
      * Gets content_update_previews
      *
-     * @return arrayA
+     * @return array
      */
     public function getContentUpdatePreviews(): array
     {
@@ -348,7 +348,14 @@ class ListShipmentContentUpdatePreviewsResponse implements ModelInterface, Array
     public function setPagination(?\OpenAPI\Client\Model\fulfillmentInbound\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 

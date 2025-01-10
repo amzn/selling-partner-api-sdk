@@ -80,8 +80,8 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipment_level_fields' => false,
-        'item_level_fields_list' => false
+        'shipment_level_fields' => true,
+        'item_level_fields_list' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
     /**
      * Gets shipment_level_fields
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipmentLevelFields(): ?array
     {
@@ -318,7 +318,14 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
     public function setShipmentLevelFields(?array $shipment_level_fields): self
     {
         if (is_null($shipment_level_fields)) {
-            throw new \InvalidArgumentException('non-nullable shipment_level_fields cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_level_fields');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_level_fields', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_level_fields'] = $shipment_level_fields;
 
@@ -328,7 +335,7 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
     /**
      * Gets item_level_fields_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemLevelFieldsList(): ?array
     {
@@ -345,7 +352,14 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
     public function setItemLevelFieldsList(?array $item_level_fields_list): self
     {
         if (is_null($item_level_fields_list)) {
-            throw new \InvalidArgumentException('non-nullable item_level_fields_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_level_fields_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_level_fields_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_level_fields_list'] = $item_level_fields_list;
 

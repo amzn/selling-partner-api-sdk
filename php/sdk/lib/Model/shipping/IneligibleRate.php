@@ -446,7 +446,7 @@ class IneligibleRate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ineligibility_reasons
      *
-     * @return arrayA
+     * @return array
      */
     public function getIneligibilityReasons(): array
     {

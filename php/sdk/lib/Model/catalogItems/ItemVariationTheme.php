@@ -80,8 +80,8 @@ class ItemVariationTheme implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-        'theme' => false
+        'attributes' => true,
+        'theme' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class ItemVariationTheme implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets attributes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttributes(): ?array
     {
@@ -318,7 +318,14 @@ class ItemVariationTheme implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setAttributes(?array $attributes): self
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 
@@ -345,7 +352,14 @@ class ItemVariationTheme implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTheme(?string $theme): self
     {
         if (is_null($theme)) {
-            throw new \InvalidArgumentException('non-nullable theme cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'theme');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('theme', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['theme'] = $theme;
 

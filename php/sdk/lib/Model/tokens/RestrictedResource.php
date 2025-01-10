@@ -84,7 +84,7 @@ class RestrictedResource implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'method' => false,
         'path' => false,
-        'data_elements' => false
+        'data_elements' => true
     ];
 
     /**
@@ -406,7 +406,7 @@ class RestrictedResource implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data_elements
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDataElements(): ?array
     {
@@ -423,7 +423,14 @@ class RestrictedResource implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setDataElements(?array $data_elements): self
     {
         if (is_null($data_elements)) {
-            throw new \InvalidArgumentException('non-nullable data_elements cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_elements');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_elements', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_elements'] = $data_elements;
 

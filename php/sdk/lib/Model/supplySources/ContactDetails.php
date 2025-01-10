@@ -78,7 +78,7 @@ class ContactDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'primary' => false
+        'primary' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class ContactDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrimary(?\OpenAPI\Client\Model\supplySources\ContactDetailsPrimary $primary): self
     {
         if (is_null($primary)) {
-            throw new \InvalidArgumentException('non-nullable primary cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary'] = $primary;
 

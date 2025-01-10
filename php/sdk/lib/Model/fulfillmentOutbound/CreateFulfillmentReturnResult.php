@@ -82,9 +82,9 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'return_items' => false,
-        'invalid_return_items' => false,
-        'return_authorizations' => false
+        'return_items' => true,
+        'invalid_return_items' => true,
+        'return_authorizations' => true
     ];
 
     /**
@@ -308,7 +308,7 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets return_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReturnItems(): ?array
     {
@@ -325,7 +325,14 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     public function setReturnItems(?array $return_items): self
     {
         if (is_null($return_items)) {
-            throw new \InvalidArgumentException('non-nullable return_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_items'] = $return_items;
 
@@ -335,7 +342,7 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets invalid_return_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvalidReturnItems(): ?array
     {
@@ -352,7 +359,14 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     public function setInvalidReturnItems(?array $invalid_return_items): self
     {
         if (is_null($invalid_return_items)) {
-            throw new \InvalidArgumentException('non-nullable invalid_return_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invalid_return_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invalid_return_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invalid_return_items'] = $invalid_return_items;
 
@@ -362,7 +376,7 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets return_authorizations
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getReturnAuthorizations(): ?array
     {
@@ -379,7 +393,14 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     public function setReturnAuthorizations(?array $return_authorizations): self
     {
         if (is_null($return_authorizations)) {
-            throw new \InvalidArgumentException('non-nullable return_authorizations cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_authorizations');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_authorizations', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_authorizations'] = $return_authorizations;
 

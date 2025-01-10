@@ -78,7 +78,7 @@ class BuyerCustomizedInfoDetail implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customized_url' => false
+        'customized_url' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class BuyerCustomizedInfoDetail implements ModelInterface, ArrayAccess, \JsonSer
     public function setCustomizedUrl(?string $customized_url): self
     {
         if (is_null($customized_url)) {
-            throw new \InvalidArgumentException('non-nullable customized_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customized_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customized_url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customized_url'] = $customized_url;
 

@@ -84,7 +84,7 @@ class Warning implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'code' => false,
         'message' => false,
-        'details' => false
+        'details' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class Warning implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDetails(?string $details): self
     {
         if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['details'] = $details;
 

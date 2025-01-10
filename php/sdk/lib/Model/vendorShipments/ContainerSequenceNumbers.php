@@ -78,7 +78,7 @@ class ContainerSequenceNumbers implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'container_sequence_number' => false
+        'container_sequence_number' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class ContainerSequenceNumbers implements ModelInterface, ArrayAccess, \JsonSeri
     public function setContainerSequenceNumber(?string $container_sequence_number): self
     {
         if (is_null($container_sequence_number)) {
-            throw new \InvalidArgumentException('non-nullable container_sequence_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'container_sequence_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('container_sequence_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['container_sequence_number'] = $container_sequence_number;
 

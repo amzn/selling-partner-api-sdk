@@ -78,7 +78,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false
+        'next_token' => true
     ];
 
     /**
@@ -319,12 +319,19 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($next_token) > 1024)) {
+        if (!is_null($next_token) && (mb_strlen($next_token) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $next_token when calling Pagination., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($next_token) < 1)) {
+        if (!is_null($next_token) && (mb_strlen($next_token) < 1)) {
             throw new \InvalidArgumentException('invalid length for $next_token when calling Pagination., must be bigger than or equal to 1.');
         }
 

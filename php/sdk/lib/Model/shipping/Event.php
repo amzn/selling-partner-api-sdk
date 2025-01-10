@@ -84,7 +84,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'event_code' => false,
-        'location' => false,
+        'location' => true,
         'event_time' => false
     ];
 
@@ -359,7 +359,14 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLocation(?\OpenAPI\Client\Model\shipping\Location $location): self
     {
         if (is_null($location)) {
-            throw new \InvalidArgumentException('non-nullable location cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('location', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['location'] = $location;
 

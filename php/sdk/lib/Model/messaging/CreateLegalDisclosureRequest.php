@@ -78,7 +78,7 @@ class CreateLegalDisclosureRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attachments' => false
+        'attachments' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class CreateLegalDisclosureRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets attachments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttachments(): ?array
     {
@@ -311,7 +311,14 @@ class CreateLegalDisclosureRequest implements ModelInterface, ArrayAccess, \Json
     public function setAttachments(?array $attachments): self
     {
         if (is_null($attachments)) {
-            throw new \InvalidArgumentException('non-nullable attachments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attachments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attachments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attachments'] = $attachments;
 

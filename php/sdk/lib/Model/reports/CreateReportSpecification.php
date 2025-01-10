@@ -86,10 +86,10 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'report_options' => false,
+        'report_options' => true,
         'report_type' => false,
-        'data_start_time' => false,
-        'data_end_time' => false,
+        'data_start_time' => true,
+        'data_end_time' => true,
         'marketplace_ids' => false
     ];
 
@@ -353,7 +353,14 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
     public function setReportOptions(?array $report_options): self
     {
         if (is_null($report_options)) {
-            throw new \InvalidArgumentException('non-nullable report_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'report_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['report_options'] = $report_options;
 
@@ -407,7 +414,14 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
     public function setDataStartTime(?\DateTime $data_start_time): self
     {
         if (is_null($data_start_time)) {
-            throw new \InvalidArgumentException('non-nullable data_start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_start_time'] = $data_start_time;
 
@@ -434,7 +448,14 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
     public function setDataEndTime(?\DateTime $data_end_time): self
     {
         if (is_null($data_end_time)) {
-            throw new \InvalidArgumentException('non-nullable data_end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data_end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data_end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data_end_time'] = $data_end_time;
 
@@ -444,7 +465,7 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceIds(): array
     {

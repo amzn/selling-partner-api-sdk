@@ -84,7 +84,7 @@ class AdditionalDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'type' => false,
         'detail' => false,
-        'language_code' => false
+        'language_code' => true
     ];
 
     /**
@@ -419,7 +419,14 @@ class AdditionalDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setLanguageCode(?string $language_code): self
     {
         if (is_null($language_code)) {
-            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'language_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('language_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['language_code'] = $language_code;
 

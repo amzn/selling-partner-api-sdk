@@ -84,10 +84,10 @@ class TransportDetailInput implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'partnered_small_parcel_data' => false,
-        'non_partnered_small_parcel_data' => false,
-        'partnered_ltl_data' => false,
-        'non_partnered_ltl_data' => false
+        'partnered_small_parcel_data' => true,
+        'non_partnered_small_parcel_data' => true,
+        'partnered_ltl_data' => true,
+        'non_partnered_ltl_data' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class TransportDetailInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPartneredSmallParcelData(?\OpenAPI\Client\Model\fulfillmentInboundV0\PartneredSmallParcelDataInput $partnered_small_parcel_data): self
     {
         if (is_null($partnered_small_parcel_data)) {
-            throw new \InvalidArgumentException('non-nullable partnered_small_parcel_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'partnered_small_parcel_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('partnered_small_parcel_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['partnered_small_parcel_data'] = $partnered_small_parcel_data;
 
@@ -359,7 +366,14 @@ class TransportDetailInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNonPartneredSmallParcelData(?\OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredSmallParcelDataInput $non_partnered_small_parcel_data): self
     {
         if (is_null($non_partnered_small_parcel_data)) {
-            throw new \InvalidArgumentException('non-nullable non_partnered_small_parcel_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'non_partnered_small_parcel_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('non_partnered_small_parcel_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['non_partnered_small_parcel_data'] = $non_partnered_small_parcel_data;
 
@@ -386,7 +400,14 @@ class TransportDetailInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPartneredLtlData(?\OpenAPI\Client\Model\fulfillmentInboundV0\PartneredLtlDataInput $partnered_ltl_data): self
     {
         if (is_null($partnered_ltl_data)) {
-            throw new \InvalidArgumentException('non-nullable partnered_ltl_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'partnered_ltl_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('partnered_ltl_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['partnered_ltl_data'] = $partnered_ltl_data;
 
@@ -413,7 +434,14 @@ class TransportDetailInput implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNonPartneredLtlData(?\OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredLtlDataInput $non_partnered_ltl_data): self
     {
         if (is_null($non_partnered_ltl_data)) {
-            throw new \InvalidArgumentException('non-nullable non_partnered_ltl_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'non_partnered_ltl_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('non_partnered_ltl_data', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['non_partnered_ltl_data'] = $non_partnered_ltl_data;
 

@@ -82,9 +82,9 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'description' => false,
-        'tail' => false,
-        'amount' => false
+        'description' => true,
+        'tail' => true,
+        'amount' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription(?string $description): self
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -352,7 +359,14 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTail(?string $tail): self
     {
         if (is_null($tail)) {
-            throw new \InvalidArgumentException('non-nullable tail cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tail', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tail'] = $tail;
 
@@ -379,7 +393,14 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmount(?\OpenAPI\Client\Model\financesV0\Currency $amount): self
     {
         if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amount'] = $amount;
 

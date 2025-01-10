@@ -93,13 +93,13 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'brand_code' => false,
-        'manufacturer_code' => false,
-        'manufacturer_code_parent' => false,
-        'product_category' => false,
-        'product_group' => false,
-        'product_subcategory' => false,
-        'replenishment_category' => false
+        'brand_code' => true,
+        'manufacturer_code' => true,
+        'manufacturer_code_parent' => true,
+        'product_category' => true,
+        'product_group' => true,
+        'product_subcategory' => true,
+        'replenishment_category' => true
     ];
 
     /**
@@ -430,7 +430,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setBrandCode(?string $brand_code): self
     {
         if (is_null($brand_code)) {
-            throw new \InvalidArgumentException('non-nullable brand_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_code'] = $brand_code;
 
@@ -457,7 +464,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setManufacturerCode(?string $manufacturer_code): self
     {
         if (is_null($manufacturer_code)) {
-            throw new \InvalidArgumentException('non-nullable manufacturer_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'manufacturer_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('manufacturer_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['manufacturer_code'] = $manufacturer_code;
 
@@ -484,7 +498,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setManufacturerCodeParent(?string $manufacturer_code_parent): self
     {
         if (is_null($manufacturer_code_parent)) {
-            throw new \InvalidArgumentException('non-nullable manufacturer_code_parent cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'manufacturer_code_parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('manufacturer_code_parent', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['manufacturer_code_parent'] = $manufacturer_code_parent;
 
@@ -511,7 +532,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setProductCategory(?\OpenAPI\Client\Model\catalogItems\ItemVendorDetailsCategory $product_category): self
     {
         if (is_null($product_category)) {
-            throw new \InvalidArgumentException('non-nullable product_category cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_category', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_category'] = $product_category;
 
@@ -538,7 +566,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setProductGroup(?string $product_group): self
     {
         if (is_null($product_group)) {
-            throw new \InvalidArgumentException('non-nullable product_group cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_group');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_group', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_group'] = $product_group;
 
@@ -565,7 +600,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setProductSubcategory(?\OpenAPI\Client\Model\catalogItems\ItemVendorDetailsCategory $product_subcategory): self
     {
         if (is_null($product_subcategory)) {
-            throw new \InvalidArgumentException('non-nullable product_subcategory cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_subcategory');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_subcategory', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_subcategory'] = $product_subcategory;
 
@@ -592,10 +634,17 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     public function setReplenishmentCategory(?string $replenishment_category): self
     {
         if (is_null($replenishment_category)) {
-            throw new \InvalidArgumentException('non-nullable replenishment_category cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'replenishment_category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('replenishment_category', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getReplenishmentCategoryAllowableValues();
-        if (!in_array($replenishment_category, $allowedValues, true)) {
+        if (!is_null($replenishment_category) && !in_array($replenishment_category, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'replenishment_category', must be one of '%s'",

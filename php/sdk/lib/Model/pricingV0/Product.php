@@ -89,11 +89,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'identifiers' => false,
-        'attribute_sets' => false,
-        'relationships' => false,
-        'competitive_pricing' => false,
-        'sales_rankings' => false,
-        'offers' => false
+        'attribute_sets' => true,
+        'relationships' => true,
+        'competitive_pricing' => true,
+        'sales_rankings' => true,
+        'offers' => true
     ];
 
     /**
@@ -359,7 +359,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attribute_sets
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttributeSets(): ?array
     {
@@ -376,7 +376,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAttributeSets(?array $attribute_sets): self
     {
         if (is_null($attribute_sets)) {
-            throw new \InvalidArgumentException('non-nullable attribute_sets cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attribute_sets');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attribute_sets', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attribute_sets'] = $attribute_sets;
 
@@ -386,7 +393,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets relationships
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRelationships(): ?array
     {
@@ -403,7 +410,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRelationships(?array $relationships): self
     {
         if (is_null($relationships)) {
-            throw new \InvalidArgumentException('non-nullable relationships cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'relationships');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('relationships', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['relationships'] = $relationships;
 
@@ -430,7 +444,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCompetitivePricing(?\OpenAPI\Client\Model\pricingV0\CompetitivePricingType $competitive_pricing): self
     {
         if (is_null($competitive_pricing)) {
-            throw new \InvalidArgumentException('non-nullable competitive_pricing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'competitive_pricing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('competitive_pricing', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['competitive_pricing'] = $competitive_pricing;
 
@@ -440,7 +461,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sales_rankings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSalesRankings(): ?array
     {
@@ -457,7 +478,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSalesRankings(?array $sales_rankings): self
     {
         if (is_null($sales_rankings)) {
-            throw new \InvalidArgumentException('non-nullable sales_rankings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sales_rankings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sales_rankings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sales_rankings'] = $sales_rankings;
 
@@ -467,7 +495,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOffers(): ?array
     {
@@ -484,7 +512,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOffers(?array $offers): self
     {
         if (is_null($offers)) {
-            throw new \InvalidArgumentException('non-nullable offers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offers'] = $offers;
 

@@ -80,8 +80,8 @@ class FreightInformation implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'declared_value' => false,
-        'freight_class' => false
+        'declared_value' => true,
+        'freight_class' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class FreightInformation implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setDeclaredValue(?\OpenAPI\Client\Model\fulfillmentInbound\Currency $declared_value): self
     {
         if (is_null($declared_value)) {
-            throw new \InvalidArgumentException('non-nullable declared_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'declared_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('declared_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['declared_value'] = $declared_value;
 
@@ -353,12 +360,19 @@ class FreightInformation implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFreightClass(?string $freight_class): self
     {
         if (is_null($freight_class)) {
-            throw new \InvalidArgumentException('non-nullable freight_class cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'freight_class');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('freight_class', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($freight_class) > 1024)) {
+        if (!is_null($freight_class) && (mb_strlen($freight_class) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $freight_class when calling FreightInformation., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($freight_class) < 1)) {
+        if (!is_null($freight_class) && (mb_strlen($freight_class) < 1)) {
             throw new \InvalidArgumentException('invalid length for $freight_class when calling FreightInformation., must be bigger than or equal to 1.');
         }
 

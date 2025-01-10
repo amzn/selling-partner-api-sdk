@@ -85,9 +85,9 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'shipping_service_list' => false,
-        'rejected_shipping_service_list' => false,
-        'temporarily_unavailable_carrier_list' => false,
-        'terms_and_conditions_not_accepted_carrier_list' => false
+        'rejected_shipping_service_list' => true,
+        'temporarily_unavailable_carrier_list' => true,
+        'terms_and_conditions_not_accepted_carrier_list' => true
     ];
 
     /**
@@ -318,7 +318,7 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     /**
      * Gets shipping_service_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getShippingServiceList(): array
     {
@@ -345,7 +345,7 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     /**
      * Gets rejected_shipping_service_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRejectedShippingServiceList(): ?array
     {
@@ -362,7 +362,14 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     public function setRejectedShippingServiceList(?array $rejected_shipping_service_list): self
     {
         if (is_null($rejected_shipping_service_list)) {
-            throw new \InvalidArgumentException('non-nullable rejected_shipping_service_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rejected_shipping_service_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rejected_shipping_service_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rejected_shipping_service_list'] = $rejected_shipping_service_list;
 
@@ -372,7 +379,7 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     /**
      * Gets temporarily_unavailable_carrier_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTemporarilyUnavailableCarrierList(): ?array
     {
@@ -389,7 +396,14 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     public function setTemporarilyUnavailableCarrierList(?array $temporarily_unavailable_carrier_list): self
     {
         if (is_null($temporarily_unavailable_carrier_list)) {
-            throw new \InvalidArgumentException('non-nullable temporarily_unavailable_carrier_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'temporarily_unavailable_carrier_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('temporarily_unavailable_carrier_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['temporarily_unavailable_carrier_list'] = $temporarily_unavailable_carrier_list;
 
@@ -399,7 +413,7 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     /**
      * Gets terms_and_conditions_not_accepted_carrier_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTermsAndConditionsNotAcceptedCarrierList(): ?array
     {
@@ -416,7 +430,14 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     public function setTermsAndConditionsNotAcceptedCarrierList(?array $terms_and_conditions_not_accepted_carrier_list): self
     {
         if (is_null($terms_and_conditions_not_accepted_carrier_list)) {
-            throw new \InvalidArgumentException('non-nullable terms_and_conditions_not_accepted_carrier_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'terms_and_conditions_not_accepted_carrier_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('terms_and_conditions_not_accepted_carrier_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['terms_and_conditions_not_accepted_carrier_list'] = $terms_and_conditions_not_accepted_carrier_list;
 

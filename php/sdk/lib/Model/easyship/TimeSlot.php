@@ -85,9 +85,9 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'slot_id' => false,
-        'start_time' => false,
-        'end_time' => false,
-        'handover_method' => false
+        'start_time' => true,
+        'end_time' => true,
+        'handover_method' => true
     ];
 
     /**
@@ -377,7 +377,14 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartTime(?\DateTime $start_time): self
     {
         if (is_null($start_time)) {
-            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_time'] = $start_time;
 
@@ -404,7 +411,14 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEndTime(?\DateTime $end_time): self
     {
         if (is_null($end_time)) {
-            throw new \InvalidArgumentException('non-nullable end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_time'] = $end_time;
 
@@ -431,7 +445,14 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHandoverMethod(?string $handover_method): self
     {
         if (is_null($handover_method)) {
-            throw new \InvalidArgumentException('non-nullable handover_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'handover_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('handover_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['handover_method'] = $handover_method;
 

@@ -90,13 +90,13 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ship_mode' => false,
-        'transportation_mode' => false,
-        'shipped_date' => false,
-        'estimated_delivery_date' => false,
-        'shipment_delivery_date' => false,
-        'carrier_details' => false,
-        'bill_of_lading_number' => false
+        'ship_mode' => true,
+        'transportation_mode' => true,
+        'shipped_date' => true,
+        'estimated_delivery_date' => true,
+        'shipment_delivery_date' => true,
+        'carrier_details' => true,
+        'bill_of_lading_number' => true
     ];
 
     /**
@@ -405,10 +405,17 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipMode(?string $ship_mode): self
     {
         if (is_null($ship_mode)) {
-            throw new \InvalidArgumentException('non-nullable ship_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_mode', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getShipModeAllowableValues();
-        if (!in_array($ship_mode, $allowedValues, true)) {
+        if (!is_null($ship_mode) && !in_array($ship_mode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'ship_mode', must be one of '%s'",
@@ -442,10 +449,17 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTransportationMode(?string $transportation_mode): self
     {
         if (is_null($transportation_mode)) {
-            throw new \InvalidArgumentException('non-nullable transportation_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transportation_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transportation_mode', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getTransportationModeAllowableValues();
-        if (!in_array($transportation_mode, $allowedValues, true)) {
+        if (!is_null($transportation_mode) && !in_array($transportation_mode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'transportation_mode', must be one of '%s'",
@@ -479,7 +493,14 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShippedDate(?\DateTime $shipped_date): self
     {
         if (is_null($shipped_date)) {
-            throw new \InvalidArgumentException('non-nullable shipped_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipped_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipped_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipped_date'] = $shipped_date;
 
@@ -506,7 +527,14 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEstimatedDeliveryDate(?\DateTime $estimated_delivery_date): self
     {
         if (is_null($estimated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable estimated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_delivery_date'] = $estimated_delivery_date;
 
@@ -533,7 +561,14 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setShipmentDeliveryDate(?\DateTime $shipment_delivery_date): self
     {
         if (is_null($shipment_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable shipment_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipment_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipment_delivery_date'] = $shipment_delivery_date;
 
@@ -560,7 +595,14 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCarrierDetails(?\OpenAPI\Client\Model\vendorShipments\CarrierDetails $carrier_details): self
     {
         if (is_null($carrier_details)) {
-            throw new \InvalidArgumentException('non-nullable carrier_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_details'] = $carrier_details;
 
@@ -587,7 +629,14 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBillOfLadingNumber(?string $bill_of_lading_number): self
     {
         if (is_null($bill_of_lading_number)) {
-            throw new \InvalidArgumentException('non-nullable bill_of_lading_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bill_of_lading_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_of_lading_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bill_of_lading_number'] = $bill_of_lading_number;
 

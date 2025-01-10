@@ -93,11 +93,11 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'offer_type' => false,
+        'offer_type' => true,
         'buying_price' => false,
         'regular_price' => false,
-        'business_price' => false,
-        'quantity_discount_prices' => false,
+        'business_price' => true,
+        'quantity_discount_prices' => true,
         'fulfillment_channel' => false,
         'item_condition' => false,
         'item_sub_condition' => false,
@@ -384,7 +384,14 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOfferType(?string $offer_type): self
     {
         if (is_null($offer_type)) {
-            throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_type'] = $offer_type;
 
@@ -465,7 +472,14 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBusinessPrice(?\OpenAPI\Client\Model\pricingV0\MoneyType $business_price): self
     {
         if (is_null($business_price)) {
-            throw new \InvalidArgumentException('non-nullable business_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'business_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('business_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['business_price'] = $business_price;
 
@@ -475,7 +489,7 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets quantity_discount_prices
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getQuantityDiscountPrices(): ?array
     {
@@ -492,7 +506,14 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityDiscountPrices(?array $quantity_discount_prices): self
     {
         if (is_null($quantity_discount_prices)) {
-            throw new \InvalidArgumentException('non-nullable quantity_discount_prices cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_discount_prices');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_discount_prices', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_discount_prices'] = $quantity_discount_prices;
 

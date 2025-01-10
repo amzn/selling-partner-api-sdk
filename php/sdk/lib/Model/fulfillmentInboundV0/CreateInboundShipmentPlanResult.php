@@ -78,7 +78,7 @@ class CreateInboundShipmentPlanResult implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inbound_shipment_plans' => false
+        'inbound_shipment_plans' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class CreateInboundShipmentPlanResult implements ModelInterface, ArrayAccess, \J
     /**
      * Gets inbound_shipment_plans
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInboundShipmentPlans(): ?array
     {
@@ -311,7 +311,14 @@ class CreateInboundShipmentPlanResult implements ModelInterface, ArrayAccess, \J
     public function setInboundShipmentPlans(?array $inbound_shipment_plans): self
     {
         if (is_null($inbound_shipment_plans)) {
-            throw new \InvalidArgumentException('non-nullable inbound_shipment_plans cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inbound_shipment_plans');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inbound_shipment_plans', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inbound_shipment_plans'] = $inbound_shipment_plans;
 

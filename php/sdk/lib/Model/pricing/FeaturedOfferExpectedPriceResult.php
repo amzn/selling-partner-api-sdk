@@ -84,10 +84,10 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'featured_offer_expected_price' => false,
+        'featured_offer_expected_price' => true,
         'result_status' => false,
-        'competing_featured_offer' => false,
-        'current_featured_offer' => false
+        'competing_featured_offer' => true,
+        'current_featured_offer' => true
     ];
 
     /**
@@ -335,7 +335,14 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     public function setFeaturedOfferExpectedPrice(?\OpenAPI\Client\Model\pricing\FeaturedOfferExpectedPrice $featured_offer_expected_price): self
     {
         if (is_null($featured_offer_expected_price)) {
-            throw new \InvalidArgumentException('non-nullable featured_offer_expected_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'featured_offer_expected_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('featured_offer_expected_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['featured_offer_expected_price'] = $featured_offer_expected_price;
 
@@ -389,7 +396,14 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     public function setCompetingFeaturedOffer(?\OpenAPI\Client\Model\pricing\FeaturedOffer $competing_featured_offer): self
     {
         if (is_null($competing_featured_offer)) {
-            throw new \InvalidArgumentException('non-nullable competing_featured_offer cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'competing_featured_offer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('competing_featured_offer', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['competing_featured_offer'] = $competing_featured_offer;
 
@@ -416,7 +430,14 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     public function setCurrentFeaturedOffer(?\OpenAPI\Client\Model\pricing\FeaturedOffer $current_featured_offer): self
     {
         if (is_null($current_featured_offer)) {
-            throw new \InvalidArgumentException('non-nullable current_featured_offer cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'current_featured_offer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('current_featured_offer', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['current_featured_offer'] = $current_featured_offer;
 

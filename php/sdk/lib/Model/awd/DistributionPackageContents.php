@@ -80,8 +80,8 @@ class DistributionPackageContents implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'packages' => false,
-        'products' => false
+        'packages' => true,
+        'products' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class DistributionPackageContents implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets packages
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackages(): ?array
     {
@@ -318,7 +318,14 @@ class DistributionPackageContents implements ModelInterface, ArrayAccess, \JsonS
     public function setPackages(?array $packages): self
     {
         if (is_null($packages)) {
-            throw new \InvalidArgumentException('non-nullable packages cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packages', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['packages'] = $packages;
 
@@ -328,7 +335,7 @@ class DistributionPackageContents implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets products
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getProducts(): ?array
     {
@@ -345,7 +352,14 @@ class DistributionPackageContents implements ModelInterface, ArrayAccess, \JsonS
     public function setProducts(?array $products): self
     {
         if (is_null($products)) {
-            throw new \InvalidArgumentException('non-nullable products cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'products');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('products', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['products'] = $products;
 

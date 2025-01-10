@@ -80,8 +80,8 @@ class StandardTextBlock implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'body' => false
+        'headline' => true,
+        'body' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class StandardTextBlock implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -345,7 +352,14 @@ class StandardTextBlock implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setBody(?\OpenAPI\Client\Model\aplusContent\ParagraphComponent $body): self
     {
         if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'body');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('body', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['body'] = $body;
 

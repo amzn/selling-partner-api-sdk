@@ -92,8 +92,8 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'asin' => false,
-        'sku' => false,
+        'asin' => true,
+        'sku' => true,
         'item_condition' => false,
         'status' => false,
         'identifier' => false,
@@ -408,7 +408,14 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -435,7 +442,14 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSku(?string $sku): self
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku'] = $sku;
 
@@ -553,7 +567,7 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offers
      *
-     * @return arrayA
+     * @return array
      */
     public function getOffers(): array
     {

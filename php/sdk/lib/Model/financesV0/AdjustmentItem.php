@@ -92,14 +92,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'quantity' => false,
-        'per_unit_amount' => false,
-        'total_amount' => false,
-        'seller_sku' => false,
-        'fn_sku' => false,
-        'product_description' => false,
-        'asin' => false,
-        'transaction_number' => false
+        'quantity' => true,
+        'per_unit_amount' => true,
+        'total_amount' => true,
+        'seller_sku' => true,
+        'fn_sku' => true,
+        'product_description' => true,
+        'asin' => true,
+        'transaction_number' => true
     ];
 
     /**
@@ -360,7 +360,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity(?string $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity'] = $quantity;
 
@@ -387,7 +394,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPerUnitAmount(?\OpenAPI\Client\Model\financesV0\Currency $per_unit_amount): self
     {
         if (is_null($per_unit_amount)) {
-            throw new \InvalidArgumentException('non-nullable per_unit_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'per_unit_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('per_unit_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['per_unit_amount'] = $per_unit_amount;
 
@@ -414,7 +428,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalAmount(?\OpenAPI\Client\Model\financesV0\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
-            throw new \InvalidArgumentException('non-nullable total_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_amount'] = $total_amount;
 
@@ -441,7 +462,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -468,7 +496,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFnSku(?string $fn_sku): self
     {
         if (is_null($fn_sku)) {
-            throw new \InvalidArgumentException('non-nullable fn_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fn_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fn_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fn_sku'] = $fn_sku;
 
@@ -495,7 +530,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductDescription(?string $product_description): self
     {
         if (is_null($product_description)) {
-            throw new \InvalidArgumentException('non-nullable product_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_description'] = $product_description;
 
@@ -522,7 +564,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -549,7 +598,14 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionNumber(?string $transaction_number): self
     {
         if (is_null($transaction_number)) {
-            throw new \InvalidArgumentException('non-nullable transaction_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_number'] = $transaction_number;
 

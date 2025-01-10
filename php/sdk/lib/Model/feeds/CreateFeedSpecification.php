@@ -87,7 +87,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
         'feed_type' => false,
         'marketplace_ids' => false,
         'input_feed_document_id' => false,
-        'feed_options' => false
+        'feed_options' => true
     ];
 
     /**
@@ -359,7 +359,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceIds(): array
     {
@@ -437,7 +437,14 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     public function setFeedOptions(?array $feed_options): self
     {
         if (is_null($feed_options)) {
-            throw new \InvalidArgumentException('non-nullable feed_options cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feed_options');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feed_options', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feed_options'] = $feed_options;
 

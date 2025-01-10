@@ -78,7 +78,7 @@ class GetInvoicesAttributesResponse implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'invoices_attributes' => false
+        'invoices_attributes' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetInvoicesAttributesResponse implements ModelInterface, ArrayAccess, \Jso
     public function setInvoicesAttributes(?\OpenAPI\Client\Model\invoices\InvoicesAttributes $invoices_attributes): self
     {
         if (is_null($invoices_attributes)) {
-            throw new \InvalidArgumentException('non-nullable invoices_attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoices_attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoices_attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoices_attributes'] = $invoices_attributes;
 

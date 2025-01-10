@@ -81,7 +81,7 @@ class StandardImageTextOverlayModule implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'overlay_color_type' => false,
-        'block' => false
+        'block' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class StandardImageTextOverlayModule implements ModelInterface, ArrayAccess, \Js
     public function setBlock(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block): self
     {
         if (is_null($block)) {
-            throw new \InvalidArgumentException('non-nullable block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block'] = $block;
 

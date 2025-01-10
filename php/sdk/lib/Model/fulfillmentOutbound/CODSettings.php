@@ -87,10 +87,10 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'is_cod_required' => false,
-        'cod_charge' => false,
-        'cod_charge_tax' => false,
-        'shipping_charge' => false,
-        'shipping_charge_tax' => false
+        'cod_charge' => true,
+        'cod_charge_tax' => true,
+        'shipping_charge' => true,
+        'shipping_charge_tax' => true
     ];
 
     /**
@@ -369,7 +369,14 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodCharge(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $cod_charge): self
     {
         if (is_null($cod_charge)) {
-            throw new \InvalidArgumentException('non-nullable cod_charge cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_charge');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_charge', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_charge'] = $cod_charge;
 
@@ -396,7 +403,14 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodChargeTax(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $cod_charge_tax): self
     {
         if (is_null($cod_charge_tax)) {
-            throw new \InvalidArgumentException('non-nullable cod_charge_tax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_charge_tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_charge_tax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_charge_tax'] = $cod_charge_tax;
 
@@ -423,7 +437,14 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShippingCharge(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $shipping_charge): self
     {
         if (is_null($shipping_charge)) {
-            throw new \InvalidArgumentException('non-nullable shipping_charge cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_charge');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_charge', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_charge'] = $shipping_charge;
 
@@ -450,7 +471,14 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShippingChargeTax(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $shipping_charge_tax): self
     {
         if (is_null($shipping_charge_tax)) {
-            throw new \InvalidArgumentException('non-nullable shipping_charge_tax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_charge_tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_charge_tax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_charge_tax'] = $shipping_charge_tax;
 

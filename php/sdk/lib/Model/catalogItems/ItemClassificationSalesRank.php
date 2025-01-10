@@ -86,7 +86,7 @@ class ItemClassificationSalesRank implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'classification_id' => false,
         'title' => false,
-        'link' => false,
+        'link' => true,
         'rank' => false
     ];
 
@@ -395,7 +395,14 @@ class ItemClassificationSalesRank implements ModelInterface, ArrayAccess, \JsonS
     public function setLink(?string $link): self
     {
         if (is_null($link)) {
-            throw new \InvalidArgumentException('non-nullable link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('link', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['link'] = $link;
 

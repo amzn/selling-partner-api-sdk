@@ -79,7 +79,7 @@ class GetCollectionFormResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'collections_form_document' => false
+        'collections_form_document' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class GetCollectionFormResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setCollectionsFormDocument(?\OpenAPI\Client\Model\shipping\CollectionsFormDocument $collections_form_document): self
     {
         if (is_null($collections_form_document)) {
-            throw new \InvalidArgumentException('non-nullable collections_form_document cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'collections_form_document');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('collections_form_document', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['collections_form_document'] = $collections_form_document;
 

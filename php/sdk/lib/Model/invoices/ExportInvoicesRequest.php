@@ -96,16 +96,16 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date_end' => false,
-        'date_start' => false,
-        'external_invoice_id' => false,
-        'file_format' => false,
-        'invoice_type' => false,
+        'date_end' => true,
+        'date_start' => true,
+        'external_invoice_id' => true,
+        'file_format' => true,
+        'invoice_type' => true,
         'marketplace_id' => false,
-        'series' => false,
-        'statuses' => false,
-        'transaction_identifier' => false,
-        'transaction_type' => false
+        'series' => true,
+        'statuses' => true,
+        'transaction_identifier' => true,
+        'transaction_type' => true
     ];
 
     /**
@@ -381,7 +381,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDateEnd(?\DateTime $date_end): self
     {
         if (is_null($date_end)) {
-            throw new \InvalidArgumentException('non-nullable date_end cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date_end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_end', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date_end'] = $date_end;
 
@@ -408,7 +415,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDateStart(?\DateTime $date_start): self
     {
         if (is_null($date_start)) {
-            throw new \InvalidArgumentException('non-nullable date_start cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date_start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_start', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date_start'] = $date_start;
 
@@ -435,7 +449,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setExternalInvoiceId(?string $external_invoice_id): self
     {
         if (is_null($external_invoice_id)) {
-            throw new \InvalidArgumentException('non-nullable external_invoice_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'external_invoice_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_invoice_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['external_invoice_id'] = $external_invoice_id;
 
@@ -462,7 +483,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFileFormat(?string $file_format): self
     {
         if (is_null($file_format)) {
-            throw new \InvalidArgumentException('non-nullable file_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'file_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_format', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['file_format'] = $file_format;
 
@@ -489,7 +517,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setInvoiceType(?string $invoice_type): self
     {
         if (is_null($invoice_type)) {
-            throw new \InvalidArgumentException('non-nullable invoice_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_type'] = $invoice_type;
 
@@ -543,7 +578,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSeries(?string $series): self
     {
         if (is_null($series)) {
-            throw new \InvalidArgumentException('non-nullable series cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'series');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('series', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['series'] = $series;
 
@@ -553,7 +595,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets statuses
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getStatuses(): ?array
     {
@@ -570,11 +612,18 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setStatuses(?array $statuses): self
     {
         if (is_null($statuses)) {
-            throw new \InvalidArgumentException('non-nullable statuses cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'statuses');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('statuses', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
-        if ((count($statuses) < 1)) {
+        if (!is_null($statuses) && (count($statuses) < 1)) {
             throw new \InvalidArgumentException('invalid length for $statuses when calling ExportInvoicesRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['statuses'] = $statuses;
@@ -602,7 +651,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTransactionIdentifier(?\OpenAPI\Client\Model\invoices\TransactionIdentifier $transaction_identifier): self
     {
         if (is_null($transaction_identifier)) {
-            throw new \InvalidArgumentException('non-nullable transaction_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_identifier'] = $transaction_identifier;
 
@@ -629,7 +685,14 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 

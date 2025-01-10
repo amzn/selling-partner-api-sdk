@@ -55,6 +55,8 @@ class NotificationsApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('NotificationsApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class NotificationsApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateDestination200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateDestination200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -308,7 +309,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateSubscription200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateSubscription200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -467,7 +468,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testDeleteDestination200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testDeleteDestination200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -614,7 +615,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testDeleteSubscriptionById200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testDeleteSubscriptionById200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -761,7 +762,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDestination200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDestination200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -928,7 +929,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDestinations200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDestinations200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1095,7 +1096,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetSubscription200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetSubscription200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1255,7 +1256,7 @@ class NotificationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetSubscriptionById200', 'NotificationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetSubscriptionById200', 'NotificationsApi')) {
                 $this->assertTrue(true);
                 return;
             }

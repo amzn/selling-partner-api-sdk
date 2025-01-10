@@ -87,7 +87,7 @@ class ShippingLabelRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'purchase_order_number' => false,
         'selling_party' => false,
         'ship_from_party' => false,
-        'containers' => false
+        'containers' => true
     ];
 
     /**
@@ -414,7 +414,7 @@ class ShippingLabelRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets containers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getContainers(): ?array
     {
@@ -431,7 +431,14 @@ class ShippingLabelRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setContainers(?array $containers): self
     {
         if (is_null($containers)) {
-            throw new \InvalidArgumentException('non-nullable containers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'containers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('containers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['containers'] = $containers;
 

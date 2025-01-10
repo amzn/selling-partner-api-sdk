@@ -96,16 +96,16 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date' => false,
-        'error_code' => false,
-        'external_invoice_id' => false,
-        'gov_response' => false,
-        'id' => false,
-        'invoice_type' => false,
-        'series' => false,
-        'status' => false,
-        'transaction_ids' => false,
-        'transaction_type' => false
+        'date' => true,
+        'error_code' => true,
+        'external_invoice_id' => true,
+        'gov_response' => true,
+        'id' => true,
+        'invoice_type' => true,
+        'series' => true,
+        'status' => true,
+        'transaction_ids' => true,
+        'transaction_type' => true
     ];
 
     /**
@@ -374,7 +374,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDate(?\DateTime $date): self
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 
@@ -401,7 +408,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorCode(?string $error_code): self
     {
         if (is_null($error_code)) {
-            throw new \InvalidArgumentException('non-nullable error_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_code'] = $error_code;
 
@@ -428,7 +442,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExternalInvoiceId(?string $external_invoice_id): self
     {
         if (is_null($external_invoice_id)) {
-            throw new \InvalidArgumentException('non-nullable external_invoice_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'external_invoice_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_invoice_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['external_invoice_id'] = $external_invoice_id;
 
@@ -455,7 +476,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGovResponse(?string $gov_response): self
     {
         if (is_null($gov_response)) {
-            throw new \InvalidArgumentException('non-nullable gov_response cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gov_response');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gov_response', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gov_response'] = $gov_response;
 
@@ -482,7 +510,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId(?string $id): self
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -509,7 +544,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInvoiceType(?string $invoice_type): self
     {
         if (is_null($invoice_type)) {
-            throw new \InvalidArgumentException('non-nullable invoice_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invoice_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoice_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invoice_type'] = $invoice_type;
 
@@ -536,7 +578,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSeries(?string $series): self
     {
         if (is_null($series)) {
-            throw new \InvalidArgumentException('non-nullable series cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'series');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('series', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['series'] = $series;
 
@@ -563,7 +612,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -573,7 +629,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transaction_ids
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransactionIds(): ?array
     {
@@ -590,7 +646,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionIds(?array $transaction_ids): self
     {
         if (is_null($transaction_ids)) {
-            throw new \InvalidArgumentException('non-nullable transaction_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_ids', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_ids'] = $transaction_ids;
 
@@ -617,7 +680,14 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 

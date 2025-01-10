@@ -79,7 +79,7 @@ class GetAdditionalInputsResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'payload' => false
+        'payload' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class GetAdditionalInputsResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setPayload(?array $payload): self
     {
         if (is_null($payload)) {
-            throw new \InvalidArgumentException('non-nullable payload cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payload');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payload', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payload'] = $payload;
 

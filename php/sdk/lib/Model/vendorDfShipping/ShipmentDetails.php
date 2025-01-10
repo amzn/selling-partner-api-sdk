@@ -88,9 +88,9 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'shipped_date' => false,
         'shipment_status' => false,
-        'is_priority_shipment' => false,
-        'vendor_order_number' => false,
-        'estimated_delivery_date' => false
+        'is_priority_shipment' => true,
+        'vendor_order_number' => true,
+        'estimated_delivery_date' => true
     ];
 
     /**
@@ -433,7 +433,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsPriorityShipment(?bool $is_priority_shipment): self
     {
         if (is_null($is_priority_shipment)) {
-            throw new \InvalidArgumentException('non-nullable is_priority_shipment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_priority_shipment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_priority_shipment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_priority_shipment'] = $is_priority_shipment;
 
@@ -460,7 +467,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorOrderNumber(?string $vendor_order_number): self
     {
         if (is_null($vendor_order_number)) {
-            throw new \InvalidArgumentException('non-nullable vendor_order_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_order_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_order_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_order_number'] = $vendor_order_number;
 
@@ -487,7 +501,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEstimatedDeliveryDate(?\DateTime $estimated_delivery_date): self
     {
         if (is_null($estimated_delivery_date)) {
-            throw new \InvalidArgumentException('non-nullable estimated_delivery_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_delivery_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_delivery_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_delivery_date'] = $estimated_delivery_date;
 

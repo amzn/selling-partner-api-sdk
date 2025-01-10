@@ -88,12 +88,12 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'aggregation_frequency' => false,
+        'aggregation_frequency' => true,
         'time_interval' => false,
         'time_period_type' => false,
         'marketplace_id' => false,
         'program_types' => false,
-        'asins' => false
+        'asins' => true
     ];
 
     /**
@@ -370,7 +370,14 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     public function setAggregationFrequency(?string $aggregation_frequency): self
     {
         if (is_null($aggregation_frequency)) {
-            throw new \InvalidArgumentException('non-nullable aggregation_frequency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'aggregation_frequency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('aggregation_frequency', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['aggregation_frequency'] = $aggregation_frequency;
 
@@ -461,7 +468,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets program_types
      *
-     * @return arrayA
+     * @return array
      */
     public function getProgramTypes(): array
     {
@@ -493,7 +500,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets asins
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAsins(): ?array
     {
@@ -510,13 +517,20 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     public function setAsins(?array $asins): self
     {
         if (is_null($asins)) {
-            throw new \InvalidArgumentException('non-nullable asins cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asins', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($asins) > 20)) {
+        if (!is_null($asins) && (count($asins) > 20)) {
             throw new \InvalidArgumentException('invalid value for $asins when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
         }
-        if ((count($asins) < 1)) {
+        if (!is_null($asins) && (count($asins) < 1)) {
             throw new \InvalidArgumentException('invalid length for $asins when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['asins'] = $asins;

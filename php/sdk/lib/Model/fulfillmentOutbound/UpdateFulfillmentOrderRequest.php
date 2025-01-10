@@ -100,18 +100,18 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'marketplace_id' => false,
-        'displayable_order_id' => false,
-        'displayable_order_date' => false,
-        'displayable_order_comment' => false,
-        'shipping_speed_category' => false,
-        'destination_address' => false,
-        'fulfillment_action' => false,
-        'fulfillment_policy' => false,
-        'ship_from_country_code' => false,
-        'notification_emails' => false,
-        'feature_constraints' => false,
-        'items' => false
+        'marketplace_id' => true,
+        'displayable_order_id' => true,
+        'displayable_order_date' => true,
+        'displayable_order_comment' => true,
+        'shipping_speed_category' => true,
+        'destination_address' => true,
+        'fulfillment_action' => true,
+        'fulfillment_policy' => true,
+        'ship_from_country_code' => true,
+        'notification_emails' => true,
+        'feature_constraints' => true,
+        'items' => true
     ];
 
     /**
@@ -396,7 +396,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -423,9 +430,16 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setDisplayableOrderId(?string $displayable_order_id): self
     {
         if (is_null($displayable_order_id)) {
-            throw new \InvalidArgumentException('non-nullable displayable_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'displayable_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('displayable_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($displayable_order_id) > 40)) {
+        if (!is_null($displayable_order_id) && (mb_strlen($displayable_order_id) > 40)) {
             throw new \InvalidArgumentException('invalid length for $displayable_order_id when calling UpdateFulfillmentOrderRequest., must be smaller than or equal to 40.');
         }
 
@@ -454,7 +468,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setDisplayableOrderDate(?\DateTime $displayable_order_date): self
     {
         if (is_null($displayable_order_date)) {
-            throw new \InvalidArgumentException('non-nullable displayable_order_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'displayable_order_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('displayable_order_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['displayable_order_date'] = $displayable_order_date;
 
@@ -481,9 +502,16 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setDisplayableOrderComment(?string $displayable_order_comment): self
     {
         if (is_null($displayable_order_comment)) {
-            throw new \InvalidArgumentException('non-nullable displayable_order_comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'displayable_order_comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('displayable_order_comment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($displayable_order_comment) > 750)) {
+        if (!is_null($displayable_order_comment) && (mb_strlen($displayable_order_comment) > 750)) {
             throw new \InvalidArgumentException('invalid length for $displayable_order_comment when calling UpdateFulfillmentOrderRequest., must be smaller than or equal to 750.');
         }
 
@@ -512,7 +540,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setShippingSpeedCategory(?string $shipping_speed_category): self
     {
         if (is_null($shipping_speed_category)) {
-            throw new \InvalidArgumentException('non-nullable shipping_speed_category cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_speed_category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_speed_category', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_speed_category'] = $shipping_speed_category;
 
@@ -539,7 +574,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setDestinationAddress(?\OpenAPI\Client\Model\fulfillmentOutbound\Address $destination_address): self
     {
         if (is_null($destination_address)) {
-            throw new \InvalidArgumentException('non-nullable destination_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'destination_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('destination_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['destination_address'] = $destination_address;
 
@@ -566,7 +608,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setFulfillmentAction(?string $fulfillment_action): self
     {
         if (is_null($fulfillment_action)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_action cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_action');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_action', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_action'] = $fulfillment_action;
 
@@ -593,7 +642,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setFulfillmentPolicy(?string $fulfillment_policy): self
     {
         if (is_null($fulfillment_policy)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_policy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_policy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_policy', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_policy'] = $fulfillment_policy;
 
@@ -620,7 +676,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setShipFromCountryCode(?string $ship_from_country_code): self
     {
         if (is_null($ship_from_country_code)) {
-            throw new \InvalidArgumentException('non-nullable ship_from_country_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_from_country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_from_country_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_from_country_code'] = $ship_from_country_code;
 
@@ -630,7 +693,7 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets notification_emails
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getNotificationEmails(): ?array
     {
@@ -647,7 +710,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setNotificationEmails(?array $notification_emails): self
     {
         if (is_null($notification_emails)) {
-            throw new \InvalidArgumentException('non-nullable notification_emails cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'notification_emails');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('notification_emails', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['notification_emails'] = $notification_emails;
 
@@ -657,7 +727,7 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets feature_constraints
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeatureConstraints(): ?array
     {
@@ -674,7 +744,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setFeatureConstraints(?array $feature_constraints): self
     {
         if (is_null($feature_constraints)) {
-            throw new \InvalidArgumentException('non-nullable feature_constraints cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_constraints');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_constraints', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feature_constraints'] = $feature_constraints;
 
@@ -684,7 +761,7 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -701,7 +778,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 

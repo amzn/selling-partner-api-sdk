@@ -96,13 +96,13 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'order_item_id' => false,
         'quantity' => false,
-        'item_weight' => false,
-        'item_description' => false,
-        'transparency_code_list' => false,
-        'item_level_seller_inputs_list' => false,
-        'liquid_volume' => false,
-        'is_hazmat' => false,
-        'dangerous_goods_details' => false
+        'item_weight' => true,
+        'item_description' => true,
+        'transparency_code_list' => true,
+        'item_level_seller_inputs_list' => true,
+        'liquid_volume' => true,
+        'is_hazmat' => true,
+        'dangerous_goods_details' => true
     ];
 
     /**
@@ -427,7 +427,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemWeight(?\OpenAPI\Client\Model\merchantFulfillment\Weight $item_weight): self
     {
         if (is_null($item_weight)) {
-            throw new \InvalidArgumentException('non-nullable item_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_weight'] = $item_weight;
 
@@ -454,7 +461,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemDescription(?string $item_description): self
     {
         if (is_null($item_description)) {
-            throw new \InvalidArgumentException('non-nullable item_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_description'] = $item_description;
 
@@ -464,7 +478,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transparency_code_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTransparencyCodeList(): ?array
     {
@@ -481,7 +495,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransparencyCodeList(?array $transparency_code_list): self
     {
         if (is_null($transparency_code_list)) {
-            throw new \InvalidArgumentException('non-nullable transparency_code_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transparency_code_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transparency_code_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transparency_code_list'] = $transparency_code_list;
 
@@ -491,7 +512,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_level_seller_inputs_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemLevelSellerInputsList(): ?array
     {
@@ -508,7 +529,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemLevelSellerInputsList(?array $item_level_seller_inputs_list): self
     {
         if (is_null($item_level_seller_inputs_list)) {
-            throw new \InvalidArgumentException('non-nullable item_level_seller_inputs_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_level_seller_inputs_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_level_seller_inputs_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_level_seller_inputs_list'] = $item_level_seller_inputs_list;
 
@@ -535,7 +563,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLiquidVolume(?\OpenAPI\Client\Model\merchantFulfillment\LiquidVolume $liquid_volume): self
     {
         if (is_null($liquid_volume)) {
-            throw new \InvalidArgumentException('non-nullable liquid_volume cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'liquid_volume');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('liquid_volume', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['liquid_volume'] = $liquid_volume;
 
@@ -562,7 +597,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsHazmat(?bool $is_hazmat): self
     {
         if (is_null($is_hazmat)) {
-            throw new \InvalidArgumentException('non-nullable is_hazmat cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_hazmat');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_hazmat', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_hazmat'] = $is_hazmat;
 
@@ -589,7 +631,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDangerousGoodsDetails(?\OpenAPI\Client\Model\merchantFulfillment\DangerousGoodsDetails $dangerous_goods_details): self
     {
         if (is_null($dangerous_goods_details)) {
-            throw new \InvalidArgumentException('non-nullable dangerous_goods_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dangerous_goods_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dangerous_goods_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dangerous_goods_details'] = $dangerous_goods_details;
 

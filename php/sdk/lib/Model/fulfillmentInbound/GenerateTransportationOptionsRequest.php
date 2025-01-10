@@ -360,7 +360,7 @@ class GenerateTransportationOptionsRequest implements ModelInterface, ArrayAcces
     /**
      * Gets shipment_transportation_configurations
      *
-     * @return arrayA
+     * @return array
      */
     public function getShipmentTransportationConfigurations(): array
     {

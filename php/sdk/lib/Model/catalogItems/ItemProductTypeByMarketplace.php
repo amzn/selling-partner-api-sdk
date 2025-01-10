@@ -80,8 +80,8 @@ class ItemProductTypeByMarketplace implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'marketplace_id' => false,
-        'product_type' => false
+        'marketplace_id' => true,
+        'product_type' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ItemProductTypeByMarketplace implements ModelInterface, ArrayAccess, \Json
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -345,7 +352,14 @@ class ItemProductTypeByMarketplace implements ModelInterface, ArrayAccess, \Json
     public function setProductType(?string $product_type): self
     {
         if (is_null($product_type)) {
-            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_type'] = $product_type;
 

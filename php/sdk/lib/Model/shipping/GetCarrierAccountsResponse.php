@@ -298,7 +298,7 @@ class GetCarrierAccountsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets active_accounts
      *
-     * @return arrayA
+     * @return array
      */
     public function getActiveAccounts(): array
     {

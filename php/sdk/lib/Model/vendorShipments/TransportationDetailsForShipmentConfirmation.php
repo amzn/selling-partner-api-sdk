@@ -84,10 +84,10 @@ class TransportationDetailsForShipmentConfirmation implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carrier_scac' => false,
-        'carrier_shipment_reference_number' => false,
-        'transportation_mode' => false,
-        'bill_of_lading_number' => false
+        'carrier_scac' => true,
+        'carrier_shipment_reference_number' => true,
+        'transportation_mode' => true,
+        'bill_of_lading_number' => true
     ];
 
     /**
@@ -358,7 +358,14 @@ class TransportationDetailsForShipmentConfirmation implements ModelInterface, Ar
     public function setCarrierScac(?string $carrier_scac): self
     {
         if (is_null($carrier_scac)) {
-            throw new \InvalidArgumentException('non-nullable carrier_scac cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_scac');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_scac', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_scac'] = $carrier_scac;
 
@@ -385,7 +392,14 @@ class TransportationDetailsForShipmentConfirmation implements ModelInterface, Ar
     public function setCarrierShipmentReferenceNumber(?string $carrier_shipment_reference_number): self
     {
         if (is_null($carrier_shipment_reference_number)) {
-            throw new \InvalidArgumentException('non-nullable carrier_shipment_reference_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_shipment_reference_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_shipment_reference_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_shipment_reference_number'] = $carrier_shipment_reference_number;
 
@@ -412,10 +426,17 @@ class TransportationDetailsForShipmentConfirmation implements ModelInterface, Ar
     public function setTransportationMode(?string $transportation_mode): self
     {
         if (is_null($transportation_mode)) {
-            throw new \InvalidArgumentException('non-nullable transportation_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transportation_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transportation_mode', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getTransportationModeAllowableValues();
-        if (!in_array($transportation_mode, $allowedValues, true)) {
+        if (!is_null($transportation_mode) && !in_array($transportation_mode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'transportation_mode', must be one of '%s'",
@@ -449,7 +470,14 @@ class TransportationDetailsForShipmentConfirmation implements ModelInterface, Ar
     public function setBillOfLadingNumber(?string $bill_of_lading_number): self
     {
         if (is_null($bill_of_lading_number)) {
-            throw new \InvalidArgumentException('non-nullable bill_of_lading_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bill_of_lading_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_of_lading_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bill_of_lading_number'] = $bill_of_lading_number;
 

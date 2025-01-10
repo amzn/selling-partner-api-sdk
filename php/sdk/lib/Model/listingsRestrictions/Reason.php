@@ -83,8 +83,8 @@ class Reason implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'message' => false,
-        'reason_code' => false,
-        'links' => false
+        'reason_code' => true,
+        'links' => true
     ];
 
     /**
@@ -381,10 +381,17 @@ class Reason implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReasonCode(?string $reason_code): self
     {
         if (is_null($reason_code)) {
-            throw new \InvalidArgumentException('non-nullable reason_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getReasonCodeAllowableValues();
-        if (!in_array($reason_code, $allowedValues, true)) {
+        if (!is_null($reason_code) && !in_array($reason_code, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'reason_code', must be one of '%s'",
@@ -401,7 +408,7 @@ class Reason implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets links
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getLinks(): ?array
     {
@@ -418,7 +425,14 @@ class Reason implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLinks(?array $links): self
     {
         if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'links');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('links', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['links'] = $links;
 

@@ -78,7 +78,7 @@ class SubmitShipments implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipments' => false
+        'shipments' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class SubmitShipments implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipments(): ?array
     {
@@ -311,7 +311,14 @@ class SubmitShipments implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipments(?array $shipments): self
     {
         if (is_null($shipments)) {
-            throw new \InvalidArgumentException('non-nullable shipments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipments'] = $shipments;
 

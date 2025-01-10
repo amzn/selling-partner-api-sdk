@@ -84,7 +84,7 @@ class ServiceUploadDocument implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'content_type' => false,
         'content_length' => false,
-        'content_md5' => false
+        'content_md5' => true
     ];
 
     /**
@@ -447,10 +447,17 @@ class ServiceUploadDocument implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setContentMd5(?string $content_md5): self
     {
         if (is_null($content_md5)) {
-            throw new \InvalidArgumentException('non-nullable content_md5 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'content_md5');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('content_md5', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[A-Za-z0-9\\\\+\/]{22}={2}$/", ObjectSerializer::toString($content_md5)))) {
+        if (!is_null($content_md5) && (!preg_match("/^[A-Za-z0-9\\\\+\/]{22}={2}$/", ObjectSerializer::toString($content_md5)))) {
             throw new \InvalidArgumentException("invalid value for \$content_md5 when calling ServiceUploadDocument., must conform to the pattern /^[A-Za-z0-9\\\\+\/]{22}={2}$/.");
         }
 

@@ -110,22 +110,22 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'store_name' => false,
-        'order_type' => false,
-        'channel' => false,
-        'asin' => false,
-        'sku' => false,
-        'quantity_shipped' => false,
-        'fulfillment_network' => false,
-        'payment_type' => false,
-        'payment_method' => false,
-        'payment_reference' => false,
-        'payment_date' => false,
-        'deferral_reason' => false,
-        'maturity_date' => false,
-        'deferral_status' => false,
-        'start_time' => false,
-        'end_time' => false,
+        'store_name' => true,
+        'order_type' => true,
+        'channel' => true,
+        'asin' => true,
+        'sku' => true,
+        'quantity_shipped' => true,
+        'fulfillment_network' => true,
+        'payment_type' => true,
+        'payment_method' => true,
+        'payment_reference' => true,
+        'payment_date' => true,
+        'deferral_reason' => true,
+        'maturity_date' => true,
+        'deferral_status' => true,
+        'start_time' => true,
+        'end_time' => true,
         'context_type' => false
     ];
 
@@ -426,7 +426,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStoreName(?string $store_name): self
     {
         if (is_null($store_name)) {
-            throw new \InvalidArgumentException('non-nullable store_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'store_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('store_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['store_name'] = $store_name;
 
@@ -453,7 +460,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderType(?string $order_type): self
     {
         if (is_null($order_type)) {
-            throw new \InvalidArgumentException('non-nullable order_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_type'] = $order_type;
 
@@ -480,7 +494,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChannel(?string $channel): self
     {
         if (is_null($channel)) {
-            throw new \InvalidArgumentException('non-nullable channel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'channel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('channel', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['channel'] = $channel;
 
@@ -507,7 +528,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -534,7 +562,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSku(?string $sku): self
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku'] = $sku;
 
@@ -561,7 +596,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityShipped(?int $quantity_shipped): self
     {
         if (is_null($quantity_shipped)) {
-            throw new \InvalidArgumentException('non-nullable quantity_shipped cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_shipped');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_shipped', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_shipped'] = $quantity_shipped;
 
@@ -588,7 +630,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentNetwork(?string $fulfillment_network): self
     {
         if (is_null($fulfillment_network)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_network cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_network');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_network', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_network'] = $fulfillment_network;
 
@@ -615,7 +664,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentType(?string $payment_type): self
     {
         if (is_null($payment_type)) {
-            throw new \InvalidArgumentException('non-nullable payment_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_type'] = $payment_type;
 
@@ -642,7 +698,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentMethod(?string $payment_method): self
     {
         if (is_null($payment_method)) {
-            throw new \InvalidArgumentException('non-nullable payment_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_method'] = $payment_method;
 
@@ -669,7 +732,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentReference(?string $payment_reference): self
     {
         if (is_null($payment_reference)) {
-            throw new \InvalidArgumentException('non-nullable payment_reference cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_reference', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_reference'] = $payment_reference;
 
@@ -696,7 +766,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentDate(?\DateTime $payment_date): self
     {
         if (is_null($payment_date)) {
-            throw new \InvalidArgumentException('non-nullable payment_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_date'] = $payment_date;
 
@@ -723,7 +800,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeferralReason(?string $deferral_reason): self
     {
         if (is_null($deferral_reason)) {
-            throw new \InvalidArgumentException('non-nullable deferral_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deferral_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deferral_reason', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deferral_reason'] = $deferral_reason;
 
@@ -750,7 +834,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMaturityDate(?\DateTime $maturity_date): self
     {
         if (is_null($maturity_date)) {
-            throw new \InvalidArgumentException('non-nullable maturity_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maturity_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maturity_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maturity_date'] = $maturity_date;
 
@@ -777,7 +868,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeferralStatus(?string $deferral_status): self
     {
         if (is_null($deferral_status)) {
-            throw new \InvalidArgumentException('non-nullable deferral_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deferral_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deferral_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deferral_status'] = $deferral_status;
 
@@ -804,7 +902,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartTime(?\DateTime $start_time): self
     {
         if (is_null($start_time)) {
-            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_time'] = $start_time;
 
@@ -831,7 +936,14 @@ class Context implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEndTime(?\DateTime $end_time): self
     {
         if (is_null($end_time)) {
-            throw new \InvalidArgumentException('non-nullable end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_time'] = $end_time;
 

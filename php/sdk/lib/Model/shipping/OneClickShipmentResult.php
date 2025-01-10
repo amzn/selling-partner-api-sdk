@@ -375,7 +375,7 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets package_document_details
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackageDocumentDetails(): array
     {

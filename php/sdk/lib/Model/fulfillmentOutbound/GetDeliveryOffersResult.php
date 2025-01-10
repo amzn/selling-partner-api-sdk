@@ -78,7 +78,7 @@ class GetDeliveryOffersResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_offers' => false
+        'delivery_offers' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetDeliveryOffersResult implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets delivery_offers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getDeliveryOffers(): ?array
     {
@@ -311,7 +311,14 @@ class GetDeliveryOffersResult implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDeliveryOffers(?array $delivery_offers): self
     {
         if (is_null($delivery_offers)) {
-            throw new \InvalidArgumentException('non-nullable delivery_offers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_offers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_offers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_offers'] = $delivery_offers;
 

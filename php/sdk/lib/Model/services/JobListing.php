@@ -84,10 +84,10 @@ class JobListing implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_result_size' => false,
-        'next_page_token' => false,
-        'previous_page_token' => false,
-        'jobs' => false
+        'total_result_size' => true,
+        'next_page_token' => true,
+        'previous_page_token' => true,
+        'jobs' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class JobListing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalResultSize(?int $total_result_size): self
     {
         if (is_null($total_result_size)) {
-            throw new \InvalidArgumentException('non-nullable total_result_size cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_result_size');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_result_size', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_result_size'] = $total_result_size;
 
@@ -359,7 +366,14 @@ class JobListing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextPageToken(?string $next_page_token): self
     {
         if (is_null($next_page_token)) {
-            throw new \InvalidArgumentException('non-nullable next_page_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_page_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_page_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_page_token'] = $next_page_token;
 
@@ -386,7 +400,14 @@ class JobListing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPreviousPageToken(?string $previous_page_token): self
     {
         if (is_null($previous_page_token)) {
-            throw new \InvalidArgumentException('non-nullable previous_page_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'previous_page_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous_page_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['previous_page_token'] = $previous_page_token;
 
@@ -396,7 +417,7 @@ class JobListing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets jobs
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getJobs(): ?array
     {
@@ -413,7 +434,14 @@ class JobListing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setJobs(?array $jobs): self
     {
         if (is_null($jobs)) {
-            throw new \InvalidArgumentException('non-nullable jobs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'jobs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('jobs', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['jobs'] = $jobs;
 

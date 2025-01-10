@@ -95,13 +95,13 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'condition' => false,
         'fulfillment_channel' => false,
-        'offer_type' => false,
-        'quantity_tier' => false,
-        'quantity_discount_type' => false,
-        'landed_price' => false,
+        'offer_type' => true,
+        'quantity_tier' => true,
+        'quantity_discount_type' => true,
+        'landed_price' => true,
         'listing_price' => false,
-        'shipping' => false,
-        'points' => false
+        'shipping' => true,
+        'points' => true
     ];
 
     /**
@@ -429,7 +429,14 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOfferType(?string $offer_type): self
     {
         if (is_null($offer_type)) {
-            throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offer_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offer_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offer_type'] = $offer_type;
 
@@ -456,7 +463,14 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityTier(?int $quantity_tier): self
     {
         if (is_null($quantity_tier)) {
-            throw new \InvalidArgumentException('non-nullable quantity_tier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_tier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_tier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_tier'] = $quantity_tier;
 
@@ -483,7 +497,14 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityDiscountType(?string $quantity_discount_type): self
     {
         if (is_null($quantity_discount_type)) {
-            throw new \InvalidArgumentException('non-nullable quantity_discount_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_discount_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_discount_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_discount_type'] = $quantity_discount_type;
 
@@ -510,7 +531,14 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLandedPrice(?\OpenAPI\Client\Model\pricingV0\MoneyType $landed_price): self
     {
         if (is_null($landed_price)) {
-            throw new \InvalidArgumentException('non-nullable landed_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'landed_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('landed_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['landed_price'] = $landed_price;
 
@@ -564,7 +592,14 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipping(?\OpenAPI\Client\Model\pricingV0\MoneyType $shipping): self
     {
         if (is_null($shipping)) {
-            throw new \InvalidArgumentException('non-nullable shipping cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping'] = $shipping;
 
@@ -591,7 +626,14 @@ class LowestPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPoints(?\OpenAPI\Client\Model\pricingV0\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 

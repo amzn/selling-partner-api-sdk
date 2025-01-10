@@ -55,6 +55,8 @@ class SolicitationsApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('SolicitationsApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class SolicitationsApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class SolicitationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateProductReviewAndSellerFeedbackSolicitation201', 'SolicitationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateProductReviewAndSellerFeedbackSolicitation201', 'SolicitationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -281,7 +282,7 @@ class SolicitationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetSolicitationActionsForOrder200', 'SolicitationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetSolicitationActionsForOrder200', 'SolicitationsApi')) {
                 $this->assertTrue(true);
                 return;
             }

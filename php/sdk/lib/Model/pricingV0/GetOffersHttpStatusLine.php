@@ -80,8 +80,8 @@ class GetOffersHttpStatusLine implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status_code' => false,
-        'reason_phrase' => false
+        'status_code' => true,
+        'reason_phrase' => true
     ];
 
     /**
@@ -326,13 +326,20 @@ class GetOffersHttpStatusLine implements ModelInterface, ArrayAccess, \JsonSeria
     public function setStatusCode(?int $status_code): self
     {
         if (is_null($status_code)) {
-            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($status_code > 599)) {
+        if (!is_null($status_code) && ($status_code > 599)) {
             throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be smaller than or equal to 599.');
         }
-        if (($status_code < 100)) {
+        if (!is_null($status_code) && ($status_code < 100)) {
             throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be bigger than or equal to 100.');
         }
 
@@ -361,7 +368,14 @@ class GetOffersHttpStatusLine implements ModelInterface, ArrayAccess, \JsonSeria
     public function setReasonPhrase(?string $reason_phrase): self
     {
         if (is_null($reason_phrase)) {
-            throw new \InvalidArgumentException('non-nullable reason_phrase cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_phrase');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_phrase', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_phrase'] = $reason_phrase;
 

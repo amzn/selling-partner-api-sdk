@@ -90,13 +90,13 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'monday' => false,
-        'tuesday' => false,
-        'wednesday' => false,
-        'thursday' => false,
-        'friday' => false,
-        'saturday' => false,
-        'sunday' => false
+        'monday' => true,
+        'tuesday' => true,
+        'wednesday' => true,
+        'thursday' => true,
+        'friday' => true,
+        'saturday' => true,
+        'sunday' => true
     ];
 
     /**
@@ -336,7 +336,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets monday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getMonday(): ?array
     {
@@ -353,7 +353,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setMonday(?array $monday): self
     {
         if (is_null($monday)) {
-            throw new \InvalidArgumentException('non-nullable monday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'monday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['monday'] = $monday;
 
@@ -363,7 +370,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tuesday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTuesday(): ?array
     {
@@ -380,7 +387,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTuesday(?array $tuesday): self
     {
         if (is_null($tuesday)) {
-            throw new \InvalidArgumentException('non-nullable tuesday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tuesday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tuesday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tuesday'] = $tuesday;
 
@@ -390,7 +404,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets wednesday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWednesday(): ?array
     {
@@ -407,7 +421,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWednesday(?array $wednesday): self
     {
         if (is_null($wednesday)) {
-            throw new \InvalidArgumentException('non-nullable wednesday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'wednesday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('wednesday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['wednesday'] = $wednesday;
 
@@ -417,7 +438,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets thursday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getThursday(): ?array
     {
@@ -434,7 +455,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setThursday(?array $thursday): self
     {
         if (is_null($thursday)) {
-            throw new \InvalidArgumentException('non-nullable thursday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'thursday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('thursday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['thursday'] = $thursday;
 
@@ -444,7 +472,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets friday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFriday(): ?array
     {
@@ -461,7 +489,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFriday(?array $friday): self
     {
         if (is_null($friday)) {
-            throw new \InvalidArgumentException('non-nullable friday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'friday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('friday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['friday'] = $friday;
 
@@ -471,7 +506,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets saturday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSaturday(): ?array
     {
@@ -488,7 +523,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSaturday(?array $saturday): self
     {
         if (is_null($saturday)) {
-            throw new \InvalidArgumentException('non-nullable saturday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'saturday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('saturday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['saturday'] = $saturday;
 
@@ -498,7 +540,7 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets sunday
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSunday(): ?array
     {
@@ -515,7 +557,14 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSunday(?array $sunday): self
     {
         if (is_null($sunday)) {
-            throw new \InvalidArgumentException('non-nullable sunday cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sunday');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sunday', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sunday'] = $sunday;
 

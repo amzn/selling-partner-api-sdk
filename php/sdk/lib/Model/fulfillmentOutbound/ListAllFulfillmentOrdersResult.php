@@ -80,8 +80,8 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_token' => false,
-        'fulfillment_orders' => false
+        'next_token' => true,
+        'fulfillment_orders' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -328,7 +335,7 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets fulfillment_orders
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFulfillmentOrders(): ?array
     {
@@ -345,7 +352,14 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
     public function setFulfillmentOrders(?array $fulfillment_orders): self
     {
         if (is_null($fulfillment_orders)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_orders cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_orders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_orders', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_orders'] = $fulfillment_orders;
 

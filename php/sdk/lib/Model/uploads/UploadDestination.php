@@ -82,9 +82,9 @@ class UploadDestination implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'upload_destination_id' => false,
-        'url' => false,
-        'headers' => false
+        'upload_destination_id' => true,
+        'url' => true,
+        'headers' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class UploadDestination implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUploadDestinationId(?string $upload_destination_id): self
     {
         if (is_null($upload_destination_id)) {
-            throw new \InvalidArgumentException('non-nullable upload_destination_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'upload_destination_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('upload_destination_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['upload_destination_id'] = $upload_destination_id;
 
@@ -352,7 +359,14 @@ class UploadDestination implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUrl(?string $url): self
     {
         if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url'] = $url;
 
@@ -379,7 +393,14 @@ class UploadDestination implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setHeaders(?object $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 

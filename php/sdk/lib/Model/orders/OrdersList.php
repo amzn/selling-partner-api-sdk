@@ -85,9 +85,9 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'orders' => false,
-        'next_token' => false,
-        'last_updated_before' => false,
-        'created_before' => false
+        'next_token' => true,
+        'last_updated_before' => true,
+        'created_before' => true
     ];
 
     /**
@@ -318,7 +318,7 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets orders
      *
-     * @return arrayA
+     * @return array
      */
     public function getOrders(): array
     {
@@ -362,7 +362,14 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 
@@ -389,7 +396,14 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastUpdatedBefore(?string $last_updated_before): self
     {
         if (is_null($last_updated_before)) {
-            throw new \InvalidArgumentException('non-nullable last_updated_before cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_updated_before');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_updated_before', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_updated_before'] = $last_updated_before;
 
@@ -416,7 +430,14 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedBefore(?string $created_before): self
     {
         if (is_null($created_before)) {
-            throw new \InvalidArgumentException('non-nullable created_before cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_before');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_before', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_before'] = $created_before;
 

@@ -87,10 +87,10 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'item_sequence_number' => false,
-        'amazon_product_identifier' => false,
-        'vendor_product_identifier' => false,
+        'amazon_product_identifier' => true,
+        'vendor_product_identifier' => true,
         'shipped_quantity' => false,
-        'item_details' => false
+        'item_details' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmazonProductIdentifier(?string $amazon_product_identifier): self
     {
         if (is_null($amazon_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable amazon_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_product_identifier'] = $amazon_product_identifier;
 
@@ -399,7 +406,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         if (is_null($vendor_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable vendor_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
@@ -453,7 +467,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemDetails(?\OpenAPI\Client\Model\vendorShipments\ItemDetails $item_details): self
     {
         if (is_null($item_details)) {
-            throw new \InvalidArgumentException('non-nullable item_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_details'] = $item_details;
 

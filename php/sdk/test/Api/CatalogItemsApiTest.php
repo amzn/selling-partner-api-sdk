@@ -55,6 +55,8 @@ class CatalogItemsApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('CatalogItemsApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class CatalogItemsApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class CatalogItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetCatalogItem200', 'CatalogItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetCatalogItem200', 'CatalogItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1213,7 +1214,7 @@ class CatalogItemsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSearchCatalogItems200', 'CatalogItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testSearchCatalogItems200', 'CatalogItemsApi')) {
                 $this->assertTrue(true);
                 return;
             }

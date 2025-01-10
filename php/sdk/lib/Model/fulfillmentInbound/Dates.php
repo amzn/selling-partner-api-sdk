@@ -78,7 +78,7 @@ class Dates implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ready_to_ship_window' => false
+        'ready_to_ship_window' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class Dates implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReadyToShipWindow(?\OpenAPI\Client\Model\fulfillmentInbound\Window $ready_to_ship_window): self
     {
         if (is_null($ready_to_ship_window)) {
-            throw new \InvalidArgumentException('non-nullable ready_to_ship_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ready_to_ship_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ready_to_ship_window', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ready_to_ship_window'] = $ready_to_ship_window;
 

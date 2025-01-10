@@ -79,7 +79,7 @@ class ValueAddedServiceDetails implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'collect_on_delivery' => false
+        'collect_on_delivery' => true
     ];
 
     /**
@@ -312,7 +312,14 @@ class ValueAddedServiceDetails implements ModelInterface, ArrayAccess, \JsonSeri
     public function setCollectOnDelivery(?\OpenAPI\Client\Model\shipping\CollectOnDelivery $collect_on_delivery): self
     {
         if (is_null($collect_on_delivery)) {
-            throw new \InvalidArgumentException('non-nullable collect_on_delivery cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'collect_on_delivery');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('collect_on_delivery', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['collect_on_delivery'] = $collect_on_delivery;
 

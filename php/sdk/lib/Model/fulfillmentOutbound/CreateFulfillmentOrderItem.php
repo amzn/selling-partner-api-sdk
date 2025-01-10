@@ -97,12 +97,12 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
         'seller_sku' => false,
         'seller_fulfillment_order_item_id' => false,
         'quantity' => false,
-        'gift_message' => false,
-        'displayable_comment' => false,
-        'fulfillment_network_sku' => false,
-        'per_unit_declared_value' => false,
-        'per_unit_price' => false,
-        'per_unit_tax' => false
+        'gift_message' => true,
+        'displayable_comment' => true,
+        'fulfillment_network_sku' => true,
+        'per_unit_declared_value' => true,
+        'per_unit_price' => true,
+        'per_unit_tax' => true
     ];
 
     /**
@@ -481,9 +481,16 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setGiftMessage(?string $gift_message): self
     {
         if (is_null($gift_message)) {
-            throw new \InvalidArgumentException('non-nullable gift_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gift_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gift_message', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($gift_message) > 512)) {
+        if (!is_null($gift_message) && (mb_strlen($gift_message) > 512)) {
             throw new \InvalidArgumentException('invalid length for $gift_message when calling CreateFulfillmentOrderItem., must be smaller than or equal to 512.');
         }
 
@@ -512,9 +519,16 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setDisplayableComment(?string $displayable_comment): self
     {
         if (is_null($displayable_comment)) {
-            throw new \InvalidArgumentException('non-nullable displayable_comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'displayable_comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('displayable_comment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($displayable_comment) > 250)) {
+        if (!is_null($displayable_comment) && (mb_strlen($displayable_comment) > 250)) {
             throw new \InvalidArgumentException('invalid length for $displayable_comment when calling CreateFulfillmentOrderItem., must be smaller than or equal to 250.');
         }
 
@@ -543,7 +557,14 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setFulfillmentNetworkSku(?string $fulfillment_network_sku): self
     {
         if (is_null($fulfillment_network_sku)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_network_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_network_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_network_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_network_sku'] = $fulfillment_network_sku;
 
@@ -570,7 +591,14 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setPerUnitDeclaredValue(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $per_unit_declared_value): self
     {
         if (is_null($per_unit_declared_value)) {
-            throw new \InvalidArgumentException('non-nullable per_unit_declared_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'per_unit_declared_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('per_unit_declared_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['per_unit_declared_value'] = $per_unit_declared_value;
 
@@ -597,7 +625,14 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setPerUnitPrice(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $per_unit_price): self
     {
         if (is_null($per_unit_price)) {
-            throw new \InvalidArgumentException('non-nullable per_unit_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'per_unit_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('per_unit_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['per_unit_price'] = $per_unit_price;
 
@@ -624,7 +659,14 @@ class CreateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setPerUnitTax(?\OpenAPI\Client\Model\fulfillmentOutbound\Money $per_unit_tax): self
     {
         if (is_null($per_unit_tax)) {
-            throw new \InvalidArgumentException('non-nullable per_unit_tax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'per_unit_tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('per_unit_tax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['per_unit_tax'] = $per_unit_tax;
 

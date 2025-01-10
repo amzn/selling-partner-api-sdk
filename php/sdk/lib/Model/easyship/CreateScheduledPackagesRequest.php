@@ -363,7 +363,7 @@ class CreateScheduledPackagesRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets order_schedule_details_list
      *
-     * @return arrayA
+     * @return array
      */
     public function getOrderScheduleDetailsList(): array
     {

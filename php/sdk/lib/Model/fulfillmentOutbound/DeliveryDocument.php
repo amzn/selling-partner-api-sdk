@@ -81,7 +81,7 @@ class DeliveryDocument implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'document_type' => false,
-        'url' => false
+        'url' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class DeliveryDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUrl(?string $url): self
     {
         if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url'] = $url;
 

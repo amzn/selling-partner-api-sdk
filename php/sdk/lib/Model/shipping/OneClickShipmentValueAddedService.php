@@ -82,7 +82,7 @@ class OneClickShipmentValueAddedService implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'amount' => false
+        'amount' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class OneClickShipmentValueAddedService implements ModelInterface, ArrayAccess, 
     public function setAmount(?\OpenAPI\Client\Model\shipping\Currency $amount): self
     {
         if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amount'] = $amount;
 

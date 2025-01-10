@@ -82,7 +82,7 @@ class DirectPurchaseResult implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'shipment_id' => false,
-        'package_document_detail_list' => false
+        'package_document_detail_list' => true
     ];
 
     /**
@@ -332,7 +332,7 @@ class DirectPurchaseResult implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets package_document_detail_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackageDocumentDetailList(): ?array
     {
@@ -349,7 +349,14 @@ class DirectPurchaseResult implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPackageDocumentDetailList(?array $package_document_detail_list): self
     {
         if (is_null($package_document_detail_list)) {
-            throw new \InvalidArgumentException('non-nullable package_document_detail_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_document_detail_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_document_detail_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_document_detail_list'] = $package_document_detail_list;
 

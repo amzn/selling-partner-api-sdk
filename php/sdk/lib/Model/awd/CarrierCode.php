@@ -80,8 +80,8 @@ class CarrierCode implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'carrier_code_type' => false,
-        'carrier_code_value' => false
+        'carrier_code_type' => true,
+        'carrier_code_value' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class CarrierCode implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCarrierCodeType(?string $carrier_code_type): self
     {
         if (is_null($carrier_code_type)) {
-            throw new \InvalidArgumentException('non-nullable carrier_code_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_code_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_code_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_code_type'] = $carrier_code_type;
 
@@ -345,7 +352,14 @@ class CarrierCode implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCarrierCodeValue(?string $carrier_code_value): self
     {
         if (is_null($carrier_code_value)) {
-            throw new \InvalidArgumentException('non-nullable carrier_code_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_code_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_code_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_code_value'] = $carrier_code_value;
 

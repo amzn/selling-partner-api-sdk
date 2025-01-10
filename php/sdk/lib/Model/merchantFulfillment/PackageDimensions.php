@@ -86,11 +86,11 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'length' => false,
-        'width' => false,
-        'height' => false,
-        'unit' => false,
-        'predefined_package_dimensions' => false
+        'length' => true,
+        'width' => true,
+        'height' => true,
+        'unit' => true,
+        'predefined_package_dimensions' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setLength(?float $length): self
     {
         if (is_null($length)) {
-            throw new \InvalidArgumentException('non-nullable length cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'length');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('length', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['length'] = $length;
 
@@ -366,7 +373,14 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setWidth(?float $width): self
     {
         if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'width');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('width', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['width'] = $width;
 
@@ -393,7 +407,14 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setHeight(?float $height): self
     {
         if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'height');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('height', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['height'] = $height;
 
@@ -420,7 +441,14 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUnit(?string $unit): self
     {
         if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unit'] = $unit;
 
@@ -447,7 +475,14 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPredefinedPackageDimensions(?string $predefined_package_dimensions): self
     {
         if (is_null($predefined_package_dimensions)) {
-            throw new \InvalidArgumentException('non-nullable predefined_package_dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'predefined_package_dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('predefined_package_dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['predefined_package_dimensions'] = $predefined_package_dimensions;
 

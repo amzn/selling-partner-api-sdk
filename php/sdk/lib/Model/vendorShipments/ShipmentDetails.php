@@ -80,8 +80,8 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pagination' => false,
-        'shipments' => false
+        'pagination' => true,
+        'shipments' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPagination(?\OpenAPI\Client\Model\vendorShipments\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 
@@ -328,7 +335,7 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShipments(): ?array
     {
@@ -345,7 +352,14 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipments(?array $shipments): self
     {
         if (is_null($shipments)) {
-            throw new \InvalidArgumentException('non-nullable shipments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipments'] = $shipments;
 

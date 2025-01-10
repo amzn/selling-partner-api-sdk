@@ -82,9 +82,9 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'exception_date' => false,
-        'is_open' => false,
-        'open_intervals' => false
+        'exception_date' => true,
+        'is_open' => true,
+        'open_intervals' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExceptionDate(?string $exception_date): self
     {
         if (is_null($exception_date)) {
-            throw new \InvalidArgumentException('non-nullable exception_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'exception_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('exception_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['exception_date'] = $exception_date;
 
@@ -352,7 +359,14 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsOpen(?bool $is_open): self
     {
         if (is_null($is_open)) {
-            throw new \InvalidArgumentException('non-nullable is_open cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_open');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_open', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_open'] = $is_open;
 
@@ -362,7 +376,7 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets open_intervals
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOpenIntervals(): ?array
     {
@@ -379,7 +393,14 @@ class ExceptionDates implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOpenIntervals(?array $open_intervals): self
     {
         if (is_null($open_intervals)) {
-            throw new \InvalidArgumentException('non-nullable open_intervals cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'open_intervals');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('open_intervals', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['open_intervals'] = $open_intervals;
 

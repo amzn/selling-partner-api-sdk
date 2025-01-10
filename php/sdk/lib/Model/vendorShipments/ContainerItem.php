@@ -84,7 +84,7 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'item_reference' => false,
         'shipped_quantity' => false,
-        'item_details' => false
+        'item_details' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemDetails(?\OpenAPI\Client\Model\vendorShipments\ItemDetails $item_details): self
     {
         if (is_null($item_details)) {
-            throw new \InvalidArgumentException('non-nullable item_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_details'] = $item_details;
 

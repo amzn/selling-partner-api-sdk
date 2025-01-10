@@ -86,11 +86,11 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_supported' => false,
-        'operational_configuration' => false,
-        'return_location' => false,
-        'delivery_channel' => false,
-        'pickup_channel' => false
+        'is_supported' => true,
+        'operational_configuration' => true,
+        'return_location' => true,
+        'delivery_channel' => true,
+        'pickup_channel' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setIsSupported(?bool $is_supported): self
     {
         if (is_null($is_supported)) {
-            throw new \InvalidArgumentException('non-nullable is_supported cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_supported');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_supported', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_supported'] = $is_supported;
 
@@ -366,7 +373,14 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
-            throw new \InvalidArgumentException('non-nullable operational_configuration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'operational_configuration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('operational_configuration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['operational_configuration'] = $operational_configuration;
 
@@ -393,7 +407,14 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setReturnLocation(?\OpenAPI\Client\Model\supplySources\ReturnLocation $return_location): self
     {
         if (is_null($return_location)) {
-            throw new \InvalidArgumentException('non-nullable return_location cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_location', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_location'] = $return_location;
 
@@ -420,7 +441,14 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setDeliveryChannel(?\OpenAPI\Client\Model\supplySources\DeliveryChannel $delivery_channel): self
     {
         if (is_null($delivery_channel)) {
-            throw new \InvalidArgumentException('non-nullable delivery_channel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_channel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_channel', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_channel'] = $delivery_channel;
 
@@ -447,7 +475,14 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPickupChannel(?\OpenAPI\Client\Model\supplySources\PickupChannel $pickup_channel): self
     {
         if (is_null($pickup_channel)) {
-            throw new \InvalidArgumentException('non-nullable pickup_channel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pickup_channel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pickup_channel', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pickup_channel'] = $pickup_channel;
 

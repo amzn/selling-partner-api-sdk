@@ -78,7 +78,7 @@ class GetItemOffersBatchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'requests' => false
+        'requests' => true
     ];
 
     /**
@@ -302,7 +302,7 @@ class GetItemOffersBatchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets requests
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRequests(): ?array
     {
@@ -319,13 +319,20 @@ class GetItemOffersBatchRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setRequests(?array $requests): self
     {
         if (is_null($requests)) {
-            throw new \InvalidArgumentException('non-nullable requests cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'requests');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requests', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($requests) > 20)) {
+        if (!is_null($requests) && (count($requests) > 20)) {
             throw new \InvalidArgumentException('invalid value for $requests when calling GetItemOffersBatchRequest., number of items must be less than or equal to 20.');
         }
-        if ((count($requests) < 1)) {
+        if (!is_null($requests) && (count($requests) < 1)) {
             throw new \InvalidArgumentException('invalid length for $requests when calling GetItemOffersBatchRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['requests'] = $requests;

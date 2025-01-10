@@ -80,7 +80,7 @@ class ItemContributorRole implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'display_name' => false,
+        'display_name' => true,
         'value' => false
     ];
 
@@ -321,7 +321,14 @@ class ItemContributorRole implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDisplayName(?string $display_name): self
     {
         if (is_null($display_name)) {
-            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'display_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['display_name'] = $display_name;
 

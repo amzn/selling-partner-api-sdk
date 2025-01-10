@@ -88,11 +88,11 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'earliest_ship_date' => false,
-        'latest_ship_date' => false,
-        'earliest_arrival_date' => false,
-        'latest_arrival_date' => false,
-        'shipping_notes' => false,
+        'earliest_ship_date' => true,
+        'latest_ship_date' => true,
+        'earliest_arrival_date' => true,
+        'latest_arrival_date' => true,
+        'shipping_notes' => true,
         'fulfillment_preview_items' => false
     ];
 
@@ -349,7 +349,14 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     public function setEarliestShipDate(?\DateTime $earliest_ship_date): self
     {
         if (is_null($earliest_ship_date)) {
-            throw new \InvalidArgumentException('non-nullable earliest_ship_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'earliest_ship_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('earliest_ship_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['earliest_ship_date'] = $earliest_ship_date;
 
@@ -376,7 +383,14 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     public function setLatestShipDate(?\DateTime $latest_ship_date): self
     {
         if (is_null($latest_ship_date)) {
-            throw new \InvalidArgumentException('non-nullable latest_ship_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'latest_ship_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latest_ship_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['latest_ship_date'] = $latest_ship_date;
 
@@ -403,7 +417,14 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     public function setEarliestArrivalDate(?\DateTime $earliest_arrival_date): self
     {
         if (is_null($earliest_arrival_date)) {
-            throw new \InvalidArgumentException('non-nullable earliest_arrival_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'earliest_arrival_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('earliest_arrival_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['earliest_arrival_date'] = $earliest_arrival_date;
 
@@ -430,7 +451,14 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     public function setLatestArrivalDate(?\DateTime $latest_arrival_date): self
     {
         if (is_null($latest_arrival_date)) {
-            throw new \InvalidArgumentException('non-nullable latest_arrival_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'latest_arrival_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latest_arrival_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['latest_arrival_date'] = $latest_arrival_date;
 
@@ -440,7 +468,7 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets shipping_notes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getShippingNotes(): ?array
     {
@@ -457,7 +485,14 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     public function setShippingNotes(?array $shipping_notes): self
     {
         if (is_null($shipping_notes)) {
-            throw new \InvalidArgumentException('non-nullable shipping_notes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_notes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_notes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_notes'] = $shipping_notes;
 
@@ -467,7 +502,7 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets fulfillment_preview_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getFulfillmentPreviewItems(): array
     {

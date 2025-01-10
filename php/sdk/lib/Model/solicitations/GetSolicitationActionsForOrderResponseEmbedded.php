@@ -296,7 +296,7 @@ class GetSolicitationActionsForOrderResponseEmbedded implements ModelInterface, 
     /**
      * Gets actions
      *
-     * @return arrayA
+     * @return array
      */
     public function getActions(): array
     {

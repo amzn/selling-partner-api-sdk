@@ -85,7 +85,7 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supported_dpis' => false,
+        'supported_dpis' => true,
         'supported_page_layouts' => false,
         'supported_file_joining_options' => false,
         'supported_document_details' => false
@@ -325,7 +325,7 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supported_dpis
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSupportedDpis(): ?array
     {
@@ -342,7 +342,14 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSupportedDpis(?array $supported_dpis): self
     {
         if (is_null($supported_dpis)) {
-            throw new \InvalidArgumentException('non-nullable supported_dpis cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supported_dpis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supported_dpis', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supported_dpis'] = $supported_dpis;
 
@@ -352,7 +359,7 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supported_page_layouts
      *
-     * @return arrayA
+     * @return array
      */
     public function getSupportedPageLayouts(): array
     {
@@ -379,7 +386,7 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supported_file_joining_options
      *
-     * @return arrayA
+     * @return array
      */
     public function getSupportedFileJoiningOptions(): array
     {
@@ -406,7 +413,7 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supported_document_details
      *
-     * @return arrayA
+     * @return array
      */
     public function getSupportedDocumentDetails(): array
     {

@@ -80,8 +80,8 @@ class GetPricingResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'payload' => false,
-        'errors' => false
+        'payload' => true,
+        'errors' => true
     ];
 
     /**
@@ -305,7 +305,7 @@ class GetPricingResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets payload
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPayload(): ?array
     {
@@ -322,10 +322,17 @@ class GetPricingResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPayload(?array $payload): self
     {
         if (is_null($payload)) {
-            throw new \InvalidArgumentException('non-nullable payload cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payload');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payload', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($payload) > 20)) {
+        if (!is_null($payload) && (count($payload) > 20)) {
             throw new \InvalidArgumentException('invalid value for $payload when calling GetPricingResponse., number of items must be less than or equal to 20.');
         }
         $this->container['payload'] = $payload;
@@ -336,7 +343,7 @@ class GetPricingResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -353,7 +360,14 @@ class GetPricingResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

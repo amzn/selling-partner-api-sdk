@@ -84,10 +84,10 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'purchase_order_number' => false,
-        'purchase_order_date' => false,
-        'ship_window' => false,
-        'items' => false
+        'purchase_order_number' => true,
+        'purchase_order_date' => true,
+        'ship_window' => true,
+        'items' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPurchaseOrderNumber(?string $purchase_order_number): self
     {
         if (is_null($purchase_order_number)) {
-            throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'purchase_order_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase_order_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['purchase_order_number'] = $purchase_order_number;
 
@@ -359,7 +366,14 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPurchaseOrderDate(?\DateTime $purchase_order_date): self
     {
         if (is_null($purchase_order_date)) {
-            throw new \InvalidArgumentException('non-nullable purchase_order_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'purchase_order_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase_order_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['purchase_order_date'] = $purchase_order_date;
 
@@ -386,7 +400,14 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipWindow(?string $ship_window): self
     {
         if (is_null($ship_window)) {
-            throw new \InvalidArgumentException('non-nullable ship_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ship_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ship_window', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ship_window'] = $ship_window;
 
@@ -396,7 +417,7 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -413,7 +434,14 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 

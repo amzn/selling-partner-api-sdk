@@ -96,16 +96,16 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amazon_order_id' => false,
-        'rental_event_type' => false,
-        'extension_length' => false,
-        'posted_date' => false,
-        'rental_charge_list' => false,
-        'rental_fee_list' => false,
-        'marketplace_name' => false,
-        'rental_initial_value' => false,
-        'rental_reimbursement' => false,
-        'rental_tax_withheld_list' => false
+        'amazon_order_id' => true,
+        'rental_event_type' => true,
+        'extension_length' => true,
+        'posted_date' => true,
+        'rental_charge_list' => true,
+        'rental_fee_list' => true,
+        'marketplace_name' => true,
+        'rental_initial_value' => true,
+        'rental_reimbursement' => true,
+        'rental_tax_withheld_list' => true
     ];
 
     /**
@@ -374,7 +374,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAmazonOrderId(?string $amazon_order_id): self
     {
         if (is_null($amazon_order_id)) {
-            throw new \InvalidArgumentException('non-nullable amazon_order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_order_id'] = $amazon_order_id;
 
@@ -401,7 +408,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRentalEventType(?string $rental_event_type): self
     {
         if (is_null($rental_event_type)) {
-            throw new \InvalidArgumentException('non-nullable rental_event_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_event_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_event_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_event_type'] = $rental_event_type;
 
@@ -428,7 +442,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setExtensionLength(?int $extension_length): self
     {
         if (is_null($extension_length)) {
-            throw new \InvalidArgumentException('non-nullable extension_length cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'extension_length');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('extension_length', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['extension_length'] = $extension_length;
 
@@ -455,7 +476,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -465,7 +493,7 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rental_charge_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRentalChargeList(): ?array
     {
@@ -482,7 +510,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRentalChargeList(?array $rental_charge_list): self
     {
         if (is_null($rental_charge_list)) {
-            throw new \InvalidArgumentException('non-nullable rental_charge_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_charge_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_charge_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_charge_list'] = $rental_charge_list;
 
@@ -492,7 +527,7 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rental_fee_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRentalFeeList(): ?array
     {
@@ -509,7 +544,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRentalFeeList(?array $rental_fee_list): self
     {
         if (is_null($rental_fee_list)) {
-            throw new \InvalidArgumentException('non-nullable rental_fee_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_fee_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_fee_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_fee_list'] = $rental_fee_list;
 
@@ -536,7 +578,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setMarketplaceName(?string $marketplace_name): self
     {
         if (is_null($marketplace_name)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_name'] = $marketplace_name;
 
@@ -563,7 +612,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRentalInitialValue(?\OpenAPI\Client\Model\financesV0\Currency $rental_initial_value): self
     {
         if (is_null($rental_initial_value)) {
-            throw new \InvalidArgumentException('non-nullable rental_initial_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_initial_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_initial_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_initial_value'] = $rental_initial_value;
 
@@ -590,7 +646,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRentalReimbursement(?\OpenAPI\Client\Model\financesV0\Currency $rental_reimbursement): self
     {
         if (is_null($rental_reimbursement)) {
-            throw new \InvalidArgumentException('non-nullable rental_reimbursement cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_reimbursement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_reimbursement', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_reimbursement'] = $rental_reimbursement;
 
@@ -600,7 +663,7 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rental_tax_withheld_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRentalTaxWithheldList(): ?array
     {
@@ -617,7 +680,14 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRentalTaxWithheldList(?array $rental_tax_withheld_list): self
     {
         if (is_null($rental_tax_withheld_list)) {
-            throw new \InvalidArgumentException('non-nullable rental_tax_withheld_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rental_tax_withheld_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rental_tax_withheld_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rental_tax_withheld_list'] = $rental_tax_withheld_list;
 

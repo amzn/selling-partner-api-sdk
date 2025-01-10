@@ -82,7 +82,7 @@ class DirectFulfillmentItemIdentifiers implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'line_item_id' => false,
-        'piece_number' => false
+        'piece_number' => true
     ];
 
     /**
@@ -349,7 +349,14 @@ class DirectFulfillmentItemIdentifiers implements ModelInterface, ArrayAccess, \
     public function setPieceNumber(?string $piece_number): self
     {
         if (is_null($piece_number)) {
-            throw new \InvalidArgumentException('non-nullable piece_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'piece_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('piece_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['piece_number'] = $piece_number;
 

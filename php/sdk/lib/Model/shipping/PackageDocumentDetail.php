@@ -85,7 +85,7 @@ class PackageDocumentDetail implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'package_client_reference_id' => false,
         'package_documents' => false,
-        'tracking_id' => false
+        'tracking_id' => true
     ];
 
     /**
@@ -342,7 +342,7 @@ class PackageDocumentDetail implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets package_documents
      *
-     * @return arrayA
+     * @return array
      */
     public function getPackageDocuments(): array
     {
@@ -386,7 +386,14 @@ class PackageDocumentDetail implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTrackingId(?string $tracking_id): self
     {
         if (is_null($tracking_id)) {
-            throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_id'] = $tracking_id;
 

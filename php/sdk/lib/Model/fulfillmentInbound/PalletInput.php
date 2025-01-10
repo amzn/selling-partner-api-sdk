@@ -84,10 +84,10 @@ class PalletInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dimensions' => false,
+        'dimensions' => true,
         'quantity' => false,
-        'stackability' => false,
-        'weight' => false
+        'stackability' => true,
+        'weight' => true
     ];
 
     /**
@@ -343,7 +343,14 @@ class PalletInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensions(?\OpenAPI\Client\Model\fulfillmentInbound\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -405,7 +412,14 @@ class PalletInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStackability(?string $stackability): self
     {
         if (is_null($stackability)) {
-            throw new \InvalidArgumentException('non-nullable stackability cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'stackability');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stackability', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['stackability'] = $stackability;
 
@@ -432,7 +446,14 @@ class PalletInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight(?\OpenAPI\Client\Model\fulfillmentInbound\Weight $weight): self
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 

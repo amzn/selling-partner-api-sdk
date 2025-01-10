@@ -297,7 +297,7 @@ class GetMyFeesEstimatesErrorList implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets errors
      *
-     * @return arrayA
+     * @return array
      */
     public function getErrors(): array
     {

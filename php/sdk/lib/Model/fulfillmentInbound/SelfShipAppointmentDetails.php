@@ -82,9 +82,9 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'appointment_id' => false,
-        'appointment_slot_time' => false,
-        'appointment_status' => false
+        'appointment_id' => true,
+        'appointment_slot_time' => true,
+        'appointment_status' => true
     ];
 
     /**
@@ -333,7 +333,14 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
     public function setAppointmentId(?float $appointment_id): self
     {
         if (is_null($appointment_id)) {
-            throw new \InvalidArgumentException('non-nullable appointment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointment_id'] = $appointment_id;
 
@@ -360,7 +367,14 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
     public function setAppointmentSlotTime(?\OpenAPI\Client\Model\fulfillmentInbound\AppointmentSlotTime $appointment_slot_time): self
     {
         if (is_null($appointment_slot_time)) {
-            throw new \InvalidArgumentException('non-nullable appointment_slot_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_slot_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_slot_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['appointment_slot_time'] = $appointment_slot_time;
 
@@ -387,12 +401,19 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
     public function setAppointmentStatus(?string $appointment_status): self
     {
         if (is_null($appointment_status)) {
-            throw new \InvalidArgumentException('non-nullable appointment_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'appointment_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('appointment_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($appointment_status) > 1024)) {
+        if (!is_null($appointment_status) && (mb_strlen($appointment_status) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $appointment_status when calling SelfShipAppointmentDetails., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($appointment_status) < 1)) {
+        if (!is_null($appointment_status) && (mb_strlen($appointment_status) < 1)) {
             throw new \InvalidArgumentException('invalid length for $appointment_status when calling SelfShipAppointmentDetails., must be bigger than or equal to 1.');
         }
 

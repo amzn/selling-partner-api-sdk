@@ -83,7 +83,7 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'order_items' => false,
-        'next_token' => false,
+        'next_token' => true,
         'amazon_order_id' => false
     ];
 
@@ -314,7 +314,7 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getOrderItems(): array
     {
@@ -358,7 +358,14 @@ class OrderItemsList implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNextToken(?string $next_token): self
     {
         if (is_null($next_token)) {
-            throw new \InvalidArgumentException('non-nullable next_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_token'] = $next_token;
 

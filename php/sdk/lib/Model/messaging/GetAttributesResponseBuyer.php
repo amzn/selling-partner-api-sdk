@@ -78,7 +78,7 @@ class GetAttributesResponseBuyer implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'locale' => false
+        'locale' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class GetAttributesResponseBuyer implements ModelInterface, ArrayAccess, \JsonSe
     public function setLocale(?string $locale): self
     {
         if (is_null($locale)) {
-            throw new \InvalidArgumentException('non-nullable locale cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'locale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['locale'] = $locale;
 

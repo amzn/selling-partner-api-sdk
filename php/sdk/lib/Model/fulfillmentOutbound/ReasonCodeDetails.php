@@ -84,7 +84,7 @@ class ReasonCodeDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'return_reason_code' => false,
         'description' => false,
-        'translated_description' => false
+        'translated_description' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class ReasonCodeDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setTranslatedDescription(?string $translated_description): self
     {
         if (is_null($translated_description)) {
-            throw new \InvalidArgumentException('non-nullable translated_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'translated_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('translated_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['translated_description'] = $translated_description;
 

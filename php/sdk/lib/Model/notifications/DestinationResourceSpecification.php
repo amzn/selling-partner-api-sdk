@@ -80,8 +80,8 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sqs' => false,
-        'event_bridge' => false
+        'sqs' => true,
+        'event_bridge' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
     public function setSqs(?\OpenAPI\Client\Model\notifications\SqsResource $sqs): self
     {
         if (is_null($sqs)) {
-            throw new \InvalidArgumentException('non-nullable sqs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sqs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sqs', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sqs'] = $sqs;
 
@@ -345,7 +352,14 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
     public function setEventBridge(?\OpenAPI\Client\Model\notifications\EventBridgeResourceSpecification $event_bridge): self
     {
         if (is_null($event_bridge)) {
-            throw new \InvalidArgumentException('non-nullable event_bridge cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'event_bridge');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('event_bridge', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['event_bridge'] = $event_bridge;
 

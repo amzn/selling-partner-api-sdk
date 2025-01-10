@@ -84,10 +84,10 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tax_registration_type' => false,
+        'tax_registration_type' => true,
         'tax_registration_number' => false,
-        'tax_registration_address' => false,
-        'tax_registration_messages' => false
+        'tax_registration_address' => true,
+        'tax_registration_messages' => true
     ];
 
     /**
@@ -359,10 +359,17 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTaxRegistrationType(?string $tax_registration_type): self
     {
         if (is_null($tax_registration_type)) {
-            throw new \InvalidArgumentException('non-nullable tax_registration_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_registration_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_registration_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getTaxRegistrationTypeAllowableValues();
-        if (!in_array($tax_registration_type, $allowedValues, true)) {
+        if (!is_null($tax_registration_type) && !in_array($tax_registration_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'tax_registration_type', must be one of '%s'",
@@ -423,7 +430,14 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTaxRegistrationAddress(?\OpenAPI\Client\Model\vendorDfShipping\Address $tax_registration_address): self
     {
         if (is_null($tax_registration_address)) {
-            throw new \InvalidArgumentException('non-nullable tax_registration_address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_registration_address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_registration_address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_registration_address'] = $tax_registration_address;
 
@@ -450,7 +464,14 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTaxRegistrationMessages(?string $tax_registration_messages): self
     {
         if (is_null($tax_registration_messages)) {
-            throw new \InvalidArgumentException('non-nullable tax_registration_messages cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_registration_messages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_registration_messages', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_registration_messages'] = $tax_registration_messages;
 

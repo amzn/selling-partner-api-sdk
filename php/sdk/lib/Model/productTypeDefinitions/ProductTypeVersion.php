@@ -84,7 +84,7 @@ class ProductTypeVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'version' => false,
         'latest' => false,
-        'release_candidate' => false
+        'release_candidate' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class ProductTypeVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setReleaseCandidate(?bool $release_candidate): self
     {
         if (is_null($release_candidate)) {
-            throw new \InvalidArgumentException('non-nullable release_candidate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'release_candidate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('release_candidate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['release_candidate'] = $release_candidate;
 

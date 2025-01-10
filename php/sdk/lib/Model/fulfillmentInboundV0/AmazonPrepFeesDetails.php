@@ -80,8 +80,8 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'prep_instruction' => false,
-        'fee_per_unit' => false
+        'prep_instruction' => true,
+        'fee_per_unit' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPrepInstruction(?string $prep_instruction): self
     {
         if (is_null($prep_instruction)) {
-            throw new \InvalidArgumentException('non-nullable prep_instruction cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'prep_instruction');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_instruction', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['prep_instruction'] = $prep_instruction;
 
@@ -345,7 +352,14 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFeePerUnit(?\OpenAPI\Client\Model\fulfillmentInboundV0\Amount $fee_per_unit): self
     {
         if (is_null($fee_per_unit)) {
-            throw new \InvalidArgumentException('non-nullable fee_per_unit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_per_unit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_per_unit', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_per_unit'] = $fee_per_unit;
 

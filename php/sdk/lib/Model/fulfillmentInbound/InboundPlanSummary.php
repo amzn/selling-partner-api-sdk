@@ -468,7 +468,7 @@ class InboundPlanSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets marketplace_ids
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceIds(): array
     {

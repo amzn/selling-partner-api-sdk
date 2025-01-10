@@ -84,10 +84,10 @@ class ProductContext implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'sku' => false,
-        'quantity_shipped' => false,
-        'fulfillment_network' => false
+        'asin' => true,
+        'sku' => true,
+        'quantity_shipped' => true,
+        'fulfillment_network' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ProductContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -359,7 +366,14 @@ class ProductContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSku(?string $sku): self
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku'] = $sku;
 
@@ -386,7 +400,14 @@ class ProductContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantityShipped(?int $quantity_shipped): self
     {
         if (is_null($quantity_shipped)) {
-            throw new \InvalidArgumentException('non-nullable quantity_shipped cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity_shipped');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity_shipped', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity_shipped'] = $quantity_shipped;
 
@@ -413,7 +434,14 @@ class ProductContext implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentNetwork(?string $fulfillment_network): self
     {
         if (is_null($fulfillment_network)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_network cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_network');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_network', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_network'] = $fulfillment_network;
 

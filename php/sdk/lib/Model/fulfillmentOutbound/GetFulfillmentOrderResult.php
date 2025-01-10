@@ -90,10 +90,10 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'fulfillment_order' => false,
         'fulfillment_order_items' => false,
-        'fulfillment_shipments' => false,
+        'fulfillment_shipments' => true,
         'return_items' => false,
         'return_authorizations' => false,
-        'payment_information' => false
+        'payment_information' => true
     ];
 
     /**
@@ -368,7 +368,7 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets fulfillment_order_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getFulfillmentOrderItems(): array
     {
@@ -395,7 +395,7 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets fulfillment_shipments
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFulfillmentShipments(): ?array
     {
@@ -412,7 +412,14 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setFulfillmentShipments(?array $fulfillment_shipments): self
     {
         if (is_null($fulfillment_shipments)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_shipments cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_shipments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_shipments', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_shipments'] = $fulfillment_shipments;
 
@@ -422,7 +429,7 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets return_items
      *
-     * @return arrayA
+     * @return array
      */
     public function getReturnItems(): array
     {
@@ -449,7 +456,7 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets return_authorizations
      *
-     * @return arrayA
+     * @return array
      */
     public function getReturnAuthorizations(): array
     {
@@ -476,7 +483,7 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets payment_information
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPaymentInformation(): ?array
     {
@@ -493,7 +500,14 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setPaymentInformation(?array $payment_information): self
     {
         if (is_null($payment_information)) {
-            throw new \InvalidArgumentException('non-nullable payment_information cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_information');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_information', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_information'] = $payment_information;
 

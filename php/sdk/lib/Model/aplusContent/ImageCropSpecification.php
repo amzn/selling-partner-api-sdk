@@ -81,7 +81,7 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'size' => false,
-        'offset' => false
+        'offset' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
     public function setOffset(?\OpenAPI\Client\Model\aplusContent\ImageOffsets $offset): self
     {
         if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'offset');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offset', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['offset'] = $offset;
 

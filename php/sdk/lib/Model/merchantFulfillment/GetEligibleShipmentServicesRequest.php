@@ -81,7 +81,7 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'shipment_request_details' => false,
-        'shipping_offering_filter' => false
+        'shipping_offering_filter' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
     public function setShippingOfferingFilter(?\OpenAPI\Client\Model\merchantFulfillment\ShippingOfferingFilter $shipping_offering_filter): self
     {
         if (is_null($shipping_offering_filter)) {
-            throw new \InvalidArgumentException('non-nullable shipping_offering_filter cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_offering_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_offering_filter', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping_offering_filter'] = $shipping_offering_filter;
 

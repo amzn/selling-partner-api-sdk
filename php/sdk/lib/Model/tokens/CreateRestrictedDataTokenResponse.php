@@ -80,8 +80,8 @@ class CreateRestrictedDataTokenResponse implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'restricted_data_token' => false,
-        'expires_in' => false
+        'restricted_data_token' => true,
+        'expires_in' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class CreateRestrictedDataTokenResponse implements ModelInterface, ArrayAccess, 
     public function setRestrictedDataToken(?string $restricted_data_token): self
     {
         if (is_null($restricted_data_token)) {
-            throw new \InvalidArgumentException('non-nullable restricted_data_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'restricted_data_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('restricted_data_token', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['restricted_data_token'] = $restricted_data_token;
 
@@ -345,7 +352,14 @@ class CreateRestrictedDataTokenResponse implements ModelInterface, ArrayAccess, 
     public function setExpiresIn(?int $expires_in): self
     {
         if (is_null($expires_in)) {
-            throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expires_in');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expires_in', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expires_in'] = $expires_in;
 

@@ -80,7 +80,7 @@ class ShipmentSource implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'address' => false,
+        'address' => true,
         'source_type' => false
     ];
 
@@ -329,7 +329,14 @@ class ShipmentSource implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAddress(?\OpenAPI\Client\Model\fulfillmentInbound\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 

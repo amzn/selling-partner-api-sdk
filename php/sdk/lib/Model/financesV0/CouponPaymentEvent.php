@@ -92,14 +92,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'coupon_id' => false,
-        'seller_coupon_description' => false,
-        'clip_or_redemption_count' => false,
-        'payment_event_id' => false,
-        'fee_component' => false,
-        'charge_component' => false,
-        'total_amount' => false
+        'posted_date' => true,
+        'coupon_id' => true,
+        'seller_coupon_description' => true,
+        'clip_or_redemption_count' => true,
+        'payment_event_id' => true,
+        'fee_component' => true,
+        'charge_component' => true,
+        'total_amount' => true
     ];
 
     /**
@@ -360,7 +360,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -387,7 +394,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCouponId(?string $coupon_id): self
     {
         if (is_null($coupon_id)) {
-            throw new \InvalidArgumentException('non-nullable coupon_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'coupon_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('coupon_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['coupon_id'] = $coupon_id;
 
@@ -414,7 +428,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setSellerCouponDescription(?string $seller_coupon_description): self
     {
         if (is_null($seller_coupon_description)) {
-            throw new \InvalidArgumentException('non-nullable seller_coupon_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_coupon_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_coupon_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_coupon_description'] = $seller_coupon_description;
 
@@ -441,7 +462,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setClipOrRedemptionCount(?int $clip_or_redemption_count): self
     {
         if (is_null($clip_or_redemption_count)) {
-            throw new \InvalidArgumentException('non-nullable clip_or_redemption_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'clip_or_redemption_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('clip_or_redemption_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['clip_or_redemption_count'] = $clip_or_redemption_count;
 
@@ -468,7 +496,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPaymentEventId(?string $payment_event_id): self
     {
         if (is_null($payment_event_id)) {
-            throw new \InvalidArgumentException('non-nullable payment_event_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payment_event_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_event_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payment_event_id'] = $payment_event_id;
 
@@ -495,7 +530,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFeeComponent(?\OpenAPI\Client\Model\financesV0\FeeComponent $fee_component): self
     {
         if (is_null($fee_component)) {
-            throw new \InvalidArgumentException('non-nullable fee_component cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fee_component');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fee_component', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fee_component'] = $fee_component;
 
@@ -522,7 +564,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setChargeComponent(?\OpenAPI\Client\Model\financesV0\ChargeComponent $charge_component): self
     {
         if (is_null($charge_component)) {
-            throw new \InvalidArgumentException('non-nullable charge_component cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_component');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_component', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_component'] = $charge_component;
 
@@ -549,7 +598,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTotalAmount(?\OpenAPI\Client\Model\financesV0\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
-            throw new \InvalidArgumentException('non-nullable total_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_amount'] = $total_amount;
 

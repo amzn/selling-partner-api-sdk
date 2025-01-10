@@ -297,7 +297,7 @@ class Route implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets stops
      *
-     * @return arrayA
+     * @return array
      */
     public function getStops(): array
     {

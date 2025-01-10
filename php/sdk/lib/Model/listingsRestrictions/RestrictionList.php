@@ -297,7 +297,7 @@ class RestrictionList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets restrictions
      *
-     * @return arrayA
+     * @return array
      */
     public function getRestrictions(): array
     {

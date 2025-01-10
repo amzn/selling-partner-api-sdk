@@ -84,10 +84,10 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'fees_estimate_identifier' => false,
-        'fees_estimate' => false,
-        'error' => false
+        'status' => true,
+        'fees_estimate_identifier' => true,
+        'fees_estimate' => true,
+        'error' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -359,7 +366,14 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFeesEstimateIdentifier(?\OpenAPI\Client\Model\productFees\FeesEstimateIdentifier $fees_estimate_identifier): self
     {
         if (is_null($fees_estimate_identifier)) {
-            throw new \InvalidArgumentException('non-nullable fees_estimate_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fees_estimate_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fees_estimate_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fees_estimate_identifier'] = $fees_estimate_identifier;
 
@@ -386,7 +400,14 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setFeesEstimate(?\OpenAPI\Client\Model\productFees\FeesEstimate $fees_estimate): self
     {
         if (is_null($fees_estimate)) {
-            throw new \InvalidArgumentException('non-nullable fees_estimate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fees_estimate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fees_estimate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fees_estimate'] = $fees_estimate;
 
@@ -413,7 +434,14 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setError(?\OpenAPI\Client\Model\productFees\FeesEstimateError $error): self
     {
         if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error'] = $error;
 

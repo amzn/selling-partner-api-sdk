@@ -86,11 +86,11 @@ class FixedSlot implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_date_time' => false,
-        'scheduled_capacity' => false,
-        'available_capacity' => false,
-        'encumbered_capacity' => false,
-        'reserved_capacity' => false
+        'start_date_time' => true,
+        'scheduled_capacity' => true,
+        'available_capacity' => true,
+        'encumbered_capacity' => true,
+        'reserved_capacity' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class FixedSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartDateTime(?\DateTime $start_date_time): self
     {
         if (is_null($start_date_time)) {
-            throw new \InvalidArgumentException('non-nullable start_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_date_time'] = $start_date_time;
 
@@ -366,7 +373,14 @@ class FixedSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setScheduledCapacity(?int $scheduled_capacity): self
     {
         if (is_null($scheduled_capacity)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduled_capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduled_capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['scheduled_capacity'] = $scheduled_capacity;
 
@@ -393,7 +407,14 @@ class FixedSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvailableCapacity(?int $available_capacity): self
     {
         if (is_null($available_capacity)) {
-            throw new \InvalidArgumentException('non-nullable available_capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_capacity'] = $available_capacity;
 
@@ -420,7 +441,14 @@ class FixedSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEncumberedCapacity(?int $encumbered_capacity): self
     {
         if (is_null($encumbered_capacity)) {
-            throw new \InvalidArgumentException('non-nullable encumbered_capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'encumbered_capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('encumbered_capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['encumbered_capacity'] = $encumbered_capacity;
 
@@ -447,7 +475,14 @@ class FixedSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReservedCapacity(?int $reserved_capacity): self
     {
         if (is_null($reserved_capacity)) {
-            throw new \InvalidArgumentException('non-nullable reserved_capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reserved_capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reserved_capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reserved_capacity'] = $reserved_capacity;
 

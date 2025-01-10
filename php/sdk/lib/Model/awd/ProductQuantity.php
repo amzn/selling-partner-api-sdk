@@ -82,7 +82,7 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
+        'attributes' => true,
         'quantity' => false,
         'sku' => false
     ];
@@ -314,7 +314,7 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAttributes(): ?array
     {
@@ -331,7 +331,14 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAttributes(?array $attributes): self
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 

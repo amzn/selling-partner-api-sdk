@@ -100,18 +100,18 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'selling_partner_metadata' => false,
-        'related_identifiers' => false,
-        'transaction_type' => false,
-        'transaction_id' => false,
-        'transaction_status' => false,
-        'description' => false,
-        'posted_date' => false,
-        'total_amount' => false,
-        'marketplace_details' => false,
-        'items' => false,
-        'contexts' => false,
-        'breakdowns' => false
+        'selling_partner_metadata' => true,
+        'related_identifiers' => true,
+        'transaction_type' => true,
+        'transaction_id' => true,
+        'transaction_status' => true,
+        'description' => true,
+        'posted_date' => true,
+        'total_amount' => true,
+        'marketplace_details' => true,
+        'items' => true,
+        'contexts' => true,
+        'breakdowns' => true
     ];
 
     /**
@@ -388,7 +388,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellingPartnerMetadata(?\OpenAPI\Client\Model\finances\SellingPartnerMetadata $selling_partner_metadata): self
     {
         if (is_null($selling_partner_metadata)) {
-            throw new \InvalidArgumentException('non-nullable selling_partner_metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'selling_partner_metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('selling_partner_metadata', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['selling_partner_metadata'] = $selling_partner_metadata;
 
@@ -398,7 +405,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets related_identifiers
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRelatedIdentifiers(): ?array
     {
@@ -415,7 +422,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRelatedIdentifiers(?array $related_identifiers): self
     {
         if (is_null($related_identifiers)) {
-            throw new \InvalidArgumentException('non-nullable related_identifiers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'related_identifiers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('related_identifiers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['related_identifiers'] = $related_identifiers;
 
@@ -442,7 +456,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionType(?string $transaction_type): self
     {
         if (is_null($transaction_type)) {
-            throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -469,7 +490,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionId(?string $transaction_id): self
     {
         if (is_null($transaction_id)) {
-            throw new \InvalidArgumentException('non-nullable transaction_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_id'] = $transaction_id;
 
@@ -496,7 +524,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionStatus(?string $transaction_status): self
     {
         if (is_null($transaction_status)) {
-            throw new \InvalidArgumentException('non-nullable transaction_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_status'] = $transaction_status;
 
@@ -523,7 +558,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription(?string $description): self
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -550,7 +592,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -577,7 +626,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalAmount(?\OpenAPI\Client\Model\finances\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
-            throw new \InvalidArgumentException('non-nullable total_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_amount'] = $total_amount;
 
@@ -604,7 +660,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMarketplaceDetails(?\OpenAPI\Client\Model\finances\MarketplaceDetails $marketplace_details): self
     {
         if (is_null($marketplace_details)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_details'] = $marketplace_details;
 
@@ -614,7 +677,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItems(): ?array
     {
@@ -631,7 +694,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems(?array $items): self
     {
         if (is_null($items)) {
-            throw new \InvalidArgumentException('non-nullable items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['items'] = $items;
 
@@ -641,7 +711,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contexts
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getContexts(): ?array
     {
@@ -658,7 +728,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContexts(?array $contexts): self
     {
         if (is_null($contexts)) {
-            throw new \InvalidArgumentException('non-nullable contexts cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contexts');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contexts', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contexts'] = $contexts;
 
@@ -668,7 +745,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdowns
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getBreakdowns(): ?array
     {
@@ -685,7 +762,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBreakdowns(?array $breakdowns): self
     {
         if (is_null($breakdowns)) {
-            throw new \InvalidArgumentException('non-nullable breakdowns cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'breakdowns');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('breakdowns', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['breakdowns'] = $breakdowns;
 

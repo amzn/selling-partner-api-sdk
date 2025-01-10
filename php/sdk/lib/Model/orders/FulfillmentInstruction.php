@@ -78,7 +78,7 @@ class FulfillmentInstruction implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fulfillment_supply_source_id' => false
+        'fulfillment_supply_source_id' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class FulfillmentInstruction implements ModelInterface, ArrayAccess, \JsonSerial
     public function setFulfillmentSupplySourceId(?string $fulfillment_supply_source_id): self
     {
         if (is_null($fulfillment_supply_source_id)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_supply_source_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_supply_source_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_supply_source_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_supply_source_id'] = $fulfillment_supply_source_id;
 

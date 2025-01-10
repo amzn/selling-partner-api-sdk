@@ -78,7 +78,7 @@ class PurchaseOrderItemDetails implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'maximum_retail_price' => false
+        'maximum_retail_price' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class PurchaseOrderItemDetails implements ModelInterface, ArrayAccess, \JsonSeri
     public function setMaximumRetailPrice(?\OpenAPI\Client\Model\vendorShipments\Money $maximum_retail_price): self
     {
         if (is_null($maximum_retail_price)) {
-            throw new \InvalidArgumentException('non-nullable maximum_retail_price cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maximum_retail_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maximum_retail_price', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maximum_retail_price'] = $maximum_retail_price;
 

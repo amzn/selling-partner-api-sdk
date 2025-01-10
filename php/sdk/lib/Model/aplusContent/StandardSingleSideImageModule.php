@@ -81,7 +81,7 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'image_position_type' => false,
-        'block' => false
+        'block' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
     public function setBlock(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block): self
     {
         if (is_null($block)) {
-            throw new \InvalidArgumentException('non-nullable block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block'] = $block;
 

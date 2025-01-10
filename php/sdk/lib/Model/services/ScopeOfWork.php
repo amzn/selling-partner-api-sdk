@@ -84,10 +84,10 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'title' => false,
-        'quantity' => false,
-        'required_skills' => false
+        'asin' => true,
+        'title' => true,
+        'quantity' => true,
+        'required_skills' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -359,7 +366,14 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
@@ -386,7 +400,14 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity'] = $quantity;
 
@@ -396,7 +417,7 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets required_skills
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRequiredSkills(): ?array
     {
@@ -413,7 +434,14 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRequiredSkills(?array $required_skills): self
     {
         if (is_null($required_skills)) {
-            throw new \InvalidArgumentException('non-nullable required_skills cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'required_skills');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('required_skills', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['required_skills'] = $required_skills;
 

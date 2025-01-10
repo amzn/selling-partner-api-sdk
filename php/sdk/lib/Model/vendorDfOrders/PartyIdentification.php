@@ -83,8 +83,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'party_id' => false,
-        'address' => false,
-        'tax_info' => false
+        'address' => true,
+        'tax_info' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAddress(?\OpenAPI\Client\Model\vendorDfOrders\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 
@@ -382,7 +389,14 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTaxInfo(?\OpenAPI\Client\Model\vendorDfOrders\TaxRegistrationDetails $tax_info): self
     {
         if (is_null($tax_info)) {
-            throw new \InvalidArgumentException('non-nullable tax_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_info', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_info'] = $tax_info;
 

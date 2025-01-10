@@ -78,7 +78,7 @@ class AssignAppointmentResourcesResponsePayload implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'warnings' => false
+        'warnings' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class AssignAppointmentResourcesResponsePayload implements ModelInterface, Array
     /**
      * Gets warnings
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getWarnings(): ?array
     {
@@ -311,7 +311,14 @@ class AssignAppointmentResourcesResponsePayload implements ModelInterface, Array
     public function setWarnings(?array $warnings): self
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warnings'] = $warnings;
 

@@ -89,8 +89,8 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
         'seller_sku' => false,
         'quantity' => false,
         'seller_fulfillment_order_item_id' => false,
-        'estimated_shipping_weight' => false,
-        'shipping_weight_calculation_method' => false
+        'estimated_shipping_weight' => true,
+        'shipping_weight_calculation_method' => true
     ];
 
     /**
@@ -453,7 +453,14 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setEstimatedShippingWeight(?\OpenAPI\Client\Model\fulfillmentOutbound\Weight $estimated_shipping_weight): self
     {
         if (is_null($estimated_shipping_weight)) {
-            throw new \InvalidArgumentException('non-nullable estimated_shipping_weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimated_shipping_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_shipping_weight', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimated_shipping_weight'] = $estimated_shipping_weight;
 
@@ -480,10 +487,17 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setShippingWeightCalculationMethod(?string $shipping_weight_calculation_method): self
     {
         if (is_null($shipping_weight_calculation_method)) {
-            throw new \InvalidArgumentException('non-nullable shipping_weight_calculation_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping_weight_calculation_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_weight_calculation_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getShippingWeightCalculationMethodAllowableValues();
-        if (!in_array($shipping_weight_calculation_method, $allowedValues, true)) {
+        if (!is_null($shipping_weight_calculation_method) && !in_array($shipping_weight_calculation_method, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'shipping_weight_calculation_method', must be one of '%s'",

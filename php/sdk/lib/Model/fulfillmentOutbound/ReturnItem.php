@@ -102,13 +102,13 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'seller_fulfillment_order_item_id' => false,
         'amazon_shipment_id' => false,
         'seller_return_reason_code' => false,
-        'return_comment' => false,
-        'amazon_return_reason_code' => false,
+        'return_comment' => true,
+        'amazon_return_reason_code' => true,
         'status' => false,
         'status_changed_date' => false,
-        'return_authorization_id' => false,
-        'return_received_condition' => false,
-        'fulfillment_center_id' => false
+        'return_authorization_id' => true,
+        'return_received_condition' => true,
+        'fulfillment_center_id' => true
     ];
 
     /**
@@ -507,7 +507,14 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReturnComment(?string $return_comment): self
     {
         if (is_null($return_comment)) {
-            throw new \InvalidArgumentException('non-nullable return_comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_comment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_comment'] = $return_comment;
 
@@ -534,7 +541,14 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmazonReturnReasonCode(?string $amazon_return_reason_code): self
     {
         if (is_null($amazon_return_reason_code)) {
-            throw new \InvalidArgumentException('non-nullable amazon_return_reason_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amazon_return_reason_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amazon_return_reason_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amazon_return_reason_code'] = $amazon_return_reason_code;
 
@@ -615,7 +629,14 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReturnAuthorizationId(?string $return_authorization_id): self
     {
         if (is_null($return_authorization_id)) {
-            throw new \InvalidArgumentException('non-nullable return_authorization_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_authorization_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_authorization_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_authorization_id'] = $return_authorization_id;
 
@@ -642,7 +663,14 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReturnReceivedCondition(?string $return_received_condition): self
     {
         if (is_null($return_received_condition)) {
-            throw new \InvalidArgumentException('non-nullable return_received_condition cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'return_received_condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('return_received_condition', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['return_received_condition'] = $return_received_condition;
 
@@ -669,7 +697,14 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentCenterId(?string $fulfillment_center_id): self
     {
         if (is_null($fulfillment_center_id)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_center_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_center_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_center_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_center_id'] = $fulfillment_center_id;
 

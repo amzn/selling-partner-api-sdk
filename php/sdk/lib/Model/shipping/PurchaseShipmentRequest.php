@@ -90,8 +90,8 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'request_token' => false,
         'rate_id' => false,
         'requested_document_specification' => false,
-        'requested_value_added_services' => false,
-        'additional_inputs' => false
+        'requested_value_added_services' => true,
+        'additional_inputs' => true
     ];
 
     /**
@@ -413,7 +413,7 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets requested_value_added_services
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getRequestedValueAddedServices(): ?array
     {
@@ -430,7 +430,14 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setRequestedValueAddedServices(?array $requested_value_added_services): self
     {
         if (is_null($requested_value_added_services)) {
-            throw new \InvalidArgumentException('non-nullable requested_value_added_services cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'requested_value_added_services');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requested_value_added_services', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['requested_value_added_services'] = $requested_value_added_services;
 
@@ -457,7 +464,14 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAdditionalInputs(?array $additional_inputs): self
     {
         if (is_null($additional_inputs)) {
-            throw new \InvalidArgumentException('non-nullable additional_inputs cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'additional_inputs');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('additional_inputs', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['additional_inputs'] = $additional_inputs;
 

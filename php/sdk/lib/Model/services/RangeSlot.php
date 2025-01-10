@@ -82,9 +82,9 @@ class RangeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_date_time' => false,
-        'end_date_time' => false,
-        'capacity' => false
+        'start_date_time' => true,
+        'end_date_time' => true,
+        'capacity' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class RangeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartDateTime(?\DateTime $start_date_time): self
     {
         if (is_null($start_date_time)) {
-            throw new \InvalidArgumentException('non-nullable start_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_date_time'] = $start_date_time;
 
@@ -352,7 +359,14 @@ class RangeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEndDateTime(?\DateTime $end_date_time): self
     {
         if (is_null($end_date_time)) {
-            throw new \InvalidArgumentException('non-nullable end_date_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_date_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date_time', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_date_time'] = $end_date_time;
 
@@ -379,7 +393,14 @@ class RangeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCapacity(?int $capacity): self
     {
         if (is_null($capacity)) {
-            throw new \InvalidArgumentException('non-nullable capacity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capacity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capacity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capacity'] = $capacity;
 

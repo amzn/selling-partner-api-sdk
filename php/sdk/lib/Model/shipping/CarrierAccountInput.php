@@ -93,14 +93,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'description_localization_key' => false,
-        'name' => false,
-        'group_name' => false,
-        'input_type' => false,
-        'is_mandatory' => false,
-        'is_confidential' => false,
-        'is_hidden' => false,
-        'validation_metadata' => false
+        'description_localization_key' => true,
+        'name' => true,
+        'group_name' => true,
+        'input_type' => true,
+        'is_mandatory' => true,
+        'is_confidential' => true,
+        'is_hidden' => true,
+        'validation_metadata' => true
     ];
 
     /**
@@ -361,7 +361,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDescriptionLocalizationKey(?string $description_localization_key): self
     {
         if (is_null($description_localization_key)) {
-            throw new \InvalidArgumentException('non-nullable description_localization_key cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description_localization_key');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_localization_key', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description_localization_key'] = $description_localization_key;
 
@@ -388,7 +395,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -415,7 +429,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setGroupName(?string $group_name): self
     {
         if (is_null($group_name)) {
-            throw new \InvalidArgumentException('non-nullable group_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'group_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['group_name'] = $group_name;
 
@@ -442,7 +463,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setInputType(?string $input_type): self
     {
         if (is_null($input_type)) {
-            throw new \InvalidArgumentException('non-nullable input_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'input_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('input_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['input_type'] = $input_type;
 
@@ -469,7 +497,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIsMandatory(?bool $is_mandatory): self
     {
         if (is_null($is_mandatory)) {
-            throw new \InvalidArgumentException('non-nullable is_mandatory cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_mandatory');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_mandatory', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_mandatory'] = $is_mandatory;
 
@@ -496,7 +531,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIsConfidential(?bool $is_confidential): self
     {
         if (is_null($is_confidential)) {
-            throw new \InvalidArgumentException('non-nullable is_confidential cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_confidential');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_confidential', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_confidential'] = $is_confidential;
 
@@ -523,7 +565,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIsHidden(?bool $is_hidden): self
     {
         if (is_null($is_hidden)) {
-            throw new \InvalidArgumentException('non-nullable is_hidden cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_hidden');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_hidden', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_hidden'] = $is_hidden;
 
@@ -533,7 +582,7 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets validation_metadata
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getValidationMetadata(): ?array
     {
@@ -550,7 +599,14 @@ class CarrierAccountInput implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setValidationMetadata(?array $validation_metadata): self
     {
         if (is_null($validation_metadata)) {
-            throw new \InvalidArgumentException('non-nullable validation_metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'validation_metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('validation_metadata', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['validation_metadata'] = $validation_metadata;
 

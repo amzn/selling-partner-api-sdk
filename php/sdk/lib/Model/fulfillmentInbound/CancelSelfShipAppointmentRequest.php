@@ -78,7 +78,7 @@ class CancelSelfShipAppointmentRequest implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'reason_comment' => false
+        'reason_comment' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class CancelSelfShipAppointmentRequest implements ModelInterface, ArrayAccess, \
     public function setReasonComment(?string $reason_comment): self
     {
         if (is_null($reason_comment)) {
-            throw new \InvalidArgumentException('non-nullable reason_comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_comment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_comment'] = $reason_comment;
 

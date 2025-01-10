@@ -82,7 +82,7 @@ class Window implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'editable_until' => false,
+        'editable_until' => true,
         'end' => false,
         'start' => false
     ];
@@ -331,7 +331,14 @@ class Window implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEditableUntil(?\DateTime $editable_until): self
     {
         if (is_null($editable_until)) {
-            throw new \InvalidArgumentException('non-nullable editable_until cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'editable_until');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('editable_until', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['editable_until'] = $editable_until;
 

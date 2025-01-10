@@ -80,8 +80,8 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'points_number' => false,
-        'points_monetary_value' => false
+        'points_number' => true,
+        'points_monetary_value' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPointsNumber(?int $points_number): self
     {
         if (is_null($points_number)) {
-            throw new \InvalidArgumentException('non-nullable points_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points_number'] = $points_number;
 
@@ -345,7 +352,14 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPointsMonetaryValue(?\OpenAPI\Client\Model\orders\Money $points_monetary_value): self
     {
         if (is_null($points_monetary_value)) {
-            throw new \InvalidArgumentException('non-nullable points_monetary_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points_monetary_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points_monetary_value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points_monetary_value'] = $points_monetary_value;
 

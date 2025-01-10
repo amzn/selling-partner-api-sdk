@@ -342,7 +342,7 @@ class LowestPricedOffer implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets offers
      *
-     * @return arrayA
+     * @return array
      */
     public function getOffers(): array
     {

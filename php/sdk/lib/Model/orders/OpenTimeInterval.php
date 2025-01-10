@@ -80,8 +80,8 @@ class OpenTimeInterval implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'hour' => false,
-        'minute' => false
+        'hour' => true,
+        'minute' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class OpenTimeInterval implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHour(?int $hour): self
     {
         if (is_null($hour)) {
-            throw new \InvalidArgumentException('non-nullable hour cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hour');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hour', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['hour'] = $hour;
 
@@ -345,7 +352,14 @@ class OpenTimeInterval implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMinute(?int $minute): self
     {
         if (is_null($minute)) {
-            throw new \InvalidArgumentException('non-nullable minute cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'minute');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('minute', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['minute'] = $minute;
 

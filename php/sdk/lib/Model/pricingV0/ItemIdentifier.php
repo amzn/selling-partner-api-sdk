@@ -85,8 +85,8 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'asin' => false,
-        'seller_sku' => false,
+        'asin' => true,
+        'seller_sku' => true,
         'item_condition' => false
     ];
 
@@ -365,7 +365,14 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -392,7 +399,14 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 

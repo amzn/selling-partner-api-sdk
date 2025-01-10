@@ -88,12 +88,12 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'image_caption_block' => false,
-        'description_text_block' => false,
-        'description_list_block' => false,
-        'sidebar_image_text_block' => false,
-        'sidebar_list_block' => false
+        'headline' => true,
+        'image_caption_block' => true,
+        'description_text_block' => true,
+        'description_list_block' => true,
+        'sidebar_image_text_block' => true,
+        'sidebar_list_block' => true
     ];
 
     /**
@@ -346,7 +346,14 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -373,7 +380,14 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     public function setImageCaptionBlock(?\OpenAPI\Client\Model\aplusContent\StandardImageCaptionBlock $image_caption_block): self
     {
         if (is_null($image_caption_block)) {
-            throw new \InvalidArgumentException('non-nullable image_caption_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image_caption_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image_caption_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image_caption_block'] = $image_caption_block;
 
@@ -400,7 +414,14 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     public function setDescriptionTextBlock(?\OpenAPI\Client\Model\aplusContent\StandardTextBlock $description_text_block): self
     {
         if (is_null($description_text_block)) {
-            throw new \InvalidArgumentException('non-nullable description_text_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description_text_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_text_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description_text_block'] = $description_text_block;
 
@@ -427,7 +448,14 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     public function setDescriptionListBlock(?\OpenAPI\Client\Model\aplusContent\StandardTextListBlock $description_list_block): self
     {
         if (is_null($description_list_block)) {
-            throw new \InvalidArgumentException('non-nullable description_list_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description_list_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_list_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description_list_block'] = $description_list_block;
 
@@ -454,7 +482,14 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     public function setSidebarImageTextBlock(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $sidebar_image_text_block): self
     {
         if (is_null($sidebar_image_text_block)) {
-            throw new \InvalidArgumentException('non-nullable sidebar_image_text_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sidebar_image_text_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sidebar_image_text_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sidebar_image_text_block'] = $sidebar_image_text_block;
 
@@ -481,7 +516,14 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     public function setSidebarListBlock(?\OpenAPI\Client\Model\aplusContent\StandardTextListBlock $sidebar_list_block): self
     {
         if (is_null($sidebar_list_block)) {
-            throw new \InvalidArgumentException('non-nullable sidebar_list_block cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sidebar_list_block');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sidebar_list_block', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sidebar_list_block'] = $sidebar_list_block;
 

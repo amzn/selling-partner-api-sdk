@@ -84,10 +84,10 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'buyer_id' => false,
-        'name' => false,
-        'phone' => false,
-        'is_prime_member' => false
+        'buyer_id' => true,
+        'name' => true,
+        'phone' => true,
+        'is_prime_member' => true
     ];
 
     /**
@@ -336,10 +336,17 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerId(?string $buyer_id): self
     {
         if (is_null($buyer_id)) {
-            throw new \InvalidArgumentException('non-nullable buyer_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($buyer_id)))) {
+        if (!is_null($buyer_id) && (!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($buyer_id)))) {
             throw new \InvalidArgumentException("invalid value for \$buyer_id when calling Buyer., must conform to the pattern /^[A-Z0-9]*$/.");
         }
 
@@ -368,7 +375,14 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -395,7 +409,14 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPhone(?string $phone): self
     {
         if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone'] = $phone;
 
@@ -422,7 +443,14 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsPrimeMember(?bool $is_prime_member): self
     {
         if (is_null($is_prime_member)) {
-            throw new \InvalidArgumentException('non-nullable is_prime_member cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_prime_member');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_prime_member', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_prime_member'] = $is_prime_member;
 

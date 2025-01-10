@@ -84,10 +84,10 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posted_date' => false,
-        'reason_code' => false,
-        'reason_code_description' => false,
-        'charge_refund_transactions' => false
+        'posted_date' => true,
+        'reason_code' => true,
+        'reason_code_description' => true,
+        'charge_refund_transactions' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPostedDate(?\DateTime $posted_date): self
     {
         if (is_null($posted_date)) {
-            throw new \InvalidArgumentException('non-nullable posted_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('posted_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['posted_date'] = $posted_date;
 
@@ -359,7 +366,14 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setReasonCode(?string $reason_code): self
     {
         if (is_null($reason_code)) {
-            throw new \InvalidArgumentException('non-nullable reason_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_code', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_code'] = $reason_code;
 
@@ -386,7 +400,14 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setReasonCodeDescription(?string $reason_code_description): self
     {
         if (is_null($reason_code_description)) {
-            throw new \InvalidArgumentException('non-nullable reason_code_description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason_code_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_code_description', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason_code_description'] = $reason_code_description;
 
@@ -396,7 +417,7 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets charge_refund_transactions
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getChargeRefundTransactions(): ?array
     {
@@ -413,7 +434,14 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setChargeRefundTransactions(?array $charge_refund_transactions): self
     {
         if (is_null($charge_refund_transactions)) {
-            throw new \InvalidArgumentException('non-nullable charge_refund_transactions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'charge_refund_transactions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('charge_refund_transactions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['charge_refund_transactions'] = $charge_refund_transactions;
 

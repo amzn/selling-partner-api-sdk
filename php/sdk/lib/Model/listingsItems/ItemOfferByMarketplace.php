@@ -89,8 +89,8 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
         'marketplace_id' => false,
         'offer_type' => false,
         'price' => false,
-        'points' => false,
-        'audience' => false
+        'points' => true,
+        'audience' => true
     ];
 
     /**
@@ -463,7 +463,14 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPoints(?\OpenAPI\Client\Model\listingsItems\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 
@@ -490,7 +497,14 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAudience(?\OpenAPI\Client\Model\listingsItems\Audience $audience): self
     {
         if (is_null($audience)) {
-            throw new \InvalidArgumentException('non-nullable audience cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'audience');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('audience', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['audience'] = $audience;
 

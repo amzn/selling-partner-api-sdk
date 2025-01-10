@@ -80,8 +80,8 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'available_distributable_quantity' => false,
-        'reserved_distributable_quantity' => false
+        'available_distributable_quantity' => true,
+        'reserved_distributable_quantity' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvailableDistributableQuantity(?int $available_distributable_quantity): self
     {
         if (is_null($available_distributable_quantity)) {
-            throw new \InvalidArgumentException('non-nullable available_distributable_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'available_distributable_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('available_distributable_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['available_distributable_quantity'] = $available_distributable_quantity;
 
@@ -345,7 +352,14 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReservedDistributableQuantity(?int $reserved_distributable_quantity): self
     {
         if (is_null($reserved_distributable_quantity)) {
-            throw new \InvalidArgumentException('non-nullable reserved_distributable_quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reserved_distributable_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reserved_distributable_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reserved_distributable_quantity'] = $reserved_distributable_quantity;
 

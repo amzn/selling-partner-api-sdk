@@ -84,7 +84,7 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'type' => false,
         'charge_amount' => false,
-        'tax_details' => false
+        'tax_details' => true
     ];
 
     /**
@@ -412,7 +412,7 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxDetails(): ?array
     {
@@ -429,7 +429,14 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxDetails(?array $tax_details): self
     {
         if (is_null($tax_details)) {
-            throw new \InvalidArgumentException('non-nullable tax_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_details'] = $tax_details;
 

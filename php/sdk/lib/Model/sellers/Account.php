@@ -86,8 +86,8 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'marketplace_level_attributes' => false,
         'business_type' => false,
-        'business' => false,
-        'primary_contact' => false
+        'business' => true,
+        'primary_contact' => true
     ];
 
     /**
@@ -357,7 +357,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_level_attributes
      *
-     * @return arrayA
+     * @return array
      */
     public function getMarketplaceLevelAttributes(): array
     {
@@ -438,7 +438,14 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBusiness(?\OpenAPI\Client\Model\sellers\Business $business): self
     {
         if (is_null($business)) {
-            throw new \InvalidArgumentException('non-nullable business cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'business');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('business', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['business'] = $business;
 
@@ -465,7 +472,14 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrimaryContact(?\OpenAPI\Client\Model\sellers\PrimaryContact $primary_contact): self
     {
         if (is_null($primary_contact)) {
-            throw new \InvalidArgumentException('non-nullable primary_contact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'primary_contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('primary_contact', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['primary_contact'] = $primary_contact;
 

@@ -85,10 +85,10 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rate_item_id' => false,
-        'rate_item_type' => false,
-        'rate_item_charge' => false,
-        'rate_item_name_localization' => false
+        'rate_item_id' => true,
+        'rate_item_type' => true,
+        'rate_item_charge' => true,
+        'rate_item_name_localization' => true
     ];
 
     /**
@@ -333,7 +333,14 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRateItemId(?string $rate_item_id): self
     {
         if (is_null($rate_item_id)) {
-            throw new \InvalidArgumentException('non-nullable rate_item_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rate_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rate_item_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rate_item_id'] = $rate_item_id;
 
@@ -360,7 +367,14 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRateItemType(?string $rate_item_type): self
     {
         if (is_null($rate_item_type)) {
-            throw new \InvalidArgumentException('non-nullable rate_item_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rate_item_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rate_item_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rate_item_type'] = $rate_item_type;
 
@@ -387,7 +401,14 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRateItemCharge(?\OpenAPI\Client\Model\shipping\Currency $rate_item_charge): self
     {
         if (is_null($rate_item_charge)) {
-            throw new \InvalidArgumentException('non-nullable rate_item_charge cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rate_item_charge');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rate_item_charge', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rate_item_charge'] = $rate_item_charge;
 
@@ -414,7 +435,14 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRateItemNameLocalization(?string $rate_item_name_localization): self
     {
         if (is_null($rate_item_name_localization)) {
-            throw new \InvalidArgumentException('non-nullable rate_item_name_localization cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rate_item_name_localization');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rate_item_name_localization', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['rate_item_name_localization'] = $rate_item_name_localization;
 

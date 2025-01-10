@@ -84,7 +84,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'transaction_id' => false,
         'status' => false,
-        'errors' => false
+        'errors' => true
     ];
 
     /**
@@ -404,7 +404,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -421,7 +421,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

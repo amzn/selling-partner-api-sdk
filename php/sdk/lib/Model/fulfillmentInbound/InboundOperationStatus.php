@@ -418,7 +418,7 @@ class InboundOperationStatus implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets operation_problems
      *
-     * @return arrayA
+     * @return array
      */
     public function getOperationProblems(): array
     {

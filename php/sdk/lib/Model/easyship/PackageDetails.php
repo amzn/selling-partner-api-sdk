@@ -82,9 +82,9 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'package_items' => false,
+        'package_items' => true,
         'package_time_slot' => false,
-        'package_identifier' => false
+        'package_identifier' => true
     ];
 
     /**
@@ -315,7 +315,7 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_items
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackageItems(): ?array
     {
@@ -332,10 +332,17 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageItems(?array $package_items): self
     {
         if (is_null($package_items)) {
-            throw new \InvalidArgumentException('non-nullable package_items cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($package_items) > 500)) {
+        if (!is_null($package_items) && (count($package_items) > 500)) {
             throw new \InvalidArgumentException('invalid value for $package_items when calling PackageDetails., number of items must be less than or equal to 500.');
         }
         $this->container['package_items'] = $package_items;
@@ -390,7 +397,14 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackageIdentifier(?string $package_identifier): self
     {
         if (is_null($package_identifier)) {
-            throw new \InvalidArgumentException('non-nullable package_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_identifier'] = $package_identifier;
 

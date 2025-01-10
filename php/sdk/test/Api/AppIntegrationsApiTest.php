@@ -55,6 +55,8 @@ class AppIntegrationsApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('AppIntegrationsApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class AppIntegrationsApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class AppIntegrationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateNotification200', 'AppIntegrationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateNotification200', 'AppIntegrationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -226,7 +227,7 @@ class AppIntegrationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateNotification400', 'AppIntegrationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateNotification400', 'AppIntegrationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -376,7 +377,7 @@ class AppIntegrationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testDeleteNotifications204', 'AppIntegrationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testDeleteNotifications204', 'AppIntegrationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -455,7 +456,7 @@ class AppIntegrationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testDeleteNotifications400', 'AppIntegrationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testDeleteNotifications400', 'AppIntegrationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -596,7 +597,7 @@ class AppIntegrationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testRecordActionFeedback204', 'AppIntegrationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testRecordActionFeedback204', 'AppIntegrationsApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -677,7 +678,7 @@ class AppIntegrationsApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testRecordActionFeedback400', 'AppIntegrationsApi')) {
+            if ($this->testHelper->shouldSkipTest('testRecordActionFeedback400', 'AppIntegrationsApi')) {
                 $this->assertTrue(true);
                 return;
             }

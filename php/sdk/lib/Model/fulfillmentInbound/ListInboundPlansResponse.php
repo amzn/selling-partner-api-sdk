@@ -80,8 +80,8 @@ class ListInboundPlansResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inbound_plans' => false,
-        'pagination' => false
+        'inbound_plans' => true,
+        'pagination' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class ListInboundPlansResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets inbound_plans
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInboundPlans(): ?array
     {
@@ -318,7 +318,14 @@ class ListInboundPlansResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setInboundPlans(?array $inbound_plans): self
     {
         if (is_null($inbound_plans)) {
-            throw new \InvalidArgumentException('non-nullable inbound_plans cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inbound_plans');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inbound_plans', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inbound_plans'] = $inbound_plans;
 
@@ -345,7 +352,14 @@ class ListInboundPlansResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPagination(?\OpenAPI\Client\Model\fulfillmentInbound\Pagination $pagination): self
     {
         if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'pagination');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pagination', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['pagination'] = $pagination;
 

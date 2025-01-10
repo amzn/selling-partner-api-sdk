@@ -55,6 +55,8 @@ class FeesApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('FeesApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class FeesApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class FeesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN200', 'FeesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN200', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -285,7 +286,7 @@ class FeesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN400', 'FeesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForASIN400', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -419,7 +420,7 @@ class FeesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU200', 'FeesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU200', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -563,7 +564,7 @@ class FeesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU400', 'FeesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimateForSKU400', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -697,7 +698,7 @@ class FeesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates200', 'FeesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates200', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -905,7 +906,7 @@ class FeesApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates400', 'FeesApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetMyFeesEstimates400', 'FeesApi')) {
                 $this->assertTrue(true);
                 return;
             }

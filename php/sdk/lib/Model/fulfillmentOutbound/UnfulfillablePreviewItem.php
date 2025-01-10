@@ -87,7 +87,7 @@ class UnfulfillablePreviewItem implements ModelInterface, ArrayAccess, \JsonSeri
         'seller_sku' => false,
         'quantity' => false,
         'seller_fulfillment_order_item_id' => false,
-        'item_unfulfillable_reasons' => false
+        'item_unfulfillable_reasons' => true
     ];
 
     /**
@@ -421,7 +421,7 @@ class UnfulfillablePreviewItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets item_unfulfillable_reasons
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getItemUnfulfillableReasons(): ?array
     {
@@ -438,7 +438,14 @@ class UnfulfillablePreviewItem implements ModelInterface, ArrayAccess, \JsonSeri
     public function setItemUnfulfillableReasons(?array $item_unfulfillable_reasons): self
     {
         if (is_null($item_unfulfillable_reasons)) {
-            throw new \InvalidArgumentException('non-nullable item_unfulfillable_reasons cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_unfulfillable_reasons');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_unfulfillable_reasons', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_unfulfillable_reasons'] = $item_unfulfillable_reasons;
 

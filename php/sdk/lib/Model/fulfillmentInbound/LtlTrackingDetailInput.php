@@ -80,7 +80,7 @@ class LtlTrackingDetailInput implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'bill_of_lading_number' => false,
+        'bill_of_lading_number' => true,
         'freight_bill_number' => false
     ];
 
@@ -337,12 +337,19 @@ class LtlTrackingDetailInput implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBillOfLadingNumber(?string $bill_of_lading_number): self
     {
         if (is_null($bill_of_lading_number)) {
-            throw new \InvalidArgumentException('non-nullable bill_of_lading_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bill_of_lading_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bill_of_lading_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($bill_of_lading_number) > 1024)) {
+        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) > 1024)) {
             throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetailInput., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($bill_of_lading_number) < 1)) {
+        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) < 1)) {
             throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetailInput., must be bigger than or equal to 1.');
         }
 
@@ -354,7 +361,7 @@ class LtlTrackingDetailInput implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets freight_bill_number
      *
-     * @return arrayA
+     * @return array
      */
     public function getFreightBillNumber(): array
     {

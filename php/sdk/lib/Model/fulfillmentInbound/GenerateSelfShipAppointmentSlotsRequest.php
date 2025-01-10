@@ -80,8 +80,8 @@ class GenerateSelfShipAppointmentSlotsRequest implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'desired_end_date' => false,
-        'desired_start_date' => false
+        'desired_end_date' => true,
+        'desired_start_date' => true
     ];
 
     /**
@@ -318,7 +318,14 @@ class GenerateSelfShipAppointmentSlotsRequest implements ModelInterface, ArrayAc
     public function setDesiredEndDate(?\DateTime $desired_end_date): self
     {
         if (is_null($desired_end_date)) {
-            throw new \InvalidArgumentException('non-nullable desired_end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'desired_end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('desired_end_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['desired_end_date'] = $desired_end_date;
 
@@ -345,7 +352,14 @@ class GenerateSelfShipAppointmentSlotsRequest implements ModelInterface, ArrayAc
     public function setDesiredStartDate(?\DateTime $desired_start_date): self
     {
         if (is_null($desired_start_date)) {
-            throw new \InvalidArgumentException('non-nullable desired_start_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'desired_start_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('desired_start_date', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['desired_start_date'] = $desired_start_date;
 

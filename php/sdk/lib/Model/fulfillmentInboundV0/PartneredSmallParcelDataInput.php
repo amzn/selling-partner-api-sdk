@@ -80,8 +80,8 @@ class PartneredSmallParcelDataInput implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'package_list' => false,
-        'carrier_name' => false
+        'package_list' => true,
+        'carrier_name' => true
     ];
 
     /**
@@ -301,7 +301,7 @@ class PartneredSmallParcelDataInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets package_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getPackageList(): ?array
     {
@@ -318,7 +318,14 @@ class PartneredSmallParcelDataInput implements ModelInterface, ArrayAccess, \Jso
     public function setPackageList(?array $package_list): self
     {
         if (is_null($package_list)) {
-            throw new \InvalidArgumentException('non-nullable package_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_list'] = $package_list;
 
@@ -345,7 +352,14 @@ class PartneredSmallParcelDataInput implements ModelInterface, ArrayAccess, \Jso
     public function setCarrierName(?string $carrier_name): self
     {
         if (is_null($carrier_name)) {
-            throw new \InvalidArgumentException('non-nullable carrier_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'carrier_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['carrier_name'] = $carrier_name;
 

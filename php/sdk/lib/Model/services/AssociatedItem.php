@@ -90,13 +90,13 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asin' => false,
-        'title' => false,
-        'quantity' => false,
-        'order_id' => false,
-        'item_status' => false,
-        'brand_name' => false,
-        'item_delivery' => false
+        'asin' => true,
+        'title' => true,
+        'quantity' => true,
+        'order_id' => true,
+        'item_status' => true,
+        'brand_name' => true,
+        'item_delivery' => true
     ];
 
     /**
@@ -389,7 +389,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -416,7 +423,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTitle(?string $title): self
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
@@ -443,7 +457,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity(?int $quantity): self
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity'] = $quantity;
 
@@ -470,12 +491,19 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOrderId(?string $order_id): self
     {
         if (is_null($order_id)) {
-            throw new \InvalidArgumentException('non-nullable order_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($order_id) > 20)) {
+        if (!is_null($order_id) && (mb_strlen($order_id) > 20)) {
             throw new \InvalidArgumentException('invalid length for $order_id when calling AssociatedItem., must be smaller than or equal to 20.');
         }
-        if ((mb_strlen($order_id) < 5)) {
+        if (!is_null($order_id) && (mb_strlen($order_id) < 5)) {
             throw new \InvalidArgumentException('invalid length for $order_id when calling AssociatedItem., must be bigger than or equal to 5.');
         }
 
@@ -504,10 +532,17 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemStatus(?string $item_status): self
     {
         if (is_null($item_status)) {
-            throw new \InvalidArgumentException('non-nullable item_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getItemStatusAllowableValues();
-        if (!in_array($item_status, $allowedValues, true)) {
+        if (!is_null($item_status) && !in_array($item_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'item_status', must be one of '%s'",
@@ -541,7 +576,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBrandName(?string $brand_name): self
     {
         if (is_null($brand_name)) {
-            throw new \InvalidArgumentException('non-nullable brand_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_name'] = $brand_name;
 
@@ -568,7 +610,14 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItemDelivery(?\OpenAPI\Client\Model\services\ItemDelivery $item_delivery): self
     {
         if (is_null($item_delivery)) {
-            throw new \InvalidArgumentException('non-nullable item_delivery cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_delivery');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_delivery', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_delivery'] = $item_delivery;
 

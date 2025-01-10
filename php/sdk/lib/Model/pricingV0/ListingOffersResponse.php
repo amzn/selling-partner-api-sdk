@@ -83,10 +83,10 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headers' => false,
-        'status' => false,
+        'headers' => true,
+        'status' => true,
         'body' => false,
-        'request' => false
+        'request' => true
     ];
 
     /**
@@ -334,7 +334,14 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setHeaders(?\OpenAPI\Client\Model\pricingV0\HttpResponseHeaders $headers): self
     {
         if (is_null($headers)) {
-            throw new \InvalidArgumentException('non-nullable headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headers', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headers'] = $headers;
 
@@ -361,7 +368,14 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setStatus(?\OpenAPI\Client\Model\pricingV0\GetOffersHttpStatusLine $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -415,7 +429,14 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRequest(?\OpenAPI\Client\Model\pricingV0\ListingOffersRequestParams $request): self
     {
         if (is_null($request)) {
-            throw new \InvalidArgumentException('non-nullable request cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'request');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('request', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['request'] = $request;
 

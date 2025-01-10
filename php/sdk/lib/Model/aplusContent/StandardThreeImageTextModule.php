@@ -84,10 +84,10 @@ class StandardThreeImageTextModule implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'block1' => false,
-        'block2' => false,
-        'block3' => false
+        'headline' => true,
+        'block1' => true,
+        'block2' => true,
+        'block3' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class StandardThreeImageTextModule implements ModelInterface, ArrayAccess, \Json
     public function setHeadline(?\OpenAPI\Client\Model\aplusContent\TextComponent $headline): self
     {
         if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'headline');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('headline', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['headline'] = $headline;
 
@@ -359,7 +366,14 @@ class StandardThreeImageTextModule implements ModelInterface, ArrayAccess, \Json
     public function setBlock1(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block1): self
     {
         if (is_null($block1)) {
-            throw new \InvalidArgumentException('non-nullable block1 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block1');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block1', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block1'] = $block1;
 
@@ -386,7 +400,14 @@ class StandardThreeImageTextModule implements ModelInterface, ArrayAccess, \Json
     public function setBlock2(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block2): self
     {
         if (is_null($block2)) {
-            throw new \InvalidArgumentException('non-nullable block2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block2', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block2'] = $block2;
 
@@ -413,7 +434,14 @@ class StandardThreeImageTextModule implements ModelInterface, ArrayAccess, \Json
     public function setBlock3(?\OpenAPI\Client\Model\aplusContent\StandardImageTextBlock $block3): self
     {
         if (is_null($block3)) {
-            throw new \InvalidArgumentException('non-nullable block3 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'block3');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('block3', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['block3'] = $block3;
 

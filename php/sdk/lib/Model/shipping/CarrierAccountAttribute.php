@@ -83,9 +83,9 @@ class CarrierAccountAttribute implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attribute_name' => false,
-        'property_group' => false,
-        'value' => false
+        'attribute_name' => true,
+        'property_group' => true,
+        'value' => true
     ];
 
     /**
@@ -326,7 +326,14 @@ class CarrierAccountAttribute implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAttributeName(?string $attribute_name): self
     {
         if (is_null($attribute_name)) {
-            throw new \InvalidArgumentException('non-nullable attribute_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attribute_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attribute_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attribute_name'] = $attribute_name;
 
@@ -353,7 +360,14 @@ class CarrierAccountAttribute implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPropertyGroup(?string $property_group): self
     {
         if (is_null($property_group)) {
-            throw new \InvalidArgumentException('non-nullable property_group cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'property_group');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('property_group', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['property_group'] = $property_group;
 
@@ -380,7 +394,14 @@ class CarrierAccountAttribute implements ModelInterface, ArrayAccess, \JsonSeria
     public function setValue(?string $value): self
     {
         if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['value'] = $value;
 

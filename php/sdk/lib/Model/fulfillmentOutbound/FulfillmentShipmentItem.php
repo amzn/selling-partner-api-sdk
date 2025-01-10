@@ -91,9 +91,9 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
         'seller_sku' => false,
         'seller_fulfillment_order_item_id' => false,
         'quantity' => false,
-        'package_number' => false,
-        'serial_number' => false,
-        'manufacturer_lot_codes' => false
+        'package_number' => true,
+        'serial_number' => true,
+        'manufacturer_lot_codes' => true
     ];
 
     /**
@@ -436,7 +436,14 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPackageNumber(?int $package_number): self
     {
         if (is_null($package_number)) {
-            throw new \InvalidArgumentException('non-nullable package_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'package_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('package_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['package_number'] = $package_number;
 
@@ -463,7 +470,14 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSerialNumber(?string $serial_number): self
     {
         if (is_null($serial_number)) {
-            throw new \InvalidArgumentException('non-nullable serial_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'serial_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serial_number', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['serial_number'] = $serial_number;
 
@@ -473,7 +487,7 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets manufacturer_lot_codes
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getManufacturerLotCodes(): ?array
     {
@@ -490,7 +504,14 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setManufacturerLotCodes(?array $manufacturer_lot_codes): self
     {
         if (is_null($manufacturer_lot_codes)) {
-            throw new \InvalidArgumentException('non-nullable manufacturer_lot_codes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'manufacturer_lot_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('manufacturer_lot_codes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['manufacturer_lot_codes'] = $manufacturer_lot_codes;
 

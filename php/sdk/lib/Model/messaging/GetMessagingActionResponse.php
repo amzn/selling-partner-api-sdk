@@ -84,10 +84,10 @@ class GetMessagingActionResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_links' => false,
-        '_embedded' => false,
-        'payload' => false,
-        'errors' => false
+        '_links' => true,
+        '_embedded' => true,
+        'payload' => true,
+        'errors' => true
     ];
 
     /**
@@ -332,7 +332,14 @@ class GetMessagingActionResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setLinks(?\OpenAPI\Client\Model\messaging\GetMessagingActionResponseLinks $_links): self
     {
         if (is_null($_links)) {
-            throw new \InvalidArgumentException('non-nullable _links cannot be null');
+            array_push($this->openAPINullablesSetToNull, '_links');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('_links', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['_links'] = $_links;
 
@@ -359,7 +366,14 @@ class GetMessagingActionResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setEmbedded(?\OpenAPI\Client\Model\messaging\GetMessagingActionResponseEmbedded $_embedded): self
     {
         if (is_null($_embedded)) {
-            throw new \InvalidArgumentException('non-nullable _embedded cannot be null');
+            array_push($this->openAPINullablesSetToNull, '_embedded');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('_embedded', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['_embedded'] = $_embedded;
 
@@ -386,7 +400,14 @@ class GetMessagingActionResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setPayload(?\OpenAPI\Client\Model\messaging\MessagingAction $payload): self
     {
         if (is_null($payload)) {
-            throw new \InvalidArgumentException('non-nullable payload cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'payload');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payload', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['payload'] = $payload;
 
@@ -396,7 +417,7 @@ class GetMessagingActionResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets errors
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getErrors(): ?array
     {
@@ -413,7 +434,14 @@ class GetMessagingActionResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setErrors(?array $errors): self
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

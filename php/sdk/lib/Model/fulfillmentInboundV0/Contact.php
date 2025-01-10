@@ -87,7 +87,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'phone' => false,
         'email' => false,
-        'fax' => false
+        'fax' => true
     ];
 
     /**
@@ -450,9 +450,16 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFax(?string $fax): self
     {
         if (is_null($fax)) {
-            throw new \InvalidArgumentException('non-nullable fax cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fax', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($fax) > 20)) {
+        if (!is_null($fax) && (mb_strlen($fax) > 20)) {
             throw new \InvalidArgumentException('invalid length for $fax when calling Contact., must be smaller than or equal to 20.');
         }
 

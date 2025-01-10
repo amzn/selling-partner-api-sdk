@@ -78,7 +78,7 @@ class PaginationResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_results' => false
+        'total_results' => true
     ];
 
     /**
@@ -315,10 +315,17 @@ class PaginationResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setTotalResults(?int $total_results): self
     {
         if (is_null($total_results)) {
-            throw new \InvalidArgumentException('non-nullable total_results cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_results');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_results', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($total_results < 0)) {
+        if (!is_null($total_results) && ($total_results < 0)) {
             throw new \InvalidArgumentException('invalid value for $total_results when calling PaginationResponse., must be bigger than or equal to 0.');
         }
 

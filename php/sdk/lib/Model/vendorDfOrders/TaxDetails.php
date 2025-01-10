@@ -84,10 +84,10 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'tax_rate' => false,
+        'tax_rate' => true,
         'tax_amount' => false,
-        'taxable_amount' => false,
-        'type' => false
+        'taxable_amount' => true,
+        'type' => true
     ];
 
     /**
@@ -369,7 +369,14 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxRate(?string $tax_rate): self
     {
         if (is_null($tax_rate)) {
-            throw new \InvalidArgumentException('non-nullable tax_rate cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_rate');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_rate', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_rate'] = $tax_rate;
 
@@ -423,7 +430,14 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxableAmount(?\OpenAPI\Client\Model\vendorDfOrders\Money $taxable_amount): self
     {
         if (is_null($taxable_amount)) {
-            throw new \InvalidArgumentException('non-nullable taxable_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'taxable_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxable_amount', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['taxable_amount'] = $taxable_amount;
 
@@ -450,10 +464,17 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType(?string $type): self
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'type', must be one of '%s'",

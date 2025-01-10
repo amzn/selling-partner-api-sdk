@@ -81,7 +81,7 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'listing_price' => false,
-        'points' => false
+        'points' => true
     ];
 
     /**
@@ -348,7 +348,14 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
     public function setPoints(?\OpenAPI\Client\Model\pricing\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 

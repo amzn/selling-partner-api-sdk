@@ -78,7 +78,7 @@ class SubmitAcknowledgementRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order_acknowledgements' => false
+        'order_acknowledgements' => true
     ];
 
     /**
@@ -294,7 +294,7 @@ class SubmitAcknowledgementRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets order_acknowledgements
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOrderAcknowledgements(): ?array
     {
@@ -311,7 +311,14 @@ class SubmitAcknowledgementRequest implements ModelInterface, ArrayAccess, \Json
     public function setOrderAcknowledgements(?array $order_acknowledgements): self
     {
         if (is_null($order_acknowledgements)) {
-            throw new \InvalidArgumentException('non-nullable order_acknowledgements cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_acknowledgements');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_acknowledgements', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_acknowledgements'] = $order_acknowledgements;
 

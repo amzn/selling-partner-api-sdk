@@ -82,9 +82,9 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'has_automated_shipping_settings' => false,
-        'automated_carrier' => false,
-        'automated_ship_method' => false
+        'has_automated_shipping_settings' => true,
+        'automated_carrier' => true,
+        'automated_ship_method' => true
     ];
 
     /**
@@ -325,7 +325,14 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
     public function setHasAutomatedShippingSettings(?bool $has_automated_shipping_settings): self
     {
         if (is_null($has_automated_shipping_settings)) {
-            throw new \InvalidArgumentException('non-nullable has_automated_shipping_settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'has_automated_shipping_settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('has_automated_shipping_settings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['has_automated_shipping_settings'] = $has_automated_shipping_settings;
 
@@ -352,7 +359,14 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
     public function setAutomatedCarrier(?string $automated_carrier): self
     {
         if (is_null($automated_carrier)) {
-            throw new \InvalidArgumentException('non-nullable automated_carrier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'automated_carrier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('automated_carrier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['automated_carrier'] = $automated_carrier;
 
@@ -379,7 +393,14 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
     public function setAutomatedShipMethod(?string $automated_ship_method): self
     {
         if (is_null($automated_ship_method)) {
-            throw new \InvalidArgumentException('non-nullable automated_ship_method cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'automated_ship_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('automated_ship_method', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['automated_ship_method'] = $automated_ship_method;
 

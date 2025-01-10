@@ -55,6 +55,8 @@ class FulfillmentInboundApiTest extends TestCase
     public function setUp(): void
     {
         $this->testHelper = new TestHelper();
+        // Initialize parameter value specific to case
+        $this->testHelper->setSpecificValue('FulfillmentInboundApi', $this->getName());
         $credentialsConfig = [
             "clientId" => $_ENV['SP_API_CLIENT_ID'],
             "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
@@ -85,8 +87,7 @@ class FulfillmentInboundApiTest extends TestCase
             case 200:
             case 201:
             case 202:
-                $actual = json_decode($response, true);
-                $this->assertEquals($responseParams, $actual);
+                $this->assertEquals($responseParams, $response);
                 break;
 
             case 204:
@@ -141,7 +142,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelInboundPlan202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelInboundPlan202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -219,7 +220,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelInboundPlan400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelInboundPlan400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -356,7 +357,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelSelfShipAppointment202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelSelfShipAppointment202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -442,7 +443,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCancelSelfShipAppointment400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCancelSelfShipAppointment400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -587,7 +588,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmDeliveryWindowOptions202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmDeliveryWindowOptions202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -671,7 +672,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmDeliveryWindowOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmDeliveryWindowOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -814,7 +815,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmPackingOption202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmPackingOption202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -895,7 +896,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmPackingOption400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmPackingOption400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1035,7 +1036,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmPlacementOption202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmPlacementOption202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1116,7 +1117,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmPlacementOption400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmPlacementOption400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1256,7 +1257,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmShipmentContentUpdatePreview202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmShipmentContentUpdatePreview202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1340,7 +1341,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmShipmentContentUpdatePreview400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmShipmentContentUpdatePreview400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1483,7 +1484,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmTransportationOptions202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmTransportationOptions202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1574,7 +1575,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testConfirmTransportationOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmTransportationOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1724,7 +1725,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateInboundPlan202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateInboundPlan202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1826,7 +1827,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateInboundPlan400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateInboundPlan400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1986,7 +1987,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateMarketplaceItemLabels200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateMarketplaceItemLabels200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2108,7 +2109,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testCreateMarketplaceItemLabels400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testCreateMarketplaceItemLabels400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2255,7 +2256,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateDeliveryWindowOptions202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateDeliveryWindowOptions202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2336,7 +2337,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateDeliveryWindowOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateDeliveryWindowOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2476,7 +2477,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGeneratePackingOptions202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGeneratePackingOptions202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2554,7 +2555,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGeneratePackingOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGeneratePackingOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2691,7 +2692,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGeneratePlacementOptions202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGeneratePlacementOptions202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2784,7 +2785,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGeneratePlacementOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGeneratePlacementOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2936,7 +2937,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateSelfShipAppointmentSlots201', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateSelfShipAppointmentSlots201', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3023,7 +3024,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateSelfShipAppointmentSlots400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateSelfShipAppointmentSlots400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3169,7 +3170,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateShipmentContentUpdatePreviews202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateShipmentContentUpdatePreviews202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3285,7 +3286,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateShipmentContentUpdatePreviews400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateShipmentContentUpdatePreviews400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3460,7 +3461,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateTransportationOptions202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateTransportationOptions202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3575,7 +3576,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGenerateTransportationOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGenerateTransportationOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3749,7 +3750,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDeliveryChallanDocument200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDeliveryChallanDocument200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3834,7 +3835,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetDeliveryChallanDocument400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetDeliveryChallanDocument400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3974,7 +3975,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInboundOperationStatus200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInboundOperationStatus200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4060,7 +4061,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInboundOperationStatus400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInboundOperationStatus400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4197,7 +4198,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInboundPlan200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInboundPlan200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4295,7 +4296,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetInboundPlan400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetInboundPlan400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4432,7 +4433,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetSelfShipAppointmentSlots200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetSelfShipAppointmentSlots200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4531,7 +4532,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetSelfShipAppointmentSlots400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetSelfShipAppointmentSlots400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4671,7 +4672,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetShipment200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetShipment200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4836,7 +4837,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetShipment400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetShipment400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -4976,7 +4977,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetShipmentContentUpdatePreview200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetShipmentContentUpdatePreview200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5117,7 +5118,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testGetShipmentContentUpdatePreview400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetShipmentContentUpdatePreview400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5260,7 +5261,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListDeliveryWindowOptions200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListDeliveryWindowOptions200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5356,7 +5357,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListDeliveryWindowOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListDeliveryWindowOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5502,7 +5503,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlanBoxes200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlanBoxes200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5627,7 +5628,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlanBoxes400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlanBoxes400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5770,7 +5771,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlanItems200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlanItems200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -5873,7 +5874,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlanItems400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlanItems400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6016,7 +6017,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlanPallets200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlanPallets200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6117,7 +6118,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlanPallets400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlanPallets400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6260,7 +6261,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlans200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlans200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6391,7 +6392,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListInboundPlans400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListInboundPlans400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6537,7 +6538,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListItemComplianceDetails200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListItemComplianceDetails200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6650,7 +6651,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListItemComplianceDetails400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListItemComplianceDetails400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6790,7 +6791,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPackingGroupBoxes200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPackingGroupBoxes200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -6918,7 +6919,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPackingGroupBoxes400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPackingGroupBoxes400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7064,7 +7065,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPackingGroupItems200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPackingGroupItems200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7168,7 +7169,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPackingGroupItems400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPackingGroupItems400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7314,7 +7315,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPackingOptions200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPackingOptions200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7428,7 +7429,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPackingOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPackingOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7571,7 +7572,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPlacementOptions200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPlacementOptions200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7681,7 +7682,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPlacementOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPlacementOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7824,7 +7825,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPrepDetails200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPrepDetails200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -7917,7 +7918,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListPrepDetails400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListPrepDetails400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8057,7 +8058,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentBoxes200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentBoxes200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8185,7 +8186,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentBoxes400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentBoxes400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8331,7 +8332,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentContentUpdatePreviews200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentContentUpdatePreviews200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8480,7 +8481,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentContentUpdatePreviews400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentContentUpdatePreviews400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8626,7 +8627,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentItems200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentItems200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8732,7 +8733,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentItems400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentItems400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8878,7 +8879,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentPallets200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentPallets200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -8982,7 +8983,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListShipmentPallets400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListShipmentPallets400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9128,7 +9129,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListTransportationOptions200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListTransportationOptions200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9243,7 +9244,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testListTransportationOptions400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testListTransportationOptions400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9392,7 +9393,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testScheduleSelfShipAppointment200', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testScheduleSelfShipAppointment200', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9488,7 +9489,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testScheduleSelfShipAppointment400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testScheduleSelfShipAppointment400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9636,7 +9637,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetPackingInformation202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetPackingInformation202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9744,7 +9745,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetPackingInformation400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetPackingInformation400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9911,7 +9912,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetPrepDetails202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetPrepDetails202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -9996,7 +9997,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testSetPrepDetails400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testSetPrepDetails400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10140,7 +10141,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateInboundPlanName204', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateInboundPlanName204', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10214,7 +10215,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateInboundPlanName400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateInboundPlanName400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10356,7 +10357,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateItemComplianceDetails202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateItemComplianceDetails202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10451,7 +10452,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateItemComplianceDetails400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateItemComplianceDetails400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10605,7 +10606,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentName204', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentName204', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10682,7 +10683,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentName400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentName400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10827,7 +10828,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentSourceAddress202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentSourceAddress202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -10924,7 +10925,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentSourceAddress400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentSourceAddress400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -11080,7 +11081,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentTrackingDetails202', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentTrackingDetails202', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -11177,7 +11178,7 @@ class FulfillmentInboundApiTest extends TestCase
     {
         try {
             // Skip test if it is in the skip list
-             if ($this->testHelper->shouldSkipTest('testUpdateShipmentTrackingDetails400', 'FulfillmentInboundApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateShipmentTrackingDetails400', 'FulfillmentInboundApi')) {
                 $this->assertTrue(true);
                 return;
             }

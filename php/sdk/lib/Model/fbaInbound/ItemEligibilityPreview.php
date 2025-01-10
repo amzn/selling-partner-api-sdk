@@ -87,10 +87,10 @@ class ItemEligibilityPreview implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'asin' => false,
-        'marketplace_id' => false,
+        'marketplace_id' => true,
         'program' => false,
         'is_eligible_for_program' => false,
-        'ineligibility_reason_list' => false
+        'ineligibility_reason_list' => true
     ];
 
     /**
@@ -488,7 +488,14 @@ class ItemEligibilityPreview implements ModelInterface, ArrayAccess, \JsonSerial
     public function setMarketplaceId(?string $marketplace_id): self
     {
         if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'marketplace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('marketplace_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['marketplace_id'] = $marketplace_id;
 
@@ -562,7 +569,7 @@ class ItemEligibilityPreview implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets ineligibility_reason_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getIneligibilityReasonList(): ?array
     {
@@ -579,10 +586,17 @@ class ItemEligibilityPreview implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIneligibilityReasonList(?array $ineligibility_reason_list): self
     {
         if (is_null($ineligibility_reason_list)) {
-            throw new \InvalidArgumentException('non-nullable ineligibility_reason_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ineligibility_reason_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ineligibility_reason_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getIneligibilityReasonListAllowableValues();
-        if (array_diff($ineligibility_reason_list, $allowedValues)) {
+        if (!is_null($ineligibility_reason_list) && array_diff($ineligibility_reason_list, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'ineligibility_reason_list', must be one of '%s'",

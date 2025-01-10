@@ -84,7 +84,7 @@ class Feature implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'feature_name' => false,
         'feature_description' => false,
-        'seller_eligible' => false
+        'seller_eligible' => true
     ];
 
     /**
@@ -385,7 +385,14 @@ class Feature implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerEligible(?bool $seller_eligible): self
     {
         if (is_null($seller_eligible)) {
-            throw new \InvalidArgumentException('non-nullable seller_eligible cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_eligible');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_eligible', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_eligible'] = $seller_eligible;
 

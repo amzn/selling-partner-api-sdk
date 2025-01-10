@@ -83,8 +83,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'party_id' => false,
-        'address' => false,
-        'tax_registration_details' => false
+        'address' => true,
+        'tax_registration_details' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAddress(?\OpenAPI\Client\Model\vendorDfPayments\Address $address): self
     {
         if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address'] = $address;
 
@@ -365,7 +372,7 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tax_registration_details
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getTaxRegistrationDetails(): ?array
     {
@@ -382,7 +389,14 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTaxRegistrationDetails(?array $tax_registration_details): self
     {
         if (is_null($tax_registration_details)) {
-            throw new \InvalidArgumentException('non-nullable tax_registration_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_registration_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_registration_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_registration_details'] = $tax_registration_details;
 

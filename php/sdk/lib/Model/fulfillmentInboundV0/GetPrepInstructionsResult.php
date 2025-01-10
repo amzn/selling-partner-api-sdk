@@ -84,10 +84,10 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sku_prep_instructions_list' => false,
-        'invalid_sku_list' => false,
-        'asin_prep_instructions_list' => false,
-        'invalid_asin_list' => false
+        'sku_prep_instructions_list' => true,
+        'invalid_sku_list' => true,
+        'asin_prep_instructions_list' => true,
+        'invalid_asin_list' => true
     ];
 
     /**
@@ -315,7 +315,7 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets sku_prep_instructions_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getSkuPrepInstructionsList(): ?array
     {
@@ -332,7 +332,14 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setSkuPrepInstructionsList(?array $sku_prep_instructions_list): self
     {
         if (is_null($sku_prep_instructions_list)) {
-            throw new \InvalidArgumentException('non-nullable sku_prep_instructions_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku_prep_instructions_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_prep_instructions_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku_prep_instructions_list'] = $sku_prep_instructions_list;
 
@@ -342,7 +349,7 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets invalid_sku_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvalidSkuList(): ?array
     {
@@ -359,7 +366,14 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setInvalidSkuList(?array $invalid_sku_list): self
     {
         if (is_null($invalid_sku_list)) {
-            throw new \InvalidArgumentException('non-nullable invalid_sku_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invalid_sku_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invalid_sku_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invalid_sku_list'] = $invalid_sku_list;
 
@@ -369,7 +383,7 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets asin_prep_instructions_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getAsinPrepInstructionsList(): ?array
     {
@@ -386,7 +400,14 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setAsinPrepInstructionsList(?array $asin_prep_instructions_list): self
     {
         if (is_null($asin_prep_instructions_list)) {
-            throw new \InvalidArgumentException('non-nullable asin_prep_instructions_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin_prep_instructions_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin_prep_instructions_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin_prep_instructions_list'] = $asin_prep_instructions_list;
 
@@ -396,7 +417,7 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets invalid_asin_list
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getInvalidAsinList(): ?array
     {
@@ -413,7 +434,14 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     public function setInvalidAsinList(?array $invalid_asin_list): self
     {
         if (is_null($invalid_asin_list)) {
-            throw new \InvalidArgumentException('non-nullable invalid_asin_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'invalid_asin_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invalid_asin_list', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['invalid_asin_list'] = $invalid_asin_list;
 

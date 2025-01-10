@@ -114,16 +114,16 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'displayable_order_date' => false,
         'displayable_order_comment' => false,
         'shipping_speed_category' => false,
-        'delivery_window' => false,
+        'delivery_window' => true,
         'destination_address' => false,
-        'fulfillment_action' => false,
-        'fulfillment_policy' => false,
-        'cod_settings' => false,
+        'fulfillment_action' => true,
+        'fulfillment_policy' => true,
+        'cod_settings' => true,
         'received_date' => false,
         'fulfillment_order_status' => false,
         'status_updated_date' => false,
-        'notification_emails' => false,
-        'feature_constraints' => false
+        'notification_emails' => true,
+        'feature_constraints' => true
     ];
 
     /**
@@ -608,7 +608,14 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeliveryWindow(?\OpenAPI\Client\Model\fulfillmentOutbound\DeliveryWindow $delivery_window): self
     {
         if (is_null($delivery_window)) {
-            throw new \InvalidArgumentException('non-nullable delivery_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_window', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivery_window'] = $delivery_window;
 
@@ -662,7 +669,14 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentAction(?string $fulfillment_action): self
     {
         if (is_null($fulfillment_action)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_action cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_action');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_action', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_action'] = $fulfillment_action;
 
@@ -689,7 +703,14 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFulfillmentPolicy(?string $fulfillment_policy): self
     {
         if (is_null($fulfillment_policy)) {
-            throw new \InvalidArgumentException('non-nullable fulfillment_policy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_policy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_policy', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fulfillment_policy'] = $fulfillment_policy;
 
@@ -716,7 +737,14 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodSettings(?\OpenAPI\Client\Model\fulfillmentOutbound\CODSettings $cod_settings): self
     {
         if (is_null($cod_settings)) {
-            throw new \InvalidArgumentException('non-nullable cod_settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cod_settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cod_settings', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cod_settings'] = $cod_settings;
 
@@ -807,7 +835,7 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets notification_emails
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getNotificationEmails(): ?array
     {
@@ -824,7 +852,14 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNotificationEmails(?array $notification_emails): self
     {
         if (is_null($notification_emails)) {
-            throw new \InvalidArgumentException('non-nullable notification_emails cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'notification_emails');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('notification_emails', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['notification_emails'] = $notification_emails;
 
@@ -834,7 +869,7 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets feature_constraints
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getFeatureConstraints(): ?array
     {
@@ -851,7 +886,14 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeatureConstraints(?array $feature_constraints): self
     {
         if (is_null($feature_constraints)) {
-            throw new \InvalidArgumentException('non-nullable feature_constraints cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_constraints');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_constraints', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feature_constraints'] = $feature_constraints;
 

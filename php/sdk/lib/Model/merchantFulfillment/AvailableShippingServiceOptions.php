@@ -307,7 +307,7 @@ class AvailableShippingServiceOptions implements ModelInterface, ArrayAccess, \J
     /**
      * Gets available_carrier_will_pick_up_options
      *
-     * @return arrayA
+     * @return array
      */
     public function getAvailableCarrierWillPickUpOptions(): array
     {
@@ -334,7 +334,7 @@ class AvailableShippingServiceOptions implements ModelInterface, ArrayAccess, \J
     /**
      * Gets available_delivery_experience_options
      *
-     * @return arrayA
+     * @return array
      */
     public function getAvailableDeliveryExperienceOptions(): array
     {

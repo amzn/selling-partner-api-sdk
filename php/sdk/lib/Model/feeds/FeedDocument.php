@@ -84,7 +84,7 @@ class FeedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'feed_document_id' => false,
         'url' => false,
-        'compression_algorithm' => false
+        'compression_algorithm' => true
     ];
 
     /**
@@ -407,10 +407,17 @@ class FeedDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCompressionAlgorithm(?string $compression_algorithm): self
     {
         if (is_null($compression_algorithm)) {
-            throw new \InvalidArgumentException('non-nullable compression_algorithm cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'compression_algorithm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('compression_algorithm', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getCompressionAlgorithmAllowableValues();
-        if (!in_array($compression_algorithm, $allowedValues, true)) {
+        if (!is_null($compression_algorithm) && !in_array($compression_algorithm, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'compression_algorithm', must be one of '%s'",

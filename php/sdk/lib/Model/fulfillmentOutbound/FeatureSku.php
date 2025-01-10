@@ -86,11 +86,11 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_sku' => false,
-        'fn_sku' => false,
-        'asin' => false,
-        'sku_count' => false,
-        'overlapping_skus' => false
+        'seller_sku' => true,
+        'fn_sku' => true,
+        'asin' => true,
+        'sku_count' => true,
+        'overlapping_skus' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerSku(?string $seller_sku): self
     {
         if (is_null($seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_sku'] = $seller_sku;
 
@@ -366,7 +373,14 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFnSku(?string $fn_sku): self
     {
         if (is_null($fn_sku)) {
-            throw new \InvalidArgumentException('non-nullable fn_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fn_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fn_sku', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fn_sku'] = $fn_sku;
 
@@ -393,7 +407,14 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -420,7 +441,14 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSkuCount(?float $sku_count): self
     {
         if (is_null($sku_count)) {
-            throw new \InvalidArgumentException('non-nullable sku_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_count', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku_count'] = $sku_count;
 
@@ -430,7 +458,7 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets overlapping_skus
      *
-     * @return arrayA|null
+     * @return array|null
      */
     public function getOverlappingSkus(): ?array
     {
@@ -447,7 +475,14 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOverlappingSkus(?array $overlapping_skus): self
     {
         if (is_null($overlapping_skus)) {
-            throw new \InvalidArgumentException('non-nullable overlapping_skus cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'overlapping_skus');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('overlapping_skus', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['overlapping_skus'] = $overlapping_skus;
 

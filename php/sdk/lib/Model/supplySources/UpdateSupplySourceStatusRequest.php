@@ -78,7 +78,7 @@ class UpdateSupplySourceStatusRequest implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false
+        'status' => true
     ];
 
     /**
@@ -311,7 +311,14 @@ class UpdateSupplySourceStatusRequest implements ModelInterface, ArrayAccess, \J
     public function setStatus(?string $status): self
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 

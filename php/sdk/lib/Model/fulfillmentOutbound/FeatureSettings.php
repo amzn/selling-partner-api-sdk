@@ -80,8 +80,8 @@ class FeatureSettings implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'feature_name' => false,
-        'feature_fulfillment_policy' => false
+        'feature_name' => true,
+        'feature_fulfillment_policy' => true
     ];
 
     /**
@@ -342,7 +342,14 @@ class FeatureSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeatureName(?string $feature_name): self
     {
         if (is_null($feature_name)) {
-            throw new \InvalidArgumentException('non-nullable feature_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['feature_name'] = $feature_name;
 
@@ -369,10 +376,17 @@ class FeatureSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFeatureFulfillmentPolicy(?string $feature_fulfillment_policy): self
     {
         if (is_null($feature_fulfillment_policy)) {
-            throw new \InvalidArgumentException('non-nullable feature_fulfillment_policy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'feature_fulfillment_policy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('feature_fulfillment_policy', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getFeatureFulfillmentPolicyAllowableValues();
-        if (!in_array($feature_fulfillment_policy, $allowedValues, true)) {
+        if (!is_null($feature_fulfillment_policy) && !in_array($feature_fulfillment_policy, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'feature_fulfillment_policy', must be one of '%s'",

@@ -83,8 +83,8 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'listing_price' => false,
-        'shipping' => false,
-        'points' => false
+        'shipping' => true,
+        'points' => true
     ];
 
     /**
@@ -355,7 +355,14 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setShipping(?\OpenAPI\Client\Model\productFees\MoneyType $shipping): self
     {
         if (is_null($shipping)) {
-            throw new \InvalidArgumentException('non-nullable shipping cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'shipping');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['shipping'] = $shipping;
 
@@ -382,7 +389,14 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPoints(?\OpenAPI\Client\Model\productFees\Points $points): self
     {
         if (is_null($points)) {
-            throw new \InvalidArgumentException('non-nullable points cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'points');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('points', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['points'] = $points;
 

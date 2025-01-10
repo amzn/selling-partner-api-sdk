@@ -85,8 +85,8 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'item_sequence_number' => false,
-        'buyer_product_identifier' => false,
-        'vendor_product_identifier' => false,
+        'buyer_product_identifier' => true,
+        'vendor_product_identifier' => true,
         'acknowledged_quantity' => false
     ];
 
@@ -365,7 +365,14 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
     public function setBuyerProductIdentifier(?string $buyer_product_identifier): self
     {
         if (is_null($buyer_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable buyer_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'buyer_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('buyer_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['buyer_product_identifier'] = $buyer_product_identifier;
 
@@ -392,7 +399,14 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
     public function setVendorProductIdentifier(?string $vendor_product_identifier): self
     {
         if (is_null($vendor_product_identifier)) {
-            throw new \InvalidArgumentException('non-nullable vendor_product_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vendor_product_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vendor_product_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vendor_product_identifier'] = $vendor_product_identifier;
 
