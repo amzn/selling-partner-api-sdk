@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingV0\Errors;
+use OpenAPI\Client\Model\pricing\Errors;
 
 /**
  * ErrorsTest Class Doc Comment

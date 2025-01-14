@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingV0\HttpMethod;
+use OpenAPI\Client\Model\pricing\HttpMethod;
 
 /**
  * HttpMethodTest Class Doc Comment
  *
  * @category    Class
- * @description The HTTP method associated with the individual APIs being called as part of the batch request.
+ * @description The HTTP method associated with an individual request within a batch.
  * @package     OpenAPI\Client
  */
 class HttpMethodTest extends TestCase

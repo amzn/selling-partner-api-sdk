@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingV0\BatchRequest;
+use OpenAPI\Client\Model\pricing\BatchRequest;
 
 /**
  * BatchRequestTest Class Doc Comment
  *
  * @category    Class
- * @description Common properties of batch requests against individual APIs.
+ * @description The common properties for individual requests within a batch.
  * @package     OpenAPI\Client
  */
 class BatchRequestTest extends TestCase
@@ -67,12 +67,24 @@ class BatchRequestTest extends TestCase
      */
     public function testPropertyMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricingV0\HttpMethod();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\HttpMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
         $this->model->setMethod($testValue);
         $this->assertEquals($testValue, $this->model->getMethod());
+    }
+
+    /**
+     * Test attribute "body"
+     */
+    public function testPropertyBody()
+    {
+        
+        $testValue = new array<string,object>();
+        
+        $this->model->setBody($testValue);
+        $this->assertEquals($testValue, $this->model->getBody());
     }
 
     /**
