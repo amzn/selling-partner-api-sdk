@@ -48,7 +48,7 @@ use OpenAPI\Client\Configuration;
 
 // Set up LWA credentials
 $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
-    "clientId" => "amzn1.application-**************",
+ "clientId" => "amzn1.application-**************",
     "clientSecret" => "***********",
     "refreshToken" => "***********",
     "endpoint" => "https://api.amazon.com/auth/o2/token"

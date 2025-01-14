@@ -2,5 +2,5 @@
 
 .travis.yml
 git_push.sh
-test/**
+/test/**
 
