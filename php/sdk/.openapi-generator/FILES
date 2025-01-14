@@ -1,4 +1,5 @@
 .gitignore
+.php-cs-fixer.dist.php
 README.md
 docs/Api/VendorTransactionApi.md
 docs/Model/Error.md
@@ -15,3 +16,4 @@ lib/Model/vendorTransactionStatus/GetTransactionResponse.php
 lib/Model/vendorTransactionStatus/Transaction.php
 lib/Model/vendorTransactionStatus/TransactionStatus.php
 lib/ObjectSerializer.php
+phpunit.xml.dist
