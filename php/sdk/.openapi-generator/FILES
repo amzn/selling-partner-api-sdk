@@ -1,6 +1,5 @@
 .gitignore
 .php-cs-fixer.dist.php
-.travis.yml
 README.md
 composer.json
 docs/Api/VendorTransactionApi.md
@@ -8,7 +7,6 @@ docs/Model/Error.md
 docs/Model/GetTransactionResponse.md
 docs/Model/Transaction.md
 docs/Model/TransactionStatus.md
-git_push.sh
 lib/Api/VendorTransactionApi.php
 lib/ApiException.php
 lib/Configuration.php
@@ -20,5 +18,3 @@ lib/Model/vendorTransactionStatus/Transaction.php
 lib/Model/vendorTransactionStatus/TransactionStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTransactionResponseTest.php
-test/TestHelper.php
