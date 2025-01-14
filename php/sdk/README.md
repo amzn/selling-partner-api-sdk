@@ -103,7 +103,7 @@ Articulate your feature request or upvote existing ones on our [Issues][sdk-issu
 
 ## Disclaimer
 
-We are currently working to enhance the points below.
-
-- FBA Eligibility API and PricingV0 API operations are still not supported.
-- Finances API is named as DefaultApi.php.
+- [FBA Inbound V0 API](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v0-reference) is named as FBAInboundApi.php
+- [FBA Inbound v2024-03-20 API](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference) is named as FulfillmentInboundApi.php
+- [FBA Eligibility API](https://developer-docs.amazon.com/sp-api/docs/fbainboundeligibility-api-v1-model) and [PricingV0 API](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v0-reference) operations are still not supported.
+- [Finances API](https://developer-docs.amazon.com/sp-api/docs/finances-api-v2024-06-19-reference) is named as DefaultApi.php.
