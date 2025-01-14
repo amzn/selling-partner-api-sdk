@@ -122,4 +122,4 @@ jobs:
           branch: feature/bump-version
           assignees: mafge
           reviewers: mafge
-          token: ${{ secrets.MAFGE_PAT }}
+          token: ${{ secrets.NAKAGLEO_PAT }}
