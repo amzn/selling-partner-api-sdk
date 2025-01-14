@@ -3,4 +3,5 @@
 .travis.yml
 git_push.sh
 /test/**
+phpunit.xml.dist
 composer.json
