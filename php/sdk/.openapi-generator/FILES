@@ -16,4 +16,3 @@ lib/Model/vendorTransactionStatus/GetTransactionResponse.php
 lib/Model/vendorTransactionStatus/Transaction.php
 lib/Model/vendorTransactionStatus/TransactionStatus.php
 lib/ObjectSerializer.php
-phpunit.xml.dist
