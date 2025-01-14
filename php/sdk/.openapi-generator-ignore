@@ -6,4 +6,3 @@ git_push.sh
 .php-cs-fixer.dist.php
 phpunit.xml.dist
 composer.json
-phpunit.xml.dist
