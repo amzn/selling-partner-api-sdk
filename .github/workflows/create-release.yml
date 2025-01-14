@@ -124,6 +124,6 @@ jobs:
           body: |
             Bump version after current version has been released.
           branch: feature/bump-version
-          assignees: mafge
-          reviewers: mafge
+          assignees: leonardonakagawa
+          reviewers: leonardonakagawa
           token: ${{ secrets.NAKAGLEO_PAT }}
