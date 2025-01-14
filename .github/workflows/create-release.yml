@@ -36,21 +36,24 @@ jobs:
           coverage: xdebug
 
       - name: Validate composer.json and composer.lock
+        working-directory: ./php
         run: composer validate --strict
 
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
         with:
-          path: vendor
+          path: php/vendor
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
 
       - name: Install dependencies
+        working-directory: ./php
         run: composer install --prefer-dist --no-progress
 
       - name: Run test suite
+        working-directory: ./php
         run: vendor/bin/phpunit
 
   build-java:
@@ -103,6 +106,7 @@ jobs:
 
       - name: Update PHP version
         if: github.event.inputs.sdkType == 'php' || github.event.inputs.sdkType == 'both'
+        working-directory: ./php
         run: |
           sed -i 's/"version": "${{ github.event.inputs.currentVersionNumber }}"/"version": "${{ github.event.inputs.newVersionNumber }}"/' composer.json
 
