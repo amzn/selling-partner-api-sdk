@@ -100,7 +100,6 @@ jobs:
           files: |
             ${{ github.event.inputs.sdkType != 'php' && 'java/sdk/build/libs/selling-partner-api-java-sdk-0.1.0.jar' || '' }}
           tag_name: ${{ github.event.inputs.currentVersionNumber }}
-          generate_release_notes: true
 
       - name: Update PHP version
         if: github.event.inputs.sdkType == 'php' || github.event.inputs.sdkType == 'both'
@@ -123,3 +122,4 @@ jobs:
           branch: feature/bump-version
           assignees: mafge
           reviewers: mafge
+          token: ${{ secrets.MAFGE_PAT }}
