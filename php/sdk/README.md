@@ -48,34 +48,34 @@ use OpenAPI\Client\Configuration;
 
 // Set up LWA credentials
 $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
- "clientId" => "amzn1.application-**************",
-    "clientSecret" => "***********",
-    "refreshToken" => "***********",
-    "endpoint" => "https://api.amazon.com/auth/o2/token"
+    "clientId" => "amzn1.application-**************",
+"clientSecret" => "***********",
+"refreshToken" => "***********",
+"endpoint" => "https://api.amazon.com/auth/o2/token"
 ]);
 
 // Initialize LWAAuthorizationSigner instance
 $lwaAuthorizationSigner = new LWAAuthorizationSigner($lwaAuthorizationCredentials);
 $config = new Configuration([], $lwaAuthorizationCredentials);
 
-// Setting SP-API endpoint region 
+// Setting SP-API endpoint region
 $config->setHost('https://sellingpartnerapi-na.amazon.com');
 
-// Create a new HTTP client 
+// Create a new HTTP client
 $client = new GuzzleHttp\Client();
 
-// Create an instance of the Orders Api 
+// Create an instance of the Orders Api
 $api = new OrdersApi($config, null, $client);
 
 try {
-    // Call getOrders
-    $result = $api->getOrders(
-        $marketplace_ids = ['ATVPDKIKX0DER'],
-        $created_after = '2024-01-01'
-    );
-        print_r($result);
+// Call getOrders
+$result = $api->getOrders(
+$marketplace_ids = ['ATVPDKIKX0DER'],
+$created_after = '2024-01-01'
+);
+print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
+echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
 }
 
 
