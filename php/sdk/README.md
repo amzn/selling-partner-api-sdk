@@ -1,108 +1,107 @@
-## PHP SDK for Selling Partner API
+# OpenAPIClient-php
 
-The Selling Partner API SDK for PHP enables you to easily connect your PHP application to Amazon's REST-based SP-API.
+The Selling Partner API for Retail Procurement Transaction Status provides programmatic access to status information on specific asynchronous POST transactions for vendors.
 
-* [Learn more about SP-API](https://developer.amazonservices.com/)
-* [API Documentation](https://developer-docs.amazon.com/sp-api/)
-
-### Getting started
-
-#### Credentials
-
-Before you can use the SDK, you need to be registered as a Selling Partner API developer. If you haven't done that yet, please follow the instructions in the [documentation](https://developer-docs.amazon.com/sp-api/docs/sp-api-registration-overview).
-You also need to register your application to get valid credentials to call SP-API. If you haven't done that yet, please follow the instructions in the [documentation](https://developer-docs.amazon.com/sp-api/docs/registering-your-application).
-If you are already registered successfully, you can find instructions on how to view your credentials in the [documentation](https://developer-docs.amazon.com/sp-api/docs/viewing-your-application-information-and-credentials).
+For more information, please visit [https://sellercentral.amazon.com/gp/mws/contactus.html](https://sellercentral.amazon.com/gp/mws/contactus.html).
 
 ## Installation & Usage
 
-### Minimum Requirements
+### Requirements
 
-To run the SDK you need PHP 7.4 or higher.
+PHP 7.4 and later.
+Should also work with PHP 8.0.
 
+### Composer
+
+To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    }
+  ],
+  "require": {
+    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
+  }
+}
+```
+
+Then run `composer install`
 
 ### Manual Installation
 
-By using the download files, composer dependencies are already installed. You only need to include `autoload.php`:
+Download the files and include `autoload.php`:
 
 ```php
 <?php
 require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
 ```
 
-### Use the SDK
+## Getting Started
 
-In order to call one of the APIs included in the Selling Partner API, you need to:
-* Configure credentials (Note: Use your individual credentials for `clientId`, `clientSecret` and `refreshToken`)
-* Create an instance for a specific API (e.g. Orders API)
-* Call an operation
+Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
-use SpApi\AuthAndAuth\LWAAuthorizationSigner;
-use OpenAPI\Client\Api\OrdersApi;
-use OpenAPI\Client\Configuration;
 
 
-// Set up LWA credentials
-$lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
-    "clientId" => "amzn1.application-**************",
-    "clientSecret" => "***********",
-    "refreshToken" => "***********",
-    "endpoint" => "https://api.amazon.com/auth/o2/token"
-]);
 
-// Initialize LWAAuthorizationSigner instance
-$lwaAuthorizationSigner = new LWAAuthorizationSigner($lwaAuthorizationCredentials);
-$config = new Configuration([], $lwaAuthorizationCredentials);
-
-// Setting SP-API endpoint region 
-$config->setHost('https://sellingpartnerapi-na.amazon.com');
-
-// Create a new HTTP client 
-$client = new GuzzleHttp\Client();
-
-// Create an instance of the Orders Api 
-$api = new OrdersApi($config, null, $client);
+$apiInstance = new OpenAPI\Client\Api\VendorTransactionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$transaction_id = 'transaction_id_example'; // string | The GUID provided by Amazon in the 'transactionId' field in response to the post request of a specific transaction.
 
 try {
-    // Call getOrders
-    $result = $api->getOrders(
-        $marketplace_ids = ['ATVPDKIKX0DER'],
-        $created_after = '2024-01-01'
-    );
-        print_r($result);
+    $result = $apiInstance->getTransaction($transaction_id);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VendorTransactionApi->getTransaction: ', $e->getMessage(), PHP_EOL;
 }
-
-
 
 ```
 
+## API Endpoints
 
-## API Endpoints Documentation
+All URIs are relative to *https://sellingpartnerapi-na.amazon.com*
 
-Class | Method                                           | HTTP request | Description
------------- |--------------------------------------------------| ------------- | -------------
-*Orders API* | [**getOrders**](docs/Api/OrdersApi.md#getorders) | **GET** /orders/v0/orders | Returns orders that are created or updated during the specified time period. If you want to return specific types of orders, you can apply filters to your request. NextToken doesn't affect any filters that you include in your request; it only impacts the pagination for the filtered orders response.
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*VendorTransactionApi* | [**getTransaction**](docs/Api/VendorTransactionApi.md#gettransaction) | **GET** /vendor/transactions/v1/transactions/{transactionId} | 
+
+## Models
+
+- [Error](docs/Model/Error.md)
+- [GetTransactionResponse](docs/Model/GetTransactionResponse.md)
+- [Transaction](docs/Model/Transaction.md)
+- [TransactionStatus](docs/Model/TransactionStatus.md)
+
+## Authorization
+Endpoints do not require authorization.
+
+## Tests
+
+To run the tests, use:
+
+```bash
+composer install
+vendor/bin/phpunit
+```
+
+## Author
 
 
-### Giving Feedback
 
-We need your help in making this SDK great. Please participate in the community and contribute to this effort by submitting issues, participating in discussion forums and submitting pull requests through the following channels:
+## About this package
 
-Submit [issues][sdk-issues] - this is the preferred channel to interact with our team
-Articulate your feature request or upvote existing ones on our [Issues][sdk-issues] page
+This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-[sdk-issues]: https://github.com/amzn/selling-partner-api-sdk/issues
-
-
-
-## Disclaimer
-
-Some of the FBA and Pricing operations are still not supported. We are currently working on to make it available soon.
-
-
+- API version: `v1`
+    - Generator version: `7.9.0`
+- Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricingV0\Price;
+use OpenAPI\Client\Model\pricing\Price;
 
 /**
  * PriceTest Class Doc Comment
  *
  * @category    Class
- * @description Price
+ * @description The schema for item&#39;s price information, including listing price, shipping price, and Amazon Points.
  * @package     OpenAPI\Client
  */
 class PriceTest extends TestCase
@@ -52,47 +52,38 @@ class PriceTest extends TestCase
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "listing_price"
      */
-    public function testPropertyStatus()
+    public function testPropertyListingPrice()
     {
-        $testValue = 'test';
         
-        $this->model->setStatus($testValue);
-        $this->assertEquals($testValue, $this->model->getStatus());
+        $testValue = new \OpenAPI\Client\Model\pricing\MoneyType();
+        
+        $this->model->setListingPrice($testValue);
+        $this->assertEquals($testValue, $this->model->getListingPrice());
     }
 
     /**
-     * Test attribute "seller_sku"
+     * Test attribute "shipping_price"
      */
-    public function testPropertySellerSku()
+    public function testPropertyShippingPrice()
     {
-        $testValue = 'test';
         
-        $this->model->setSellerSku($testValue);
-        $this->assertEquals($testValue, $this->model->getSellerSku());
+        $testValue = new \OpenAPI\Client\Model\pricing\MoneyType();
+        
+        $this->model->setShippingPrice($testValue);
+        $this->assertEquals($testValue, $this->model->getShippingPrice());
     }
 
     /**
-     * Test attribute "asin"
+     * Test attribute "points"
      */
-    public function testPropertyAsin()
-    {
-        $testValue = 'test';
-        
-        $this->model->setAsin($testValue);
-        $this->assertEquals($testValue, $this->model->getAsin());
-    }
-
-    /**
-     * Test attribute "product"
-     */
-    public function testPropertyProduct()
+    public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricingV0\Product();
+        $testValue = new \OpenAPI\Client\Model\pricing\Points();
         
-        $this->model->setProduct($testValue);
-        $this->assertEquals($testValue, $this->model->getProduct());
+        $this->model->setPoints($testValue);
+        $this->assertEquals($testValue, $this->model->getPoints());
     }
 }
