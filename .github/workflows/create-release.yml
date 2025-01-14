@@ -11,23 +11,78 @@ on:
         type: string
         description: Current version number
         required: true
+      sdkType:
+        type: choice
+        description: 'SDK Type to release'
+        required: true
+        options:
+          - php
+          - java
+          - both
 
 jobs:
-  build:
+  build-php:
+    if: github.event.inputs.sdkType == 'php' || github.event.inputs.sdkType == 'both'
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          extensions: json, curl, simplexml, spl, pcre
+          coverage: xdebug
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run test suite
+        run: vendor/bin/phpunit
+
+  build-java:
+    if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
       - uses: actions/setup-java@v4
         with:
           java-version: '11'
           distribution: 'corretto'
           cache: gradle
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+
       - name: Build SDK jar with Gradle
         working-directory: java/sdk
         run: ./gradlew fatJar
+
+  create-release:
+    needs: [build-php, build-java]
+    if: |
+      always() &&
+      (needs.build-php.result == 'success' || needs.build-php.result == 'skipped') &&
+      (needs.build-java.result == 'success' || needs.build-java.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Create tag
         uses: actions/github-script@v5
         with:
@@ -35,23 +90,33 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-                ref: "refs/tags/${{ github.event.inputs.currentVersionNumber }}",
+              ref: "refs/tags/${{ github.event.inputs.currentVersionNumber }}",
               sha: context.sha
             })
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            java/sdk/build/libs/selling-partner-api-java-sdk-0.1.0.jar
+            ${{ github.event.inputs.sdkType != 'php' && 'java/sdk/build/libs/selling-partner-api-java-sdk-0.1.0.jar' || '' }}
           tag_name: ${{ github.event.inputs.currentVersionNumber }}
-      - name: Bump version
+          generate_release_notes: true
+
+      - name: Update PHP version
+        if: github.event.inputs.sdkType == 'php' || github.event.inputs.sdkType == 'both'
+        run: |
+          sed -i 's/"version": "${{ github.event.inputs.currentVersionNumber }}"/"version": "${{ github.event.inputs.newVersionNumber }}"/' composer.json
+
+      - name: Update Java version
+        if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
         working-directory: java/config
-        run: | 
+        run: |
           sed -i '/"artifactVersion": "${{ github.event.inputs.currentVersionNumber }}"/s/"${{ github.event.inputs.currentVersionNumber }}"/"${{ github.event.inputs.newVersionNumber }}"/' config.json
+
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: Update Java SDK
+          commit-message: Update ${{ github.event.inputs.sdkType == 'both' && 'PHP and Java SDKs' || format('{0} SDK', github.event.inputs.sdkType) }}
           title: 'Bump version'
           body: |
             Bump version after current version has been released.
