@@ -32,7 +32,7 @@ require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
 ### Use the SDK
 
 In order to call one of the APIs included in the Selling Partner API, you need to:
-* Configure credentials (Note: Use your individual credentials for `clientId`, `clientSecret` and `refreshToken`)
+* Configure credentials and marketplace ids. We provided a .env file to test the SDK in php/sdk/.env
 * Create an instance for a specific API (e.g. Orders API)
 * Call an operation
 
@@ -103,6 +103,7 @@ Articulate your feature request or upvote existing ones on our [Issues][sdk-issu
 
 ## Disclaimer
 
-Some of the FBA and Pricing operations are still not supported. We are currently working on to make it available soon.
+We are currently working to enhance the points below.
 
-
+- FBA Eligibility API and PricingV0 API operations are still not supported.
+- Finances API is named as DefaultApi.php.

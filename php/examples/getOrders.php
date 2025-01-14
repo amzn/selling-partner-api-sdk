@@ -8,6 +8,7 @@ use OpenAPI\Client\Api\OrdersApi;
 use OpenAPI\Client\Configuration;
 use Dotenv\Dotenv;
 
+// Set the credentials, region and marketplace in .env file
 $dotenv = Dotenv::createImmutable('../sdk/');
 $dotenv->load();
 
@@ -24,7 +25,7 @@ $lwaAuthorizationSigner = new LWAAuthorizationSigner($lwaAuthorizationCredential
 $config = new Configuration([], $lwaAuthorizationCredentials);
 
 // Setting SP-API endpoint region
-$config->setHost('https://sellingpartnerapi-na.amazon.com');
+$config->setHost($_ENV['SP_API_ENDPOINT_HOST']);
 
 // Create a new HTTP client
 $client = new GuzzleHttp\Client();
