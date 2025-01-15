@@ -20,10 +20,6 @@ use OpenAPI\Client\ObjectSerializer;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
-use Dotenv\Dotenv;
-
-$dotenv = Dotenv::createImmutable('../../../sdk');
-$dotenv->load();
 
 /**
  * TestHelper
@@ -36,8 +32,33 @@ class TestHelper
 {
     private static string $marketPlaceId = 'ATVPDKIKX0DER';
 
+    /**
+     * Sets the marketplace ID to be used for API calls.
+     *
+     * This method assigns the given marketplace ID to a static property, which can be used across
+     * multiple methods or tests that require the marketplace context.
+     *
+     * @param string $marketPlaceId The marketplace ID to set.
+     * @return void
+     */
+    public static function setMarketPlaceId(string $marketPlaceId): void
+    {
+        self::$marketPlaceId = $marketPlaceId;
+    }
+
     private static array $classSpecificValue;
 
+    /**
+     * Sets class-specific values based on the given class name and case name.
+     *
+     * This method initializes and populates the `classSpecificValue` array with default and
+     * class-specific values depending on the provided class name and test case name. These values
+     * are often used for simulating API requests or responses in tests.
+     *
+     * @param string $className The name of the class for which the values are being set.
+     * @param string $caseName The name of the test case, used to determine specific values.
+     * @return void
+     */
     public static function setSpecificValue(string $className, string $caseName): void
     {
         self::$classSpecificValue = [];
@@ -52,14 +73,14 @@ class TestHelper
         self::$classSpecificValue['attributes'] = [];
         // Class Specific
         if ($className === 'FbaInventoryApi') {
-            self::$classSpecificValue['marketplace_id'] = $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+            self::$classSpecificValue['marketplace_id'] = self::$marketPlaceId;
             self::$classSpecificValue['quantity'] = 0;
             self::$classSpecificValue['granularity_type'] = 'Marketplace';
             self::$classSpecificValue['seller_sku'] = 'automation_test';
             self::$classSpecificValue['x_amzn_idempotency_token'] = self::generateUuidV4();
-            self::$classSpecificValue['granularity_id'] = $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+            self::$classSpecificValue['granularity_id'] = self::$marketPlaceId;
         } elseif ($className === 'FbaOutboundApi') {
-            self::$classSpecificValue['marketplace_id'] = $_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId;
+            self::$classSpecificValue['marketplace_id'] = self::$marketPlaceId;
             self::$classSpecificValue['seller_fulfillment_order_id'] = date('YmdHi');
             self::$classSpecificValue['postal_code'] = '141-0021';
             if ($caseName == 'testGetFeatureSKU200') {
@@ -216,23 +237,42 @@ class TestHelper
 
         return null;
     }
+
+    /**
+     * Generates a UUID (Universally Unique Identifier) version 4.
+     *
+     * This method generates a random UUID (v4) in compliance with RFC 4122. It uses random bytes for
+     * entropy and ensures the version and variant fields are correctly set according to the specification.
+     *
+     * UUID v4 format example: 123e4567-e89b-12d3-a456-426614174000
+     *
+     * @return string A randomly generated UUID v4 as a string.
+     */
     private static function generateUuidV4(): string
     {
         $data = openssl_random_pseudo_bytes(16);
 
+        // Set the version to 0100 (UUID v4)
         $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
+
+        // Set the variant to 10xx (RFC 4122)
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
 
+        // Convert to the UUID string format
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
 
     /**
      * Returns a dummy value based on the given type.
      *
-     * @param string $typeName
-     * @param string $paramName
-     * @return mixed
-     * @throws ReflectionException
+     * This method generates a dummy value for the specified type name and parameter name. It handles a variety
+     * of data types, including primitives, arrays, objects, and enumerations. If the type is an object, it
+     * recursively populates its properties with dummy values.
+     *
+     * @param string $typeName The type name for which a dummy value is needed.
+     * @param string $paramName The parameter name associated with the type.
+     * @return mixed A dummy value appropriate for the given type.
+     * @throws ReflectionException If there is an error instantiating a class using reflection.
      */
     private static function getDummyValueForType(string $typeName, string $paramName): mixed
     {
@@ -241,14 +281,14 @@ class TestHelper
             return self::$classSpecificValue[$paramName];
         // Listing
         } elseif ($paramName === 'marketplace_ids') {
-            return [$_ENV['SP_API_MARKETPLACE'] ?: self::$marketPlaceId];
+            return [self::$marketPlaceId];
         }
         // Handle array and specific object types
         if (str_ends_with($typeName, '[]')) {
             $elementType = substr($typeName, 0, -2);
             return [self::getDummyValueForType($elementType, $paramName)];
         }
-        if ($typeName === '\DateTime') {
+        if ($typeName === '\DateTime' || $typeName === 'DateTime') {
             return new \DateTime();
         }
 
@@ -368,6 +408,14 @@ class TestHelper
     }
 
     /**
+     * Builds a request for dynamic sandbox testing.
+     *
+     * This method prepares the request parameters needed for the specified API operation in a dynamic sandbox
+     * environment. It uses reflection to retrieve the parameters of the given operation and prepares them accordingly.
+     *
+     * @param object $apiInstance The API instance that contains the operation.
+     * @param string $operationId The ID of the operation for which the request is being built.
+     * @return array Returns an array of prepared request parameters for the specified operation.
      * @throws ReflectionException
      */
     public function buildRequestForDynamicSandBox(object $apiInstance, string $operationId): array
@@ -425,6 +473,36 @@ class TestHelper
     }
 
     /**
+     * Array that defines Vendor related API Test class name
+     * @var array|string[]
+     */
+    private static array $vendorApiTestClassNameList = [
+        'OpenAPI\Client\Test\Api\UpdateInventoryApiTest',
+        'OpenAPI\Client\Test\Api\VendorOrdersApiTest',
+        'OpenAPI\Client\Test\Api\VendorInvoiceApiTest',
+        'OpenAPI\Client\Test\Api\VendorShippingApiTest',
+        'OpenAPI\Client\Test\Api\VendorShippingLabelsApiTest',
+        'OpenAPI\Client\Test\Api\VendorTransactionApi'
+    ];
+
+    /**
+     * Checks if the given class name is related to a vendor-related API.
+     *
+     * This method determines if the specified class name exists in the list
+     * of predefined vendor-related API test class names.
+     *
+     * @param string $className The fully qualified name of the class to check.
+     * @return bool Returns true if the class name is related to a vendor-related API; otherwise, false.
+     */
+    public static function isVendorRelatedApi(string $className): bool
+    {
+        if (in_array($className, TestHelper::$vendorApiTestClassNameList)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Checks if the test case should be skipped.
      *
      * @param string $testCaseName
@@ -455,14 +533,10 @@ class TestHelper
         'ServiceApi', // No role for my account yet
         'ShipmentInvoiceApi', // No role for my account yet
         'ShippingApi', // No role for my account yet
-        'UpdateInventoryApi',
         'UploadsApi', // Doesn't support sandbox as of now.
-        'VendorInvoiceApi',
+        // There is critical bug in swagger and API class can not be compiled. need revisit testing.
         'VendorOrdersApi',
         'VendorShipmentsApi',
-        'VendorShippingApi',
-        'VendorShippingLabelsApi',
-        'VendorTransactionApi',
 
         // Definition of individual case which is unable to test
         // Order API
@@ -471,7 +545,6 @@ class TestHelper
         'testUpdateVerificationStatus400',
         'testGetOrderRegulatedInfo200', // Getting 403 due to restricted role required
         'testGetOrderRegulatedInfo400',  // Getting 403 due to restricted role required
-        'testGetOrderItemsBuyerInfo200', // Response should have required field OrderItemId, but it doesn't
         // NotificationAPI
         'testDeleteSubscriptionById200', // Getting 400 with InvalidInput error
         'testGetSubscriptionById200', // Getting 400 with InvalidInput error
@@ -519,12 +592,10 @@ class TestHelper
         'testGetListingsRestrictions400', // Error response can not be handled due to wrong ErrorList definition in Json
         // merchantFulfillment
         'testCancelShipment200', // Label.FileContents.FileType is Enum, but “” is returned.
-        // ShippingService.ShippingServiceOptions.CarrierWillPickUp is mandatory, but not returned.
-        'testCreateShipment200',
         //Response ShippingServiceList.ShippingServiceOptions.LabelFormat should be Enum value or removed
         'testGetEligibleShipmentServices200',
         // fulfillmentOutbound
-        'testListReturnReasonCodes200', // The expected value of Seller_Sku is not written.
+        'testListReturnReasonCodes200', // Due to complexity, skip for now
         'testCancelFulfillmentOrder200', // Due to test execution order, it can not be passed
         'testCreateFulfillmentReturn200', // Due to test execution order, it can not be passed
         'testUpdateFulfillmentOrder200', // Due to test execution order, it can not be passed
@@ -552,7 +623,6 @@ class TestHelper
         // Replenishment Api offers
         'testListOfferMetrics200', // Request timestamp millisecond is 2 digits and requires string mutation
         'testListOfferMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
-        'testListOffers200', // Sandbox Returns 400
         'testListOffers400', // Request eligibilities is not member of Enum
         // Sellers
         'testGetAccount200', // Need some application which can be succeeded. Access is denied with my account.
@@ -565,6 +635,22 @@ class TestHelper
         'testUpdateSupplySource400', // Expected sandbox response is missing mandatory field "ThroughputUnit".
         'testGetSupplySources400', // Expecting 400 to be returned, but 200 returned
         // Tokens API
-        'testCreateRestrictedDataToken400' // SandBox request.method is not member of Enum
+        'testCreateRestrictedDataToken400', // SandBox request.method is not member of Enum
+        // vendorDirectFulfillmentPaymentsV1
+        'testSubmitInvoice202', // Expected transactionId response is different from actual.
+        'testSubmitInvoice400', // SandBox dateTime Format is invalid for programing language
+        // vendorDirectFulfillmentShipping_2021-12-28
+        // shipmentStatusUpdates is not required in swagger, but SandBox returns error
+        'testSubmitShipmentStatusUpdates202',
+        // shipmentConfirmations is not required in swagger, but SandBox returns error
+        'testSubmitShipmentConfirmations202',
+        'testGetPackingSlip200', // only allows purchaseOrderNumber as ‘’, but this is not practical.
+        'testGetShippingLabel200', // only allows purchaseOrderNumber as ‘’, but this is not practical.
+        // shippingLabelRequests is not required in swagger, but SandBox returns error
+        'testSubmitShippingLabelRequest202',
+        'testCreateShippingLabels200', // Access is denied as 403
+        'testGetShippingLabels200', // Getting 400 error and not sure how to call successfully
+        // vendorDirectFulfillmentTransactions_2021-12-28
+        'testGetTransactionStatus200' // Not sure which value to pass as a key
     ];
 }

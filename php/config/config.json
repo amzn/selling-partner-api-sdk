@@ -11,6 +11,10 @@
     "ModelInterface.mustache": {
       "templateFile": "ModelInterface.mustache",
       "destinationFilename": "lib/Model/ModelInterface.php"
+    },
+    "BaseTestCase.mustache": {
+      "templateFile": "BaseTestCase.mustache",
+      "destinationFilename": "test/Api/BaseTestCase.php"
     }
   }
 }

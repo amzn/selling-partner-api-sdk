@@ -18,17 +18,9 @@
 
 namespace {{invokerPackage}}\Test\Api;
 
-use {{invokerPackage}}\Configuration;
 use {{invokerPackage}}\ApiException;
-use PHPUnit\Framework\TestCase;
 use {{invokerPackage}}\Api\{{classname}};
-use OpenAPI\Client\Test\TestHelper;
-use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use {{invokerPackage}}\ObjectSerializer;
-use Dotenv\Dotenv;
-
-$dotenv = Dotenv::createImmutable('../../../sdk');
-$dotenv->load();
 
 /**
  * {{classname}}Test Class Doc Comment
@@ -39,92 +31,20 @@ $dotenv->load();
  * @link     https://openapi-generator.tech
  */
 {{#operations}}
-class {{classname}}Test extends TestCase
+class {{classname}}Test extends BaseTestCase
 {
     private {{classname}} $apiInstance;
-    private TestHelper $testHelper;
-
     public function setUp(): void
     {
-        $this->testHelper = new TestHelper();
+        parent::setUp();
         // Initialize parameter value specific to case
         $this->testHelper->setSpecificValue('{{classname}}', $this->getName());
-        $credentialsConfig = [
-            "clientId" => $_ENV['SP_API_CLIENT_ID'],
-            "clientSecret" => $_ENV['SP_API_CLIENT_SECRET'],
-            "refreshToken" => $_ENV['SP_API_REFRESH_TOKEN'],
-            "endpoint" => $_ENV['SP_API_ENDPOINT'] ?: "https://api.amazon.com/auth/o2/token"
-        ];
-        $scopes = $this->testHelper->getScopesForApi($this->getName());
-        if (!empty($scopes)) {
-            $credentialsConfig['scopes'] = $scopes;
+        $this->apiInstance = new {{classname}}($this->config, null, null);
+        // Change Time Format if it requires
+        $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('{{classname}}');
+        if ($specificTimeFormat) {
+            ObjectSerializer::setDateTimeFormat($specificTimeFormat);
         }
-        $lwaAuthorizationCredentials = new LWAAuthorizationCredentials($credentialsConfig);
-        $config = new Configuration([], $lwaAuthorizationCredentials);
-        $config->setHost($_ENV['SP_API_ENDPOINT_HOST'] ?: 'https://sandbox.sellingpartnerapi-fe.amazon.com');
-        $this->apiInstance = new {{classname}}($config, null, null);
-    }
-
-    /**
-     * Handles the response based on the expected HTTP status code.
-     *
-     * @param mixed $response The API response.
-     * @param int $statusCode The actual HTTP status code.
-     * @param int $expectedStatusCode The expected HTTP status code.
-     * @throws \ReflectionException
-     */
-    private function handleResponse(mixed $response, int $statusCode, int $expectedStatusCode, $responseParams): void
-    {
-        switch ($expectedStatusCode) {
-            case 200:
-            case 201:
-            case 202:
-                $this->assertEquals($responseParams, $response);
-                break;
-
-            case 204:
-                $this->assertTrue(true);
-                echo "Response is empty as expected for status code 204.";
-                break;
-
-            case 400:
-                $this->assertArrayHasKey('errors', $responseParams);
-                $this->assertEquals($responseParams['errors'], $response->getErrors());
-                break;
-
-            default:
-                $this->fail("Unhandled response code: $expectedStatusCode");
-                break;
-        }
-    }
-
-    /**
-     * Handles exceptions thrown during the API call.
-     *
-     * @param ApiException $e The exception thrown by the API.
-     */
-    private function handleApiException(ApiException $e, int $expectedCode): void
-    {
-        if ($e->getCode() == $expectedCode) {
-            $this->assertTrue(true);
-        } else {
-            $this->fail('Unexpected error code: ' . $e->getCode());
-        }
-    }
-
-    /**
-     * Asserts the HTTP status code.
-     *
-     * @param int $expectedStatusCode
-     * @param int $actualStatusCode
-     */
-    private function assertHttpStatusCode(int $expectedStatusCode, int $actualStatusCode): void
-    {
-        $this->assertEquals(
-            $expectedStatusCode,
-            $actualStatusCode,
-            "Expected HTTP status code $expectedStatusCode but got $actualStatusCode."
-        );
     }
 
     {{#operation}}
