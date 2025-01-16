@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **carrier_name** | **string** | The carrier that you are using for the inbound shipment. |
-**package_list** | [**\OpenAPI\Client\Model\fulfillmentInboundV0\NonPartneredSmallParcelPackageInput[]**](NonPartneredSmallParcelPackageInput.md) | A list of package tracking information. |
+**package_list** | [**\OpenAPI\Client\Model\fulfillment\inbound\v0\NonPartneredSmallParcelPackageInput[]**](NonPartneredSmallParcelPackageInput.md) | A list of package tracking information. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -11,7 +11,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getCustomerInvoice()`
 
 ```php
-getCustomerInvoice($purchase_order_number): \OpenAPI\Client\Model\vendorDfShipping\CustomerInvoice
+getCustomerInvoice($purchase_order_number): \OpenAPI\Client\Model\vendor\df\shipping\CustomerInvoice
 ```
 
 
@@ -49,7 +49,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfShipping\CustomerInvoice**](../Model/CustomerInvoice.md)
+[**\OpenAPI\Client\Model\vendor\df\shipping\CustomerInvoice**](../Model/CustomerInvoice.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ No authorization required
 ## `getCustomerInvoices()`
 
 ```php
-getCustomerInvoices($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token): \OpenAPI\Client\Model\vendorDfShipping\CustomerInvoiceList
+getCustomerInvoices($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token): \OpenAPI\Client\Model\vendor\df\shipping\CustomerInvoiceList
 ```
 
 
@@ -115,7 +115,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfShipping\CustomerInvoiceList**](../Model/CustomerInvoiceList.md)
+[**\OpenAPI\Client\Model\vendor\df\shipping\CustomerInvoiceList**](../Model/CustomerInvoiceList.md)
 
 ### Authorization
 

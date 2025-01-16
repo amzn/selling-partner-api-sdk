@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier_type** | **string** | Type of identifier, such as UPC, EAN, or ISBN. |
-**identifier** | **string** | Identifier. |
+**marketplace_id** | **string** | A marketplace identifier. Specifies the marketplace from which prices are returned. |
+**asin** | **string** | The Amazon Standard Identification Number (ASIN) of the item. | [optional]
+**seller_sku** | **string** | The seller stock keeping unit (SKU) of the item. | [optional]
+**item_condition** | [**\OpenAPI\Client\Model\pricing\v0\ConditionType**](ConditionType.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

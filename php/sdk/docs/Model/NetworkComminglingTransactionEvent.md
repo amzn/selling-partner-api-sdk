@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **swap_reason** | **string** | The reason for the network item swap. | [optional]
 **asin** | **string** | The Amazon Standard Identification Number (ASIN) of the swapped item. | [optional]
 **marketplace_id** | **string** | The marketplace in which the event took place. | [optional]
-**tax_exclusive_amount** | [**\OpenAPI\Client\Model\financesV0\Currency**](Currency.md) |  | [optional]
-**tax_amount** | [**\OpenAPI\Client\Model\financesV0\Currency**](Currency.md) |  | [optional]
+**tax_exclusive_amount** | [**\OpenAPI\Client\Model\finances\v0\Currency**](Currency.md) |  | [optional]
+**tax_amount** | [**\OpenAPI\Client\Model\finances\v0\Currency**](Currency.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

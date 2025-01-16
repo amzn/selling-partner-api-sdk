@@ -54,7 +54,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `cancelInboundPlan()`
 
 ```php
-cancelInboundPlan($inbound_plan_id): \OpenAPI\Client\Model\fulfillmentInbound\CancelInboundPlanResponse
+cancelInboundPlan($inbound_plan_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse
 ```
 
 cancelInboundPlan
@@ -92,7 +92,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\CancelInboundPlanResponse**](../Model/CancelInboundPlanResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelInboundPlanResponse**](../Model/CancelInboundPlanResponse.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ No authorization required
 ## `cancelSelfShipAppointment()`
 
 ```php
-cancelSelfShipAppointment($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\CancelSelfShipAppointmentResponse
+cancelSelfShipAppointment($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse
 ```
 
 cancelSelfShipAppointment
@@ -132,7 +132,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\CancelSelfShipAppointmentRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\CancelSelfShipAppointmentRequest | The body of the request to `cancelSelfShipAppointment`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest | The body of the request to `cancelSelfShipAppointment`.
 
 try {
     $result = $apiInstance->cancelSelfShipAppointment($inbound_plan_id, $shipment_id, $body);
@@ -148,11 +148,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\CancelSelfShipAppointmentRequest**](../Model/CancelSelfShipAppointmentRequest.md)| The body of the request to &#x60;cancelSelfShipAppointment&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentRequest**](../Model/CancelSelfShipAppointmentRequest.md)| The body of the request to &#x60;cancelSelfShipAppointment&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\CancelSelfShipAppointmentResponse**](../Model/CancelSelfShipAppointmentResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CancelSelfShipAppointmentResponse**](../Model/CancelSelfShipAppointmentResponse.md)
 
 ### Authorization
 
@@ -170,7 +170,7 @@ No authorization required
 ## `confirmDeliveryWindowOptions()`
 
 ```php
-confirmDeliveryWindowOptions($inbound_plan_id, $shipment_id, $delivery_window_option_id): \OpenAPI\Client\Model\fulfillmentInbound\ConfirmDeliveryWindowOptionsResponse
+confirmDeliveryWindowOptions($inbound_plan_id, $shipment_id, $delivery_window_option_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse
 ```
 
 confirmDeliveryWindowOptions
@@ -212,7 +212,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ConfirmDeliveryWindowOptionsResponse**](../Model/ConfirmDeliveryWindowOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmDeliveryWindowOptionsResponse**](../Model/ConfirmDeliveryWindowOptionsResponse.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ No authorization required
 ## `confirmPackingOption()`
 
 ```php
-confirmPackingOption($inbound_plan_id, $packing_option_id): \OpenAPI\Client\Model\fulfillmentInbound\ConfirmPackingOptionResponse
+confirmPackingOption($inbound_plan_id, $packing_option_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse
 ```
 
 confirmPackingOption
@@ -270,7 +270,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ConfirmPackingOptionResponse**](../Model/ConfirmPackingOptionResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmPackingOptionResponse**](../Model/ConfirmPackingOptionResponse.md)
 
 ### Authorization
 
@@ -288,7 +288,7 @@ No authorization required
 ## `confirmPlacementOption()`
 
 ```php
-confirmPlacementOption($inbound_plan_id, $placement_option_id): \OpenAPI\Client\Model\fulfillmentInbound\ConfirmPlacementOptionResponse
+confirmPlacementOption($inbound_plan_id, $placement_option_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse
 ```
 
 confirmPlacementOption
@@ -328,7 +328,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ConfirmPlacementOptionResponse**](../Model/ConfirmPlacementOptionResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmPlacementOptionResponse**](../Model/ConfirmPlacementOptionResponse.md)
 
 ### Authorization
 
@@ -346,7 +346,7 @@ No authorization required
 ## `confirmShipmentContentUpdatePreview()`
 
 ```php
-confirmShipmentContentUpdatePreview($inbound_plan_id, $shipment_id, $content_update_preview_id): \OpenAPI\Client\Model\fulfillmentInbound\ConfirmShipmentContentUpdatePreviewResponse
+confirmShipmentContentUpdatePreview($inbound_plan_id, $shipment_id, $content_update_preview_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse
 ```
 
 confirmShipmentContentUpdatePreview
@@ -388,7 +388,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ConfirmShipmentContentUpdatePreviewResponse**](../Model/ConfirmShipmentContentUpdatePreviewResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmShipmentContentUpdatePreviewResponse**](../Model/ConfirmShipmentContentUpdatePreviewResponse.md)
 
 ### Authorization
 
@@ -406,7 +406,7 @@ No authorization required
 ## `confirmTransportationOptions()`
 
 ```php
-confirmTransportationOptions($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\ConfirmTransportationOptionsResponse
+confirmTransportationOptions($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse
 ```
 
 confirmTransportationOptions
@@ -427,7 +427,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     new GuzzleHttp\Client()
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\ConfirmTransportationOptionsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\ConfirmTransportationOptionsRequest | The body of the request to `confirmTransportationOptions`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest | The body of the request to `confirmTransportationOptions`.
 
 try {
     $result = $apiInstance->confirmTransportationOptions($inbound_plan_id, $body);
@@ -442,11 +442,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\ConfirmTransportationOptionsRequest**](../Model/ConfirmTransportationOptionsRequest.md)| The body of the request to &#x60;confirmTransportationOptions&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsRequest**](../Model/ConfirmTransportationOptionsRequest.md)| The body of the request to &#x60;confirmTransportationOptions&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ConfirmTransportationOptionsResponse**](../Model/ConfirmTransportationOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ConfirmTransportationOptionsResponse**](../Model/ConfirmTransportationOptionsResponse.md)
 
 ### Authorization
 
@@ -464,7 +464,7 @@ No authorization required
 ## `createInboundPlan()`
 
 ```php
-createInboundPlan($body): \OpenAPI\Client\Model\fulfillmentInbound\CreateInboundPlanResponse
+createInboundPlan($body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse
 ```
 
 createInboundPlan
@@ -484,7 +484,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\CreateInboundPlanRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\CreateInboundPlanRequest | The body of the request to `createInboundPlan`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest | The body of the request to `createInboundPlan`.
 
 try {
     $result = $apiInstance->createInboundPlan($body);
@@ -498,11 +498,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\CreateInboundPlanRequest**](../Model/CreateInboundPlanRequest.md)| The body of the request to &#x60;createInboundPlan&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest**](../Model/CreateInboundPlanRequest.md)| The body of the request to &#x60;createInboundPlan&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\CreateInboundPlanResponse**](../Model/CreateInboundPlanResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanResponse**](../Model/CreateInboundPlanResponse.md)
 
 ### Authorization
 
@@ -520,7 +520,7 @@ No authorization required
 ## `createMarketplaceItemLabels()`
 
 ```php
-createMarketplaceItemLabels($body): \OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsResponse
+createMarketplaceItemLabels($body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse
 ```
 
 createMarketplaceItemLabels
@@ -540,7 +540,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsRequest | The body of the request to `createMarketplaceItemLabels`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest | The body of the request to `createMarketplaceItemLabels`.
 
 try {
     $result = $apiInstance->createMarketplaceItemLabels($body);
@@ -554,11 +554,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsRequest**](../Model/CreateMarketplaceItemLabelsRequest.md)| The body of the request to &#x60;createMarketplaceItemLabels&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsRequest**](../Model/CreateMarketplaceItemLabelsRequest.md)| The body of the request to &#x60;createMarketplaceItemLabels&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\CreateMarketplaceItemLabelsResponse**](../Model/CreateMarketplaceItemLabelsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateMarketplaceItemLabelsResponse**](../Model/CreateMarketplaceItemLabelsResponse.md)
 
 ### Authorization
 
@@ -576,7 +576,7 @@ No authorization required
 ## `generateDeliveryWindowOptions()`
 
 ```php
-generateDeliveryWindowOptions($inbound_plan_id, $shipment_id): \OpenAPI\Client\Model\fulfillmentInbound\GenerateDeliveryWindowOptionsResponse
+generateDeliveryWindowOptions($inbound_plan_id, $shipment_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse
 ```
 
 generateDeliveryWindowOptions
@@ -616,7 +616,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GenerateDeliveryWindowOptionsResponse**](../Model/GenerateDeliveryWindowOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateDeliveryWindowOptionsResponse**](../Model/GenerateDeliveryWindowOptionsResponse.md)
 
 ### Authorization
 
@@ -634,7 +634,7 @@ No authorization required
 ## `generatePackingOptions()`
 
 ```php
-generatePackingOptions($inbound_plan_id): \OpenAPI\Client\Model\fulfillmentInbound\GeneratePackingOptionsResponse
+generatePackingOptions($inbound_plan_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse
 ```
 
 generatePackingOptions
@@ -672,7 +672,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GeneratePackingOptionsResponse**](../Model/GeneratePackingOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePackingOptionsResponse**](../Model/GeneratePackingOptionsResponse.md)
 
 ### Authorization
 
@@ -690,7 +690,7 @@ No authorization required
 ## `generatePlacementOptions()`
 
 ```php
-generatePlacementOptions($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\GeneratePlacementOptionsResponse
+generatePlacementOptions($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse
 ```
 
 generatePlacementOptions
@@ -711,7 +711,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     new GuzzleHttp\Client()
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\GeneratePlacementOptionsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\GeneratePlacementOptionsRequest | The body of the request to `generatePlacementOptions`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest | The body of the request to `generatePlacementOptions`.
 
 try {
     $result = $apiInstance->generatePlacementOptions($inbound_plan_id, $body);
@@ -726,11 +726,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\GeneratePlacementOptionsRequest**](../Model/GeneratePlacementOptionsRequest.md)| The body of the request to &#x60;generatePlacementOptions&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsRequest**](../Model/GeneratePlacementOptionsRequest.md)| The body of the request to &#x60;generatePlacementOptions&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GeneratePlacementOptionsResponse**](../Model/GeneratePlacementOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GeneratePlacementOptionsResponse**](../Model/GeneratePlacementOptionsResponse.md)
 
 ### Authorization
 
@@ -748,7 +748,7 @@ No authorization required
 ## `generateSelfShipAppointmentSlots()`
 
 ```php
-generateSelfShipAppointmentSlots($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\GenerateSelfShipAppointmentSlotsResponse
+generateSelfShipAppointmentSlots($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse
 ```
 
 generateSelfShipAppointmentSlots
@@ -770,7 +770,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\GenerateSelfShipAppointmentSlotsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\GenerateSelfShipAppointmentSlotsRequest | The body of the request to `generateSelfShipAppointmentSlots`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest | The body of the request to `generateSelfShipAppointmentSlots`.
 
 try {
     $result = $apiInstance->generateSelfShipAppointmentSlots($inbound_plan_id, $shipment_id, $body);
@@ -786,11 +786,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\GenerateSelfShipAppointmentSlotsRequest**](../Model/GenerateSelfShipAppointmentSlotsRequest.md)| The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsRequest**](../Model/GenerateSelfShipAppointmentSlotsRequest.md)| The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GenerateSelfShipAppointmentSlotsResponse**](../Model/GenerateSelfShipAppointmentSlotsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateSelfShipAppointmentSlotsResponse**](../Model/GenerateSelfShipAppointmentSlotsResponse.md)
 
 ### Authorization
 
@@ -808,7 +808,7 @@ No authorization required
 ## `generateShipmentContentUpdatePreviews()`
 
 ```php
-generateShipmentContentUpdatePreviews($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\GenerateShipmentContentUpdatePreviewsResponse
+generateShipmentContentUpdatePreviews($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse
 ```
 
 generateShipmentContentUpdatePreviews
@@ -830,7 +830,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\GenerateShipmentContentUpdatePreviewsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\GenerateShipmentContentUpdatePreviewsRequest | The body of the request to `generateShipmentContentUpdatePreviews`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest | The body of the request to `generateShipmentContentUpdatePreviews`.
 
 try {
     $result = $apiInstance->generateShipmentContentUpdatePreviews($inbound_plan_id, $shipment_id, $body);
@@ -846,11 +846,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\GenerateShipmentContentUpdatePreviewsRequest**](../Model/GenerateShipmentContentUpdatePreviewsRequest.md)| The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsRequest**](../Model/GenerateShipmentContentUpdatePreviewsRequest.md)| The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GenerateShipmentContentUpdatePreviewsResponse**](../Model/GenerateShipmentContentUpdatePreviewsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateShipmentContentUpdatePreviewsResponse**](../Model/GenerateShipmentContentUpdatePreviewsResponse.md)
 
 ### Authorization
 
@@ -868,7 +868,7 @@ No authorization required
 ## `generateTransportationOptions()`
 
 ```php
-generateTransportationOptions($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\GenerateTransportationOptionsResponse
+generateTransportationOptions($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse
 ```
 
 generateTransportationOptions
@@ -889,7 +889,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     new GuzzleHttp\Client()
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\GenerateTransportationOptionsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\GenerateTransportationOptionsRequest | The body of the request to `generateTransportationOptions`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest | The body of the request to `generateTransportationOptions`.
 
 try {
     $result = $apiInstance->generateTransportationOptions($inbound_plan_id, $body);
@@ -904,11 +904,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\GenerateTransportationOptionsRequest**](../Model/GenerateTransportationOptionsRequest.md)| The body of the request to &#x60;generateTransportationOptions&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsRequest**](../Model/GenerateTransportationOptionsRequest.md)| The body of the request to &#x60;generateTransportationOptions&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GenerateTransportationOptionsResponse**](../Model/GenerateTransportationOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GenerateTransportationOptionsResponse**](../Model/GenerateTransportationOptionsResponse.md)
 
 ### Authorization
 
@@ -926,7 +926,7 @@ No authorization required
 ## `getDeliveryChallanDocument()`
 
 ```php
-getDeliveryChallanDocument($inbound_plan_id, $shipment_id): \OpenAPI\Client\Model\fulfillmentInbound\GetDeliveryChallanDocumentResponse
+getDeliveryChallanDocument($inbound_plan_id, $shipment_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse
 ```
 
 getDeliveryChallanDocument
@@ -966,7 +966,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GetDeliveryChallanDocumentResponse**](../Model/GetDeliveryChallanDocumentResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GetDeliveryChallanDocumentResponse**](../Model/GetDeliveryChallanDocumentResponse.md)
 
 ### Authorization
 
@@ -984,7 +984,7 @@ No authorization required
 ## `getInboundOperationStatus()`
 
 ```php
-getInboundOperationStatus($operation_id): \OpenAPI\Client\Model\fulfillmentInbound\InboundOperationStatus
+getInboundOperationStatus($operation_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus
 ```
 
 getInboundOperationStatus
@@ -1022,7 +1022,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\InboundOperationStatus**](../Model/InboundOperationStatus.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus**](../Model/InboundOperationStatus.md)
 
 ### Authorization
 
@@ -1040,7 +1040,7 @@ No authorization required
 ## `getInboundPlan()`
 
 ```php
-getInboundPlan($inbound_plan_id): \OpenAPI\Client\Model\fulfillmentInbound\InboundPlan
+getInboundPlan($inbound_plan_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\InboundPlan
 ```
 
 getInboundPlan
@@ -1078,7 +1078,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\InboundPlan**](../Model/InboundPlan.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\InboundPlan**](../Model/InboundPlan.md)
 
 ### Authorization
 
@@ -1096,7 +1096,7 @@ No authorization required
 ## `getSelfShipAppointmentSlots()`
 
 ```php
-getSelfShipAppointmentSlots($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\GetSelfShipAppointmentSlotsResponse
+getSelfShipAppointmentSlots($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse
 ```
 
 getSelfShipAppointmentSlots
@@ -1140,7 +1140,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\GetSelfShipAppointmentSlotsResponse**](../Model/GetSelfShipAppointmentSlotsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\GetSelfShipAppointmentSlotsResponse**](../Model/GetSelfShipAppointmentSlotsResponse.md)
 
 ### Authorization
 
@@ -1158,7 +1158,7 @@ No authorization required
 ## `getShipment()`
 
 ```php
-getShipment($inbound_plan_id, $shipment_id): \OpenAPI\Client\Model\fulfillmentInbound\Shipment
+getShipment($inbound_plan_id, $shipment_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Shipment
 ```
 
 getShipment
@@ -1198,7 +1198,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\Shipment**](../Model/Shipment.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Shipment**](../Model/Shipment.md)
 
 ### Authorization
 
@@ -1216,7 +1216,7 @@ No authorization required
 ## `getShipmentContentUpdatePreview()`
 
 ```php
-getShipmentContentUpdatePreview($inbound_plan_id, $shipment_id, $content_update_preview_id): \OpenAPI\Client\Model\fulfillmentInbound\ContentUpdatePreview
+getShipmentContentUpdatePreview($inbound_plan_id, $shipment_id, $content_update_preview_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview
 ```
 
 getShipmentContentUpdatePreview
@@ -1258,7 +1258,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ContentUpdatePreview**](../Model/ContentUpdatePreview.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview**](../Model/ContentUpdatePreview.md)
 
 ### Authorization
 
@@ -1276,7 +1276,7 @@ No authorization required
 ## `listDeliveryWindowOptions()`
 
 ```php
-listDeliveryWindowOptions($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListDeliveryWindowOptionsResponse
+listDeliveryWindowOptions($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse
 ```
 
 listDeliveryWindowOptions
@@ -1320,7 +1320,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListDeliveryWindowOptionsResponse**](../Model/ListDeliveryWindowOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListDeliveryWindowOptionsResponse**](../Model/ListDeliveryWindowOptionsResponse.md)
 
 ### Authorization
 
@@ -1338,7 +1338,7 @@ No authorization required
 ## `listInboundPlanBoxes()`
 
 ```php
-listInboundPlanBoxes($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlanBoxesResponse
+listInboundPlanBoxes($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse
 ```
 
 listInboundPlanBoxes
@@ -1380,7 +1380,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlanBoxesResponse**](../Model/ListInboundPlanBoxesResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanBoxesResponse**](../Model/ListInboundPlanBoxesResponse.md)
 
 ### Authorization
 
@@ -1398,7 +1398,7 @@ No authorization required
 ## `listInboundPlanItems()`
 
 ```php
-listInboundPlanItems($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlanItemsResponse
+listInboundPlanItems($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse
 ```
 
 listInboundPlanItems
@@ -1440,7 +1440,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlanItemsResponse**](../Model/ListInboundPlanItemsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanItemsResponse**](../Model/ListInboundPlanItemsResponse.md)
 
 ### Authorization
 
@@ -1458,7 +1458,7 @@ No authorization required
 ## `listInboundPlanPallets()`
 
 ```php
-listInboundPlanPallets($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlanPalletsResponse
+listInboundPlanPallets($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse
 ```
 
 listInboundPlanPallets
@@ -1500,7 +1500,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlanPalletsResponse**](../Model/ListInboundPlanPalletsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse**](../Model/ListInboundPlanPalletsResponse.md)
 
 ### Authorization
 
@@ -1518,7 +1518,7 @@ No authorization required
 ## `listInboundPlans()`
 
 ```php
-listInboundPlans($page_size, $pagination_token, $status, $sort_by, $sort_order): \OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlansResponse
+listInboundPlans($page_size, $pagination_token, $status, $sort_by, $sort_order): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse
 ```
 
 listInboundPlans
@@ -1564,7 +1564,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListInboundPlansResponse**](../Model/ListInboundPlansResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlansResponse**](../Model/ListInboundPlansResponse.md)
 
 ### Authorization
 
@@ -1582,7 +1582,7 @@ No authorization required
 ## `listItemComplianceDetails()`
 
 ```php
-listItemComplianceDetails($mskus, $marketplace_id): \OpenAPI\Client\Model\fulfillmentInbound\ListItemComplianceDetailsResponse
+listItemComplianceDetails($mskus, $marketplace_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse
 ```
 
 listItemComplianceDetails
@@ -1622,7 +1622,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListItemComplianceDetailsResponse**](../Model/ListItemComplianceDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListItemComplianceDetailsResponse**](../Model/ListItemComplianceDetailsResponse.md)
 
 ### Authorization
 
@@ -1640,7 +1640,7 @@ No authorization required
 ## `listPackingGroupBoxes()`
 
 ```php
-listPackingGroupBoxes($inbound_plan_id, $packing_group_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListPackingGroupBoxesResponse
+listPackingGroupBoxes($inbound_plan_id, $packing_group_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse
 ```
 
 listPackingGroupBoxes
@@ -1684,7 +1684,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListPackingGroupBoxesResponse**](../Model/ListPackingGroupBoxesResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupBoxesResponse**](../Model/ListPackingGroupBoxesResponse.md)
 
 ### Authorization
 
@@ -1702,7 +1702,7 @@ No authorization required
 ## `listPackingGroupItems()`
 
 ```php
-listPackingGroupItems($inbound_plan_id, $packing_group_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListPackingGroupItemsResponse
+listPackingGroupItems($inbound_plan_id, $packing_group_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse
 ```
 
 listPackingGroupItems
@@ -1746,7 +1746,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListPackingGroupItemsResponse**](../Model/ListPackingGroupItemsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPackingGroupItemsResponse**](../Model/ListPackingGroupItemsResponse.md)
 
 ### Authorization
 
@@ -1764,7 +1764,7 @@ No authorization required
 ## `listPackingOptions()`
 
 ```php
-listPackingOptions($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListPackingOptionsResponse
+listPackingOptions($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse
 ```
 
 listPackingOptions
@@ -1806,7 +1806,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListPackingOptionsResponse**](../Model/ListPackingOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPackingOptionsResponse**](../Model/ListPackingOptionsResponse.md)
 
 ### Authorization
 
@@ -1824,7 +1824,7 @@ No authorization required
 ## `listPlacementOptions()`
 
 ```php
-listPlacementOptions($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListPlacementOptionsResponse
+listPlacementOptions($inbound_plan_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse
 ```
 
 listPlacementOptions
@@ -1866,7 +1866,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListPlacementOptionsResponse**](../Model/ListPlacementOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPlacementOptionsResponse**](../Model/ListPlacementOptionsResponse.md)
 
 ### Authorization
 
@@ -1884,7 +1884,7 @@ No authorization required
 ## `listPrepDetails()`
 
 ```php
-listPrepDetails($marketplace_id, $mskus): \OpenAPI\Client\Model\fulfillmentInbound\ListPrepDetailsResponse
+listPrepDetails($marketplace_id, $mskus): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse
 ```
 
 listPrepDetails
@@ -1924,7 +1924,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListPrepDetailsResponse**](../Model/ListPrepDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListPrepDetailsResponse**](../Model/ListPrepDetailsResponse.md)
 
 ### Authorization
 
@@ -1942,7 +1942,7 @@ No authorization required
 ## `listShipmentBoxes()`
 
 ```php
-listShipmentBoxes($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListShipmentBoxesResponse
+listShipmentBoxes($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse
 ```
 
 listShipmentBoxes
@@ -1986,7 +1986,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListShipmentBoxesResponse**](../Model/ListShipmentBoxesResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentBoxesResponse**](../Model/ListShipmentBoxesResponse.md)
 
 ### Authorization
 
@@ -2004,7 +2004,7 @@ No authorization required
 ## `listShipmentContentUpdatePreviews()`
 
 ```php
-listShipmentContentUpdatePreviews($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListShipmentContentUpdatePreviewsResponse
+listShipmentContentUpdatePreviews($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse
 ```
 
 listShipmentContentUpdatePreviews
@@ -2048,7 +2048,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListShipmentContentUpdatePreviewsResponse**](../Model/ListShipmentContentUpdatePreviewsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentContentUpdatePreviewsResponse**](../Model/ListShipmentContentUpdatePreviewsResponse.md)
 
 ### Authorization
 
@@ -2066,7 +2066,7 @@ No authorization required
 ## `listShipmentItems()`
 
 ```php
-listShipmentItems($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListShipmentItemsResponse
+listShipmentItems($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse
 ```
 
 listShipmentItems
@@ -2110,7 +2110,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListShipmentItemsResponse**](../Model/ListShipmentItemsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentItemsResponse**](../Model/ListShipmentItemsResponse.md)
 
 ### Authorization
 
@@ -2128,7 +2128,7 @@ No authorization required
 ## `listShipmentPallets()`
 
 ```php
-listShipmentPallets($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillmentInbound\ListShipmentPalletsResponse
+listShipmentPallets($inbound_plan_id, $shipment_id, $page_size, $pagination_token): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse
 ```
 
 listShipmentPallets
@@ -2172,7 +2172,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListShipmentPalletsResponse**](../Model/ListShipmentPalletsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListShipmentPalletsResponse**](../Model/ListShipmentPalletsResponse.md)
 
 ### Authorization
 
@@ -2190,7 +2190,7 @@ No authorization required
 ## `listTransportationOptions()`
 
 ```php
-listTransportationOptions($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id): \OpenAPI\Client\Model\fulfillmentInbound\ListTransportationOptionsResponse
+listTransportationOptions($inbound_plan_id, $page_size, $pagination_token, $placement_option_id, $shipment_id): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse
 ```
 
 listTransportationOptions
@@ -2236,7 +2236,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ListTransportationOptionsResponse**](../Model/ListTransportationOptionsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListTransportationOptionsResponse**](../Model/ListTransportationOptionsResponse.md)
 
 ### Authorization
 
@@ -2254,7 +2254,7 @@ No authorization required
 ## `scheduleSelfShipAppointment()`
 
 ```php
-scheduleSelfShipAppointment($inbound_plan_id, $shipment_id, $slot_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentResponse
+scheduleSelfShipAppointment($inbound_plan_id, $shipment_id, $slot_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse
 ```
 
 scheduleSelfShipAppointment
@@ -2277,7 +2277,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
 $slot_id = 'slot_id_example'; // string | An identifier to a self-ship appointment slot.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentRequest | The body of the request to `scheduleSelfShipAppointment`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest | The body of the request to `scheduleSelfShipAppointment`.
 
 try {
     $result = $apiInstance->scheduleSelfShipAppointment($inbound_plan_id, $shipment_id, $slot_id, $body);
@@ -2294,11 +2294,11 @@ try {
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
 | **slot_id** | **string**| An identifier to a self-ship appointment slot. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentRequest**](../Model/ScheduleSelfShipAppointmentRequest.md)| The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest**](../Model/ScheduleSelfShipAppointmentRequest.md)| The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\ScheduleSelfShipAppointmentResponse**](../Model/ScheduleSelfShipAppointmentResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse**](../Model/ScheduleSelfShipAppointmentResponse.md)
 
 ### Authorization
 
@@ -2316,7 +2316,7 @@ No authorization required
 ## `setPackingInformation()`
 
 ```php
-setPackingInformation($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\SetPackingInformationResponse
+setPackingInformation($inbound_plan_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse
 ```
 
 setPackingInformation
@@ -2337,7 +2337,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     new GuzzleHttp\Client()
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\SetPackingInformationRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\SetPackingInformationRequest | The body of the request to `setPackingInformation`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest | The body of the request to `setPackingInformation`.
 
 try {
     $result = $apiInstance->setPackingInformation($inbound_plan_id, $body);
@@ -2352,11 +2352,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\SetPackingInformationRequest**](../Model/SetPackingInformationRequest.md)| The body of the request to &#x60;setPackingInformation&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationRequest**](../Model/SetPackingInformationRequest.md)| The body of the request to &#x60;setPackingInformation&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\SetPackingInformationResponse**](../Model/SetPackingInformationResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPackingInformationResponse**](../Model/SetPackingInformationResponse.md)
 
 ### Authorization
 
@@ -2374,7 +2374,7 @@ No authorization required
 ## `setPrepDetails()`
 
 ```php
-setPrepDetails($body): \OpenAPI\Client\Model\fulfillmentInbound\SetPrepDetailsResponse
+setPrepDetails($body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse
 ```
 
 setPrepDetails
@@ -2394,7 +2394,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\SetPrepDetailsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\SetPrepDetailsRequest | The body of the request to `setPrepDetails`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest | The body of the request to `setPrepDetails`.
 
 try {
     $result = $apiInstance->setPrepDetails($body);
@@ -2408,11 +2408,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\SetPrepDetailsRequest**](../Model/SetPrepDetailsRequest.md)| The body of the request to &#x60;setPrepDetails&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsRequest**](../Model/SetPrepDetailsRequest.md)| The body of the request to &#x60;setPrepDetails&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\SetPrepDetailsResponse**](../Model/SetPrepDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SetPrepDetailsResponse**](../Model/SetPrepDetailsResponse.md)
 
 ### Authorization
 
@@ -2451,7 +2451,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     new GuzzleHttp\Client()
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\UpdateInboundPlanNameRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\UpdateInboundPlanNameRequest | The body of the request to `updateInboundPlanName`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest | The body of the request to `updateInboundPlanName`.
 
 try {
     $apiInstance->updateInboundPlanName($inbound_plan_id, $body);
@@ -2465,7 +2465,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\UpdateInboundPlanNameRequest**](../Model/UpdateInboundPlanNameRequest.md)| The body of the request to &#x60;updateInboundPlanName&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateInboundPlanNameRequest**](../Model/UpdateInboundPlanNameRequest.md)| The body of the request to &#x60;updateInboundPlanName&#x60;. | |
 
 ### Return type
 
@@ -2487,7 +2487,7 @@ No authorization required
 ## `updateItemComplianceDetails()`
 
 ```php
-updateItemComplianceDetails($marketplace_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\UpdateItemComplianceDetailsResponse
+updateItemComplianceDetails($marketplace_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse
 ```
 
 updateItemComplianceDetails
@@ -2508,7 +2508,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
     new GuzzleHttp\Client()
 );
 $marketplace_id = 'marketplace_id_example'; // string | The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\UpdateItemComplianceDetailsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\UpdateItemComplianceDetailsRequest | The body of the request to `updateItemComplianceDetails`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest | The body of the request to `updateItemComplianceDetails`.
 
 try {
     $result = $apiInstance->updateItemComplianceDetails($marketplace_id, $body);
@@ -2523,11 +2523,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **marketplace_id** | **string**| The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\UpdateItemComplianceDetailsRequest**](../Model/UpdateItemComplianceDetailsRequest.md)| The body of the request to &#x60;updateItemComplianceDetails&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsRequest**](../Model/UpdateItemComplianceDetailsRequest.md)| The body of the request to &#x60;updateItemComplianceDetails&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\UpdateItemComplianceDetailsResponse**](../Model/UpdateItemComplianceDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse**](../Model/UpdateItemComplianceDetailsResponse.md)
 
 ### Authorization
 
@@ -2567,7 +2567,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentNameRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentNameRequest | The body of the request to `updateShipmentName`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest | The body of the request to `updateShipmentName`.
 
 try {
     $apiInstance->updateShipmentName($inbound_plan_id, $shipment_id, $body);
@@ -2582,7 +2582,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentNameRequest**](../Model/UpdateShipmentNameRequest.md)| The body of the request to &#x60;updateShipmentName&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentNameRequest**](../Model/UpdateShipmentNameRequest.md)| The body of the request to &#x60;updateShipmentName&#x60;. | |
 
 ### Return type
 
@@ -2604,7 +2604,7 @@ No authorization required
 ## `updateShipmentSourceAddress()`
 
 ```php
-updateShipmentSourceAddress($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentSourceAddressResponse
+updateShipmentSourceAddress($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse
 ```
 
 updateShipmentSourceAddress
@@ -2626,7 +2626,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentSourceAddressRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentSourceAddressRequest | The body of the request to `updateShipmentSourceAddress`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest | The body of the request to `updateShipmentSourceAddress`.
 
 try {
     $result = $apiInstance->updateShipmentSourceAddress($inbound_plan_id, $shipment_id, $body);
@@ -2642,11 +2642,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentSourceAddressRequest**](../Model/UpdateShipmentSourceAddressRequest.md)| The body of the request to &#x60;updateShipmentSourceAddress&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRequest**](../Model/UpdateShipmentSourceAddressRequest.md)| The body of the request to &#x60;updateShipmentSourceAddress&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentSourceAddressResponse**](../Model/UpdateShipmentSourceAddressResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressResponse**](../Model/UpdateShipmentSourceAddressResponse.md)
 
 ### Authorization
 
@@ -2664,7 +2664,7 @@ No authorization required
 ## `updateShipmentTrackingDetails()`
 
 ```php
-updateShipmentTrackingDetails($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsResponse
+updateShipmentTrackingDetails($inbound_plan_id, $shipment_id, $body): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse
 ```
 
 updateShipmentTrackingDetails
@@ -2686,7 +2686,7 @@ $apiInstance = new OpenAPI\Client\Api\FulfillmentInboundApi(
 );
 $inbound_plan_id = 'inbound_plan_id_example'; // string | Identifier of an inbound plan.
 $shipment_id = 'shipment_id_example'; // string | Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-$body = new \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsRequest(); // \OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsRequest | The body of the request to `updateShipmentTrackingDetails`.
+$body = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest(); // \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest | The body of the request to `updateShipmentTrackingDetails`.
 
 try {
     $result = $apiInstance->updateShipmentTrackingDetails($inbound_plan_id, $shipment_id, $body);
@@ -2702,11 +2702,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **inbound_plan_id** | **string**| Identifier of an inbound plan. | |
 | **shipment_id** | **string**| Identifier of a shipment. A shipment contains the boxes and units being inbounded. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsRequest**](../Model/UpdateShipmentTrackingDetailsRequest.md)| The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest**](../Model/UpdateShipmentTrackingDetailsRequest.md)| The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentInbound\UpdateShipmentTrackingDetailsResponse**](../Model/UpdateShipmentTrackingDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse**](../Model/UpdateShipmentTrackingDetailsResponse.md)
 
 ### Authorization
 

@@ -145,7 +145,9 @@ class ObjectSerializer
      */
     public static function sanitizeTimestamp(string $timestamp): string
     {
-        if (!is_string($timestamp)) return $timestamp;
+        if (!is_string($timestamp)) {
+            return $timestamp;
+        }
 
         return preg_replace('/(:\d{2}.\d{6})\d*/', '$1', $timestamp);
     }
@@ -416,14 +418,18 @@ class ObjectSerializer
     /**
      * Deserialize a JSON string into an object
      *
-     * @param mixed    $data          object or primitive to be deserialized
-     * @param string $class         class name is passed as a string
-     * @param string[]|null $httpHeaders   HTTP headers
+     * @param mixed $data object or primitive to be deserialized
+     * @param string $class class name is passed as a string
+     * @param string[]|null $httpHeaders HTTP headers
      *
-     * @return object|array|string|null a single or an array of $class instances
+     * @return object|array|string|int|float|null a single or an array of $class instances
+     * @throws \DateMalformedStringException
      */
-    public static function deserialize(mixed $data, string $class, ?array $httpHeaders = null): object|array|string|null
-    {
+    public static function deserialize(
+        mixed $data,
+        string $class,
+        ?array $httpHeaders = null
+    ): object|array|string|null|int|float {
         if (null === $data) {
             return null;
         }

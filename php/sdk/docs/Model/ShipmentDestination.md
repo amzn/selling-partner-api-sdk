@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**\OpenAPI\Client\Model\fulfillmentInbound\Address**](Address.md) |  | [optional]
+**address** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address**](Address.md) |  | [optional]
 **destination_type** | **string** | The type of destination for this shipment. Possible values: &#x60;AMAZON_OPTIMIZED&#x60;, &#x60;AMAZON_WAREHOUSE&#x60;. |
 **warehouse_id** | **string** | The warehouse that the shipment should be sent to. Empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;. | [optional]
 

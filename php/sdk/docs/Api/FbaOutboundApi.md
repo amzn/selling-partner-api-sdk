@@ -23,7 +23,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `cancelFulfillmentOrder()`
 
 ```php
-cancelFulfillmentOrder($seller_fulfillment_order_id): \OpenAPI\Client\Model\fulfillmentOutbound\CancelFulfillmentOrderResponse
+cancelFulfillmentOrder($seller_fulfillment_order_id): \OpenAPI\Client\Model\fulfillment\outbound\CancelFulfillmentOrderResponse
 ```
 
 
@@ -61,7 +61,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\CancelFulfillmentOrderResponse**](../Model/CancelFulfillmentOrderResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\CancelFulfillmentOrderResponse**](../Model/CancelFulfillmentOrderResponse.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ No authorization required
 ## `createFulfillmentOrder()`
 
 ```php
-createFulfillmentOrder($body): \OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderResponse
+createFulfillmentOrder($body): \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentOrderResponse
 ```
 
 
@@ -99,7 +99,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaOutboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderRequest(); // \OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderRequest | CreateFulfillmentOrderRequest parameter
+$body = new \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentOrderRequest(); // \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentOrderRequest | CreateFulfillmentOrderRequest parameter
 
 try {
     $result = $apiInstance->createFulfillmentOrder($body);
@@ -113,11 +113,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderRequest**](../Model/CreateFulfillmentOrderRequest.md)| CreateFulfillmentOrderRequest parameter | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentOrderRequest**](../Model/CreateFulfillmentOrderRequest.md)| CreateFulfillmentOrderRequest parameter | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentOrderResponse**](../Model/CreateFulfillmentOrderResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentOrderResponse**](../Model/CreateFulfillmentOrderResponse.md)
 
 ### Authorization
 
@@ -135,7 +135,7 @@ No authorization required
 ## `createFulfillmentReturn()`
 
 ```php
-createFulfillmentReturn($seller_fulfillment_order_id, $body): \OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentReturnResponse
+createFulfillmentReturn($seller_fulfillment_order_id, $body): \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnResponse
 ```
 
 
@@ -156,7 +156,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaOutboundApi(
     new GuzzleHttp\Client()
 );
 $seller_fulfillment_order_id = 'seller_fulfillment_order_id_example'; // string | An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct `SellerFulfillmentOrderId` value based on the buyer's request to return items.
-$body = new \OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentReturnRequest(); // \OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentReturnRequest | CreateFulfillmentReturnRequest parameter
+$body = new \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnRequest(); // \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnRequest | CreateFulfillmentReturnRequest parameter
 
 try {
     $result = $apiInstance->createFulfillmentReturn($seller_fulfillment_order_id, $body);
@@ -171,11 +171,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **seller_fulfillment_order_id** | **string**| An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentReturnRequest**](../Model/CreateFulfillmentReturnRequest.md)| CreateFulfillmentReturnRequest parameter | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnRequest**](../Model/CreateFulfillmentReturnRequest.md)| CreateFulfillmentReturnRequest parameter | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\CreateFulfillmentReturnResponse**](../Model/CreateFulfillmentReturnResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnResponse**](../Model/CreateFulfillmentReturnResponse.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ No authorization required
 ## `deliveryOffers()`
 
 ```php
-deliveryOffers($body): \OpenAPI\Client\Model\fulfillmentOutbound\GetDeliveryOffersResponse
+deliveryOffers($body): \OpenAPI\Client\Model\fulfillment\outbound\GetDeliveryOffersResponse
 ```
 
 
@@ -213,7 +213,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaOutboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentOutbound\GetDeliveryOffersRequest(); // \OpenAPI\Client\Model\fulfillmentOutbound\GetDeliveryOffersRequest | GetDeliveryOffersRequest parameter
+$body = new \OpenAPI\Client\Model\fulfillment\outbound\GetDeliveryOffersRequest(); // \OpenAPI\Client\Model\fulfillment\outbound\GetDeliveryOffersRequest | GetDeliveryOffersRequest parameter
 
 try {
     $result = $apiInstance->deliveryOffers($body);
@@ -227,11 +227,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentOutbound\GetDeliveryOffersRequest**](../Model/GetDeliveryOffersRequest.md)| GetDeliveryOffersRequest parameter | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\outbound\GetDeliveryOffersRequest**](../Model/GetDeliveryOffersRequest.md)| GetDeliveryOffersRequest parameter | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetDeliveryOffersResponse**](../Model/GetDeliveryOffersResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetDeliveryOffersResponse**](../Model/GetDeliveryOffersResponse.md)
 
 ### Authorization
 
@@ -249,7 +249,7 @@ No authorization required
 ## `getFeatureInventory()`
 
 ```php
-getFeatureInventory($marketplace_id, $feature_name, $next_token, $query_start_date): \OpenAPI\Client\Model\fulfillmentOutbound\GetFeatureInventoryResponse
+getFeatureInventory($marketplace_id, $feature_name, $next_token, $query_start_date): \OpenAPI\Client\Model\fulfillment\outbound\GetFeatureInventoryResponse
 ```
 
 
@@ -293,7 +293,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetFeatureInventoryResponse**](../Model/GetFeatureInventoryResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetFeatureInventoryResponse**](../Model/GetFeatureInventoryResponse.md)
 
 ### Authorization
 
@@ -311,7 +311,7 @@ No authorization required
 ## `getFeatureSKU()`
 
 ```php
-getFeatureSKU($marketplace_id, $feature_name, $seller_sku): \OpenAPI\Client\Model\fulfillmentOutbound\GetFeatureSkuResponse
+getFeatureSKU($marketplace_id, $feature_name, $seller_sku): \OpenAPI\Client\Model\fulfillment\outbound\GetFeatureSkuResponse
 ```
 
 
@@ -353,7 +353,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetFeatureSkuResponse**](../Model/GetFeatureSkuResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetFeatureSkuResponse**](../Model/GetFeatureSkuResponse.md)
 
 ### Authorization
 
@@ -371,7 +371,7 @@ No authorization required
 ## `getFeatures()`
 
 ```php
-getFeatures($marketplace_id): \OpenAPI\Client\Model\fulfillmentOutbound\GetFeaturesResponse
+getFeatures($marketplace_id): \OpenAPI\Client\Model\fulfillment\outbound\GetFeaturesResponse
 ```
 
 
@@ -409,7 +409,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetFeaturesResponse**](../Model/GetFeaturesResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetFeaturesResponse**](../Model/GetFeaturesResponse.md)
 
 ### Authorization
 
@@ -427,7 +427,7 @@ No authorization required
 ## `getFulfillmentOrder()`
 
 ```php
-getFulfillmentOrder($seller_fulfillment_order_id): \OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentOrderResponse
+getFulfillmentOrder($seller_fulfillment_order_id): \OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentOrderResponse
 ```
 
 
@@ -465,7 +465,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentOrderResponse**](../Model/GetFulfillmentOrderResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentOrderResponse**](../Model/GetFulfillmentOrderResponse.md)
 
 ### Authorization
 
@@ -483,7 +483,7 @@ No authorization required
 ## `getFulfillmentPreview()`
 
 ```php
-getFulfillmentPreview($body): \OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewResponse
+getFulfillmentPreview($body): \OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewResponse
 ```
 
 
@@ -503,7 +503,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaOutboundApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewRequest(); // \OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewRequest | GetFulfillmentPreviewRequest parameter
+$body = new \OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewRequest(); // \OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewRequest | GetFulfillmentPreviewRequest parameter
 
 try {
     $result = $apiInstance->getFulfillmentPreview($body);
@@ -517,11 +517,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewRequest**](../Model/GetFulfillmentPreviewRequest.md)| GetFulfillmentPreviewRequest parameter | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewRequest**](../Model/GetFulfillmentPreviewRequest.md)| GetFulfillmentPreviewRequest parameter | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetFulfillmentPreviewResponse**](../Model/GetFulfillmentPreviewResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewResponse**](../Model/GetFulfillmentPreviewResponse.md)
 
 ### Authorization
 
@@ -539,7 +539,7 @@ No authorization required
 ## `getPackageTrackingDetails()`
 
 ```php
-getPackageTrackingDetails($package_number): \OpenAPI\Client\Model\fulfillmentOutbound\GetPackageTrackingDetailsResponse
+getPackageTrackingDetails($package_number): \OpenAPI\Client\Model\fulfillment\outbound\GetPackageTrackingDetailsResponse
 ```
 
 
@@ -577,7 +577,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\GetPackageTrackingDetailsResponse**](../Model/GetPackageTrackingDetailsResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\GetPackageTrackingDetailsResponse**](../Model/GetPackageTrackingDetailsResponse.md)
 
 ### Authorization
 
@@ -595,7 +595,7 @@ No authorization required
 ## `listAllFulfillmentOrders()`
 
 ```php
-listAllFulfillmentOrders($query_start_date, $next_token): \OpenAPI\Client\Model\fulfillmentOutbound\ListAllFulfillmentOrdersResponse
+listAllFulfillmentOrders($query_start_date, $next_token): \OpenAPI\Client\Model\fulfillment\outbound\ListAllFulfillmentOrdersResponse
 ```
 
 
@@ -635,7 +635,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\ListAllFulfillmentOrdersResponse**](../Model/ListAllFulfillmentOrdersResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\ListAllFulfillmentOrdersResponse**](../Model/ListAllFulfillmentOrdersResponse.md)
 
 ### Authorization
 
@@ -653,7 +653,7 @@ No authorization required
 ## `listReturnReasonCodes()`
 
 ```php
-listReturnReasonCodes($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language): \OpenAPI\Client\Model\fulfillmentOutbound\ListReturnReasonCodesResponse
+listReturnReasonCodes($seller_sku, $marketplace_id, $seller_fulfillment_order_id, $language): \OpenAPI\Client\Model\fulfillment\outbound\ListReturnReasonCodesResponse
 ```
 
 
@@ -697,7 +697,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\ListReturnReasonCodesResponse**](../Model/ListReturnReasonCodesResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\ListReturnReasonCodesResponse**](../Model/ListReturnReasonCodesResponse.md)
 
 ### Authorization
 
@@ -715,7 +715,7 @@ No authorization required
 ## `submitFulfillmentOrderStatusUpdate()`
 
 ```php
-submitFulfillmentOrderStatusUpdate($seller_fulfillment_order_id, $body): \OpenAPI\Client\Model\fulfillmentOutbound\SubmitFulfillmentOrderStatusUpdateResponse
+submitFulfillmentOrderStatusUpdate($seller_fulfillment_order_id, $body): \OpenAPI\Client\Model\fulfillment\outbound\SubmitFulfillmentOrderStatusUpdateResponse
 ```
 
 
@@ -736,7 +736,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaOutboundApi(
     new GuzzleHttp\Client()
 );
 $seller_fulfillment_order_id = 'seller_fulfillment_order_id_example'; // string | The identifier assigned to the item by the seller when the fulfillment order was created.
-$body = new \OpenAPI\Client\Model\fulfillmentOutbound\SubmitFulfillmentOrderStatusUpdateRequest(); // \OpenAPI\Client\Model\fulfillmentOutbound\SubmitFulfillmentOrderStatusUpdateRequest | The identifier assigned to the item by the seller when the fulfillment order was created.
+$body = new \OpenAPI\Client\Model\fulfillment\outbound\SubmitFulfillmentOrderStatusUpdateRequest(); // \OpenAPI\Client\Model\fulfillment\outbound\SubmitFulfillmentOrderStatusUpdateRequest | The identifier assigned to the item by the seller when the fulfillment order was created.
 
 try {
     $result = $apiInstance->submitFulfillmentOrderStatusUpdate($seller_fulfillment_order_id, $body);
@@ -751,11 +751,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **seller_fulfillment_order_id** | **string**| The identifier assigned to the item by the seller when the fulfillment order was created. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentOutbound\SubmitFulfillmentOrderStatusUpdateRequest**](../Model/SubmitFulfillmentOrderStatusUpdateRequest.md)| The identifier assigned to the item by the seller when the fulfillment order was created. | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\outbound\SubmitFulfillmentOrderStatusUpdateRequest**](../Model/SubmitFulfillmentOrderStatusUpdateRequest.md)| The identifier assigned to the item by the seller when the fulfillment order was created. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\SubmitFulfillmentOrderStatusUpdateResponse**](../Model/SubmitFulfillmentOrderStatusUpdateResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\SubmitFulfillmentOrderStatusUpdateResponse**](../Model/SubmitFulfillmentOrderStatusUpdateResponse.md)
 
 ### Authorization
 
@@ -773,7 +773,7 @@ No authorization required
 ## `updateFulfillmentOrder()`
 
 ```php
-updateFulfillmentOrder($seller_fulfillment_order_id, $body): \OpenAPI\Client\Model\fulfillmentOutbound\UpdateFulfillmentOrderResponse
+updateFulfillmentOrder($seller_fulfillment_order_id, $body): \OpenAPI\Client\Model\fulfillment\outbound\UpdateFulfillmentOrderResponse
 ```
 
 
@@ -794,7 +794,7 @@ $apiInstance = new OpenAPI\Client\Api\FbaOutboundApi(
     new GuzzleHttp\Client()
 );
 $seller_fulfillment_order_id = 'seller_fulfillment_order_id_example'; // string | The identifier assigned to the item by the seller when the fulfillment order was created.
-$body = new \OpenAPI\Client\Model\fulfillmentOutbound\UpdateFulfillmentOrderRequest(); // \OpenAPI\Client\Model\fulfillmentOutbound\UpdateFulfillmentOrderRequest | UpdateFulfillmentOrderRequest parameter
+$body = new \OpenAPI\Client\Model\fulfillment\outbound\UpdateFulfillmentOrderRequest(); // \OpenAPI\Client\Model\fulfillment\outbound\UpdateFulfillmentOrderRequest | UpdateFulfillmentOrderRequest parameter
 
 try {
     $result = $apiInstance->updateFulfillmentOrder($seller_fulfillment_order_id, $body);
@@ -809,11 +809,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **seller_fulfillment_order_id** | **string**| The identifier assigned to the item by the seller when the fulfillment order was created. | |
-| **body** | [**\OpenAPI\Client\Model\fulfillmentOutbound\UpdateFulfillmentOrderRequest**](../Model/UpdateFulfillmentOrderRequest.md)| UpdateFulfillmentOrderRequest parameter | |
+| **body** | [**\OpenAPI\Client\Model\fulfillment\outbound\UpdateFulfillmentOrderRequest**](../Model/UpdateFulfillmentOrderRequest.md)| UpdateFulfillmentOrderRequest parameter | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\fulfillmentOutbound\UpdateFulfillmentOrderResponse**](../Model/UpdateFulfillmentOrderResponse.md)
+[**\OpenAPI\Client\Model\fulfillment\outbound\UpdateFulfillmentOrderResponse**](../Model/UpdateFulfillmentOrderResponse.md)
 
 ### Authorization
 

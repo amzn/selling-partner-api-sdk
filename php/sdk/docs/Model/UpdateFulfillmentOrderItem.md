@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **displayable_comment** | **string** | Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip. | [optional]
 **fulfillment_network_sku** | **string** | Amazon&#39;s fulfillment network SKU of the item. | [optional]
 **order_item_disposition** | **string** | Indicates whether the item is sellable or unsellable. | [optional]
-**per_unit_declared_value** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
-**per_unit_price** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
-**per_unit_tax** | [**\OpenAPI\Client\Model\fulfillmentOutbound\Money**](Money.md) |  | [optional]
+**per_unit_declared_value** | [**\OpenAPI\Client\Model\fulfillment\outbound\Money**](Money.md) |  | [optional]
+**per_unit_price** | [**\OpenAPI\Client\Model\fulfillment\outbound\Money**](Money.md) |  | [optional]
+**per_unit_tax** | [**\OpenAPI\Client\Model\fulfillment\outbound\Money**](Money.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

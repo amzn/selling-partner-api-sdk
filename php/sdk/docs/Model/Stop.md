@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **function_code** | **string** | Provide the function code. |
-**location_identification** | [**\OpenAPI\Client\Model\vendorShipments\Location**](Location.md) |  | [optional]
+**location_identification** | [**\OpenAPI\Client\Model\vendor\shipments\Location**](Location.md) |  | [optional]
 **arrival_time** | **\DateTime** | Date and time of the arrival of the cargo. | [optional]
 **departure_time** | **\DateTime** | Date and time of the departure of the cargo. | [optional]
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**gross_shipment_weight** | [**\OpenAPI\Client\Model\vendorShipments\Weight**](Weight.md) |  | [optional]
-**shipment_volume** | [**\OpenAPI\Client\Model\vendorShipments\Volume**](Volume.md) |  | [optional]
+**gross_shipment_weight** | [**\OpenAPI\Client\Model\vendor\shipments\Weight**](Weight.md) |  | [optional]
+**shipment_volume** | [**\OpenAPI\Client\Model\vendor\shipments\Volume**](Volume.md) |  | [optional]
 **carton_count** | **int** | Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments. | [optional]
 **pallet_count** | **int** | Number of pallets present in the shipment. Provide the palletCount only for palletized shipments. | [optional]
 

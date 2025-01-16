@@ -13,7 +13,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `deleteListingsItem()`
 
 ```php
-deleteListingsItem($seller_id, $sku, $marketplace_ids, $issue_locale): \OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse
+deleteListingsItem($seller_id, $sku, $marketplace_ids, $issue_locale): \OpenAPI\Client\Model\listings\items\ListingsItemSubmissionResponse
 ```
 
 deleteListingsItem
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse**](../Model/ListingsItemSubmissionResponse.md)
+[**\OpenAPI\Client\Model\listings\items\ListingsItemSubmissionResponse**](../Model/ListingsItemSubmissionResponse.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ No authorization required
 ## `getListingsItem()`
 
 ```php
-getListingsItem($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data): \OpenAPI\Client\Model\listingsItems\Item
+getListingsItem($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data): \OpenAPI\Client\Model\listings\items\Item
 ```
 
 getListingsItem
@@ -121,7 +121,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\listingsItems\Item**](../Model/Item.md)
+[**\OpenAPI\Client\Model\listings\items\Item**](../Model/Item.md)
 
 ### Authorization
 
@@ -139,7 +139,7 @@ No authorization required
 ## `patchListingsItem()`
 
 ```php
-patchListingsItem($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale): \OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse
+patchListingsItem($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale): \OpenAPI\Client\Model\listings\items\ListingsItemSubmissionResponse
 ```
 
 patchListingsItem
@@ -162,7 +162,7 @@ $apiInstance = new OpenAPI\Client\Api\ListingsItemsApi(
 $seller_id = 'seller_id_example'; // string | A selling partner identifier, such as a merchant account or vendor code.
 $sku = 'sku_example'; // string | A selling partner provided identifier for an Amazon listing.
 $marketplace_ids = ATVPDKIKX0DER; // string[] | A comma-delimited list of Amazon marketplace identifiers for the request.
-$body = new \OpenAPI\Client\Model\listingsItems\ListingsItemPatchRequest(); // \OpenAPI\Client\Model\listingsItems\ListingsItemPatchRequest | The request body schema for the `patchListingsItem` operation.
+$body = new \OpenAPI\Client\Model\listings\items\ListingsItemPatchRequest(); // \OpenAPI\Client\Model\listings\items\ListingsItemPatchRequest | The request body schema for the `patchListingsItem` operation.
 $included_data = issues; // string[] | A comma-delimited list of data sets to include in the response. Default: `issues`.
 $mode = VALIDATION_PREVIEW; // string | The mode of operation for the request.
 $issue_locale = en_US; // string | A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: `en_US`, `fr_CA`, `fr_FR`. Localized messages default to `en_US` when a localization is not available in the specified locale.
@@ -182,14 +182,14 @@ try {
 | **seller_id** | **string**| A selling partner identifier, such as a merchant account or vendor code. | |
 | **sku** | **string**| A selling partner provided identifier for an Amazon listing. | |
 | **marketplace_ids** | [**string[]**](../Model/string.md)| A comma-delimited list of Amazon marketplace identifiers for the request. | |
-| **body** | [**\OpenAPI\Client\Model\listingsItems\ListingsItemPatchRequest**](../Model/ListingsItemPatchRequest.md)| The request body schema for the &#x60;patchListingsItem&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\listings\items\ListingsItemPatchRequest**](../Model/ListingsItemPatchRequest.md)| The request body schema for the &#x60;patchListingsItem&#x60; operation. | |
 | **included_data** | [**string[]**](../Model/string.md)| A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. | [optional] |
 | **mode** | **string**| The mode of operation for the request. | [optional] |
 | **issue_locale** | **string**| A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse**](../Model/ListingsItemSubmissionResponse.md)
+[**\OpenAPI\Client\Model\listings\items\ListingsItemSubmissionResponse**](../Model/ListingsItemSubmissionResponse.md)
 
 ### Authorization
 
@@ -207,7 +207,7 @@ No authorization required
 ## `putListingsItem()`
 
 ```php
-putListingsItem($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale): \OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse
+putListingsItem($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale): \OpenAPI\Client\Model\listings\items\ListingsItemSubmissionResponse
 ```
 
 putListingsItem
@@ -230,7 +230,7 @@ $apiInstance = new OpenAPI\Client\Api\ListingsItemsApi(
 $seller_id = 'seller_id_example'; // string | A selling partner identifier, such as a merchant account or vendor code.
 $sku = 'sku_example'; // string | A selling partner provided identifier for an Amazon listing.
 $marketplace_ids = ATVPDKIKX0DER; // string[] | A comma-delimited list of Amazon marketplace identifiers for the request.
-$body = new \OpenAPI\Client\Model\listingsItems\ListingsItemPutRequest(); // \OpenAPI\Client\Model\listingsItems\ListingsItemPutRequest | The request body schema for the `putListingsItem` operation.
+$body = new \OpenAPI\Client\Model\listings\items\ListingsItemPutRequest(); // \OpenAPI\Client\Model\listings\items\ListingsItemPutRequest | The request body schema for the `putListingsItem` operation.
 $included_data = issues; // string[] | A comma-delimited list of data sets to include in the response. Default: `issues`.
 $mode = VALIDATION_PREVIEW; // string | The mode of operation for the request.
 $issue_locale = en_US; // string | A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: `en_US`, `fr_CA`, `fr_FR`. Localized messages default to `en_US` when a localization is not available in the specified locale.
@@ -250,14 +250,14 @@ try {
 | **seller_id** | **string**| A selling partner identifier, such as a merchant account or vendor code. | |
 | **sku** | **string**| A selling partner provided identifier for an Amazon listing. | |
 | **marketplace_ids** | [**string[]**](../Model/string.md)| A comma-delimited list of Amazon marketplace identifiers for the request. | |
-| **body** | [**\OpenAPI\Client\Model\listingsItems\ListingsItemPutRequest**](../Model/ListingsItemPutRequest.md)| The request body schema for the &#x60;putListingsItem&#x60; operation. | |
+| **body** | [**\OpenAPI\Client\Model\listings\items\ListingsItemPutRequest**](../Model/ListingsItemPutRequest.md)| The request body schema for the &#x60;putListingsItem&#x60; operation. | |
 | **included_data** | [**string[]**](../Model/string.md)| A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. | [optional] |
 | **mode** | **string**| The mode of operation for the request. | [optional] |
 | **issue_locale** | **string**| A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\listingsItems\ListingsItemSubmissionResponse**](../Model/ListingsItemSubmissionResponse.md)
+[**\OpenAPI\Client\Model\listings\items\ListingsItemSubmissionResponse**](../Model/ListingsItemSubmissionResponse.md)
 
 ### Authorization
 
