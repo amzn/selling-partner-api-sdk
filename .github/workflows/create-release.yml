@@ -52,6 +52,10 @@ jobs:
         working-directory: ./php
         run: composer install --prefer-dist --no-progress
 
+      - name: Test with PHPUnit
+        working-directory: ./php/sdk/tests
+        run: vendor/bin/phpunit
+
   build-java:
     if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
     runs-on: ubuntu-latest
