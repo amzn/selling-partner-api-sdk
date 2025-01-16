@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **scac_code** | **string** | SCAC code required for NA VOC vendors only. | [optional]
 **carrier** | **string** | Carrier required for EU VOC vendors only. | [optional]
 **container_sequence_number** | **int** | An integer that must be submitted for multi-box shipments only, where one item may come in separate packages. | [optional]
-**dimensions** | [**\OpenAPI\Client\Model\vendorDfShipping\Dimensions**](Dimensions.md) |  | [optional]
-**weight** | [**\OpenAPI\Client\Model\vendorDfShipping\Weight**](Weight.md) |  |
-**packed_items** | [**\OpenAPI\Client\Model\vendorDfShipping\PackedItem[]**](PackedItem.md) | A list of packed items. |
+**dimensions** | [**\OpenAPI\Client\Model\vendor\df\shipping\Dimensions**](Dimensions.md) |  | [optional]
+**weight** | [**\OpenAPI\Client\Model\vendor\df\shipping\Weight**](Weight.md) |  |
+**packed_items** | [**\OpenAPI\Client\Model\vendor\df\shipping\PackedItem[]**](PackedItem.md) | A list of packed items. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

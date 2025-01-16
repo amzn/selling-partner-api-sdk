@@ -11,7 +11,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getCompetitiveSummary()`
 
 ```php
-getCompetitiveSummary($requests): \OpenAPI\Client\Model\pricing\CompetitiveSummaryBatchResponse
+getCompetitiveSummary($requests): \OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryBatchResponse
 ```
 
 
@@ -31,7 +31,7 @@ $apiInstance = new OpenAPI\Client\Api\ProductPricingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$requests = new \OpenAPI\Client\Model\pricing\CompetitiveSummaryBatchRequest(); // \OpenAPI\Client\Model\pricing\CompetitiveSummaryBatchRequest | The batch of `getCompetitiveSummary` requests.
+$requests = new \OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryBatchRequest(); // \OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryBatchRequest | The batch of `getCompetitiveSummary` requests.
 
 try {
     $result = $apiInstance->getCompetitiveSummary($requests);
@@ -45,11 +45,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **requests** | [**\OpenAPI\Client\Model\pricing\CompetitiveSummaryBatchRequest**](../Model/CompetitiveSummaryBatchRequest.md)| The batch of &#x60;getCompetitiveSummary&#x60; requests. | |
+| **requests** | [**\OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryBatchRequest**](../Model/CompetitiveSummaryBatchRequest.md)| The batch of &#x60;getCompetitiveSummary&#x60; requests. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\pricing\CompetitiveSummaryBatchResponse**](../Model/CompetitiveSummaryBatchResponse.md)
+[**\OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryBatchResponse**](../Model/CompetitiveSummaryBatchResponse.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ No authorization required
 ## `getFeaturedOfferExpectedPriceBatch()`
 
 ```php
-getFeaturedOfferExpectedPriceBatch($get_featured_offer_expected_price_batch_request_body): \OpenAPI\Client\Model\pricing\GetFeaturedOfferExpectedPriceBatchResponse
+getFeaturedOfferExpectedPriceBatch($get_featured_offer_expected_price_batch_request_body): \OpenAPI\Client\Model\pricing\v2022-05-01\GetFeaturedOfferExpectedPriceBatchResponse
 ```
 
 
@@ -87,7 +87,7 @@ $apiInstance = new OpenAPI\Client\Api\ProductPricingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$get_featured_offer_expected_price_batch_request_body = new \OpenAPI\Client\Model\pricing\GetFeaturedOfferExpectedPriceBatchRequest(); // \OpenAPI\Client\Model\pricing\GetFeaturedOfferExpectedPriceBatchRequest | The batch of `getFeaturedOfferExpectedPrice` requests.
+$get_featured_offer_expected_price_batch_request_body = new \OpenAPI\Client\Model\pricing\v2022-05-01\GetFeaturedOfferExpectedPriceBatchRequest(); // \OpenAPI\Client\Model\pricing\v2022-05-01\GetFeaturedOfferExpectedPriceBatchRequest | The batch of `getFeaturedOfferExpectedPrice` requests.
 
 try {
     $result = $apiInstance->getFeaturedOfferExpectedPriceBatch($get_featured_offer_expected_price_batch_request_body);
@@ -101,11 +101,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **get_featured_offer_expected_price_batch_request_body** | [**\OpenAPI\Client\Model\pricing\GetFeaturedOfferExpectedPriceBatchRequest**](../Model/GetFeaturedOfferExpectedPriceBatchRequest.md)| The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. | |
+| **get_featured_offer_expected_price_batch_request_body** | [**\OpenAPI\Client\Model\pricing\v2022-05-01\GetFeaturedOfferExpectedPriceBatchRequest**](../Model/GetFeaturedOfferExpectedPriceBatchRequest.md)| The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\pricing\GetFeaturedOfferExpectedPriceBatchResponse**](../Model/GetFeaturedOfferExpectedPriceBatchResponse.md)
+[**\OpenAPI\Client\Model\pricing\v2022-05-01\GetFeaturedOfferExpectedPriceBatchResponse**](../Model/GetFeaturedOfferExpectedPriceBatchResponse.md)
 
 ### Authorization
 

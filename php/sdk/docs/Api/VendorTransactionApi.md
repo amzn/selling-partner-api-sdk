@@ -10,7 +10,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getTransaction()`
 
 ```php
-getTransaction($transaction_id): \OpenAPI\Client\Model\vendorTransactionStatus\GetTransactionResponse
+getTransaction($transaction_id): \OpenAPI\Client\Model\vendor\transactionStatus\GetTransactionResponse
 ```
 
 
@@ -48,7 +48,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorTransactionStatus\GetTransactionResponse**](../Model/GetTransactionResponse.md)
+[**\OpenAPI\Client\Model\vendor\transactionStatus\GetTransactionResponse**](../Model/GetTransactionResponse.md)
 
 ### Authorization
 

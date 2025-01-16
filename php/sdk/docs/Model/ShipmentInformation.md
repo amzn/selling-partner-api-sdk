@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vendor_details** | [**\OpenAPI\Client\Model\vendorShipments\VendorDetails**](VendorDetails.md) |  | [optional]
+**vendor_details** | [**\OpenAPI\Client\Model\vendor\shipments\VendorDetails**](VendorDetails.md) |  | [optional]
 **buyer_reference_number** | **string** | Buyer Reference number which is a unique number. | [optional]
-**ship_to_party** | [**\OpenAPI\Client\Model\vendorShipments\PartyIdentification**](PartyIdentification.md) |  | [optional]
-**ship_from_party** | [**\OpenAPI\Client\Model\vendorShipments\PartyIdentification**](PartyIdentification.md) |  | [optional]
+**ship_to_party** | [**\OpenAPI\Client\Model\vendor\shipments\PartyIdentification**](PartyIdentification.md) |  | [optional]
+**ship_from_party** | [**\OpenAPI\Client\Model\vendor\shipments\PartyIdentification**](PartyIdentification.md) |  | [optional]
 **warehouse_id** | **string** | Vendor Warehouse ID from where the shipment is scheduled to be picked up by buyer / Carrier. | [optional]
 **master_tracking_id** | **string** | Unique Id with  which  the shipment can be tracked for Small Parcels. | [optional]
 **total_label_count** | **int** | Number of Labels that are created as part of this shipment. | [optional]

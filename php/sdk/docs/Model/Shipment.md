@@ -10,19 +10,19 @@ Name | Type | Description | Notes
 **transaction_date** | **\DateTime** | Date on which the transportation request was submitted. |
 **current_shipment_status** | **string** | Indicates the current shipment status. | [optional]
 **currentshipment_status_date** | **\DateTime** | Date and time when the last status was updated. | [optional]
-**shipment_status_details** | [**\OpenAPI\Client\Model\vendorShipments\ShipmentStatusDetails[]**](ShipmentStatusDetails.md) | Indicates the list of current shipment status details and when the last update was received from carrier this is available on shipment Details response. | [optional]
+**shipment_status_details** | [**\OpenAPI\Client\Model\vendor\shipments\ShipmentStatusDetails[]**](ShipmentStatusDetails.md) | Indicates the list of current shipment status details and when the last update was received from carrier this is available on shipment Details response. | [optional]
 **shipment_create_date** | **\DateTime** | The date and time of the shipment request created by vendor. | [optional]
 **shipment_confirm_date** | **\DateTime** | The date and time of the departure of the shipment from the vendor&#39;s location. Vendors are requested to send ASNs within 30 minutes of departure from their warehouse/distribution center or at least 6 hours prior to the appointment time at the Buyer destination warehouse, whichever is sooner. Shipped date mentioned in the shipment confirmation should not be in the future. | [optional]
 **package_label_create_date** | **\DateTime** | The date and time of the package label created for the shipment by buyer. | [optional]
 **shipment_freight_term** | **string** | Indicates if this transportation request is WePay/Collect or TheyPay/Prepaid. This is a mandatory information. | [optional]
-**selling_party** | [**\OpenAPI\Client\Model\vendorShipments\PartyIdentification**](PartyIdentification.md) |  |
-**ship_from_party** | [**\OpenAPI\Client\Model\vendorShipments\PartyIdentification**](PartyIdentification.md) |  |
-**ship_to_party** | [**\OpenAPI\Client\Model\vendorShipments\PartyIdentification**](PartyIdentification.md) |  |
-**shipment_measurements** | [**\OpenAPI\Client\Model\vendorShipments\TransportShipmentMeasurements**](TransportShipmentMeasurements.md) |  | [optional]
-**collect_freight_pickup_details** | [**\OpenAPI\Client\Model\vendorShipments\CollectFreightPickupDetails**](CollectFreightPickupDetails.md) |  | [optional]
-**purchase_orders** | [**\OpenAPI\Client\Model\vendorShipments\PurchaseOrders[]**](PurchaseOrders.md) | Indicates the purchase orders involved for the transportation request. This group is an array create 1 for each PO and list their corresponding items. This information is used for deciding the route,truck allocation and storage efficiently. This is a mandatory information for Buyer performing transportation from vendor warehouse (WePay/Collect) | [optional]
-**import_details** | [**\OpenAPI\Client\Model\vendorShipments\ImportDetails**](ImportDetails.md) |  | [optional]
-**containers** | [**\OpenAPI\Client\Model\vendorShipments\Containers[]**](Containers.md) | A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level. | [optional]
-**transportation_details** | [**\OpenAPI\Client\Model\vendorShipments\TransportationDetails**](TransportationDetails.md) |  | [optional]
+**selling_party** | [**\OpenAPI\Client\Model\vendor\shipments\PartyIdentification**](PartyIdentification.md) |  |
+**ship_from_party** | [**\OpenAPI\Client\Model\vendor\shipments\PartyIdentification**](PartyIdentification.md) |  |
+**ship_to_party** | [**\OpenAPI\Client\Model\vendor\shipments\PartyIdentification**](PartyIdentification.md) |  |
+**shipment_measurements** | [**\OpenAPI\Client\Model\vendor\shipments\TransportShipmentMeasurements**](TransportShipmentMeasurements.md) |  | [optional]
+**collect_freight_pickup_details** | [**\OpenAPI\Client\Model\vendor\shipments\CollectFreightPickupDetails**](CollectFreightPickupDetails.md) |  | [optional]
+**purchase_orders** | [**\OpenAPI\Client\Model\vendor\shipments\PurchaseOrders[]**](PurchaseOrders.md) | Indicates the purchase orders involved for the transportation request. This group is an array create 1 for each PO and list their corresponding items. This information is used for deciding the route,truck allocation and storage efficiently. This is a mandatory information for Buyer performing transportation from vendor warehouse (WePay/Collect) | [optional]
+**import_details** | [**\OpenAPI\Client\Model\vendor\shipments\ImportDetails**](ImportDetails.md) |  | [optional]
+**containers** | [**\OpenAPI\Client\Model\vendor\shipments\Containers[]**](Containers.md) | A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level. | [optional]
+**transportation_details** | [**\OpenAPI\Client\Model\vendor\shipments\TransportationDetails**](TransportationDetails.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

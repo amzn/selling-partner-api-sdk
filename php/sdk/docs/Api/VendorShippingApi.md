@@ -13,7 +13,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `getPackingSlip()`
 
 ```php
-getPackingSlip($purchase_order_number): \OpenAPI\Client\Model\vendorDfShipping\PackingSlip
+getPackingSlip($purchase_order_number): \OpenAPI\Client\Model\vendor\df\shipping\PackingSlip
 ```
 
 
@@ -51,7 +51,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfShipping\PackingSlip**](../Model/PackingSlip.md)
+[**\OpenAPI\Client\Model\vendor\df\shipping\PackingSlip**](../Model/PackingSlip.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ No authorization required
 ## `getPackingSlips()`
 
 ```php
-getPackingSlips($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token): \OpenAPI\Client\Model\vendorDfShipping\PackingSlipList
+getPackingSlips($created_after, $created_before, $ship_from_party_id, $limit, $sort_order, $next_token): \OpenAPI\Client\Model\vendor\df\shipping\PackingSlipList
 ```
 
 
@@ -117,7 +117,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfShipping\PackingSlipList**](../Model/PackingSlipList.md)
+[**\OpenAPI\Client\Model\vendor\df\shipping\PackingSlipList**](../Model/PackingSlipList.md)
 
 ### Authorization
 
@@ -135,7 +135,7 @@ No authorization required
 ## `submitShipmentConfirmations()`
 
 ```php
-submitShipmentConfirmations($body): \OpenAPI\Client\Model\vendorDfShipping\TransactionReference
+submitShipmentConfirmations($body): \OpenAPI\Client\Model\vendor\df\shipping\TransactionReference
 ```
 
 
@@ -155,7 +155,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorShippingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendorDfShipping\SubmitShipmentConfirmationsRequest(); // \OpenAPI\Client\Model\vendorDfShipping\SubmitShipmentConfirmationsRequest | Request body containing the shipment confirmations data.
+$body = new \OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentConfirmationsRequest(); // \OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentConfirmationsRequest | Request body containing the shipment confirmations data.
 
 try {
     $result = $apiInstance->submitShipmentConfirmations($body);
@@ -169,11 +169,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendorDfShipping\SubmitShipmentConfirmationsRequest**](../Model/SubmitShipmentConfirmationsRequest.md)| Request body containing the shipment confirmations data. | |
+| **body** | [**\OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentConfirmationsRequest**](../Model/SubmitShipmentConfirmationsRequest.md)| Request body containing the shipment confirmations data. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfShipping\TransactionReference**](../Model/TransactionReference.md)
+[**\OpenAPI\Client\Model\vendor\df\shipping\TransactionReference**](../Model/TransactionReference.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ No authorization required
 ## `submitShipmentStatusUpdates()`
 
 ```php
-submitShipmentStatusUpdates($body): \OpenAPI\Client\Model\vendorDfShipping\TransactionReference
+submitShipmentStatusUpdates($body): \OpenAPI\Client\Model\vendor\df\shipping\TransactionReference
 ```
 
 
@@ -211,7 +211,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorShippingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendorDfShipping\SubmitShipmentStatusUpdatesRequest(); // \OpenAPI\Client\Model\vendorDfShipping\SubmitShipmentStatusUpdatesRequest | Request body containing the shipment status update data.
+$body = new \OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentStatusUpdatesRequest(); // \OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentStatusUpdatesRequest | Request body containing the shipment status update data.
 
 try {
     $result = $apiInstance->submitShipmentStatusUpdates($body);
@@ -225,11 +225,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendorDfShipping\SubmitShipmentStatusUpdatesRequest**](../Model/SubmitShipmentStatusUpdatesRequest.md)| Request body containing the shipment status update data. | |
+| **body** | [**\OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentStatusUpdatesRequest**](../Model/SubmitShipmentStatusUpdatesRequest.md)| Request body containing the shipment status update data. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfShipping\TransactionReference**](../Model/TransactionReference.md)
+[**\OpenAPI\Client\Model\vendor\df\shipping\TransactionReference**](../Model/TransactionReference.md)
 
 ### Authorization
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **shipping_date** | **\DateTime** | Date timestamp | [optional]
 **estimated_arrival_date** | **\DateTime** | Date timestamp | [optional]
 **shipping_notes** | **string[]** | Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren&#39;t available. | [optional]
-**fulfillment_shipment_item** | [**\OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentShipmentItem[]**](FulfillmentShipmentItem.md) | An array of fulfillment shipment item information. |
-**fulfillment_shipment_package** | [**\OpenAPI\Client\Model\fulfillmentOutbound\FulfillmentShipmentPackage[]**](FulfillmentShipmentPackage.md) | An array of fulfillment shipment package information. | [optional]
+**fulfillment_shipment_item** | [**\OpenAPI\Client\Model\fulfillment\outbound\FulfillmentShipmentItem[]**](FulfillmentShipmentItem.md) | An array of fulfillment shipment item information. |
+**fulfillment_shipment_package** | [**\OpenAPI\Client\Model\fulfillment\outbound\FulfillmentShipmentPackage[]**](FulfillmentShipmentPackage.md) | An array of fulfillment shipment package information. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

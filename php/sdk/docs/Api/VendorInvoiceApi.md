@@ -10,7 +10,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `submitInvoice()`
 
 ```php
-submitInvoice($body): \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse
+submitInvoice($body): \OpenAPI\Client\Model\vendor\df\payments\SubmitInvoiceResponse
 ```
 
 
@@ -30,7 +30,7 @@ $apiInstance = new OpenAPI\Client\Api\VendorInvoiceApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest(); // \OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest | The request body containing one or more invoices for vendor orders.
+$body = new \OpenAPI\Client\Model\vendor\df\payments\SubmitInvoiceRequest(); // \OpenAPI\Client\Model\vendor\df\payments\SubmitInvoiceRequest | The request body containing one or more invoices for vendor orders.
 
 try {
     $result = $apiInstance->submitInvoice($body);
@@ -44,11 +44,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceRequest**](../Model/SubmitInvoiceRequest.md)| The request body containing one or more invoices for vendor orders. | |
+| **body** | [**\OpenAPI\Client\Model\vendor\df\payments\SubmitInvoiceRequest**](../Model/SubmitInvoiceRequest.md)| The request body containing one or more invoices for vendor orders. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\vendorDfPayments\SubmitInvoiceResponse**](../Model/SubmitInvoiceResponse.md)
+[**\OpenAPI\Client\Model\vendor\df\payments\SubmitInvoiceResponse**](../Model/SubmitInvoiceResponse.md)
 
 ### Authorization
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invalid_item_reason_code** | [**\OpenAPI\Client\Model\fulfillmentOutbound\InvalidItemReasonCode**](InvalidItemReasonCode.md) |  |
+**invalid_item_reason_code** | [**\OpenAPI\Client\Model\fulfillment\outbound\InvalidItemReasonCode**](InvalidItemReasonCode.md) |  |
 **description** | **string** | A human readable description of the invalid item reason code. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

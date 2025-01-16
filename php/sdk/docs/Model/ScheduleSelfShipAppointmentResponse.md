@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**self_ship_appointment_details** | [**\OpenAPI\Client\Model\fulfillmentInbound\SelfShipAppointmentDetails**](SelfShipAppointmentDetails.md) |  |
+**self_ship_appointment_details** | [**\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails**](SelfShipAppointmentDetails.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
