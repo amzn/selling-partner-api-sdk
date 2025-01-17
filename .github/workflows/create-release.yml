@@ -53,9 +53,8 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Test with PHPUnit
-        run: |
-          cd php
-          php/vendor/phpunit/phpunit/phpunit test/Api --testdox
+        working-directory: ./php
+        run: vendor/bin/phpunit test/Api --testdox
 
   build-java:
     if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
