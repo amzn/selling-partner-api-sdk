@@ -1,0 +1,75 @@
+<?php
+/**
+ * BuyerRequestedCancelTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\orders\BuyerRequestedCancel;
+
+/**
+ * BuyerRequestedCancelTest Class Doc Comment
+ *
+ * @category    Class
+ * @description Information about whether or not a buyer requested cancellation.
+ * @package     OpenAPI\Client
+ */
+class BuyerRequestedCancelTest extends TestCase
+{
+
+    private BuyerRequestedCancel $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new BuyerRequestedCancel();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "BuyerRequestedCancel"
+     */
+    public function testBuyerRequestedCancel()
+    {
+        $this->assertInstanceOf(BuyerRequestedCancel::class, $this->model);
+    }
+
+    /**
+     * Test attribute "is_buyer_requested_cancel"
+     */
+    public function testPropertyIsBuyerRequestedCancel()
+    {
+        $testValue = 'test';
+        
+        $this->model->setIsBuyerRequestedCancel($testValue);
+        $this->assertEquals($testValue, $this->model->getIsBuyerRequestedCancel());
+    }
+
+    /**
+     * Test attribute "buyer_cancel_reason"
+     */
+    public function testPropertyBuyerCancelReason()
+    {
+        $testValue = 'test';
+        
+        $this->model->setBuyerCancelReason($testValue);
+        $this->assertEquals($testValue, $this->model->getBuyerCancelReason());
+    }
+}
