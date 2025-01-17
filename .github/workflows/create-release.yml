@@ -54,7 +54,7 @@ jobs:
 
       - name: Test with PHPUnit
         working-directory: ./php
-        run: vendor/bin/phpunit test/Api --testdox
+        run: vendor/bin/phpunit php/sdk/test/Api --testdox
 
   build-java:
     if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
