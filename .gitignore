@@ -10,4 +10,3 @@ php/sdk/.DS_Store
 php/sdk/.env
 *.cache
 package.xml
-php/sdk/test/
