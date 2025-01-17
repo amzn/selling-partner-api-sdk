@@ -61,6 +61,7 @@ jobs:
           echo "SP_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
           echo "SP_API_ENDPOINT_HOST=https://sellingpartnerapi-na.amazon.com" >> .env
           echo "SP_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
+          cat .env 
 
       - name: Test with PHPUnit
         working-directory: ./php
