@@ -54,8 +54,8 @@ jobs:
 
       - name: Test with PHPUnit
         run: |
-          cd php/sdk
-          .vendor/bin/phpunit test/Api --testdox
+          cd php
+          php/vendor/bin/phpunit test/Api --testdox
 
   build-java:
     if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
