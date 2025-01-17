@@ -52,6 +52,16 @@ jobs:
         working-directory: ./php
         run: composer install --prefer-dist --no-progress
 
+      - name: Create .env file to test SP-API endpoints
+        working-directory: ./php/sdk
+        run: |
+          echo "SP_API_CLIENT_ID=${{ secrets.SP_API_CLIENT_ID }}" >> .env
+          echo "SP_API_CLIENT_SECRET=${{ secrets.SP_API_CLIENT_SECRET }}" >> .env
+          echo "SP_API_REFRESH_TOKEN=${{ secrets.SP_API_REFRESH_TOKEN }}" >> .env
+          echo "SP_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
+          echo "SP_API_ENDPOINT_HOST=https://sellingpartnerapi-na.amazon.com" >> .env
+          echo "SP_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
+
       - name: Test with PHPUnit
         working-directory: ./php
         run: vendor/bin/phpunit sdk/test/Api --testdox
