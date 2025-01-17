@@ -1,0 +1,88 @@
+<?php
+/**
+ * BreakdownTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\finances\v2024-06-19\Breakdown;
+
+/**
+ * BreakdownTest Class Doc Comment
+ *
+ * @category    Class
+ * @description Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.
+ * @package     OpenAPI\Client
+ */
+class BreakdownTest extends TestCase
+{
+
+    private Breakdown $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new Breakdown();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "Breakdown"
+     */
+    public function testBreakdown()
+    {
+        $this->assertInstanceOf(Breakdown::class, $this->model);
+    }
+
+    /**
+     * Test attribute "breakdown_type"
+     */
+    public function testPropertyBreakdownType()
+    {
+        $testValue = 'test';
+        
+        $this->model->setBreakdownType($testValue);
+        $this->assertEquals($testValue, $this->model->getBreakdownType());
+    }
+
+    /**
+     * Test attribute "breakdown_amount"
+     */
+    public function testPropertyBreakdownAmount()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\finances\v2024-06-19\Currency();
+        
+        $this->model->setBreakdownAmount($testValue);
+        $this->assertEquals($testValue, $this->model->getBreakdownAmount());
+    }
+
+    /**
+     * Test attribute "breakdowns"
+     */
+    public function testPropertyBreakdowns()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\finances\v2024-06-19\Breakdown();
+        
+        $this->model->setBreakdowns($testValue);
+        $this->assertEquals($testValue, $this->model->getBreakdowns());
+    }
+}

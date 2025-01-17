@@ -16,6 +16,7 @@ lib/Model/vendor/transactionStatus/GetTransactionResponse.php
 lib/Model/vendor/transactionStatus/Transaction.php
 lib/Model/vendor/transactionStatus/TransactionStatus.php
 lib/ObjectSerializer.php
+phpunit.xml.dist
 test/Api/BaseTestCase.php
 test/Model/GetTransactionResponseTest.php
 test/TestHelper.php

@@ -1,0 +1,98 @@
+<?php
+/**
+ * ItemDetailsTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\vendor\df\inventory\ItemDetails;
+
+/**
+ * ItemDetailsTest Class Doc Comment
+ *
+ * @category    Class
+ * @description Updated inventory details for an item.
+ * @package     OpenAPI\Client
+ */
+class ItemDetailsTest extends TestCase
+{
+
+    private ItemDetails $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new ItemDetails();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "ItemDetails"
+     */
+    public function testItemDetails()
+    {
+        $this->assertInstanceOf(ItemDetails::class, $this->model);
+    }
+
+    /**
+     * Test attribute "buyer_product_identifier"
+     */
+    public function testPropertyBuyerProductIdentifier()
+    {
+        $testValue = 'test';
+        
+        $this->model->setBuyerProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getBuyerProductIdentifier());
+    }
+
+    /**
+     * Test attribute "vendor_product_identifier"
+     */
+    public function testPropertyVendorProductIdentifier()
+    {
+        $testValue = 'test';
+        
+        $this->model->setVendorProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getVendorProductIdentifier());
+    }
+
+    /**
+     * Test attribute "available_quantity"
+     */
+    public function testPropertyAvailableQuantity()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\ItemQuantity();
+        
+        $this->model->setAvailableQuantity($testValue);
+        $this->assertEquals($testValue, $this->model->getAvailableQuantity());
+    }
+
+    /**
+     * Test attribute "is_obsolete"
+     */
+    public function testPropertyIsObsolete()
+    {
+        $testValue = true;
+        
+        $this->model->setIsObsolete($testValue);
+        $this->assertEquals($testValue, $this->model->getIsObsolete());
+    }
+}

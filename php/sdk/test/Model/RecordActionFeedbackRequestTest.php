@@ -1,0 +1,65 @@
+<?php
+/**
+ * RecordActionFeedbackRequestTest
+ *
+ * PHP version 7.4
+ *
+ * @category Class
+ * @package  OpenAPI\Client
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace OpenAPI\Client\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use OpenAPI\Client\Model\appIntegrations\RecordActionFeedbackRequest;
+
+/**
+ * RecordActionFeedbackRequestTest Class Doc Comment
+ *
+ * @category    Class
+ * @description The request for the &#x60;recordActionFeedback&#x60; operation.
+ * @package     OpenAPI\Client
+ */
+class RecordActionFeedbackRequestTest extends TestCase
+{
+
+    private RecordActionFeedbackRequest $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new RecordActionFeedbackRequest();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "RecordActionFeedbackRequest"
+     */
+    public function testRecordActionFeedbackRequest()
+    {
+        $this->assertInstanceOf(RecordActionFeedbackRequest::class, $this->model);
+    }
+
+    /**
+     * Test attribute "feedback_action_code"
+     */
+    public function testPropertyFeedbackActionCode()
+    {
+        $enumInstance = new RecordActionFeedbackRequest();
+        $allowedValues = $enumInstance->getFeedbackActionCodeAllowableValues();
+        $testValue = reset($allowedValues);
+        $this->model->setFeedbackActionCode($testValue);
+        $this->assertEquals($testValue, $this->model->getFeedbackActionCode());
+    }
+}
