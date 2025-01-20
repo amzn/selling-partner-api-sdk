@@ -7,6 +7,6 @@ php/composer.lock
 php/vendor/
 php/sdk/.DS_Store
 .DS_Store
-php/sdk/.env
 *.cache
 package.xml
+php/.env

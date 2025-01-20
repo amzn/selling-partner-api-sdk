@@ -26,7 +26,7 @@ use OpenAPI\Client\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable('../../../sdk');
+$dotenv = Dotenv::createImmutable(dirname(__DIR__,3));
 $dotenv->load();
 
 /**
