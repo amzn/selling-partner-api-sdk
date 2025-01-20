@@ -59,8 +59,14 @@ jobs:
           echo "SP_API_CLIENT_SECRET=${{ secrets.SP_API_CLIENT_SECRET }}" >> .env
           echo "SP_API_REFRESH_TOKEN=${{ secrets.SP_API_REFRESH_TOKEN }}" >> .env
           echo "SP_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
-          echo "SP_API_ENDPOINT_HOST=https://sellingpartnerapi-na.amazon.com" >> .env
-          echo "SP_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
+          echo "SP_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
+          echo "SP_API_MARKETPLACE=A1VC38T7YXB528" >> .env
+          echo "VENDOR_API_CLIENT_ID=${{ secrets.VENDOR_API_CLIENT_ID }}" >> .env
+          echo "VENDOR_API_CLIENT_SECRET=${{ secrets.VENDOR_API_CLIENT_SECRET }}" >> .env
+          echo "VENDOR_API_REFRESH_TOKEN=${{ secrets.VENDOR_API_REFRESH_TOKEN }}" >> .env
+          echo "VENDOR_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
+          echo "VENDOR_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
+          echo "VENDOR_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
           cat .env 
 
       - name: Test with PHPUnit
