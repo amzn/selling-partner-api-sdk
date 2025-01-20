@@ -53,7 +53,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Create .env file to test SP-API endpoints
-        working-directory: ./php/sdk
+        working-directory: ./php
         run: |
           echo "SP_API_CLIENT_ID=${{ secrets.SP_API_CLIENT_ID }}" >> .env
           echo "SP_API_CLIENT_SECRET=${{ secrets.SP_API_CLIENT_SECRET }}" >> .env
@@ -64,10 +64,9 @@ jobs:
           cat .env 
 
       - name: Test with PHPUnit
-        working-directory: ./php/sdk
-        run: ../vendor/bin/phpunit test/Api --testdox
+        working-directory: ./php
+        run: vendor/bin/phpunit sdk/test/Api --testdox
 
-        
   build-java:
     if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
     runs-on: ubuntu-latest
