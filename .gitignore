@@ -10,3 +10,4 @@ php/sdk/.DS_Store
 *.cache
 package.xml
 php/.env
+php/config/templates/README.mustache
