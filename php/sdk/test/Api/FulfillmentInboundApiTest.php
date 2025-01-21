@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\fulfillment\inbound\v2024-03-20\FulfillmentInboundApi;
+use OpenAPI\Client\Api\fulfillment\inbound\v2024_03_20\FulfillmentInboundApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

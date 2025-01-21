@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\Offer;
+use OpenAPI\Client\Model\pricing\v2022_05_01\Offer;
 
 /**
  * OfferTest Class Doc Comment
@@ -67,7 +67,7 @@ class OfferTest extends TestCase
      */
     public function testPropertyCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022-05-01\Condition();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -92,7 +92,7 @@ class OfferTest extends TestCase
      */
     public function testPropertyFulfillmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022-05-01\FulfillmentType();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\FulfillmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -106,7 +106,7 @@ class OfferTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -129,7 +129,7 @@ class OfferTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\Points();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());
@@ -141,7 +141,7 @@ class OfferTest extends TestCase
     public function testPropertyPrimeDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\PrimeDetails();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\PrimeDetails();
         
         $this->model->setPrimeDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPrimeDetails());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\ReferencePrice;
+use OpenAPI\Client\Model\pricing\v2022_05_01\ReferencePrice;
 
 /**
  * ReferencePriceTest Class Doc Comment
@@ -68,7 +68,7 @@ class ReferencePriceTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());
