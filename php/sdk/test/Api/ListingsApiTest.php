@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\ListingsApi;
+use OpenAPI\Client\Api\listings\restrictions\ListingsApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

@@ -442,7 +442,9 @@ class TestHelper
      */
     private array $dateTimeFormatSpecificCase = [
         'FeesApi' => 'D M d H:i:s T Y',
-        'ListingsItemsApi' => 'Y-m-d\TH:i:s\Z'
+        'ListingsItemsApi' => 'Y-m-d\TH:i:s\Z',
+        'OffersApi' => 'Y-m-d\TH:i:s\Z',
+        'SellingpartnersApi' => 'Y-m-d\TH:i:s\Z'
     ];
 
 
@@ -628,11 +630,8 @@ class TestHelper
         // It will require dedicated customization to make 3 digit millisecond and doesn't match with auto Generation
         'testCreateWarranty201',
         // Replenishment Api sellingPartners
-        'testGetSellingPartnerMetrics200', // Request timestamp millisecond is 2 digits and requires string mutation
         'testGetSellingPartnerMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
         // Replenishment Api offers
-        'testListOfferMetrics200', // Request timestamp millisecond is 2 digits and requires string mutation
-        'testListOfferMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
         'testListOffers400', // Request eligibilities is not member of Enum
         // Sellers
         'testGetAccount200', // Need some application which can be succeeded. Access is denied with my account.
