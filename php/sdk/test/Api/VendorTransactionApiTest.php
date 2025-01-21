@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\VendorTransactionApi;
+use OpenAPI\Client\Api\vendor\df\transactions\VendorTransactionApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

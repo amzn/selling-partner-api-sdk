@@ -69,11 +69,11 @@ class Configuration
     protected string $host = 'https://sellingpartnerapi-na.amazon.com';
 
     /**
-     * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
+     * User agent of the HTTP request, set to "selling-partner-api-sdk/{version}/PHP" by default
      *
      * @var string
      */
-    protected string $userAgent = 'selling-partner-api-sdk/PHP/1.0.0';
+    protected string $userAgent = 'selling-partner-api-sdk/1.0.0/PHP';
 
     /**
      * Debug switch (default set to false)

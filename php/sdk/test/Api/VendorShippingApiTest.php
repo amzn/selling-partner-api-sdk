@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\VendorShippingApi;
+use OpenAPI\Client\Api\vendor\df\shipping\VendorShippingApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**
