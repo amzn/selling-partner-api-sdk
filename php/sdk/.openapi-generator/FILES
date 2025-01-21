@@ -1,6 +1,5 @@
 .gitignore
 .php-cs-fixer.dist.php
-README.md
 docs/Api/VendorTransactionApi.md
 docs/Model/Error.md
 docs/Model/GetTransactionResponse.md
