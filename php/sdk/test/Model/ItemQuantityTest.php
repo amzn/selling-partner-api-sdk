@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\ItemQuantity;
+use OpenAPI\Client\Model\vendor\df\orders\ItemQuantity;
 
 /**
  * ItemQuantityTest Class Doc Comment
  *
  * @category    Class
- * @description Details of item quantity.
+ * @description Details of quantity ordered.
  * @package     OpenAPI\Client
  */
 class ItemQuantityTest extends TestCase
@@ -67,8 +67,9 @@ class ItemQuantityTest extends TestCase
      */
     public function testPropertyUnitOfMeasure()
     {
-        $testValue = 'test';
-        
+        $enumInstance = new ItemQuantity();
+        $allowedValues = $enumInstance->getUnitOfMeasureAllowableValues();
+        $testValue = reset($allowedValues);
         $this->model->setUnitOfMeasure($testValue);
         $this->assertEquals($testValue, $this->model->getUnitOfMeasure());
     }
