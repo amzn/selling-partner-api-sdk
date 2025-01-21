@@ -3,3 +3,4 @@
 .travis.yml
 git_push.sh
 composer.json
+README.md
