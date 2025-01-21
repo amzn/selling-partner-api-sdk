@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\OfferIdentifier;
+use OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier;
 
 /**
  * OfferIdentifierTest Class Doc Comment
@@ -100,7 +100,7 @@ class OfferIdentifierTest extends TestCase
      */
     public function testPropertyFulfillmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022-05-01\FulfillmentType();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\FulfillmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

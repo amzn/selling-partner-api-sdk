@@ -10,7 +10,7 @@ All URIs are relative to https://sellingpartnerapi-na.amazon.com, except if the 
 ## `listTransactions()`
 
 ```php
-listTransactions($posted_after, $posted_before, $marketplace_id, $next_token): \OpenAPI\Client\Model\finances\v2024-06-19\ListTransactionsResponse
+listTransactions($posted_after, $posted_before, $marketplace_id, $next_token): \OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse
 ```
 
 
@@ -54,7 +54,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\finances\v2024-06-19\ListTransactionsResponse**](../Model/ListTransactionsResponse.md)
+[**\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse**](../Model/ListTransactionsResponse.md)
 
 ### Authorization
 

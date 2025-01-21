@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferExpectedPrice;
+use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice;
 
 /**
  * FeaturedOfferExpectedPriceTest Class Doc Comment
@@ -57,7 +57,7 @@ class FeaturedOfferExpectedPriceTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -69,7 +69,7 @@ class FeaturedOfferExpectedPriceTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\Points();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

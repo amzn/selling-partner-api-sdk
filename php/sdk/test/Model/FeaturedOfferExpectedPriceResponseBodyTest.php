@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferExpectedPriceResponseBody;
+use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody;
 
 /**
  * FeaturedOfferExpectedPriceResponseBodyTest Class Doc Comment
@@ -57,7 +57,7 @@ class FeaturedOfferExpectedPriceResponseBodyTest extends TestCase
     public function testPropertyOfferIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\OfferIdentifier();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier();
         
         $this->model->setOfferIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getOfferIdentifier());

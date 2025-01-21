@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024-06-19\Breakdown;
+use OpenAPI\Client\Model\finances\v2024_06_19\Breakdown;
 
 /**
  * BreakdownTest Class Doc Comment
@@ -68,7 +68,7 @@ class BreakdownTest extends TestCase
     public function testPropertyBreakdownAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024-06-19\Currency();
+        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\Currency();
         
         $this->model->setBreakdownAmount($testValue);
         $this->assertEquals($testValue, $this->model->getBreakdownAmount());
@@ -80,7 +80,7 @@ class BreakdownTest extends TestCase
     public function testPropertyBreakdowns()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024-06-19\Breakdown();
+        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\Breakdown();
         
         $this->model->setBreakdowns($testValue);
         $this->assertEquals($testValue, $this->model->getBreakdowns());

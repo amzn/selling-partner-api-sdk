@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024-06-19\MarketplaceDetails;
+use OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails;
 
 /**
  * MarketplaceDetailsTest Class Doc Comment

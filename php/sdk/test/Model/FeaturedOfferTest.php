@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOffer;
+use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer;
 
 /**
  * FeaturedOfferTest Class Doc Comment
@@ -57,7 +57,7 @@ class FeaturedOfferTest extends TestCase
     public function testPropertyOfferIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\OfferIdentifier();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier();
         
         $this->model->setOfferIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getOfferIdentifier());
@@ -68,7 +68,7 @@ class FeaturedOfferTest extends TestCase
      */
     public function testPropertyCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022-05-01\Condition();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -82,7 +82,7 @@ class FeaturedOfferTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\Price();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Price();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());

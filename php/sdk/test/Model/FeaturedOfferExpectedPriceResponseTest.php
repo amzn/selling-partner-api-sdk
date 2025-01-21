@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferExpectedPriceResponse;
+use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponse;
 
 /**
  * FeaturedOfferExpectedPriceResponseTest Class Doc Comment
@@ -69,7 +69,7 @@ class FeaturedOfferExpectedPriceResponseTest extends TestCase
     public function testPropertyStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\HttpStatusLine();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine();
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());
@@ -81,7 +81,7 @@ class FeaturedOfferExpectedPriceResponseTest extends TestCase
     public function testPropertyRequest()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferExpectedPriceRequestParams();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams();
         
         $this->model->setRequest($testValue);
         $this->assertEquals($testValue, $this->model->getRequest());
@@ -93,7 +93,7 @@ class FeaturedOfferExpectedPriceResponseTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferExpectedPriceResponseBody();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

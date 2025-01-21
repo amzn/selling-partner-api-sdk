@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\LowestPricedOffersInput;
+use OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput;
 
 /**
  * LowestPricedOffersInputTest Class Doc Comment
@@ -56,7 +56,7 @@ class LowestPricedOffersInputTest extends TestCase
      */
     public function testPropertyItemCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022-05-01\Condition();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

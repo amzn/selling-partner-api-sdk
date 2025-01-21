@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\LowestPricedOffer;
+use OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffer;
 
 /**
  * LowestPricedOfferTest Class Doc Comment
@@ -57,7 +57,7 @@ class LowestPricedOfferTest extends TestCase
     public function testPropertyLowestPricedOffersInput()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\LowestPricedOffersInput();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput();
         
         $this->model->setLowestPricedOffersInput($testValue);
         $this->assertEquals($testValue, $this->model->getLowestPricedOffersInput());

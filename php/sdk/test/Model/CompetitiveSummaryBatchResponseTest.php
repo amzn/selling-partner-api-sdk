@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryBatchResponse;
+use OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse;
 
 /**
  * CompetitiveSummaryBatchResponseTest Class Doc Comment

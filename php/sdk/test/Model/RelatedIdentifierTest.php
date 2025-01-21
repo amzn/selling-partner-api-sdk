@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024-06-19\RelatedIdentifier;
+use OpenAPI\Client\Model\finances\v2024_06_19\RelatedIdentifier;
 
 /**
  * RelatedIdentifierTest Class Doc Comment

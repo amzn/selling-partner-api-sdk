@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferExpectedPriceRequest;
+use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequest;
 
 /**
  * FeaturedOfferExpectedPriceRequestTest Class Doc Comment
@@ -67,7 +67,7 @@ class FeaturedOfferExpectedPriceRequestTest extends TestCase
      */
     public function testPropertyMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022-05-01\HttpMethod();
+        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\HttpMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

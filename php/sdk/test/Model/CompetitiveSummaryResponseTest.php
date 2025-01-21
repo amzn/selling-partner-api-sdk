@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryResponse;
+use OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponse;
 
 /**
  * CompetitiveSummaryResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CompetitiveSummaryResponseTest extends TestCase
     public function testPropertyStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\HttpStatusLine();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine();
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());
@@ -69,7 +69,7 @@ class CompetitiveSummaryResponseTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\CompetitiveSummaryResponseBody();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

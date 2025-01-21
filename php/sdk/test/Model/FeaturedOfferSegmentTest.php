@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022-05-01\FeaturedOfferSegment;
+use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferSegment;
 
 /**
  * FeaturedOfferSegmentTest Class Doc Comment
@@ -69,7 +69,7 @@ class FeaturedOfferSegmentTest extends TestCase
     public function testPropertySegmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022-05-01\SegmentDetails();
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails();
         
         $this->model->setSegmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getSegmentDetails());
