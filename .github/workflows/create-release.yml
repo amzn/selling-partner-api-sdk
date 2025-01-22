@@ -68,16 +68,13 @@ jobs:
 
       - name: Cleanup test files
         if: success()
-        working-directory: ./php/sdk
+        working-directory: ./php
         run: |
-          if [ -d "test" ]; then
+            cd sdk
             rm -rf test
             echo "Test directory removed"
-          fi
-          if [ -f "phpunit.xml.dist" ]; then
             rm -rf phpunit.xml.dist
             echo "PHPUnit config file removed"
-          fi
 
   build-java:
     runs-on: ubuntu-latest
