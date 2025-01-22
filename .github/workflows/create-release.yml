@@ -11,27 +11,17 @@ on:
         type: string
         description: Current version number
         required: true
-      sdkType:
-        type: choice
-        description: 'SDK Type to release'
-        required: true
-        options:
-          - php
-          - java
-          - both
 
 jobs:
   build-php:
-    if: github.event.inputs.sdkType == 'php' || github.event.inputs.sdkType == 'both'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.3'
           extensions: json, curl, simplexml, spl, pcre
           coverage: xdebug
 
@@ -68,20 +58,21 @@ jobs:
           echo "VENDOR_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
           echo "VENDOR_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
 
-      - name: Test with PHPUnit
+      - name: Test with PHPUnit and cleanup
         working-directory: ./php
-        run: vendor/bin/phpunit sdk/test/Api --testdox
-
-      - name: Clean up test files
-        working-directory: ./php/sdk
         run: |
-          rm -rf test
-          rm -rf phpunit.xml.dist
+          if vendor/bin/phpunit sdk/test/Api --testdox; then
+            cd sdk
+            rm -rf test
+            rm -rf phpunit.xml.dist
+            echo "Tests passed - cleanup completed"
+          else
+            echo "Tests failed - keeping test files for investigation"
+            exit 1
+          fi
 
   build-java:
-    if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -102,38 +93,54 @@ jobs:
     needs: [build-php, build-java]
     if: |
       always() &&
-      (needs.build-php.result == 'success' || needs.build-php.result == 'skipped') &&
-      (needs.build-java.result == 'success' || needs.build-java.result == 'skipped')
+      needs.build-php.result == 'success' &&
+      needs.build-java.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create tag
+      - name: Create or update tag
         uses: actions/github-script@v5
         with:
           script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: "refs/tags/${{ github.event.inputs.currentVersionNumber }}",
-              sha: context.sha
-            })
+            try {
+              // Try to delete existing tag if it exists
+              try {
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: "tags/${{ github.event.inputs.currentVersionNumber }}"
+                });
+                console.log('Deleted existing tag');
+              } catch (error) {
+                // Ignore error if tag doesn't exist
+                console.log('No existing tag to delete');
+              }
+              
+              // Create new tag
+              await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: "refs/tags/${{ github.event.inputs.currentVersionNumber }}",
+                sha: context.sha
+              });
+            } catch (error) {
+              core.setFailed(`Failed to create tag: ${error.message}`);
+            }
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ${{ github.event.inputs.sdkType != 'php' && 'java/sdk/build/libs/selling-partner-api-java-sdk-0.1.0.jar' || '' }}
+            java/sdk/build/libs/selling-partner-api-java-sdk-0.1.0.jar
           tag_name: ${{ github.event.inputs.currentVersionNumber }}
 
       - name: Update PHP version
-        if: github.event.inputs.sdkType == 'php' || github.event.inputs.sdkType == 'both'
         working-directory: ./php
         run: |
           sed -i 's/"version": "${{ github.event.inputs.currentVersionNumber }}"/"version": "${{ github.event.inputs.newVersionNumber }}"/' composer.json
 
       - name: Update Java version
-        if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
         working-directory: java/config
         run: |
           sed -i '/"artifactVersion": "${{ github.event.inputs.currentVersionNumber }}"/s/"${{ github.event.inputs.currentVersionNumber }}"/"${{ github.event.inputs.newVersionNumber }}"/' config.json
@@ -141,7 +148,7 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: Update ${{ github.event.inputs.sdkType == 'both' && 'PHP and Java SDKs' || format('{0} SDK', github.event.inputs.sdkType) }}
+          commit-message: Update PHP and Java SDKs
           title: 'Bump version'
           body: |
             Bump version after current version has been released.
