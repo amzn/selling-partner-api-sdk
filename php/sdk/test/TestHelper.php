@@ -683,6 +683,8 @@ class TestHelper
         'testGenerateSelfShipAppointmentSlots201',
         'testConfirmShipment204',
         'testCreateReport202',
-        'testCreateReportSchedule201'
+        'testCreateReportSchedule201',
+        'testListOffers400',
+        'testGetPackingSlip200'
     ];
 }
