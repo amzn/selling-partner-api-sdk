@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\orders\SubmitAcknowledgementRequest;
+use OpenAPI\Client\Model\vendor\orders\SubmitAcknowledgementRequest;
 
 /**
  * SubmitAcknowledgementRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request schema for the submitAcknowledgement operation.
+ * @description The request schema for the submitAcknowledgment operation.
  * @package     OpenAPI\Client
  */
 class SubmitAcknowledgementRequestTest extends TestCase
@@ -52,13 +52,13 @@ class SubmitAcknowledgementRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "order_acknowledgements"
+     * Test attribute "acknowledgements"
      */
-    public function testPropertyOrderAcknowledgements()
+    public function testPropertyAcknowledgements()
     {
         $testValue = [];
         
-        $this->model->setOrderAcknowledgements($testValue);
-        $this->assertEquals($testValue, $this->model->getOrderAcknowledgements());
+        $this->model->setAcknowledgements($testValue);
+        $this->assertEquals($testValue, $this->model->getAcknowledgements());
     }
 }

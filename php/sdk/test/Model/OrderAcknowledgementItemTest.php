@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\orders\OrderAcknowledgementItem;
+use OpenAPI\Client\Model\vendor\orders\OrderAcknowledgementItem;
 
 /**
  * OrderAcknowledgementItemTest Class Doc Comment
  *
  * @category    Class
- * @description Details of an individual order being acknowledged.
+ * @description Details of the item being acknowledged.
  * @package     OpenAPI\Client
  */
 class OrderAcknowledgementItemTest extends TestCase
@@ -52,73 +52,83 @@ class OrderAcknowledgementItemTest extends TestCase
     }
 
     /**
-     * Test attribute "purchase_order_number"
+     * Test attribute "item_sequence_number"
      */
-    public function testPropertyPurchaseOrderNumber()
+    public function testPropertyItemSequenceNumber()
     {
         $testValue = 'test';
         
-        $this->model->setPurchaseOrderNumber($testValue);
-        $this->assertEquals($testValue, $this->model->getPurchaseOrderNumber());
+        $this->model->setItemSequenceNumber($testValue);
+        $this->assertEquals($testValue, $this->model->getItemSequenceNumber());
     }
 
     /**
-     * Test attribute "vendor_order_number"
+     * Test attribute "amazon_product_identifier"
      */
-    public function testPropertyVendorOrderNumber()
+    public function testPropertyAmazonProductIdentifier()
     {
         $testValue = 'test';
         
-        $this->model->setVendorOrderNumber($testValue);
-        $this->assertEquals($testValue, $this->model->getVendorOrderNumber());
+        $this->model->setAmazonProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getAmazonProductIdentifier());
     }
 
     /**
-     * Test attribute "acknowledgement_date"
+     * Test attribute "vendor_product_identifier"
      */
-    public function testPropertyAcknowledgementDate()
+    public function testPropertyVendorProductIdentifier()
     {
+        $testValue = 'test';
         
-        $testValue = new \DateTime();
-        
-        $this->model->setAcknowledgementDate($testValue);
-        $this->assertEquals($testValue, $this->model->getAcknowledgementDate());
+        $this->model->setVendorProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getVendorProductIdentifier());
     }
 
     /**
-     * Test attribute "acknowledgement_status"
+     * Test attribute "ordered_quantity"
      */
-    public function testPropertyAcknowledgementStatus()
+    public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\AcknowledgementStatus();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\ItemQuantity();
         
-        $this->model->setAcknowledgementStatus($testValue);
-        $this->assertEquals($testValue, $this->model->getAcknowledgementStatus());
+        $this->model->setOrderedQuantity($testValue);
+        $this->assertEquals($testValue, $this->model->getOrderedQuantity());
     }
 
     /**
-     * Test attribute "selling_party"
+     * Test attribute "net_cost"
      */
-    public function testPropertySellingParty()
+    public function testPropertyNetCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\Money();
         
-        $this->model->setSellingParty($testValue);
-        $this->assertEquals($testValue, $this->model->getSellingParty());
+        $this->model->setNetCost($testValue);
+        $this->assertEquals($testValue, $this->model->getNetCost());
     }
 
     /**
-     * Test attribute "ship_from_party"
+     * Test attribute "list_price"
      */
-    public function testPropertyShipFromParty()
+    public function testPropertyListPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\Money();
         
-        $this->model->setShipFromParty($testValue);
-        $this->assertEquals($testValue, $this->model->getShipFromParty());
+        $this->model->setListPrice($testValue);
+        $this->assertEquals($testValue, $this->model->getListPrice());
+    }
+
+    /**
+     * Test attribute "discount_multiplier"
+     */
+    public function testPropertyDiscountMultiplier()
+    {
+        $testValue = 'test';
+        
+        $this->model->setDiscountMultiplier($testValue);
+        $this->assertEquals($testValue, $this->model->getDiscountMultiplier());
     }
 
     /**

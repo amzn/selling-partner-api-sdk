@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\orders\PartyIdentification;
+use OpenAPI\Client\Model\vendor\df\payments\PartyIdentification;
 
 /**
  * PartyIdentificationTest Class Doc Comment
@@ -68,21 +68,20 @@ class PartyIdentificationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\Address();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());
     }
 
     /**
-     * Test attribute "tax_info"
+     * Test attribute "tax_registration_details"
      */
-    public function testPropertyTaxInfo()
+    public function testPropertyTaxRegistrationDetails()
     {
+        $testValue = [];
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\TaxRegistrationDetails();
-        
-        $this->model->setTaxInfo($testValue);
-        $this->assertEquals($testValue, $this->model->getTaxInfo());
+        $this->model->setTaxRegistrationDetails($testValue);
+        $this->assertEquals($testValue, $this->model->getTaxRegistrationDetails());
     }
 }

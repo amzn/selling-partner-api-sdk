@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\orders\ShipmentDetails;
+use OpenAPI\Client\Model\vendor\df\shipping\ShipmentDetails;
 
 /**
  * ShipmentDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description Shipment details required for the shipment.
+ * @description Details about a shipment.
  * @package     OpenAPI\Client
  */
 class ShipmentDetailsTest extends TestCase
@@ -52,6 +52,30 @@ class ShipmentDetailsTest extends TestCase
     }
 
     /**
+     * Test attribute "shipped_date"
+     */
+    public function testPropertyShippedDate()
+    {
+        
+        $testValue = new \DateTime();
+        
+        $this->model->setShippedDate($testValue);
+        $this->assertEquals($testValue, $this->model->getShippedDate());
+    }
+
+    /**
+     * Test attribute "shipment_status"
+     */
+    public function testPropertyShipmentStatus()
+    {
+        $enumInstance = new ShipmentDetails();
+        $allowedValues = $enumInstance->getShipmentStatusAllowableValues();
+        $testValue = reset($allowedValues);
+        $this->model->setShipmentStatus($testValue);
+        $this->assertEquals($testValue, $this->model->getShipmentStatus());
+    }
+
+    /**
      * Test attribute "is_priority_shipment"
      */
     public function testPropertyIsPriorityShipment()
@@ -63,69 +87,25 @@ class ShipmentDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "is_scheduled_delivery_shipment"
+     * Test attribute "vendor_order_number"
      */
-    public function testPropertyIsScheduledDeliveryShipment()
-    {
-        $testValue = true;
-        
-        $this->model->setIsScheduledDeliveryShipment($testValue);
-        $this->assertEquals($testValue, $this->model->getIsScheduledDeliveryShipment());
-    }
-
-    /**
-     * Test attribute "is_pslip_required"
-     */
-    public function testPropertyIsPslipRequired()
-    {
-        $testValue = true;
-        
-        $this->model->setIsPslipRequired($testValue);
-        $this->assertEquals($testValue, $this->model->getIsPslipRequired());
-    }
-
-    /**
-     * Test attribute "is_gift"
-     */
-    public function testPropertyIsGift()
-    {
-        $testValue = true;
-        
-        $this->model->setIsGift($testValue);
-        $this->assertEquals($testValue, $this->model->getIsGift());
-    }
-
-    /**
-     * Test attribute "ship_method"
-     */
-    public function testPropertyShipMethod()
+    public function testPropertyVendorOrderNumber()
     {
         $testValue = 'test';
         
-        $this->model->setShipMethod($testValue);
-        $this->assertEquals($testValue, $this->model->getShipMethod());
+        $this->model->setVendorOrderNumber($testValue);
+        $this->assertEquals($testValue, $this->model->getVendorOrderNumber());
     }
 
     /**
-     * Test attribute "shipment_dates"
+     * Test attribute "estimated_delivery_date"
      */
-    public function testPropertyShipmentDates()
+    public function testPropertyEstimatedDeliveryDate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\ShipmentDates();
+        $testValue = new \DateTime();
         
-        $this->model->setShipmentDates($testValue);
-        $this->assertEquals($testValue, $this->model->getShipmentDates());
-    }
-
-    /**
-     * Test attribute "message_to_customer"
-     */
-    public function testPropertyMessageToCustomer()
-    {
-        $testValue = 'test';
-        
-        $this->model->setMessageToCustomer($testValue);
-        $this->assertEquals($testValue, $this->model->getMessageToCustomer());
+        $this->model->setEstimatedDeliveryDate($testValue);
+        $this->assertEquals($testValue, $this->model->getEstimatedDeliveryDate());
     }
 }
