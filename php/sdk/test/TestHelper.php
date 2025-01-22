@@ -2,7 +2,7 @@
 
 /**
  * TestHelper
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client\Test
@@ -210,6 +210,14 @@ class TestHelper
                     // Special handling for 'Sku'
                     if (str_contains($camelCaseName, 'Sku')) {
                         $camelCaseName = str_replace('Sku', 'SKU', $camelCaseName);
+                        $subArrayValue = self::extractValue($camelCaseName, $requestParameters);
+                        if ($subArrayValue !== null) {
+                            $value = $subArrayValue;
+                            break;
+                        }
+                    // Special handling for 'ASINList'
+                    } elseif ($camelCaseName === 'asinList') {
+                        $camelCaseName = 'ASINList';
                         $subArrayValue = self::extractValue($camelCaseName, $requestParameters);
                         if ($subArrayValue !== null) {
                             $value = $subArrayValue;
@@ -660,6 +668,21 @@ class TestHelper
         'testCreateShippingLabels200', // Access is denied as 403
         'testGetShippingLabels200', // Getting 400 error and not sure how to call successfully
         // vendorDirectFulfillmentTransactions_2021-12-28
-        'testGetTransactionStatus200' // Not sure which value to pass as a key
+        'testGetTransactionStatus200', // Not sure which value to pass as a key
+        // FBA Inbound V0
+        'testConfirmPreorder200', // It will be deprecated
+        'testConfirmPreorder400', // It will be deprecated
+        'testCreateInboundShipmentPlan400', // It will be deprecated
+        'testGetTransportDetails200', // It will be deprecated
+        // For Naka if you still have issues with below API Please comment in below.
+        // FulfillmentInboundApiTest.testGenerateSelfShipAppointmentSlots201
+        // OrdersApiTest.testConfirmShipment204
+        // ReportsApiTest.testCreateReport202
+        // ReportsApiTest.testCreateReportSchedule201
+        // Comment in below 4 lines
+        //'testGenerateSelfShipAppointmentSlots201',
+        //'testConfirmShipment204',
+        //'testCreateReport202',
+        //'testCreateReportSchedule201'
     ];
 }

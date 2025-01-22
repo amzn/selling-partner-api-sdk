@@ -2,7 +2,7 @@
 /**
  * FeaturedOfferExpectedPriceRequestTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -80,8 +80,7 @@ class FeaturedOfferExpectedPriceRequestTest extends TestCase
      */
     public function testPropertyBody()
     {
-        
-        $testValue = new array<string,object>();
+        $testValue = array();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());
@@ -92,8 +91,7 @@ class FeaturedOfferExpectedPriceRequestTest extends TestCase
      */
     public function testPropertyHeaders()
     {
-        
-        $testValue = new array<string,string>();
+        $testValue = array();
         
         $this->model->setHeaders($testValue);
         $this->assertEquals($testValue, $this->model->getHeaders());
