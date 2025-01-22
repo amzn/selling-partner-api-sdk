@@ -61,14 +61,22 @@ jobs:
       - name: Test with PHPUnit and cleanup
         working-directory: ./php
         run: |
-          if vendor/bin/phpunit sdk/test/Api --testdox; then
-            cd sdk
-            rm -rf test
-            rm -rf phpunit.xml.dist
-            echo "Tests passed - cleanup completed"
-          else
-            echo "Tests failed - keeping test files for investigation"
+          if ! vendor/bin/phpunit sdk/test/Api --testdox; then
+            echo "Tests failed"
             exit 1
+          fi
+
+      - name: Cleanup test files
+        if: success()
+        working-directory: ./php/sdk
+        run: |
+          if [ -d "test" ]; then
+            rm -rf test
+            echo "Test directory removed"
+          fi
+          if [ -f "phpunit.xml.dist" ]; then
+            rm -rf phpunit.xml.dist
+            echo "PHPUnit config file removed"
           fi
 
   build-java:
