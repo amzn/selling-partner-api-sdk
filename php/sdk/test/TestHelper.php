@@ -640,7 +640,7 @@ class TestHelper
         // Replenishment Api sellingPartners
         'testGetSellingPartnerMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
         // Replenishment Api offers
-        'testListOffers400', // Request eligibilities is not member of Enum
+        'testListOfferMetrics400', // Request eligibility is not member of Enum
         // Sellers
         'testGetAccount200', // Need some application which can be succeeded. Access is denied with my account.
         'testGetAccount400', // Need some application which can be succeeded. Access is denied with my account.
@@ -661,7 +661,7 @@ class TestHelper
         'testSubmitShipmentStatusUpdates202',
         // shipmentConfirmations is not required in swagger, but SandBox returns error
         'testSubmitShipmentConfirmations202',
-        'testGetPackingSlip200', // only allows purchaseOrderNumber as ‘’, but this is not practical.
+        'testGetPackingSlips200', // only allows purchaseOrderNumber as ‘’, but this is not practical.
         'testGetShippingLabel200', // only allows purchaseOrderNumber as ‘’, but this is not practical.
         // shippingLabelRequests is not required in swagger, but SandBox returns error
         'testSubmitShippingLabelRequest202',
