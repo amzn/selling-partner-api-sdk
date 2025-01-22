@@ -3,14 +3,15 @@ name: Create Release
 on:
   workflow_dispatch:
     inputs:
-      newVersionNumber:
-        type: string
-        description: New version number
-        required: true
       currentVersionNumber:
         type: string
         description: Current version number
         required: true
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+
 
 jobs:
   build-php:
