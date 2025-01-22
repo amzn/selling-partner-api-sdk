@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\orders\OrderList;
+use OpenAPI\Client\Model\vendor\orders\OrderList;
 
 /**
  * OrderListTest Class Doc Comment
  *
  * @category    Class
- * @description A list of purchase orders.
+ * @description A list of orders returned as response.
  * @package     OpenAPI\Client
  */
 class OrderListTest extends TestCase
@@ -57,7 +57,7 @@ class OrderListTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\Pagination();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
