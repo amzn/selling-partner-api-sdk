@@ -19,13 +19,13 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.3",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.3",
         "guzzlehttp/psr7": "^2.0",
         "aws/aws-sdk-php": "^3.228",
-        "symfony/http-kernel": "^5.4",
-        "symfony/rate-limiter": "^5.2",
+        "symfony/http-kernel": "^7.2",
+        "symfony/rate-limiter": "^7.2",
         "vlucas/phpdotenv": "^5.5"
     },
     "require-dev": {
@@ -41,7 +41,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "SpApi\\Test\\AuthAndAuth\\" : "sdk/src/tests/authandauth/"
         }
     },
     "scripts": {

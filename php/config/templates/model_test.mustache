@@ -4,7 +4,7 @@
 /**
  * {{classname}}Test
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  {{invokerPackage}}
@@ -85,9 +85,12 @@ class {{classname}}Test extends TestCase
         {{#isArray}}
         $testValue = [];
         {{/isArray}}
-        {{^isEnumRef}}{{^isString}}{{^isInteger}}{{^isNumber}}{{^isBoolean}}{{^isArray}}
+        {{#isMap}}
+        $testValue = array();
+        {{/isMap}}
+        {{^isEnumRef}}{{^isString}}{{^isInteger}}{{^isNumber}}{{^isBoolean}}{{^isArray}}{{^isMap}}
         $testValue = new {{{dataType}}}();
-        {{/isArray}}{{/isBoolean}}{{/isNumber}}{{/isInteger}}{{/isString}}{{/isEnumRef}}
+        {{/isMap}}{{/isArray}}{{/isBoolean}}{{/isNumber}}{{/isInteger}}{{/isString}}{{/isEnumRef}}
         {{/isEnum}}
         $this->model->set{{nameInPascalCase}}($testValue);
         $this->assertEquals($testValue, $this->model->get{{nameInPascalCase}}());
