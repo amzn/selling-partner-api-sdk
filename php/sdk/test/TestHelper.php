@@ -680,9 +680,9 @@ class TestHelper
         // ReportsApiTest.testCreateReport202
         // ReportsApiTest.testCreateReportSchedule201
         // Comment in below 4 lines
-        //'testGenerateSelfShipAppointmentSlots201',
-        //'testConfirmShipment204',
-        //'testCreateReport202',
-        //'testCreateReportSchedule201'
+        'testGenerateSelfShipAppointmentSlots201',
+        'testConfirmShipment204',
+        'testCreateReport202',
+        'testCreateReportSchedule201'
     ];
 }
