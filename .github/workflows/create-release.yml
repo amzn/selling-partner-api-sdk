@@ -67,11 +67,16 @@ jobs:
           echo "VENDOR_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
           echo "VENDOR_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
           echo "VENDOR_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
-          cat .env 
 
       - name: Test with PHPUnit
         working-directory: ./php
         run: vendor/bin/phpunit sdk/test/Api --testdox
+
+      - name: Clean up test files
+        working-directory: ./php/sdk
+        run: |
+          rm -rf test
+          rm -rf phpunit.xml.dist
 
   build-java:
     if: github.event.inputs.sdkType == 'java' || github.event.inputs.sdkType == 'both'
