@@ -2,7 +2,7 @@
 /**
  * ItemTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -67,8 +67,7 @@ class ItemTest extends TestCase
      */
     public function testPropertyAttributes()
     {
-        
-        $testValue = new array<string,mixed>();
+        $testValue = array();
         
         $this->model->setAttributes($testValue);
         $this->assertEquals($testValue, $this->model->getAttributes());

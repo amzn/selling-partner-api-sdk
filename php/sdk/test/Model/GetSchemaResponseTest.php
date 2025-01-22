@@ -2,7 +2,7 @@
 /**
  * GetSchemaResponseTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -68,8 +68,7 @@ class GetSchemaResponseTest extends TestCase
      */
     public function testPropertyPayload()
     {
-        
-        $testValue = new array<string,object>();
+        $testValue = array();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

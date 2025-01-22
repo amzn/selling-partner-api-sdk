@@ -2,7 +2,7 @@
 /**
  * OfferType
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client

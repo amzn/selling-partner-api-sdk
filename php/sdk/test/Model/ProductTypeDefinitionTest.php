@@ -2,7 +2,7 @@
 /**
  * ProductTypeDefinitionTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -104,8 +104,7 @@ class ProductTypeDefinitionTest extends TestCase
      */
     public function testPropertyPropertyGroups()
     {
-        
-        $testValue = new array<string,\OpenAPI\Client\Model\productTypeDefinitions\PropertyGroup>();
+        $testValue = array();
         
         $this->model->setPropertyGroups($testValue);
         $this->assertEquals($testValue, $this->model->getPropertyGroups());

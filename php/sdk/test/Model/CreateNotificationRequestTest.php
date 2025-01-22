@@ -2,7 +2,7 @@
 /**
  * CreateNotificationRequestTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -67,8 +67,7 @@ class CreateNotificationRequestTest extends TestCase
      */
     public function testPropertyNotificationParameters()
     {
-        
-        $testValue = new array<string,object>();
+        $testValue = array();
         
         $this->model->setNotificationParameters($testValue);
         $this->assertEquals($testValue, $this->model->getNotificationParameters());

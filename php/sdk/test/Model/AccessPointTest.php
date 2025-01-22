@@ -2,7 +2,7 @@
 /**
  * AccessPointTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -160,8 +160,7 @@ class AccessPointTest extends TestCase
      */
     public function testPropertyStandardOperatingHours()
     {
-        
-        $testValue = new array<string,\OpenAPI\Client\Model\shipping\OperatingHours>();
+        $testValue = array();
         
         $this->model->setStandardOperatingHours($testValue);
         $this->assertEquals($testValue, $this->model->getStandardOperatingHours());

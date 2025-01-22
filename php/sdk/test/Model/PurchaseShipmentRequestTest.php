@@ -2,7 +2,7 @@
 /**
  * PurchaseShipmentRequestTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -101,8 +101,7 @@ class PurchaseShipmentRequestTest extends TestCase
      */
     public function testPropertyAdditionalInputs()
     {
-        
-        $testValue = new array<string,object>();
+        $testValue = array();
         
         $this->model->setAdditionalInputs($testValue);
         $this->assertEquals($testValue, $this->model->getAdditionalInputs());

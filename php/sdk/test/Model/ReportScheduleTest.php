@@ -2,7 +2,7 @@
 /**
  * ReportScheduleTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -89,8 +89,7 @@ class ReportScheduleTest extends TestCase
      */
     public function testPropertyReportOptions()
     {
-        
-        $testValue = new array<string,string>();
+        $testValue = array();
         
         $this->model->setReportOptions($testValue);
         $this->assertEquals($testValue, $this->model->getReportOptions());

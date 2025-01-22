@@ -2,7 +2,7 @@
 
 /**
  * Configuration
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -37,7 +37,7 @@ use SpApi\AuthAndAuth\LWAAuthorizationSigner;
 
 /**
  * Configuration Class Doc Comment
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client

@@ -2,7 +2,7 @@
 /**
  * GetAccessPointsResultTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -56,8 +56,7 @@ class GetAccessPointsResultTest extends TestCase
      */
     public function testPropertyAccessPointsMap()
     {
-        
-        $testValue = new array<string,array>();
+        $testValue = array();
         
         $this->model->setAccessPointsMap($testValue);
         $this->assertEquals($testValue, $this->model->getAccessPointsMap());

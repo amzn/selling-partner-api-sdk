@@ -2,7 +2,7 @@
 /**
  * ListingOffersRequestTest
  *
- * PHP version 7.4
+ * PHP version 8.3
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -80,8 +80,7 @@ class ListingOffersRequestTest extends TestCase
      */
     public function testPropertyHeaders()
     {
-        
-        $testValue = new array<string,string>();
+        $testValue = array();
         
         $this->model->setHeaders($testValue);
         $this->assertEquals($testValue, $this->model->getHeaders());
