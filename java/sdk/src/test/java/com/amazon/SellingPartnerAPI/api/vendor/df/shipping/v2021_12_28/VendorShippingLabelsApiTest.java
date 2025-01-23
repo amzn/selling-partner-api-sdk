@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.vendor.df.shipping.v2021_12_28;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.CreateShippingLabelsRequest;
 import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.ErrorList;
 import org.threeten.bp.OffsetDateTime;
@@ -23,22 +23,35 @@ import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.Submit
 import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.TransactionReference;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class VendorShippingLabelsApiTest extends ApiTest {
+public class VendorShippingLabelsApiTest {
 
-private final VendorShippingLabelsApi api = new VendorShippingLabelsApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final VendorShippingLabelsApi api = new VendorShippingLabelsApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void createShippingLabelsTest() throws Exception {
         instructBackendMock("createShippingLabels", "200");
-        CreateShippingLabelsRequest body = new CreateShippingLabelsRequest();String purchaseOrderNumber = "";
-
+        CreateShippingLabelsRequest body = new CreateShippingLabelsRequest();
+String purchaseOrderNumber = "";
         ApiResponse<ShippingLabel> response = api.createShippingLabelsWithHttpInfo(body, purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
@@ -49,7 +62,6 @@ private final VendorShippingLabelsApi api = new VendorShippingLabelsApi.Builder(
     public void getShippingLabelTest() throws Exception {
         instructBackendMock("getShippingLabel", "200");
         String purchaseOrderNumber = "";
-
         ApiResponse<ShippingLabel> response = api.getShippingLabelWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
@@ -60,7 +72,6 @@ private final VendorShippingLabelsApi api = new VendorShippingLabelsApi.Builder(
     public void getShippingLabelsTest() throws Exception {
         instructBackendMock("getShippingLabels", "200");
         OffsetDateTime createdAfter = OffsetDateTime.now();OffsetDateTime createdBefore = OffsetDateTime.now();
-
         ApiResponse<ShippingLabelList> response = api.getShippingLabelsWithHttpInfo(createdAfter, createdBefore, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -78,4 +89,13 @@ private final VendorShippingLabelsApi api = new VendorShippingLabelsApi.Builder(
         if(202 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

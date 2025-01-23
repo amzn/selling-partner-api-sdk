@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.fba.inventory.v1;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.fba.inventory.v1.AddInventoryRequest;
 import com.amazon.SellingPartnerAPI.models.fba.inventory.v1.AddInventoryResponse;
 import com.amazon.SellingPartnerAPI.models.fba.inventory.v1.CreateInventoryItemRequest;
@@ -23,22 +23,35 @@ import com.amazon.SellingPartnerAPI.models.fba.inventory.v1.GetInventorySummarie
 import org.threeten.bp.OffsetDateTime;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FbaInventoryApiTest extends ApiTest {
+public class FbaInventoryApiTest {
 
-private final FbaInventoryApi api = new FbaInventoryApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final FbaInventoryApi api = new FbaInventoryApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void addInventoryTest() throws Exception {
         instructBackendMock("addInventory", "200");
-        AddInventoryRequest body = new AddInventoryRequest();String xAmznIdempotencyToken = "";
-
+        AddInventoryRequest body = new AddInventoryRequest();
+String xAmznIdempotencyToken = "";
         ApiResponse<AddInventoryResponse> response = api.addInventoryWithHttpInfo(body, xAmznIdempotencyToken);
 
         assertEquals(200, response.getStatusCode());
@@ -60,7 +73,6 @@ private final FbaInventoryApi api = new FbaInventoryApi.Builder()
     public void deleteInventoryItemTest() throws Exception {
         instructBackendMock("deleteInventoryItem", "200");
         String sellerSku = "";String marketplaceId = "";
-
         ApiResponse<DeleteInventoryItemResponse> response = api.deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -78,4 +90,13 @@ private final FbaInventoryApi api = new FbaInventoryApi.Builder()
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

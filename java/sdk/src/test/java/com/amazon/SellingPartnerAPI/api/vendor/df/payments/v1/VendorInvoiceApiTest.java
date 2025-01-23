@@ -13,21 +13,34 @@
 package com.amazon.SellingPartnerAPI.api.vendor.df.payments.v1;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.vendor.df.payments.v1.SubmitInvoiceRequest;
 import com.amazon.SellingPartnerAPI.models.vendor.df.payments.v1.SubmitInvoiceResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class VendorInvoiceApiTest extends ApiTest {
+public class VendorInvoiceApiTest {
 
-private final VendorInvoiceApi api = new VendorInvoiceApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final VendorInvoiceApi api = new VendorInvoiceApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void submitInvoiceTest() throws Exception {
@@ -40,4 +53,13 @@ private final VendorInvoiceApi api = new VendorInvoiceApi.Builder()
         if(202 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

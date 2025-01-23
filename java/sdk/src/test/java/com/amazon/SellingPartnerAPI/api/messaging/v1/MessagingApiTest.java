@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.messaging.v1;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.messaging.v1.CreateAmazonMotorsRequest;
 import com.amazon.SellingPartnerAPI.models.messaging.v1.CreateAmazonMotorsResponse;
 import com.amazon.SellingPartnerAPI.models.messaging.v1.CreateConfirmCustomizationDetailsRequest;
@@ -39,21 +39,35 @@ import com.amazon.SellingPartnerAPI.models.messaging.v1.InvoiceRequest;
 import com.amazon.SellingPartnerAPI.models.messaging.v1.InvoiceResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MessagingApiTest extends ApiTest {
+public class MessagingApiTest {
 
-private final MessagingApi api = new MessagingApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final MessagingApi api = new MessagingApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void confirmCustomizationDetailsTest() throws Exception {
         instructBackendMock("confirmCustomizationDetails", "201");
-        CreateConfirmCustomizationDetailsRequest body = new CreateConfirmCustomizationDetailsRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateConfirmCustomizationDetailsRequest body = new CreateConfirmCustomizationDetailsRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmCustomizationDetailsResponse> response = api.confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -64,7 +78,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createAmazonMotorsTest() throws Exception {
         instructBackendMock("createAmazonMotors", "201");
-        CreateAmazonMotorsRequest body = new CreateAmazonMotorsRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateAmazonMotorsRequest body = new CreateAmazonMotorsRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateAmazonMotorsResponse> response = api.createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -75,7 +90,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createConfirmDeliveryDetailsTest() throws Exception {
         instructBackendMock("createConfirmDeliveryDetails", "201");
-        CreateConfirmDeliveryDetailsRequest body = new CreateConfirmDeliveryDetailsRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateConfirmDeliveryDetailsRequest body = new CreateConfirmDeliveryDetailsRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmDeliveryDetailsResponse> response = api.createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -86,7 +102,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createConfirmOrderDetailsTest() throws Exception {
         instructBackendMock("createConfirmOrderDetails", "201");
-        CreateConfirmOrderDetailsRequest body = new CreateConfirmOrderDetailsRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateConfirmOrderDetailsRequest body = new CreateConfirmOrderDetailsRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmOrderDetailsResponse> response = api.createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -97,7 +114,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createConfirmServiceDetailsTest() throws Exception {
         instructBackendMock("createConfirmServiceDetails", "201");
-        CreateConfirmServiceDetailsRequest body = new CreateConfirmServiceDetailsRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateConfirmServiceDetailsRequest body = new CreateConfirmServiceDetailsRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmServiceDetailsResponse> response = api.createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -108,7 +126,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createDigitalAccessKeyTest() throws Exception {
         instructBackendMock("createDigitalAccessKey", "201");
-        CreateDigitalAccessKeyRequest body = new CreateDigitalAccessKeyRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateDigitalAccessKeyRequest body = new CreateDigitalAccessKeyRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateDigitalAccessKeyResponse> response = api.createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -119,7 +138,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createLegalDisclosureTest() throws Exception {
         instructBackendMock("createLegalDisclosure", "201");
-        CreateLegalDisclosureRequest body = new CreateLegalDisclosureRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateLegalDisclosureRequest body = new CreateLegalDisclosureRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateLegalDisclosureResponse> response = api.createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -141,7 +161,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createUnexpectedProblemTest() throws Exception {
         instructBackendMock("createUnexpectedProblem", "201");
-        CreateUnexpectedProblemRequest body = new CreateUnexpectedProblemRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateUnexpectedProblemRequest body = new CreateUnexpectedProblemRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateUnexpectedProblemResponse> response = api.createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -152,7 +173,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void createWarrantyTest() throws Exception {
         instructBackendMock("createWarranty", "201");
-        CreateWarrantyRequest body = new CreateWarrantyRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        CreateWarrantyRequest body = new CreateWarrantyRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateWarrantyResponse> response = api.createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -185,7 +207,8 @@ private final MessagingApi api = new MessagingApi.Builder()
     @Test
     public void sendInvoiceTest() throws Exception {
         instructBackendMock("sendInvoice", "201");
-        InvoiceRequest body = new InvoiceRequest();String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        InvoiceRequest body = new InvoiceRequest();
+String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<InvoiceResponse> response = api.sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
@@ -193,4 +216,13 @@ private final MessagingApi api = new MessagingApi.Builder()
         if(201 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

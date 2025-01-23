@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.fulfillment.inbound.v2024_03_20;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.CancelInboundPlanResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.CancelSelfShipAppointmentRequest;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.CancelSelfShipAppointmentResponse;
@@ -76,22 +76,34 @@ import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.Updat
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.UpdateShipmentTrackingDetailsResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FulfillmentInboundApiTest extends ApiTest {
+public class FulfillmentInboundApiTest {
 
-private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void cancelInboundPlanTest() throws Exception {
         instructBackendMock("cancelInboundPlan", "202");
         String inboundPlanId = "";
-
         ApiResponse<CancelInboundPlanResponse> response = api.cancelInboundPlanWithHttpInfo(inboundPlanId);
 
         assertEquals(202, response.getStatusCode());
@@ -101,8 +113,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void cancelSelfShipAppointmentTest() throws Exception {
         instructBackendMock("cancelSelfShipAppointment", "202");
-        CancelSelfShipAppointmentRequest body = new CancelSelfShipAppointmentRequest();String inboundPlanId = "";String shipmentId = "";
-
+        CancelSelfShipAppointmentRequest body = new CancelSelfShipAppointmentRequest();
+String inboundPlanId = "";String shipmentId = "";
         ApiResponse<CancelSelfShipAppointmentResponse> response = api.cancelSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId);
 
         assertEquals(202, response.getStatusCode());
@@ -113,7 +125,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void confirmDeliveryWindowOptionsTest() throws Exception {
         instructBackendMock("confirmDeliveryWindowOptions", "202");
         String inboundPlanId = "";String shipmentId = "";String deliveryWindowOptionId = "";
-
         ApiResponse<ConfirmDeliveryWindowOptionsResponse> response = api.confirmDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, deliveryWindowOptionId);
 
         assertEquals(202, response.getStatusCode());
@@ -124,7 +135,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void confirmPackingOptionTest() throws Exception {
         instructBackendMock("confirmPackingOption", "202");
         String inboundPlanId = "";String packingOptionId = "";
-
         ApiResponse<ConfirmPackingOptionResponse> response = api.confirmPackingOptionWithHttpInfo(inboundPlanId, packingOptionId);
 
         assertEquals(202, response.getStatusCode());
@@ -135,7 +145,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void confirmPlacementOptionTest() throws Exception {
         instructBackendMock("confirmPlacementOption", "202");
         String inboundPlanId = "";String placementOptionId = "";
-
         ApiResponse<ConfirmPlacementOptionResponse> response = api.confirmPlacementOptionWithHttpInfo(inboundPlanId, placementOptionId);
 
         assertEquals(202, response.getStatusCode());
@@ -146,7 +155,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void confirmShipmentContentUpdatePreviewTest() throws Exception {
         instructBackendMock("confirmShipmentContentUpdatePreview", "202");
         String inboundPlanId = "";String shipmentId = "";String contentUpdatePreviewId = "";
-
         ApiResponse<ConfirmShipmentContentUpdatePreviewResponse> response = api.confirmShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId);
 
         assertEquals(202, response.getStatusCode());
@@ -156,8 +164,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void confirmTransportationOptionsTest() throws Exception {
         instructBackendMock("confirmTransportationOptions", "202");
-        ConfirmTransportationOptionsRequest body = new ConfirmTransportationOptionsRequest();String inboundPlanId = "";
-
+        ConfirmTransportationOptionsRequest body = new ConfirmTransportationOptionsRequest();
+String inboundPlanId = "";
         ApiResponse<ConfirmTransportationOptionsResponse> response = api.confirmTransportationOptionsWithHttpInfo(body, inboundPlanId);
 
         assertEquals(202, response.getStatusCode());
@@ -190,7 +198,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void generateDeliveryWindowOptionsTest() throws Exception {
         instructBackendMock("generateDeliveryWindowOptions", "202");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<GenerateDeliveryWindowOptionsResponse> response = api.generateDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId);
 
         assertEquals(202, response.getStatusCode());
@@ -201,7 +208,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void generatePackingOptionsTest() throws Exception {
         instructBackendMock("generatePackingOptions", "202");
         String inboundPlanId = "";
-
         ApiResponse<GeneratePackingOptionsResponse> response = api.generatePackingOptionsWithHttpInfo(inboundPlanId);
 
         assertEquals(202, response.getStatusCode());
@@ -211,8 +217,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void generatePlacementOptionsTest() throws Exception {
         instructBackendMock("generatePlacementOptions", "202");
-        GeneratePlacementOptionsRequest body = new GeneratePlacementOptionsRequest();String inboundPlanId = "";
-
+        GeneratePlacementOptionsRequest body = new GeneratePlacementOptionsRequest();
+String inboundPlanId = "";
         ApiResponse<GeneratePlacementOptionsResponse> response = api.generatePlacementOptionsWithHttpInfo(body, inboundPlanId);
 
         assertEquals(202, response.getStatusCode());
@@ -222,8 +228,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void generateSelfShipAppointmentSlotsTest() throws Exception {
         instructBackendMock("generateSelfShipAppointmentSlots", "201");
-        GenerateSelfShipAppointmentSlotsRequest body = new GenerateSelfShipAppointmentSlotsRequest();String inboundPlanId = "";String shipmentId = "";
-
+        GenerateSelfShipAppointmentSlotsRequest body = new GenerateSelfShipAppointmentSlotsRequest();
+String inboundPlanId = "";String shipmentId = "";
         ApiResponse<GenerateSelfShipAppointmentSlotsResponse> response = api.generateSelfShipAppointmentSlotsWithHttpInfo(body, inboundPlanId, shipmentId);
 
         assertEquals(201, response.getStatusCode());
@@ -233,8 +239,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void generateShipmentContentUpdatePreviewsTest() throws Exception {
         instructBackendMock("generateShipmentContentUpdatePreviews", "202");
-        GenerateShipmentContentUpdatePreviewsRequest body = new GenerateShipmentContentUpdatePreviewsRequest();String inboundPlanId = "";String shipmentId = "";
-
+        GenerateShipmentContentUpdatePreviewsRequest body = new GenerateShipmentContentUpdatePreviewsRequest();
+String inboundPlanId = "";String shipmentId = "";
         ApiResponse<GenerateShipmentContentUpdatePreviewsResponse> response = api.generateShipmentContentUpdatePreviewsWithHttpInfo(body, inboundPlanId, shipmentId);
 
         assertEquals(202, response.getStatusCode());
@@ -244,8 +250,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void generateTransportationOptionsTest() throws Exception {
         instructBackendMock("generateTransportationOptions", "202");
-        GenerateTransportationOptionsRequest body = new GenerateTransportationOptionsRequest();String inboundPlanId = "";
-
+        GenerateTransportationOptionsRequest body = new GenerateTransportationOptionsRequest();
+String inboundPlanId = "";
         ApiResponse<GenerateTransportationOptionsResponse> response = api.generateTransportationOptionsWithHttpInfo(body, inboundPlanId);
 
         assertEquals(202, response.getStatusCode());
@@ -256,7 +262,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void getDeliveryChallanDocumentTest() throws Exception {
         instructBackendMock("getDeliveryChallanDocument", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<GetDeliveryChallanDocumentResponse> response = api.getDeliveryChallanDocumentWithHttpInfo(inboundPlanId, shipmentId);
 
         assertEquals(200, response.getStatusCode());
@@ -267,7 +272,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void getInboundOperationStatusTest() throws Exception {
         instructBackendMock("getInboundOperationStatus", "200");
         String operationId = "";
-
         ApiResponse<InboundOperationStatus> response = api.getInboundOperationStatusWithHttpInfo(operationId);
 
         assertEquals(200, response.getStatusCode());
@@ -278,7 +282,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void getInboundPlanTest() throws Exception {
         instructBackendMock("getInboundPlan", "200");
         String inboundPlanId = "";
-
         ApiResponse<InboundPlan> response = api.getInboundPlanWithHttpInfo(inboundPlanId);
 
         assertEquals(200, response.getStatusCode());
@@ -289,7 +292,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void getSelfShipAppointmentSlotsTest() throws Exception {
         instructBackendMock("getSelfShipAppointmentSlots", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<GetSelfShipAppointmentSlotsResponse> response = api.getSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -300,7 +302,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void getShipmentTest() throws Exception {
         instructBackendMock("getShipment", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<Shipment> response = api.getShipmentWithHttpInfo(inboundPlanId, shipmentId);
 
         assertEquals(200, response.getStatusCode());
@@ -311,7 +312,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void getShipmentContentUpdatePreviewTest() throws Exception {
         instructBackendMock("getShipmentContentUpdatePreview", "200");
         String inboundPlanId = "";String shipmentId = "";String contentUpdatePreviewId = "";
-
         ApiResponse<ContentUpdatePreview> response = api.getShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId);
 
         assertEquals(200, response.getStatusCode());
@@ -322,7 +322,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listDeliveryWindowOptionsTest() throws Exception {
         instructBackendMock("listDeliveryWindowOptions", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<ListDeliveryWindowOptionsResponse> response = api.listDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -333,7 +332,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listInboundPlanBoxesTest() throws Exception {
         instructBackendMock("listInboundPlanBoxes", "200");
         String inboundPlanId = "";
-
         ApiResponse<ListInboundPlanBoxesResponse> response = api.listInboundPlanBoxesWithHttpInfo(inboundPlanId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -344,7 +342,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listInboundPlanItemsTest() throws Exception {
         instructBackendMock("listInboundPlanItems", "200");
         String inboundPlanId = "";
-
         ApiResponse<ListInboundPlanItemsResponse> response = api.listInboundPlanItemsWithHttpInfo(inboundPlanId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -355,7 +352,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listInboundPlanPalletsTest() throws Exception {
         instructBackendMock("listInboundPlanPallets", "200");
         String inboundPlanId = "";
-
         ApiResponse<ListInboundPlanPalletsResponse> response = api.listInboundPlanPalletsWithHttpInfo(inboundPlanId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -366,7 +362,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listInboundPlansTest() throws Exception {
         instructBackendMock("listInboundPlans", "200");
         
-
         ApiResponse<ListInboundPlansResponse> response = api.listInboundPlansWithHttpInfo(null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -376,8 +371,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void listItemComplianceDetailsTest() throws Exception {
         instructBackendMock("listItemComplianceDetails", "200");
-        List<String> mskus = new ArrayList<>();String marketplaceId = "";
-
+        List<String> mskus = new ArrayList<>();
+String marketplaceId = "";
         ApiResponse<ListItemComplianceDetailsResponse> response = api.listItemComplianceDetailsWithHttpInfo(mskus, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -388,7 +383,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listPackingGroupBoxesTest() throws Exception {
         instructBackendMock("listPackingGroupBoxes", "200");
         String inboundPlanId = "";String packingGroupId = "";
-
         ApiResponse<ListPackingGroupBoxesResponse> response = api.listPackingGroupBoxesWithHttpInfo(inboundPlanId, packingGroupId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -399,7 +393,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listPackingGroupItemsTest() throws Exception {
         instructBackendMock("listPackingGroupItems", "200");
         String inboundPlanId = "";String packingGroupId = "";
-
         ApiResponse<ListPackingGroupItemsResponse> response = api.listPackingGroupItemsWithHttpInfo(inboundPlanId, packingGroupId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -410,7 +403,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listPackingOptionsTest() throws Exception {
         instructBackendMock("listPackingOptions", "200");
         String inboundPlanId = "";
-
         ApiResponse<ListPackingOptionsResponse> response = api.listPackingOptionsWithHttpInfo(inboundPlanId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -421,7 +413,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listPlacementOptionsTest() throws Exception {
         instructBackendMock("listPlacementOptions", "200");
         String inboundPlanId = "";
-
         ApiResponse<ListPlacementOptionsResponse> response = api.listPlacementOptionsWithHttpInfo(inboundPlanId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -443,7 +434,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listShipmentBoxesTest() throws Exception {
         instructBackendMock("listShipmentBoxes", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<ListShipmentBoxesResponse> response = api.listShipmentBoxesWithHttpInfo(inboundPlanId, shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -454,7 +444,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listShipmentContentUpdatePreviewsTest() throws Exception {
         instructBackendMock("listShipmentContentUpdatePreviews", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<ListShipmentContentUpdatePreviewsResponse> response = api.listShipmentContentUpdatePreviewsWithHttpInfo(inboundPlanId, shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -465,7 +454,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listShipmentItemsTest() throws Exception {
         instructBackendMock("listShipmentItems", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<ListShipmentItemsResponse> response = api.listShipmentItemsWithHttpInfo(inboundPlanId, shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -476,7 +464,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listShipmentPalletsTest() throws Exception {
         instructBackendMock("listShipmentPallets", "200");
         String inboundPlanId = "";String shipmentId = "";
-
         ApiResponse<ListShipmentPalletsResponse> response = api.listShipmentPalletsWithHttpInfo(inboundPlanId, shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -487,7 +474,6 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     public void listTransportationOptionsTest() throws Exception {
         instructBackendMock("listTransportationOptions", "200");
         String inboundPlanId = "";
-
         ApiResponse<ListTransportationOptionsResponse> response = api.listTransportationOptionsWithHttpInfo(inboundPlanId, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -497,8 +483,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void scheduleSelfShipAppointmentTest() throws Exception {
         instructBackendMock("scheduleSelfShipAppointment", "200");
-        ScheduleSelfShipAppointmentRequest body = new ScheduleSelfShipAppointmentRequest();String inboundPlanId = "";String shipmentId = "";String slotId = "";
-
+        ScheduleSelfShipAppointmentRequest body = new ScheduleSelfShipAppointmentRequest();
+String inboundPlanId = "";String shipmentId = "";String slotId = "";
         ApiResponse<ScheduleSelfShipAppointmentResponse> response = api.scheduleSelfShipAppointmentWithHttpInfo(body, inboundPlanId, shipmentId, slotId);
 
         assertEquals(200, response.getStatusCode());
@@ -508,8 +494,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void setPackingInformationTest() throws Exception {
         instructBackendMock("setPackingInformation", "202");
-        SetPackingInformationRequest body = new SetPackingInformationRequest();String inboundPlanId = "";
-
+        SetPackingInformationRequest body = new SetPackingInformationRequest();
+String inboundPlanId = "";
         ApiResponse<SetPackingInformationResponse> response = api.setPackingInformationWithHttpInfo(body, inboundPlanId);
 
         assertEquals(202, response.getStatusCode());
@@ -530,8 +516,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void updateInboundPlanNameTest() throws Exception {
         instructBackendMock("updateInboundPlanName", "204");
-        UpdateInboundPlanNameRequest body = new UpdateInboundPlanNameRequest();String inboundPlanId = "";
-
+        UpdateInboundPlanNameRequest body = new UpdateInboundPlanNameRequest();
+String inboundPlanId = "";
         api.updateInboundPlanNameWithHttpInfo(body, inboundPlanId);
 
     }
@@ -539,8 +525,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void updateItemComplianceDetailsTest() throws Exception {
         instructBackendMock("updateItemComplianceDetails", "202");
-        UpdateItemComplianceDetailsRequest body = new UpdateItemComplianceDetailsRequest();String marketplaceId = "";
-
+        UpdateItemComplianceDetailsRequest body = new UpdateItemComplianceDetailsRequest();
+String marketplaceId = "";
         ApiResponse<UpdateItemComplianceDetailsResponse> response = api.updateItemComplianceDetailsWithHttpInfo(body, marketplaceId);
 
         assertEquals(202, response.getStatusCode());
@@ -550,8 +536,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void updateShipmentNameTest() throws Exception {
         instructBackendMock("updateShipmentName", "204");
-        UpdateShipmentNameRequest body = new UpdateShipmentNameRequest();String inboundPlanId = "";String shipmentId = "";
-
+        UpdateShipmentNameRequest body = new UpdateShipmentNameRequest();
+String inboundPlanId = "";String shipmentId = "";
         api.updateShipmentNameWithHttpInfo(body, inboundPlanId, shipmentId);
 
     }
@@ -559,8 +545,8 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void updateShipmentSourceAddressTest() throws Exception {
         instructBackendMock("updateShipmentSourceAddress", "202");
-        UpdateShipmentSourceAddressRequest body = new UpdateShipmentSourceAddressRequest();String inboundPlanId = "";String shipmentId = "";
-
+        UpdateShipmentSourceAddressRequest body = new UpdateShipmentSourceAddressRequest();
+String inboundPlanId = "";String shipmentId = "";
         ApiResponse<UpdateShipmentSourceAddressResponse> response = api.updateShipmentSourceAddressWithHttpInfo(body, inboundPlanId, shipmentId);
 
         assertEquals(202, response.getStatusCode());
@@ -570,12 +556,21 @@ private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
     @Test
     public void updateShipmentTrackingDetailsTest() throws Exception {
         instructBackendMock("updateShipmentTrackingDetails", "202");
-        UpdateShipmentTrackingDetailsRequest body = new UpdateShipmentTrackingDetailsRequest();String inboundPlanId = "";String shipmentId = "";
-
+        UpdateShipmentTrackingDetailsRequest body = new UpdateShipmentTrackingDetailsRequest();
+String inboundPlanId = "";String shipmentId = "";
         ApiResponse<UpdateShipmentTrackingDetailsResponse> response = api.updateShipmentTrackingDetailsWithHttpInfo(body, inboundPlanId, shipmentId);
 
         assertEquals(202, response.getStatusCode());
         if(202 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

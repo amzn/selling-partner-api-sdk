@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.reports.v2021_06_30;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.reports.v2021_06_30.CreateReportResponse;
 import com.amazon.SellingPartnerAPI.models.reports.v2021_06_30.CreateReportScheduleResponse;
 import com.amazon.SellingPartnerAPI.models.reports.v2021_06_30.CreateReportScheduleSpecification;
@@ -27,22 +27,34 @@ import com.amazon.SellingPartnerAPI.models.reports.v2021_06_30.ReportSchedule;
 import com.amazon.SellingPartnerAPI.models.reports.v2021_06_30.ReportScheduleList;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ReportsApiTest extends ApiTest {
+public class ReportsApiTest {
 
-private final ReportsApi api = new ReportsApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final ReportsApi api = new ReportsApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void cancelReportTest() throws Exception {
         instructBackendMock("cancelReport", "200");
         String reportId = "";
-
         api.cancelReportWithHttpInfo(reportId);
 
     }
@@ -51,7 +63,6 @@ private final ReportsApi api = new ReportsApi.Builder()
     public void cancelReportScheduleTest() throws Exception {
         instructBackendMock("cancelReportSchedule", "200");
         String reportScheduleId = "";
-
         api.cancelReportScheduleWithHttpInfo(reportScheduleId);
 
     }
@@ -82,7 +93,6 @@ private final ReportsApi api = new ReportsApi.Builder()
     public void getReportTest() throws Exception {
         instructBackendMock("getReport", "200");
         String reportId = "";
-
         ApiResponse<Report> response = api.getReportWithHttpInfo(reportId);
 
         assertEquals(200, response.getStatusCode());
@@ -93,7 +103,6 @@ private final ReportsApi api = new ReportsApi.Builder()
     public void getReportDocumentTest() throws Exception {
         instructBackendMock("getReportDocument", "200");
         String reportDocumentId = "";
-
         ApiResponse<ReportDocument> response = api.getReportDocumentWithHttpInfo(reportDocumentId);
 
         assertEquals(200, response.getStatusCode());
@@ -104,7 +113,6 @@ private final ReportsApi api = new ReportsApi.Builder()
     public void getReportScheduleTest() throws Exception {
         instructBackendMock("getReportSchedule", "200");
         String reportScheduleId = "";
-
         ApiResponse<ReportSchedule> response = api.getReportScheduleWithHttpInfo(reportScheduleId);
 
         assertEquals(200, response.getStatusCode());
@@ -126,11 +134,19 @@ private final ReportsApi api = new ReportsApi.Builder()
     public void getReportsTest() throws Exception {
         instructBackendMock("getReports", "200");
         
-
         ApiResponse<GetReportsResponse> response = api.getReportsWithHttpInfo(null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

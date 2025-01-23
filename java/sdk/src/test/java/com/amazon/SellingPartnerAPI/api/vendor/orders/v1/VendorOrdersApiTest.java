@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.vendor.orders.v1;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.vendor.orders.v1.GetPurchaseOrderResponse;
 import com.amazon.SellingPartnerAPI.models.vendor.orders.v1.GetPurchaseOrdersResponse;
 import com.amazon.SellingPartnerAPI.models.vendor.orders.v1.GetPurchaseOrdersStatusResponse;
@@ -22,22 +22,34 @@ import com.amazon.SellingPartnerAPI.models.vendor.orders.v1.SubmitAcknowledgemen
 import com.amazon.SellingPartnerAPI.models.vendor.orders.v1.SubmitAcknowledgementResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class VendorOrdersApiTest extends ApiTest {
+public class VendorOrdersApiTest {
 
-private final VendorOrdersApi api = new VendorOrdersApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final VendorOrdersApi api = new VendorOrdersApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void getPurchaseOrderTest() throws Exception {
         instructBackendMock("getPurchaseOrder", "200");
         String purchaseOrderNumber = "";
-
         ApiResponse<GetPurchaseOrderResponse> response = api.getPurchaseOrderWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
@@ -48,7 +60,6 @@ private final VendorOrdersApi api = new VendorOrdersApi.Builder()
     public void getPurchaseOrdersTest() throws Exception {
         instructBackendMock("getPurchaseOrders", "200");
         
-
         ApiResponse<GetPurchaseOrdersResponse> response = api.getPurchaseOrdersWithHttpInfo(null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -59,7 +70,6 @@ private final VendorOrdersApi api = new VendorOrdersApi.Builder()
     public void getPurchaseOrdersStatusTest() throws Exception {
         instructBackendMock("getPurchaseOrdersStatus", "200");
         
-
         ApiResponse<GetPurchaseOrdersStatusResponse> response = api.getPurchaseOrdersStatusWithHttpInfo(null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -77,4 +87,13 @@ private final VendorOrdersApi api = new VendorOrdersApi.Builder()
         if(202 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

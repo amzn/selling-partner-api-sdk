@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.supplysources.v2020_07_01;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import java.math.BigDecimal;
 import com.amazon.SellingPartnerAPI.models.supplysources.v2020_07_01.CreateSupplySourceRequest;
 import com.amazon.SellingPartnerAPI.models.supplysources.v2020_07_01.CreateSupplySourceResponse;
@@ -24,22 +24,34 @@ import com.amazon.SellingPartnerAPI.models.supplysources.v2020_07_01.UpdateSuppl
 import com.amazon.SellingPartnerAPI.models.supplysources.v2020_07_01.UpdateSupplySourceStatusRequest;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SupplySourcesApiTest extends ApiTest {
+public class SupplySourcesApiTest {
 
-private final SupplySourcesApi api = new SupplySourcesApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final SupplySourcesApi api = new SupplySourcesApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void archiveSupplySourceTest() throws Exception {
         instructBackendMock("archiveSupplySource", "204");
         String supplySourceId = "";
-
         ApiResponse<ErrorList> response = api.archiveSupplySourceWithHttpInfo(supplySourceId);
 
         assertEquals(204, response.getStatusCode());
@@ -61,7 +73,6 @@ private final SupplySourcesApi api = new SupplySourcesApi.Builder()
     public void getSupplySourceTest() throws Exception {
         instructBackendMock("getSupplySource", "200");
         String supplySourceId = "";
-
         ApiResponse<SupplySource> response = api.getSupplySourceWithHttpInfo(supplySourceId);
 
         assertEquals(200, response.getStatusCode());
@@ -72,7 +83,6 @@ private final SupplySourcesApi api = new SupplySourcesApi.Builder()
     public void getSupplySourcesTest() throws Exception {
         instructBackendMock("getSupplySources", "200");
         
-
         ApiResponse<GetSupplySourcesResponse> response = api.getSupplySourcesWithHttpInfo(null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -83,7 +93,6 @@ private final SupplySourcesApi api = new SupplySourcesApi.Builder()
     public void updateSupplySourceTest() throws Exception {
         instructBackendMock("updateSupplySource", "204");
         String supplySourceId = "";
-
         ApiResponse<ErrorList> response = api.updateSupplySourceWithHttpInfo(supplySourceId, null);
 
         assertEquals(204, response.getStatusCode());
@@ -94,11 +103,19 @@ private final SupplySourcesApi api = new SupplySourcesApi.Builder()
     public void updateSupplySourceStatusTest() throws Exception {
         instructBackendMock("updateSupplySourceStatus", "204");
         String supplySourceId = "";
-
         ApiResponse<ErrorList> response = api.updateSupplySourceStatusWithHttpInfo(supplySourceId, null);
 
         assertEquals(204, response.getStatusCode());
         if(204 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.orders.v0;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.orders.v0.ConfirmShipmentErrorResponse;
 import com.amazon.SellingPartnerAPI.models.orders.v0.ConfirmShipmentRequest;
 import com.amazon.SellingPartnerAPI.models.orders.v0.GetOrderAddressResponse;
@@ -29,22 +29,35 @@ import com.amazon.SellingPartnerAPI.models.orders.v0.UpdateVerificationStatusErr
 import com.amazon.SellingPartnerAPI.models.orders.v0.UpdateVerificationStatusRequest;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OrdersApiTest extends ApiTest {
+public class OrdersApiTest {
 
-private final OrdersApi api = new OrdersApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final OrdersApi api = new OrdersApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void confirmShipmentTest() throws Exception {
         instructBackendMock("confirmShipment", "204");
-        ConfirmShipmentRequest body = new ConfirmShipmentRequest();String orderId = "";
-
+        ConfirmShipmentRequest body = new ConfirmShipmentRequest();
+String orderId = "";
         api.confirmShipmentWithHttpInfo(body, orderId);
 
     }
@@ -53,7 +66,6 @@ private final OrdersApi api = new OrdersApi.Builder()
     public void getOrderTest() throws Exception {
         instructBackendMock("getOrder", "200");
         String orderId = "";
-
         ApiResponse<GetOrderResponse> response = api.getOrderWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
@@ -64,7 +76,6 @@ private final OrdersApi api = new OrdersApi.Builder()
     public void getOrderAddressTest() throws Exception {
         instructBackendMock("getOrderAddress", "200");
         String orderId = "";
-
         ApiResponse<GetOrderAddressResponse> response = api.getOrderAddressWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
@@ -75,7 +86,6 @@ private final OrdersApi api = new OrdersApi.Builder()
     public void getOrderBuyerInfoTest() throws Exception {
         instructBackendMock("getOrderBuyerInfo", "200");
         String orderId = "";
-
         ApiResponse<GetOrderBuyerInfoResponse> response = api.getOrderBuyerInfoWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
@@ -86,7 +96,6 @@ private final OrdersApi api = new OrdersApi.Builder()
     public void getOrderItemsTest() throws Exception {
         instructBackendMock("getOrderItems", "200");
         String orderId = "";
-
         ApiResponse<GetOrderItemsResponse> response = api.getOrderItemsWithHttpInfo(orderId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -97,7 +106,6 @@ private final OrdersApi api = new OrdersApi.Builder()
     public void getOrderItemsBuyerInfoTest() throws Exception {
         instructBackendMock("getOrderItemsBuyerInfo", "200");
         String orderId = "";
-
         ApiResponse<GetOrderItemsBuyerInfoResponse> response = api.getOrderItemsBuyerInfoWithHttpInfo(orderId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -108,7 +116,6 @@ private final OrdersApi api = new OrdersApi.Builder()
     public void getOrderRegulatedInfoTest() throws Exception {
         instructBackendMock("getOrderRegulatedInfo", "200");
         String orderId = "";
-
         ApiResponse<GetOrderRegulatedInfoResponse> response = api.getOrderRegulatedInfoWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
@@ -129,8 +136,8 @@ private final OrdersApi api = new OrdersApi.Builder()
     @Test
     public void updateShipmentStatusTest() throws Exception {
         instructBackendMock("updateShipmentStatus", "204");
-        UpdateShipmentStatusRequest body = new UpdateShipmentStatusRequest();String orderId = "";
-
+        UpdateShipmentStatusRequest body = new UpdateShipmentStatusRequest();
+String orderId = "";
         api.updateShipmentStatusWithHttpInfo(body, orderId);
 
     }
@@ -138,10 +145,19 @@ private final OrdersApi api = new OrdersApi.Builder()
     @Test
     public void updateVerificationStatusTest() throws Exception {
         instructBackendMock("updateVerificationStatus", "204");
-        UpdateVerificationStatusRequest body = new UpdateVerificationStatusRequest();String orderId = "";
-
+        UpdateVerificationStatusRequest body = new UpdateVerificationStatusRequest();
+String orderId = "";
         api.updateVerificationStatusWithHttpInfo(body, orderId);
 
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

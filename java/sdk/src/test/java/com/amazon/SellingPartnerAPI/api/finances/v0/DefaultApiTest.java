@@ -13,28 +13,40 @@
 package com.amazon.SellingPartnerAPI.api.finances.v0;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.finances.v0.ListFinancialEventGroupsResponse;
 import com.amazon.SellingPartnerAPI.models.finances.v0.ListFinancialEventsResponse;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DefaultApiTest extends ApiTest {
+public class DefaultApiTest {
 
-private final DefaultApi api = new DefaultApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final DefaultApi api = new DefaultApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void listFinancialEventGroupsTest() throws Exception {
         instructBackendMock("listFinancialEventGroups", "200");
         
-
         ApiResponse<ListFinancialEventGroupsResponse> response = api.listFinancialEventGroupsWithHttpInfo(null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -45,7 +57,6 @@ private final DefaultApi api = new DefaultApi.Builder()
     public void listFinancialEventsTest() throws Exception {
         instructBackendMock("listFinancialEvents", "200");
         
-
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsWithHttpInfo(null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -56,7 +67,6 @@ private final DefaultApi api = new DefaultApi.Builder()
     public void listFinancialEventsByGroupIdTest() throws Exception {
         instructBackendMock("listFinancialEventsByGroupId", "200");
         String eventGroupId = "";
-
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsByGroupIdWithHttpInfo(eventGroupId, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -67,11 +77,19 @@ private final DefaultApi api = new DefaultApi.Builder()
     public void listFinancialEventsByOrderIdTest() throws Exception {
         instructBackendMock("listFinancialEventsByOrderId", "200");
         String orderId = "";
-
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsByOrderIdWithHttpInfo(orderId, null, null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

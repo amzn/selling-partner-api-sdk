@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.shipping.v2;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import java.math.BigDecimal;
 import com.amazon.SellingPartnerAPI.models.shipping.v2.CancelShipmentResponse;
 import com.amazon.SellingPartnerAPI.models.shipping.v2.DirectPurchaseRequest;
@@ -45,22 +45,34 @@ import com.amazon.SellingPartnerAPI.models.shipping.v2.UnlinkCarrierAccountReque
 import com.amazon.SellingPartnerAPI.models.shipping.v2.UnlinkCarrierAccountResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ShippingApiTest extends ApiTest {
+public class ShippingApiTest {
 
-private final ShippingApi api = new ShippingApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final ShippingApi api = new ShippingApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void cancelShipmentTest() throws Exception {
         instructBackendMock("cancelShipment", "200");
         String shipmentId = "";
-
         ApiResponse<CancelShipmentResponse> response = api.cancelShipmentWithHttpInfo(shipmentId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -92,8 +104,8 @@ private final ShippingApi api = new ShippingApi.Builder()
     @Test
     public void getAccessPointsTest() throws Exception {
         instructBackendMock("getAccessPoints", "200");
-        List<String> accessPointTypes = new ArrayList<>();String countryCode = "";String postalCode = "";
-
+        List<String> accessPointTypes = new ArrayList<>();
+String countryCode = "";String postalCode = "";
         ApiResponse<GetAccessPointsResponse> response = api.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, null);
 
         assertEquals(200, response.getStatusCode());
@@ -104,7 +116,6 @@ private final ShippingApi api = new ShippingApi.Builder()
     public void getAdditionalInputsTest() throws Exception {
         instructBackendMock("getAdditionalInputs", "200");
         String requestToken = "";String rateId = "";
-
         ApiResponse<GetAdditionalInputsResponse> response = api.getAdditionalInputsWithHttpInfo(requestToken, rateId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -115,7 +126,6 @@ private final ShippingApi api = new ShippingApi.Builder()
     public void getCarrierAccountFormInputsTest() throws Exception {
         instructBackendMock("getCarrierAccountFormInputs", "200");
         
-
         ApiResponse<GetCarrierAccountFormInputsResponse> response = api.getCarrierAccountFormInputsWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
@@ -137,7 +147,6 @@ private final ShippingApi api = new ShippingApi.Builder()
     public void getCollectionFormTest() throws Exception {
         instructBackendMock("getCollectionForm", "200");
         String collectionFormId = "";
-
         ApiResponse<GetCollectionFormResponse> response = api.getCollectionFormWithHttpInfo(collectionFormId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -170,7 +179,6 @@ private final ShippingApi api = new ShippingApi.Builder()
     public void getShipmentDocumentsTest() throws Exception {
         instructBackendMock("getShipmentDocuments", "200");
         String shipmentId = "";String packageClientReferenceId = "";
-
         ApiResponse<GetShipmentDocumentsResponse> response = api.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -181,7 +189,6 @@ private final ShippingApi api = new ShippingApi.Builder()
     public void getTrackingTest() throws Exception {
         instructBackendMock("getTracking", "200");
         String trackingId = "";String carrierId = "";
-
         ApiResponse<GetTrackingResponse> response = api.getTrackingWithHttpInfo(trackingId, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -202,8 +209,8 @@ private final ShippingApi api = new ShippingApi.Builder()
     @Test
     public void linkCarrierAccountTest() throws Exception {
         instructBackendMock("linkCarrierAccount", "200");
-        LinkCarrierAccountRequest body = new LinkCarrierAccountRequest();String carrierId = "";
-
+        LinkCarrierAccountRequest body = new LinkCarrierAccountRequest();
+String carrierId = "";
         ApiResponse<LinkCarrierAccountResponse> response = api.linkCarrierAccountWithHttpInfo(body, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -235,12 +242,21 @@ private final ShippingApi api = new ShippingApi.Builder()
     @Test
     public void unlinkCarrierAccountTest() throws Exception {
         instructBackendMock("unlinkCarrierAccount", "200");
-        UnlinkCarrierAccountRequest body = new UnlinkCarrierAccountRequest();String carrierId = "";
-
+        UnlinkCarrierAccountRequest body = new UnlinkCarrierAccountRequest();
+String carrierId = "";
         ApiResponse<UnlinkCarrierAccountResponse> response = api.unlinkCarrierAccountWithHttpInfo(body, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

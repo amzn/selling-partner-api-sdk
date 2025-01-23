@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.vendor.df.shipping.v2021_12_28;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.ErrorList;
 import org.threeten.bp.OffsetDateTime;
 import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.PackingSlip;
@@ -23,22 +23,34 @@ import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.Submit
 import com.amazon.SellingPartnerAPI.models.vendor.df.shipping.v2021_12_28.TransactionReference;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class VendorShippingApiTest extends ApiTest {
+public class VendorShippingApiTest {
 
-private final VendorShippingApi api = new VendorShippingApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final VendorShippingApi api = new VendorShippingApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void getPackingSlipTest() throws Exception {
         instructBackendMock("getPackingSlip", "200");
         String purchaseOrderNumber = "";
-
         ApiResponse<PackingSlip> response = api.getPackingSlipWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
@@ -49,7 +61,6 @@ private final VendorShippingApi api = new VendorShippingApi.Builder()
     public void getPackingSlipsTest() throws Exception {
         instructBackendMock("getPackingSlips", "200");
         OffsetDateTime createdAfter = OffsetDateTime.now();OffsetDateTime createdBefore = OffsetDateTime.now();
-
         ApiResponse<PackingSlipList> response = api.getPackingSlipsWithHttpInfo(createdAfter, createdBefore, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -78,4 +89,13 @@ private final VendorShippingApi api = new VendorShippingApi.Builder()
         if(202 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

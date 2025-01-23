@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.easyship.v2022_03_23;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.easyship.v2022_03_23.CreateScheduledPackageRequest;
 import com.amazon.SellingPartnerAPI.models.easyship.v2022_03_23.CreateScheduledPackagesRequest;
 import com.amazon.SellingPartnerAPI.models.easyship.v2022_03_23.CreateScheduledPackagesResponse;
@@ -25,16 +25,29 @@ import com.amazon.SellingPartnerAPI.models.easyship.v2022_03_23.Packages;
 import com.amazon.SellingPartnerAPI.models.easyship.v2022_03_23.UpdateScheduledPackagesRequest;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EasyShipApiTest extends ApiTest {
+public class EasyShipApiTest {
 
-private final EasyShipApi api = new EasyShipApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final EasyShipApi api = new EasyShipApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void createScheduledPackageTest() throws Exception {
@@ -62,7 +75,6 @@ private final EasyShipApi api = new EasyShipApi.Builder()
     public void getScheduledPackageTest() throws Exception {
         instructBackendMock("getScheduledPackage", "200");
         String amazonOrderId = "";String marketplaceId = "";
-
         ApiResponse<ModelPackage> response = api.getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -73,7 +85,6 @@ private final EasyShipApi api = new EasyShipApi.Builder()
     public void listHandoverSlotsTest() throws Exception {
         instructBackendMock("listHandoverSlots", "200");
         
-
         ApiResponse<ListHandoverSlotsResponse> response = api.listHandoverSlotsWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
@@ -84,11 +95,19 @@ private final EasyShipApi api = new EasyShipApi.Builder()
     public void updateScheduledPackagesTest() throws Exception {
         instructBackendMock("updateScheduledPackages", "200");
         
-
         ApiResponse<Packages> response = api.updateScheduledPackagesWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

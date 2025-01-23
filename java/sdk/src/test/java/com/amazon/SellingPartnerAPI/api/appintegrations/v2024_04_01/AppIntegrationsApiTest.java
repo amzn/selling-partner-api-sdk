@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.appintegrations.v2024_04_01;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.appintegrations.v2024_04_01.CreateNotificationRequest;
 import com.amazon.SellingPartnerAPI.models.appintegrations.v2024_04_01.CreateNotificationResponse;
 import com.amazon.SellingPartnerAPI.models.appintegrations.v2024_04_01.DeleteNotificationsRequest;
@@ -21,16 +21,29 @@ import com.amazon.SellingPartnerAPI.models.appintegrations.v2024_04_01.ErrorList
 import com.amazon.SellingPartnerAPI.models.appintegrations.v2024_04_01.RecordActionFeedbackRequest;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AppIntegrationsApiTest extends ApiTest {
+public class AppIntegrationsApiTest {
 
-private final AppIntegrationsApi api = new AppIntegrationsApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final AppIntegrationsApi api = new AppIntegrationsApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void createNotificationTest() throws Exception {
@@ -55,10 +68,19 @@ private final AppIntegrationsApi api = new AppIntegrationsApi.Builder()
     @Test
     public void recordActionFeedbackTest() throws Exception {
         instructBackendMock("recordActionFeedback", "204");
-        RecordActionFeedbackRequest body = new RecordActionFeedbackRequest();String notificationId = "";
-
+        RecordActionFeedbackRequest body = new RecordActionFeedbackRequest();
+String notificationId = "";
         api.recordActionFeedbackWithHttpInfo(body, notificationId);
 
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

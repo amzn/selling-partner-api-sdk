@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.fulfillment.outbound.v2020_07_01;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.fulfillment.outbound.v2020_07_01.CancelFulfillmentOrderResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentOrderRequest;
 import com.amazon.SellingPartnerAPI.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentOrderResponse;
@@ -37,22 +37,34 @@ import com.amazon.SellingPartnerAPI.models.fulfillment.outbound.v2020_07_01.Upda
 import com.amazon.SellingPartnerAPI.models.fulfillment.outbound.v2020_07_01.UpdateFulfillmentOrderResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FbaOutboundApiTest extends ApiTest {
+public class FbaOutboundApiTest {
 
-private final FbaOutboundApi api = new FbaOutboundApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final FbaOutboundApi api = new FbaOutboundApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void cancelFulfillmentOrderTest() throws Exception {
         instructBackendMock("cancelFulfillmentOrder", "200");
         String sellerFulfillmentOrderId = "";
-
         ApiResponse<CancelFulfillmentOrderResponse> response = api.cancelFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
@@ -73,8 +85,8 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     @Test
     public void createFulfillmentReturnTest() throws Exception {
         instructBackendMock("createFulfillmentReturn", "200");
-        CreateFulfillmentReturnRequest body = new CreateFulfillmentReturnRequest();String sellerFulfillmentOrderId = "";
-
+        CreateFulfillmentReturnRequest body = new CreateFulfillmentReturnRequest();
+String sellerFulfillmentOrderId = "";
         ApiResponse<CreateFulfillmentReturnResponse> response = api.createFulfillmentReturnWithHttpInfo(body, sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
@@ -96,7 +108,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void getFeatureInventoryTest() throws Exception {
         instructBackendMock("getFeatureInventory", "200");
         String marketplaceId = "";String featureName = "";
-
         ApiResponse<GetFeatureInventoryResponse> response = api.getFeatureInventoryWithHttpInfo(marketplaceId, featureName, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -107,7 +118,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void getFeatureSKUTest() throws Exception {
         instructBackendMock("getFeatureSKU", "200");
         String marketplaceId = "";String featureName = "";String sellerSku = "";
-
         ApiResponse<GetFeatureSkuResponse> response = api.getFeatureSKUWithHttpInfo(marketplaceId, featureName, sellerSku);
 
         assertEquals(200, response.getStatusCode());
@@ -118,7 +128,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void getFeaturesTest() throws Exception {
         instructBackendMock("getFeatures", "200");
         String marketplaceId = "";
-
         ApiResponse<GetFeaturesResponse> response = api.getFeaturesWithHttpInfo(marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -129,7 +138,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void getFulfillmentOrderTest() throws Exception {
         instructBackendMock("getFulfillmentOrder", "200");
         String sellerFulfillmentOrderId = "";
-
         ApiResponse<GetFulfillmentOrderResponse> response = api.getFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
@@ -151,7 +159,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void getPackageTrackingDetailsTest() throws Exception {
         instructBackendMock("getPackageTrackingDetails", "200");
         int packageNumber = 1;
-
         ApiResponse<GetPackageTrackingDetailsResponse> response = api.getPackageTrackingDetailsWithHttpInfo(packageNumber);
 
         assertEquals(200, response.getStatusCode());
@@ -162,7 +169,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void listAllFulfillmentOrdersTest() throws Exception {
         instructBackendMock("listAllFulfillmentOrders", "200");
         
-
         ApiResponse<ListAllFulfillmentOrdersResponse> response = api.listAllFulfillmentOrdersWithHttpInfo(null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -173,7 +179,6 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     public void listReturnReasonCodesTest() throws Exception {
         instructBackendMock("listReturnReasonCodes", "200");
         String sellerSku = "";
-
         ApiResponse<ListReturnReasonCodesResponse> response = api.listReturnReasonCodesWithHttpInfo(sellerSku, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -183,8 +188,8 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     @Test
     public void submitFulfillmentOrderStatusUpdateTest() throws Exception {
         instructBackendMock("submitFulfillmentOrderStatusUpdate", "200");
-        SubmitFulfillmentOrderStatusUpdateRequest body = new SubmitFulfillmentOrderStatusUpdateRequest();String sellerFulfillmentOrderId = "";
-
+        SubmitFulfillmentOrderStatusUpdateRequest body = new SubmitFulfillmentOrderStatusUpdateRequest();
+String sellerFulfillmentOrderId = "";
         ApiResponse<SubmitFulfillmentOrderStatusUpdateResponse> response = api.submitFulfillmentOrderStatusUpdateWithHttpInfo(body, sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
@@ -194,12 +199,21 @@ private final FbaOutboundApi api = new FbaOutboundApi.Builder()
     @Test
     public void updateFulfillmentOrderTest() throws Exception {
         instructBackendMock("updateFulfillmentOrder", "200");
-        UpdateFulfillmentOrderRequest body = new UpdateFulfillmentOrderRequest();String sellerFulfillmentOrderId = "";
-
+        UpdateFulfillmentOrderRequest body = new UpdateFulfillmentOrderRequest();
+String sellerFulfillmentOrderId = "";
         ApiResponse<UpdateFulfillmentOrderResponse> response = api.updateFulfillmentOrderWithHttpInfo(body, sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

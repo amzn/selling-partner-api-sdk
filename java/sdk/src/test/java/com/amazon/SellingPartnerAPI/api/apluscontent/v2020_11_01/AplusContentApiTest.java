@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.apluscontent.v2020_11_01;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.apluscontent.v2020_11_01.ErrorList;
 import com.amazon.SellingPartnerAPI.models.apluscontent.v2020_11_01.GetContentDocumentResponse;
 import com.amazon.SellingPartnerAPI.models.apluscontent.v2020_11_01.ListContentDocumentAsinRelationsResponse;
@@ -28,22 +28,35 @@ import com.amazon.SellingPartnerAPI.models.apluscontent.v2020_11_01.SearchConten
 import com.amazon.SellingPartnerAPI.models.apluscontent.v2020_11_01.ValidateContentDocumentAsinRelationsResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AplusContentApiTest extends ApiTest {
+public class AplusContentApiTest {
 
-private final AplusContentApi api = new AplusContentApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final AplusContentApi api = new AplusContentApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void createContentDocumentTest() throws Exception {
         instructBackendMock("createContentDocument", "200");
-        PostContentDocumentRequest body = new PostContentDocumentRequest();String marketplaceId = "";
-
+        PostContentDocumentRequest body = new PostContentDocumentRequest();
+String marketplaceId = "";
         ApiResponse<PostContentDocumentResponse> response = api.createContentDocumentWithHttpInfo(body, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -65,7 +78,6 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     public void listContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("listContentDocumentAsinRelations", "200");
         String contentReferenceKey = "";String marketplaceId = "";
-
         ApiResponse<ListContentDocumentAsinRelationsResponse> response = api.listContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey, marketplaceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -76,7 +88,6 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     public void postContentDocumentApprovalSubmissionTest() throws Exception {
         instructBackendMock("postContentDocumentApprovalSubmission", "200");
         String contentReferenceKey = "";String marketplaceId = "";
-
         ApiResponse<PostContentDocumentApprovalSubmissionResponse> response = api.postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -86,8 +97,8 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     @Test
     public void postContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("postContentDocumentAsinRelations", "200");
-        PostContentDocumentAsinRelationsRequest body = new PostContentDocumentAsinRelationsRequest();String contentReferenceKey = "";String marketplaceId = "";
-
+        PostContentDocumentAsinRelationsRequest body = new PostContentDocumentAsinRelationsRequest();
+String contentReferenceKey = "";String marketplaceId = "";
         ApiResponse<PostContentDocumentAsinRelationsResponse> response = api.postContentDocumentAsinRelationsWithHttpInfo(body, contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -98,7 +109,6 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     public void postContentDocumentSuspendSubmissionTest() throws Exception {
         instructBackendMock("postContentDocumentSuspendSubmission", "200");
         String contentReferenceKey = "";String marketplaceId = "";
-
         ApiResponse<PostContentDocumentSuspendSubmissionResponse> response = api.postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -109,7 +119,6 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     public void searchContentDocumentsTest() throws Exception {
         instructBackendMock("searchContentDocuments", "200");
         String marketplaceId = "";
-
         ApiResponse<SearchContentDocumentsResponse> response = api.searchContentDocumentsWithHttpInfo(marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -120,7 +129,6 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     public void searchContentPublishRecordsTest() throws Exception {
         instructBackendMock("searchContentPublishRecords", "200");
         String marketplaceId = "";String asin = "";
-
         ApiResponse<SearchContentPublishRecordsResponse> response = api.searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, null);
 
         assertEquals(200, response.getStatusCode());
@@ -130,8 +138,8 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     @Test
     public void updateContentDocumentTest() throws Exception {
         instructBackendMock("updateContentDocument", "200");
-        PostContentDocumentRequest body = new PostContentDocumentRequest();String contentReferenceKey = "";String marketplaceId = "";
-
+        PostContentDocumentRequest body = new PostContentDocumentRequest();
+String contentReferenceKey = "";String marketplaceId = "";
         ApiResponse<PostContentDocumentResponse> response = api.updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
@@ -141,12 +149,21 @@ private final AplusContentApi api = new AplusContentApi.Builder()
     @Test
     public void validateContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("validateContentDocumentAsinRelations", "200");
-        PostContentDocumentRequest body = new PostContentDocumentRequest();String marketplaceId = "";
-
+        PostContentDocumentRequest body = new PostContentDocumentRequest();
+String marketplaceId = "";
         ApiResponse<ValidateContentDocumentAsinRelationsResponse> response = api.validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

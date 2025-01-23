@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.pricing.v0;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.pricing.v0.Errors;
 import com.amazon.SellingPartnerAPI.models.pricing.v0.GetItemOffersBatchRequest;
 import com.amazon.SellingPartnerAPI.models.pricing.v0.GetItemOffersBatchResponse;
@@ -23,22 +23,34 @@ import com.amazon.SellingPartnerAPI.models.pricing.v0.GetOffersResponse;
 import com.amazon.SellingPartnerAPI.models.pricing.v0.GetPricingResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ProductPricingApiTest extends ApiTest {
+public class ProductPricingApiTest {
 
-private final ProductPricingApi api = new ProductPricingApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final ProductPricingApi api = new ProductPricingApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void getCompetitivePricingTest() throws Exception {
         instructBackendMock("getCompetitivePricing", "200");
         String marketplaceId = "";String itemType = "";
-
         ApiResponse<GetPricingResponse> response = api.getCompetitivePricingWithHttpInfo(marketplaceId, itemType, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -49,7 +61,6 @@ private final ProductPricingApi api = new ProductPricingApi.Builder()
     public void getItemOffersTest() throws Exception {
         instructBackendMock("getItemOffers", "200");
         String marketplaceId = "";String itemCondition = "";String asin = "";
-
         ApiResponse<GetOffersResponse> response = api.getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, null);
 
         assertEquals(200, response.getStatusCode());
@@ -71,7 +82,6 @@ private final ProductPricingApi api = new ProductPricingApi.Builder()
     public void getListingOffersTest() throws Exception {
         instructBackendMock("getListingOffers", "200");
         String marketplaceId = "";String itemCondition = "";String sellerSKU = "";
-
         ApiResponse<GetOffersResponse> response = api.getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, null);
 
         assertEquals(200, response.getStatusCode());
@@ -93,11 +103,19 @@ private final ProductPricingApi api = new ProductPricingApi.Builder()
     public void getPricingTest() throws Exception {
         instructBackendMock("getPricing", "200");
         String marketplaceId = "";String itemType = "";
-
         ApiResponse<GetPricingResponse> response = api.getPricingWithHttpInfo(marketplaceId, itemType, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

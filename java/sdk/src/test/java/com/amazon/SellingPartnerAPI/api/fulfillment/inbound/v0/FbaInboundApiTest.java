@@ -13,99 +13,43 @@
 package com.amazon.SellingPartnerAPI.api.fulfillment.inbound.v0;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.ConfirmPreorderResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.ConfirmTransportResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.CreateInboundShipmentPlanRequest;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.CreateInboundShipmentPlanResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.EstimateTransportResponse;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetBillOfLadingResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetLabelsResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetPreorderInfoResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetPrepInstructionsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetShipmentItemsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetShipmentsResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.GetTransportDetailsResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.InboundShipmentRequest;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.InboundShipmentResponse;
-import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.PutTransportDetailsRequest;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.PutTransportDetailsResponse;
-import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v0.VoidTransportResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FbaInboundApiTest extends ApiTest {
+public class FbaInboundApiTest {
 
-private final FbaInboundApi api = new FbaInboundApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
 
-    @Test
-    public void confirmPreorderTest() throws Exception {
-        instructBackendMock("confirmPreorder", "200");
-        String shipmentId = "";LocalDate needByDate = LocalDate.now();String marketplaceId = "";
-
-        ApiResponse<ConfirmPreorderResponse> response = api.confirmPreorderWithHttpInfo(shipmentId, needByDate, marketplaceId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void confirmTransportTest() throws Exception {
-        instructBackendMock("confirmTransport", "200");
-        String shipmentId = "";
-
-        ApiResponse<ConfirmTransportResponse> response = api.confirmTransportWithHttpInfo(shipmentId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void createInboundShipmentTest() throws Exception {
-        instructBackendMock("createInboundShipment", "200");
-        InboundShipmentRequest body = new InboundShipmentRequest();String shipmentId = "";
-
-        ApiResponse<InboundShipmentResponse> response = api.createInboundShipmentWithHttpInfo(body, shipmentId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void createInboundShipmentPlanTest() throws Exception {
-        instructBackendMock("createInboundShipmentPlan", "200");
-        CreateInboundShipmentPlanRequest body = new CreateInboundShipmentPlanRequest();
-
-        ApiResponse<CreateInboundShipmentPlanResponse> response = api.createInboundShipmentPlanWithHttpInfo(body);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void estimateTransportTest() throws Exception {
-        instructBackendMock("estimateTransport", "200");
-        String shipmentId = "";
-
-        ApiResponse<EstimateTransportResponse> response = api.estimateTransportWithHttpInfo(shipmentId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
+   private final FbaInboundApi api = new FbaInboundApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void getBillOfLadingTest() throws Exception {
         instructBackendMock("getBillOfLading", "200");
         String shipmentId = "";
-
         ApiResponse<GetBillOfLadingResponse> response = api.getBillOfLadingWithHttpInfo(shipmentId);
 
         assertEquals(200, response.getStatusCode());
@@ -116,19 +60,7 @@ private final FbaInboundApi api = new FbaInboundApi.Builder()
     public void getLabelsTest() throws Exception {
         instructBackendMock("getLabels", "200");
         String shipmentId = "";String pageType = "";String labelType = "";
-
         ApiResponse<GetLabelsResponse> response = api.getLabelsWithHttpInfo(shipmentId, pageType, labelType, null, null, null, null, null);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void getPreorderInfoTest() throws Exception {
-        instructBackendMock("getPreorderInfo", "200");
-        String shipmentId = "";String marketplaceId = "";
-
-        ApiResponse<GetPreorderInfoResponse> response = api.getPreorderInfoWithHttpInfo(shipmentId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
@@ -138,7 +70,6 @@ private final FbaInboundApi api = new FbaInboundApi.Builder()
     public void getPrepInstructionsTest() throws Exception {
         instructBackendMock("getPrepInstructions", "200");
         String shipToCountryCode = "";
-
         ApiResponse<GetPrepInstructionsResponse> response = api.getPrepInstructionsWithHttpInfo(shipToCountryCode, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -149,7 +80,6 @@ private final FbaInboundApi api = new FbaInboundApi.Builder()
     public void getShipmentItemsTest() throws Exception {
         instructBackendMock("getShipmentItems", "200");
         String queryType = "";String marketplaceId = "";
-
         ApiResponse<GetShipmentItemsResponse> response = api.getShipmentItemsWithHttpInfo(queryType, marketplaceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
@@ -160,7 +90,6 @@ private final FbaInboundApi api = new FbaInboundApi.Builder()
     public void getShipmentItemsByShipmentIdTest() throws Exception {
         instructBackendMock("getShipmentItemsByShipmentId", "200");
         String shipmentId = "";
-
         ApiResponse<GetShipmentItemsResponse> response = api.getShipmentItemsByShipmentIdWithHttpInfo(shipmentId, null);
 
         assertEquals(200, response.getStatusCode());
@@ -171,55 +100,19 @@ private final FbaInboundApi api = new FbaInboundApi.Builder()
     public void getShipmentsTest() throws Exception {
         instructBackendMock("getShipments", "200");
         String queryType = "";String marketplaceId = "";
-
         ApiResponse<GetShipmentsResponse> response = api.getShipmentsWithHttpInfo(queryType, marketplaceId, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
-    @Test
-    public void getTransportDetailsTest() throws Exception {
-        instructBackendMock("getTransportDetails", "200");
-        String shipmentId = "";
 
-        ApiResponse<GetTransportDetailsResponse> response = api.getTransportDetailsWithHttpInfo(shipmentId);
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
 
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
     }
-
-    @Test
-    public void putTransportDetailsTest() throws Exception {
-        instructBackendMock("putTransportDetails", "200");
-        PutTransportDetailsRequest body = new PutTransportDetailsRequest();String shipmentId = "";
-
-        ApiResponse<PutTransportDetailsResponse> response = api.putTransportDetailsWithHttpInfo(body, shipmentId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void updateInboundShipmentTest() throws Exception {
-        instructBackendMock("updateInboundShipment", "200");
-        InboundShipmentRequest body = new InboundShipmentRequest();String shipmentId = "";
-
-        ApiResponse<InboundShipmentResponse> response = api.updateInboundShipmentWithHttpInfo(body, shipmentId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
-    @Test
-    public void voidTransportTest() throws Exception {
-        instructBackendMock("voidTransport", "200");
-        String shipmentId = "";
-
-        ApiResponse<VoidTransportResponse> response = api.voidTransportWithHttpInfo(shipmentId);
-
-        assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
-    }
-
 }

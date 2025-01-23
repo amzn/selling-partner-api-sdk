@@ -13,30 +13,52 @@
 package com.amazon.SellingPartnerAPI.api.uploads.v2020_11_01;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.uploads.v2020_11_01.CreateUploadDestinationResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UploadsApiTest extends ApiTest {
+public class UploadsApiTest {
 
-private final UploadsApi api = new UploadsApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final UploadsApi api = new UploadsApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void createUploadDestinationForResourceTest() throws Exception {
         instructBackendMock("createUploadDestinationForResource", "201");
-        List<String> marketplaceIds = new ArrayList<>();String contentMD5 = "";String resource = "";
-
+        List<String> marketplaceIds = new ArrayList<>();
+String contentMD5 = "";String resource = "";
         ApiResponse<CreateUploadDestinationResponse> response = api.createUploadDestinationForResourceWithHttpInfo(marketplaceIds, contentMD5, resource, null);
 
         assertEquals(201, response.getStatusCode());
         if(201 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

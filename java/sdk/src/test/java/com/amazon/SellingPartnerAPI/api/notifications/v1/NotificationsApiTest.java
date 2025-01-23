@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.notifications.v1;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.notifications.v1.CreateDestinationRequest;
 import com.amazon.SellingPartnerAPI.models.notifications.v1.CreateDestinationResponse;
 import com.amazon.SellingPartnerAPI.models.notifications.v1.CreateSubscriptionRequest;
@@ -26,16 +26,29 @@ import com.amazon.SellingPartnerAPI.models.notifications.v1.GetSubscriptionByIdR
 import com.amazon.SellingPartnerAPI.models.notifications.v1.GetSubscriptionResponse;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class NotificationsApiTest extends ApiTest {
+public class NotificationsApiTest {
 
-private final NotificationsApi api = new NotificationsApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final NotificationsApi api = new NotificationsApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void createDestinationTest() throws Exception {
@@ -51,8 +64,8 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     @Test
     public void createSubscriptionTest() throws Exception {
         instructBackendMock("createSubscription", "200");
-        CreateSubscriptionRequest body = new CreateSubscriptionRequest();String notificationType = "";
-
+        CreateSubscriptionRequest body = new CreateSubscriptionRequest();
+String notificationType = "";
         ApiResponse<CreateSubscriptionResponse> response = api.createSubscriptionWithHttpInfo(body, notificationType);
 
         assertEquals(200, response.getStatusCode());
@@ -63,7 +76,6 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     public void deleteDestinationTest() throws Exception {
         instructBackendMock("deleteDestination", "200");
         String destinationId = "";
-
         ApiResponse<DeleteDestinationResponse> response = api.deleteDestinationWithHttpInfo(destinationId);
 
         assertEquals(200, response.getStatusCode());
@@ -74,7 +86,6 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     public void deleteSubscriptionByIdTest() throws Exception {
         instructBackendMock("deleteSubscriptionById", "200");
         String subscriptionId = "";String notificationType = "";
-
         ApiResponse<DeleteSubscriptionByIdResponse> response = api.deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
 
         assertEquals(200, response.getStatusCode());
@@ -85,7 +96,6 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     public void getDestinationTest() throws Exception {
         instructBackendMock("getDestination", "200");
         String destinationId = "";
-
         ApiResponse<GetDestinationResponse> response = api.getDestinationWithHttpInfo(destinationId);
 
         assertEquals(200, response.getStatusCode());
@@ -96,7 +106,6 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     public void getDestinationsTest() throws Exception {
         instructBackendMock("getDestinations", "200");
         
-
         ApiResponse<GetDestinationsResponse> response = api.getDestinationsWithHttpInfo();
 
         assertEquals(200, response.getStatusCode());
@@ -107,7 +116,6 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     public void getSubscriptionTest() throws Exception {
         instructBackendMock("getSubscription", "200");
         String notificationType = "";
-
         ApiResponse<GetSubscriptionResponse> response = api.getSubscriptionWithHttpInfo(notificationType, null);
 
         assertEquals(200, response.getStatusCode());
@@ -118,11 +126,19 @@ private final NotificationsApi api = new NotificationsApi.Builder()
     public void getSubscriptionByIdTest() throws Exception {
         instructBackendMock("getSubscriptionById", "200");
         String subscriptionId = "";String notificationType = "";
-
         ApiResponse<GetSubscriptionByIdResponse> response = api.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
 
         assertEquals(200, response.getStatusCode());
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }

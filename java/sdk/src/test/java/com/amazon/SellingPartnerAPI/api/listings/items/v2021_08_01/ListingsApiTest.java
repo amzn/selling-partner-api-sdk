@@ -13,7 +13,7 @@
 package com.amazon.SellingPartnerAPI.api.listings.items.v2021_08_01;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
-import com.amazon.SellingPartnerAPI.api.commons.ApiTest;
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPI.models.listings.items.v2021_08_01.ErrorList;
 import com.amazon.SellingPartnerAPI.models.listings.items.v2021_08_01.Item;
 import com.amazon.SellingPartnerAPI.models.listings.items.v2021_08_01.ItemSearchResults;
@@ -23,16 +23,29 @@ import com.amazon.SellingPartnerAPI.models.listings.items.v2021_08_01.ListingsIt
 import org.threeten.bp.OffsetDateTime;
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ListingsApiTest extends ApiTest {
+public class ListingsApiTest {
 
-private final ListingsApi api = new ListingsApi.Builder()
-    .lwaAuthorizationCredentials(credentials)
-    .endpoint(endpoint)
-    .build();
+   private static String endpoint = "http://localhost:3000";
+   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+        .clientId("clientId")
+        .clientSecret("clientSecret")
+        .refreshToken("refreshToken")
+        .endpoint(authEndpoint)
+        .build();
+
+   private final ListingsApi api = new ListingsApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint(endpoint)
+        .build();
 
     @Test
     public void deleteListingsItemTest() throws Exception {
@@ -59,7 +72,8 @@ private final ListingsApi api = new ListingsApi.Builder()
     @Test
     public void patchListingsItemTest() throws Exception {
         instructBackendMock("patchListingsItem", "200");
-        ListingsItemPatchRequest body = new ListingsItemPatchRequest();String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
+        ListingsItemPatchRequest body = new ListingsItemPatchRequest();
+String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.patchListingsItemWithHttpInfo(body, sellerId, sku, marketplaceIds, null, null, null);
 
@@ -70,7 +84,8 @@ private final ListingsApi api = new ListingsApi.Builder()
     @Test
     public void putListingsItemTest() throws Exception {
         instructBackendMock("putListingsItem", "200");
-        ListingsItemPutRequest body = new ListingsItemPutRequest();String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
+        ListingsItemPutRequest body = new ListingsItemPutRequest();
+String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.putListingsItemWithHttpInfo(body, sellerId, sku, marketplaceIds, null, null, null);
 
@@ -89,4 +104,13 @@ private final ListingsApi api = new ListingsApi.Builder()
         if(200 != 204) assertNotNull(response.getData());
     }
 
+
+    private void instructBackendMock(String response, String code) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+              .POST(HttpRequest.BodyPublishers.noBody())
+              .build();
+
+        HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
 }
