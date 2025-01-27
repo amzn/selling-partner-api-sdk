@@ -1,0 +1,60 @@
+name: Test PHP SDK
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: json, curl, simplexml, spl, pcre
+          coverage: xdebug
+
+      - name: Validate composer.json and composer.lock
+        working-directory: ./php
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: php/vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        working-directory: ./php
+        run: composer install --prefer-dist --no-progress
+
+      - name: Create .env file to test SP-API endpoints
+        working-directory: ./php
+        run: |
+          echo "SP_API_CLIENT_ID=${{ secrets.SP_API_CLIENT_ID }}" >> .env
+          echo "SP_API_CLIENT_SECRET=${{ secrets.SP_API_CLIENT_SECRET }}" >> .env
+          echo "SP_API_REFRESH_TOKEN=${{ secrets.SP_API_REFRESH_TOKEN }}" >> .env
+          echo "SP_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
+          echo "SP_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
+          echo "SP_API_MARKETPLACE=ATVPDKIKX0DER" >> .env
+          echo "VENDOR_API_CLIENT_ID=${{ secrets.VENDOR_API_CLIENT_ID }}" >> .env
+          echo "VENDOR_API_CLIENT_SECRET=${{ secrets.VENDOR_API_CLIENT_SECRET }}" >> .env
+          echo "VENDOR_API_REFRESH_TOKEN=${{ secrets.VENDOR_API_REFRESH_TOKEN }}" >> .env
+          echo "VENDOR_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
+          echo "VENDOR_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
+          echo "VENDOR_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
+
+      - name: Test with PHPUnit and cleanup
+        working-directory: ./php
+        run: |
+          if ! vendor/bin/phpunit sdk/test/Api --testdox; then
+            echo "Tests failed"
+            exit 1
+          fi
