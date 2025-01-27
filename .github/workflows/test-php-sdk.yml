@@ -54,7 +54,14 @@ jobs:
       - name: Test with PHPUnit and cleanup
         working-directory: ./php
         run: |
+          mkdir -p build/reports
           if ! vendor/bin/phpunit sdk/test/Api --testdox; then
             echo "Tests failed"
             exit 1
           fi
+      - name: Archive reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-test-reports
+          path: ./php/build/reports
