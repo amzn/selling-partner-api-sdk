@@ -46,7 +46,7 @@ jobs:
         working-directory: ./php
         run: |
           mkdir -p build/reports
-          if ! vendor/bin/phpunit sdk/test/Api --testdox --log-junit build/reports/junit.xml; then
+          if ! vendor/bin/phpunit sdk/test/Api --testdox --log-json build/reports/results.json; then
             echo "Tests failed"
             exit 1
           fi
