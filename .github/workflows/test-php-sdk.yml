@@ -46,7 +46,7 @@ jobs:
         working-directory: ./php
         run: |
           mkdir -p build/reports
-          if ! vendor/bin/phpunit sdk/test/Api --testdox; then
+          if ! vendor/bin/phpunit sdk/test/Api --testdox --log-junit build/reports/junit.xml; then
             echo "Tests failed"
             exit 1
           fi
@@ -56,5 +56,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: php-test-reports
-          path: ./php/build/reports
-          
+          path: php/build/reports
