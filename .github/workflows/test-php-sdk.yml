@@ -22,15 +22,6 @@ jobs:
         working-directory: ./php
         run: composer validate --strict
 
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v3
-        with:
-          path: php/vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
-
       - name: Install dependencies
         working-directory: ./php
         run: composer install --prefer-dist --no-progress
@@ -59,6 +50,7 @@ jobs:
             echo "Tests failed"
             exit 1
           fi
+
       - name: Archive reports
         if: always()
         uses: actions/upload-artifact@v4
