@@ -53,7 +53,7 @@ public class ProductPricingApiTest {
         ApiResponse<CompetitiveSummaryBatchResponse> response = api.getCompetitiveSummaryWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ProductPricingApiTest {
         ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse> response = api.getFeaturedOfferExpectedPriceBatchWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -75,5 +75,9 @@ public class ProductPricingApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

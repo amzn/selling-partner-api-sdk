@@ -51,31 +51,35 @@ public class VendorShippingLabelsApiTest {
     public void createShippingLabelsTest() throws Exception {
         instructBackendMock("createShippingLabels", "200");
         CreateShippingLabelsRequest body = new CreateShippingLabelsRequest();
-String purchaseOrderNumber = "";
+        String purchaseOrderNumber = "";
+
         ApiResponse<ShippingLabel> response = api.createShippingLabelsWithHttpInfo(body, purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShippingLabelTest() throws Exception {
         instructBackendMock("getShippingLabel", "200");
         String purchaseOrderNumber = "";
+
         ApiResponse<ShippingLabel> response = api.getShippingLabelWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShippingLabelsTest() throws Exception {
         instructBackendMock("getShippingLabels", "200");
-        OffsetDateTime createdAfter = OffsetDateTime.now();OffsetDateTime createdBefore = OffsetDateTime.now();
+        OffsetDateTime createdAfter = OffsetDateTime.now();
+        OffsetDateTime createdBefore = OffsetDateTime.now();
+
         ApiResponse<ShippingLabelList> response = api.getShippingLabelsWithHttpInfo(createdAfter, createdBefore, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -86,7 +90,7 @@ String purchaseOrderNumber = "";
         ApiResponse<TransactionReference> response = api.submitShippingLabelRequestWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
 
@@ -97,5 +101,9 @@ String purchaseOrderNumber = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

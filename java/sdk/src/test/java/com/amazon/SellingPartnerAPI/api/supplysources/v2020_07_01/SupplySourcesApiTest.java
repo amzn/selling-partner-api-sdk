@@ -52,10 +52,11 @@ public class SupplySourcesApiTest {
     public void archiveSupplySourceTest() throws Exception {
         instructBackendMock("archiveSupplySource", "204");
         String supplySourceId = "";
+
         ApiResponse<ErrorList> response = api.archiveSupplySourceWithHttpInfo(supplySourceId);
 
         assertEquals(204, response.getStatusCode());
-        if(204 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(204, response.getData());
     }
 
     @Test
@@ -66,47 +67,50 @@ public class SupplySourcesApiTest {
         ApiResponse<CreateSupplySourceResponse> response = api.createSupplySourceWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getSupplySourceTest() throws Exception {
         instructBackendMock("getSupplySource", "200");
         String supplySourceId = "";
+
         ApiResponse<SupplySource> response = api.getSupplySourceWithHttpInfo(supplySourceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getSupplySourcesTest() throws Exception {
         instructBackendMock("getSupplySources", "200");
-        
+
         ApiResponse<GetSupplySourcesResponse> response = api.getSupplySourcesWithHttpInfo(null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void updateSupplySourceTest() throws Exception {
         instructBackendMock("updateSupplySource", "204");
         String supplySourceId = "";
+
         ApiResponse<ErrorList> response = api.updateSupplySourceWithHttpInfo(supplySourceId, null);
 
         assertEquals(204, response.getStatusCode());
-        if(204 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(204, response.getData());
     }
 
     @Test
     public void updateSupplySourceStatusTest() throws Exception {
         instructBackendMock("updateSupplySourceStatus", "204");
         String supplySourceId = "";
+
         ApiResponse<ErrorList> response = api.updateSupplySourceStatusWithHttpInfo(supplySourceId, null);
 
         assertEquals(204, response.getStatusCode());
-        if(204 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(204, response.getData());
     }
 
 
@@ -117,5 +121,9 @@ public class SupplySourcesApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

@@ -50,20 +50,23 @@ public class VendorOrdersApiTest {
     public void getOrderTest() throws Exception {
         instructBackendMock("getOrder", "200");
         String purchaseOrderNumber = "";
+
         ApiResponse<Order> response = api.getOrderWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getOrdersTest() throws Exception {
         instructBackendMock("getOrders", "200");
-        OffsetDateTime createdAfter = OffsetDateTime.now();OffsetDateTime createdBefore = OffsetDateTime.now();
+        OffsetDateTime createdAfter = OffsetDateTime.now();
+        OffsetDateTime createdBefore = OffsetDateTime.now();
+
         ApiResponse<OrderList> response = api.getOrdersWithHttpInfo(createdAfter, createdBefore, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -74,7 +77,7 @@ public class VendorOrdersApiTest {
         ApiResponse<TransactionId> response = api.submitAcknowledgementWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
 
@@ -85,5 +88,9 @@ public class VendorOrdersApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

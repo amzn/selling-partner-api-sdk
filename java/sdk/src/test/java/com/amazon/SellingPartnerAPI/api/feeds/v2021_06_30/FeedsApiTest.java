@@ -53,6 +53,7 @@ public class FeedsApiTest {
     public void cancelFeedTest() throws Exception {
         instructBackendMock("cancelFeed", "200");
         String feedId = "";
+
         api.cancelFeedWithHttpInfo(feedId);
 
     }
@@ -65,7 +66,7 @@ public class FeedsApiTest {
         ApiResponse<CreateFeedResponse> response = api.createFeedWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
     @Test
@@ -76,37 +77,39 @@ public class FeedsApiTest {
         ApiResponse<CreateFeedDocumentResponse> response = api.createFeedDocumentWithHttpInfo(body);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void getFeedTest() throws Exception {
         instructBackendMock("getFeed", "200");
         String feedId = "";
+
         ApiResponse<Feed> response = api.getFeedWithHttpInfo(feedId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFeedDocumentTest() throws Exception {
         instructBackendMock("getFeedDocument", "200");
         String feedDocumentId = "";
+
         ApiResponse<FeedDocument> response = api.getFeedDocumentWithHttpInfo(feedDocumentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFeedsTest() throws Exception {
         instructBackendMock("getFeeds", "200");
-        
+
         ApiResponse<GetFeedsResponse> response = api.getFeedsWithHttpInfo(null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -117,5 +120,9 @@ public class FeedsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

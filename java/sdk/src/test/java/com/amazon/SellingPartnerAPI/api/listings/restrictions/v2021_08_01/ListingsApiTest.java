@@ -45,12 +45,14 @@ public class ListingsApiTest {
     @Test
     public void getListingsRestrictionsTest() throws Exception {
         instructBackendMock("getListingsRestrictions", "200");
-        String asin = "";String sellerId = "";List<String> marketplaceIds = new ArrayList<>();
+        String asin = "";
+        String sellerId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<RestrictionList> response = api.getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -61,5 +63,9 @@ public class ListingsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

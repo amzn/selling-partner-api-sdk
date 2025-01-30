@@ -45,11 +45,13 @@ public class UploadsApiTest {
     public void createUploadDestinationForResourceTest() throws Exception {
         instructBackendMock("createUploadDestinationForResource", "201");
         List<String> marketplaceIds = new ArrayList<>();
-String contentMD5 = "";String resource = "";
+        String contentMD5 = "";
+        String resource = "";
+
         ApiResponse<CreateUploadDestinationResponse> response = api.createUploadDestinationForResourceWithHttpInfo(marketplaceIds, contentMD5, resource, null);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
 
@@ -60,5 +62,9 @@ String contentMD5 = "";String resource = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

@@ -58,67 +58,74 @@ public class InvoicesApiTest {
         ApiResponse<ExportInvoicesResponse> response = api.createInvoicesExportWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
     @Test
     public void getInvoiceTest() throws Exception {
         instructBackendMock("getInvoice", "200");
-        String marketplaceId = "";String invoiceId = "";
+        String marketplaceId = "";
+        String invoiceId = "";
+
         ApiResponse<GetInvoiceResponse> response = api.getInvoiceWithHttpInfo(marketplaceId, invoiceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getInvoicesTest() throws Exception {
         instructBackendMock("getInvoices", "200");
         String marketplaceId = "";
+
         ApiResponse<GetInvoicesResponse> response = api.getInvoicesWithHttpInfo(marketplaceId, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getInvoicesAttributesTest() throws Exception {
         instructBackendMock("getInvoicesAttributes", "200");
         String marketplaceId = "";
+
         ApiResponse<GetInvoicesAttributesResponse> response = api.getInvoicesAttributesWithHttpInfo(marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getInvoicesDocumentTest() throws Exception {
         instructBackendMock("getInvoicesDocument", "200");
         String invoicesDocumentId = "";
+
         ApiResponse<GetInvoicesDocumentResponse> response = api.getInvoicesDocumentWithHttpInfo(invoicesDocumentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getInvoicesExportTest() throws Exception {
         instructBackendMock("getInvoicesExport", "200");
         String exportId = "";
+
         ApiResponse<GetInvoicesExportResponse> response = api.getInvoicesExportWithHttpInfo(exportId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getInvoicesExportsTest() throws Exception {
         instructBackendMock("getInvoicesExports", "200");
         String marketplaceId = "";
+
         ApiResponse<GetInvoicesExportsResponse> response = api.getInvoicesExportsWithHttpInfo(marketplaceId, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -129,5 +136,9 @@ public class InvoicesApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

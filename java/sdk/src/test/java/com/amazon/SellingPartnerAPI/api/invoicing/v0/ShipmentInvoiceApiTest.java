@@ -48,31 +48,34 @@ public class ShipmentInvoiceApiTest {
     public void getInvoiceStatusTest() throws Exception {
         instructBackendMock("getInvoiceStatus", "200");
         String shipmentId = "";
+
         ApiResponse<GetInvoiceStatusResponse> response = api.getInvoiceStatusWithHttpInfo(shipmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShipmentDetailsTest() throws Exception {
         instructBackendMock("getShipmentDetails", "200");
         String shipmentId = "";
+
         ApiResponse<GetShipmentDetailsResponse> response = api.getShipmentDetailsWithHttpInfo(shipmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void submitInvoiceTest() throws Exception {
         instructBackendMock("submitInvoice", "200");
         SubmitInvoiceRequest body = new SubmitInvoiceRequest();
-String shipmentId = "";
+        String shipmentId = "";
+
         ApiResponse<SubmitInvoiceResponse> response = api.submitInvoiceWithHttpInfo(body, shipmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -83,5 +86,9 @@ String shipmentId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

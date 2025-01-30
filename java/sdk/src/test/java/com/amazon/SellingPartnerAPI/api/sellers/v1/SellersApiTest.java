@@ -45,21 +45,21 @@ public class SellersApiTest {
     @Test
     public void getAccountTest() throws Exception {
         instructBackendMock("getAccount", "200");
-        
+
         ApiResponse<GetAccountResponse> response = api.getAccountWithHttpInfo();
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getMarketplaceParticipationsTest() throws Exception {
         instructBackendMock("getMarketplaceParticipations", "200");
-        
+
         ApiResponse<GetMarketplaceParticipationsResponse> response = api.getMarketplaceParticipationsWithHttpInfo();
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -70,5 +70,9 @@ public class SellersApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

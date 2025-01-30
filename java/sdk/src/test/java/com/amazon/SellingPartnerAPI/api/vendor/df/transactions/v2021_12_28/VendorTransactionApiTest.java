@@ -47,10 +47,11 @@ public class VendorTransactionApiTest {
     public void getTransactionStatusTest() throws Exception {
         instructBackendMock("getTransactionStatus", "200");
         String transactionId = "";
+
         ApiResponse<TransactionStatus> response = api.getTransactionStatusWithHttpInfo(transactionId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -61,5 +62,9 @@ public class VendorTransactionApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

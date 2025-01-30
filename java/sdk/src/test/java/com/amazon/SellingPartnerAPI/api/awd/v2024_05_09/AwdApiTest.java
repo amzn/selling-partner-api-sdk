@@ -49,30 +49,31 @@ public class AwdApiTest {
     public void getInboundShipmentTest() throws Exception {
         instructBackendMock("getInboundShipment", "200");
         String shipmentId = "";
+
         ApiResponse<InboundShipment> response = api.getInboundShipmentWithHttpInfo(shipmentId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listInboundShipmentsTest() throws Exception {
         instructBackendMock("listInboundShipments", "200");
-        
+
         ApiResponse<ShipmentListing> response = api.listInboundShipmentsWithHttpInfo(null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listInventoryTest() throws Exception {
         instructBackendMock("listInventory", "200");
-        
+
         ApiResponse<InventoryListing> response = api.listInventoryWithHttpInfo(null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -83,5 +84,9 @@ public class AwdApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

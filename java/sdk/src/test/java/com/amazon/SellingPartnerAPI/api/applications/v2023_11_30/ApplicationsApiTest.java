@@ -44,7 +44,7 @@ public class ApplicationsApiTest {
     @Test
     public void rotateApplicationClientSecretTest() throws Exception {
         instructBackendMock("rotateApplicationClientSecret", "204");
-        
+
         api.rotateApplicationClientSecretWithHttpInfo();
 
     }
@@ -57,5 +57,9 @@ public class ApplicationsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

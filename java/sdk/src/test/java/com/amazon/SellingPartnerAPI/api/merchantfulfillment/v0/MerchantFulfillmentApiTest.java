@@ -52,10 +52,11 @@ public class MerchantFulfillmentApiTest {
     public void cancelShipmentTest() throws Exception {
         instructBackendMock("cancelShipment", "200");
         String shipmentId = "";
+
         ApiResponse<CancelShipmentResponse> response = api.cancelShipmentWithHttpInfo(shipmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -66,7 +67,7 @@ public class MerchantFulfillmentApiTest {
         ApiResponse<CreateShipmentResponse> response = api.createShipmentWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -77,7 +78,7 @@ public class MerchantFulfillmentApiTest {
         ApiResponse<GetAdditionalSellerInputsResponse> response = api.getAdditionalSellerInputsWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -88,17 +89,18 @@ public class MerchantFulfillmentApiTest {
         ApiResponse<GetEligibleShipmentServicesResponse> response = api.getEligibleShipmentServicesWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShipmentTest() throws Exception {
         instructBackendMock("getShipment", "200");
         String shipmentId = "";
+
         ApiResponse<GetShipmentResponse> response = api.getShipmentWithHttpInfo(shipmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -109,5 +111,9 @@ public class MerchantFulfillmentApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

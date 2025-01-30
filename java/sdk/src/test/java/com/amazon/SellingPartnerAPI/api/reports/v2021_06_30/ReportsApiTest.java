@@ -55,6 +55,7 @@ public class ReportsApiTest {
     public void cancelReportTest() throws Exception {
         instructBackendMock("cancelReport", "200");
         String reportId = "";
+
         api.cancelReportWithHttpInfo(reportId);
 
     }
@@ -63,6 +64,7 @@ public class ReportsApiTest {
     public void cancelReportScheduleTest() throws Exception {
         instructBackendMock("cancelReportSchedule", "200");
         String reportScheduleId = "";
+
         api.cancelReportScheduleWithHttpInfo(reportScheduleId);
 
     }
@@ -75,7 +77,7 @@ public class ReportsApiTest {
         ApiResponse<CreateReportResponse> response = api.createReportWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
     @Test
@@ -86,37 +88,40 @@ public class ReportsApiTest {
         ApiResponse<CreateReportScheduleResponse> response = api.createReportScheduleWithHttpInfo(body);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void getReportTest() throws Exception {
         instructBackendMock("getReport", "200");
         String reportId = "";
+
         ApiResponse<Report> response = api.getReportWithHttpInfo(reportId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getReportDocumentTest() throws Exception {
         instructBackendMock("getReportDocument", "200");
         String reportDocumentId = "";
+
         ApiResponse<ReportDocument> response = api.getReportDocumentWithHttpInfo(reportDocumentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getReportScheduleTest() throws Exception {
         instructBackendMock("getReportSchedule", "200");
         String reportScheduleId = "";
+
         ApiResponse<ReportSchedule> response = api.getReportScheduleWithHttpInfo(reportScheduleId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -127,17 +132,17 @@ public class ReportsApiTest {
         ApiResponse<ReportScheduleList> response = api.getReportSchedulesWithHttpInfo(reportTypes);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getReportsTest() throws Exception {
         instructBackendMock("getReports", "200");
-        
+
         ApiResponse<GetReportsResponse> response = api.getReportsWithHttpInfo(null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -148,5 +153,9 @@ public class ReportsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

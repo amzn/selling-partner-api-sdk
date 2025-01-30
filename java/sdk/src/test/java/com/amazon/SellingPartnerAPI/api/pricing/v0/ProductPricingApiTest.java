@@ -50,21 +50,26 @@ public class ProductPricingApiTest {
     @Test
     public void getCompetitivePricingTest() throws Exception {
         instructBackendMock("getCompetitivePricing", "200");
-        String marketplaceId = "";String itemType = "";
+        String marketplaceId = "";
+        String itemType = "";
+
         ApiResponse<GetPricingResponse> response = api.getCompetitivePricingWithHttpInfo(marketplaceId, itemType, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getItemOffersTest() throws Exception {
         instructBackendMock("getItemOffers", "200");
-        String marketplaceId = "";String itemCondition = "";String asin = "";
+        String marketplaceId = "";
+        String itemCondition = "";
+        String asin = "";
+
         ApiResponse<GetOffersResponse> response = api.getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -75,17 +80,20 @@ public class ProductPricingApiTest {
         ApiResponse<GetItemOffersBatchResponse> response = api.getItemOffersBatchWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getListingOffersTest() throws Exception {
         instructBackendMock("getListingOffers", "200");
-        String marketplaceId = "";String itemCondition = "";String sellerSKU = "";
+        String marketplaceId = "";
+        String itemCondition = "";
+        String sellerSKU = "";
+
         ApiResponse<GetOffersResponse> response = api.getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -96,17 +104,19 @@ public class ProductPricingApiTest {
         ApiResponse<GetListingOffersBatchResponse> response = api.getListingOffersBatchWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getPricingTest() throws Exception {
         instructBackendMock("getPricing", "200");
-        String marketplaceId = "";String itemType = "";
+        String marketplaceId = "";
+        String itemType = "";
+
         ApiResponse<GetPricingResponse> response = api.getPricingWithHttpInfo(marketplaceId, itemType, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -117,5 +127,9 @@ public class ProductPricingApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

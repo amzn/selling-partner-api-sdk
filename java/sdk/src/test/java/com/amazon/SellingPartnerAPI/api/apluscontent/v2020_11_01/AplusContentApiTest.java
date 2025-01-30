@@ -56,105 +56,122 @@ public class AplusContentApiTest {
     public void createContentDocumentTest() throws Exception {
         instructBackendMock("createContentDocument", "200");
         PostContentDocumentRequest body = new PostContentDocumentRequest();
-String marketplaceId = "";
+        String marketplaceId = "";
+
         ApiResponse<PostContentDocumentResponse> response = api.createContentDocumentWithHttpInfo(body, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getContentDocumentTest() throws Exception {
         instructBackendMock("getContentDocument", "200");
-        String contentReferenceKey = "";String marketplaceId = "";List<String> includedDataSet = new ArrayList<>();
+        String contentReferenceKey = "";
+        String marketplaceId = "";
+        List<String> includedDataSet = new ArrayList<>();
 
         ApiResponse<GetContentDocumentResponse> response = api.getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("listContentDocumentAsinRelations", "200");
-        String contentReferenceKey = "";String marketplaceId = "";
+        String contentReferenceKey = "";
+        String marketplaceId = "";
+
         ApiResponse<ListContentDocumentAsinRelationsResponse> response = api.listContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey, marketplaceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void postContentDocumentApprovalSubmissionTest() throws Exception {
         instructBackendMock("postContentDocumentApprovalSubmission", "200");
-        String contentReferenceKey = "";String marketplaceId = "";
+        String contentReferenceKey = "";
+        String marketplaceId = "";
+
         ApiResponse<PostContentDocumentApprovalSubmissionResponse> response = api.postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void postContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("postContentDocumentAsinRelations", "200");
         PostContentDocumentAsinRelationsRequest body = new PostContentDocumentAsinRelationsRequest();
-String contentReferenceKey = "";String marketplaceId = "";
+        String contentReferenceKey = "";
+        String marketplaceId = "";
+
         ApiResponse<PostContentDocumentAsinRelationsResponse> response = api.postContentDocumentAsinRelationsWithHttpInfo(body, contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void postContentDocumentSuspendSubmissionTest() throws Exception {
         instructBackendMock("postContentDocumentSuspendSubmission", "200");
-        String contentReferenceKey = "";String marketplaceId = "";
+        String contentReferenceKey = "";
+        String marketplaceId = "";
+
         ApiResponse<PostContentDocumentSuspendSubmissionResponse> response = api.postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void searchContentDocumentsTest() throws Exception {
         instructBackendMock("searchContentDocuments", "200");
         String marketplaceId = "";
+
         ApiResponse<SearchContentDocumentsResponse> response = api.searchContentDocumentsWithHttpInfo(marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void searchContentPublishRecordsTest() throws Exception {
         instructBackendMock("searchContentPublishRecords", "200");
-        String marketplaceId = "";String asin = "";
+        String marketplaceId = "";
+        String asin = "";
+
         ApiResponse<SearchContentPublishRecordsResponse> response = api.searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void updateContentDocumentTest() throws Exception {
         instructBackendMock("updateContentDocument", "200");
         PostContentDocumentRequest body = new PostContentDocumentRequest();
-String contentReferenceKey = "";String marketplaceId = "";
+        String contentReferenceKey = "";
+        String marketplaceId = "";
+
         ApiResponse<PostContentDocumentResponse> response = api.updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void validateContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("validateContentDocumentAsinRelations", "200");
         PostContentDocumentRequest body = new PostContentDocumentRequest();
-String marketplaceId = "";
+        String marketplaceId = "";
+
         ApiResponse<ValidateContentDocumentAsinRelationsResponse> response = api.validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -165,5 +182,9 @@ String marketplaceId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

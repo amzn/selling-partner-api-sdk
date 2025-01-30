@@ -65,10 +65,11 @@ public class FbaOutboundApiTest {
     public void cancelFulfillmentOrderTest() throws Exception {
         instructBackendMock("cancelFulfillmentOrder", "200");
         String sellerFulfillmentOrderId = "";
+
         ApiResponse<CancelFulfillmentOrderResponse> response = api.cancelFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -79,18 +80,19 @@ public class FbaOutboundApiTest {
         ApiResponse<CreateFulfillmentOrderResponse> response = api.createFulfillmentOrderWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void createFulfillmentReturnTest() throws Exception {
         instructBackendMock("createFulfillmentReturn", "200");
         CreateFulfillmentReturnRequest body = new CreateFulfillmentReturnRequest();
-String sellerFulfillmentOrderId = "";
+        String sellerFulfillmentOrderId = "";
+
         ApiResponse<CreateFulfillmentReturnResponse> response = api.createFulfillmentReturnWithHttpInfo(body, sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -101,47 +103,54 @@ String sellerFulfillmentOrderId = "";
         ApiResponse<GetDeliveryOffersResponse> response = api.deliveryOffersWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFeatureInventoryTest() throws Exception {
         instructBackendMock("getFeatureInventory", "200");
-        String marketplaceId = "";String featureName = "";
+        String marketplaceId = "";
+        String featureName = "";
+
         ApiResponse<GetFeatureInventoryResponse> response = api.getFeatureInventoryWithHttpInfo(marketplaceId, featureName, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFeatureSKUTest() throws Exception {
         instructBackendMock("getFeatureSKU", "200");
-        String marketplaceId = "";String featureName = "";String sellerSku = "";
+        String marketplaceId = "";
+        String featureName = "";
+        String sellerSku = "";
+
         ApiResponse<GetFeatureSkuResponse> response = api.getFeatureSKUWithHttpInfo(marketplaceId, featureName, sellerSku);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFeaturesTest() throws Exception {
         instructBackendMock("getFeatures", "200");
         String marketplaceId = "";
+
         ApiResponse<GetFeaturesResponse> response = api.getFeaturesWithHttpInfo(marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFulfillmentOrderTest() throws Exception {
         instructBackendMock("getFulfillmentOrder", "200");
         String sellerFulfillmentOrderId = "";
+
         ApiResponse<GetFulfillmentOrderResponse> response = api.getFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -152,59 +161,63 @@ String sellerFulfillmentOrderId = "";
         ApiResponse<GetFulfillmentPreviewResponse> response = api.getFulfillmentPreviewWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getPackageTrackingDetailsTest() throws Exception {
         instructBackendMock("getPackageTrackingDetails", "200");
         int packageNumber = 1;
+
         ApiResponse<GetPackageTrackingDetailsResponse> response = api.getPackageTrackingDetailsWithHttpInfo(packageNumber);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listAllFulfillmentOrdersTest() throws Exception {
         instructBackendMock("listAllFulfillmentOrders", "200");
-        
+
         ApiResponse<ListAllFulfillmentOrdersResponse> response = api.listAllFulfillmentOrdersWithHttpInfo(null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listReturnReasonCodesTest() throws Exception {
         instructBackendMock("listReturnReasonCodes", "200");
         String sellerSku = "";
+
         ApiResponse<ListReturnReasonCodesResponse> response = api.listReturnReasonCodesWithHttpInfo(sellerSku, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void submitFulfillmentOrderStatusUpdateTest() throws Exception {
         instructBackendMock("submitFulfillmentOrderStatusUpdate", "200");
         SubmitFulfillmentOrderStatusUpdateRequest body = new SubmitFulfillmentOrderStatusUpdateRequest();
-String sellerFulfillmentOrderId = "";
+        String sellerFulfillmentOrderId = "";
+
         ApiResponse<SubmitFulfillmentOrderStatusUpdateResponse> response = api.submitFulfillmentOrderStatusUpdateWithHttpInfo(body, sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void updateFulfillmentOrderTest() throws Exception {
         instructBackendMock("updateFulfillmentOrder", "200");
         UpdateFulfillmentOrderRequest body = new UpdateFulfillmentOrderRequest();
-String sellerFulfillmentOrderId = "";
+        String sellerFulfillmentOrderId = "";
+
         ApiResponse<UpdateFulfillmentOrderResponse> response = api.updateFulfillmentOrderWithHttpInfo(body, sellerFulfillmentOrderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -215,5 +228,9 @@ String sellerFulfillmentOrderId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

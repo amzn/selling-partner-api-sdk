@@ -51,11 +51,12 @@ public class FbaInventoryApiTest {
     public void addInventoryTest() throws Exception {
         instructBackendMock("addInventory", "200");
         AddInventoryRequest body = new AddInventoryRequest();
-String xAmznIdempotencyToken = "";
+        String xAmznIdempotencyToken = "";
+
         ApiResponse<AddInventoryResponse> response = api.addInventoryWithHttpInfo(body, xAmznIdempotencyToken);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -66,28 +67,32 @@ String xAmznIdempotencyToken = "";
         ApiResponse<CreateInventoryItemResponse> response = api.createInventoryItemWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void deleteInventoryItemTest() throws Exception {
         instructBackendMock("deleteInventoryItem", "200");
-        String sellerSku = "";String marketplaceId = "";
+        String sellerSku = "";
+        String marketplaceId = "";
+
         ApiResponse<DeleteInventoryItemResponse> response = api.deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getInventorySummariesTest() throws Exception {
         instructBackendMock("getInventorySummaries", "200");
-        String granularityType = "";String granularityId = "";List<String> marketplaceIds = new ArrayList<>();
+        String granularityType = "";
+        String granularityId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetInventorySummariesResponse> response = api.getInventorySummariesWithHttpInfo(granularityType, granularityId, marketplaceIds, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -98,5 +103,9 @@ String xAmznIdempotencyToken = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

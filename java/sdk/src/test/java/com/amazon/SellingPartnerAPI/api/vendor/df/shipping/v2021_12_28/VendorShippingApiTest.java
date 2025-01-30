@@ -51,20 +51,23 @@ public class VendorShippingApiTest {
     public void getPackingSlipTest() throws Exception {
         instructBackendMock("getPackingSlip", "200");
         String purchaseOrderNumber = "";
+
         ApiResponse<PackingSlip> response = api.getPackingSlipWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getPackingSlipsTest() throws Exception {
         instructBackendMock("getPackingSlips", "200");
-        OffsetDateTime createdAfter = OffsetDateTime.now();OffsetDateTime createdBefore = OffsetDateTime.now();
+        OffsetDateTime createdAfter = OffsetDateTime.now();
+        OffsetDateTime createdBefore = OffsetDateTime.now();
+
         ApiResponse<PackingSlipList> response = api.getPackingSlipsWithHttpInfo(createdAfter, createdBefore, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -75,7 +78,7 @@ public class VendorShippingApiTest {
         ApiResponse<TransactionReference> response = api.submitShipmentConfirmationsWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
     @Test
@@ -86,7 +89,7 @@ public class VendorShippingApiTest {
         ApiResponse<TransactionReference> response = api.submitShipmentStatusUpdatesWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
 
@@ -97,5 +100,9 @@ public class VendorShippingApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

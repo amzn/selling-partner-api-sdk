@@ -46,41 +46,43 @@ public class DefaultApiTest {
     @Test
     public void listFinancialEventGroupsTest() throws Exception {
         instructBackendMock("listFinancialEventGroups", "200");
-        
+
         ApiResponse<ListFinancialEventGroupsResponse> response = api.listFinancialEventGroupsWithHttpInfo(null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listFinancialEventsTest() throws Exception {
         instructBackendMock("listFinancialEvents", "200");
-        
+
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsWithHttpInfo(null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listFinancialEventsByGroupIdTest() throws Exception {
         instructBackendMock("listFinancialEventsByGroupId", "200");
         String eventGroupId = "";
+
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsByGroupIdWithHttpInfo(eventGroupId, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listFinancialEventsByOrderIdTest() throws Exception {
         instructBackendMock("listFinancialEventsByOrderId", "200");
         String orderId = "";
+
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsByOrderIdWithHttpInfo(orderId, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -91,5 +93,9 @@ public class DefaultApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

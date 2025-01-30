@@ -45,23 +45,25 @@ public class SolicitationsApiTest {
     @Test
     public void createProductReviewAndSellerFeedbackSolicitationTest() throws Exception {
         instructBackendMock("createProductReviewAndSellerFeedbackSolicitation", "201");
-        String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateProductReviewAndSellerFeedbackSolicitationResponse> response = api.createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void getSolicitationActionsForOrderTest() throws Exception {
         instructBackendMock("getSolicitationActionsForOrder", "200");
-        String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetSolicitationActionsForOrderResponse> response = api.getSolicitationActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -72,5 +74,9 @@ public class SolicitationsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

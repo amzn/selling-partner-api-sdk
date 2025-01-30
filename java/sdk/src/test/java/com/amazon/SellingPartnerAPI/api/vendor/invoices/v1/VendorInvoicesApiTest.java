@@ -50,7 +50,7 @@ public class VendorInvoicesApiTest {
         ApiResponse<SubmitInvoicesResponse> response = api.submitInvoicesWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
 
@@ -61,5 +61,9 @@ public class VendorInvoicesApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

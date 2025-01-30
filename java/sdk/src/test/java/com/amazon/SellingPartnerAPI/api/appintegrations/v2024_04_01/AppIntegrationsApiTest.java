@@ -53,7 +53,7 @@ public class AppIntegrationsApiTest {
         ApiResponse<CreateNotificationResponse> response = api.createNotificationWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -69,7 +69,8 @@ public class AppIntegrationsApiTest {
     public void recordActionFeedbackTest() throws Exception {
         instructBackendMock("recordActionFeedback", "204");
         RecordActionFeedbackRequest body = new RecordActionFeedbackRequest();
-String notificationId = "";
+        String notificationId = "";
+
         api.recordActionFeedbackWithHttpInfo(body, notificationId);
 
     }
@@ -82,5 +83,9 @@ String notificationId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

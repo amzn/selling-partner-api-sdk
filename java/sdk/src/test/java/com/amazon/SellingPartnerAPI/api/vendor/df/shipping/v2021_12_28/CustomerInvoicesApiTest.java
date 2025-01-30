@@ -48,20 +48,23 @@ public class CustomerInvoicesApiTest {
     public void getCustomerInvoiceTest() throws Exception {
         instructBackendMock("getCustomerInvoice", "200");
         String purchaseOrderNumber = "";
+
         ApiResponse<CustomerInvoice> response = api.getCustomerInvoiceWithHttpInfo(purchaseOrderNumber);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getCustomerInvoicesTest() throws Exception {
         instructBackendMock("getCustomerInvoices", "200");
-        OffsetDateTime createdAfter = OffsetDateTime.now();OffsetDateTime createdBefore = OffsetDateTime.now();
+        OffsetDateTime createdAfter = OffsetDateTime.now();
+        OffsetDateTime createdBefore = OffsetDateTime.now();
+
         ApiResponse<CustomerInvoiceList> response = api.getCustomerInvoicesWithHttpInfo(createdAfter, createdBefore, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -72,5 +75,9 @@ public class CustomerInvoicesApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

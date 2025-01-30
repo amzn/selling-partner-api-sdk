@@ -46,12 +46,13 @@ public class CatalogItemsApiTest {
     @Test
     public void getCatalogItemTest() throws Exception {
         instructBackendMock("getCatalogItem", "200");
-        String asin = "";List<String> marketplaceIds = new ArrayList<>();
+        String asin = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<Item> response = api.getCatalogItemWithHttpInfo(asin, marketplaceIds, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -62,7 +63,7 @@ public class CatalogItemsApiTest {
         ApiResponse<ItemSearchResults> response = api.searchCatalogItemsWithHttpInfo(marketplaceIds, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -73,5 +74,9 @@ public class CatalogItemsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

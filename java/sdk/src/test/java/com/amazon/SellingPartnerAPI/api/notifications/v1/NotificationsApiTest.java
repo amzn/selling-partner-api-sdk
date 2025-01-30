@@ -58,78 +58,86 @@ public class NotificationsApiTest {
         ApiResponse<CreateDestinationResponse> response = api.createDestinationWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void createSubscriptionTest() throws Exception {
         instructBackendMock("createSubscription", "200");
         CreateSubscriptionRequest body = new CreateSubscriptionRequest();
-String notificationType = "";
+        String notificationType = "";
+
         ApiResponse<CreateSubscriptionResponse> response = api.createSubscriptionWithHttpInfo(body, notificationType);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void deleteDestinationTest() throws Exception {
         instructBackendMock("deleteDestination", "200");
         String destinationId = "";
+
         ApiResponse<DeleteDestinationResponse> response = api.deleteDestinationWithHttpInfo(destinationId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void deleteSubscriptionByIdTest() throws Exception {
         instructBackendMock("deleteSubscriptionById", "200");
-        String subscriptionId = "";String notificationType = "";
+        String subscriptionId = "";
+        String notificationType = "";
+
         ApiResponse<DeleteSubscriptionByIdResponse> response = api.deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getDestinationTest() throws Exception {
         instructBackendMock("getDestination", "200");
         String destinationId = "";
+
         ApiResponse<GetDestinationResponse> response = api.getDestinationWithHttpInfo(destinationId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getDestinationsTest() throws Exception {
         instructBackendMock("getDestinations", "200");
-        
+
         ApiResponse<GetDestinationsResponse> response = api.getDestinationsWithHttpInfo();
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getSubscriptionTest() throws Exception {
         instructBackendMock("getSubscription", "200");
         String notificationType = "";
+
         ApiResponse<GetSubscriptionResponse> response = api.getSubscriptionWithHttpInfo(notificationType, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getSubscriptionByIdTest() throws Exception {
         instructBackendMock("getSubscriptionById", "200");
-        String subscriptionId = "";String notificationType = "";
+        String subscriptionId = "";
+        String notificationType = "";
+
         ApiResponse<GetSubscriptionByIdResponse> response = api.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -140,5 +148,9 @@ String notificationType = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

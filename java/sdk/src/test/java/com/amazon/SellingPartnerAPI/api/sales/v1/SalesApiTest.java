@@ -45,11 +45,13 @@ public class SalesApiTest {
     public void getOrderMetricsTest() throws Exception {
         instructBackendMock("getOrderMetrics", "200");
         List<String> marketplaceIds = new ArrayList<>();
-String interval = "";String granularity = "";
+        String interval = "";
+        String granularity = "";
+
         ApiResponse<GetOrderMetricsResponse> response = api.getOrderMetricsWithHttpInfo(marketplaceIds, interval, granularity, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -60,5 +62,9 @@ String interval = "";String granularity = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

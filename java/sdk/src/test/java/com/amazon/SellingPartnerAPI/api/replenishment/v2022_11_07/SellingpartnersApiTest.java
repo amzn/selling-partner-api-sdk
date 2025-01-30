@@ -46,11 +46,11 @@ public class SellingpartnersApiTest {
     @Test
     public void getSellingPartnerMetricsTest() throws Exception {
         instructBackendMock("getSellingPartnerMetrics", "200");
-        
+
         ApiResponse<GetSellingPartnerMetricsResponse> response = api.getSellingPartnerMetricsWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -61,5 +61,9 @@ public class SellingpartnersApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

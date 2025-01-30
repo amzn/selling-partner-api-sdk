@@ -57,7 +57,7 @@ public class EasyShipApiTest {
         ApiResponse<ModelPackage> response = api.createScheduledPackageWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -68,37 +68,39 @@ public class EasyShipApiTest {
         ApiResponse<CreateScheduledPackagesResponse> response = api.createScheduledPackageBulkWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getScheduledPackageTest() throws Exception {
         instructBackendMock("getScheduledPackage", "200");
-        String amazonOrderId = "";String marketplaceId = "";
+        String amazonOrderId = "";
+        String marketplaceId = "";
+
         ApiResponse<ModelPackage> response = api.getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void listHandoverSlotsTest() throws Exception {
         instructBackendMock("listHandoverSlots", "200");
-        
+
         ApiResponse<ListHandoverSlotsResponse> response = api.listHandoverSlotsWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void updateScheduledPackagesTest() throws Exception {
         instructBackendMock("updateScheduledPackages", "200");
-        
+
         ApiResponse<Packages> response = api.updateScheduledPackagesWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -109,5 +111,9 @@ public class EasyShipApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

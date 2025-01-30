@@ -50,60 +50,70 @@ public class FbaInboundApiTest {
     public void getBillOfLadingTest() throws Exception {
         instructBackendMock("getBillOfLading", "200");
         String shipmentId = "";
+
         ApiResponse<GetBillOfLadingResponse> response = api.getBillOfLadingWithHttpInfo(shipmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getLabelsTest() throws Exception {
         instructBackendMock("getLabels", "200");
-        String shipmentId = "";String pageType = "";String labelType = "";
+        String shipmentId = "";
+        String pageType = "";
+        String labelType = "";
+
         ApiResponse<GetLabelsResponse> response = api.getLabelsWithHttpInfo(shipmentId, pageType, labelType, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getPrepInstructionsTest() throws Exception {
         instructBackendMock("getPrepInstructions", "200");
         String shipToCountryCode = "";
+
         ApiResponse<GetPrepInstructionsResponse> response = api.getPrepInstructionsWithHttpInfo(shipToCountryCode, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShipmentItemsTest() throws Exception {
         instructBackendMock("getShipmentItems", "200");
-        String queryType = "";String marketplaceId = "";
+        String queryType = "";
+        String marketplaceId = "";
+
         ApiResponse<GetShipmentItemsResponse> response = api.getShipmentItemsWithHttpInfo(queryType, marketplaceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShipmentItemsByShipmentIdTest() throws Exception {
         instructBackendMock("getShipmentItemsByShipmentId", "200");
         String shipmentId = "";
+
         ApiResponse<GetShipmentItemsResponse> response = api.getShipmentItemsByShipmentIdWithHttpInfo(shipmentId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShipmentsTest() throws Exception {
         instructBackendMock("getShipments", "200");
-        String queryType = "";String marketplaceId = "";
+        String queryType = "";
+        String marketplaceId = "";
+
         ApiResponse<GetShipmentsResponse> response = api.getShipmentsWithHttpInfo(queryType, marketplaceId, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -114,5 +124,9 @@ public class FbaInboundApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

@@ -67,153 +67,166 @@ public class MessagingApiTest {
     public void confirmCustomizationDetailsTest() throws Exception {
         instructBackendMock("confirmCustomizationDetails", "201");
         CreateConfirmCustomizationDetailsRequest body = new CreateConfirmCustomizationDetailsRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmCustomizationDetailsResponse> response = api.confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createAmazonMotorsTest() throws Exception {
         instructBackendMock("createAmazonMotors", "201");
         CreateAmazonMotorsRequest body = new CreateAmazonMotorsRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateAmazonMotorsResponse> response = api.createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createConfirmDeliveryDetailsTest() throws Exception {
         instructBackendMock("createConfirmDeliveryDetails", "201");
         CreateConfirmDeliveryDetailsRequest body = new CreateConfirmDeliveryDetailsRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmDeliveryDetailsResponse> response = api.createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createConfirmOrderDetailsTest() throws Exception {
         instructBackendMock("createConfirmOrderDetails", "201");
         CreateConfirmOrderDetailsRequest body = new CreateConfirmOrderDetailsRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmOrderDetailsResponse> response = api.createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createConfirmServiceDetailsTest() throws Exception {
         instructBackendMock("createConfirmServiceDetails", "201");
         CreateConfirmServiceDetailsRequest body = new CreateConfirmServiceDetailsRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmServiceDetailsResponse> response = api.createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createDigitalAccessKeyTest() throws Exception {
         instructBackendMock("createDigitalAccessKey", "201");
         CreateDigitalAccessKeyRequest body = new CreateDigitalAccessKeyRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateDigitalAccessKeyResponse> response = api.createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createLegalDisclosureTest() throws Exception {
         instructBackendMock("createLegalDisclosure", "201");
         CreateLegalDisclosureRequest body = new CreateLegalDisclosureRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateLegalDisclosureResponse> response = api.createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createNegativeFeedbackRemovalTest() throws Exception {
         instructBackendMock("createNegativeFeedbackRemoval", "201");
-        String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateNegativeFeedbackRemovalResponse> response = api.createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createUnexpectedProblemTest() throws Exception {
         instructBackendMock("createUnexpectedProblem", "201");
         CreateUnexpectedProblemRequest body = new CreateUnexpectedProblemRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateUnexpectedProblemResponse> response = api.createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void createWarrantyTest() throws Exception {
         instructBackendMock("createWarranty", "201");
         CreateWarrantyRequest body = new CreateWarrantyRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateWarrantyResponse> response = api.createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
     public void getAttributesTest() throws Exception {
         instructBackendMock("getAttributes", "200");
-        String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetAttributesResponse> response = api.getAttributesWithHttpInfo(amazonOrderId, marketplaceIds);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getMessagingActionsForOrderTest() throws Exception {
         instructBackendMock("getMessagingActionsForOrder", "200");
-        String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetMessagingActionsForOrderResponse> response = api.getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void sendInvoiceTest() throws Exception {
         instructBackendMock("sendInvoice", "201");
         InvoiceRequest body = new InvoiceRequest();
-String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
+        String amazonOrderId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<InvoiceResponse> response = api.sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
-        if(201 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(201, response.getData());
     }
 
 
@@ -224,5 +237,9 @@ String amazonOrderId = "";List<String> marketplaceIds = new ArrayList<>();
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

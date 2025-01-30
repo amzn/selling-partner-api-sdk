@@ -46,11 +46,12 @@ public class UpdateInventoryApiTest {
     public void submitInventoryUpdateTest() throws Exception {
         instructBackendMock("submitInventoryUpdate", "202");
         SubmitInventoryUpdateRequest body = new SubmitInventoryUpdateRequest();
-String warehouseId = "";
+        String warehouseId = "";
+
         ApiResponse<SubmitInventoryUpdateResponse> response = api.submitInventoryUpdateWithHttpInfo(body, warehouseId);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
 
@@ -61,5 +62,9 @@ String warehouseId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

@@ -51,7 +51,7 @@ public class TokensApiTest {
         ApiResponse<CreateRestrictedDataTokenResponse> response = api.createRestrictedDataTokenWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -62,5 +62,9 @@ public class TokensApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

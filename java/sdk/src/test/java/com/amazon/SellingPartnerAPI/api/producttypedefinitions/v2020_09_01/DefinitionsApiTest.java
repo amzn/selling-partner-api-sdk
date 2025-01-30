@@ -46,12 +46,13 @@ public class DefinitionsApiTest {
     @Test
     public void getDefinitionsProductTypeTest() throws Exception {
         instructBackendMock("getDefinitionsProductType", "200");
-        String productType = "";List<String> marketplaceIds = new ArrayList<>();
+        String productType = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ProductTypeDefinition> response = api.getDefinitionsProductTypeWithHttpInfo(productType, marketplaceIds, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -62,7 +63,7 @@ public class DefinitionsApiTest {
         ApiResponse<ProductTypeList> response = api.searchDefinitionsProductTypesWithHttpInfo(marketplaceIds, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -73,5 +74,9 @@ public class DefinitionsApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

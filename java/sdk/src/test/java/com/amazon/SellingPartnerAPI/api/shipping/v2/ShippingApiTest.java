@@ -73,10 +73,11 @@ public class ShippingApiTest {
     public void cancelShipmentTest() throws Exception {
         instructBackendMock("cancelShipment", "200");
         String shipmentId = "";
+
         ApiResponse<CancelShipmentResponse> response = api.cancelShipmentWithHttpInfo(shipmentId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -87,7 +88,7 @@ public class ShippingApiTest {
         ApiResponse<DirectPurchaseResponse> response = api.directPurchaseShipmentWithHttpInfo(body, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -98,38 +99,42 @@ public class ShippingApiTest {
         ApiResponse<GenerateCollectionFormResponse> response = api.generateCollectionFormWithHttpInfo(body, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getAccessPointsTest() throws Exception {
         instructBackendMock("getAccessPoints", "200");
         List<String> accessPointTypes = new ArrayList<>();
-String countryCode = "";String postalCode = "";
+        String countryCode = "";
+        String postalCode = "";
+
         ApiResponse<GetAccessPointsResponse> response = api.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getAdditionalInputsTest() throws Exception {
         instructBackendMock("getAdditionalInputs", "200");
-        String requestToken = "";String rateId = "";
+        String requestToken = "";
+        String rateId = "";
+
         ApiResponse<GetAdditionalInputsResponse> response = api.getAdditionalInputsWithHttpInfo(requestToken, rateId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getCarrierAccountFormInputsTest() throws Exception {
         instructBackendMock("getCarrierAccountFormInputs", "200");
-        
+
         ApiResponse<GetCarrierAccountFormInputsResponse> response = api.getCarrierAccountFormInputsWithHttpInfo(null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -140,17 +145,18 @@ String countryCode = "";String postalCode = "";
         ApiResponse<GetCarrierAccountsResponse> response = api.getCarrierAccountsWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getCollectionFormTest() throws Exception {
         instructBackendMock("getCollectionForm", "200");
         String collectionFormId = "";
+
         ApiResponse<GetCollectionFormResponse> response = api.getCollectionFormWithHttpInfo(collectionFormId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -161,7 +167,7 @@ String countryCode = "";String postalCode = "";
         ApiResponse<GetCollectionFormHistoryResponse> response = api.getCollectionFormHistoryWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -172,27 +178,31 @@ String countryCode = "";String postalCode = "";
         ApiResponse<GetRatesResponse> response = api.getRatesWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getShipmentDocumentsTest() throws Exception {
         instructBackendMock("getShipmentDocuments", "200");
-        String shipmentId = "";String packageClientReferenceId = "";
+        String shipmentId = "";
+        String packageClientReferenceId = "";
+
         ApiResponse<GetShipmentDocumentsResponse> response = api.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getTrackingTest() throws Exception {
         instructBackendMock("getTracking", "200");
-        String trackingId = "";String carrierId = "";
+        String trackingId = "";
+        String carrierId = "";
+
         ApiResponse<GetTrackingResponse> response = api.getTrackingWithHttpInfo(trackingId, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -203,18 +213,19 @@ String countryCode = "";String postalCode = "";
         ApiResponse<GetUnmanifestedShipmentsResponse> response = api.getUnmanifestedShipmentsWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void linkCarrierAccountTest() throws Exception {
         instructBackendMock("linkCarrierAccount", "200");
         LinkCarrierAccountRequest body = new LinkCarrierAccountRequest();
-String carrierId = "";
+        String carrierId = "";
+
         ApiResponse<LinkCarrierAccountResponse> response = api.linkCarrierAccountWithHttpInfo(body, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -225,7 +236,7 @@ String carrierId = "";
         ApiResponse<OneClickShipmentResponse> response = api.oneClickShipmentWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -236,18 +247,19 @@ String carrierId = "";
         ApiResponse<PurchaseShipmentResponse> response = api.purchaseShipmentWithHttpInfo(body, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void unlinkCarrierAccountTest() throws Exception {
         instructBackendMock("unlinkCarrierAccount", "200");
         UnlinkCarrierAccountRequest body = new UnlinkCarrierAccountRequest();
-String carrierId = "";
+        String carrierId = "";
+
         ApiResponse<UnlinkCarrierAccountResponse> response = api.unlinkCarrierAccountWithHttpInfo(body, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -258,5 +270,9 @@ String carrierId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

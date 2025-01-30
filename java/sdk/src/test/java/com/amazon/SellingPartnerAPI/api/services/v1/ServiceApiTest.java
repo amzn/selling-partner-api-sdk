@@ -71,65 +71,72 @@ public class ServiceApiTest {
     public void addAppointmentForServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("addAppointmentForServiceJobByServiceJobId", "200");
         AddAppointmentRequest body = new AddAppointmentRequest();
-String serviceJobId = "";
+        String serviceJobId = "";
+
         ApiResponse<SetAppointmentResponse> response = api.addAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void assignAppointmentResourcesTest() throws Exception {
         instructBackendMock("assignAppointmentResources", "200");
         AssignAppointmentResourcesRequest body = new AssignAppointmentResourcesRequest();
-String serviceJobId = "";String appointmentId = "";
+        String serviceJobId = "";
+        String appointmentId = "";
+
         ApiResponse<AssignAppointmentResourcesResponse> response = api.assignAppointmentResourcesWithHttpInfo(body, serviceJobId, appointmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void cancelReservationTest() throws Exception {
         instructBackendMock("cancelReservation", "204");
-        String reservationId = "";List<String> marketplaceIds = new ArrayList<>();
+        String reservationId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CancelReservationResponse> response = api.cancelReservationWithHttpInfo(reservationId, marketplaceIds);
 
         assertEquals(204, response.getStatusCode());
-        if(204 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(204, response.getData());
     }
 
     @Test
     public void cancelServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("cancelServiceJobByServiceJobId", "200");
-        String serviceJobId = "";String cancellationReasonCode = "";
+        String serviceJobId = "";
+        String cancellationReasonCode = "";
+
         ApiResponse<CancelServiceJobByServiceJobIdResponse> response = api.cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void completeServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("completeServiceJobByServiceJobId", "200");
         String serviceJobId = "";
+
         ApiResponse<CompleteServiceJobByServiceJobIdResponse> response = api.completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void createReservationTest() throws Exception {
         instructBackendMock("createReservation", "200");
         CreateReservationRequest body = new CreateReservationRequest();
-List<String> marketplaceIds = new ArrayList<>();
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateReservationResponse> response = api.createReservationWithHttpInfo(body, marketplaceIds);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -140,63 +147,69 @@ List<String> marketplaceIds = new ArrayList<>();
         ApiResponse<CreateServiceDocumentUploadDestination> response = api.createServiceDocumentUploadDestinationWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getAppointmentSlotsTest() throws Exception {
         instructBackendMock("getAppointmentSlots", "200");
-        String asin = "";String storeId = "";List<String> marketplaceIds = new ArrayList<>();
+        String asin = "";
+        String storeId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetAppointmentSlotsResponse> response = api.getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getAppointmmentSlotsByJobIdTest() throws Exception {
         instructBackendMock("getAppointmmentSlotsByJobId", "200");
-        String serviceJobId = "";List<String> marketplaceIds = new ArrayList<>();
+        String serviceJobId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetAppointmentSlotsResponse> response = api.getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId, marketplaceIds, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getFixedSlotCapacityTest() throws Exception {
         instructBackendMock("getFixedSlotCapacity", "200");
         FixedSlotCapacityQuery body = new FixedSlotCapacityQuery();
-String resourceId = "";List<String> marketplaceIds = new ArrayList<>();
+        String resourceId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<FixedSlotCapacity> response = api.getFixedSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getRangeSlotCapacityTest() throws Exception {
         instructBackendMock("getRangeSlotCapacity", "200");
         RangeSlotCapacityQuery body = new RangeSlotCapacityQuery();
-String resourceId = "";List<String> marketplaceIds = new ArrayList<>();
+        String resourceId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<RangeSlotCapacity> response = api.getRangeSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("getServiceJobByServiceJobId", "200");
         String serviceJobId = "";
+
         ApiResponse<GetServiceJobByServiceJobIdResponse> response = api.getServiceJobByServiceJobIdWithHttpInfo(serviceJobId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -207,53 +220,59 @@ String resourceId = "";List<String> marketplaceIds = new ArrayList<>();
         ApiResponse<GetServiceJobsResponse> response = api.getServiceJobsWithHttpInfo(marketplaceIds, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void rescheduleAppointmentForServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("rescheduleAppointmentForServiceJobByServiceJobId", "200");
         RescheduleAppointmentRequest body = new RescheduleAppointmentRequest();
-String serviceJobId = "";String appointmentId = "";
+        String serviceJobId = "";
+        String appointmentId = "";
+
         ApiResponse<SetAppointmentResponse> response = api.rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, appointmentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void setAppointmentFulfillmentDataTest() throws Exception {
         instructBackendMock("setAppointmentFulfillmentData", "204");
         SetAppointmentFulfillmentDataRequest body = new SetAppointmentFulfillmentDataRequest();
-String serviceJobId = "";String appointmentId = "";
+        String serviceJobId = "";
+        String appointmentId = "";
+
         ApiResponse<String> response = api.setAppointmentFulfillmentDataWithHttpInfo(body, serviceJobId, appointmentId);
 
         assertEquals(204, response.getStatusCode());
-        if(204 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(204, response.getData());
     }
 
     @Test
     public void updateReservationTest() throws Exception {
         instructBackendMock("updateReservation", "200");
         UpdateReservationRequest body = new UpdateReservationRequest();
-String reservationId = "";List<String> marketplaceIds = new ArrayList<>();
+        String reservationId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<UpdateReservationResponse> response = api.updateReservationWithHttpInfo(body, reservationId, marketplaceIds);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void updateScheduleTest() throws Exception {
         instructBackendMock("updateSchedule", "200");
         UpdateScheduleRequest body = new UpdateScheduleRequest();
-String resourceId = "";List<String> marketplaceIds = new ArrayList<>();
+        String resourceId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<UpdateScheduleResponse> response = api.updateScheduleWithHttpInfo(body, resourceId, marketplaceIds);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -264,5 +283,9 @@ String resourceId = "";List<String> marketplaceIds = new ArrayList<>();
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

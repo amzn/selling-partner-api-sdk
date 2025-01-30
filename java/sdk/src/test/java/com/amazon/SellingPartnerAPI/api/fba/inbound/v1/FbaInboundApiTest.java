@@ -44,11 +44,13 @@ public class FbaInboundApiTest {
     @Test
     public void getItemEligibilityPreviewTest() throws Exception {
         instructBackendMock("getItemEligibilityPreview", "200");
-        String asin = "";String program = "";
+        String asin = "";
+        String program = "";
+
         ApiResponse<GetItemEligibilityPreviewResponse> response = api.getItemEligibilityPreviewWithHttpInfo(asin, program, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -59,5 +61,9 @@ public class FbaInboundApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

@@ -51,6 +51,7 @@ public class QueriesApiTest {
     public void cancelQueryTest() throws Exception {
         instructBackendMock("cancelQuery", "204");
         String queryId = "";
+
         api.cancelQueryWithHttpInfo(queryId);
 
     }
@@ -63,37 +64,39 @@ public class QueriesApiTest {
         ApiResponse<CreateQueryResponse> response = api.createQueryWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
-        if(202 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(202, response.getData());
     }
 
     @Test
     public void getDocumentTest() throws Exception {
         instructBackendMock("getDocument", "200");
         String documentId = "";
+
         ApiResponse<GetDocumentResponse> response = api.getDocumentWithHttpInfo(documentId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getQueriesTest() throws Exception {
         instructBackendMock("getQueries", "200");
-        
+
         ApiResponse<GetQueriesResponse> response = api.getQueriesWithHttpInfo(null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getQueryTest() throws Exception {
         instructBackendMock("getQuery", "200");
         String queryId = "";
+
         ApiResponse<Query> response = api.getQueryWithHttpInfo(queryId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -104,5 +107,9 @@ public class QueriesApiTest {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

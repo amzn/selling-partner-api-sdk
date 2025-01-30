@@ -50,58 +50,67 @@ public class ListingsApiTest {
     @Test
     public void deleteListingsItemTest() throws Exception {
         instructBackendMock("deleteListingsItem", "200");
-        String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = "";
+        String sku = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.deleteListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getListingsItemTest() throws Exception {
         instructBackendMock("getListingsItem", "200");
-        String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = "";
+        String sku = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<Item> response = api.getListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void patchListingsItemTest() throws Exception {
         instructBackendMock("patchListingsItem", "200");
         ListingsItemPatchRequest body = new ListingsItemPatchRequest();
-String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = "";
+        String sku = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.patchListingsItemWithHttpInfo(body, sellerId, sku, marketplaceIds, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void putListingsItemTest() throws Exception {
         instructBackendMock("putListingsItem", "200");
         ListingsItemPutRequest body = new ListingsItemPutRequest();
-String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = "";
+        String sku = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.putListingsItemWithHttpInfo(body, sellerId, sku, marketplaceIds, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void searchListingsItemsTest() throws Exception {
         instructBackendMock("searchListingsItems", "200");
-        String sellerId = "";List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = "";
+        List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<ItemSearchResults> response = api.searchListingsItemsWithHttpInfo(sellerId, marketplaceIds, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -112,5 +121,9 @@ String sellerId = "";String sku = "";List<String> marketplaceIds = new ArrayList
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

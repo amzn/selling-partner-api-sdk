@@ -49,22 +49,24 @@ public class FeesApiTest {
     public void getMyFeesEstimateForASINTest() throws Exception {
         instructBackendMock("getMyFeesEstimateForASIN", "200");
         GetMyFeesEstimateRequest body = new GetMyFeesEstimateRequest();
-String asin = "";
+        String asin = "";
+
         ApiResponse<GetMyFeesEstimateResponse> response = api.getMyFeesEstimateForASINWithHttpInfo(body, asin);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getMyFeesEstimateForSKUTest() throws Exception {
         instructBackendMock("getMyFeesEstimateForSKU", "200");
         GetMyFeesEstimateRequest body = new GetMyFeesEstimateRequest();
-String sellerSKU = "";
+        String sellerSKU = "";
+
         ApiResponse<GetMyFeesEstimateResponse> response = api.getMyFeesEstimateForSKUWithHttpInfo(body, sellerSKU);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -75,7 +77,7 @@ String sellerSKU = "";
         ApiResponse<GetMyFeesEstimatesResponse> response = api.getMyFeesEstimatesWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
 
@@ -86,5 +88,9 @@ String sellerSKU = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }

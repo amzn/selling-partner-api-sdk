@@ -57,7 +57,8 @@ public class OrdersApiTest {
     public void confirmShipmentTest() throws Exception {
         instructBackendMock("confirmShipment", "204");
         ConfirmShipmentRequest body = new ConfirmShipmentRequest();
-String orderId = "";
+        String orderId = "";
+
         api.confirmShipmentWithHttpInfo(body, orderId);
 
     }
@@ -66,60 +67,66 @@ String orderId = "";
     public void getOrderTest() throws Exception {
         instructBackendMock("getOrder", "200");
         String orderId = "";
+
         ApiResponse<GetOrderResponse> response = api.getOrderWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getOrderAddressTest() throws Exception {
         instructBackendMock("getOrderAddress", "200");
         String orderId = "";
+
         ApiResponse<GetOrderAddressResponse> response = api.getOrderAddressWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getOrderBuyerInfoTest() throws Exception {
         instructBackendMock("getOrderBuyerInfo", "200");
         String orderId = "";
+
         ApiResponse<GetOrderBuyerInfoResponse> response = api.getOrderBuyerInfoWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getOrderItemsTest() throws Exception {
         instructBackendMock("getOrderItems", "200");
         String orderId = "";
+
         ApiResponse<GetOrderItemsResponse> response = api.getOrderItemsWithHttpInfo(orderId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getOrderItemsBuyerInfoTest() throws Exception {
         instructBackendMock("getOrderItemsBuyerInfo", "200");
         String orderId = "";
+
         ApiResponse<GetOrderItemsBuyerInfoResponse> response = api.getOrderItemsBuyerInfoWithHttpInfo(orderId, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void getOrderRegulatedInfoTest() throws Exception {
         instructBackendMock("getOrderRegulatedInfo", "200");
         String orderId = "";
+
         ApiResponse<GetOrderRegulatedInfoResponse> response = api.getOrderRegulatedInfoWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
@@ -130,14 +137,15 @@ String orderId = "";
         ApiResponse<GetOrdersResponse> response = api.getOrdersWithHttpInfo(marketplaceIds, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
-        if(200 != 204) assertNotNull(response.getData());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test
     public void updateShipmentStatusTest() throws Exception {
         instructBackendMock("updateShipmentStatus", "204");
         UpdateShipmentStatusRequest body = new UpdateShipmentStatusRequest();
-String orderId = "";
+        String orderId = "";
+
         api.updateShipmentStatusWithHttpInfo(body, orderId);
 
     }
@@ -146,7 +154,8 @@ String orderId = "";
     public void updateVerificationStatusTest() throws Exception {
         instructBackendMock("updateVerificationStatus", "204");
         UpdateVerificationStatusRequest body = new UpdateVerificationStatusRequest();
-String orderId = "";
+        String orderId = "";
+
         api.updateVerificationStatusWithHttpInfo(body, orderId);
 
     }
@@ -159,5 +168,9 @@ String orderId = "";
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }
