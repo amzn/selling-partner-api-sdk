@@ -1,5 +1,5 @@
 /*
- * Fulfillment Inbound v2024-03-20
+ * The Selling Partner API for FBA inbound operations.
  * The Selling Partner API for Fulfillment By Amazon (FBA) Inbound. The FBA Inbound API enables building inbound workflows to create, manage, and send shipments into Amazon's fulfillment network. The API has interoperability with the Send-to-Amazon user interface.
  *
  * OpenAPI spec version: 2024-03-20
@@ -15,6 +15,7 @@ package com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20;
 import java.util.Objects;
 import java.util.Arrays;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.Incentive;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.PackingConfiguration;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ShippingConfiguration;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -50,6 +51,9 @@ public class PackingOption {
 
   @SerializedName("status")
   private String status = null;
+
+  @SerializedName("supportedConfigurations")
+  private List<PackingConfiguration> supportedConfigurations = new ArrayList<PackingConfiguration>();
 
   @SerializedName("supportedShippingConfigurations")
   private List<ShippingConfiguration> supportedShippingConfigurations = new ArrayList<ShippingConfiguration>();
@@ -177,6 +181,29 @@ public class PackingOption {
     this.status = status;
   }
 
+  public PackingOption supportedConfigurations(List<PackingConfiguration> supportedConfigurations) {
+    this.supportedConfigurations = supportedConfigurations;
+    return this;
+  }
+
+  public PackingOption addSupportedConfigurationsItem(PackingConfiguration supportedConfigurationsItem) {
+    this.supportedConfigurations.add(supportedConfigurationsItem);
+    return this;
+  }
+
+   /**
+   * A list of possible configurations for this option.
+   * @return supportedConfigurations
+  **/
+  @Schema(required = true, description = "A list of possible configurations for this option.")
+  public List<PackingConfiguration> getSupportedConfigurations() {
+    return supportedConfigurations;
+  }
+
+  public void setSupportedConfigurations(List<PackingConfiguration> supportedConfigurations) {
+    this.supportedConfigurations = supportedConfigurations;
+  }
+
   public PackingOption supportedShippingConfigurations(List<ShippingConfiguration> supportedShippingConfigurations) {
     this.supportedShippingConfigurations = supportedShippingConfigurations;
     return this;
@@ -188,10 +215,10 @@ public class PackingOption {
   }
 
    /**
-   * List of supported shipping modes.
+   * **This field is deprecated**. Use the &#x60;shippingRequirements&#x60; property under &#x60;supportedConfigurations&#x60; instead. List of supported shipping modes.
    * @return supportedShippingConfigurations
   **/
-  @Schema(required = true, description = "List of supported shipping modes.")
+  @Schema(required = true, description = "**This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.")
   public List<ShippingConfiguration> getSupportedShippingConfigurations() {
     return supportedShippingConfigurations;
   }
@@ -216,12 +243,13 @@ public class PackingOption {
         Objects.equals(this.packingGroups, packingOption.packingGroups) &&
         Objects.equals(this.packingOptionId, packingOption.packingOptionId) &&
         Objects.equals(this.status, packingOption.status) &&
+        Objects.equals(this.supportedConfigurations, packingOption.supportedConfigurations) &&
         Objects.equals(this.supportedShippingConfigurations, packingOption.supportedShippingConfigurations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(discounts, expiration, fees, packingGroups, packingOptionId, status, supportedShippingConfigurations);
+    return Objects.hash(discounts, expiration, fees, packingGroups, packingOptionId, status, supportedConfigurations, supportedShippingConfigurations);
   }
 
 
@@ -236,6 +264,7 @@ public class PackingOption {
     sb.append("    packingGroups: ").append(toIndentedString(packingGroups)).append("\n");
     sb.append("    packingOptionId: ").append(toIndentedString(packingOptionId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    supportedConfigurations: ").append(toIndentedString(supportedConfigurations)).append("\n");
     sb.append("    supportedShippingConfigurations: ").append(toIndentedString(supportedShippingConfigurations)).append("\n");
     sb.append("}");
     return sb.toString();

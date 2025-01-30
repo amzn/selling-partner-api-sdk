@@ -14,6 +14,7 @@ package com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.Segment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,6 +34,9 @@ public class FeaturedOfferExpectedPriceRequestParams {
 
   @SerializedName("sku")
   private String sku = null;
+
+  @SerializedName("segment")
+  private Segment segment = null;
 
   public FeaturedOfferExpectedPriceRequestParams marketplaceId(String marketplaceId) {
     this.marketplaceId = marketplaceId;
@@ -70,6 +74,24 @@ public class FeaturedOfferExpectedPriceRequestParams {
     this.sku = sku;
   }
 
+  public FeaturedOfferExpectedPriceRequestParams segment(Segment segment) {
+    this.segment = segment;
+    return this;
+  }
+
+   /**
+   * Get segment
+   * @return segment
+  **/
+  @Schema(description = "")
+  public Segment getSegment() {
+    return segment;
+  }
+
+  public void setSegment(Segment segment) {
+    this.segment = segment;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -81,12 +103,13 @@ public class FeaturedOfferExpectedPriceRequestParams {
     }
     FeaturedOfferExpectedPriceRequestParams featuredOfferExpectedPriceRequestParams = (FeaturedOfferExpectedPriceRequestParams) o;
     return Objects.equals(this.marketplaceId, featuredOfferExpectedPriceRequestParams.marketplaceId) &&
-        Objects.equals(this.sku, featuredOfferExpectedPriceRequestParams.sku);
+        Objects.equals(this.sku, featuredOfferExpectedPriceRequestParams.sku) &&
+        Objects.equals(this.segment, featuredOfferExpectedPriceRequestParams.segment);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketplaceId, sku);
+    return Objects.hash(marketplaceId, sku, segment);
   }
 
 
@@ -97,6 +120,7 @@ public class FeaturedOfferExpectedPriceRequestParams {
     
     sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
+    sb.append("    segment: ").append(toIndentedString(segment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

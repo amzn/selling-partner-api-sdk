@@ -36,14 +36,15 @@ public class {{classname}}Test {
     @Test
     public void {{operationId}}Test() throws Exception {
         instructBackendMock("{{operationId}}", "{{responses.0.code}}");
-        {{#allParams}}{{#required}}{{#isString}}{{{dataType}}} {{paramName}} = "";{{/isString}}{{#isInteger}}int {{paramName}} = 1;{{/isInteger}}{{#isDateTime}}{{dataType}} {{paramName}} = {{dataType}}.now();{{/isDateTime}}{{#isDate}}{{dataType}} {{paramName}} = {{dataType}}.now();{{/isDate}}{{^isString}}{{^isInteger}}{{^isDateTime}}{{^isDate}}{{{dataType}}} {{paramName}} = new {{#isListContainer}}ArrayList<>{{/isListContainer}}{{^isListContainer}}{{{dataType}}}{{/isListContainer}}();
-        {{/isDate}}{{/isDateTime}}{{/isInteger}}{{/isString}}{{/required}}{{/allParams}}
+        {{#allParams}}{{#required}}
+        {{#isString}}{{{dataType}}} {{paramName}} = "";{{/isString}}{{#isInteger}}int {{paramName}} = 1;{{/isInteger}}{{#isDateTime}}{{dataType}} {{paramName}} = {{dataType}}.now();{{/isDateTime}}{{#isDate}}{{dataType}} {{paramName}} = {{dataType}}.now();{{/isDate}}{{^isString}}{{^isInteger}}{{^isDateTime}}{{^isDate}}{{{dataType}}} {{paramName}} = new {{#isListContainer}}ArrayList<>{{/isListContainer}}{{^isListContainer}}{{{dataType}}}{{/isListContainer}}();{{/isDate}}{{/isDateTime}}{{/isInteger}}{{/isString}}
+        {{/required}}{{/allParams}}
 
         {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
 
         {{#returnType}}
         assertEquals({{responses.0.code}}, response.getStatusCode());
-        if({{responses.0.code}} != 204) assertNotNull(response.getData());
+        assertValidResponsePayload({{responses.0.code}}, response.getData());
         {{/returnType}}
     }
 
@@ -56,5 +57,9 @@ public class {{classname}}Test {
               .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
+    }
+
+    private static void assertValidResponsePayload(int statusCode, Object body) {
+        if(statusCode != 204) assertNotNull(body);
     }
 }
