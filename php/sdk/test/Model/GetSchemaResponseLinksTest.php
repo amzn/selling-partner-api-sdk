@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetSchemaResponseLinks;
  * GetSchemaResponseLinksTest Class Doc Comment
  *
  * @category    Class
- * @description GetSchemaResponseLinks
+ * @description The links response that is associated with the object.
  * @package     OpenAPI\Client
  */
 class GetSchemaResponseLinksTest extends TestCase

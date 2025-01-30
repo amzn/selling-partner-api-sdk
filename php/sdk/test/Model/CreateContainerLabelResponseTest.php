@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\CreateContainerLabelResponse;
  * CreateContainerLabelResponseTest Class Doc Comment
  *
  * @category    Class
- * @description The response schema for the createContainerLabel operation.
+ * @description The response schema for the &#x60;createContainerLabel&#x60; operation.
  * @package     OpenAPI\Client
  */
 class CreateContainerLabelResponseTest extends TestCase

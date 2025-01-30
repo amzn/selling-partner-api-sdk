@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponseEmbedded;
  * GetMessagingActionsForOrderResponseEmbeddedTest Class Doc Comment
  *
  * @category    Class
- * @description GetMessagingActionsForOrderResponseEmbedded
+ * @description The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.
  * @package     OpenAPI\Client
  */
 class GetMessagingActionsForOrderResponseEmbeddedTest extends TestCase

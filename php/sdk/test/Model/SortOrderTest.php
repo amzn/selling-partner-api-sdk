@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\SortOrder;
+use OpenAPI\Client\Model\replenishment\SortOrder;
 
 /**
  * SortOrderTest Class Doc Comment
  *
  * @category    Class
- * @description Sort order for a collection of items. For example, order or shipment.
+ * @description The sort order.
  * @package     OpenAPI\Client
  */
 class SortOrderTest extends TestCase

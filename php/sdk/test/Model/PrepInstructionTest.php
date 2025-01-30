@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction;
+use OpenAPI\Client\Model\awd\PrepInstruction;
 
 /**
  * PrepInstructionTest Class Doc Comment
  *
  * @category    Class
- * @description Preparation instructions for shipping an item to Amazon&#39;s fulfillment network. For more information about preparing items for shipment to Amazon&#39;s fulfillment network, see the Seller Central Help for your marketplace.
+ * @description Information pertaining to the preparation of inbound products.
  * @package     OpenAPI\Client
  */
 class PrepInstructionTest extends TestCase
@@ -49,5 +49,29 @@ class PrepInstructionTest extends TestCase
     public function testPrepInstruction()
     {
         $this->assertInstanceOf(PrepInstruction::class, $this->model);
+    }
+
+    /**
+     * Test attribute "prep_owner"
+     */
+    public function testPropertyPrepOwner()
+    {
+        $enumInstance = new \OpenAPI\Client\Model\awd\PrepOwner();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
+        
+        $this->model->setPrepOwner($testValue);
+        $this->assertEquals($testValue, $this->model->getPrepOwner());
+    }
+
+    /**
+     * Test attribute "prep_type"
+     */
+    public function testPropertyPrepType()
+    {
+        $testValue = 'test';
+        
+        $this->model->setPrepType($testValue);
+        $this->assertEquals($testValue, $this->model->getPrepType());
     }
 }

@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\ShipmentType;
+use OpenAPI\Client\Model\shipping\ShipmentType;
 
 /**
  * ShipmentTypeTest Class Doc Comment
  *
  * @category    Class
- * @description Specifies the carrier shipment type in a putTransportDetails request.
+ * @description Shipment type.
  * @package     OpenAPI\Client
  */
 class ShipmentTypeTest extends TestCase

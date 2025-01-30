@@ -52,14 +52,14 @@ class AccountTest extends TestCase
     }
 
     /**
-     * Test attribute "marketplace_level_attributes"
+     * Test attribute "marketplace_participation_list"
      */
-    public function testPropertyMarketplaceLevelAttributes()
+    public function testPropertyMarketplaceParticipationList()
     {
         $testValue = [];
         
-        $this->model->setMarketplaceLevelAttributes($testValue);
-        $this->assertEquals($testValue, $this->model->getMarketplaceLevelAttributes());
+        $this->model->setMarketplaceParticipationList($testValue);
+        $this->assertEquals($testValue, $this->model->getMarketplaceParticipationList());
     }
 
     /**
@@ -72,6 +72,18 @@ class AccountTest extends TestCase
         $testValue = reset($allowedValues);
         $this->model->setBusinessType($testValue);
         $this->assertEquals($testValue, $this->model->getBusinessType());
+    }
+
+    /**
+     * Test attribute "selling_plan"
+     */
+    public function testPropertySellingPlan()
+    {
+        $enumInstance = new Account();
+        $allowedValues = $enumInstance->getSellingPlanAllowableValues();
+        $testValue = reset($allowedValues);
+        $this->model->setSellingPlan($testValue);
+        $this->assertEquals($testValue, $this->model->getSellingPlan());
     }
 
     /**

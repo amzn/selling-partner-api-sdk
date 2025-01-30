@@ -70,6 +70,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
              'subscriber_average_reorders' => 'float',
              'non_subscriber_average_reorders' => 'float',
              'coupons_revenue_penetration' => 'float',
+             'revenue_from_subscriptions_with_multiple_deliveries' => 'float',
+             'revenue_from_active_subscriptions_with_single_delivery' => 'float',
+             'revenue_from_cancelled_subscriptions_after_single_delivery' => 'float',
+             'subscriber_retention_for30_days' => 'float',
+             'subscriber_retention_for90_days' => 'float',
+             'revenue_penetration_for0_percent_seller_funding' => 'float',
+             'revenue_penetration_for5_percent_seller_funding' => 'float',
+             'revenue_penetration_for10_percent_seller_funding' => 'float',
+             'revenue_penetration_for5_plus_percent_seller_funding' => 'float',
+             'share_of_coupon_subscriptions' => 'float',
              'time_interval' => '\OpenAPI\Client\Model\replenishment\TimeInterval',
              'currency_code' => 'string'    ];
 
@@ -91,6 +101,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
             'subscriber_average_reorders' => 'double',
             'non_subscriber_average_reorders' => 'double',
             'coupons_revenue_penetration' => 'double',
+            'revenue_from_subscriptions_with_multiple_deliveries' => 'double',
+            'revenue_from_active_subscriptions_with_single_delivery' => 'double',
+            'revenue_from_cancelled_subscriptions_after_single_delivery' => 'double',
+            'subscriber_retention_for30_days' => 'double',
+            'subscriber_retention_for90_days' => 'double',
+            'revenue_penetration_for0_percent_seller_funding' => 'double',
+            'revenue_penetration_for5_percent_seller_funding' => 'double',
+            'revenue_penetration_for10_percent_seller_funding' => 'double',
+            'revenue_penetration_for5_plus_percent_seller_funding' => 'double',
+            'share_of_coupon_subscriptions' => 'double',
             'time_interval' => null,
             'currency_code' => null    ];
 
@@ -110,6 +130,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
         'subscriber_average_reorders' => true,
         'non_subscriber_average_reorders' => true,
         'coupons_revenue_penetration' => true,
+        'revenue_from_subscriptions_with_multiple_deliveries' => true,
+        'revenue_from_active_subscriptions_with_single_delivery' => true,
+        'revenue_from_cancelled_subscriptions_after_single_delivery' => true,
+        'subscriber_retention_for30_days' => true,
+        'subscriber_retention_for90_days' => true,
+        'revenue_penetration_for0_percent_seller_funding' => true,
+        'revenue_penetration_for5_percent_seller_funding' => true,
+        'revenue_penetration_for10_percent_seller_funding' => true,
+        'revenue_penetration_for5_plus_percent_seller_funding' => true,
+        'share_of_coupon_subscriptions' => true,
         'time_interval' => true,
         'currency_code' => true
     ];
@@ -210,6 +240,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
                 'subscriber_average_reorders' => 'subscriberAverageReorders',
                 'non_subscriber_average_reorders' => 'nonSubscriberAverageReorders',
                 'coupons_revenue_penetration' => 'couponsRevenuePenetration',
+                'revenue_from_subscriptions_with_multiple_deliveries' => 'revenueFromSubscriptionsWithMultipleDeliveries',
+                'revenue_from_active_subscriptions_with_single_delivery' => 'revenueFromActiveSubscriptionsWithSingleDelivery',
+                'revenue_from_cancelled_subscriptions_after_single_delivery' => 'revenueFromCancelledSubscriptionsAfterSingleDelivery',
+                'subscriber_retention_for30_days' => 'subscriberRetentionFor30Days',
+                'subscriber_retention_for90_days' => 'subscriberRetentionFor90Days',
+                'revenue_penetration_for0_percent_seller_funding' => 'revenuePenetrationFor0PercentSellerFunding',
+                'revenue_penetration_for5_percent_seller_funding' => 'revenuePenetrationFor5PercentSellerFunding',
+                'revenue_penetration_for10_percent_seller_funding' => 'revenuePenetrationFor10PercentSellerFunding',
+                'revenue_penetration_for5_plus_percent_seller_funding' => 'revenuePenetrationFor5PlusPercentSellerFunding',
+                'share_of_coupon_subscriptions' => 'shareOfCouponSubscriptions',
                 'time_interval' => 'timeInterval',
                 'currency_code' => 'currencyCode'
         
@@ -231,6 +271,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
         'subscriber_average_reorders' => 'setSubscriberAverageReorders',
         'non_subscriber_average_reorders' => 'setNonSubscriberAverageReorders',
         'coupons_revenue_penetration' => 'setCouponsRevenuePenetration',
+        'revenue_from_subscriptions_with_multiple_deliveries' => 'setRevenueFromSubscriptionsWithMultipleDeliveries',
+        'revenue_from_active_subscriptions_with_single_delivery' => 'setRevenueFromActiveSubscriptionsWithSingleDelivery',
+        'revenue_from_cancelled_subscriptions_after_single_delivery' => 'setRevenueFromCancelledSubscriptionsAfterSingleDelivery',
+        'subscriber_retention_for30_days' => 'setSubscriberRetentionFor30Days',
+        'subscriber_retention_for90_days' => 'setSubscriberRetentionFor90Days',
+        'revenue_penetration_for0_percent_seller_funding' => 'setRevenuePenetrationFor0PercentSellerFunding',
+        'revenue_penetration_for5_percent_seller_funding' => 'setRevenuePenetrationFor5PercentSellerFunding',
+        'revenue_penetration_for10_percent_seller_funding' => 'setRevenuePenetrationFor10PercentSellerFunding',
+        'revenue_penetration_for5_plus_percent_seller_funding' => 'setRevenuePenetrationFor5PlusPercentSellerFunding',
+        'share_of_coupon_subscriptions' => 'setShareOfCouponSubscriptions',
         'time_interval' => 'setTimeInterval',
         'currency_code' => 'setCurrencyCode'
     ];
@@ -251,6 +301,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
         'subscriber_average_reorders' => 'getSubscriberAverageReorders',
         'non_subscriber_average_reorders' => 'getNonSubscriberAverageReorders',
         'coupons_revenue_penetration' => 'getCouponsRevenuePenetration',
+        'revenue_from_subscriptions_with_multiple_deliveries' => 'getRevenueFromSubscriptionsWithMultipleDeliveries',
+        'revenue_from_active_subscriptions_with_single_delivery' => 'getRevenueFromActiveSubscriptionsWithSingleDelivery',
+        'revenue_from_cancelled_subscriptions_after_single_delivery' => 'getRevenueFromCancelledSubscriptionsAfterSingleDelivery',
+        'subscriber_retention_for30_days' => 'getSubscriberRetentionFor30Days',
+        'subscriber_retention_for90_days' => 'getSubscriberRetentionFor90Days',
+        'revenue_penetration_for0_percent_seller_funding' => 'getRevenuePenetrationFor0PercentSellerFunding',
+        'revenue_penetration_for5_percent_seller_funding' => 'getRevenuePenetrationFor5PercentSellerFunding',
+        'revenue_penetration_for10_percent_seller_funding' => 'getRevenuePenetrationFor10PercentSellerFunding',
+        'revenue_penetration_for5_plus_percent_seller_funding' => 'getRevenuePenetrationFor5PlusPercentSellerFunding',
+        'share_of_coupon_subscriptions' => 'getShareOfCouponSubscriptions',
         'time_interval' => 'getTimeInterval',
         'currency_code' => 'getCurrencyCode'
     ];
@@ -322,6 +382,16 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
         $this->setIfExists('subscriber_average_reorders', $data ?? [], null);
         $this->setIfExists('non_subscriber_average_reorders', $data ?? [], null);
         $this->setIfExists('coupons_revenue_penetration', $data ?? [], null);
+        $this->setIfExists('revenue_from_subscriptions_with_multiple_deliveries', $data ?? [], null);
+        $this->setIfExists('revenue_from_active_subscriptions_with_single_delivery', $data ?? [], null);
+        $this->setIfExists('revenue_from_cancelled_subscriptions_after_single_delivery', $data ?? [], null);
+        $this->setIfExists('subscriber_retention_for30_days', $data ?? [], null);
+        $this->setIfExists('subscriber_retention_for90_days', $data ?? [], null);
+        $this->setIfExists('revenue_penetration_for0_percent_seller_funding', $data ?? [], null);
+        $this->setIfExists('revenue_penetration_for5_percent_seller_funding', $data ?? [], null);
+        $this->setIfExists('revenue_penetration_for10_percent_seller_funding', $data ?? [], null);
+        $this->setIfExists('revenue_penetration_for5_plus_percent_seller_funding', $data ?? [], null);
+        $this->setIfExists('share_of_coupon_subscriptions', $data ?? [], null);
         $this->setIfExists('time_interval', $data ?? [], null);
         $this->setIfExists('currency_code', $data ?? [], null);
     }
@@ -401,6 +471,74 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
             $invalidProperties[] = "invalid value for 'coupons_revenue_penetration', must be bigger than or equal to 0.";
         }
 
+        if (!is_null($this->container['revenue_from_subscriptions_with_multiple_deliveries']) && ($this->container['revenue_from_subscriptions_with_multiple_deliveries'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_from_subscriptions_with_multiple_deliveries', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_from_active_subscriptions_with_single_delivery']) && ($this->container['revenue_from_active_subscriptions_with_single_delivery'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_from_active_subscriptions_with_single_delivery', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_from_cancelled_subscriptions_after_single_delivery']) && ($this->container['revenue_from_cancelled_subscriptions_after_single_delivery'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_from_cancelled_subscriptions_after_single_delivery', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['subscriber_retention_for30_days']) && ($this->container['subscriber_retention_for30_days'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'subscriber_retention_for30_days', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['subscriber_retention_for30_days']) && ($this->container['subscriber_retention_for30_days'] < 0)) {
+            $invalidProperties[] = "invalid value for 'subscriber_retention_for30_days', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['subscriber_retention_for90_days']) && ($this->container['subscriber_retention_for90_days'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'subscriber_retention_for90_days', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['subscriber_retention_for90_days']) && ($this->container['subscriber_retention_for90_days'] < 0)) {
+            $invalidProperties[] = "invalid value for 'subscriber_retention_for90_days', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for0_percent_seller_funding']) && ($this->container['revenue_penetration_for0_percent_seller_funding'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for0_percent_seller_funding', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for0_percent_seller_funding']) && ($this->container['revenue_penetration_for0_percent_seller_funding'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for0_percent_seller_funding', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for5_percent_seller_funding']) && ($this->container['revenue_penetration_for5_percent_seller_funding'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for5_percent_seller_funding', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for5_percent_seller_funding']) && ($this->container['revenue_penetration_for5_percent_seller_funding'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for5_percent_seller_funding', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for10_percent_seller_funding']) && ($this->container['revenue_penetration_for10_percent_seller_funding'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for10_percent_seller_funding', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for10_percent_seller_funding']) && ($this->container['revenue_penetration_for10_percent_seller_funding'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for10_percent_seller_funding', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for5_plus_percent_seller_funding']) && ($this->container['revenue_penetration_for5_plus_percent_seller_funding'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for5_plus_percent_seller_funding', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['revenue_penetration_for5_plus_percent_seller_funding']) && ($this->container['revenue_penetration_for5_plus_percent_seller_funding'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration_for5_plus_percent_seller_funding', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['share_of_coupon_subscriptions']) && ($this->container['share_of_coupon_subscriptions'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'share_of_coupon_subscriptions', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['share_of_coupon_subscriptions']) && ($this->container['share_of_coupon_subscriptions'] < 0)) {
+            $invalidProperties[] = "invalid value for 'share_of_coupon_subscriptions', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -429,7 +567,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets not_delivered_due_to_oos
      *
-     * @param float|null $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable only for the `PERFORMANCE` `timePeriodType`.
+     * @param float|null $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -471,7 +609,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets total_subscriptions_revenue
      *
-     * @param float|null $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.
+     * @param float|null $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.
      *
      * @return self
      */
@@ -510,7 +648,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets shipped_subscription_units
      *
-     * @param float|null $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.
+     * @param float|null $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.
      *
      * @return self
      */
@@ -549,7 +687,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets active_subscriptions
      *
-     * @param float|null $active_subscriptions The number of active subscriptions present at the end of the period. Applicable only for the `PERFORMANCE` `timePeriodType`.
+     * @param float|null $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -588,7 +726,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets subscriber_average_revenue
      *
-     * @param float|null $subscriber_average_revenue The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable only for the `PERFORMANCE` `timePeriodType`.
+     * @param float|null $subscriber_average_revenue The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -627,7 +765,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets non_subscriber_average_revenue
      *
-     * @param float|null $non_subscriber_average_revenue The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable only for the `PERFORMANCE` `timePeriodType`.
+     * @param float|null $non_subscriber_average_revenue The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -666,7 +804,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets lost_revenue_due_to_oos
      *
-     * @param float|null $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable only for the PERFORMANCE timePeriodType.
+     * @param float|null $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -705,7 +843,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets subscriber_average_reorders
      *
-     * @param float|null $subscriber_average_reorders The average reorders per subscriber of the program over a period of 12 months. Applicable only for the PERFORMANCE timePeriodType.
+     * @param float|null $subscriber_average_reorders The average reorders per subscriber of the program over a period of 12 months. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -744,7 +882,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets non_subscriber_average_reorders
      *
-     * @param float|null $non_subscriber_average_reorders The average reorders per non-subscriber of the program over a period of past 12 months. Applicable only for the PERFORMANCE timePeriodType.
+     * @param float|null $non_subscriber_average_reorders The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -783,7 +921,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
     /**
      * Sets coupons_revenue_penetration
      *
-     * @param float|null $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable only for the PERFORMANCE timePeriodType.
+     * @param float|null $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
      *
      * @return self
      */
@@ -808,6 +946,417 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, ArrayAcc
         }
 
         $this->container['coupons_revenue_penetration'] = $coupons_revenue_penetration;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_from_subscriptions_with_multiple_deliveries
+     *
+     * @return float|null
+     */
+    public function getRevenueFromSubscriptionsWithMultipleDeliveries(): ?float
+    {
+        return $this->container['revenue_from_subscriptions_with_multiple_deliveries'];
+    }
+
+    /**
+     * Sets revenue_from_subscriptions_with_multiple_deliveries
+     *
+     * @param float|null $revenue_from_subscriptions_with_multiple_deliveries The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenueFromSubscriptionsWithMultipleDeliveries(?float $revenue_from_subscriptions_with_multiple_deliveries): self
+    {
+        if (is_null($revenue_from_subscriptions_with_multiple_deliveries)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_from_subscriptions_with_multiple_deliveries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_from_subscriptions_with_multiple_deliveries', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_from_subscriptions_with_multiple_deliveries) && ($revenue_from_subscriptions_with_multiple_deliveries < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_from_subscriptions_with_multiple_deliveries when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_from_subscriptions_with_multiple_deliveries'] = $revenue_from_subscriptions_with_multiple_deliveries;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_from_active_subscriptions_with_single_delivery
+     *
+     * @return float|null
+     */
+    public function getRevenueFromActiveSubscriptionsWithSingleDelivery(): ?float
+    {
+        return $this->container['revenue_from_active_subscriptions_with_single_delivery'];
+    }
+
+    /**
+     * Sets revenue_from_active_subscriptions_with_single_delivery
+     *
+     * @param float|null $revenue_from_active_subscriptions_with_single_delivery The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenueFromActiveSubscriptionsWithSingleDelivery(?float $revenue_from_active_subscriptions_with_single_delivery): self
+    {
+        if (is_null($revenue_from_active_subscriptions_with_single_delivery)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_from_active_subscriptions_with_single_delivery');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_from_active_subscriptions_with_single_delivery', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_from_active_subscriptions_with_single_delivery) && ($revenue_from_active_subscriptions_with_single_delivery < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_from_active_subscriptions_with_single_delivery when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_from_active_subscriptions_with_single_delivery'] = $revenue_from_active_subscriptions_with_single_delivery;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_from_cancelled_subscriptions_after_single_delivery
+     *
+     * @return float|null
+     */
+    public function getRevenueFromCancelledSubscriptionsAfterSingleDelivery(): ?float
+    {
+        return $this->container['revenue_from_cancelled_subscriptions_after_single_delivery'];
+    }
+
+    /**
+     * Sets revenue_from_cancelled_subscriptions_after_single_delivery
+     *
+     * @param float|null $revenue_from_cancelled_subscriptions_after_single_delivery The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenueFromCancelledSubscriptionsAfterSingleDelivery(?float $revenue_from_cancelled_subscriptions_after_single_delivery): self
+    {
+        if (is_null($revenue_from_cancelled_subscriptions_after_single_delivery)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_from_cancelled_subscriptions_after_single_delivery');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_from_cancelled_subscriptions_after_single_delivery', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_from_cancelled_subscriptions_after_single_delivery) && ($revenue_from_cancelled_subscriptions_after_single_delivery < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_from_cancelled_subscriptions_after_single_delivery when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_from_cancelled_subscriptions_after_single_delivery'] = $revenue_from_cancelled_subscriptions_after_single_delivery;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscriber_retention_for30_days
+     *
+     * @return float|null
+     */
+    public function getSubscriberRetentionFor30Days(): ?float
+    {
+        return $this->container['subscriber_retention_for30_days'];
+    }
+
+    /**
+     * Sets subscriber_retention_for30_days
+     *
+     * @param float|null $subscriber_retention_for30_days The percentage of subscriptions retained after 30 days of subscription creation. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setSubscriberRetentionFor30Days(?float $subscriber_retention_for30_days): self
+    {
+        if (is_null($subscriber_retention_for30_days)) {
+            array_push($this->openAPINullablesSetToNull, 'subscriber_retention_for30_days');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscriber_retention_for30_days', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($subscriber_retention_for30_days) && ($subscriber_retention_for30_days > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for30_days when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($subscriber_retention_for30_days) && ($subscriber_retention_for30_days < 0)) {
+            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for30_days when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['subscriber_retention_for30_days'] = $subscriber_retention_for30_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscriber_retention_for90_days
+     *
+     * @return float|null
+     */
+    public function getSubscriberRetentionFor90Days(): ?float
+    {
+        return $this->container['subscriber_retention_for90_days'];
+    }
+
+    /**
+     * Sets subscriber_retention_for90_days
+     *
+     * @param float|null $subscriber_retention_for90_days The percentage of subscriptions retained after 90 days of subscription creation. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setSubscriberRetentionFor90Days(?float $subscriber_retention_for90_days): self
+    {
+        if (is_null($subscriber_retention_for90_days)) {
+            array_push($this->openAPINullablesSetToNull, 'subscriber_retention_for90_days');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscriber_retention_for90_days', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($subscriber_retention_for90_days) && ($subscriber_retention_for90_days > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for90_days when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($subscriber_retention_for90_days) && ($subscriber_retention_for90_days < 0)) {
+            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for90_days when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['subscriber_retention_for90_days'] = $subscriber_retention_for90_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_penetration_for0_percent_seller_funding
+     *
+     * @return float|null
+     */
+    public function getRevenuePenetrationFor0PercentSellerFunding(): ?float
+    {
+        return $this->container['revenue_penetration_for0_percent_seller_funding'];
+    }
+
+    /**
+     * Sets revenue_penetration_for0_percent_seller_funding
+     *
+     * @param float|null $revenue_penetration_for0_percent_seller_funding The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenuePenetrationFor0PercentSellerFunding(?float $revenue_penetration_for0_percent_seller_funding): self
+    {
+        if (is_null($revenue_penetration_for0_percent_seller_funding)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_penetration_for0_percent_seller_funding');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_penetration_for0_percent_seller_funding', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_penetration_for0_percent_seller_funding) && ($revenue_penetration_for0_percent_seller_funding > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($revenue_penetration_for0_percent_seller_funding) && ($revenue_penetration_for0_percent_seller_funding < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_penetration_for0_percent_seller_funding'] = $revenue_penetration_for0_percent_seller_funding;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_penetration_for5_percent_seller_funding
+     *
+     * @return float|null
+     */
+    public function getRevenuePenetrationFor5PercentSellerFunding(): ?float
+    {
+        return $this->container['revenue_penetration_for5_percent_seller_funding'];
+    }
+
+    /**
+     * Sets revenue_penetration_for5_percent_seller_funding
+     *
+     * @param float|null $revenue_penetration_for5_percent_seller_funding [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenuePenetrationFor5PercentSellerFunding(?float $revenue_penetration_for5_percent_seller_funding): self
+    {
+        if (is_null($revenue_penetration_for5_percent_seller_funding)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_penetration_for5_percent_seller_funding');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_penetration_for5_percent_seller_funding', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_penetration_for5_percent_seller_funding) && ($revenue_penetration_for5_percent_seller_funding > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($revenue_penetration_for5_percent_seller_funding) && ($revenue_penetration_for5_percent_seller_funding < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_penetration_for5_percent_seller_funding'] = $revenue_penetration_for5_percent_seller_funding;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_penetration_for10_percent_seller_funding
+     *
+     * @return float|null
+     */
+    public function getRevenuePenetrationFor10PercentSellerFunding(): ?float
+    {
+        return $this->container['revenue_penetration_for10_percent_seller_funding'];
+    }
+
+    /**
+     * Sets revenue_penetration_for10_percent_seller_funding
+     *
+     * @param float|null $revenue_penetration_for10_percent_seller_funding [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenuePenetrationFor10PercentSellerFunding(?float $revenue_penetration_for10_percent_seller_funding): self
+    {
+        if (is_null($revenue_penetration_for10_percent_seller_funding)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_penetration_for10_percent_seller_funding');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_penetration_for10_percent_seller_funding', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_penetration_for10_percent_seller_funding) && ($revenue_penetration_for10_percent_seller_funding > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($revenue_penetration_for10_percent_seller_funding) && ($revenue_penetration_for10_percent_seller_funding < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_penetration_for10_percent_seller_funding'] = $revenue_penetration_for10_percent_seller_funding;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_penetration_for5_plus_percent_seller_funding
+     *
+     * @return float|null
+     */
+    public function getRevenuePenetrationFor5PlusPercentSellerFunding(): ?float
+    {
+        return $this->container['revenue_penetration_for5_plus_percent_seller_funding'];
+    }
+
+    /**
+     * Sets revenue_penetration_for5_plus_percent_seller_funding
+     *
+     * @param float|null $revenue_penetration_for5_plus_percent_seller_funding [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setRevenuePenetrationFor5PlusPercentSellerFunding(?float $revenue_penetration_for5_plus_percent_seller_funding): self
+    {
+        if (is_null($revenue_penetration_for5_plus_percent_seller_funding)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_penetration_for5_plus_percent_seller_funding');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_penetration_for5_plus_percent_seller_funding', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_penetration_for5_plus_percent_seller_funding) && ($revenue_penetration_for5_plus_percent_seller_funding > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($revenue_penetration_for5_plus_percent_seller_funding) && ($revenue_penetration_for5_plus_percent_seller_funding < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_penetration_for5_plus_percent_seller_funding'] = $revenue_penetration_for5_plus_percent_seller_funding;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_of_coupon_subscriptions
+     *
+     * @return float|null
+     */
+    public function getShareOfCouponSubscriptions(): ?float
+    {
+        return $this->container['share_of_coupon_subscriptions'];
+    }
+
+    /**
+     * Sets share_of_coupon_subscriptions
+     *
+     * @param float|null $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
+     *
+     * @return self
+     */
+    public function setShareOfCouponSubscriptions(?float $share_of_coupon_subscriptions): self
+    {
+        if (is_null($share_of_coupon_subscriptions)) {
+            array_push($this->openAPINullablesSetToNull, 'share_of_coupon_subscriptions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('share_of_coupon_subscriptions', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions < 0)) {
+            throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['share_of_coupon_subscriptions'] = $share_of_coupon_subscriptions;
 
         return $this;
     }

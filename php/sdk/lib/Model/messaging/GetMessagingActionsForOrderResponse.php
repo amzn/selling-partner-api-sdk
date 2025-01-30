@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * GetMessagingActionsForOrderResponse Class Doc Comment
  *
  * @category Class
- * @description The response schema for the getMessagingActionsForOrder operation.
+ * @description The response schema for the &#x60;getMessagingActionsForOrder&#x60; operation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -72,4 +72,16 @@ class FeaturedOfferExpectedPriceRequestParamsTest extends TestCase
         $this->model->setSku($testValue);
         $this->assertEquals($testValue, $this->model->getSku());
     }
+
+    /**
+     * Test attribute "segment"
+     */
+    public function testPropertySegment()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Segment();
+        
+        $this->model->setSegment($testValue);
+        $this->assertEquals($testValue, $this->model->getSegment());
+    }
 }

@@ -64,14 +64,13 @@ class VendorDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "vendor_shipment_id"
+     * Test attribute "vendor_shipment_identifier"
      */
-    public function testPropertyVendorShipmentId()
+    public function testPropertyVendorShipmentIdentifier()
     {
+        $testValue = 'test';
         
-        $testValue = new \DateTime();
-        
-        $this->model->setVendorShipmentId($testValue);
-        $this->assertEquals($testValue, $this->model->getVendorShipmentId());
+        $this->model->setVendorShipmentIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getVendorShipmentIdentifier());
     }
 }

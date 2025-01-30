@@ -170,6 +170,126 @@ class GetSellingPartnerMetricsResponseMetricTest extends TestCase
     }
 
     /**
+     * Test attribute "revenue_from_subscriptions_with_multiple_deliveries"
+     */
+    public function testPropertyRevenueFromSubscriptionsWithMultipleDeliveries()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenueFromSubscriptionsWithMultipleDeliveries($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenueFromSubscriptionsWithMultipleDeliveries());
+    }
+
+    /**
+     * Test attribute "revenue_from_active_subscriptions_with_single_delivery"
+     */
+    public function testPropertyRevenueFromActiveSubscriptionsWithSingleDelivery()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenueFromActiveSubscriptionsWithSingleDelivery($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenueFromActiveSubscriptionsWithSingleDelivery());
+    }
+
+    /**
+     * Test attribute "revenue_from_cancelled_subscriptions_after_single_delivery"
+     */
+    public function testPropertyRevenueFromCancelledSubscriptionsAfterSingleDelivery()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenueFromCancelledSubscriptionsAfterSingleDelivery($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenueFromCancelledSubscriptionsAfterSingleDelivery());
+    }
+
+    /**
+     * Test attribute "subscriber_retention_for30_days"
+     */
+    public function testPropertySubscriberRetentionFor30Days()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setSubscriberRetentionFor30Days($testValue);
+        $this->assertEquals($testValue, $this->model->getSubscriberRetentionFor30Days());
+    }
+
+    /**
+     * Test attribute "subscriber_retention_for90_days"
+     */
+    public function testPropertySubscriberRetentionFor90Days()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setSubscriberRetentionFor90Days($testValue);
+        $this->assertEquals($testValue, $this->model->getSubscriberRetentionFor90Days());
+    }
+
+    /**
+     * Test attribute "revenue_penetration_for0_percent_seller_funding"
+     */
+    public function testPropertyRevenuePenetrationFor0PercentSellerFunding()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenuePenetrationFor0PercentSellerFunding($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenuePenetrationFor0PercentSellerFunding());
+    }
+
+    /**
+     * Test attribute "revenue_penetration_for5_percent_seller_funding"
+     */
+    public function testPropertyRevenuePenetrationFor5PercentSellerFunding()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenuePenetrationFor5PercentSellerFunding($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenuePenetrationFor5PercentSellerFunding());
+    }
+
+    /**
+     * Test attribute "revenue_penetration_for10_percent_seller_funding"
+     */
+    public function testPropertyRevenuePenetrationFor10PercentSellerFunding()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenuePenetrationFor10PercentSellerFunding($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenuePenetrationFor10PercentSellerFunding());
+    }
+
+    /**
+     * Test attribute "revenue_penetration_for5_plus_percent_seller_funding"
+     */
+    public function testPropertyRevenuePenetrationFor5PlusPercentSellerFunding()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setRevenuePenetrationFor5PlusPercentSellerFunding($testValue);
+        $this->assertEquals($testValue, $this->model->getRevenuePenetrationFor5PlusPercentSellerFunding());
+    }
+
+    /**
+     * Test attribute "share_of_coupon_subscriptions"
+     */
+    public function testPropertyShareOfCouponSubscriptions()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setShareOfCouponSubscriptions($testValue);
+        $this->assertEquals($testValue, $this->model->getShareOfCouponSubscriptions());
+    }
+
+    /**
      * Test attribute "time_interval"
      */
     public function testPropertyTimeInterval()

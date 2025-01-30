@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LabelOwner;
+use OpenAPI\Client\Model\awd\LabelOwner;
 
 /**
  * LabelOwnerTest Class Doc Comment
  *
  * @category    Class
- * @description Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;.
+ * @description The entity that labels the products.
  * @package     OpenAPI\Client
  */
 class LabelOwnerTest extends TestCase

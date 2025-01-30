@@ -83,4 +83,28 @@ class ProductQuantityTest extends TestCase
         $this->model->setSku($testValue);
         $this->assertEquals($testValue, $this->model->getSku());
     }
+
+    /**
+     * Test attribute "expiration"
+     */
+    public function testPropertyExpiration()
+    {
+        
+        $testValue = new \DateTime();
+        
+        $this->model->setExpiration($testValue);
+        $this->assertEquals($testValue, $this->model->getExpiration());
+    }
+
+    /**
+     * Test attribute "prep_details"
+     */
+    public function testPropertyPrepDetails()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\awd\PrepDetails();
+        
+        $this->model->setPrepDetails($testValue);
+        $this->assertEquals($testValue, $this->model->getPrepDetails());
+    }
 }

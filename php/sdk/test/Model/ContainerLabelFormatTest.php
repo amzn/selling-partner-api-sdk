@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\ContainerLabelFormat;
  * ContainerLabelFormatTest Class Doc Comment
  *
  * @category    Class
- * @description Format of the container label.
+ * @description The format of the container label.
  * @package     OpenAPI\Client
  */
 class ContainerLabelFormatTest extends TestCase

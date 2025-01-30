@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * InvoiceRequest Class Doc Comment
  *
  * @category Class
- * @description The request schema for the sendInvoice operation.
+ * @description The request schema for the &#x60;sendInvoice&#x60; operation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

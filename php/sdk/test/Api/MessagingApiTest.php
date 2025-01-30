@@ -2792,7 +2792,7 @@ class MessagingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The message was created for the order.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -2868,7 +2868,7 @@ class MessagingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

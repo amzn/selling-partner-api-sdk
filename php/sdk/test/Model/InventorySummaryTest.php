@@ -52,6 +52,17 @@ class InventorySummaryTest extends TestCase
     }
 
     /**
+     * Test attribute "expiration_details"
+     */
+    public function testPropertyExpirationDetails()
+    {
+        $testValue = [];
+        
+        $this->model->setExpirationDetails($testValue);
+        $this->assertEquals($testValue, $this->model->getExpirationDetails());
+    }
+
+    /**
      * Test attribute "inventory_details"
      */
     public function testPropertyInventoryDetails()

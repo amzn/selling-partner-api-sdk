@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\SubmitShippingLabelsRequest;
  * SubmitShippingLabelsRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request schema for the submitShippingLabelRequest operation.
+ * @description The request schema for the &#x60;submitShippingLabelRequest&#x60; operation.
  * @package     OpenAPI\Client
  */
 class SubmitShippingLabelsRequestTest extends TestCase

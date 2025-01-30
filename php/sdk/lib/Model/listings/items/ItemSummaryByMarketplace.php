@@ -11,7 +11,7 @@
  */
 
 /**
- * Listings Items v2021-08-01
+ * Selling Partner API for Listings Items
  *
  * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
@@ -97,12 +97,12 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
-        'asin' => false,
+        'asin' => true,
         'product_type' => false,
         'condition_type' => true,
         'status' => false,
         'fn_sku' => true,
-        'item_name' => false,
+        'item_name' => true,
         'created_date' => false,
         'last_updated_date' => false,
         'main_image' => true
@@ -394,9 +394,6 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['marketplace_id'] === null) {
             $invalidProperties[] = "'marketplace_id' can't be null";
         }
-        if ($this->container['asin'] === null) {
-            $invalidProperties[] = "'asin' can't be null";
-        }
         if ($this->container['product_type'] === null) {
             $invalidProperties[] = "'product_type' can't be null";
         }
@@ -411,9 +408,6 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
 
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['item_name'] === null) {
-            $invalidProperties[] = "'item_name' can't be null";
         }
         if ($this->container['created_date'] === null) {
             $invalidProperties[] = "'created_date' can't be null";
@@ -466,9 +460,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets asin
      *
-     * @return string
+     * @return string|null
      */
-    public function getAsin(): string
+    public function getAsin(): ?string
     {
         return $this->container['asin'];
     }
@@ -476,14 +470,21 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets asin
      *
-     * @param string $asin Amazon Standard Identification Number (ASIN) of the listings item.
+     * @param string|null $asin Amazon Standard Identification Number (ASIN) of the listings item.
      *
      * @return self
      */
-    public function setAsin(string $asin): self
+    public function setAsin(?string $asin): self
     {
         if (is_null($asin)) {
-            throw new \InvalidArgumentException('non-nullable asin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['asin'] = $asin;
 
@@ -634,9 +635,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets item_name
      *
-     * @return string
+     * @return string|null
      */
-    public function getItemName(): string
+    public function getItemName(): ?string
     {
         return $this->container['item_name'];
     }
@@ -644,14 +645,21 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets item_name
      *
-     * @param string $item_name The name or title associated with an Amazon catalog item.
+     * @param string|null $item_name The name or title associated with an Amazon catalog item.
      *
      * @return self
      */
-    public function setItemName(string $item_name): self
+    public function setItemName(?string $item_name): self
     {
         if (is_null($item_name)) {
-            throw new \InvalidArgumentException('non-nullable item_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'item_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('item_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['item_name'] = $item_name;
 

@@ -11,7 +11,7 @@
  */
 
 /**
- * Vendor Shipments v1
+ * Selling Partner API for Retail Procurement Shipments
  *
  * The Selling Partner API for Retail Procurement Shipments provides programmatic access to retail shipping data for vendors.
  *
@@ -61,7 +61,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'selling_party' => '\OpenAPI\Client\Model\vendor\shipments\PartyIdentification',
-             'vendor_shipment_id' => '\DateTime'    ];
+             'vendor_shipment_identifier' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -72,7 +72,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPIFormats = [
             'selling_party' => null,
-            'vendor_shipment_id' => 'date-time'    ];
+            'vendor_shipment_identifier' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -81,7 +81,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'selling_party' => true,
-        'vendor_shipment_id' => true
+        'vendor_shipment_identifier' => true
     ];
 
     /**
@@ -171,7 +171,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $attributeMap = [
         'selling_party' => 'sellingParty',
-                'vendor_shipment_id' => 'vendorShipmentId'
+                'vendor_shipment_identifier' => 'vendorShipmentIdentifier'
         
     ];
 
@@ -182,7 +182,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $setters = [
         'selling_party' => 'setSellingParty',
-        'vendor_shipment_id' => 'setVendorShipmentId'
+        'vendor_shipment_identifier' => 'setVendorShipmentIdentifier'
     ];
 
     /**
@@ -192,7 +192,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $getters = [
         'selling_party' => 'getSellingParty',
-        'vendor_shipment_id' => 'getVendorShipmentId'
+        'vendor_shipment_identifier' => 'getVendorShipmentIdentifier'
     ];
 
     /**
@@ -253,7 +253,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('selling_party', $data ?? [], null);
-        $this->setIfExists('vendor_shipment_id', $data ?? [], null);
+        $this->setIfExists('vendor_shipment_identifier', $data ?? [], null);
     }
 
     /**
@@ -333,35 +333,35 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets vendor_shipment_id
+     * Gets vendor_shipment_identifier
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getVendorShipmentId(): ?\DateTime
+    public function getVendorShipmentIdentifier(): ?string
     {
-        return $this->container['vendor_shipment_id'];
+        return $this->container['vendor_shipment_identifier'];
     }
 
     /**
-     * Sets vendor_shipment_id
+     * Sets vendor_shipment_identifier
      *
-     * @param \DateTime|null $vendor_shipment_id Unique vendor shipment id which is not used in last 365 days
+     * @param string|null $vendor_shipment_identifier Unique vendor shipment id which is not used in last 365 days
      *
      * @return self
      */
-    public function setVendorShipmentId(?\DateTime $vendor_shipment_id): self
+    public function setVendorShipmentIdentifier(?string $vendor_shipment_identifier): self
     {
-        if (is_null($vendor_shipment_id)) {
-            array_push($this->openAPINullablesSetToNull, 'vendor_shipment_id');
+        if (is_null($vendor_shipment_identifier)) {
+            array_push($this->openAPINullablesSetToNull, 'vendor_shipment_identifier');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('vendor_shipment_id', $nullablesSetToNull);
+            $index = array_search('vendor_shipment_identifier', $nullablesSetToNull);
             if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['vendor_shipment_id'] = $vendor_shipment_id;
+        $this->container['vendor_shipment_identifier'] = $vendor_shipment_identifier;
 
         return $this;
     }

@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest;
  * CreateDigitalAccessKeyRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request schema for the createDigitalAccessKey operation.
+ * @description The request schema for the &#x60;createDigitalAccessKey&#x60; operation.
  * @package     OpenAPI\Client
  */
 class CreateDigitalAccessKeyRequestTest extends TestCase

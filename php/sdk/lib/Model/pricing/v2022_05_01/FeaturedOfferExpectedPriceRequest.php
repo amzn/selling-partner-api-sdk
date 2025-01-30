@@ -65,7 +65,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
              'body' => 'array<string,object>',
              'headers' => 'array<string,string>',
              'marketplace_id' => 'string',
-             'sku' => 'string'    ];
+             'sku' => 'string',
+             'segment' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Segment'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -80,7 +81,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
             'body' => null,
             'headers' => null,
             'marketplace_id' => null,
-            'sku' => null    ];
+            'sku' => null,
+            'segment' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -93,7 +95,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
         'body' => true,
         'headers' => true,
         'marketplace_id' => false,
-        'sku' => false
+        'sku' => false,
+        'segment' => true
     ];
 
     /**
@@ -187,7 +190,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
                 'body' => 'body',
                 'headers' => 'headers',
                 'marketplace_id' => 'marketplaceId',
-                'sku' => 'sku'
+                'sku' => 'sku',
+                'segment' => 'segment'
         
     ];
 
@@ -202,7 +206,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
         'body' => 'setBody',
         'headers' => 'setHeaders',
         'marketplace_id' => 'setMarketplaceId',
-        'sku' => 'setSku'
+        'sku' => 'setSku',
+        'segment' => 'setSegment'
     ];
 
     /**
@@ -216,7 +221,8 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
         'body' => 'getBody',
         'headers' => 'getHeaders',
         'marketplace_id' => 'getMarketplaceId',
-        'sku' => 'getSku'
+        'sku' => 'getSku',
+        'segment' => 'getSegment'
     ];
 
     /**
@@ -282,6 +288,7 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
         $this->setIfExists('headers', $data ?? [], null);
         $this->setIfExists('marketplace_id', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
+        $this->setIfExists('segment', $data ?? [], null);
     }
 
     /**
@@ -510,6 +517,40 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable sku cannot be null');
         }
         $this->container['sku'] = $sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets segment
+     *
+     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\Segment|null
+     */
+    public function getSegment(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\Segment
+    {
+        return $this->container['segment'];
+    }
+
+    /**
+     * Sets segment
+     *
+     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\Segment|null $segment segment
+     *
+     * @return self
+     */
+    public function setSegment(?\OpenAPI\Client\Model\pricing\v2022_05_01\Segment $segment): self
+    {
+        if (is_null($segment)) {
+            array_push($this->openAPINullablesSetToNull, 'segment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('segment', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['segment'] = $segment;
 
         return $this;
     }

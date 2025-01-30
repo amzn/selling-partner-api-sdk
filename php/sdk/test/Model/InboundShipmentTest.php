@@ -178,6 +178,17 @@ class InboundShipmentTest extends TestCase
     }
 
     /**
+     * Test attribute "destination_region"
+     */
+    public function testPropertyDestinationRegion()
+    {
+        $testValue = 'test';
+        
+        $this->model->setDestinationRegion($testValue);
+        $this->assertEquals($testValue, $this->model->getDestinationRegion());
+    }
+
+    /**
      * Test attribute "shipment_status"
      */
     public function testPropertyShipmentStatus()

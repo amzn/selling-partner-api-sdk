@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\shipments\TotalWeight;
  * TotalWeightTest Class Doc Comment
  *
  * @category    Class
- * @description Amount of units shipped for items sold by weight at a shipment level.
+ * @description The total weight of units that are sold by weight in a shipment.
  * @package     OpenAPI\Client
  */
 class TotalWeightTest extends TestCase

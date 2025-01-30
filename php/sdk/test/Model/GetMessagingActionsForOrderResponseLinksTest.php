@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponseLinks;
  * GetMessagingActionsForOrderResponseLinksTest Class Doc Comment
  *
  * @category    Class
- * @description GetMessagingActionsForOrderResponseLinks
+ * @description The links response that is associated with the specified &#x60;amazonOrderId&#x60;.
  * @package     OpenAPI\Client
  */
 class GetMessagingActionsForOrderResponseLinksTest extends TestCase

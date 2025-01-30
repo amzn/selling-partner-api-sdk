@@ -37,6 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * GetSchemaResponse Class Doc Comment
  *
  * @category Class
+ * @description The &#x60;GET&#x60; request schema response.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

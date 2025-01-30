@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\CarrierId;
  * CarrierIdTest Class Doc Comment
  *
  * @category    Class
- * @description Unique carrier code for the carrier for whom container labels are requested.
+ * @description The unique carrier code for the carrier for whom container labels are requested.
  * @package     OpenAPI\Client
  */
 class CarrierIdTest extends TestCase

@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\UnitOfMeasurement;
+use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UnitOfMeasurement;
 
 /**
  * UnitOfMeasurementTest Class Doc Comment
  *
  * @category    Class
- * @description Indicates the unit of measurement.
+ * @description Unit of linear measure.
  * @package     OpenAPI\Client
  */
 class UnitOfMeasurementTest extends TestCase

@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\PrepOwner;
+use OpenAPI\Client\Model\awd\PrepOwner;
 
 /**
  * PrepOwnerTest Class Doc Comment
  *
  * @category    Class
- * @description Indicates who will prepare the item.
+ * @description The owner of the preparations, if special preparations are required.
  * @package     OpenAPI\Client
  */
 class PrepOwnerTest extends TestCase

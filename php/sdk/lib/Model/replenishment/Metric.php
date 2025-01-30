@@ -60,6 +60,14 @@ class Metric
 
     public const COUPONS_REVENUE_PENETRATION = 'COUPONS_REVENUE_PENETRATION';
 
+    public const REVENUE_BY_DELIVERIES = 'REVENUE_BY_DELIVERIES';
+
+    public const SUBSCRIBER_RETENTION = 'SUBSCRIBER_RETENTION';
+
+    public const REVENUE_PENETRATION_BY_SELLER_FUNDING = 'REVENUE_PENETRATION_BY_SELLER_FUNDING';
+
+    public const SHARE_OF_COUPON_SUBSCRIPTIONS = 'SHARE_OF_COUPON_SUBSCRIPTIONS';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -74,7 +82,11 @@ class Metric
             self::SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REVENUE,
             self::LOST_REVENUE_DUE_TO_OOS,
             self::SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REORDERS,
-            self::COUPONS_REVENUE_PENETRATION
+            self::COUPONS_REVENUE_PENETRATION,
+            self::REVENUE_BY_DELIVERIES,
+            self::SUBSCRIBER_RETENTION,
+            self::REVENUE_PENETRATION_BY_SELLER_FUNDING,
+            self::SHARE_OF_COUPON_SUBSCRIPTIONS
         ];
     }
 }

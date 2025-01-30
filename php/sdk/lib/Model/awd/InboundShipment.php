@@ -71,6 +71,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
              'shipment_container_quantities' => '\OpenAPI\Client\Model\awd\DistributionPackageQuantity[]',
              'shipment_id' => 'string',
              'shipment_sku_quantities' => '\OpenAPI\Client\Model\awd\SkuQuantity[]',
+             'destination_region' => 'string',
              'shipment_status' => '\OpenAPI\Client\Model\awd\InboundShipmentStatus',
              'tracking_id' => 'string',
              'updated_at' => '\DateTime',
@@ -95,6 +96,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
             'shipment_container_quantities' => null,
             'shipment_id' => null,
             'shipment_sku_quantities' => null,
+            'destination_region' => null,
             'shipment_status' => null,
             'tracking_id' => null,
             'updated_at' => 'date-time',
@@ -117,6 +119,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipment_container_quantities' => false,
         'shipment_id' => false,
         'shipment_sku_quantities' => true,
+        'destination_region' => true,
         'shipment_status' => false,
         'tracking_id' => true,
         'updated_at' => true,
@@ -220,6 +223,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
                 'shipment_container_quantities' => 'shipmentContainerQuantities',
                 'shipment_id' => 'shipmentId',
                 'shipment_sku_quantities' => 'shipmentSkuQuantities',
+                'destination_region' => 'destinationRegion',
                 'shipment_status' => 'shipmentStatus',
                 'tracking_id' => 'trackingId',
                 'updated_at' => 'updatedAt',
@@ -244,6 +248,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipment_container_quantities' => 'setShipmentContainerQuantities',
         'shipment_id' => 'setShipmentId',
         'shipment_sku_quantities' => 'setShipmentSkuQuantities',
+        'destination_region' => 'setDestinationRegion',
         'shipment_status' => 'setShipmentStatus',
         'tracking_id' => 'setTrackingId',
         'updated_at' => 'setUpdatedAt',
@@ -267,6 +272,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipment_container_quantities' => 'getShipmentContainerQuantities',
         'shipment_id' => 'getShipmentId',
         'shipment_sku_quantities' => 'getShipmentSkuQuantities',
+        'destination_region' => 'getDestinationRegion',
         'shipment_status' => 'getShipmentStatus',
         'tracking_id' => 'getTrackingId',
         'updated_at' => 'getUpdatedAt',
@@ -341,6 +347,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('shipment_container_quantities', $data ?? [], null);
         $this->setIfExists('shipment_id', $data ?? [], null);
         $this->setIfExists('shipment_sku_quantities', $data ?? [], null);
+        $this->setIfExists('destination_region', $data ?? [], null);
         $this->setIfExists('shipment_status', $data ?? [], null);
         $this->setIfExists('tracking_id', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -764,6 +771,40 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['shipment_sku_quantities'] = $shipment_sku_quantities;
+
+        return $this;
+    }
+
+    /**
+     * Gets destination_region
+     *
+     * @return string|null
+     */
+    public function getDestinationRegion(): ?string
+    {
+        return $this->container['destination_region'];
+    }
+
+    /**
+     * Sets destination_region
+     *
+     * @param string|null $destination_region Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east]
+     *
+     * @return self
+     */
+    public function setDestinationRegion(?string $destination_region): self
+    {
+        if (is_null($destination_region)) {
+            array_push($this->openAPINullablesSetToNull, 'destination_region');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('destination_region', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['destination_region'] = $destination_region;
 
         return $this;
     }

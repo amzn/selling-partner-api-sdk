@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\PrepDetails;
+use OpenAPI\Client\Model\awd\PrepDetails;
 
 /**
  * PrepDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description Preparation instructions and who is responsible for the preparation.
+ * @description The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep instructions are generated based on the specified category.
  * @package     OpenAPI\Client
  */
 class PrepDetailsTest extends TestCase
@@ -52,16 +52,38 @@ class PrepDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "prep_instruction"
+     * Test attribute "label_owner"
      */
-    public function testPropertyPrepInstruction()
+    public function testPropertyLabelOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction();
+        $enumInstance = new \OpenAPI\Client\Model\awd\LabelOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
-        $this->model->setPrepInstruction($testValue);
-        $this->assertEquals($testValue, $this->model->getPrepInstruction());
+        $this->model->setLabelOwner($testValue);
+        $this->assertEquals($testValue, $this->model->getLabelOwner());
+    }
+
+    /**
+     * Test attribute "prep_category"
+     */
+    public function testPropertyPrepCategory()
+    {
+        $testValue = 'test';
+        
+        $this->model->setPrepCategory($testValue);
+        $this->assertEquals($testValue, $this->model->getPrepCategory());
+    }
+
+    /**
+     * Test attribute "prep_instructions"
+     */
+    public function testPropertyPrepInstructions()
+    {
+        $testValue = [];
+        
+        $this->model->setPrepInstructions($testValue);
+        $this->assertEquals($testValue, $this->model->getPrepInstructions());
     }
 
     /**
@@ -69,7 +91,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\PrepOwner();
+        $enumInstance = new \OpenAPI\Client\Model\awd\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -56,7 +56,8 @@ class TransportLabelTest extends TestCase
      */
     public function testPropertyLabelCreateDateTime()
     {
-        $testValue = 'test';
+        
+        $testValue = new \DateTime();
         
         $this->model->setLabelCreateDateTime($testValue);
         $this->assertEquals($testValue, $this->model->getLabelCreateDateTime());
