@@ -15,7 +15,7 @@ jobs:
           path: selling-partner-api-sdk
       - uses: actions/checkout@v4
         with:
-          repository: leonardonakagawa/selling-partner-api-models
+          repository: amzn/selling-partner-api-models
           path: selling-partner-api-models
       - uses: shivammathur/setup-php@v2
         with:
