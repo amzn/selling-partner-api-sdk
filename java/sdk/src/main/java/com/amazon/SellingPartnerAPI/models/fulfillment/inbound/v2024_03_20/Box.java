@@ -1,5 +1,5 @@
 /*
- * Fulfillment Inbound v2024-03-20
+ * The Selling Partner API for FBA inbound operations.
  * The Selling Partner API for Fulfillment By Amazon (FBA) Inbound. The FBA Inbound API enables building inbound workflows to create, manage, and send shipments into Amazon's fulfillment network. The API has interoperability with the Send-to-Amazon user interface.
  *
  * OpenAPI spec version: 2024-03-20
@@ -46,6 +46,12 @@ public class Box {
 
   @SerializedName("dimensions")
   private Dimensions dimensions = null;
+
+  @SerializedName("externalContainerIdentifier")
+  private String externalContainerIdentifier = null;
+
+  @SerializedName("externalContainerIdentifierType")
+  private String externalContainerIdentifierType = null;
 
   @SerializedName("items")
   private List<Item> items = null;
@@ -132,6 +138,42 @@ public class Box {
 
   public void setDimensions(Dimensions dimensions) {
     this.dimensions = dimensions;
+  }
+
+  public Box externalContainerIdentifier(String externalContainerIdentifier) {
+    this.externalContainerIdentifier = externalContainerIdentifier;
+    return this;
+  }
+
+   /**
+   * The external identifier for this container / box.
+   * @return externalContainerIdentifier
+  **/
+  @Schema(description = "The external identifier for this container / box.")
+  public String getExternalContainerIdentifier() {
+    return externalContainerIdentifier;
+  }
+
+  public void setExternalContainerIdentifier(String externalContainerIdentifier) {
+    this.externalContainerIdentifier = externalContainerIdentifier;
+  }
+
+  public Box externalContainerIdentifierType(String externalContainerIdentifierType) {
+    this.externalContainerIdentifierType = externalContainerIdentifierType;
+    return this;
+  }
+
+   /**
+   * Type of the external identifier used. Can be: &#x60;AMAZON&#x60;, &#x60;SSCC&#x60;.
+   * @return externalContainerIdentifierType
+  **/
+  @Schema(description = "Type of the external identifier used. Can be: `AMAZON`, `SSCC`.")
+  public String getExternalContainerIdentifierType() {
+    return externalContainerIdentifierType;
+  }
+
+  public void setExternalContainerIdentifierType(String externalContainerIdentifierType) {
+    this.externalContainerIdentifierType = externalContainerIdentifierType;
   }
 
   public Box items(List<Item> items) {
@@ -248,6 +290,8 @@ public class Box {
         Objects.equals(this.contentInformationSource, box.contentInformationSource) &&
         Objects.equals(this.destinationRegion, box.destinationRegion) &&
         Objects.equals(this.dimensions, box.dimensions) &&
+        Objects.equals(this.externalContainerIdentifier, box.externalContainerIdentifier) &&
+        Objects.equals(this.externalContainerIdentifierType, box.externalContainerIdentifierType) &&
         Objects.equals(this.items, box.items) &&
         Objects.equals(this.packageId, box.packageId) &&
         Objects.equals(this.quantity, box.quantity) &&
@@ -257,7 +301,7 @@ public class Box {
 
   @Override
   public int hashCode() {
-    return Objects.hash(boxId, contentInformationSource, destinationRegion, dimensions, items, packageId, quantity, templateName, weight);
+    return Objects.hash(boxId, contentInformationSource, destinationRegion, dimensions, externalContainerIdentifier, externalContainerIdentifierType, items, packageId, quantity, templateName, weight);
   }
 
 
@@ -270,6 +314,8 @@ public class Box {
     sb.append("    contentInformationSource: ").append(toIndentedString(contentInformationSource)).append("\n");
     sb.append("    destinationRegion: ").append(toIndentedString(destinationRegion)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
+    sb.append("    externalContainerIdentifier: ").append(toIndentedString(externalContainerIdentifier)).append("\n");
+    sb.append("    externalContainerIdentifierType: ").append(toIndentedString(externalContainerIdentifierType)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    packageId: ").append(toIndentedString(packageId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");

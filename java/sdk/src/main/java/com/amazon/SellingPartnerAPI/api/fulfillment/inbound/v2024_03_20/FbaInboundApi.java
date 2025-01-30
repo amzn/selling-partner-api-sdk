@@ -1,5 +1,5 @@
 /*
- * Fulfillment Inbound v2024-03-20
+ * The Selling Partner API for FBA inbound operations.
  * The Selling Partner API for Fulfillment By Amazon (FBA) Inbound. The FBA Inbound API enables building inbound workflows to create, manage, and send shipments into Amazon's fulfillment network. The API has interoperability with the Send-to-Amazon user interface.
  *
  * OpenAPI spec version: 2024-03-20
@@ -101,14 +101,14 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 
-public class FulfillmentInboundApi {
+public class FbaInboundApi {
     private ApiClient apiClient;
 
-    FulfillmentInboundApi() {
+    FbaInboundApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public FulfillmentInboundApi(ApiClient apiClient) {
+    public FbaInboundApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -184,7 +184,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * cancelInboundPlan
+     * 
      * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return CancelInboundPlanResponse
@@ -197,7 +197,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * cancelInboundPlan
+     * 
      * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return ApiResponse&lt;CancelInboundPlanResponse&gt;
@@ -211,7 +211,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * cancelInboundPlan (asynchronously)
+     *  (asynchronously)
      * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -320,8 +320,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * cancelSelfShipAppointment
-     * Cancels a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Cancels a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -335,8 +335,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * cancelSelfShipAppointment
-     * Cancels a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Cancels a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -351,8 +351,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * cancelSelfShipAppointment (asynchronously)
-     * Cancels a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *  (asynchronously)
+     * Cancels a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;cancelSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -463,7 +463,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmDeliveryWindowOptions
+     * 
      * Confirms the delivery window option for chosen shipment within an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new delivery window options cannot be generated, but the chosen delivery window option can be updated before shipment closure. The window is used to provide the expected time when a shipment will arrive at the warehouse. All transportation options which have the program &#x60;CONFIRMED_DELIVERY_WINDOW&#x60; require a delivery window to be confirmed prior to transportation option confirmation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to confirm the delivery window option for. (required)
@@ -478,7 +478,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmDeliveryWindowOptions
+     * 
      * Confirms the delivery window option for chosen shipment within an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new delivery window options cannot be generated, but the chosen delivery window option can be updated before shipment closure. The window is used to provide the expected time when a shipment will arrive at the warehouse. All transportation options which have the program &#x60;CONFIRMED_DELIVERY_WINDOW&#x60; require a delivery window to be confirmed prior to transportation option confirmation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to confirm the delivery window option for. (required)
@@ -494,7 +494,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmDeliveryWindowOptions (asynchronously)
+     *  (asynchronously)
      * Confirms the delivery window option for chosen shipment within an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new delivery window options cannot be generated, but the chosen delivery window option can be updated before shipment closure. The window is used to provide the expected time when a shipment will arrive at the warehouse. All transportation options which have the program &#x60;CONFIRMED_DELIVERY_WINDOW&#x60; require a delivery window to be confirmed prior to transportation option confirmation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to confirm the delivery window option for. (required)
@@ -600,7 +600,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmPackingOption
+     * 
      * Confirms the packing option for an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingOptionId Identifier of a packing option. (required)
@@ -614,7 +614,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmPackingOption
+     * 
      * Confirms the packing option for an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingOptionId Identifier of a packing option. (required)
@@ -629,7 +629,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmPackingOption (asynchronously)
+     *  (asynchronously)
      * Confirms the packing option for an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingOptionId Identifier of a packing option. (required)
@@ -734,7 +734,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmPlacementOption
+     * 
      * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
@@ -748,7 +748,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmPlacementOption
+     * 
      * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
@@ -763,7 +763,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmPlacementOption (asynchronously)
+     *  (asynchronously)
      * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param placementOptionId The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required)
@@ -874,7 +874,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmShipmentContentUpdatePreview
+     * 
      * Confirm a shipment content update preview and accept the changes in transportation cost.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -889,7 +889,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmShipmentContentUpdatePreview
+     * 
      * Confirm a shipment content update preview and accept the changes in transportation cost.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -905,7 +905,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmShipmentContentUpdatePreview (asynchronously)
+     *  (asynchronously)
      * Confirm a shipment content update preview and accept the changes in transportation cost.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -1010,7 +1010,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmTransportationOptions
+     * 
      * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1024,7 +1024,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmTransportationOptions
+     * 
      * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1039,7 +1039,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * confirmTransportationOptions (asynchronously)
+     *  (asynchronously)
      * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;confirmTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1137,7 +1137,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * createInboundPlan
+     * 
      * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into Amazon&#x27;s fufillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
      * @return CreateInboundPlanResponse
@@ -1150,7 +1150,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * createInboundPlan
+     * 
      * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into Amazon&#x27;s fufillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
      * @return ApiResponse&lt;CreateInboundPlanResponse&gt;
@@ -1164,7 +1164,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * createInboundPlan (asynchronously)
+     *  (asynchronously)
      * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into Amazon&#x27;s fufillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;createInboundPlan&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1261,7 +1261,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * createMarketplaceItemLabels
+     * 
      * For a given marketplace - creates labels for a list of MSKUs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      * @return CreateMarketplaceItemLabelsResponse
@@ -1274,7 +1274,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * createMarketplaceItemLabels
+     * 
      * For a given marketplace - creates labels for a list of MSKUs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      * @return ApiResponse&lt;CreateMarketplaceItemLabelsResponse&gt;
@@ -1288,7 +1288,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * createMarketplaceItemLabels (asynchronously)
+     *  (asynchronously)
      * For a given marketplace - creates labels for a list of MSKUs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;createMarketplaceItemLabels&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1392,7 +1392,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateDeliveryWindowOptions
+     * 
      * Generates available delivery window options for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to generate delivery window options for. (required)
@@ -1406,7 +1406,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateDeliveryWindowOptions
+     * 
      * Generates available delivery window options for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to generate delivery window options for. (required)
@@ -1421,7 +1421,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateDeliveryWindowOptions (asynchronously)
+     *  (asynchronously)
      * Generates available delivery window options for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to generate delivery window options for. (required)
@@ -1520,7 +1520,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generatePackingOptions
+     * 
      * Generates available packing options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return GeneratePackingOptionsResponse
@@ -1533,7 +1533,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generatePackingOptions
+     * 
      * Generates available packing options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return ApiResponse&lt;GeneratePackingOptionsResponse&gt;
@@ -1547,7 +1547,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generatePackingOptions (asynchronously)
+     *  (asynchronously)
      * Generates available packing options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1650,7 +1650,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generatePlacementOptions
+     * 
      * Generates placement options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1664,7 +1664,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generatePlacementOptions
+     * 
      * Generates placement options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1679,7 +1679,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generatePlacementOptions (asynchronously)
+     *  (asynchronously)
      * Generates placement options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generatePlacementOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1789,8 +1789,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateSelfShipAppointmentSlots
-     * Initiates the process of generating the appointment slots list. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Initiates the process of generating the appointment slots list. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -1804,8 +1804,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateSelfShipAppointmentSlots
-     * Initiates the process of generating the appointment slots list. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Initiates the process of generating the appointment slots list. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -1820,8 +1820,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateSelfShipAppointmentSlots (asynchronously)
-     * Initiates the process of generating the appointment slots list. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *  (asynchronously)
+     * Initiates the process of generating the appointment slots list. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -1931,7 +1931,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateShipmentContentUpdatePreviews
+     * 
      * Generate a shipment content update preview given a set of intended boxes and/or items for a shipment with a confirmed carrier. The shipment content update preview will be viewable with the updated costs and contents prior to confirmation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1946,7 +1946,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateShipmentContentUpdatePreviews
+     * 
      * Generate a shipment content update preview given a set of intended boxes and/or items for a shipment with a confirmed carrier. The shipment content update preview will be viewable with the updated costs and contents prior to confirmation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -1962,7 +1962,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateShipmentContentUpdatePreviews (asynchronously)
+     *  (asynchronously)
      * Generate a shipment content update preview given a set of intended boxes and/or items for a shipment with a confirmed carrier. The shipment content update preview will be viewable with the updated costs and contents prior to confirmation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -2067,7 +2067,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateTransportationOptions
+     * 
      * Generates available transportation options for a given placement option.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -2081,7 +2081,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateTransportationOptions
+     * 
      * Generates available transportation options for a given placement option.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -2096,7 +2096,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * generateTransportationOptions (asynchronously)
+     *  (asynchronously)
      * Generates available transportation options for a given placement option.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;generateTransportationOptions&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -2201,7 +2201,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getDeliveryChallanDocument
+     * 
      * Provide delivery challan document for PCP transportation in IN marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2215,7 +2215,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getDeliveryChallanDocument
+     * 
      * Provide delivery challan document for PCP transportation in IN marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2230,7 +2230,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getDeliveryChallanDocument (asynchronously)
+     *  (asynchronously)
      * Provide delivery challan document for PCP transportation in IN marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2329,7 +2329,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getInboundOperationStatus
+     * 
      * Gets the status of the processing of an asynchronous API call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param operationId Identifier of an asynchronous operation. (required)
      * @return InboundOperationStatus
@@ -2342,7 +2342,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getInboundOperationStatus
+     * 
      * Gets the status of the processing of an asynchronous API call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param operationId Identifier of an asynchronous operation. (required)
      * @return ApiResponse&lt;InboundOperationStatus&gt;
@@ -2356,7 +2356,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getInboundOperationStatus (asynchronously)
+     *  (asynchronously)
      * Gets the status of the processing of an asynchronous API call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param operationId Identifier of an asynchronous operation. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -2454,7 +2454,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getInboundPlan
+     * 
      * Fetches the top level information about an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return InboundPlan
@@ -2467,7 +2467,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getInboundPlan
+     * 
      * Fetches the top level information about an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @return ApiResponse&lt;InboundPlan&gt;
@@ -2481,7 +2481,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getInboundPlan (asynchronously)
+     *  (asynchronously)
      * Fetches the top level information about an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -2591,8 +2591,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getSelfShipAppointmentSlots
-     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param pageSize The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
@@ -2607,8 +2607,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getSelfShipAppointmentSlots
-     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param pageSize The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
@@ -2624,8 +2624,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getSelfShipAppointmentSlots (asynchronously)
-     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *  (asynchronously)
+     * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
      * @param pageSize The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)
@@ -2731,7 +2731,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getShipment
+     * 
      * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60; inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2745,7 +2745,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getShipment
+     * 
      * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60; inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2760,7 +2760,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getShipment (asynchronously)
+     *  (asynchronously)
      * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60; inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2871,7 +2871,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getShipmentContentUpdatePreview
+     * 
      * Retrieve a shipment content update preview which provides a summary of the requested shipment content changes along with the transportation cost implications of the change that can only be confirmed prior to the expiry date specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2886,7 +2886,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getShipmentContentUpdatePreview
+     * 
      * Retrieve a shipment content update preview which provides a summary of the requested shipment content changes along with the transportation cost implications of the change that can only be confirmed prior to the expiry date specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -2902,7 +2902,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * getShipmentContentUpdatePreview (asynchronously)
+     *  (asynchronously)
      * Retrieve a shipment content update preview which provides a summary of the requested shipment content changes along with the transportation cost implications of the change that can only be confirmed prior to the expiry date specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -3014,7 +3014,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listDeliveryWindowOptions
+     * 
      * Retrieves all delivery window options for a shipment. Delivery window options must first be generated by the &#x60;generateDeliveryWindowOptions&#x60; operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to get delivery window options for. (required)
@@ -3030,7 +3030,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listDeliveryWindowOptions
+     * 
      * Retrieves all delivery window options for a shipment. Delivery window options must first be generated by the &#x60;generateDeliveryWindowOptions&#x60; operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to get delivery window options for. (required)
@@ -3047,7 +3047,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listDeliveryWindowOptions (asynchronously)
+     *  (asynchronously)
      * Retrieves all delivery window options for a shipment. Delivery window options must first be generated by the &#x60;generateDeliveryWindowOptions&#x60; operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId The shipment to get delivery window options for. (required)
@@ -3154,7 +3154,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanBoxes
+     * 
      * Provides a paginated list of box packages in an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
@@ -3169,7 +3169,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanBoxes
+     * 
      * Provides a paginated list of box packages in an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
@@ -3185,7 +3185,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanBoxes (asynchronously)
+     *  (asynchronously)
      * Provides a paginated list of box packages in an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of boxes to return in the response matching the given query. (optional, default to 10)
@@ -3291,7 +3291,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanItems
+     * 
      * Provides a paginated list of item packages in an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
@@ -3306,7 +3306,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanItems
+     * 
      * Provides a paginated list of item packages in an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
@@ -3322,7 +3322,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanItems (asynchronously)
+     *  (asynchronously)
      * Provides a paginated list of item packages in an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of items to return in the response matching the given query. (optional, default to 10)
@@ -3428,7 +3428,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanPallets
+     * 
      * Provides a paginated list of pallet packages in an inbound plan. An inbound plan will have pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to 10)
@@ -3443,7 +3443,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanPallets
+     * 
      * Provides a paginated list of pallet packages in an inbound plan. An inbound plan will have pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to 10)
@@ -3459,7 +3459,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlanPallets (asynchronously)
+     *  (asynchronously)
      * Provides a paginated list of pallet packages in an inbound plan. An inbound plan will have pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of pallets to return in the response matching the given query. (optional, default to 10)
@@ -3568,7 +3568,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlans
+     * 
      * Provides a list of inbound plans with minimal information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param pageSize The number of inbound plans to return in the response matching the given query. (optional, default to 10)
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
@@ -3585,7 +3585,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlans
+     * 
      * Provides a list of inbound plans with minimal information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param pageSize The number of inbound plans to return in the response matching the given query. (optional, default to 10)
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
@@ -3603,7 +3603,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listInboundPlans (asynchronously)
+     *  (asynchronously)
      * Provides a list of inbound plans with minimal information.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param pageSize The number of inbound plans to return in the response matching the given query. (optional, default to 10)
      * @param paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)
@@ -3713,7 +3713,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listItemComplianceDetails
+     * 
      * List the inbound compliance details for MSKUs in a given marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -3727,7 +3727,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listItemComplianceDetails
+     * 
      * List the inbound compliance details for MSKUs in a given marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -3742,7 +3742,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listItemComplianceDetails (asynchronously)
+     *  (asynchronously)
      * List the inbound compliance details for MSKUs in a given marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -3853,7 +3853,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingGroupBoxes
+     * 
      * Retrieves a page of boxes from a given packing group. These boxes were previously provided through the &#x60;setPackingInformation&#x60; operation. This API is used for workflows where boxes are packed before Amazon determines shipment splits.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingGroupId Identifier of a packing group. (required)
@@ -3869,7 +3869,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingGroupBoxes
+     * 
      * Retrieves a page of boxes from a given packing group. These boxes were previously provided through the &#x60;setPackingInformation&#x60; operation. This API is used for workflows where boxes are packed before Amazon determines shipment splits.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingGroupId Identifier of a packing group. (required)
@@ -3886,7 +3886,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingGroupBoxes (asynchronously)
+     *  (asynchronously)
      * Retrieves a page of boxes from a given packing group. These boxes were previously provided through the &#x60;setPackingInformation&#x60; operation. This API is used for workflows where boxes are packed before Amazon determines shipment splits.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingGroupId Identifier of a packing group. (required)
@@ -3999,7 +3999,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingGroupItems
+     * 
      * Retrieves a page of items in a given packing group. Packing options must first be generated by the corresponding operation before packing group items can be listed.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingGroupId Identifier of a packing group. (required)
@@ -4015,7 +4015,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingGroupItems
+     * 
      * Retrieves a page of items in a given packing group. Packing options must first be generated by the corresponding operation before packing group items can be listed.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingGroupId Identifier of a packing group. (required)
@@ -4032,7 +4032,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingGroupItems (asynchronously)
+     *  (asynchronously)
      * Retrieves a page of items in a given packing group. Packing options must first be generated by the corresponding operation before packing group items can be listed.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param packingGroupId Identifier of a packing group. (required)
@@ -4139,7 +4139,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingOptions
+     * 
      * Retrieves a list of all packing options for an inbound plan. Packing options must first be generated by the corresponding operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of packing options to return in the response matching the given query. (optional, default to 10)
@@ -4154,7 +4154,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingOptions
+     * 
      * Retrieves a list of all packing options for an inbound plan. Packing options must first be generated by the corresponding operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of packing options to return in the response matching the given query. (optional, default to 10)
@@ -4170,7 +4170,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPackingOptions (asynchronously)
+     *  (asynchronously)
      * Retrieves a list of all packing options for an inbound plan. Packing options must first be generated by the corresponding operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of packing options to return in the response matching the given query. (optional, default to 10)
@@ -4276,7 +4276,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPlacementOptions
+     * 
      * Provides a list of all placement options for an inbound plan. Placement options must first be generated by the corresponding operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of placement options to return in the response matching the given query. (optional, default to 10)
@@ -4291,7 +4291,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPlacementOptions
+     * 
      * Provides a list of all placement options for an inbound plan. Placement options must first be generated by the corresponding operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of placement options to return in the response matching the given query. (optional, default to 10)
@@ -4307,7 +4307,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPlacementOptions (asynchronously)
+     *  (asynchronously)
      * Provides a list of all placement options for an inbound plan. Placement options must first be generated by the corresponding operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of placement options to return in the response matching the given query. (optional, default to 10)
@@ -4415,7 +4415,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPrepDetails
+     * 
      * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
@@ -4429,7 +4429,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPrepDetails
+     * 
      * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
@@ -4444,7 +4444,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listPrepDetails (asynchronously)
+     *  (asynchronously)
      * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
@@ -4555,7 +4555,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentBoxes
+     * 
      * Provides a paginated list of box packages in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4571,7 +4571,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentBoxes
+     * 
      * Provides a paginated list of box packages in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4588,7 +4588,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentBoxes (asynchronously)
+     *  (asynchronously)
      * Provides a paginated list of box packages in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4701,7 +4701,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentContentUpdatePreviews
+     * 
      * Retrieve a paginated list of shipment content update previews for a given shipment. The shipment content update preview is a summary of the requested shipment content changes along with the transportation cost implications of the change that can only be confirmed prior to the expiry date specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4717,7 +4717,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentContentUpdatePreviews
+     * 
      * Retrieve a paginated list of shipment content update previews for a given shipment. The shipment content update preview is a summary of the requested shipment content changes along with the transportation cost implications of the change that can only be confirmed prior to the expiry date specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4734,7 +4734,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentContentUpdatePreviews (asynchronously)
+     *  (asynchronously)
      * Retrieve a paginated list of shipment content update previews for a given shipment. The shipment content update preview is a summary of the requested shipment content changes along with the transportation cost implications of the change that can only be confirmed prior to the expiry date specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4847,7 +4847,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentItems
+     * 
      * Provides a paginated list of item packages in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4863,7 +4863,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentItems
+     * 
      * Provides a paginated list of item packages in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4880,7 +4880,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentItems (asynchronously)
+     *  (asynchronously)
      * Provides a paginated list of item packages in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -4993,7 +4993,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentPallets
+     * 
      * Provides a paginated list of pallet packages in a shipment. A palletized shipment will have pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5009,7 +5009,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentPallets
+     * 
      * Provides a paginated list of pallet packages in a shipment. A palletized shipment will have pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5026,7 +5026,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listShipmentPallets (asynchronously)
+     *  (asynchronously)
      * Provides a paginated list of pallet packages in a shipment. A palletized shipment will have pallets when the related details are provided after generating Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5139,7 +5139,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listTransportationOptions
+     * 
      * Retrieves all transportation options for a shipment. Transportation options must first be generated by the &#x60;generateTransportationOptions&#x60; operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of transportation options to return in the response matching the given query. (optional, default to 10)
@@ -5156,7 +5156,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listTransportationOptions
+     * 
      * Retrieves all transportation options for a shipment. Transportation options must first be generated by the &#x60;generateTransportationOptions&#x60; operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of transportation options to return in the response matching the given query. (optional, default to 10)
@@ -5174,7 +5174,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * listTransportationOptions (asynchronously)
+     *  (asynchronously)
      * Retrieves all transportation options for a shipment. Transportation options must first be generated by the &#x60;generateTransportationOptions&#x60; operation before becoming available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param pageSize The number of transportation options to return in the response matching the given query. (optional, default to 10)
@@ -5293,8 +5293,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * scheduleSelfShipAppointment
-     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5309,8 +5309,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * scheduleSelfShipAppointment
-     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * 
+     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5326,8 +5326,8 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * scheduleSelfShipAppointment (asynchronously)
-     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *  (asynchronously)
+     * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api). 
      * @param body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5432,7 +5432,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * setPackingInformation
+     * 
      * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate the box level information required for planning and transportation estimates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5446,7 +5446,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * setPackingInformation
+     * 
      * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate the box level information required for planning and transportation estimates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5461,7 +5461,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * setPackingInformation (asynchronously)
+     *  (asynchronously)
      * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate the box level information required for planning and transportation estimates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;setPackingInformation&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5559,7 +5559,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * setPrepDetails
+     * 
      * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
      * @return SetPrepDetailsResponse
@@ -5572,7 +5572,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * setPrepDetails
+     * 
      * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
      * @return ApiResponse&lt;SetPrepDetailsResponse&gt;
@@ -5586,7 +5586,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * setPrepDetails (asynchronously)
+     *  (asynchronously)
      * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -5689,7 +5689,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateInboundPlanName
+     * 
      * Updates the name of an existing inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5701,7 +5701,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateInboundPlanName
+     * 
      * Updates the name of an existing inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5715,7 +5715,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateInboundPlanName (asynchronously)
+     *  (asynchronously)
      * Updates the name of an existing inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateInboundPlanName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5819,7 +5819,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateItemComplianceDetails
+     * 
      * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN - A21TJRUUN4KGV) marketplace compliance validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -5833,7 +5833,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateItemComplianceDetails
+     * 
      * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN - A21TJRUUN4KGV) marketplace compliance validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -5848,7 +5848,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateItemComplianceDetails (asynchronously)
+     *  (asynchronously)
      * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN - A21TJRUUN4KGV) marketplace compliance validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateItemComplianceDetails&#x60;. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -5958,7 +5958,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentName
+     * 
      * Updates the name of an existing shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5971,7 +5971,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentName
+     * 
      * Updates the name of an existing shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -5986,7 +5986,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentName (asynchronously)
+     *  (asynchronously)
      * Updates the name of an existing shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentName&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6096,7 +6096,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentSourceAddress
+     * 
      * Updates the source address of an existing shipment. The shipment source address can only be updated prior to the confirmation of the shipment carriers. As a result of the updated source address, existing transportation options will be invalidated and will need to be regenerated to capture the potential difference in transportation options and quotes due to the new source address.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6111,7 +6111,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentSourceAddress
+     * 
      * Updates the source address of an existing shipment. The shipment source address can only be updated prior to the confirmation of the shipment carriers. As a result of the updated source address, existing transportation options will be invalidated and will need to be regenerated to capture the potential difference in transportation options and quotes due to the new source address.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6127,7 +6127,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentSourceAddress (asynchronously)
+     *  (asynchronously)
      * Updates the source address of an existing shipment. The shipment source address can only be updated prior to the confirmation of the shipment carriers. As a result of the updated source address, existing transportation options will be invalidated and will need to be regenerated to capture the potential difference in transportation options and quotes due to the new source address.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentSourceAddress&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6238,7 +6238,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentTrackingDetails
+     * 
      * Updates a shipment&#x27;s tracking details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6253,7 +6253,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentTrackingDetails
+     * 
      * Updates a shipment&#x27;s tracking details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6269,7 +6269,7 @@ public class FulfillmentInboundApi {
     }
 
     /**
-     * updateShipmentTrackingDetails (asynchronously)
+     *  (asynchronously)
      * Updates a shipment&#x27;s tracking details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;. (required)
      * @param inboundPlanId Identifier of an inbound plan. (required)
@@ -6344,7 +6344,7 @@ public class FulfillmentInboundApi {
             return this;
         }
 
-        public FulfillmentInboundApi build() {
+        public FbaInboundApi build() {
             if (lwaAuthorizationCredentials == null) {
                 throw new RuntimeException("LWAAuthorizationCredentials not set");
             }
@@ -6364,7 +6364,7 @@ public class FulfillmentInboundApi {
                  lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials,lwaAccessTokenCache);
             }
 
-            return new FulfillmentInboundApi(new ApiClient()
+            return new FbaInboundApi(new ApiClient()
                 .setLWAAuthorizationSigner(lwaAuthorizationSigner)
                 .setBasePath(endpoint)
                 .setRateLimiter(rateLimitConfiguration));

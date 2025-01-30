@@ -31,6 +31,9 @@ public class InventoryDetails {
   @SerializedName("availableDistributableQuantity")
   private Long availableDistributableQuantity = null;
 
+  @SerializedName("replenishmentQuantity")
+  private Long replenishmentQuantity = null;
+
   @SerializedName("reservedDistributableQuantity")
   private Long reservedDistributableQuantity = null;
 
@@ -50,6 +53,24 @@ public class InventoryDetails {
 
   public void setAvailableDistributableQuantity(Long availableDistributableQuantity) {
     this.availableDistributableQuantity = availableDistributableQuantity;
+  }
+
+  public InventoryDetails replenishmentQuantity(Long replenishmentQuantity) {
+    this.replenishmentQuantity = replenishmentQuantity;
+    return this;
+  }
+
+   /**
+   * Quantity that is in transit from AWD and has not yet been received at FBA.
+   * @return replenishmentQuantity
+  **/
+  @Schema(description = "Quantity that is in transit from AWD and has not yet been received at FBA.")
+  public Long getReplenishmentQuantity() {
+    return replenishmentQuantity;
+  }
+
+  public void setReplenishmentQuantity(Long replenishmentQuantity) {
+    this.replenishmentQuantity = replenishmentQuantity;
   }
 
   public InventoryDetails reservedDistributableQuantity(Long reservedDistributableQuantity) {
@@ -81,12 +102,13 @@ public class InventoryDetails {
     }
     InventoryDetails inventoryDetails = (InventoryDetails) o;
     return Objects.equals(this.availableDistributableQuantity, inventoryDetails.availableDistributableQuantity) &&
+        Objects.equals(this.replenishmentQuantity, inventoryDetails.replenishmentQuantity) &&
         Objects.equals(this.reservedDistributableQuantity, inventoryDetails.reservedDistributableQuantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(availableDistributableQuantity, reservedDistributableQuantity);
+    return Objects.hash(availableDistributableQuantity, replenishmentQuantity, reservedDistributableQuantity);
   }
 
 
@@ -96,6 +118,7 @@ public class InventoryDetails {
     sb.append("class InventoryDetails {\n");
     
     sb.append("    availableDistributableQuantity: ").append(toIndentedString(availableDistributableQuantity)).append("\n");
+    sb.append("    replenishmentQuantity: ").append(toIndentedString(replenishmentQuantity)).append("\n");
     sb.append("    reservedDistributableQuantity: ").append(toIndentedString(reservedDistributableQuantity)).append("\n");
     sb.append("}");
     return sb.toString();

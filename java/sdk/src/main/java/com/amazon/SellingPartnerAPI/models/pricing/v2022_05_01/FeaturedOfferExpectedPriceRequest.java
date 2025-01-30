@@ -19,6 +19,7 @@ import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.FeaturedOfferExpe
 import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.HttpBody;
 import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.HttpHeaders;
 import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.HttpMethod;
+import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.Segment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -38,6 +39,9 @@ public class FeaturedOfferExpectedPriceRequest extends BatchRequest {
 
   @SerializedName("sku")
   private String sku = null;
+
+  @SerializedName("segment")
+  private Segment segment = null;
 
   public FeaturedOfferExpectedPriceRequest marketplaceId(String marketplaceId) {
     this.marketplaceId = marketplaceId;
@@ -75,6 +79,24 @@ public class FeaturedOfferExpectedPriceRequest extends BatchRequest {
     this.sku = sku;
   }
 
+  public FeaturedOfferExpectedPriceRequest segment(Segment segment) {
+    this.segment = segment;
+    return this;
+  }
+
+   /**
+   * Get segment
+   * @return segment
+  **/
+  @Schema(description = "")
+  public Segment getSegment() {
+    return segment;
+  }
+
+  public void setSegment(Segment segment) {
+    this.segment = segment;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -87,12 +109,13 @@ public class FeaturedOfferExpectedPriceRequest extends BatchRequest {
     FeaturedOfferExpectedPriceRequest featuredOfferExpectedPriceRequest = (FeaturedOfferExpectedPriceRequest) o;
     return Objects.equals(this.marketplaceId, featuredOfferExpectedPriceRequest.marketplaceId) &&
         Objects.equals(this.sku, featuredOfferExpectedPriceRequest.sku) &&
+        Objects.equals(this.segment, featuredOfferExpectedPriceRequest.segment) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketplaceId, sku, super.hashCode());
+    return Objects.hash(marketplaceId, sku, segment, super.hashCode());
   }
 
 
@@ -103,6 +126,7 @@ public class FeaturedOfferExpectedPriceRequest extends BatchRequest {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
+    sb.append("    segment: ").append(toIndentedString(segment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

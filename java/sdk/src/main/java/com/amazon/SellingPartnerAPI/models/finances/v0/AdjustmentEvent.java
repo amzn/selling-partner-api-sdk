@@ -37,6 +37,9 @@ public class AdjustmentEvent {
   @SerializedName("PostedDate")
   private OffsetDateTime postedDate = null;
 
+  @SerializedName("StoreName")
+  private String storeName = null;
+
   @SerializedName("AdjustmentAmount")
   private Currency adjustmentAmount = null;
 
@@ -77,6 +80,24 @@ public class AdjustmentEvent {
 
   public void setPostedDate(OffsetDateTime postedDate) {
     this.postedDate = postedDate;
+  }
+
+  public AdjustmentEvent storeName(String storeName) {
+    this.storeName = storeName;
+    return this;
+  }
+
+   /**
+   * The name of the store where the event occurred.
+   * @return storeName
+  **/
+  @Schema(description = "The name of the store where the event occurred.")
+  public String getStoreName() {
+    return storeName;
+  }
+
+  public void setStoreName(String storeName) {
+    this.storeName = storeName;
   }
 
   public AdjustmentEvent adjustmentAmount(Currency adjustmentAmount) {
@@ -127,13 +148,14 @@ public class AdjustmentEvent {
     AdjustmentEvent adjustmentEvent = (AdjustmentEvent) o;
     return Objects.equals(this.adjustmentType, adjustmentEvent.adjustmentType) &&
         Objects.equals(this.postedDate, adjustmentEvent.postedDate) &&
+        Objects.equals(this.storeName, adjustmentEvent.storeName) &&
         Objects.equals(this.adjustmentAmount, adjustmentEvent.adjustmentAmount) &&
         Objects.equals(this.adjustmentItemList, adjustmentEvent.adjustmentItemList);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adjustmentType, postedDate, adjustmentAmount, adjustmentItemList);
+    return Objects.hash(adjustmentType, postedDate, storeName, adjustmentAmount, adjustmentItemList);
   }
 
 
@@ -144,6 +166,7 @@ public class AdjustmentEvent {
     
     sb.append("    adjustmentType: ").append(toIndentedString(adjustmentType)).append("\n");
     sb.append("    postedDate: ").append(toIndentedString(postedDate)).append("\n");
+    sb.append("    storeName: ").append(toIndentedString(storeName)).append("\n");
     sb.append("    adjustmentAmount: ").append(toIndentedString(adjustmentAmount)).append("\n");
     sb.append("    adjustmentItemList: ").append(toIndentedString(adjustmentItemList)).append("\n");
     sb.append("}");

@@ -14,6 +14,7 @@ package com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.amazon.SellingPartnerAPI.models.pricing.v2022_05_01.SampleLocation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,14 +24,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.math.BigDecimal;
 /**
- * The details about the segment.
+ * The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.
  */
-@Schema(description = "The details about the segment.")
+@Schema(description = "The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.")
 
 
 public class SegmentDetails {
   @SerializedName("glanceViewWeightPercentage")
   private BigDecimal glanceViewWeightPercentage = null;
+
+  @SerializedName("sampleLocation")
+  private SampleLocation sampleLocation = null;
 
   public SegmentDetails glanceViewWeightPercentage(BigDecimal glanceViewWeightPercentage) {
     this.glanceViewWeightPercentage = glanceViewWeightPercentage;
@@ -50,6 +54,24 @@ public class SegmentDetails {
     this.glanceViewWeightPercentage = glanceViewWeightPercentage;
   }
 
+  public SegmentDetails sampleLocation(SampleLocation sampleLocation) {
+    this.sampleLocation = sampleLocation;
+    return this;
+  }
+
+   /**
+   * Get sampleLocation
+   * @return sampleLocation
+  **/
+  @Schema(description = "")
+  public SampleLocation getSampleLocation() {
+    return sampleLocation;
+  }
+
+  public void setSampleLocation(SampleLocation sampleLocation) {
+    this.sampleLocation = sampleLocation;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -60,12 +82,13 @@ public class SegmentDetails {
       return false;
     }
     SegmentDetails segmentDetails = (SegmentDetails) o;
-    return Objects.equals(this.glanceViewWeightPercentage, segmentDetails.glanceViewWeightPercentage);
+    return Objects.equals(this.glanceViewWeightPercentage, segmentDetails.glanceViewWeightPercentage) &&
+        Objects.equals(this.sampleLocation, segmentDetails.sampleLocation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(glanceViewWeightPercentage);
+    return Objects.hash(glanceViewWeightPercentage, sampleLocation);
   }
 
 
@@ -75,6 +98,7 @@ public class SegmentDetails {
     sb.append("class SegmentDetails {\n");
     
     sb.append("    glanceViewWeightPercentage: ").append(toIndentedString(glanceViewWeightPercentage)).append("\n");
+    sb.append("    sampleLocation: ").append(toIndentedString(sampleLocation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

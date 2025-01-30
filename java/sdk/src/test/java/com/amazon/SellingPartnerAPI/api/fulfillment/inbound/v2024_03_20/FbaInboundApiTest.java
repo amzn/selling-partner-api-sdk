@@ -1,5 +1,5 @@
 /*
- * Fulfillment Inbound v2024-03-20
+ * The Selling Partner API for FBA inbound operations.
  * The Selling Partner API for Fulfillment By Amazon (FBA) Inbound. The FBA Inbound API enables building inbound workflows to create, manage, and send shipments into Amazon's fulfillment network. The API has interoperability with the Send-to-Amazon user interface.
  *
  * OpenAPI spec version: 2024-03-20
@@ -84,7 +84,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FulfillmentInboundApiTest {
+public class FbaInboundApiTest {
 
    private static String endpoint = "http://localhost:3000";
    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
@@ -95,7 +95,7 @@ public class FulfillmentInboundApiTest {
         .endpoint(authEndpoint)
         .build();
 
-   private final FulfillmentInboundApi api = new FulfillmentInboundApi.Builder()
+   private final FbaInboundApi api = new FbaInboundApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
