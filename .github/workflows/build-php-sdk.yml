@@ -95,5 +95,5 @@ jobs:
             Update PHP SDK with latest changes from upstream.
           branch: feature/update-php-sdk
           assignees: nakagleo
-          reviewers: nakagleo
           path: ./selling-partner-api-sdk
+          token: ${{ secrets.MAFGE_PAT }}
