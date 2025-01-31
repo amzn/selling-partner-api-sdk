@@ -195,7 +195,7 @@ class AwdApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -665,7 +665,7 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -700,7 +700,7 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -725,7 +725,7 @@ class AwdApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -1003,7 +1003,7 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1041,7 +1041,7 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1112,7 +1112,7 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -1277,7 +1277,7 @@ class AwdApi
      * @param  string|null $details
      *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *
@@ -1306,7 +1306,7 @@ class AwdApi
      * @param  string|null $details
      *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *
@@ -1331,7 +1331,7 @@ class AwdApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -1603,7 +1603,7 @@ class AwdApi
      * @param  string|null $details
      *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *
@@ -1635,7 +1635,7 @@ class AwdApi
      * @param  string|null $details
      *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *
@@ -1700,7 +1700,7 @@ class AwdApi
      * @param  string|null $details
      *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
      * @param  string|null $next_token
-     *  Token to retrieve the next set of paginated results. (optional)
+     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *

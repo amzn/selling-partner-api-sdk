@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentStatusUpdatesRequest;
  * SubmitShipmentStatusUpdatesRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request schema for the submitShipmentStatusUpdates operation.
+ * @description The request schema for the &#x60;submitShipmentStatusUpdates&#x60; operation.
  * @package     OpenAPI\Client
  */
 class SubmitShipmentStatusUpdatesRequestTest extends TestCase

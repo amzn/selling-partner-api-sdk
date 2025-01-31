@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetMessagingActionResponseLinks;
  * GetMessagingActionResponseLinksTest Class Doc Comment
  *
  * @category    Class
- * @description GetMessagingActionResponseLinks
+ * @description The links response that is associated with the messaging action.
  * @package     OpenAPI\Client
  */
 class GetMessagingActionResponseLinksTest extends TestCase

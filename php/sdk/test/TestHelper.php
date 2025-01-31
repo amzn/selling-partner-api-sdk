@@ -606,6 +606,8 @@ class TestHelper
         // Expected response is different from actual response.
         // TimeStamp Format is inconsistent within same Expected response Json
         'testGetListingsItem200',
+        'testSearchListingsItems400', // Sandbox Changes
+        'testSearchListingsItems200', // Sandbox Changes
         // fbaInventory
         'testAddInventory200', // Create inventory is dependency for this operation
         // listingsRestrictions
@@ -638,10 +640,12 @@ class TestHelper
         // It will require dedicated customization to make 3 digit millisecond and doesn't match with auto Generation
         'testCreateWarranty201',
         // Replenishment Api sellingPartners
+        'testGetSellingPartnerMetrics200', // Sandbox changes
         'testGetSellingPartnerMetrics400', // Request timestamp millisecond is 2 digits and requires string mutation
         // Replenishment Api offers
         'testListOfferMetrics400', // Request eligibility is not member of Enum
         // Sellers
+        'testGetMarketplaceParticipations200', // Sandbox changes
         'testGetAccount200', // Need some application which can be succeeded. Access is denied with my account.
         'testGetAccount400', // Need some application which can be succeeded. Access is denied with my account.
         // SolicitationsApi
@@ -657,6 +661,7 @@ class TestHelper
         'testSubmitInvoice202', // Expected transactionId response is different from actual.
         'testSubmitInvoice400', // SandBox dateTime Format is invalid for programing language
         // vendorDirectFulfillmentShipping_2021-12-28
+        'testCreateContainerLabel200', // Sandbox Changes
         // shipmentStatusUpdates is not required in swagger, but SandBox returns error
         'testSubmitShipmentStatusUpdates202',
         // shipmentConfirmations is not required in swagger, but SandBox returns error
@@ -674,17 +679,13 @@ class TestHelper
         'testConfirmPreorder400', // It will be deprecated
         'testCreateInboundShipmentPlan400', // It will be deprecated
         'testGetTransportDetails200', // It will be deprecated
-        // For Naka if you still have issues with below API Please comment in below.
-        // FulfillmentInboundApiTest.testGenerateSelfShipAppointmentSlots201
-        // OrdersApiTest.testConfirmShipment204
-        // ReportsApiTest.testCreateReport202
-        // ReportsApiTest.testCreateReportSchedule201
-        // Comment in below 4 lines
         'testGenerateSelfShipAppointmentSlots201',
         'testConfirmShipment204',
         'testCreateReport202',
         'testCreateReportSchedule201',
-        'testListOffers400',
-        'testGetPackingSlip200'
+        'testGetPackingSlip200',
+        // Offers Api
+        'testListOfferMetrics200',
+        'testListOffers400'
     ];
 }

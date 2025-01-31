@@ -37,6 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * GetMessagingActionsForOrderResponseLinks Class Doc Comment
  *
  * @category Class
+ * @description The links response that is associated with the specified &#x60;amazonOrderId&#x60;.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -62,6 +62,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'adjustment_type' => 'string',
              'posted_date' => '\DateTime',
+             'store_name' => 'string',
              'adjustment_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
              'adjustment_item_list' => '\OpenAPI\Client\Model\finances\v0\AdjustmentItem[]'    ];
 
@@ -75,6 +76,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPIFormats = [
             'adjustment_type' => null,
             'posted_date' => 'date-time',
+            'store_name' => null,
             'adjustment_amount' => null,
             'adjustment_item_list' => null    ];
 
@@ -86,6 +88,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'adjustment_type' => true,
         'posted_date' => true,
+        'store_name' => true,
         'adjustment_amount' => true,
         'adjustment_item_list' => true
     ];
@@ -178,6 +181,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $attributeMap = [
         'adjustment_type' => 'AdjustmentType',
                 'posted_date' => 'PostedDate',
+                'store_name' => 'StoreName',
                 'adjustment_amount' => 'AdjustmentAmount',
                 'adjustment_item_list' => 'AdjustmentItemList'
         
@@ -191,6 +195,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $setters = [
         'adjustment_type' => 'setAdjustmentType',
         'posted_date' => 'setPostedDate',
+        'store_name' => 'setStoreName',
         'adjustment_amount' => 'setAdjustmentAmount',
         'adjustment_item_list' => 'setAdjustmentItemList'
     ];
@@ -203,6 +208,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $getters = [
         'adjustment_type' => 'getAdjustmentType',
         'posted_date' => 'getPostedDate',
+        'store_name' => 'getStoreName',
         'adjustment_amount' => 'getAdjustmentAmount',
         'adjustment_item_list' => 'getAdjustmentItemList'
     ];
@@ -266,6 +272,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('adjustment_type', $data ?? [], null);
         $this->setIfExists('posted_date', $data ?? [], null);
+        $this->setIfExists('store_name', $data ?? [], null);
         $this->setIfExists('adjustment_amount', $data ?? [], null);
         $this->setIfExists('adjustment_item_list', $data ?? [], null);
     }
@@ -376,6 +383,40 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['posted_date'] = $posted_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets store_name
+     *
+     * @return string|null
+     */
+    public function getStoreName(): ?string
+    {
+        return $this->container['store_name'];
+    }
+
+    /**
+     * Sets store_name
+     *
+     * @param string|null $store_name The name of the store where the event occurred.
+     *
+     * @return self
+     */
+    public function setStoreName(?string $store_name): self
+    {
+        if (is_null($store_name)) {
+            array_push($this->openAPINullablesSetToNull, 'store_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('store_name', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['store_name'] = $store_name;
 
         return $this;
     }

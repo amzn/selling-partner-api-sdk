@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\ContainerLabel;
  * ContainerLabelTest Class Doc Comment
  *
  * @category    Class
- * @description Details of the container label.
+ * @description The details of the container label.
  * @package     OpenAPI\Client
  */
 class ContainerLabelTest extends TestCase

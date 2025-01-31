@@ -145,6 +145,18 @@ class ListOfferMetricsResponseOfferTest extends TestCase
     }
 
     /**
+     * Test attribute "share_of_coupon_subscriptions"
+     */
+    public function testPropertyShareOfCouponSubscriptions()
+    {
+        
+        $testValue = new float();
+        
+        $this->model->setShareOfCouponSubscriptions($testValue);
+        $this->assertEquals($testValue, $this->model->getShareOfCouponSubscriptions());
+    }
+
+    /**
      * Test attribute "next30_day_total_subscriptions_revenue"
      */
     public function testPropertyNext30DayTotalSubscriptionsRevenue()

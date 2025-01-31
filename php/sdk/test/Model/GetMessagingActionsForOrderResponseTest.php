@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponse;
  * GetMessagingActionsForOrderResponseTest Class Doc Comment
  *
  * @category    Class
- * @description The response schema for the getMessagingActionsForOrder operation.
+ * @description The response schema for the &#x60;getMessagingActionsForOrder&#x60; operation.
  * @package     OpenAPI\Client
  */
 class GetMessagingActionsForOrderResponseTest extends TestCase

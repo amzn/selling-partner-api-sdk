@@ -11,7 +11,7 @@
  */
 
 /**
- * Vendor Shipments v1
+ * Selling Partner API for Retail Procurement Shipments
  *
  * The Selling Partner API for Retail Procurement Shipments provides programmatic access to retail shipping data for vendors.
  *
@@ -354,7 +354,7 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label_sequence_number
      *
-     * @param int|null $label_sequence_number Label list sequence number
+     * @param int|null $label_sequence_number A sequential number assigned to each label within a shipment.
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label_format
      *
-     * @param string|null $label_format Type of the label format like PDF
+     * @param string|null $label_format The format of the label.
      *
      * @return self
      */
@@ -432,7 +432,7 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets carrier_code
      *
-     * @param string|null $carrier_code Unique identification for  the carrier like UPS,DHL,USPS..etc
+     * @param string|null $carrier_code Unique identification of the carrier.
      *
      * @return self
      */
@@ -500,7 +500,7 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string|null $label Label created as part of the transportation and it is base64 encoded
+     * @param string|null $label The base-64 encoded string that represents the shipment label.
      *
      * @return self
      */

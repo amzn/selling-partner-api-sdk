@@ -599,16 +599,29 @@ class AwdApiTest extends BaseTestCase
           &quot;sku&quot; : &quot;100TestSKU1Pen&quot;,
           &quot;inventoryDetails&quot; : {
             &quot;availableDistributableQuantity&quot; : 10,
-            &quot;reservedDistributableQuantity&quot; : 10
-          }
+            &quot;reservedDistributableQuantity&quot; : 10,
+            &quot;replenishmentQuantity&quot; : 10
+          },
+          &quot;expirationDetails&quot; : [ {
+            &quot;onhandQuantity&quot; : 10,
+            &quot;expiration&quot; : &quot;2027-01-12T10:00:00.000Z&quot;
+          }, {
+            &quot;onhandQuantity&quot; : 10,
+            &quot;expiration&quot; : &quot;2028-01-12T10:00:00.000Z&quot;
+          } ]
         }, {
           &quot;totalOnhandQuantity&quot; : 20,
           &quot;totalInboundQuantity&quot; : 5,
           &quot;sku&quot; : &quot;2U-BKEX-VW4D&quot;,
           &quot;inventoryDetails&quot; : {
             &quot;availableDistributableQuantity&quot; : 10,
-            &quot;reservedDistributableQuantity&quot; : 10
-          }
+            &quot;reservedDistributableQuantity&quot; : 10,
+            &quot;replenishmentQuantity&quot; : 10
+          },
+          &quot;expirationDetails&quot; : [ {
+            &quot;onhandQuantity&quot; : 20,
+            &quot;expiration&quot; : &quot;2027-01-12T10:00:00.000Z&quot;
+          } ]
         } ]
       }
     } ]

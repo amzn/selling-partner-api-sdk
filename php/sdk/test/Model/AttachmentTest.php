@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\Attachment;
  * AttachmentTest Class Doc Comment
  *
  * @category    Class
- * @description Represents a file uploaded to a destination that was created by the [createUploadDestinationForResource](doc:uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation of the Selling Partner API for Uploads.
+ * @description Represents a file that was uploaded to a destination that was created by the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.
  * @package     OpenAPI\Client
  */
 class AttachmentTest extends TestCase

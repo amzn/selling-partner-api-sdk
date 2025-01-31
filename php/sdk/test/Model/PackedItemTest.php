@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\vendor\df\shipping\PackedItem;
  * PackedItemTest Class Doc Comment
  *
  * @category    Class
- * @description Represents an item that has been packed into a container for shipping.
+ * @description An item that has been packed into a container for shipping.
  * @package     OpenAPI\Client
  */
 class PackedItemTest extends TestCase

@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\InvoiceRequest;
  * InvoiceRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request schema for the sendInvoice operation.
+ * @description The request schema for the &#x60;sendInvoice&#x60; operation.
  * @package     OpenAPI\Client
  */
 class InvoiceRequestTest extends TestCase

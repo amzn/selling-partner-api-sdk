@@ -61,6 +61,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'available_distributable_quantity' => 'int',
+             'replenishment_quantity' => 'int',
              'reserved_distributable_quantity' => 'int'    ];
 
     /**
@@ -72,6 +73,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPIFormats = [
             'available_distributable_quantity' => 'int64',
+            'replenishment_quantity' => 'int64',
             'reserved_distributable_quantity' => 'int64'    ];
 
     /**
@@ -81,6 +83,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'available_distributable_quantity' => true,
+        'replenishment_quantity' => true,
         'reserved_distributable_quantity' => true
     ];
 
@@ -171,6 +174,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $attributeMap = [
         'available_distributable_quantity' => 'availableDistributableQuantity',
+                'replenishment_quantity' => 'replenishmentQuantity',
                 'reserved_distributable_quantity' => 'reservedDistributableQuantity'
         
     ];
@@ -182,6 +186,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $setters = [
         'available_distributable_quantity' => 'setAvailableDistributableQuantity',
+        'replenishment_quantity' => 'setReplenishmentQuantity',
         'reserved_distributable_quantity' => 'setReservedDistributableQuantity'
     ];
 
@@ -192,6 +197,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $getters = [
         'available_distributable_quantity' => 'getAvailableDistributableQuantity',
+        'replenishment_quantity' => 'getReplenishmentQuantity',
         'reserved_distributable_quantity' => 'getReservedDistributableQuantity'
     ];
 
@@ -253,6 +259,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('available_distributable_quantity', $data ?? [], null);
+        $this->setIfExists('replenishment_quantity', $data ?? [], null);
         $this->setIfExists('reserved_distributable_quantity', $data ?? [], null);
     }
 
@@ -328,6 +335,40 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['available_distributable_quantity'] = $available_distributable_quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets replenishment_quantity
+     *
+     * @return int|null
+     */
+    public function getReplenishmentQuantity(): ?int
+    {
+        return $this->container['replenishment_quantity'];
+    }
+
+    /**
+     * Sets replenishment_quantity
+     *
+     * @param int|null $replenishment_quantity Quantity that is in transit from AWD and has not yet been received at FBA.
+     *
+     * @return self
+     */
+    public function setReplenishmentQuantity(?int $replenishment_quantity): self
+    {
+        if (is_null($replenishment_quantity)) {
+            array_push($this->openAPINullablesSetToNull, 'replenishment_quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('replenishment_quantity', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['replenishment_quantity'] = $replenishment_quantity;
 
         return $this;
     }

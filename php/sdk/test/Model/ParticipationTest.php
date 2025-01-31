@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\sellers\Participation;
  * ParticipationTest Class Doc Comment
  *
  * @category    Class
- * @description Information that is specific to a seller in a marketplace.
+ * @description Detailed information that is specific to a seller in a marketplace.
  * @package     OpenAPI\Client
  */
 class ParticipationTest extends TestCase

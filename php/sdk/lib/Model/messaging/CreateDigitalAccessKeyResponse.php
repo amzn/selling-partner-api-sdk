@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * CreateDigitalAccessKeyResponse Class Doc Comment
  *
  * @category Class
- * @description The response schema for the createDigitalAccessKey operation.
+ * @description The response schema for the &#x60;createDigitalAccessKey&#x60; operation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

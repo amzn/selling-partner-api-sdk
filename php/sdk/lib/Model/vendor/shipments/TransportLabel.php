@@ -11,7 +11,7 @@
  */
 
 /**
- * Vendor Shipments v1
+ * Selling Partner API for Retail Procurement Shipments
  *
  * The Selling Partner API for Retail Procurement Shipments provides programmatic access to retail shipping data for vendors.
  *
@@ -60,7 +60,7 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'label_create_date_time' => 'string',
+             'label_create_date_time' => '\DateTime',
              'shipment_information' => '\OpenAPI\Client\Model\vendor\shipments\ShipmentInformation',
              'label_data' => '\OpenAPI\Client\Model\vendor\shipments\LabelData[]'    ];
 
@@ -72,7 +72,7 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'label_create_date_time' => null,
+            'label_create_date_time' => 'date-time',
             'shipment_information' => null,
             'label_data' => null    ];
 
@@ -308,9 +308,9 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets label_create_date_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getLabelCreateDateTime(): ?string
+    public function getLabelCreateDateTime(): ?\DateTime
     {
         return $this->container['label_create_date_time'];
     }
@@ -318,11 +318,11 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label_create_date_time
      *
-     * @param string|null $label_create_date_time Date on which label is created.
+     * @param \DateTime|null $label_create_date_time Date on which label is created.
      *
      * @return self
      */
-    public function setLabelCreateDateTime(?string $label_create_date_time): self
+    public function setLabelCreateDateTime(?\DateTime $label_create_date_time): self
     {
         if (is_null($label_create_date_time)) {
             array_push($this->openAPINullablesSetToNull, 'label_create_date_time');

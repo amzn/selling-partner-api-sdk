@@ -307,7 +307,7 @@ class MessagingAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The name of the template.
      *
      * @return self
      */

@@ -11,7 +11,7 @@
  */
 
 /**
- * Vendor Shipments v1
+ * Selling Partner API for Retail Procurement Shipments
  *
  * The Selling Partner API for Retail Procurement Shipments provides programmatic access to retail shipping data for vendors.
  *
@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * TotalWeight Class Doc Comment
  *
  * @category Class
- * @description Amount of units shipped for items sold by weight at a shipment level.
+ * @description The total weight of units that are sold by weight in a shipment.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -345,7 +345,7 @@ class TotalWeight implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets unit_of_measure
      *
-     * @param string $unit_of_measure This field represents weight unit of measure of items that are ordered by cases and supporting priced by weight.
+     * @param string $unit_of_measure The unit of measure for the weight of items that are ordered by cases and support pricing by weight.
      *
      * @return self
      */

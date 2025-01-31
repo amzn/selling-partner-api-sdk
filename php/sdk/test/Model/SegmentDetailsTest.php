@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails;
  * SegmentDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description The details about the segment.
+ * @description The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.
  * @package     OpenAPI\Client
  */
 class SegmentDetailsTest extends TestCase
@@ -60,5 +60,17 @@ class SegmentDetailsTest extends TestCase
         
         $this->model->setGlanceViewWeightPercentage($testValue);
         $this->assertEquals($testValue, $this->model->getGlanceViewWeightPercentage());
+    }
+
+    /**
+     * Test attribute "sample_location"
+     */
+    public function testPropertySampleLocation()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation();
+        
+        $this->model->setSampleLocation($testValue);
+        $this->assertEquals($testValue, $this->model->getSampleLocation());
     }
 }

@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\sellers\Marketplace;
  * MarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.
+ * @description Detailed information about an Amazon market where a seller can list items for sale and customers can view and purchase items.
  * @package     OpenAPI\Client
  */
 class MarketplaceTest extends TestCase

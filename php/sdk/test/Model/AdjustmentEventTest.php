@@ -75,6 +75,17 @@ class AdjustmentEventTest extends TestCase
     }
 
     /**
+     * Test attribute "store_name"
+     */
+    public function testPropertyStoreName()
+    {
+        $testValue = 'test';
+        
+        $this->model->setStoreName($testValue);
+        $this->assertEquals($testValue, $this->model->getStoreName());
+    }
+
+    /**
      * Test attribute "adjustment_amount"
      */
     public function testPropertyAdjustmentAmount()

@@ -62,7 +62,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'attributes' => '\OpenAPI\Client\Model\awd\ProductAttribute[]',
              'quantity' => 'int',
-             'sku' => 'string'    ];
+             'sku' => 'string',
+             'expiration' => '\DateTime',
+             'prep_details' => '\OpenAPI\Client\Model\awd\PrepDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -74,7 +76,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPIFormats = [
             'attributes' => null,
             'quantity' => 'int32',
-            'sku' => null    ];
+            'sku' => null,
+            'expiration' => 'date-time',
+            'prep_details' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -84,7 +88,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'attributes' => true,
         'quantity' => false,
-        'sku' => false
+        'sku' => false,
+        'expiration' => true,
+        'prep_details' => true
     ];
 
     /**
@@ -175,7 +181,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $attributeMap = [
         'attributes' => 'attributes',
                 'quantity' => 'quantity',
-                'sku' => 'sku'
+                'sku' => 'sku',
+                'expiration' => 'expiration',
+                'prep_details' => 'prepDetails'
         
     ];
 
@@ -187,7 +195,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $setters = [
         'attributes' => 'setAttributes',
         'quantity' => 'setQuantity',
-        'sku' => 'setSku'
+        'sku' => 'setSku',
+        'expiration' => 'setExpiration',
+        'prep_details' => 'setPrepDetails'
     ];
 
     /**
@@ -198,7 +208,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $getters = [
         'attributes' => 'getAttributes',
         'quantity' => 'getQuantity',
-        'sku' => 'getSku'
+        'sku' => 'getSku',
+        'expiration' => 'getExpiration',
+        'prep_details' => 'getPrepDetails'
     ];
 
     /**
@@ -261,6 +273,8 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
+        $this->setIfExists('expiration', $data ?? [], null);
+        $this->setIfExists('prep_details', $data ?? [], null);
     }
 
     /**
@@ -395,6 +409,74 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable sku cannot be null');
         }
         $this->container['sku'] = $sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiration
+     *
+     * @return \DateTime|null
+     */
+    public function getExpiration(): ?\DateTime
+    {
+        return $this->container['expiration'];
+    }
+
+    /**
+     * Sets expiration
+     *
+     * @param \DateTime|null $expiration The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
+     *
+     * @return self
+     */
+    public function setExpiration(?\DateTime $expiration): self
+    {
+        if (is_null($expiration)) {
+            array_push($this->openAPINullablesSetToNull, 'expiration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expiration'] = $expiration;
+
+        return $this;
+    }
+
+    /**
+     * Gets prep_details
+     *
+     * @return \OpenAPI\Client\Model\awd\PrepDetails|null
+     */
+    public function getPrepDetails(): ?\OpenAPI\Client\Model\awd\PrepDetails
+    {
+        return $this->container['prep_details'];
+    }
+
+    /**
+     * Sets prep_details
+     *
+     * @param \OpenAPI\Client\Model\awd\PrepDetails|null $prep_details prep_details
+     *
+     * @return self
+     */
+    public function setPrepDetails(?\OpenAPI\Client\Model\awd\PrepDetails $prep_details): self
+    {
+        if (is_null($prep_details)) {
+            array_push($this->openAPINullablesSetToNull, 'prep_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prep_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['prep_details'] = $prep_details;
 
         return $this;
     }

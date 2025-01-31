@@ -119,6 +119,17 @@ class PackingOptionTest extends TestCase
     }
 
     /**
+     * Test attribute "supported_configurations"
+     */
+    public function testPropertySupportedConfigurations()
+    {
+        $testValue = [];
+        
+        $this->model->setSupportedConfigurations($testValue);
+        $this->assertEquals($testValue, $this->model->getSupportedConfigurations());
+    }
+
+    /**
      * Test attribute "supported_shipping_configurations"
      */
     public function testPropertySupportedShippingConfigurations()

@@ -153,11 +153,11 @@ class MessagingApi
      * Operation confirmCustomizationDetails
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmCustomizationDetailsRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -176,11 +176,11 @@ class MessagingApi
      * Operation confirmCustomizationDetailsWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmCustomizationDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -201,7 +201,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -467,11 +467,11 @@ class MessagingApi
      * Operation confirmCustomizationDetailsAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmCustomizationDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -493,11 +493,11 @@ class MessagingApi
      * Operation confirmCustomizationDetailsAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmCustomizationDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -552,11 +552,11 @@ class MessagingApi
      * Create request for operation 'confirmCustomizationDetails'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmCustomizationDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -686,11 +686,11 @@ class MessagingApi
      * Operation createAmazonMotors
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateAmazonMotorsRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -709,11 +709,11 @@ class MessagingApi
      * Operation createAmazonMotorsWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateAmazonMotorsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -734,7 +734,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -1000,11 +1000,11 @@ class MessagingApi
      * Operation createAmazonMotorsAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateAmazonMotorsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1026,11 +1026,11 @@ class MessagingApi
      * Operation createAmazonMotorsAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateAmazonMotorsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1085,11 +1085,11 @@ class MessagingApi
      * Create request for operation 'createAmazonMotors'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateAmazonMotorsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -1219,11 +1219,11 @@ class MessagingApi
      * Operation createConfirmDeliveryDetails
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmDeliveryDetailsRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1242,11 +1242,11 @@ class MessagingApi
      * Operation createConfirmDeliveryDetailsWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmDeliveryDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1267,7 +1267,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -1533,11 +1533,11 @@ class MessagingApi
      * Operation createConfirmDeliveryDetailsAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmDeliveryDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1559,11 +1559,11 @@ class MessagingApi
      * Operation createConfirmDeliveryDetailsAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmDeliveryDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1618,11 +1618,11 @@ class MessagingApi
      * Create request for operation 'createConfirmDeliveryDetails'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmDeliveryDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -1752,11 +1752,11 @@ class MessagingApi
      * Operation createConfirmOrderDetails
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmOrderDetailsRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1775,11 +1775,11 @@ class MessagingApi
      * Operation createConfirmOrderDetailsWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmOrderDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1800,7 +1800,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -2066,11 +2066,11 @@ class MessagingApi
      * Operation createConfirmOrderDetailsAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmOrderDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -2092,11 +2092,11 @@ class MessagingApi
      * Operation createConfirmOrderDetailsAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmOrderDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -2151,11 +2151,11 @@ class MessagingApi
      * Create request for operation 'createConfirmOrderDetails'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmOrderDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -2285,11 +2285,11 @@ class MessagingApi
      * Operation createConfirmServiceDetails
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmServiceDetailsRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2308,11 +2308,11 @@ class MessagingApi
      * Operation createConfirmServiceDetailsWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmServiceDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2333,7 +2333,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -2599,11 +2599,11 @@ class MessagingApi
      * Operation createConfirmServiceDetailsAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmServiceDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -2625,11 +2625,11 @@ class MessagingApi
      * Operation createConfirmServiceDetailsAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmServiceDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -2684,11 +2684,11 @@ class MessagingApi
      * Create request for operation 'createConfirmServiceDetails'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateConfirmServiceDetailsRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -2818,11 +2818,11 @@ class MessagingApi
      * Operation createDigitalAccessKey
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2841,11 +2841,11 @@ class MessagingApi
      * Operation createDigitalAccessKeyWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2866,7 +2866,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -3132,11 +3132,11 @@ class MessagingApi
      * Operation createDigitalAccessKeyAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -3158,11 +3158,11 @@ class MessagingApi
      * Operation createDigitalAccessKeyAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -3217,11 +3217,11 @@ class MessagingApi
      * Create request for operation 'createDigitalAccessKey'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -3351,11 +3351,11 @@ class MessagingApi
      * Operation createLegalDisclosure
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateLegalDisclosureRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3374,11 +3374,11 @@ class MessagingApi
      * Operation createLegalDisclosureWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateLegalDisclosureRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3399,7 +3399,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -3665,11 +3665,11 @@ class MessagingApi
      * Operation createLegalDisclosureAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateLegalDisclosureRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -3691,11 +3691,11 @@ class MessagingApi
      * Operation createLegalDisclosureAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateLegalDisclosureRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -3750,11 +3750,11 @@ class MessagingApi
      * Create request for operation 'createLegalDisclosure'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateLegalDisclosureRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -3884,9 +3884,9 @@ class MessagingApi
      * Operation createNegativeFeedbackRemoval
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3904,9 +3904,9 @@ class MessagingApi
      * Operation createNegativeFeedbackRemovalWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3926,7 +3926,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -4192,9 +4192,9 @@ class MessagingApi
      * Operation createNegativeFeedbackRemovalAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -4215,9 +4215,9 @@ class MessagingApi
      * Operation createNegativeFeedbackRemovalAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -4271,9 +4271,9 @@ class MessagingApi
      * Create request for operation 'createNegativeFeedbackRemoval'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -4390,11 +4390,11 @@ class MessagingApi
      * Operation createUnexpectedProblem
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateUnexpectedProblemRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4413,11 +4413,11 @@ class MessagingApi
      * Operation createUnexpectedProblemWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateUnexpectedProblemRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4438,7 +4438,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -4704,11 +4704,11 @@ class MessagingApi
      * Operation createUnexpectedProblemAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateUnexpectedProblemRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -4730,11 +4730,11 @@ class MessagingApi
      * Operation createUnexpectedProblemAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateUnexpectedProblemRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -4789,11 +4789,11 @@ class MessagingApi
      * Create request for operation 'createUnexpectedProblem'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateUnexpectedProblemRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -4923,11 +4923,11 @@ class MessagingApi
      * Operation createWarranty
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateWarrantyRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4946,11 +4946,11 @@ class MessagingApi
      * Operation createWarrantyWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateWarrantyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4971,7 +4971,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -5237,11 +5237,11 @@ class MessagingApi
      * Operation createWarrantyAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateWarrantyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -5263,11 +5263,11 @@ class MessagingApi
      * Operation createWarrantyAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateWarrantyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -5322,11 +5322,11 @@ class MessagingApi
      * Create request for operation 'createWarranty'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\CreateWarrantyRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -5456,9 +5456,9 @@ class MessagingApi
      * Operation getAttributes
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5476,9 +5476,9 @@ class MessagingApi
      * Operation getAttributesWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5498,7 +5498,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -5764,9 +5764,9 @@ class MessagingApi
      * Operation getAttributesAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -5787,9 +5787,9 @@ class MessagingApi
      * Operation getAttributesAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -5843,9 +5843,9 @@ class MessagingApi
      * Create request for operation 'getAttributes'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -5964,7 +5964,7 @@ class MessagingApi
      * @param  string $amazon_order_id
      *  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5984,7 +5984,7 @@ class MessagingApi
      * @param  string $amazon_order_id
      *  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6004,7 +6004,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -6272,7 +6272,7 @@ class MessagingApi
      * @param  string $amazon_order_id
      *  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -6295,7 +6295,7 @@ class MessagingApi
      * @param  string $amazon_order_id
      *  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -6351,7 +6351,7 @@ class MessagingApi
      * @param  string $amazon_order_id
      *  An Amazon order identifier. This specifies the order for which you want a list of available message types. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -6468,11 +6468,11 @@ class MessagingApi
      * Operation sendInvoice
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\InvoiceRequest $body
-     *  body (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6491,11 +6491,11 @@ class MessagingApi
      * Operation sendInvoiceWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\InvoiceRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6516,7 +6516,7 @@ class MessagingApi
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
@@ -6782,11 +6782,11 @@ class MessagingApi
      * Operation sendInvoiceAsync
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\InvoiceRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -6808,11 +6808,11 @@ class MessagingApi
      * Operation sendInvoiceAsyncWithHttpInfo
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\InvoiceRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -6867,11 +6867,11 @@ class MessagingApi
      * Create request for operation 'sendInvoice'
      *
      * @param  string $amazon_order_id
-     *  An Amazon order identifier. This specifies the order for which a message is sent. (required)
+     *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
-     *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
+     *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      * @param  \OpenAPI\Client\Model\messaging\InvoiceRequest $body
-     *  (required)
+     *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request

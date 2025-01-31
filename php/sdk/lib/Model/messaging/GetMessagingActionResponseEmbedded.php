@@ -37,6 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * GetMessagingActionResponseEmbedded Class Doc Comment
  *
  * @category Class
+ * @description The embedded response associated with the messaging action.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

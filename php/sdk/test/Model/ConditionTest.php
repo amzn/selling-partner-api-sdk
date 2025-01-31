@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\Condition;
+use OpenAPI\Client\Model\pricing\v2022_05_01\Condition;
 
 /**
  * ConditionTest Class Doc Comment

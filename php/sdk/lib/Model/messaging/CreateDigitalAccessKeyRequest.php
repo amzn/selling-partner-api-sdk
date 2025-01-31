@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * CreateDigitalAccessKeyRequest Class Doc Comment
  *
  * @category Class
- * @description The request schema for the createDigitalAccessKey operation.
+ * @description The request schema for the &#x60;createDigitalAccessKey&#x60; operation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -319,7 +319,7 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets text
      *
-     * @param string|null $text The text to be sent to the buyer. Only links related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.
+     * @param string|null $text The text that is sent to the buyer. Only links that are related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's preferred language, which you can retrieve from the `GetAttributes` operation.
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets attachments
      *
-     * @param array|null $attachments Attachments to include in the message to the buyer.
+     * @param array|null $attachments Attachments that you want to include in the message to the buyer.
      *
      * @return self
      */

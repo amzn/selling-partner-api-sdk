@@ -64,6 +64,18 @@ class InventoryDetailsTest extends TestCase
     }
 
     /**
+     * Test attribute "replenishment_quantity"
+     */
+    public function testPropertyReplenishmentQuantity()
+    {
+        
+        $testValue = new int();
+        
+        $this->model->setReplenishmentQuantity($testValue);
+        $this->assertEquals($testValue, $this->model->getReplenishmentQuantity());
+    }
+
+    /**
      * Test attribute "reserved_distributable_quantity"
      */
     public function testPropertyReservedDistributableQuantity()

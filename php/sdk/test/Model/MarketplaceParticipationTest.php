@@ -74,4 +74,15 @@ class MarketplaceParticipationTest extends TestCase
         $this->model->setParticipation($testValue);
         $this->assertEquals($testValue, $this->model->getParticipation());
     }
+
+    /**
+     * Test attribute "store_name"
+     */
+    public function testPropertyStoreName()
+    {
+        $testValue = 'test';
+        
+        $this->model->setStoreName($testValue);
+        $this->assertEquals($testValue, $this->model->getStoreName());
+    }
 }

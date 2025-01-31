@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\Pallet;
+use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pallet;
 
 /**
  * PalletTest Class Doc Comment
  *
  * @category    Class
- * @description Pallet information.
+ * @description Contains information about a pallet that is used in the inbound plan. The pallet is a container that holds multiple items or boxes.
  * @package     OpenAPI\Client
  */
 class PalletTest extends TestCase
@@ -57,10 +57,45 @@ class PalletTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
+    }
+
+    /**
+     * Test attribute "package_id"
+     */
+    public function testPropertyPackageId()
+    {
+        $testValue = 'test';
+        
+        $this->model->setPackageId($testValue);
+        $this->assertEquals($testValue, $this->model->getPackageId());
+    }
+
+    /**
+     * Test attribute "quantity"
+     */
+    public function testPropertyQuantity()
+    {
+        $testValue = 123;
+        
+        $this->model->setQuantity($testValue);
+        $this->assertEquals($testValue, $this->model->getQuantity());
+    }
+
+    /**
+     * Test attribute "stackability"
+     */
+    public function testPropertyStackability()
+    {
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Stackability();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
+        
+        $this->model->setStackability($testValue);
+        $this->assertEquals($testValue, $this->model->getStackability());
     }
 
     /**
@@ -69,20 +104,9 @@ class PalletTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
-    }
-
-    /**
-     * Test attribute "is_stacked"
-     */
-    public function testPropertyIsStacked()
-    {
-        $testValue = true;
-        
-        $this->model->setIsStacked($testValue);
-        $this->assertEquals($testValue, $this->model->getIsStacked());
     }
 }

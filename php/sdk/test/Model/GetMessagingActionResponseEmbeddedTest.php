@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetMessagingActionResponseEmbedded;
  * GetMessagingActionResponseEmbeddedTest Class Doc Comment
  *
  * @category    Class
- * @description GetMessagingActionResponseEmbedded
+ * @description The embedded response associated with the messaging action.
  * @package     OpenAPI\Client
  */
 class GetMessagingActionResponseEmbeddedTest extends TestCase

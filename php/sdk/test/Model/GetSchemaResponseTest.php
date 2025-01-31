@@ -19,7 +19,7 @@ use OpenAPI\Client\Model\messaging\GetSchemaResponse;
  * GetSchemaResponseTest Class Doc Comment
  *
  * @category    Class
- * @description GetSchemaResponse
+ * @description The &#x60;GET&#x60; request schema response.
  * @package     OpenAPI\Client
  */
 class GetSchemaResponseTest extends TestCase

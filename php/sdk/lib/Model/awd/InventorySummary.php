@@ -60,6 +60,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
+             'expiration_details' => '\OpenAPI\Client\Model\awd\ExpirationDetails[]',
              'inventory_details' => '\OpenAPI\Client\Model\awd\InventoryDetails',
              'sku' => 'string',
              'total_inbound_quantity' => 'int',
@@ -73,6 +74,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
+            'expiration_details' => null,
             'inventory_details' => null,
             'sku' => null,
             'total_inbound_quantity' => 'int64',
@@ -84,6 +86,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'expiration_details' => true,
         'inventory_details' => true,
         'sku' => false,
         'total_inbound_quantity' => true,
@@ -176,7 +179,8 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'inventory_details' => 'inventoryDetails',
+        'expiration_details' => 'expirationDetails',
+                'inventory_details' => 'inventoryDetails',
                 'sku' => 'sku',
                 'total_inbound_quantity' => 'totalInboundQuantity',
                 'total_onhand_quantity' => 'totalOnhandQuantity'
@@ -189,6 +193,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
+        'expiration_details' => 'setExpirationDetails',
         'inventory_details' => 'setInventoryDetails',
         'sku' => 'setSku',
         'total_inbound_quantity' => 'setTotalInboundQuantity',
@@ -201,6 +206,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
+        'expiration_details' => 'getExpirationDetails',
         'inventory_details' => 'getInventoryDetails',
         'sku' => 'getSku',
         'total_inbound_quantity' => 'getTotalInboundQuantity',
@@ -264,6 +270,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('expiration_details', $data ?? [], null);
         $this->setIfExists('inventory_details', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('total_inbound_quantity', $data ?? [], null);
@@ -314,6 +321,40 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets expiration_details
+     *
+     * @return array|null
+     */
+    public function getExpirationDetails(): ?array
+    {
+        return $this->container['expiration_details'];
+    }
+
+    /**
+     * Sets expiration_details
+     *
+     * @param array|null $expiration_details The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.
+     *
+     * @return self
+     */
+    public function setExpirationDetails(?array $expiration_details): self
+    {
+        if (is_null($expiration_details)) {
+            array_push($this->openAPINullablesSetToNull, 'expiration_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration_details', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expiration_details'] = $expiration_details;
+
+        return $this;
+    }
 
     /**
      * Gets inventory_details

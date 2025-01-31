@@ -11,7 +11,7 @@
  */
 
 /**
- * Listings Items v2021-08-01
+ * Selling Partner API for Listings Items
  *
  * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
@@ -66,7 +66,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
              'issues' => '\OpenAPI\Client\Model\listings\items\Issue[]',
              'offers' => '\OpenAPI\Client\Model\listings\items\ItemOfferByMarketplace[]',
              'fulfillment_availability' => '\OpenAPI\Client\Model\listings\items\FulfillmentAvailability[]',
-             'procurement' => '\OpenAPI\Client\Model\listings\items\ItemProcurement[]'    ];
+             'procurement' => '\OpenAPI\Client\Model\listings\items\ItemProcurement[]',
+             'relationships' => '\OpenAPI\Client\Model\listings\items\ItemRelationshipsByMarketplace[]',
+             'product_types' => '\OpenAPI\Client\Model\listings\items\ItemProductTypeByMarketplace[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -82,7 +84,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
             'issues' => null,
             'offers' => null,
             'fulfillment_availability' => null,
-            'procurement' => null    ];
+            'procurement' => null,
+            'relationships' => null,
+            'product_types' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -96,7 +100,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
         'issues' => true,
         'offers' => true,
         'fulfillment_availability' => true,
-        'procurement' => true
+        'procurement' => true,
+        'relationships' => true,
+        'product_types' => true
     ];
 
     /**
@@ -191,7 +197,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
                 'issues' => 'issues',
                 'offers' => 'offers',
                 'fulfillment_availability' => 'fulfillmentAvailability',
-                'procurement' => 'procurement'
+                'procurement' => 'procurement',
+                'relationships' => 'relationships',
+                'product_types' => 'productTypes'
         
     ];
 
@@ -207,7 +215,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
         'issues' => 'setIssues',
         'offers' => 'setOffers',
         'fulfillment_availability' => 'setFulfillmentAvailability',
-        'procurement' => 'setProcurement'
+        'procurement' => 'setProcurement',
+        'relationships' => 'setRelationships',
+        'product_types' => 'setProductTypes'
     ];
 
     /**
@@ -222,7 +232,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
         'issues' => 'getIssues',
         'offers' => 'getOffers',
         'fulfillment_availability' => 'getFulfillmentAvailability',
-        'procurement' => 'getProcurement'
+        'procurement' => 'getProcurement',
+        'relationships' => 'getRelationships',
+        'product_types' => 'getProductTypes'
     ];
 
     /**
@@ -289,6 +301,8 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('offers', $data ?? [], null);
         $this->setIfExists('fulfillment_availability', $data ?? [], null);
         $this->setIfExists('procurement', $data ?? [], null);
+        $this->setIfExists('relationships', $data ?? [], null);
+        $this->setIfExists('product_types', $data ?? [], null);
     }
 
     /**
@@ -563,6 +577,74 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['procurement'] = $procurement;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationships
+     *
+     * @return array|null
+     */
+    public function getRelationships(): ?array
+    {
+        return $this->container['relationships'];
+    }
+
+    /**
+     * Sets relationships
+     *
+     * @param array|null $relationships Relationships for a listing item, by marketplace (for example, variations).
+     *
+     * @return self
+     */
+    public function setRelationships(?array $relationships): self
+    {
+        if (is_null($relationships)) {
+            array_push($this->openAPINullablesSetToNull, 'relationships');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('relationships', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['relationships'] = $relationships;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_types
+     *
+     * @return array|null
+     */
+    public function getProductTypes(): ?array
+    {
+        return $this->container['product_types'];
+    }
+
+    /**
+     * Sets product_types
+     *
+     * @param array|null $product_types Product types for a listing item, by marketplace.
+     *
+     * @return self
+     */
+    public function setProductTypes(?array $product_types): self
+    {
+        if (is_null($product_types)) {
+            array_push($this->openAPINullablesSetToNull, 'product_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_types', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_types'] = $product_types;
 
         return $this;
     }

@@ -336,7 +336,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string $code The code that identifies the type of error condition.
+     * @param string $code An error code that identifies the type of error that occurred.
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message A human readable description of the error condition.
+     * @param string $message A message that describes the error condition.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets details
      *
-     * @param string|null $details Additional information, if available, to clarify the error condition.
+     * @param string|null $details Additional details that can help the caller understand or fix the issue.
      *
      * @return self
      */

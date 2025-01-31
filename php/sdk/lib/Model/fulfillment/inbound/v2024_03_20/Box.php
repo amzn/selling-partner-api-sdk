@@ -11,7 +11,7 @@
  */
 
 /**
- * Fulfillment Inbound v2024-03-20
+ * The Selling Partner API for FBA inbound operations.
  *
  * The Selling Partner API for Fulfillment By Amazon (FBA) Inbound. The FBA Inbound API enables building inbound workflows to create, manage, and send shipments into Amazon's fulfillment network. The API has interoperability with the Send-to-Amazon user interface.
  *
@@ -64,6 +64,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
              'content_information_source' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource',
              'destination_region' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region',
              'dimensions' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions',
+             'external_container_identifier' => 'string',
+             'external_container_identifier_type' => 'string',
              'items' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Item[]',
              'package_id' => 'string',
              'quantity' => 'int',
@@ -82,6 +84,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
             'content_information_source' => null,
             'destination_region' => null,
             'dimensions' => null,
+            'external_container_identifier' => null,
+            'external_container_identifier_type' => null,
             'items' => null,
             'package_id' => null,
             'quantity' => null,
@@ -98,6 +102,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_information_source' => true,
         'destination_region' => true,
         'dimensions' => true,
+        'external_container_identifier' => true,
+        'external_container_identifier_type' => true,
         'items' => true,
         'package_id' => false,
         'quantity' => true,
@@ -195,6 +201,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
                 'content_information_source' => 'contentInformationSource',
                 'destination_region' => 'destinationRegion',
                 'dimensions' => 'dimensions',
+                'external_container_identifier' => 'externalContainerIdentifier',
+                'external_container_identifier_type' => 'externalContainerIdentifierType',
                 'items' => 'items',
                 'package_id' => 'packageId',
                 'quantity' => 'quantity',
@@ -213,6 +221,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_information_source' => 'setContentInformationSource',
         'destination_region' => 'setDestinationRegion',
         'dimensions' => 'setDimensions',
+        'external_container_identifier' => 'setExternalContainerIdentifier',
+        'external_container_identifier_type' => 'setExternalContainerIdentifierType',
         'items' => 'setItems',
         'package_id' => 'setPackageId',
         'quantity' => 'setQuantity',
@@ -230,6 +240,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_information_source' => 'getContentInformationSource',
         'destination_region' => 'getDestinationRegion',
         'dimensions' => 'getDimensions',
+        'external_container_identifier' => 'getExternalContainerIdentifier',
+        'external_container_identifier_type' => 'getExternalContainerIdentifierType',
         'items' => 'getItems',
         'package_id' => 'getPackageId',
         'quantity' => 'getQuantity',
@@ -298,6 +310,8 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('content_information_source', $data ?? [], null);
         $this->setIfExists('destination_region', $data ?? [], null);
         $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('external_container_identifier', $data ?? [], null);
+        $this->setIfExists('external_container_identifier_type', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('package_id', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
@@ -338,6 +352,22 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['box_id']) && (mb_strlen($this->container['box_id']) < 1)) {
             $invalidProperties[] = "invalid value for 'box_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['external_container_identifier']) && (mb_strlen($this->container['external_container_identifier']) > 1024)) {
+            $invalidProperties[] = "invalid value for 'external_container_identifier', the character length must be smaller than or equal to 1024.";
+        }
+
+        if (!is_null($this->container['external_container_identifier']) && (mb_strlen($this->container['external_container_identifier']) < 1)) {
+            $invalidProperties[] = "invalid value for 'external_container_identifier', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['external_container_identifier_type']) && (mb_strlen($this->container['external_container_identifier_type']) > 1024)) {
+            $invalidProperties[] = "invalid value for 'external_container_identifier_type', the character length must be smaller than or equal to 1024.";
+        }
+
+        if (!is_null($this->container['external_container_identifier_type']) && (mb_strlen($this->container['external_container_identifier_type']) < 1)) {
+            $invalidProperties[] = "invalid value for 'external_container_identifier_type', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['package_id'] === null) {
@@ -525,6 +555,88 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_container_identifier
+     *
+     * @return string|null
+     */
+    public function getExternalContainerIdentifier(): ?string
+    {
+        return $this->container['external_container_identifier'];
+    }
+
+    /**
+     * Sets external_container_identifier
+     *
+     * @param string|null $external_container_identifier The external identifier for this container / box.
+     *
+     * @return self
+     */
+    public function setExternalContainerIdentifier(?string $external_container_identifier): self
+    {
+        if (is_null($external_container_identifier)) {
+            array_push($this->openAPINullablesSetToNull, 'external_container_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_container_identifier', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($external_container_identifier) && (mb_strlen($external_container_identifier) > 1024)) {
+            throw new \InvalidArgumentException('invalid length for $external_container_identifier when calling Box., must be smaller than or equal to 1024.');
+        }
+        if (!is_null($external_container_identifier) && (mb_strlen($external_container_identifier) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $external_container_identifier when calling Box., must be bigger than or equal to 1.');
+        }
+
+        $this->container['external_container_identifier'] = $external_container_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_container_identifier_type
+     *
+     * @return string|null
+     */
+    public function getExternalContainerIdentifierType(): ?string
+    {
+        return $this->container['external_container_identifier_type'];
+    }
+
+    /**
+     * Sets external_container_identifier_type
+     *
+     * @param string|null $external_container_identifier_type Type of the external identifier used. Can be: `AMAZON`, `SSCC`.
+     *
+     * @return self
+     */
+    public function setExternalContainerIdentifierType(?string $external_container_identifier_type): self
+    {
+        if (is_null($external_container_identifier_type)) {
+            array_push($this->openAPINullablesSetToNull, 'external_container_identifier_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_container_identifier_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($external_container_identifier_type) && (mb_strlen($external_container_identifier_type) > 1024)) {
+            throw new \InvalidArgumentException('invalid length for $external_container_identifier_type when calling Box., must be smaller than or equal to 1024.');
+        }
+        if (!is_null($external_container_identifier_type) && (mb_strlen($external_container_identifier_type) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $external_container_identifier_type when calling Box., must be bigger than or equal to 1.');
+        }
+
+        $this->container['external_container_identifier_type'] = $external_container_identifier_type;
 
         return $this;
     }

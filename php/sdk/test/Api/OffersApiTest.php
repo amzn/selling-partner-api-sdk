@@ -96,6 +96,7 @@ class OffersApiTest extends BaseTestCase
           &quot;revenuePenetration&quot; : 10.34,
           &quot;lostRevenueDueToOOS&quot; : 12.32,
           &quot;couponsRevenuePenetration&quot; : 10,
+          &quot;shareOfCouponSubscriptions&quot; : 24.04,
           &quot;timeInterval&quot; : {
             &quot;endDate&quot; : &quot;2023-03-11T00:00:00Z&quot;,
             &quot;startDate&quot; : &quot;2023-03-05T00:00:00Z&quot;
@@ -109,6 +110,7 @@ class OffersApiTest extends BaseTestCase
           &quot;revenuePenetration&quot; : 9.87,
           &quot;lostRevenueDueToOOS&quot; : 17.82,
           &quot;couponsRevenuePenetration&quot; : 17,
+          &quot;shareOfCouponSubscriptions&quot; : 20.04,
           &quot;timeInterval&quot; : {
             &quot;endDate&quot; : &quot;2023-03-11T00:00:00Z&quot;,
             &quot;startDate&quot; : &quot;2023-03-05T00:00:00Z&quot;
@@ -160,6 +162,7 @@ class OffersApiTest extends BaseTestCase
           &quot;activeSubscriptions&quot; : 100,
           &quot;lostRevenueDueToOOS&quot; : 12.32,
           &quot;couponsRevenuePenetration&quot; : 10,
+          &quot;shareOfCouponSubscriptions&quot; : 20.04,
           &quot;timeInterval&quot; : {
             &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
             &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;
@@ -174,6 +177,7 @@ class OffersApiTest extends BaseTestCase
           &quot;activeSubscriptions&quot; : 100,
           &quot;lostRevenueDueToOOS&quot; : 17.82,
           &quot;couponsRevenuePenetration&quot; : 17,
+          &quot;shareOfCouponSubscriptions&quot; : 19.2,
           &quot;timeInterval&quot; : {
             &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
             &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;

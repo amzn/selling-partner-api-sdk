@@ -100,6 +100,28 @@ class BoxTest extends TestCase
     }
 
     /**
+     * Test attribute "external_container_identifier"
+     */
+    public function testPropertyExternalContainerIdentifier()
+    {
+        $testValue = 'test';
+        
+        $this->model->setExternalContainerIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getExternalContainerIdentifier());
+    }
+
+    /**
+     * Test attribute "external_container_identifier_type"
+     */
+    public function testPropertyExternalContainerIdentifierType()
+    {
+        $testValue = 'test';
+        
+        $this->model->setExternalContainerIdentifierType($testValue);
+        $this->assertEquals($testValue, $this->model->getExternalContainerIdentifierType());
+    }
+
+    /**
      * Test attribute "items"
      */
     public function testPropertyItems()

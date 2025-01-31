@@ -37,6 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * GetSchemaResponseLinks Class Doc Comment
  *
  * @category Class
+ * @description The links response that is associated with the object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

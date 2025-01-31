@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\ModelInterface;
  * SegmentDetails Class Doc Comment
  *
  * @category Class
- * @description The details about the segment.
+ * @description The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,8 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'glance_view_weight_percentage' => 'float'    ];
+             'glance_view_weight_percentage' => 'float',
+             'sample_location' => '\OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -70,7 +71,8 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'glance_view_weight_percentage' => null    ];
+            'glance_view_weight_percentage' => null,
+            'sample_location' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -78,7 +80,8 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'glance_view_weight_percentage' => true
+        'glance_view_weight_percentage' => true,
+        'sample_location' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'glance_view_weight_percentage' => 'glanceViewWeightPercentage'
+        'glance_view_weight_percentage' => 'glanceViewWeightPercentage',
+                'sample_location' => 'sampleLocation'
         
     ];
 
@@ -177,7 +181,8 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'glance_view_weight_percentage' => 'setGlanceViewWeightPercentage'
+        'glance_view_weight_percentage' => 'setGlanceViewWeightPercentage',
+        'sample_location' => 'setSampleLocation'
     ];
 
     /**
@@ -186,7 +191,8 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'glance_view_weight_percentage' => 'getGlanceViewWeightPercentage'
+        'glance_view_weight_percentage' => 'getGlanceViewWeightPercentage',
+        'sample_location' => 'getSampleLocation'
     ];
 
     /**
@@ -247,6 +253,7 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('glance_view_weight_percentage', $data ?? [], null);
+        $this->setIfExists('sample_location', $data ?? [], null);
     }
 
     /**
@@ -321,6 +328,40 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['glance_view_weight_percentage'] = $glance_view_weight_percentage;
+
+        return $this;
+    }
+
+    /**
+     * Gets sample_location
+     *
+     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation|null
+     */
+    public function getSampleLocation(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation
+    {
+        return $this->container['sample_location'];
+    }
+
+    /**
+     * Sets sample_location
+     *
+     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation|null $sample_location sample_location
+     *
+     * @return self
+     */
+    public function setSampleLocation(?\OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation $sample_location): self
+    {
+        if (is_null($sample_location)) {
+            array_push($this->openAPINullablesSetToNull, 'sample_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sample_location', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sample_location'] = $sample_location;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Fulfillment Inbound v2024-03-20
+ * The Selling Partner API for FBA inbound operations.
  *
  * The Selling Partner API for Fulfillment By Amazon (FBA) Inbound. The FBA Inbound API enables building inbound workflows to create, manage, and send shipments into Amazon's fulfillment network. The API has interoperability with the Send-to-Amazon user interface.
  *
@@ -66,6 +66,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
              'packing_groups' => 'string[]',
              'packing_option_id' => 'string',
              'status' => 'string',
+             'supported_configurations' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PackingConfiguration[]',
              'supported_shipping_configurations' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShippingConfiguration[]'    ];
 
     /**
@@ -82,6 +83,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
             'packing_groups' => null,
             'packing_option_id' => null,
             'status' => null,
+            'supported_configurations' => null,
             'supported_shipping_configurations' => null    ];
 
     /**
@@ -96,6 +98,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'packing_groups' => false,
         'packing_option_id' => false,
         'status' => false,
+        'supported_configurations' => false,
         'supported_shipping_configurations' => false
     ];
 
@@ -191,6 +194,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
                 'packing_groups' => 'packingGroups',
                 'packing_option_id' => 'packingOptionId',
                 'status' => 'status',
+                'supported_configurations' => 'supportedConfigurations',
                 'supported_shipping_configurations' => 'supportedShippingConfigurations'
         
     ];
@@ -207,6 +211,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'packing_groups' => 'setPackingGroups',
         'packing_option_id' => 'setPackingOptionId',
         'status' => 'setStatus',
+        'supported_configurations' => 'setSupportedConfigurations',
         'supported_shipping_configurations' => 'setSupportedShippingConfigurations'
     ];
 
@@ -222,6 +227,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'packing_groups' => 'getPackingGroups',
         'packing_option_id' => 'getPackingOptionId',
         'status' => 'getStatus',
+        'supported_configurations' => 'getSupportedConfigurations',
         'supported_shipping_configurations' => 'getSupportedShippingConfigurations'
     ];
 
@@ -288,6 +294,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('packing_groups', $data ?? [], null);
         $this->setIfExists('packing_option_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('supported_configurations', $data ?? [], null);
         $this->setIfExists('supported_shipping_configurations', $data ?? [], null);
     }
 
@@ -353,6 +360,9 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'status', the character length must be bigger than or equal to 1.";
         }
 
+        if ($this->container['supported_configurations'] === null) {
+            $invalidProperties[] = "'supported_configurations' can't be null";
+        }
         if ($this->container['supported_shipping_configurations'] === null) {
             $invalidProperties[] = "'supported_shipping_configurations' can't be null";
         }
@@ -558,6 +568,33 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets supported_configurations
+     *
+     * @return array
+     */
+    public function getSupportedConfigurations(): array
+    {
+        return $this->container['supported_configurations'];
+    }
+
+    /**
+     * Sets supported_configurations
+     *
+     * @param array $supported_configurations A list of possible configurations for this option.
+     *
+     * @return self
+     */
+    public function setSupportedConfigurations(array $supported_configurations): self
+    {
+        if (is_null($supported_configurations)) {
+            throw new \InvalidArgumentException('non-nullable supported_configurations cannot be null');
+        }
+        $this->container['supported_configurations'] = $supported_configurations;
+
+        return $this;
+    }
+
+    /**
      * Gets supported_shipping_configurations
      *
      * @return array
@@ -570,7 +607,7 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets supported_shipping_configurations
      *
-     * @param array $supported_shipping_configurations List of supported shipping modes.
+     * @param array $supported_shipping_configurations **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
      *
      * @return self
      */
