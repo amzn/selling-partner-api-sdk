@@ -12,6 +12,7 @@ const models = [
     "../../selling-partner-api-models/models/fba-inventory-api-model/fbaInventory.json",
     "../../selling-partner-api-models/models/feeds-api-model/feeds_2021-06-30.json",
     "../../selling-partner-api-models/models/finances-api-model/financesV0.json",
+    "../../selling-partner-api-models/models/finances-api-model/transfers_2024-06-01.json",
     "../../selling-partner-api-models/models/finances-api-model/finances_2024-06-19.json",
     "../../selling-partner-api-models/models/fulfillment-inbound-api-model/fulfillmentInboundV0.json",
     "../../selling-partner-api-models/models/fulfillment-inbound-api-model/fulfillmentInbound_2024-03-20.json",
