@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\TransactionId;
+use OpenAPI\Client\Model\vendor\invoices\TransactionId;
 
 /**
  * TransactionIdTest Class Doc Comment

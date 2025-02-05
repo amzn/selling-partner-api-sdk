@@ -686,6 +686,9 @@ class TestHelper
         'testGetPackingSlip200',
         // Offers Api
         'testListOfferMetrics200',
-        'testListOffers400'
+        'testListOffers400',
+        // Vendor Invoices API
+        'testSubmitInvoices202',
+        'testSubmitInvoices400'
     ];
 }

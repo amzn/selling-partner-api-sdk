@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\ItemDetails;
+use OpenAPI\Client\Model\vendor\df\inventory\ItemDetails;
 
 /**
  * ItemDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
+ * @description Updated inventory details for an item.
  * @package     OpenAPI\Client
  */
 class ItemDetailsTest extends TestCase
@@ -52,60 +52,47 @@ class ItemDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "purchase_order_number"
+     * Test attribute "buyer_product_identifier"
      */
-    public function testPropertyPurchaseOrderNumber()
+    public function testPropertyBuyerProductIdentifier()
     {
         $testValue = 'test';
         
-        $this->model->setPurchaseOrderNumber($testValue);
-        $this->assertEquals($testValue, $this->model->getPurchaseOrderNumber());
+        $this->model->setBuyerProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getBuyerProductIdentifier());
     }
 
     /**
-     * Test attribute "lot_number"
+     * Test attribute "vendor_product_identifier"
      */
-    public function testPropertyLotNumber()
+    public function testPropertyVendorProductIdentifier()
     {
         $testValue = 'test';
         
-        $this->model->setLotNumber($testValue);
-        $this->assertEquals($testValue, $this->model->getLotNumber());
+        $this->model->setVendorProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getVendorProductIdentifier());
     }
 
     /**
-     * Test attribute "expiry"
+     * Test attribute "available_quantity"
      */
-    public function testPropertyExpiry()
+    public function testPropertyAvailableQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Expiry();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\ItemQuantity();
         
-        $this->model->setExpiry($testValue);
-        $this->assertEquals($testValue, $this->model->getExpiry());
+        $this->model->setAvailableQuantity($testValue);
+        $this->assertEquals($testValue, $this->model->getAvailableQuantity());
     }
 
     /**
-     * Test attribute "maximum_retail_price"
+     * Test attribute "is_obsolete"
      */
-    public function testPropertyMaximumRetailPrice()
+    public function testPropertyIsObsolete()
     {
+        $testValue = true;
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Money();
-        
-        $this->model->setMaximumRetailPrice($testValue);
-        $this->assertEquals($testValue, $this->model->getMaximumRetailPrice());
-    }
-
-    /**
-     * Test attribute "handling_code"
-     */
-    public function testPropertyHandlingCode()
-    {
-        $enumInstance = new ItemDetails();
-        $allowedValues = $enumInstance->getHandlingCodeAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setHandlingCode($testValue);
-        $this->assertEquals($testValue, $this->model->getHandlingCode());
+        $this->model->setIsObsolete($testValue);
+        $this->assertEquals($testValue, $this->model->getIsObsolete());
     }
 }
