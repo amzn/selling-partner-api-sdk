@@ -13,13 +13,13 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\TotalWeight;
+use OpenAPI\Client\Model\vendor\invoices\TotalWeight;
 
 /**
  * TotalWeightTest Class Doc Comment
  *
  * @category    Class
- * @description The total weight of units that are sold by weight in a shipment.
+ * @description The aggregate weight of this item being invoiced. This information will be available for items sold by weight.
  * @package     OpenAPI\Client
  */
 class TotalWeightTest extends TestCase

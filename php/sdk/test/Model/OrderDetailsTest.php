@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderDetails;
+use OpenAPI\Client\Model\vendor\df\orders\OrderDetails;
 
 /**
  * OrderDetailsTest Class Doc Comment
@@ -52,98 +52,62 @@ class OrderDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "purchase_order_date"
+     * Test attribute "customer_order_number"
      */
-    public function testPropertyPurchaseOrderDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setPurchaseOrderDate($testValue);
-        $this->assertEquals($testValue, $this->model->getPurchaseOrderDate());
-    }
-
-    /**
-     * Test attribute "purchase_order_changed_date"
-     */
-    public function testPropertyPurchaseOrderChangedDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setPurchaseOrderChangedDate($testValue);
-        $this->assertEquals($testValue, $this->model->getPurchaseOrderChangedDate());
-    }
-
-    /**
-     * Test attribute "purchase_order_state_changed_date"
-     */
-    public function testPropertyPurchaseOrderStateChangedDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setPurchaseOrderStateChangedDate($testValue);
-        $this->assertEquals($testValue, $this->model->getPurchaseOrderStateChangedDate());
-    }
-
-    /**
-     * Test attribute "purchase_order_type"
-     */
-    public function testPropertyPurchaseOrderType()
-    {
-        $enumInstance = new OrderDetails();
-        $allowedValues = $enumInstance->getPurchaseOrderTypeAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setPurchaseOrderType($testValue);
-        $this->assertEquals($testValue, $this->model->getPurchaseOrderType());
-    }
-
-    /**
-     * Test attribute "import_details"
-     */
-    public function testPropertyImportDetails()
-    {
-        
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\ImportDetails();
-        
-        $this->model->setImportDetails($testValue);
-        $this->assertEquals($testValue, $this->model->getImportDetails());
-    }
-
-    /**
-     * Test attribute "deal_code"
-     */
-    public function testPropertyDealCode()
+    public function testPropertyCustomerOrderNumber()
     {
         $testValue = 'test';
         
-        $this->model->setDealCode($testValue);
-        $this->assertEquals($testValue, $this->model->getDealCode());
+        $this->model->setCustomerOrderNumber($testValue);
+        $this->assertEquals($testValue, $this->model->getCustomerOrderNumber());
     }
 
     /**
-     * Test attribute "payment_method"
+     * Test attribute "order_date"
      */
-    public function testPropertyPaymentMethod()
+    public function testPropertyOrderDate()
+    {
+        
+        $testValue = new \DateTime();
+        
+        $this->model->setOrderDate($testValue);
+        $this->assertEquals($testValue, $this->model->getOrderDate());
+    }
+
+    /**
+     * Test attribute "order_status"
+     */
+    public function testPropertyOrderStatus()
     {
         $enumInstance = new OrderDetails();
-        $allowedValues = $enumInstance->getPaymentMethodAllowableValues();
+        $allowedValues = $enumInstance->getOrderStatusAllowableValues();
         $testValue = reset($allowedValues);
-        $this->model->setPaymentMethod($testValue);
-        $this->assertEquals($testValue, $this->model->getPaymentMethod());
+        $this->model->setOrderStatus($testValue);
+        $this->assertEquals($testValue, $this->model->getOrderStatus());
     }
 
     /**
-     * Test attribute "buying_party"
+     * Test attribute "shipment_details"
      */
-    public function testPropertyBuyingParty()
+    public function testPropertyShipmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\ShipmentDetails();
         
-        $this->model->setBuyingParty($testValue);
-        $this->assertEquals($testValue, $this->model->getBuyingParty());
+        $this->model->setShipmentDetails($testValue);
+        $this->assertEquals($testValue, $this->model->getShipmentDetails());
+    }
+
+    /**
+     * Test attribute "tax_total"
+     */
+    public function testPropertyTaxTotal()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\TaxItemDetails();
+        
+        $this->model->setTaxTotal($testValue);
+        $this->assertEquals($testValue, $this->model->getTaxTotal());
     }
 
     /**
@@ -152,10 +116,22 @@ class OrderDetailsTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
+    }
+
+    /**
+     * Test attribute "ship_from_party"
+     */
+    public function testPropertyShipFromParty()
+    {
+        
+        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\PartyIdentification();
+        
+        $this->model->setShipFromParty($testValue);
+        $this->assertEquals($testValue, $this->model->getShipFromParty());
     }
 
     /**
@@ -164,7 +140,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyShipToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\Address();
         
         $this->model->setShipToParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipToParty());
@@ -176,32 +152,10 @@ class OrderDetailsTest extends TestCase
     public function testPropertyBillToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\orders\PartyIdentification();
         
         $this->model->setBillToParty($testValue);
         $this->assertEquals($testValue, $this->model->getBillToParty());
-    }
-
-    /**
-     * Test attribute "ship_window"
-     */
-    public function testPropertyShipWindow()
-    {
-        $testValue = 'test';
-        
-        $this->model->setShipWindow($testValue);
-        $this->assertEquals($testValue, $this->model->getShipWindow());
-    }
-
-    /**
-     * Test attribute "delivery_window"
-     */
-    public function testPropertyDeliveryWindow()
-    {
-        $testValue = 'test';
-        
-        $this->model->setDeliveryWindow($testValue);
-        $this->assertEquals($testValue, $this->model->getDeliveryWindow());
     }
 
     /**
