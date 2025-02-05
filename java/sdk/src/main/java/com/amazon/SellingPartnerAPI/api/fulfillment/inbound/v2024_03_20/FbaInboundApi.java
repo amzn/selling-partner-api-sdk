@@ -66,6 +66,7 @@ import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListP
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPackingGroupItemsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPackingOptionsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPlacementOptionsResponse;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPrepDetailsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListShipmentBoxesResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListShipmentContentUpdatePreviewsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListShipmentItemsResponse;
@@ -75,6 +76,8 @@ import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.Sched
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ScheduleSelfShipAppointmentResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPackingInformationRequest;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPackingInformationResponse;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsRequest;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.Shipment;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.UpdateInboundPlanNameRequest;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.UpdateItemComplianceDetailsRequest;
@@ -4341,6 +4344,142 @@ public class FbaInboundApi {
         return call;
     }
     /**
+     * Build call for listPrepDetails
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPrepDetailsCall(String marketplaceId, List<String> mskus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
+        if (mskus != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "mskus", mskus));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listPrepDetailsValidateBeforeCall(String marketplaceId, List<String> mskus, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException("Missing the required parameter 'marketplaceId' when calling listPrepDetails(Async)");
+        }
+        // verify the required parameter 'mskus' is set
+        if (mskus == null) {
+            throw new ApiException("Missing the required parameter 'mskus' when calling listPrepDetails(Async)");
+        }
+
+        okhttp3.Call call = listPrepDetailsCall(marketplaceId, mskus, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @return ListPrepDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPrepDetailsResponse listPrepDetails(String marketplaceId, List<String> mskus) throws ApiException,LWAException {
+        ApiResponse<ListPrepDetailsResponse> resp = listPrepDetailsWithHttpInfo(marketplaceId, mskus);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @return ApiResponse&lt;ListPrepDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPrepDetailsResponse> listPrepDetailsWithHttpInfo(String marketplaceId, List<String> mskus) throws ApiException,LWAException {
+        okhttp3.Call call = listPrepDetailsValidateBeforeCall(marketplaceId, mskus, null, null);
+        Type localVarReturnType = new TypeToken<ListPrepDetailsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPrepDetailsAsync(String marketplaceId, List<String> mskus, final ApiCallback<ListPrepDetailsResponse> callback) throws ApiException, LWAException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = listPrepDetailsValidateBeforeCall(marketplaceId, mskus, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListPrepDetailsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for listShipmentBoxes
      * @param inboundPlanId Identifier of an inbound plan. (required)
      * @param shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required)
@@ -5354,6 +5493,130 @@ public class FbaInboundApi {
 
         okhttp3.Call call = setPackingInformationValidateBeforeCall(body, inboundPlanId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SetPackingInformationResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for setPrepDetails
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call setPrepDetailsCall(SetPrepDetailsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setPrepDetailsValidateBeforeCall(SetPrepDetailsRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling setPrepDetails(Async)");
+        }
+
+        okhttp3.Call call = setPrepDetailsCall(body, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @return SetPrepDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SetPrepDetailsResponse setPrepDetails(SetPrepDetailsRequest body) throws ApiException,LWAException {
+        ApiResponse<SetPrepDetailsResponse> resp = setPrepDetailsWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @return ApiResponse&lt;SetPrepDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SetPrepDetailsResponse> setPrepDetailsWithHttpInfo(SetPrepDetailsRequest body) throws ApiException,LWAException {
+        okhttp3.Call call = setPrepDetailsValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<SetPrepDetailsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body The body of the request to &#x60;setPrepDetails&#x60;. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call setPrepDetailsAsync(SetPrepDetailsRequest body, final ApiCallback<SetPrepDetailsResponse> callback) throws ApiException, LWAException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = setPrepDetailsValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SetPrepDetailsResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

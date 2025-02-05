@@ -53,6 +53,7 @@ import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListP
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPackingGroupItemsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPackingOptionsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPlacementOptionsResponse;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListPrepDetailsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListShipmentBoxesResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListShipmentContentUpdatePreviewsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ListShipmentItemsResponse;
@@ -62,6 +63,8 @@ import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.Sched
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.ScheduleSelfShipAppointmentResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPackingInformationRequest;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPackingInformationResponse;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsRequest;
+import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsResponse;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.Shipment;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.UpdateInboundPlanNameRequest;
 import com.amazon.SellingPartnerAPI.models.fulfillment.inbound.v2024_03_20.UpdateItemComplianceDetailsRequest;
@@ -463,6 +466,18 @@ public class FbaInboundApiTest {
     }
 
     @Test
+    public void listPrepDetailsTest() throws Exception {
+        instructBackendMock("listPrepDetails", "200");
+        String marketplaceId = "";
+        List<String> mskus = new ArrayList<>();
+
+        ApiResponse<ListPrepDetailsResponse> response = api.listPrepDetailsWithHttpInfo(marketplaceId, mskus);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void listShipmentBoxesTest() throws Exception {
         instructBackendMock("listShipmentBoxes", "200");
         String inboundPlanId = "";
@@ -542,6 +557,17 @@ public class FbaInboundApiTest {
         String inboundPlanId = "";
 
         ApiResponse<SetPackingInformationResponse> response = api.setPackingInformationWithHttpInfo(body, inboundPlanId);
+
+        assertEquals(202, response.getStatusCode());
+        assertValidResponsePayload(202, response.getData());
+    }
+
+    @Test
+    public void setPrepDetailsTest() throws Exception {
+        instructBackendMock("setPrepDetails", "202");
+        SetPrepDetailsRequest body = new SetPrepDetailsRequest();
+
+        ApiResponse<SetPrepDetailsResponse> response = api.setPrepDetailsWithHttpInfo(body);
 
         assertEquals(202, response.getStatusCode());
         assertValidResponsePayload(202, response.getData());
