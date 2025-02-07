@@ -4,7 +4,7 @@ require_once '../sdk/vendor/autoload.php';
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
-use OpenAPI\Client\Api\OrdersApi;
+use OpenAPI\Client\Api\orders\v0\OrdersApi;
 use OpenAPI\Client\Configuration;
 use Dotenv\Dotenv;
 
