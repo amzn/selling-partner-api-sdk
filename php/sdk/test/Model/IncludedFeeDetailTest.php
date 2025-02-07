@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\IncludedFeeDetail;
+use OpenAPI\Client\Model\productFees\v0\IncludedFeeDetail;
 
 /**
  * IncludedFeeDetailTest Class Doc Comment
@@ -68,7 +68,7 @@ class IncludedFeeDetailTest extends TestCase
     public function testPropertyFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
         
         $this->model->setFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getFeeAmount());
@@ -80,7 +80,7 @@ class IncludedFeeDetailTest extends TestCase
     public function testPropertyFeePromotion()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
         
         $this->model->setFeePromotion($testValue);
         $this->assertEquals($testValue, $this->model->getFeePromotion());
@@ -92,7 +92,7 @@ class IncludedFeeDetailTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());
@@ -104,7 +104,7 @@ class IncludedFeeDetailTest extends TestCase
     public function testPropertyFinalFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
         
         $this->model->setFinalFee($testValue);
         $this->assertEquals($testValue, $this->model->getFinalFee());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\SupportedDocumentSpecification;
+use OpenAPI\Client\Model\shipping\v2\SupportedDocumentSpecification;
 
 /**
  * SupportedDocumentSpecificationTest Class Doc Comment
@@ -56,7 +56,7 @@ class SupportedDocumentSpecificationTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\DocumentFormat();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class SupportedDocumentSpecificationTest extends TestCase
     public function testPropertySize()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\DocumentSize();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\DocumentSize();
         
         $this->model->setSize($testValue);
         $this->assertEquals($testValue, $this->model->getSize());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\GetMyFeesEstimateResponse;
+use OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResponse;
 
 /**
  * GetMyFeesEstimateResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetMyFeesEstimateResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\GetMyFeesEstimateResult();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

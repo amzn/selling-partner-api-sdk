@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\InventorySummary;
+use OpenAPI\Client\Model\awd\v2024_05_09\InventorySummary;
 
 /**
  * InventorySummaryTest Class Doc Comment
@@ -68,7 +68,7 @@ class InventorySummaryTest extends TestCase
     public function testPropertyInventoryDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\InventoryDetails();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryDetails();
         
         $this->model->setInventoryDetails($testValue);
         $this->assertEquals($testValue, $this->model->getInventoryDetails());

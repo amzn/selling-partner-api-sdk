@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\CreateContainerLabelResponse;
+use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse;
 
 /**
  * CreateContainerLabelResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateContainerLabelResponseTest extends TestCase
     public function testPropertyContainerLabel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\ContainerLabel();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel();
         
         $this->model->setContainerLabel($testValue);
         $this->assertEquals($testValue, $this->model->getContainerLabel());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\DeliveryChannel;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel;
 
 /**
  * DeliveryChannelTest Class Doc Comment
@@ -68,7 +68,7 @@ class DeliveryChannelTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\OperationalConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());

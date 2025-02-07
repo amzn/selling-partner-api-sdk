@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\UploadsApi;
+use OpenAPI\Client\Api\uploads\v2020_11_01\UploadsApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

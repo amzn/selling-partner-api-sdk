@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GenerateCollectionFormResponse;
+use OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse;
 
 /**
  * GenerateCollectionFormResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GenerateCollectionFormResponseTest extends TestCase
     public function testPropertyCollectionsFormDocument()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\CollectionsFormDocument();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument();
         
         $this->model->setCollectionsFormDocument($testValue);
         $this->assertEquals($testValue, $this->model->getCollectionsFormDocument());

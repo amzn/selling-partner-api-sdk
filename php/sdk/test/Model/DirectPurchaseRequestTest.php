@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\DirectPurchaseRequest;
+use OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest;
 
 /**
  * DirectPurchaseRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class DirectPurchaseRequestTest extends TestCase
     public function testPropertyShipTo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setShipTo($testValue);
         $this->assertEquals($testValue, $this->model->getShipTo());
@@ -69,7 +69,7 @@ class DirectPurchaseRequestTest extends TestCase
     public function testPropertyShipFrom()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setShipFrom($testValue);
         $this->assertEquals($testValue, $this->model->getShipFrom());
@@ -81,7 +81,7 @@ class DirectPurchaseRequestTest extends TestCase
     public function testPropertyReturnTo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setReturnTo($testValue);
         $this->assertEquals($testValue, $this->model->getReturnTo());
@@ -104,7 +104,7 @@ class DirectPurchaseRequestTest extends TestCase
     public function testPropertyChannelDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\ChannelDetails();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\ChannelDetails();
         
         $this->model->setChannelDetails($testValue);
         $this->assertEquals($testValue, $this->model->getChannelDetails());
@@ -116,7 +116,7 @@ class DirectPurchaseRequestTest extends TestCase
     public function testPropertyLabelSpecifications()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\RequestedDocumentSpecification();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification();
         
         $this->model->setLabelSpecifications($testValue);
         $this->assertEquals($testValue, $this->model->getLabelSpecifications());

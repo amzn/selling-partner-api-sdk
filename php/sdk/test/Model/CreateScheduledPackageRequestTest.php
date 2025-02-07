@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\CreateScheduledPackageRequest;
+use OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest;
 
 /**
  * CreateScheduledPackageRequestTest Class Doc Comment
@@ -79,7 +79,7 @@ class CreateScheduledPackageRequestTest extends TestCase
     public function testPropertyPackageDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\PackageDetails();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails();
         
         $this->model->setPackageDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDetails());

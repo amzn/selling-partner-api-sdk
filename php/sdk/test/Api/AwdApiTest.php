@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\AwdApi;
+use OpenAPI\Client\Api\awd\v2024_05_09\AwdApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

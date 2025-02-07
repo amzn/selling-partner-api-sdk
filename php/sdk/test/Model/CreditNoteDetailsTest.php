@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\CreditNoteDetails;
+use OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails;
 
 /**
  * CreditNoteDetailsTest Class Doc Comment

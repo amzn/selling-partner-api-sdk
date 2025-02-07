@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\Label;
+use OpenAPI\Client\Model\merchantFulfillment\v0\Label;
 
 /**
  * LabelTest Class Doc Comment
@@ -68,7 +68,7 @@ class LabelTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\LabelDimensions();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -80,7 +80,7 @@ class LabelTest extends TestCase
     public function testPropertyFileContents()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\FileContents();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\FileContents();
         
         $this->model->setFileContents($testValue);
         $this->assertEquals($testValue, $this->model->getFileContents());
@@ -91,7 +91,7 @@ class LabelTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\LabelFormat();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -104,7 +104,7 @@ class LabelTest extends TestCase
      */
     public function testPropertyStandardIdForLabel()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\StandardIdForLabel();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\StandardIdForLabel();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

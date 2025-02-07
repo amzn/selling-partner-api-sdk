@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\GetInvoicesDocumentResponse;
+use OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse;
 
 /**
  * GetInvoicesDocumentResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetInvoicesDocumentResponseTest extends TestCase
     public function testPropertyInvoicesDocument()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoices\InvoicesDocument();
+        $testValue = new \OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument();
         
         $this->model->setInvoicesDocument($testValue);
         $this->assertEquals($testValue, $this->model->getInvoicesDocument());

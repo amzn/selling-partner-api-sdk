@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\Error;
+use OpenAPI\Client\Model\awd\v2024_05_09\Error;
 
 /**
  * ErrorTest Class Doc Comment

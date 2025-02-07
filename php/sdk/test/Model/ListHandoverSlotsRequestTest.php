@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\ListHandoverSlotsRequest;
+use OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest;
 
 /**
  * ListHandoverSlotsRequestTest Class Doc Comment
@@ -79,7 +79,7 @@ class ListHandoverSlotsRequestTest extends TestCase
     public function testPropertyPackageDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions();
         
         $this->model->setPackageDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDimensions());
@@ -91,7 +91,7 @@ class ListHandoverSlotsRequestTest extends TestCase
     public function testPropertyPackageWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\Weight();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Weight();
         
         $this->model->setPackageWeight($testValue);
         $this->assertEquals($testValue, $this->model->getPackageWeight());

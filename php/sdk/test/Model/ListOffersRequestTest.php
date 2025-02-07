@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\ListOffersRequest;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest;
 
 /**
  * ListOffersRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class ListOffersRequestTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\ListOffersRequestPagination();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
@@ -69,7 +69,7 @@ class ListOffersRequestTest extends TestCase
     public function testPropertyFilters()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\ListOffersRequestFilters();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters();
         
         $this->model->setFilters($testValue);
         $this->assertEquals($testValue, $this->model->getFilters());
@@ -81,7 +81,7 @@ class ListOffersRequestTest extends TestCase
     public function testPropertySort()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\ListOffersRequestSort();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort();
         
         $this->model->setSort($testValue);
         $this->assertEquals($testValue, $this->model->getSort());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\TrackingSummary;
+use OpenAPI\Client\Model\shipping\v2\TrackingSummary;
 
 /**
  * TrackingSummaryTest Class Doc Comment
@@ -56,7 +56,7 @@ class TrackingSummaryTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\Status();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\Status();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

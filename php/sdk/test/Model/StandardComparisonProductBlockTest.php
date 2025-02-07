@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardComparisonProductBlock;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonProductBlock;
 
 /**
  * StandardComparisonProductBlockTest Class Doc Comment
@@ -68,7 +68,7 @@ class StandardComparisonProductBlockTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());

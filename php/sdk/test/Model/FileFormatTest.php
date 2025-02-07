@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\FileFormat;
+use OpenAPI\Client\Model\invoices\v2024_06_19\FileFormat;
 
 /**
  * FileFormatTest Class Doc Comment

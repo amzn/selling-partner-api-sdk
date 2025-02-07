@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\DefinitionsApi;
+use OpenAPI\Client\Api\productTypeDefinitions\v2020_09_01\DefinitionsApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

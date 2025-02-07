@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\LinkableAccountType;
+use OpenAPI\Client\Model\shipping\v2\LinkableAccountType;
 
 /**
  * LinkableAccountTypeTest Class Doc Comment
@@ -56,7 +56,7 @@ class LinkableAccountTypeTest extends TestCase
      */
     public function testPropertyAccountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\AccountType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\AccountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

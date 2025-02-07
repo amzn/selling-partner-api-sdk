@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\PrescriptionDetail;
+use OpenAPI\Client\Model\orders\v0\PrescriptionDetail;
 
 /**
  * PrescriptionDetailTest Class Doc Comment

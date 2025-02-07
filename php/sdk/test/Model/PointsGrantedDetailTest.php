@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\PointsGrantedDetail;
+use OpenAPI\Client\Model\orders\v0\PointsGrantedDetail;
 
 /**
  * PointsGrantedDetailTest Class Doc Comment
@@ -68,7 +68,7 @@ class PointsGrantedDetailTest extends TestCase
     public function testPropertyPointsMonetaryValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setPointsMonetaryValue($testValue);
         $this->assertEquals($testValue, $this->model->getPointsMonetaryValue());

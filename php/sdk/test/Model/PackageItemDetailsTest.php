@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\PackageItemDetails;
+use OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails;
 
 /**
  * PackageItemDetailsTest Class Doc Comment
@@ -79,7 +79,7 @@ class PackageItemDetailsTest extends TestCase
     public function testPropertyExpiry()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Expiry();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Expiry();
         
         $this->model->setExpiry($testValue);
         $this->assertEquals($testValue, $this->model->getExpiry());

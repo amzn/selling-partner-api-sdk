@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\Event;
+use OpenAPI\Client\Model\shipping\v2\Event;
 
 /**
  * EventTest Class Doc Comment
@@ -56,7 +56,7 @@ class EventTest extends TestCase
      */
     public function testPropertyEventCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\EventCode();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\EventCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class EventTest extends TestCase
     public function testPropertyLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Location();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Location();
         
         $this->model->setLocation($testValue);
         $this->assertEquals($testValue, $this->model->getLocation());

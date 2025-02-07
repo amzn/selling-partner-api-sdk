@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderStatus;
+use OpenAPI\Client\Model\vendor\orders\v1\OrderStatus;
 
 /**
  * OrderStatusTest Class Doc Comment
@@ -104,7 +104,7 @@ class OrderStatusTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -116,7 +116,7 @@ class OrderStatusTest extends TestCase
     public function testPropertyShipToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setShipToParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipToParty());

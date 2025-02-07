@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\ContainerLabel;
+use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel;
 
 /**
  * ContainerLabelTest Class Doc Comment
@@ -78,7 +78,7 @@ class ContainerLabelTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\vendor\df\shipping\ContainerLabelFormat();
+        $enumInstance = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

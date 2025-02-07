@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\Attachment;
+use OpenAPI\Client\Model\messaging\v1\Attachment;
 
 /**
  * AttachmentTest Class Doc Comment

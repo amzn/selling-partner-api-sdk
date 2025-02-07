@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\ProcessingDirective;
+use OpenAPI\Client\Model\notifications\v1\ProcessingDirective;
 
 /**
  * ProcessingDirectiveTest Class Doc Comment
@@ -57,7 +57,7 @@ class ProcessingDirectiveTest extends TestCase
     public function testPropertyEventFilter()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\EventFilter();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\EventFilter();
         
         $this->model->setEventFilter($testValue);
         $this->assertEquals($testValue, $this->model->getEventFilter());

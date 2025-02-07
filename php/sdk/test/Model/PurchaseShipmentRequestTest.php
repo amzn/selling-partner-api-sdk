@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\PurchaseShipmentRequest;
+use OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest;
 
 /**
  * PurchaseShipmentRequestTest Class Doc Comment
@@ -79,7 +79,7 @@ class PurchaseShipmentRequestTest extends TestCase
     public function testPropertyRequestedDocumentSpecification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\RequestedDocumentSpecification();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification();
         
         $this->model->setRequestedDocumentSpecification($testValue);
         $this->assertEquals($testValue, $this->model->getRequestedDocumentSpecification());

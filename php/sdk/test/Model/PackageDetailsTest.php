@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\PackageDetails;
+use OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails;
 
 /**
  * PackageDetailsTest Class Doc Comment
@@ -68,7 +68,7 @@ class PackageDetailsTest extends TestCase
     public function testPropertyPackageTimeSlot()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\TimeSlot();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot();
         
         $this->model->setPackageTimeSlot($testValue);
         $this->assertEquals($testValue, $this->model->getPackageTimeSlot());

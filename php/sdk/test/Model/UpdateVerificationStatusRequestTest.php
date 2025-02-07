@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\UpdateVerificationStatusRequest;
+use OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest;
 
 /**
  * UpdateVerificationStatusRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class UpdateVerificationStatusRequestTest extends TestCase
     public function testPropertyRegulatedOrderVerificationStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\UpdateVerificationStatusRequestBody();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody();
         
         $this->model->setRegulatedOrderVerificationStatus($testValue);
         $this->assertEquals($testValue, $this->model->getRegulatedOrderVerificationStatus());

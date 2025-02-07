@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\ReturnLocation;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation;
 
 /**
  * ReturnLocationTest Class Doc Comment
@@ -68,7 +68,7 @@ class ReturnLocationTest extends TestCase
     public function testPropertyAddressWithContact()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\AddressWithContact();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\AddressWithContact();
         
         $this->model->setAddressWithContact($testValue);
         $this->assertEquals($testValue, $this->model->getAddressWithContact());

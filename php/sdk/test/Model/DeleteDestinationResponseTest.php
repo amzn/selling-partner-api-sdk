@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\DeleteDestinationResponse;
+use OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse;
 
 /**
  * DeleteDestinationResponseTest Class Doc Comment

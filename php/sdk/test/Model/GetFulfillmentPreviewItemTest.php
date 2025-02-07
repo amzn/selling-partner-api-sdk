@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewItem;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem;
 
 /**
  * GetFulfillmentPreviewItemTest Class Doc Comment
@@ -79,7 +79,7 @@ class GetFulfillmentPreviewItemTest extends TestCase
     public function testPropertyPerUnitDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\Money();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money();
         
         $this->model->setPerUnitDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitDeclaredValue());

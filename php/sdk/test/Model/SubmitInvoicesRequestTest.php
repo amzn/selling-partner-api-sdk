@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\SubmitInvoicesRequest;
+use OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest;
 
 /**
  * SubmitInvoicesRequestTest Class Doc Comment

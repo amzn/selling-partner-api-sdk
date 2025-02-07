@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\ItemBrowseClassification;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification;
 
 /**
  * ItemBrowseClassificationTest Class Doc Comment
@@ -79,7 +79,7 @@ class ItemBrowseClassificationTest extends TestCase
     public function testPropertyParent()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\ItemBrowseClassification();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification();
         
         $this->model->setParent($testValue);
         $this->assertEquals($testValue, $this->model->getParent());

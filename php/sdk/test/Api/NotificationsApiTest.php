@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\NotificationsApi;
+use OpenAPI\Client\Api\notifications\v1\NotificationsApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

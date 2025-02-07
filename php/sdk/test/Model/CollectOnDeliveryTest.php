@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\CollectOnDelivery;
+use OpenAPI\Client\Model\shipping\v2\CollectOnDelivery;
 
 /**
  * CollectOnDeliveryTest Class Doc Comment
@@ -57,7 +57,7 @@ class CollectOnDeliveryTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Currency();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\DistributionPackageQuantity;
+use OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageQuantity;
 
 /**
  * DistributionPackageQuantityTest Class Doc Comment
@@ -68,7 +68,7 @@ class DistributionPackageQuantityTest extends TestCase
     public function testPropertyDistributionPackage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\DistributionPackage();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage();
         
         $this->model->setDistributionPackage($testValue);
         $this->assertEquals($testValue, $this->model->getDistributionPackage());

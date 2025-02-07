@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\PublishRecord;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\PublishRecord;
 
 /**
  * PublishRecordTest Class Doc Comment
@@ -89,7 +89,7 @@ class PublishRecordTest extends TestCase
      */
     public function testPropertyContentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\ContentType();
+        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\CollectionFormsHistoryRecord;
+use OpenAPI\Client\Model\shipping\v2\CollectionFormsHistoryRecord;
 
 /**
  * CollectionFormsHistoryRecordTest Class Doc Comment
@@ -78,7 +78,7 @@ class CollectionFormsHistoryRecordTest extends TestCase
      */
     public function testPropertyGenerationStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\GenerationStatus();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\GenerationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class CollectionFormsHistoryRecordTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());

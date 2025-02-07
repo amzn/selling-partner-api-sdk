@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\TrackingEvent;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingEvent;
 
 /**
  * TrackingEventTest Class Doc Comment
@@ -69,7 +69,7 @@ class TrackingEventTest extends TestCase
     public function testPropertyEventAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\TrackingAddress();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress();
         
         $this->model->setEventAddress($testValue);
         $this->assertEquals($testValue, $this->model->getEventAddress());
@@ -80,7 +80,7 @@ class TrackingEventTest extends TestCase
      */
     public function testPropertyEventCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\EventCode();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\EventCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

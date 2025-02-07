@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\GetAccountResponse;
+use OpenAPI\Client\Model\sellers\v1\GetAccountResponse;
 
 /**
  * GetAccountResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetAccountResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\Account();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\Account();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

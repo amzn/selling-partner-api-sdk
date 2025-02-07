@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\FeesEstimateResult;
+use OpenAPI\Client\Model\productFees\v0\FeesEstimateResult;
 
 /**
  * FeesEstimateResultTest Class Doc Comment
@@ -68,7 +68,7 @@ class FeesEstimateResultTest extends TestCase
     public function testPropertyFeesEstimateIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\FeesEstimateIdentifier();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier();
         
         $this->model->setFeesEstimateIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getFeesEstimateIdentifier());
@@ -80,7 +80,7 @@ class FeesEstimateResultTest extends TestCase
     public function testPropertyFeesEstimate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\FeesEstimate();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimate();
         
         $this->model->setFeesEstimate($testValue);
         $this->assertEquals($testValue, $this->model->getFeesEstimate());
@@ -92,7 +92,7 @@ class FeesEstimateResultTest extends TestCase
     public function testPropertyError()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\FeesEstimateError();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimateError();
         
         $this->model->setError($testValue);
         $this->assertEquals($testValue, $this->model->getError());

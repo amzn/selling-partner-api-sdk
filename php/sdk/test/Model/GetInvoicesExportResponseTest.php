@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\GetInvoicesExportResponse;
+use OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse;
 
 /**
  * GetInvoicesExportResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetInvoicesExportResponseTest extends TestCase
     public function testPropertyExport()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoices\Export();
+        $testValue = new \OpenAPI\Client\Model\invoices\v2024_06_19\Export();
         
         $this->model->setExport($testValue);
         $this->assertEquals($testValue, $this->model->getExport());

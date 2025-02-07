@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\AssignAppointmentResourcesRequest;
+use OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest;
 
 /**
  * AssignAppointmentResourcesRequestTest Class Doc Comment

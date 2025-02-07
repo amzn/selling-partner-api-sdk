@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\DeleteSubscriptionByIdResponse;
+use OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse;
 
 /**
  * DeleteSubscriptionByIdResponseTest Class Doc Comment

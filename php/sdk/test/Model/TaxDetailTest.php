@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\TaxDetail;
+use OpenAPI\Client\Model\shipping\v2\TaxDetail;
 
 /**
  * TaxDetailTest Class Doc Comment
@@ -56,7 +56,7 @@ class TaxDetailTest extends TestCase
      */
     public function testPropertyTaxType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\TaxType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\TaxType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

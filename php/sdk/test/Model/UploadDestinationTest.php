@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\uploads\UploadDestination;
+use OpenAPI\Client\Model\uploads\v2020_11_01\UploadDestination;
 
 /**
  * UploadDestinationTest Class Doc Comment

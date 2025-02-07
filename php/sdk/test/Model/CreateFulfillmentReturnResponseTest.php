@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnResponse;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse;
 
 /**
  * CreateFulfillmentReturnResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateFulfillmentReturnResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\CreateFulfillmentReturnResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\SubmitFulfillmentOrderStatusUpdateRequest;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest;
 
 /**
  * SubmitFulfillmentOrderStatusUpdateRequestTest Class Doc Comment
@@ -56,7 +56,7 @@ class SubmitFulfillmentOrderStatusUpdateRequestTest extends TestCase
      */
     public function testPropertyFulfillmentOrderStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\FulfillmentOrderStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

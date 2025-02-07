@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\ProductQuantity;
+use OpenAPI\Client\Model\awd\v2024_05_09\ProductQuantity;
 
 /**
  * ProductQuantityTest Class Doc Comment
@@ -102,7 +102,7 @@ class ProductQuantityTest extends TestCase
     public function testPropertyPrepDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\PrepDetails();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails();
         
         $this->model->setPrepDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPrepDetails());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\InvoicesAttributes;
+use OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesAttributes;
 
 /**
  * InvoicesAttributesTest Class Doc Comment

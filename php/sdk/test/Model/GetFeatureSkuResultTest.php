@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\GetFeatureSkuResult;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResult;
 
 /**
  * GetFeatureSkuResultTest Class Doc Comment
@@ -101,7 +101,7 @@ class GetFeatureSkuResultTest extends TestCase
     public function testPropertySkuInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\FeatureSku();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku();
         
         $this->model->setSkuInfo($testValue);
         $this->assertEquals($testValue, $this->model->getSkuInfo());

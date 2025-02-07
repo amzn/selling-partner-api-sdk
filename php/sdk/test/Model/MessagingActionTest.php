@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\MessagingAction;
+use OpenAPI\Client\Model\messaging\v1\MessagingAction;
 
 /**
  * MessagingActionTest Class Doc Comment

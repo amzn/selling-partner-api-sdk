@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\AdditionalDetails;
+use OpenAPI\Client\Model\vendor\df\payments\v1\AdditionalDetails;
 
 /**
  * AdditionalDetailsTest Class Doc Comment

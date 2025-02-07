@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\CreateScheduledPackagesRequest;
+use OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest;
 
 /**
  * CreateScheduledPackagesRequestTest Class Doc Comment
@@ -78,7 +78,7 @@ class CreateScheduledPackagesRequestTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\LabelFormat();
+        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

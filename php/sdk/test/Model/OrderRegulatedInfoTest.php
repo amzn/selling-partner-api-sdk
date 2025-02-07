@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\OrderRegulatedInfo;
+use OpenAPI\Client\Model\orders\v0\OrderRegulatedInfo;
 
 /**
  * OrderRegulatedInfoTest Class Doc Comment
@@ -68,7 +68,7 @@ class OrderRegulatedInfoTest extends TestCase
     public function testPropertyRegulatedInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\RegulatedInformation();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\RegulatedInformation();
         
         $this->model->setRegulatedInformation($testValue);
         $this->assertEquals($testValue, $this->model->getRegulatedInformation());
@@ -91,7 +91,7 @@ class OrderRegulatedInfoTest extends TestCase
     public function testPropertyRegulatedOrderVerificationStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\RegulatedOrderVerificationStatus();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus();
         
         $this->model->setRegulatedOrderVerificationStatus($testValue);
         $this->assertEquals($testValue, $this->model->getRegulatedOrderVerificationStatus());

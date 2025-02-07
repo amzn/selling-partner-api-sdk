@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\Decorator;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\Decorator;
 
 /**
  * DecoratorTest Class Doc Comment
@@ -56,7 +56,7 @@ class DecoratorTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\DecoratorType();
+        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\DecoratorType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

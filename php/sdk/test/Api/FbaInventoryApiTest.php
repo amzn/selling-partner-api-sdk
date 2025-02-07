@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\FbaInventoryApi;
+use OpenAPI\Client\Api\fba\inventory\v1\FbaInventoryApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

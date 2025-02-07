@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\SupplySourcesApi;
+use OpenAPI\Client\Api\supplySources\v2020_07_01\SupplySourcesApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

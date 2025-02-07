@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\CreateProductReviewAndSellerFeedbackSolicitationResponse;
+use OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse;
 
 /**
  * CreateProductReviewAndSellerFeedbackSolicitationResponseTest Class Doc Comment

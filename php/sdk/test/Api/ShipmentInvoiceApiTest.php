@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\ShipmentInvoiceApi;
+use OpenAPI\Client\Api\invoicing\v0\ShipmentInvoiceApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

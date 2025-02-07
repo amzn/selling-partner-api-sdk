@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\ContainerIdentification;
+use OpenAPI\Client\Model\vendor\shipments\v1\ContainerIdentification;
 
 /**
  * ContainerIdentificationTest Class Doc Comment

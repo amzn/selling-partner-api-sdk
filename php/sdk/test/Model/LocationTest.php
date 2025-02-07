@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\Location;
+use OpenAPI\Client\Model\shipping\v2\Location;
 
 /**
  * LocationTest Class Doc Comment

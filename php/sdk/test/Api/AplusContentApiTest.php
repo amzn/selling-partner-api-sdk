@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\AplusContentApi;
+use OpenAPI\Client\Api\aplusContent\v2020_11_01\AplusContentApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

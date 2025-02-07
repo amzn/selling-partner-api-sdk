@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetRatesRequest;
+use OpenAPI\Client\Model\shipping\v2\GetRatesRequest;
 
 /**
  * GetRatesRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyShipTo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setShipTo($testValue);
         $this->assertEquals($testValue, $this->model->getShipTo());
@@ -69,7 +69,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyShipFrom()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setShipFrom($testValue);
         $this->assertEquals($testValue, $this->model->getShipFrom());
@@ -81,7 +81,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyReturnTo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setReturnTo($testValue);
         $this->assertEquals($testValue, $this->model->getReturnTo());
@@ -105,7 +105,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyShipperInstruction()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\ShipperInstruction();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\ShipperInstruction();
         
         $this->model->setShipperInstruction($testValue);
         $this->assertEquals($testValue, $this->model->getShipperInstruction());
@@ -128,7 +128,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyValueAddedServices()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\ValueAddedServiceDetails();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails();
         
         $this->model->setValueAddedServices($testValue);
         $this->assertEquals($testValue, $this->model->getValueAddedServices());
@@ -151,7 +151,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyChannelDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\ChannelDetails();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\ChannelDetails();
         
         $this->model->setChannelDetails($testValue);
         $this->assertEquals($testValue, $this->model->getChannelDetails());
@@ -173,7 +173,7 @@ class GetRatesRequestTest extends TestCase
      */
     public function testPropertyShipmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\ShipmentType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\ShipmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -187,7 +187,7 @@ class GetRatesRequestTest extends TestCase
     public function testPropertyDestinationAccessPointDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\AccessPointDetails();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\AccessPointDetails();
         
         $this->model->setDestinationAccessPointDetails($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAccessPointDetails());

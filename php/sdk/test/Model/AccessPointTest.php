@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\AccessPoint;
+use OpenAPI\Client\Model\shipping\v2\AccessPoint;
 
 /**
  * AccessPointTest Class Doc Comment
@@ -89,7 +89,7 @@ class AccessPointTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\AccessPointType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\AccessPointType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class AccessPointTest extends TestCase
     public function testPropertyAccessibilityAttributes()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\AccessibilityAttributes();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes();
         
         $this->model->setAccessibilityAttributes($testValue);
         $this->assertEquals($testValue, $this->model->getAccessibilityAttributes());
@@ -115,7 +115,7 @@ class AccessPointTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

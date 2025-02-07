@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\LabelData;
+use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\LabelData;
 
 /**
  * LabelDataTest Class Doc Comment

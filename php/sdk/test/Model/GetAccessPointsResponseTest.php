@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetAccessPointsResponse;
+use OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse;
 
 /**
  * GetAccessPointsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetAccessPointsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\GetAccessPointsResult();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\GetAccessPointsResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

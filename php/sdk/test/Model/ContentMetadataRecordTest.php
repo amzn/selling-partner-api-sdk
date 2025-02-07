@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\ContentMetadataRecord;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadataRecord;
 
 /**
  * ContentMetadataRecordTest Class Doc Comment
@@ -68,7 +68,7 @@ class ContentMetadataRecordTest extends TestCase
     public function testPropertyContentMetadata()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ContentMetadata();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata();
         
         $this->model->setContentMetadata($testValue);
         $this->assertEquals($testValue, $this->model->getContentMetadata());

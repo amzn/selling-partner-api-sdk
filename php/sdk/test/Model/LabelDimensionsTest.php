@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\LabelDimensions;
+use OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions;
 
 /**
  * LabelDimensionsTest Class Doc Comment
@@ -78,7 +78,7 @@ class LabelDimensionsTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\UnitOfLength();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\UnitOfLength();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

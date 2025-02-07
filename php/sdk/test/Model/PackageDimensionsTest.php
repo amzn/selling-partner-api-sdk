@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\PackageDimensions;
+use OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions;
 
 /**
  * PackageDimensionsTest Class Doc Comment
@@ -80,7 +80,7 @@ class PackageDimensionsTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\DimensionUnitOfMeasurement();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\DimensionUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

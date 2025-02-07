@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\CreateDigitalAccessKeyRequest;
+use OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest;
 
 /**
  * CreateDigitalAccessKeyRequestTest Class Doc Comment

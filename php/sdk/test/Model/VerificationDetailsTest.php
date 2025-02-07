@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\VerificationDetails;
+use OpenAPI\Client\Model\orders\v0\VerificationDetails;
 
 /**
  * VerificationDetailsTest Class Doc Comment
@@ -57,7 +57,7 @@ class VerificationDetailsTest extends TestCase
     public function testPropertyPrescriptionDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\PrescriptionDetail();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\PrescriptionDetail();
         
         $this->model->setPrescriptionDetail($testValue);
         $this->assertEquals($testValue, $this->model->getPrescriptionDetail());

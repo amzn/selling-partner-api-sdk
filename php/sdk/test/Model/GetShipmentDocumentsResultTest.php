@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetShipmentDocumentsResult;
+use OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult;
 
 /**
  * GetShipmentDocumentsResultTest Class Doc Comment
@@ -68,7 +68,7 @@ class GetShipmentDocumentsResultTest extends TestCase
     public function testPropertyPackageDocumentDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\PackageDocumentDetail();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail();
         
         $this->model->setPackageDocumentDetail($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDocumentDetail());

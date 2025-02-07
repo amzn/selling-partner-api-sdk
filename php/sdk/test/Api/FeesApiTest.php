@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\FeesApi;
+use OpenAPI\Client\Api\productFees\v0\FeesApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

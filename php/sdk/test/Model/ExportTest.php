@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\Export;
+use OpenAPI\Client\Model\invoices\v2024_06_19\Export;
 
 /**
  * ExportTest Class Doc Comment
@@ -113,7 +113,7 @@ class ExportTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\invoices\ExportStatus();
+        $enumInstance = new \OpenAPI\Client\Model\invoices\v2024_06_19\ExportStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

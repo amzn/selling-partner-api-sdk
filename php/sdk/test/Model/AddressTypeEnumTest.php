@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\AddressTypeEnum;
+use OpenAPI\Client\Model\invoicing\v0\AddressTypeEnum;
 
 /**
  * AddressTypeEnumTest Class Doc Comment

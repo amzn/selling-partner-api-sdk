@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\UpdateReservationResponse;
+use OpenAPI\Client\Model\services\v1\UpdateReservationResponse;
 
 /**
  * UpdateReservationResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class UpdateReservationResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\UpdateReservationRecord();
+        $testValue = new \OpenAPI\Client\Model\services\v1\UpdateReservationRecord();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

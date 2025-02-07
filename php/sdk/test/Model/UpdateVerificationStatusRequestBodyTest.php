@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\UpdateVerificationStatusRequestBody;
+use OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody;
 
 /**
  * UpdateVerificationStatusRequestBodyTest Class Doc Comment
@@ -56,7 +56,7 @@ class UpdateVerificationStatusRequestBodyTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\VerificationStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\VerificationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -92,7 +92,7 @@ class UpdateVerificationStatusRequestBodyTest extends TestCase
     public function testPropertyVerificationDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\VerificationDetails();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\VerificationDetails();
         
         $this->model->setVerificationDetails($testValue);
         $this->assertEquals($testValue, $this->model->getVerificationDetails());

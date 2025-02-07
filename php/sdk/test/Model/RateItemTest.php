@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\RateItem;
+use OpenAPI\Client\Model\shipping\v2\RateItem;
 
 /**
  * RateItemTest Class Doc Comment
@@ -56,7 +56,7 @@ class RateItemTest extends TestCase
      */
     public function testPropertyRateItemId()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\RateItemID();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\RateItemID();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class RateItemTest extends TestCase
      */
     public function testPropertyRateItemType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\RateItemType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\RateItemType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -83,7 +83,7 @@ class RateItemTest extends TestCase
     public function testPropertyRateItemCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Currency();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
         
         $this->model->setRateItemCharge($testValue);
         $this->assertEquals($testValue, $this->model->getRateItemCharge());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\ShippingConstraints;
+use OpenAPI\Client\Model\orders\v0\ShippingConstraints;
 
 /**
  * ShippingConstraintsTest Class Doc Comment
@@ -56,7 +56,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyPalletDelivery()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertySignatureConfirmation()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -82,7 +82,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyRecipientIdentityVerification()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -95,7 +95,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyRecipientAgeVerification()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\ConstraintType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

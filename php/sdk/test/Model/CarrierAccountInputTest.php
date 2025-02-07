@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\CarrierAccountInput;
+use OpenAPI\Client\Model\shipping\v2\CarrierAccountInput;
 
 /**
  * CarrierAccountInputTest Class Doc Comment
@@ -89,7 +89,7 @@ class CarrierAccountInputTest extends TestCase
      */
     public function testPropertyInputType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\InputType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\InputType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

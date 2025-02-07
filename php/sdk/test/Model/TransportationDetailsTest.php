@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\TransportationDetails;
+use OpenAPI\Client\Model\vendor\shipments\v1\TransportationDetails;
 
 /**
  * TransportationDetailsTest Class Doc Comment
@@ -117,7 +117,7 @@ class TransportationDetailsTest extends TestCase
     public function testPropertyCarrierDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\CarrierDetails();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails();
         
         $this->model->setCarrierDetails($testValue);
         $this->assertEquals($testValue, $this->model->getCarrierDetails());

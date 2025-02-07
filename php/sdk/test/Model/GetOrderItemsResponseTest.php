@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\GetOrderItemsResponse;
+use OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse;
 
 /**
  * GetOrderItemsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetOrderItemsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\OrderItemsList();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\OrderItemsList();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

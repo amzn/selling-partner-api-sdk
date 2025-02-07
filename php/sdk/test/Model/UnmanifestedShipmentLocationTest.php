@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\UnmanifestedShipmentLocation;
+use OpenAPI\Client\Model\shipping\v2\UnmanifestedShipmentLocation;
 
 /**
  * UnmanifestedShipmentLocationTest Class Doc Comment
@@ -57,7 +57,7 @@ class UnmanifestedShipmentLocationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

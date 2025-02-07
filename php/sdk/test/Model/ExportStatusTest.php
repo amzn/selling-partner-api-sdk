@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\ExportStatus;
+use OpenAPI\Client\Model\invoices\v2024_06_19\ExportStatus;
 
 /**
  * ExportStatusTest Class Doc Comment

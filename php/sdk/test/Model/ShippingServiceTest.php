@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\ShippingService;
+use OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService;
 
 /**
  * ShippingServiceTest Class Doc Comment
@@ -137,7 +137,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyRate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setRate($testValue);
         $this->assertEquals($testValue, $this->model->getRate());
@@ -149,7 +149,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyShippingServiceOptions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\ShippingServiceOptions();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions();
         
         $this->model->setShippingServiceOptions($testValue);
         $this->assertEquals($testValue, $this->model->getShippingServiceOptions());
@@ -161,7 +161,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyAvailableShippingServiceOptions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\AvailableShippingServiceOptions();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions();
         
         $this->model->setAvailableShippingServiceOptions($testValue);
         $this->assertEquals($testValue, $this->model->getAvailableShippingServiceOptions());
@@ -206,7 +206,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyBenefits()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\Benefits();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Benefits();
         
         $this->model->setBenefits($testValue);
         $this->assertEquals($testValue, $this->model->getBenefits());

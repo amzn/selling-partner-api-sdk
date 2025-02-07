@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\FeesEstimateRequest;
+use OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest;
 
 /**
  * FeesEstimateRequestTest Class Doc Comment
@@ -79,7 +79,7 @@ class FeesEstimateRequestTest extends TestCase
     public function testPropertyPriceToEstimateFees()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\PriceToEstimateFees();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees();
         
         $this->model->setPriceToEstimateFees($testValue);
         $this->assertEquals($testValue, $this->model->getPriceToEstimateFees());
@@ -101,7 +101,7 @@ class FeesEstimateRequestTest extends TestCase
      */
     public function testPropertyOptionalFulfillmentProgram()
     {
-        $enumInstance = new \OpenAPI\Client\Model\productFees\OptionalFulfillmentProgram();
+        $enumInstance = new \OpenAPI\Client\Model\productFees\v0\OptionalFulfillmentProgram();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\UpdateSupplySourceRequest;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest;
 
 /**
  * UpdateSupplySourceRequestTest Class Doc Comment
@@ -68,7 +68,7 @@ class UpdateSupplySourceRequestTest extends TestCase
     public function testPropertyConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\SupplySourceConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration();
         
         $this->model->setConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getConfiguration());
@@ -80,7 +80,7 @@ class UpdateSupplySourceRequestTest extends TestCase
     public function testPropertyCapabilities()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\SupplySourceCapabilities();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities();
         
         $this->model->setCapabilities($testValue);
         $this->assertEquals($testValue, $this->model->getCapabilities());

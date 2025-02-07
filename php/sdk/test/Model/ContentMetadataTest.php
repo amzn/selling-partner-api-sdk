@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\ContentMetadata;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata;
 
 /**
  * ContentMetadataTest Class Doc Comment
@@ -78,7 +78,7 @@ class ContentMetadataTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\ContentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

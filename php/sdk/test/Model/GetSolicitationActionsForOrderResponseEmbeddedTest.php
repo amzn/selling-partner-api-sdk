@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponseEmbedded;
+use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded;
 
 /**
  * GetSolicitationActionsForOrderResponseEmbeddedTest Class Doc Comment

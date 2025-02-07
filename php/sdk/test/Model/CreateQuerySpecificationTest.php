@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\datakiosk\CreateQuerySpecification;
+use OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification;
 
 /**
  * CreateQuerySpecificationTest Class Doc Comment

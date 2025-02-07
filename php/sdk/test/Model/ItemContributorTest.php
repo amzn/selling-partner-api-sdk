@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\ItemContributor;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributor;
 
 /**
  * ItemContributorTest Class Doc Comment
@@ -57,7 +57,7 @@ class ItemContributorTest extends TestCase
     public function testPropertyRole()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\ItemContributorRole();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole();
         
         $this->model->setRole($testValue);
         $this->assertEquals($testValue, $this->model->getRole());

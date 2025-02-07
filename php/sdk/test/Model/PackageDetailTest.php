@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\PackageDetail;
+use OpenAPI\Client\Model\orders\v0\PackageDetail;
 
 /**
  * PackageDetailTest Class Doc Comment

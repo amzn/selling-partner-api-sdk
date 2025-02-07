@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\OutboundCapability;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability;
 
 /**
  * OutboundCapabilityTest Class Doc Comment
@@ -68,7 +68,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\OperationalConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());
@@ -80,7 +80,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyReturnLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\ReturnLocation();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation();
         
         $this->model->setReturnLocation($testValue);
         $this->assertEquals($testValue, $this->model->getReturnLocation());
@@ -92,7 +92,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyDeliveryChannel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\DeliveryChannel();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel();
         
         $this->model->setDeliveryChannel($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryChannel());
@@ -104,7 +104,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyPickupChannel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\PickupChannel();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel();
         
         $this->model->setPickupChannel($testValue);
         $this->assertEquals($testValue, $this->model->getPickupChannel());

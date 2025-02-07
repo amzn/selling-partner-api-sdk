@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetTrackingResult;
+use OpenAPI\Client\Model\shipping\v2\GetTrackingResult;
 
 /**
  * GetTrackingResultTest Class Doc Comment
@@ -102,7 +102,7 @@ class GetTrackingResultTest extends TestCase
     public function testPropertySummary()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\TrackingSummary();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\TrackingSummary();
         
         $this->model->setSummary($testValue);
         $this->assertEquals($testValue, $this->model->getSummary());

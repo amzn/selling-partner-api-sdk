@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\ImageDimensions;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions;
 
 /**
  * ImageDimensionsTest Class Doc Comment
@@ -57,7 +57,7 @@ class ImageDimensionsTest extends TestCase
     public function testPropertyWidth()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\IntegerWithUnits();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setWidth($testValue);
         $this->assertEquals($testValue, $this->model->getWidth());
@@ -69,7 +69,7 @@ class ImageDimensionsTest extends TestCase
     public function testPropertyHeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\IntegerWithUnits();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setHeight($testValue);
         $this->assertEquals($testValue, $this->model->getHeight());

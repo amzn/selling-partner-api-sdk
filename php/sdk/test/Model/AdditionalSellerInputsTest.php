@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\AdditionalSellerInputs;
+use OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInputs;
 
 /**
  * AdditionalSellerInputsTest Class Doc Comment
@@ -68,7 +68,7 @@ class AdditionalSellerInputsTest extends TestCase
     public function testPropertyAdditionalSellerInput()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\AdditionalSellerInput();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput();
         
         $this->model->setAdditionalSellerInput($testValue);
         $this->assertEquals($testValue, $this->model->getAdditionalSellerInput());

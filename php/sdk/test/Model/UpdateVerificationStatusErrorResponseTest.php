@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\UpdateVerificationStatusErrorResponse;
+use OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse;
 
 /**
  * UpdateVerificationStatusErrorResponseTest Class Doc Comment

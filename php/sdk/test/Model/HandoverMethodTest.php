@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\HandoverMethod;
+use OpenAPI\Client\Model\easyship\v2022_03_23\HandoverMethod;
 
 /**
  * HandoverMethodTest Class Doc Comment

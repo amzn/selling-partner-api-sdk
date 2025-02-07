@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderItemStatus;
+use OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatus;
 
 /**
  * OrderItemStatusTest Class Doc Comment
@@ -90,7 +90,7 @@ class OrderItemStatusTest extends TestCase
     public function testPropertyNetCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Money();
         
         $this->model->setNetCost($testValue);
         $this->assertEquals($testValue, $this->model->getNetCost());
@@ -102,7 +102,7 @@ class OrderItemStatusTest extends TestCase
     public function testPropertyListPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Money();
         
         $this->model->setListPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListPrice());
@@ -114,7 +114,7 @@ class OrderItemStatusTest extends TestCase
     public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\OrderItemStatusOrderedQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity();
         
         $this->model->setOrderedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getOrderedQuantity());
@@ -126,7 +126,7 @@ class OrderItemStatusTest extends TestCase
     public function testPropertyAcknowledgementStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\OrderItemStatusAcknowledgementStatus();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus();
         
         $this->model->setAcknowledgementStatus($testValue);
         $this->assertEquals($testValue, $this->model->getAcknowledgementStatus());
@@ -138,7 +138,7 @@ class OrderItemStatusTest extends TestCase
     public function testPropertyReceivingStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\OrderItemStatusReceivingStatus();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus();
         
         $this->model->setReceivingStatus($testValue);
         $this->assertEquals($testValue, $this->model->getReceivingStatus());

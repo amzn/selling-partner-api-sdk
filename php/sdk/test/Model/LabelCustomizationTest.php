@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\LabelCustomization;
+use OpenAPI\Client\Model\merchantFulfillment\v0\LabelCustomization;
 
 /**
  * LabelCustomizationTest Class Doc Comment
@@ -67,7 +67,7 @@ class LabelCustomizationTest extends TestCase
      */
     public function testPropertyStandardIdForLabel()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\StandardIdForLabel();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\StandardIdForLabel();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbaInventory\Granularity;
+use OpenAPI\Client\Model\fba\inventory\v1\Granularity;
 
 /**
  * GranularityTest Class Doc Comment

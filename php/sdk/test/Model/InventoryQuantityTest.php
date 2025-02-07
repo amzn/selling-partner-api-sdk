@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\InventoryQuantity;
+use OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity;
 
 /**
  * InventoryQuantityTest Class Doc Comment
@@ -67,7 +67,7 @@ class InventoryQuantityTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\InventoryUnitOfMeasurement();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\AutoEnrollmentPreference;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\AutoEnrollmentPreference;
 
 /**
  * AutoEnrollmentPreferenceTest Class Doc Comment

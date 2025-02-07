@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\AllowanceDetails;
+use OpenAPI\Client\Model\vendor\invoices\v1\AllowanceDetails;
 
 /**
  * AllowanceDetailsTest Class Doc Comment
@@ -80,7 +80,7 @@ class AllowanceDetailsTest extends TestCase
     public function testPropertyAllowanceAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\invoices\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\invoices\v1\Money();
         
         $this->model->setAllowanceAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAllowanceAmount());

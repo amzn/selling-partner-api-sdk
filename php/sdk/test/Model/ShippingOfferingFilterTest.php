@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\ShippingOfferingFilter;
+use OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter;
 
 /**
  * ShippingOfferingFilterTest Class Doc Comment
@@ -78,7 +78,7 @@ class ShippingOfferingFilterTest extends TestCase
      */
     public function testPropertyCarrierWillPickUp()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\CarrierWillPickUpOption();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class ShippingOfferingFilterTest extends TestCase
      */
     public function testPropertyDeliveryExperience()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\DeliveryExperienceOption();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

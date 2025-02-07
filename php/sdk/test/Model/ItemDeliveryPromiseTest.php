@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\ItemDeliveryPromise;
+use OpenAPI\Client\Model\services\v1\ItemDeliveryPromise;
 
 /**
  * ItemDeliveryPromiseTest Class Doc Comment

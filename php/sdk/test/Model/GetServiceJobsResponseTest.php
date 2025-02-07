@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\GetServiceJobsResponse;
+use OpenAPI\Client\Model\services\v1\GetServiceJobsResponse;
 
 /**
  * GetServiceJobsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetServiceJobsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\JobListing();
+        $testValue = new \OpenAPI\Client\Model\services\v1\JobListing();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

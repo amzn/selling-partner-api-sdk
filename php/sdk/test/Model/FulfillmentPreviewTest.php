@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\FulfillmentPreview;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreview;
 
 /**
  * FulfillmentPreviewTest Class Doc Comment
@@ -56,7 +56,7 @@ class FulfillmentPreviewTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\ShippingSpeedCategory();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class FulfillmentPreviewTest extends TestCase
     public function testPropertyScheduledDeliveryInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\ScheduledDeliveryInfo();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo();
         
         $this->model->setScheduledDeliveryInfo($testValue);
         $this->assertEquals($testValue, $this->model->getScheduledDeliveryInfo());
@@ -104,7 +104,7 @@ class FulfillmentPreviewTest extends TestCase
     public function testPropertyEstimatedShippingWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\Weight();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight();
         
         $this->model->setEstimatedShippingWeight($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedShippingWeight());

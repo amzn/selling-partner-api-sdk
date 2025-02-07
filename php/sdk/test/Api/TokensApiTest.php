@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\TokensApi;
+use OpenAPI\Client\Api\tokens\v2021_03_01\TokensApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

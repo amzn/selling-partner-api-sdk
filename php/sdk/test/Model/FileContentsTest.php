@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\FileContents;
+use OpenAPI\Client\Model\merchantFulfillment\v0\FileContents;
 
 /**
  * FileContentsTest Class Doc Comment
@@ -67,7 +67,7 @@ class FileContentsTest extends TestCase
      */
     public function testPropertyFileType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\FileType();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\FileType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

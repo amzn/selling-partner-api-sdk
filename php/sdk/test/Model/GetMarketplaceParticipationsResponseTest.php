@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\GetMarketplaceParticipationsResponse;
+use OpenAPI\Client\Model\sellers\v1\GetMarketplaceParticipationsResponse;
 
 /**
  * GetMarketplaceParticipationsResponseTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\ParkingWithAddressConfiguration;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration;
 
 /**
  * ParkingWithAddressConfigurationTest Class Doc Comment
@@ -56,7 +56,7 @@ class ParkingWithAddressConfigurationTest extends TestCase
      */
     public function testPropertyParkingCostType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\ParkingCostType();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingCostType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ParkingWithAddressConfigurationTest extends TestCase
      */
     public function testPropertyParkingSpotIdentificationType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\ParkingSpotIdentificationType();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -94,7 +94,7 @@ class ParkingWithAddressConfigurationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\Address();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

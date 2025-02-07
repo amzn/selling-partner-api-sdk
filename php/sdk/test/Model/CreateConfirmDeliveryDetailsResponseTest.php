@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\CreateConfirmDeliveryDetailsResponse;
+use OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse;
 
 /**
  * CreateConfirmDeliveryDetailsResponseTest Class Doc Comment

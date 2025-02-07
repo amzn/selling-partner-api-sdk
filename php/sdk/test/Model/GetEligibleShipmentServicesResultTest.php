@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesResult;
+use OpenAPI\Client\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResult;
 
 /**
  * GetEligibleShipmentServicesResultTest Class Doc Comment

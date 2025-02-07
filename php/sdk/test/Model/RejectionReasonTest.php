@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\RejectionReason;
+use OpenAPI\Client\Model\orders\v0\RejectionReason;
 
 /**
  * RejectionReasonTest Class Doc Comment

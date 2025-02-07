@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\ReturnItemDisposition;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition;
 
 /**
  * ReturnItemDispositionTest Class Doc Comment

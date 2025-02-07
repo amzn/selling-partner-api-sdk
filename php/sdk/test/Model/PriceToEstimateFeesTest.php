@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\PriceToEstimateFees;
+use OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees;
 
 /**
  * PriceToEstimateFeesTest Class Doc Comment
@@ -57,7 +57,7 @@ class PriceToEstimateFeesTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -69,7 +69,7 @@ class PriceToEstimateFeesTest extends TestCase
     public function testPropertyShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\MoneyType();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
         
         $this->model->setShipping($testValue);
         $this->assertEquals($testValue, $this->model->getShipping());
@@ -81,7 +81,7 @@ class PriceToEstimateFeesTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\Points();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

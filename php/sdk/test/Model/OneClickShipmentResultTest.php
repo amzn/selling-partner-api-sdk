@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\OneClickShipmentResult;
+use OpenAPI\Client\Model\shipping\v2\OneClickShipmentResult;
 
 /**
  * OneClickShipmentResultTest Class Doc Comment
@@ -79,7 +79,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Promise();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Promise();
         
         $this->model->setPromise($testValue);
         $this->assertEquals($testValue, $this->model->getPromise());
@@ -91,7 +91,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyCarrier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Carrier();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Carrier();
         
         $this->model->setCarrier($testValue);
         $this->assertEquals($testValue, $this->model->getCarrier());
@@ -103,7 +103,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyService()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Service();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Service();
         
         $this->model->setService($testValue);
         $this->assertEquals($testValue, $this->model->getService());
@@ -115,7 +115,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyTotalCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Currency();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
         
         $this->model->setTotalCharge($testValue);
         $this->assertEquals($testValue, $this->model->getTotalCharge());

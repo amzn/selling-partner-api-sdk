@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\ListOffersResponseOffer;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponseOffer;
 
 /**
  * ListOffersResponseOfferTest Class Doc Comment
@@ -89,7 +89,7 @@ class ListOffersResponseOfferTest extends TestCase
      */
     public function testPropertyEligibility()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\EligibilityStatus();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\EligibilityStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class ListOffersResponseOfferTest extends TestCase
     public function testPropertyOfferProgramConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfiguration();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration();
         
         $this->model->setOfferProgramConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOfferProgramConfiguration());
@@ -114,7 +114,7 @@ class ListOffersResponseOfferTest extends TestCase
      */
     public function testPropertyProgramType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\ProgramType();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ProgramType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

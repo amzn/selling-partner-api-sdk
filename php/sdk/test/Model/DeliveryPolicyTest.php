@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\DeliveryPolicy;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy;
 
 /**
  * DeliveryPolicyTest Class Doc Comment
@@ -57,7 +57,7 @@ class DeliveryPolicyTest extends TestCase
     public function testPropertyMessage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\DeliveryMessage();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage();
         
         $this->model->setMessage($testValue);
         $this->assertEquals($testValue, $this->model->getMessage());

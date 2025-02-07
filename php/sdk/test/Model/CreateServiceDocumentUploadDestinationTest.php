@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\CreateServiceDocumentUploadDestination;
+use OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination;
 
 /**
  * CreateServiceDocumentUploadDestinationTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateServiceDocumentUploadDestinationTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\ServiceDocumentUploadDestination();
+        $testValue = new \OpenAPI\Client\Model\services\v1\ServiceDocumentUploadDestination();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

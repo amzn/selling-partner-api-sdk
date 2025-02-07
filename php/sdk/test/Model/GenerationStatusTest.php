@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GenerationStatus;
+use OpenAPI\Client\Model\shipping\v2\GenerationStatus;
 
 /**
  * GenerationStatusTest Class Doc Comment

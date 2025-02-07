@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\IssueEnforcementAction;
+use OpenAPI\Client\Model\listings\items\v2021_08_01\IssueEnforcementAction;
 
 /**
  * IssueEnforcementActionTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\OperationalConfiguration;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration;
 
 /**
  * OperationalConfigurationTest Class Doc Comment
@@ -57,7 +57,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyContactDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\ContactDetails();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails();
         
         $this->model->setContactDetails($testValue);
         $this->assertEquals($testValue, $this->model->getContactDetails());
@@ -69,7 +69,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyThroughputConfig()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\ThroughputConfig();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig();
         
         $this->model->setThroughputConfig($testValue);
         $this->assertEquals($testValue, $this->model->getThroughputConfig());
@@ -81,7 +81,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyOperatingHoursByDay()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\OperatingHoursByDay();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay();
         
         $this->model->setOperatingHoursByDay($testValue);
         $this->assertEquals($testValue, $this->model->getOperatingHoursByDay());
@@ -93,7 +93,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyHandlingTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\Duration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration();
         
         $this->model->setHandlingTime($testValue);
         $this->assertEquals($testValue, $this->model->getHandlingTime());

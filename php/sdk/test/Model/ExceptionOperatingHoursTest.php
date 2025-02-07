@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\ExceptionOperatingHours;
+use OpenAPI\Client\Model\shipping\v2\ExceptionOperatingHours;
 
 /**
  * ExceptionOperatingHoursTest Class Doc Comment
@@ -57,7 +57,7 @@ class ExceptionOperatingHoursTest extends TestCase
     public function testPropertyDateRange()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\DateRange();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\DateRange();
         
         $this->model->setDateRange($testValue);
         $this->assertEquals($testValue, $this->model->getDateRange());
@@ -69,7 +69,7 @@ class ExceptionOperatingHoursTest extends TestCase
     public function testPropertyOperatingHours()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\OperatingHours();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\OperatingHours();
         
         $this->model->setOperatingHours($testValue);
         $this->assertEquals($testValue, $this->model->getOperatingHours());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\Account;
+use OpenAPI\Client\Model\sellers\v1\Account;
 
 /**
  * AccountTest Class Doc Comment
@@ -92,7 +92,7 @@ class AccountTest extends TestCase
     public function testPropertyBusiness()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\Business();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\Business();
         
         $this->model->setBusiness($testValue);
         $this->assertEquals($testValue, $this->model->getBusiness());
@@ -104,7 +104,7 @@ class AccountTest extends TestCase
     public function testPropertyPrimaryContact()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\PrimaryContact();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\PrimaryContact();
         
         $this->model->setPrimaryContact($testValue);
         $this->assertEquals($testValue, $this->model->getPrimaryContact());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\PackageVolume;
+use OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume;
 
 /**
  * PackageVolumeTest Class Doc Comment
@@ -56,7 +56,7 @@ class PackageVolumeTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\VolumeUnitOfMeasurement();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\VolumeUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

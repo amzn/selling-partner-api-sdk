@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardTechSpecsModule;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule;
 
 /**
  * StandardTechSpecsModuleTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardTechSpecsModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());

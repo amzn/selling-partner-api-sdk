@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\DistributionPackage;
+use OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage;
 
 /**
  * DistributionPackageTest Class Doc Comment
@@ -57,7 +57,7 @@ class DistributionPackageTest extends TestCase
     public function testPropertyContents()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\DistributionPackageContents();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents();
         
         $this->model->setContents($testValue);
         $this->assertEquals($testValue, $this->model->getContents());
@@ -69,7 +69,7 @@ class DistributionPackageTest extends TestCase
     public function testPropertyMeasurements()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\MeasurementData();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData();
         
         $this->model->setMeasurements($testValue);
         $this->assertEquals($testValue, $this->model->getMeasurements());
@@ -80,7 +80,7 @@ class DistributionPackageTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\DistributionPackageType();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

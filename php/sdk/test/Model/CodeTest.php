@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\Code;
+use OpenAPI\Client\Model\easyship\v2022_03_23\Code;
 
 /**
  * CodeTest Class Doc Comment

@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\FeedsApi;
+use OpenAPI\Client\Api\feeds\v2021_06_30\FeedsApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

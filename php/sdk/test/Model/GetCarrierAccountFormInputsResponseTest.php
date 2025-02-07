@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetCarrierAccountFormInputsResponse;
+use OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse;
 
 /**
  * GetCarrierAccountFormInputsResponseTest Class Doc Comment

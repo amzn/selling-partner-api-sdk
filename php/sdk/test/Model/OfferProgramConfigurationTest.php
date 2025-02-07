@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\OfferProgramConfiguration;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration;
 
 /**
  * OfferProgramConfigurationTest Class Doc Comment
@@ -57,7 +57,7 @@ class OfferProgramConfigurationTest extends TestCase
     public function testPropertyPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPreferences();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences();
         
         $this->model->setPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getPreferences());
@@ -69,7 +69,7 @@ class OfferProgramConfigurationTest extends TestCase
     public function testPropertyPromotions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotions();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions();
         
         $this->model->setPromotions($testValue);
         $this->assertEquals($testValue, $this->model->getPromotions());
@@ -80,7 +80,7 @@ class OfferProgramConfigurationTest extends TestCase
      */
     public function testPropertyEnrollmentMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\EnrollmentMethod();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\EnrollmentMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\SkuQuantity;
+use OpenAPI\Client\Model\awd\v2024_05_09\SkuQuantity;
 
 /**
  * SkuQuantityTest Class Doc Comment
@@ -57,7 +57,7 @@ class SkuQuantityTest extends TestCase
     public function testPropertyExpectedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\InventoryQuantity();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity();
         
         $this->model->setExpectedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getExpectedQuantity());
@@ -69,7 +69,7 @@ class SkuQuantityTest extends TestCase
     public function testPropertyReceivedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\InventoryQuantity();
+        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity();
         
         $this->model->setReceivedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getReceivedQuantity());

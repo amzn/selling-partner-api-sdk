@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\Weight;
+use OpenAPI\Client\Model\easyship\v2022_03_23\Weight;
 
 /**
  * WeightTest Class Doc Comment
@@ -68,7 +68,7 @@ class WeightTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\UnitOfWeight();
+        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\UnitOfWeight();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

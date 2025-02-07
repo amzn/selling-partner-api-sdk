@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\Rate;
+use OpenAPI\Client\Model\shipping\v2\Rate;
 
 /**
  * RateTest Class Doc Comment
@@ -112,7 +112,7 @@ class RateTest extends TestCase
     public function testPropertyBilledWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Weight();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Weight();
         
         $this->model->setBilledWeight($testValue);
         $this->assertEquals($testValue, $this->model->getBilledWeight());
@@ -124,7 +124,7 @@ class RateTest extends TestCase
     public function testPropertyTotalCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Currency();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
         
         $this->model->setTotalCharge($testValue);
         $this->assertEquals($testValue, $this->model->getTotalCharge());
@@ -136,7 +136,7 @@ class RateTest extends TestCase
     public function testPropertyPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Promise();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Promise();
         
         $this->model->setPromise($testValue);
         $this->assertEquals($testValue, $this->model->getPromise());
@@ -191,7 +191,7 @@ class RateTest extends TestCase
      */
     public function testPropertyPaymentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\PaymentType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\PaymentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -205,7 +205,7 @@ class RateTest extends TestCase
     public function testPropertyBenefits()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Benefits();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Benefits();
         
         $this->model->setBenefits($testValue);
         $this->assertEquals($testValue, $this->model->getBenefits());

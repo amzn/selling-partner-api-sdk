@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardSingleSideImageModule;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule;
 
 /**
  * StandardSingleSideImageModuleTest Class Doc Comment
@@ -56,7 +56,7 @@ class StandardSingleSideImageModuleTest extends TestCase
      */
     public function testPropertyImagePositionType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\PositionType();
+        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\PositionType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class StandardSingleSideImageModuleTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

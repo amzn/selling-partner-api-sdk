@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\Promise;
+use OpenAPI\Client\Model\shipping\v2\Promise;
 
 /**
  * PromiseTest Class Doc Comment
@@ -57,7 +57,7 @@ class PromiseTest extends TestCase
     public function testPropertyDeliveryWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\TimeWindow();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeWindow();
         
         $this->model->setDeliveryWindow($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryWindow());
@@ -69,7 +69,7 @@ class PromiseTest extends TestCase
     public function testPropertyPickupWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\TimeWindow();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeWindow();
         
         $this->model->setPickupWindow($testValue);
         $this->assertEquals($testValue, $this->model->getPickupWindow());

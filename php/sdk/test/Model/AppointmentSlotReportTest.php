@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\AppointmentSlotReport;
+use OpenAPI\Client\Model\services\v1\AppointmentSlotReport;
 
 /**
  * AppointmentSlotReportTest Class Doc Comment

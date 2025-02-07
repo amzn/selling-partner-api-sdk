@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\ValueAddedService;
+use OpenAPI\Client\Model\shipping\v2\ValueAddedService;
 
 /**
  * ValueAddedServiceTest Class Doc Comment
@@ -79,7 +79,7 @@ class ValueAddedServiceTest extends TestCase
     public function testPropertyCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Currency();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
         
         $this->model->setCost($testValue);
         $this->assertEquals($testValue, $this->model->getCost());

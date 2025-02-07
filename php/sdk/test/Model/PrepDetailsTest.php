@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\PrepDetails;
+use OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails;
 
 /**
  * PrepDetailsTest Class Doc Comment
@@ -56,7 +56,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyLabelOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\LabelOwner();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\LabelOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\PrepOwner();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

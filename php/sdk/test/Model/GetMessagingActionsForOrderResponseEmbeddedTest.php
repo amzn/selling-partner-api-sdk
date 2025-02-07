@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponseEmbedded;
+use OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded;
 
 /**
  * GetMessagingActionsForOrderResponseEmbeddedTest Class Doc Comment

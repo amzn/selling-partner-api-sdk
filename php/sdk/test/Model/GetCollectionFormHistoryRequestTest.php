@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetCollectionFormHistoryRequest;
+use OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest;
 
 /**
  * GetCollectionFormHistoryRequestTest Class Doc Comment
@@ -90,7 +90,7 @@ class GetCollectionFormHistoryRequestTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Address();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());
@@ -102,7 +102,7 @@ class GetCollectionFormHistoryRequestTest extends TestCase
     public function testPropertyDateRange()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\DateRange();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\DateRange();
         
         $this->model->setDateRange($testValue);
         $this->assertEquals($testValue, $this->model->getDateRange());

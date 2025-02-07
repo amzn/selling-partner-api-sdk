@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\UpdateScheduleRequest;
+use OpenAPI\Client\Model\services\v1\UpdateScheduleRequest;
 
 /**
  * UpdateScheduleRequestTest Class Doc Comment

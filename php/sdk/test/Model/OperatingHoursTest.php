@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\OperatingHours;
+use OpenAPI\Client\Model\shipping\v2\OperatingHours;
 
 /**
  * OperatingHoursTest Class Doc Comment
@@ -57,7 +57,7 @@ class OperatingHoursTest extends TestCase
     public function testPropertyClosingTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\TimeOfDay();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeOfDay();
         
         $this->model->setClosingTime($testValue);
         $this->assertEquals($testValue, $this->model->getClosingTime());
@@ -69,7 +69,7 @@ class OperatingHoursTest extends TestCase
     public function testPropertyOpeningTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\TimeOfDay();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeOfDay();
         
         $this->model->setOpeningTime($testValue);
         $this->assertEquals($testValue, $this->model->getOpeningTime());

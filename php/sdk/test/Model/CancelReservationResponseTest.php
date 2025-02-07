@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\CancelReservationResponse;
+use OpenAPI\Client\Model\services\v1\CancelReservationResponse;
 
 /**
  * CancelReservationResponseTest Class Doc Comment

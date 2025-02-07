@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\SubmitInventoryUpdateResponse;
+use OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse;
 
 /**
  * SubmitInventoryUpdateResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class SubmitInventoryUpdateResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\TransactionReference();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\v1\TransactionReference();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\SupportedDocumentDetail;
+use OpenAPI\Client\Model\shipping\v2\SupportedDocumentDetail;
 
 /**
  * SupportedDocumentDetailTest Class Doc Comment
@@ -56,7 +56,7 @@ class SupportedDocumentDetailTest extends TestCase
      */
     public function testPropertyName()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\DocumentType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbaInbound\ItemEligibilityPreview;
+use OpenAPI\Client\Model\fba\eligibility\v1\ItemEligibilityPreview;
 
 /**
  * ItemEligibilityPreviewTest Class Doc Comment

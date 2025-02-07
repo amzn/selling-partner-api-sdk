@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\datakiosk\QueryPagination;
+use OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination;
 
 /**
  * QueryPaginationTest Class Doc Comment

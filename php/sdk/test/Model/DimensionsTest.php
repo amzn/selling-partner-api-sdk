@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\Dimensions;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions;
 
 /**
  * DimensionsTest Class Doc Comment
@@ -57,7 +57,7 @@ class DimensionsTest extends TestCase
     public function testPropertyHeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\Dimension();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setHeight($testValue);
         $this->assertEquals($testValue, $this->model->getHeight());
@@ -69,7 +69,7 @@ class DimensionsTest extends TestCase
     public function testPropertyLength()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\Dimension();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setLength($testValue);
         $this->assertEquals($testValue, $this->model->getLength());
@@ -81,7 +81,7 @@ class DimensionsTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\Dimension();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
@@ -93,7 +93,7 @@ class DimensionsTest extends TestCase
     public function testPropertyWidth()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\Dimension();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setWidth($testValue);
         $this->assertEquals($testValue, $this->model->getWidth());

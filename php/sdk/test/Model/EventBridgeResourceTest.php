@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\EventBridgeResource;
+use OpenAPI\Client\Model\notifications\v1\EventBridgeResource;
 
 /**
  * EventBridgeResourceTest Class Doc Comment

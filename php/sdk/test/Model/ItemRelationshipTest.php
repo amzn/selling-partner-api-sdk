@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\ItemRelationship;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemRelationship;
 
 /**
  * ItemRelationshipTest Class Doc Comment
@@ -79,7 +79,7 @@ class ItemRelationshipTest extends TestCase
     public function testPropertyVariationTheme()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\ItemVariationTheme();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVariationTheme();
         
         $this->model->setVariationTheme($testValue);
         $this->assertEquals($testValue, $this->model->getVariationTheme());

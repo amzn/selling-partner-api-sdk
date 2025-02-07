@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\ItemRelationshipsByMarketplace;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemRelationshipsByMarketplace;
 
 /**
  * ItemRelationshipsByMarketplaceTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\ItemOfferByMarketplace;
+use OpenAPI\Client\Model\listings\items\v2021_08_01\ItemOfferByMarketplace;
 
 /**
  * ItemOfferByMarketplaceTest Class Doc Comment
@@ -80,7 +80,7 @@ class ItemOfferByMarketplaceTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\Money();
+        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\Money();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());
@@ -92,7 +92,7 @@ class ItemOfferByMarketplaceTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\Points();
+        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());
@@ -104,7 +104,7 @@ class ItemOfferByMarketplaceTest extends TestCase
     public function testPropertyAudience()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\Audience();
+        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\Audience();
         
         $this->model->setAudience($testValue);
         $this->assertEquals($testValue, $this->model->getAudience());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\DirectPurchaseResponse;
+use OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse;
 
 /**
  * DirectPurchaseResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class DirectPurchaseResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\DirectPurchaseResult();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\DirectPurchaseResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

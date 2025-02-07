@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\datakiosk\Query;
+use OpenAPI\Client\Model\datakiosk\v2023_11_15\Query;
 
 /**
  * QueryTest Class Doc Comment
@@ -149,7 +149,7 @@ class QueryTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\datakiosk\QueryPagination();
+        $testValue = new \OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

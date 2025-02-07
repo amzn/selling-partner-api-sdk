@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\TransactionReference;
+use OpenAPI\Client\Model\vendor\df\inventory\v1\TransactionReference;
 
 /**
  * TransactionReferenceTest Class Doc Comment
