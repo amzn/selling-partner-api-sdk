@@ -2,6 +2,7 @@
 
 .travis.yml
 git_push.sh
-composer.json
 README.md
 docs/
+phpunit.xml.dist
+.php-cs-fixer.dist.php

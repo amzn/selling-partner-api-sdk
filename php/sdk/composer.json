@@ -1,6 +1,6 @@
 {
-    "name": "spapi/auth-and-auth",
-    "description": "Amazon Selling Partner APIs official client library.",
+    "name": "spapi/sdk",
+    "description": "Amazon Selling Partner APIs official client library for PHP.",
     "type": "library",
     "keywords": [
         "sp-api",
@@ -38,18 +38,9 @@
     },
     "autoload": {
         "psr-4": {
-            "SpApi\\AuthAndAuth\\": "sdk/src/authandauth",
-            "OpenAPI\\Client\\": "sdk/lib/",
-            "OpenAPI\\Client\\Test\\" : "sdk/test/"
+            "SpApi\\AuthAndAuth\\": "src/authandauth",
+            "OpenAPI\\Client\\": "lib/",
+            "OpenAPI\\Client\\Test\\": "test/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SpApi\\Test\\AuthAndAuth\\" : "sdk/src/tests/authandauth/"
-        }
-    },
-    "scripts": {
-        "fix": "phpcs --standard=PSR12 sdk/src/authandauth sdk/src/tests/",
-        "test": "phpunit sdk/tests/authandauth"
     }
 }

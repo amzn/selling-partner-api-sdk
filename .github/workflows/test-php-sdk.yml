@@ -20,11 +20,11 @@ jobs:
           coverage: xdebug
 
       - name: Validate composer.json and composer.lock
-        working-directory: ./php
+        working-directory: ./php/sdk
         run: composer validate --strict
 
       - name: Install dependencies
-        working-directory: ./php
+        working-directory: ./php/sdk
         run: composer install --prefer-dist --no-progress
 
       - name: Create .env file to test SP-API endpoints
@@ -44,10 +44,10 @@ jobs:
           echo "VENDOR_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
 
       - name: Test with PHPUnit and cleanup
-        working-directory: ./php
+        working-directory: ./php/sdk
         run: |
           mkdir -p build/reports
-          if ! vendor/bin/phpunit sdk/test/Api --testdox --log-junit build/reports/junit.xml; then
+          if ! vendor/bin/phpunit test/Api --testdox --log-junit build/reports/junit.xml; then
             echo "Tests failed"
             exit 1
           fi
@@ -57,4 +57,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: php-test-reports
-          path: php/build/reports
+          path: php/sdk/build/reports
