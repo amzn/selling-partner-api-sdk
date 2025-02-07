@@ -1,6 +1,6 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once '../sdk/vendor/autoload.php';
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
@@ -9,7 +9,7 @@ use OpenAPI\Client\Configuration;
 use Dotenv\Dotenv;
 
 // Set the credentials, region and marketplace in .env file
-$dotenv = Dotenv::createImmutable('../sdk/');
+$dotenv = Dotenv::createImmutable('../');
 $dotenv->load();
 
 // Set up LWA credentials
