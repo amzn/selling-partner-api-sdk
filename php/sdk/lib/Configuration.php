@@ -73,7 +73,7 @@ class Configuration
      *
      * @var string
      */
-    protected string $userAgent = 'selling-partner-api-sdk/1.0.0/PHP';
+    protected string $userAgent = 'amazon-selling-partner-api-sdk/1.0.0/PHP';
 
     /**
      * Debug switch (default set to false)
