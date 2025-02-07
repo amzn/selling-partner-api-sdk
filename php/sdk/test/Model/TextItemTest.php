@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\TextItem;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\TextItem;
 
 /**
  * TextItemTest Class Doc Comment
@@ -68,7 +68,7 @@ class TextItemTest extends TestCase
     public function testPropertyText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setText($testValue);
         $this->assertEquals($testValue, $this->model->getText());

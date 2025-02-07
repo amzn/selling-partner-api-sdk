@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\CancelShipmentResponse;
+use OpenAPI\Client\Model\merchantFulfillment\v0\CancelShipmentResponse;
 
 /**
  * CancelShipmentResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CancelShipmentResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\Shipment();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Shipment();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

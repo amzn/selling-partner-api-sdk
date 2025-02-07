@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\Reservation;
+use OpenAPI\Client\Model\services\v1\Reservation;
 
 /**
  * ReservationTest Class Doc Comment
@@ -80,7 +80,7 @@ class ReservationTest extends TestCase
     public function testPropertyAvailability()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\AvailabilityRecord();
+        $testValue = new \OpenAPI\Client\Model\services\v1\AvailabilityRecord();
         
         $this->model->setAvailability($testValue);
         $this->assertEquals($testValue, $this->model->getAvailability());

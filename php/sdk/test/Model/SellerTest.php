@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\Seller;
+use OpenAPI\Client\Model\services\v1\Seller;
 
 /**
  * SellerTest Class Doc Comment

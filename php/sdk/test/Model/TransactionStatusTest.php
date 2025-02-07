@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\transactions\TransactionStatus;
+use OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\TransactionStatus;
 
 /**
  * TransactionStatusTest Class Doc Comment
@@ -57,7 +57,7 @@ class TransactionStatusTest extends TestCase
     public function testPropertyTransactionStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\transactions\Transaction();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\Transaction();
         
         $this->model->setTransactionStatus($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionStatus());

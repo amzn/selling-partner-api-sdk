@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentPreviewRequest;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest;
 
 /**
  * GetFulfillmentPreviewRequestTest Class Doc Comment
@@ -68,7 +68,7 @@ class GetFulfillmentPreviewRequestTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

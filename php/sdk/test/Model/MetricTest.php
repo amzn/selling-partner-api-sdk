@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\Metric;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\Metric;
 
 /**
  * MetricTest Class Doc Comment

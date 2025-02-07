@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\ContainerItem;
+use OpenAPI\Client\Model\vendor\shipments\v1\ContainerItem;
 
 /**
  * ContainerItemTest Class Doc Comment
@@ -68,7 +68,7 @@ class ContainerItemTest extends TestCase
     public function testPropertyShippedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity();
         
         $this->model->setShippedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getShippedQuantity());
@@ -80,7 +80,7 @@ class ContainerItemTest extends TestCase
     public function testPropertyItemDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\ItemDetails();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\ItemDetails();
         
         $this->model->setItemDetails($testValue);
         $this->assertEquals($testValue, $this->model->getItemDetails());

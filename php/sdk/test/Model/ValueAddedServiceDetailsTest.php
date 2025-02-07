@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\ValueAddedServiceDetails;
+use OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails;
 
 /**
  * ValueAddedServiceDetailsTest Class Doc Comment
@@ -57,7 +57,7 @@ class ValueAddedServiceDetailsTest extends TestCase
     public function testPropertyCollectOnDelivery()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\CollectOnDelivery();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\CollectOnDelivery();
         
         $this->model->setCollectOnDelivery($testValue);
         $this->assertEquals($testValue, $this->model->getCollectOnDelivery());

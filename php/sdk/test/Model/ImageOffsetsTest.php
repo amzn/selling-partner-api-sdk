@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\ImageOffsets;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets;
 
 /**
  * ImageOffsetsTest Class Doc Comment
@@ -57,7 +57,7 @@ class ImageOffsetsTest extends TestCase
     public function testPropertyX()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\IntegerWithUnits();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setX($testValue);
         $this->assertEquals($testValue, $this->model->getX());
@@ -69,7 +69,7 @@ class ImageOffsetsTest extends TestCase
     public function testPropertyY()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\IntegerWithUnits();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setY($testValue);
         $this->assertEquals($testValue, $this->model->getY());

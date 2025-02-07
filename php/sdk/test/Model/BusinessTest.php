@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\Business;
+use OpenAPI\Client\Model\sellers\v1\Business;
 
 /**
  * BusinessTest Class Doc Comment
@@ -68,7 +68,7 @@ class BusinessTest extends TestCase
     public function testPropertyRegisteredBusinessAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\Address();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\Address();
         
         $this->model->setRegisteredBusinessAddress($testValue);
         $this->assertEquals($testValue, $this->model->getRegisteredBusinessAddress());

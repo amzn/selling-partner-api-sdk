@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\InvalidItemReason;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason;
 
 /**
  * InvalidItemReasonTest Class Doc Comment
@@ -56,7 +56,7 @@ class InvalidItemReasonTest extends TestCase
      */
     public function testPropertyInvalidItemReasonCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\InvalidItemReasonCode();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReasonCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

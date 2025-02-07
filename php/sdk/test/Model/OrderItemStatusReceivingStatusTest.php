@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderItemStatusReceivingStatus;
+use OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus;
 
 /**
  * OrderItemStatusReceivingStatusTest Class Doc Comment
@@ -69,7 +69,7 @@ class OrderItemStatusReceivingStatusTest extends TestCase
     public function testPropertyReceivedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setReceivedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getReceivedQuantity());

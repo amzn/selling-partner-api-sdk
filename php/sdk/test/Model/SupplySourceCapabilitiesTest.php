@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\SupplySourceCapabilities;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities;
 
 /**
  * SupplySourceCapabilitiesTest Class Doc Comment
@@ -57,7 +57,7 @@ class SupplySourceCapabilitiesTest extends TestCase
     public function testPropertyOutbound()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\OutboundCapability();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability();
         
         $this->model->setOutbound($testValue);
         $this->assertEquals($testValue, $this->model->getOutbound());
@@ -69,7 +69,7 @@ class SupplySourceCapabilitiesTest extends TestCase
     public function testPropertyServices()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\ServicesCapability();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability();
         
         $this->model->setServices($testValue);
         $this->assertEquals($testValue, $this->model->getServices());

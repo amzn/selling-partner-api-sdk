@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\LinkCarrierAccountResponse;
+use OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse;
 
 /**
  * LinkCarrierAccountResponseTest Class Doc Comment
@@ -56,7 +56,7 @@ class LinkCarrierAccountResponseTest extends TestCase
      */
     public function testPropertyRegistrationStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\AccountStatus();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\AccountStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

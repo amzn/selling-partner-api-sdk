@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\GetEligibleShipmentServicesRequest;
+use OpenAPI\Client\Model\merchantFulfillment\v0\GetEligibleShipmentServicesRequest;
 
 /**
  * GetEligibleShipmentServicesRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetEligibleShipmentServicesRequestTest extends TestCase
     public function testPropertyShipmentRequestDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\ShipmentRequestDetails();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails();
         
         $this->model->setShipmentRequestDetails($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentRequestDetails());
@@ -69,7 +69,7 @@ class GetEligibleShipmentServicesRequestTest extends TestCase
     public function testPropertyShippingOfferingFilter()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\ShippingOfferingFilter();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter();
         
         $this->model->setShippingOfferingFilter($testValue);
         $this->assertEquals($testValue, $this->model->getShippingOfferingFilter());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\ListOffersRequestSort;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort;
 
 /**
  * ListOffersRequestSortTest Class Doc Comment
@@ -56,7 +56,7 @@ class ListOffersRequestSortTest extends TestCase
      */
     public function testPropertyOrder()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\SortOrder();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\SortOrder();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ListOffersRequestSortTest extends TestCase
      */
     public function testPropertyKey()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\ListOffersSortKey();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersSortKey();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

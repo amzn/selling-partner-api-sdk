@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetRatesResponse;
+use OpenAPI\Client\Model\shipping\v2\GetRatesResponse;
 
 /**
  * GetRatesResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetRatesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\GetRatesResult();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\GetRatesResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

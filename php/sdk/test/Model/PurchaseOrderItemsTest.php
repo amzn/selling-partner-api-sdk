@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\PurchaseOrderItems;
+use OpenAPI\Client\Model\vendor\shipments\v1\PurchaseOrderItems;
 
 /**
  * PurchaseOrderItemsTest Class Doc Comment
@@ -90,7 +90,7 @@ class PurchaseOrderItemsTest extends TestCase
     public function testPropertyShippedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity();
         
         $this->model->setShippedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getShippedQuantity());
@@ -102,7 +102,7 @@ class PurchaseOrderItemsTest extends TestCase
     public function testPropertyMaximumRetailPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Money();
         
         $this->model->setMaximumRetailPrice($testValue);
         $this->assertEquals($testValue, $this->model->getMaximumRetailPrice());

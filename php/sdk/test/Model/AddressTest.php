@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\Address;
+use OpenAPI\Client\Model\awd\v2024_05_09\Address;
 
 /**
  * AddressTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\uploads\CreateUploadDestinationResponse;
+use OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse;
 
 /**
  * CreateUploadDestinationResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateUploadDestinationResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\uploads\UploadDestination();
+        $testValue = new \OpenAPI\Client\Model\uploads\v2020_11_01\UploadDestination();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

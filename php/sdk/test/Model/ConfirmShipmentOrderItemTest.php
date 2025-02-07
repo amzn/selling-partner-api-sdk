@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\ConfirmShipmentOrderItem;
+use OpenAPI\Client\Model\orders\v0\ConfirmShipmentOrderItem;
 
 /**
  * ConfirmShipmentOrderItemTest Class Doc Comment

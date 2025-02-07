@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\InvoiceItem;
+use OpenAPI\Client\Model\vendor\df\payments\v1\InvoiceItem;
 
 /**
  * InvoiceItemTest Class Doc Comment
@@ -90,7 +90,7 @@ class InvoiceItemTest extends TestCase
     public function testPropertyInvoicedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity();
         
         $this->model->setInvoicedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getInvoicedQuantity());
@@ -102,7 +102,7 @@ class InvoiceItemTest extends TestCase
     public function testPropertyNetCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\Money();
         
         $this->model->setNetCost($testValue);
         $this->assertEquals($testValue, $this->model->getNetCost());

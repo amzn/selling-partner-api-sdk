@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\RateItemID;
+use OpenAPI\Client\Model\shipping\v2\RateItemID;
 
 /**
  * RateItemIDTest Class Doc Comment

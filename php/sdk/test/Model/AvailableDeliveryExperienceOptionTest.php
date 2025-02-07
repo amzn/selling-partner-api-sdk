@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\AvailableDeliveryExperienceOption;
+use OpenAPI\Client\Model\merchantFulfillment\v0\AvailableDeliveryExperienceOption;
 
 /**
  * AvailableDeliveryExperienceOptionTest Class Doc Comment
@@ -56,7 +56,7 @@ class AvailableDeliveryExperienceOptionTest extends TestCase
      */
     public function testPropertyDeliveryExperienceOption()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\DeliveryExperienceOption();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class AvailableDeliveryExperienceOptionTest extends TestCase
     public function testPropertyCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\CurrencyAmount();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCharge());

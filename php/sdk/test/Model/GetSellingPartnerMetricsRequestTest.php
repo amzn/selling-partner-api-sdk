@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\GetSellingPartnerMetricsRequest;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsRequest;
 
 /**
  * GetSellingPartnerMetricsRequestTest Class Doc Comment
@@ -56,7 +56,7 @@ class GetSellingPartnerMetricsRequestTest extends TestCase
      */
     public function testPropertyAggregationFrequency()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\AggregationFrequency();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\AggregationFrequency();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class GetSellingPartnerMetricsRequestTest extends TestCase
     public function testPropertyTimeInterval()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\TimeInterval();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval();
         
         $this->model->setTimeInterval($testValue);
         $this->assertEquals($testValue, $this->model->getTimeInterval());
@@ -92,7 +92,7 @@ class GetSellingPartnerMetricsRequestTest extends TestCase
      */
     public function testPropertyTimePeriodType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\TimePeriodType();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimePeriodType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

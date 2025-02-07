@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\GetAttributesResponseBuyer;
+use OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer;
 
 /**
  * GetAttributesResponseBuyerTest Class Doc Comment

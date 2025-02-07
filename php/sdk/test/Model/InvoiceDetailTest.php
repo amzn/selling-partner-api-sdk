@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\InvoiceDetail;
+use OpenAPI\Client\Model\vendor\df\payments\v1\InvoiceDetail;
 
 /**
  * InvoiceDetailTest Class Doc Comment
@@ -91,7 +91,7 @@ class InvoiceDetailTest extends TestCase
     public function testPropertyRemitToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification();
         
         $this->model->setRemitToParty($testValue);
         $this->assertEquals($testValue, $this->model->getRemitToParty());
@@ -103,7 +103,7 @@ class InvoiceDetailTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());
@@ -115,7 +115,7 @@ class InvoiceDetailTest extends TestCase
     public function testPropertyBillToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification();
         
         $this->model->setBillToParty($testValue);
         $this->assertEquals($testValue, $this->model->getBillToParty());
@@ -149,7 +149,7 @@ class InvoiceDetailTest extends TestCase
     public function testPropertyInvoiceTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\Money();
         
         $this->model->setInvoiceTotal($testValue);
         $this->assertEquals($testValue, $this->model->getInvoiceTotal());

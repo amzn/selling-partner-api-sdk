@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\CreateUnexpectedProblemRequest;
+use OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest;
 
 /**
  * CreateUnexpectedProblemRequestTest Class Doc Comment

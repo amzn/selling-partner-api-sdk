@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\OneClickShipmentResponse;
+use OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse;
 
 /**
  * OneClickShipmentResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class OneClickShipmentResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\OneClickShipmentResult();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\OneClickShipmentResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\GetDestinationResponse;
+use OpenAPI\Client\Model\notifications\v1\GetDestinationResponse;
 
 /**
  * GetDestinationResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetDestinationResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\Destination();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\Destination();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

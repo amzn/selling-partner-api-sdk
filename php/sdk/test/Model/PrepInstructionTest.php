@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\PrepInstruction;
+use OpenAPI\Client\Model\awd\v2024_05_09\PrepInstruction;
 
 /**
  * PrepInstructionTest Class Doc Comment
@@ -56,7 +56,7 @@ class PrepInstructionTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\PrepOwner();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

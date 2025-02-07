@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\datakiosk\GetQueriesResponse;
+use OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse;
 
 /**
  * GetQueriesResponseTest Class Doc Comment
@@ -68,7 +68,7 @@ class GetQueriesResponseTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\datakiosk\GetQueriesResponsePagination();
+        $testValue = new \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

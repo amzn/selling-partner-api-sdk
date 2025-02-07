@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\RejectedOrder;
+use OpenAPI\Client\Model\easyship\v2022_03_23\RejectedOrder;
 
 /**
  * RejectedOrderTest Class Doc Comment
@@ -68,7 +68,7 @@ class RejectedOrderTest extends TestCase
     public function testPropertyError()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\Error();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Error();
         
         $this->model->setError($testValue);
         $this->assertEquals($testValue, $this->model->getError());

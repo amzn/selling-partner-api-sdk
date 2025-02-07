@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\CreateSubscriptionResponse;
+use OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse;
 
 /**
  * CreateSubscriptionResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateSubscriptionResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\Subscription();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\Subscription();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

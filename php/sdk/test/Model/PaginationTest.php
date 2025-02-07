@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\Pagination;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination;
 
 /**
  * PaginationTest Class Doc Comment

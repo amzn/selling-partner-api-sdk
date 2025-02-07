@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\TrackingDetails;
+use OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails;
 
 /**
  * TrackingDetailsTest Class Doc Comment

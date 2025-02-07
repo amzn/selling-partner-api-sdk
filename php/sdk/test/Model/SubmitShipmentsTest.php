@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\SubmitShipments;
+use OpenAPI\Client\Model\vendor\shipments\v1\SubmitShipments;
 
 /**
  * SubmitShipmentsTest Class Doc Comment

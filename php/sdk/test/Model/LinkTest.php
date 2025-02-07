@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\restrictions\Link;
+use OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Link;
 
 /**
  * LinkTest Class Doc Comment

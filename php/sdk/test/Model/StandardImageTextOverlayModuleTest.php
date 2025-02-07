@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardImageTextOverlayModule;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule;
 
 /**
  * StandardImageTextOverlayModuleTest Class Doc Comment
@@ -56,7 +56,7 @@ class StandardImageTextOverlayModuleTest extends TestCase
      */
     public function testPropertyOverlayColorType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\ColorType();
+        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ColorType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class StandardImageTextOverlayModuleTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

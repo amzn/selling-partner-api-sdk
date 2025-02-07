@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\OneClickShipmentValueAddedService;
+use OpenAPI\Client\Model\shipping\v2\OneClickShipmentValueAddedService;
 
 /**
  * OneClickShipmentValueAddedServiceTest Class Doc Comment
@@ -68,7 +68,7 @@ class OneClickShipmentValueAddedServiceTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Currency();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

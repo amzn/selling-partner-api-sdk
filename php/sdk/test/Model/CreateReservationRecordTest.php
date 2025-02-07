@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\CreateReservationRecord;
+use OpenAPI\Client\Model\services\v1\CreateReservationRecord;
 
 /**
  * CreateReservationRecordTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateReservationRecordTest extends TestCase
     public function testPropertyReservation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\Reservation();
+        $testValue = new \OpenAPI\Client\Model\services\v1\Reservation();
         
         $this->model->setReservation($testValue);
         $this->assertEquals($testValue, $this->model->getReservation());

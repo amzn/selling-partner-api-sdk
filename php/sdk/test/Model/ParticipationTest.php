@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\Participation;
+use OpenAPI\Client\Model\sellers\v1\Participation;
 
 /**
  * ParticipationTest Class Doc Comment

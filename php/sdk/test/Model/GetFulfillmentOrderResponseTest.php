@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentOrderResponse;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse;
 
 /**
  * GetFulfillmentOrderResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetFulfillmentOrderResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\GetFulfillmentOrderResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

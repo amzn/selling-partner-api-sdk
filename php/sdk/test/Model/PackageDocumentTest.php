@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\PackageDocument;
+use OpenAPI\Client\Model\shipping\v2\PackageDocument;
 
 /**
  * PackageDocumentTest Class Doc Comment
@@ -56,7 +56,7 @@ class PackageDocumentTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\DocumentType();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class PackageDocumentTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\DocumentFormat();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

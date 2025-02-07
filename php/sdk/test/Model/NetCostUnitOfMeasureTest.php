@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\NetCostUnitOfMeasure;
+use OpenAPI\Client\Model\vendor\invoices\v1\NetCostUnitOfMeasure;
 
 /**
  * NetCostUnitOfMeasureTest Class Doc Comment

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\FeesEstimateIdentifier;
+use OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier;
 
 /**
  * FeesEstimateIdentifierTest Class Doc Comment
@@ -78,7 +78,7 @@ class FeesEstimateIdentifierTest extends TestCase
      */
     public function testPropertyIdType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\productFees\IdType();
+        $enumInstance = new \OpenAPI\Client\Model\productFees\v0\IdType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class FeesEstimateIdentifierTest extends TestCase
     public function testPropertyPriceToEstimateFees()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\PriceToEstimateFees();
+        $testValue = new \OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees();
         
         $this->model->setPriceToEstimateFees($testValue);
         $this->assertEquals($testValue, $this->model->getPriceToEstimateFees());
@@ -136,7 +136,7 @@ class FeesEstimateIdentifierTest extends TestCase
      */
     public function testPropertyOptionalFulfillmentProgram()
     {
-        $enumInstance = new \OpenAPI\Client\Model\productFees\OptionalFulfillmentProgram();
+        $enumInstance = new \OpenAPI\Client\Model\productFees\v0\OptionalFulfillmentProgram();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

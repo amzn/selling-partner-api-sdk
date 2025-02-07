@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sales\GetOrderMetricsResponse;
+use OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse;
 
 /**
  * GetOrderMetricsResponseTest Class Doc Comment

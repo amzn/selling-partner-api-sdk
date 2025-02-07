@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\PrimaryContact;
+use OpenAPI\Client\Model\sellers\v1\PrimaryContact;
 
 /**
  * PrimaryContactTest Class Doc Comment
@@ -68,7 +68,7 @@ class PrimaryContactTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\Address();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

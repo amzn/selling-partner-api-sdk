@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\ReturnItem;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItem;
 
 /**
  * ReturnItemTest Class Doc Comment
@@ -122,7 +122,7 @@ class ReturnItemTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\FulfillmentReturnItemStatus();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -158,7 +158,7 @@ class ReturnItemTest extends TestCase
      */
     public function testPropertyReturnReceivedCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\ReturnItemDisposition();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

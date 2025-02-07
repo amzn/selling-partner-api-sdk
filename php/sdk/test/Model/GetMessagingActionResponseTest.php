@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\GetMessagingActionResponse;
+use OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponse;
 
 /**
  * GetMessagingActionResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetMessagingActionResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\GetMessagingActionResponseLinks();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());
@@ -69,7 +69,7 @@ class GetMessagingActionResponseTest extends TestCase
     public function testPropertyEmbedded()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\GetMessagingActionResponseEmbedded();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponseEmbedded();
         
         $this->model->setEmbedded($testValue);
         $this->assertEquals($testValue, $this->model->getEmbedded());
@@ -81,7 +81,7 @@ class GetMessagingActionResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\MessagingAction();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\MessagingAction();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

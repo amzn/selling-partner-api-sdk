@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\OrderItem;
+use OpenAPI\Client\Model\orders\v0\OrderItem;
 
 /**
  * OrderItemTest Class Doc Comment
@@ -134,7 +134,7 @@ class OrderItemTest extends TestCase
     public function testPropertyProductInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\ProductInfoDetail();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\ProductInfoDetail();
         
         $this->model->setProductInfo($testValue);
         $this->assertEquals($testValue, $this->model->getProductInfo());
@@ -146,7 +146,7 @@ class OrderItemTest extends TestCase
     public function testPropertyPointsGranted()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\PointsGrantedDetail();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\PointsGrantedDetail();
         
         $this->model->setPointsGranted($testValue);
         $this->assertEquals($testValue, $this->model->getPointsGranted());
@@ -158,7 +158,7 @@ class OrderItemTest extends TestCase
     public function testPropertyItemPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setItemPrice($testValue);
         $this->assertEquals($testValue, $this->model->getItemPrice());
@@ -170,7 +170,7 @@ class OrderItemTest extends TestCase
     public function testPropertyShippingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setShippingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getShippingPrice());
@@ -182,7 +182,7 @@ class OrderItemTest extends TestCase
     public function testPropertyItemTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setItemTax($testValue);
         $this->assertEquals($testValue, $this->model->getItemTax());
@@ -194,7 +194,7 @@ class OrderItemTest extends TestCase
     public function testPropertyShippingTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setShippingTax($testValue);
         $this->assertEquals($testValue, $this->model->getShippingTax());
@@ -206,7 +206,7 @@ class OrderItemTest extends TestCase
     public function testPropertyShippingDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setShippingDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getShippingDiscount());
@@ -218,7 +218,7 @@ class OrderItemTest extends TestCase
     public function testPropertyShippingDiscountTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setShippingDiscountTax($testValue);
         $this->assertEquals($testValue, $this->model->getShippingDiscountTax());
@@ -230,7 +230,7 @@ class OrderItemTest extends TestCase
     public function testPropertyPromotionDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setPromotionDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getPromotionDiscount());
@@ -242,7 +242,7 @@ class OrderItemTest extends TestCase
     public function testPropertyPromotionDiscountTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setPromotionDiscountTax($testValue);
         $this->assertEquals($testValue, $this->model->getPromotionDiscountTax());
@@ -265,7 +265,7 @@ class OrderItemTest extends TestCase
     public function testPropertyCodFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setCodFee($testValue);
         $this->assertEquals($testValue, $this->model->getCodFee());
@@ -277,7 +277,7 @@ class OrderItemTest extends TestCase
     public function testPropertyCodFeeDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setCodFeeDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getCodFeeDiscount());
@@ -366,7 +366,7 @@ class OrderItemTest extends TestCase
     public function testPropertyTaxCollection()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\TaxCollection();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\TaxCollection();
         
         $this->model->setTaxCollection($testValue);
         $this->assertEquals($testValue, $this->model->getTaxCollection());
@@ -434,7 +434,7 @@ class OrderItemTest extends TestCase
     public function testPropertyBuyerInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\ItemBuyerInfo();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\ItemBuyerInfo();
         
         $this->model->setBuyerInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerInfo());
@@ -446,7 +446,7 @@ class OrderItemTest extends TestCase
     public function testPropertyBuyerRequestedCancel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\BuyerRequestedCancel();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerRequestedCancel();
         
         $this->model->setBuyerRequestedCancel($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerRequestedCancel());
@@ -469,7 +469,7 @@ class OrderItemTest extends TestCase
     public function testPropertySubstitutionPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\SubstitutionPreferences();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\SubstitutionPreferences();
         
         $this->model->setSubstitutionPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getSubstitutionPreferences());
@@ -481,7 +481,7 @@ class OrderItemTest extends TestCase
     public function testPropertyMeasurement()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Measurement();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Measurement();
         
         $this->model->setMeasurement($testValue);
         $this->assertEquals($testValue, $this->model->getMeasurement());
@@ -493,7 +493,7 @@ class OrderItemTest extends TestCase
     public function testPropertyShippingConstraints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\ShippingConstraints();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\ShippingConstraints();
         
         $this->model->setShippingConstraints($testValue);
         $this->assertEquals($testValue, $this->model->getShippingConstraints());
@@ -505,7 +505,7 @@ class OrderItemTest extends TestCase
     public function testPropertyAmazonPrograms()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\AmazonPrograms();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\AmazonPrograms();
         
         $this->model->setAmazonPrograms($testValue);
         $this->assertEquals($testValue, $this->model->getAmazonPrograms());

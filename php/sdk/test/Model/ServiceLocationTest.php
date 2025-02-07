@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\ServiceLocation;
+use OpenAPI\Client\Model\services\v1\ServiceLocation;
 
 /**
  * ServiceLocationTest Class Doc Comment
@@ -69,7 +69,7 @@ class ServiceLocationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\Address();
+        $testValue = new \OpenAPI\Client\Model\services\v1\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

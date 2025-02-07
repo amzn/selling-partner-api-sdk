@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\AssignAppointmentResourcesResponse;
+use OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse;
 
 /**
  * AssignAppointmentResourcesResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class AssignAppointmentResourcesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\AssignAppointmentResourcesResponsePayload();
+        $testValue = new \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponsePayload();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

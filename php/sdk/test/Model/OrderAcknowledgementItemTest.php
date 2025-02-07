@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderAcknowledgementItem;
+use OpenAPI\Client\Model\vendor\orders\v1\OrderAcknowledgementItem;
 
 /**
  * OrderAcknowledgementItemTest Class Doc Comment
@@ -90,7 +90,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setOrderedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getOrderedQuantity());
@@ -102,7 +102,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyNetCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Money();
         
         $this->model->setNetCost($testValue);
         $this->assertEquals($testValue, $this->model->getNetCost());
@@ -114,7 +114,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyListPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Money();
         
         $this->model->setListPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListPrice());

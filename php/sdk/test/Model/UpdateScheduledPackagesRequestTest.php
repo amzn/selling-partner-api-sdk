@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\UpdateScheduledPackagesRequest;
+use OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest;
 
 /**
  * UpdateScheduledPackagesRequestTest Class Doc Comment

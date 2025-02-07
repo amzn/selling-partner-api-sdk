@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\VerificationStatus;
+use OpenAPI\Client\Model\orders\v0\VerificationStatus;
 
 /**
  * VerificationStatusTest Class Doc Comment

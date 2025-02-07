@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\UpdateShipmentStatusRequest;
+use OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest;
 
 /**
  * UpdateShipmentStatusRequestTest Class Doc Comment
@@ -67,7 +67,7 @@ class UpdateShipmentStatusRequestTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\ShipmentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

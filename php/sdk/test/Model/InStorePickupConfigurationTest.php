@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\InStorePickupConfiguration;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration;
 
 /**
  * InStorePickupConfigurationTest Class Doc Comment
@@ -68,7 +68,7 @@ class InStorePickupConfigurationTest extends TestCase
     public function testPropertyParkingConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\ParkingConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration();
         
         $this->model->setParkingConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getParkingConfiguration());

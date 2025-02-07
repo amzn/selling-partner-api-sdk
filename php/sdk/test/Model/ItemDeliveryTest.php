@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\ItemDelivery;
+use OpenAPI\Client\Model\services\v1\ItemDelivery;
 
 /**
  * ItemDeliveryTest Class Doc Comment
@@ -69,7 +69,7 @@ class ItemDeliveryTest extends TestCase
     public function testPropertyItemDeliveryPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\ItemDeliveryPromise();
+        $testValue = new \OpenAPI\Client\Model\services\v1\ItemDeliveryPromise();
         
         $this->model->setItemDeliveryPromise($testValue);
         $this->assertEquals($testValue, $this->model->getItemDeliveryPromise());

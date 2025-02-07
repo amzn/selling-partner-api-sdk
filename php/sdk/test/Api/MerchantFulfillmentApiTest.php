@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\MerchantFulfillmentApi;
+use OpenAPI\Client\Api\merchantFulfillment\v0\MerchantFulfillmentApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardImageTextBlock;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock;
 
 /**
  * StandardImageTextBlockTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardImageTextBlockTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());
@@ -69,7 +69,7 @@ class StandardImageTextBlockTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -81,7 +81,7 @@ class StandardImageTextBlockTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ParagraphComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

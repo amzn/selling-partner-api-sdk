@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\GetSellingPartnerMetricsResponseMetric;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponseMetric;
 
 /**
  * GetSellingPartnerMetricsResponseMetricTest Class Doc Comment
@@ -295,7 +295,7 @@ class GetSellingPartnerMetricsResponseMetricTest extends TestCase
     public function testPropertyTimeInterval()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\TimeInterval();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval();
         
         $this->model->setTimeInterval($testValue);
         $this->assertEquals($testValue, $this->model->getTimeInterval());

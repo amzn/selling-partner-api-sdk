@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\AvailabilityRecord;
+use OpenAPI\Client\Model\services\v1\AvailabilityRecord;
 
 /**
  * AvailabilityRecordTest Class Doc Comment
@@ -81,7 +81,7 @@ class AvailabilityRecordTest extends TestCase
     public function testPropertyRecurrence()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\Recurrence();
+        $testValue = new \OpenAPI\Client\Model\services\v1\Recurrence();
         
         $this->model->setRecurrence($testValue);
         $this->assertEquals($testValue, $this->model->getRecurrence());

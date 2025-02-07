@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\Expiry;
+use OpenAPI\Client\Model\vendor\shipments\v1\Expiry;
 
 /**
  * ExpiryTest Class Doc Comment
@@ -81,7 +81,7 @@ class ExpiryTest extends TestCase
     public function testPropertyExpiryAfterDuration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Duration();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Duration();
         
         $this->model->setExpiryAfterDuration($testValue);
         $this->assertEquals($testValue, $this->model->getExpiryAfterDuration());

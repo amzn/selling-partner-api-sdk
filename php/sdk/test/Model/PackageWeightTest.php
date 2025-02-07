@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\PackageWeight;
+use OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight;
 
 /**
  * PackageWeightTest Class Doc Comment
@@ -56,7 +56,7 @@ class PackageWeightTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\WeightUnitOfMeasurement();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\WeightUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

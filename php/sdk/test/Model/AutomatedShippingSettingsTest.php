@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\AutomatedShippingSettings;
+use OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings;
 
 /**
  * AutomatedShippingSettingsTest Class Doc Comment

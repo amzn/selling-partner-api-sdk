@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardSingleImageSpecsDetailModule;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule;
 
 /**
  * StandardSingleImageSpecsDetailModuleTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ImageComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());
@@ -81,7 +81,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyDescriptionHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setDescriptionHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionHeadline());
@@ -93,7 +93,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyDescriptionBlock1()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setDescriptionBlock1($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionBlock1());
@@ -105,7 +105,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyDescriptionBlock2()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setDescriptionBlock2($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionBlock2());
@@ -117,7 +117,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertySpecificationHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setSpecificationHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getSpecificationHeadline());
@@ -129,7 +129,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertySpecificationListBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardHeaderTextListBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock();
         
         $this->model->setSpecificationListBlock($testValue);
         $this->assertEquals($testValue, $this->model->getSpecificationListBlock());
@@ -141,7 +141,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertySpecificationTextBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setSpecificationTextBlock($testValue);
         $this->assertEquals($testValue, $this->model->getSpecificationTextBlock());

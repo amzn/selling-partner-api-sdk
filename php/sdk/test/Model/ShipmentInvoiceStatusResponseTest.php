@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\ShipmentInvoiceStatusResponse;
+use OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse;
 
 /**
  * ShipmentInvoiceStatusResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class ShipmentInvoiceStatusResponseTest extends TestCase
     public function testPropertyShipments()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\ShipmentInvoiceStatusInfo();
+        $testValue = new \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo();
         
         $this->model->setShipments($testValue);
         $this->assertEquals($testValue, $this->model->getShipments());

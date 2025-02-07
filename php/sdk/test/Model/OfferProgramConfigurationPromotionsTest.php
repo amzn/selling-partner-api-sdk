@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotions;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions;
 
 /**
  * OfferProgramConfigurationPromotionsTest Class Doc Comment
@@ -57,7 +57,7 @@ class OfferProgramConfigurationPromotionsTest extends TestCase
     public function testPropertySellingPartnerFundedBaseDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotionsDiscountFunding();
         
         $this->model->setSellingPartnerFundedBaseDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getSellingPartnerFundedBaseDiscount());
@@ -69,7 +69,7 @@ class OfferProgramConfigurationPromotionsTest extends TestCase
     public function testPropertySellingPartnerFundedTieredDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotionsDiscountFunding();
         
         $this->model->setSellingPartnerFundedTieredDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getSellingPartnerFundedTieredDiscount());
@@ -81,7 +81,7 @@ class OfferProgramConfigurationPromotionsTest extends TestCase
     public function testPropertyAmazonFundedBaseDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotionsDiscountFunding();
         
         $this->model->setAmazonFundedBaseDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getAmazonFundedBaseDiscount());
@@ -93,7 +93,7 @@ class OfferProgramConfigurationPromotionsTest extends TestCase
     public function testPropertyAmazonFundedTieredDiscount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPromotionsDiscountFunding();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotionsDiscountFunding();
         
         $this->model->setAmazonFundedTieredDiscount($testValue);
         $this->assertEquals($testValue, $this->model->getAmazonFundedTieredDiscount());

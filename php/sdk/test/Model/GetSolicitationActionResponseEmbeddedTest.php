@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\GetSolicitationActionResponseEmbedded;
+use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded;
 
 /**
  * GetSolicitationActionResponseEmbeddedTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetSolicitationActionResponseEmbeddedTest extends TestCase
     public function testPropertySchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\GetSchemaResponse();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse();
         
         $this->model->setSchema($testValue);
         $this->assertEquals($testValue, $this->model->getSchema());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\DocumentFormat;
+use OpenAPI\Client\Model\shipping\v2\DocumentFormat;
 
 /**
  * DocumentFormatTest Class Doc Comment

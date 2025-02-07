@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\Carton;
+use OpenAPI\Client\Model\vendor\shipments\v1\Carton;
 
 /**
  * CartonTest Class Doc Comment
@@ -79,7 +79,7 @@ class CartonTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -91,7 +91,7 @@ class CartonTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Weight();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

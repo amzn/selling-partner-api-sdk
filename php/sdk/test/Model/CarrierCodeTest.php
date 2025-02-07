@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\CarrierCode;
+use OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode;
 
 /**
  * CarrierCodeTest Class Doc Comment
@@ -56,7 +56,7 @@ class CarrierCodeTest extends TestCase
      */
     public function testPropertyCarrierCodeType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\CarrierCodeType();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\CarrierCodeType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

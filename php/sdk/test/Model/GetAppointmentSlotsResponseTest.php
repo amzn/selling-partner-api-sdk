@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\GetAppointmentSlotsResponse;
+use OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse;
 
 /**
  * GetAppointmentSlotsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetAppointmentSlotsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\AppointmentSlotReport();
+        $testValue = new \OpenAPI\Client\Model\services\v1\AppointmentSlotReport();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

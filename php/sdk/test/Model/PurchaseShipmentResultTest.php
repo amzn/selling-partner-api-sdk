@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\PurchaseShipmentResult;
+use OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResult;
 
 /**
  * PurchaseShipmentResultTest Class Doc Comment
@@ -79,7 +79,7 @@ class PurchaseShipmentResultTest extends TestCase
     public function testPropertyPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\Promise();
+        $testValue = new \OpenAPI\Client\Model\shipping\v2\Promise();
         
         $this->model->setPromise($testValue);
         $this->assertEquals($testValue, $this->model->getPromise());

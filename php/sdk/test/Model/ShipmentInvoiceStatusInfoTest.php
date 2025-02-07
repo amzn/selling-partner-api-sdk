@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\ShipmentInvoiceStatusInfo;
+use OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo;
 
 /**
  * ShipmentInvoiceStatusInfoTest Class Doc Comment
@@ -67,7 +67,7 @@ class ShipmentInvoiceStatusInfoTest extends TestCase
      */
     public function testPropertyInvoiceStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\invoicing\ShipmentInvoiceStatus();
+        $enumInstance = new \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\ThroughputConfig;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig;
 
 /**
  * ThroughputConfigTest Class Doc Comment
@@ -57,7 +57,7 @@ class ThroughputConfigTest extends TestCase
     public function testPropertyThroughputCap()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\ThroughputCap();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap();
         
         $this->model->setThroughputCap($testValue);
         $this->assertEquals($testValue, $this->model->getThroughputCap());
@@ -68,7 +68,7 @@ class ThroughputConfigTest extends TestCase
      */
     public function testPropertyThroughputUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\ThroughputUnit();
+        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputUnit();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

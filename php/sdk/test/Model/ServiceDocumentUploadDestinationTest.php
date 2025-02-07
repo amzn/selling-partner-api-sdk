@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\ServiceDocumentUploadDestination;
+use OpenAPI\Client\Model\services\v1\ServiceDocumentUploadDestination;
 
 /**
  * ServiceDocumentUploadDestinationTest Class Doc Comment
@@ -79,7 +79,7 @@ class ServiceDocumentUploadDestinationTest extends TestCase
     public function testPropertyEncryptionDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\EncryptionDetails();
+        $testValue = new \OpenAPI\Client\Model\services\v1\EncryptionDetails();
         
         $this->model->setEncryptionDetails($testValue);
         $this->assertEquals($testValue, $this->model->getEncryptionDetails());

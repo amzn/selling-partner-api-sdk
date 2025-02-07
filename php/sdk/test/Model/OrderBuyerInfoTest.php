@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\OrderBuyerInfo;
+use OpenAPI\Client\Model\orders\v0\OrderBuyerInfo;
 
 /**
  * OrderBuyerInfoTest Class Doc Comment
@@ -101,7 +101,7 @@ class OrderBuyerInfoTest extends TestCase
     public function testPropertyBuyerTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\BuyerTaxInfo();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerTaxInfo();
         
         $this->model->setBuyerTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerTaxInfo());

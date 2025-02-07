@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\UpdateFulfillmentOrderRequest;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest;
 
 /**
  * UpdateFulfillmentOrderRequestTest Class Doc Comment
@@ -101,7 +101,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\ShippingSpeedCategory();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -115,7 +115,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDestinationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\Address();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address();
         
         $this->model->setDestinationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAddress());
@@ -126,7 +126,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentAction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\FulfillmentAction();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -139,7 +139,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentPolicy()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\FulfillmentPolicy();
+        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

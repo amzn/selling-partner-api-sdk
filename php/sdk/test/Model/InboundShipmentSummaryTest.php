@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\InboundShipmentSummary;
+use OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentSummary;
 
 /**
  * InboundShipmentSummaryTest Class Doc Comment
@@ -101,7 +101,7 @@ class InboundShipmentSummaryTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\InboundShipmentStatus();
+        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

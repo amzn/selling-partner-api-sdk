@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\OfferProgramConfigurationPreferences;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences;
 
 /**
  * OfferProgramConfigurationPreferencesTest Class Doc Comment
@@ -56,7 +56,7 @@ class OfferProgramConfigurationPreferencesTest extends TestCase
      */
     public function testPropertyAutoEnrollment()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\AutoEnrollmentPreference();
+        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\AutoEnrollmentPreference();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

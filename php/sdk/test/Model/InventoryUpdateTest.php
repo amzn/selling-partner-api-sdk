@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\InventoryUpdate;
+use OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate;
 
 /**
  * InventoryUpdateTest Class Doc Comment
@@ -57,7 +57,7 @@ class InventoryUpdateTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\GetDeliveryOffersProduct;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct;
 
 /**
  * GetDeliveryOffersProductTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetDeliveryOffersProductTest extends TestCase
     public function testPropertyProductIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\ProductIdentifier();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier();
         
         $this->model->setProductIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getProductIdentifier());
@@ -69,7 +69,7 @@ class GetDeliveryOffersProductTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\Amount();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

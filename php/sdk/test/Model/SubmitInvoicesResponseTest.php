@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\SubmitInvoicesResponse;
+use OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse;
 
 /**
  * SubmitInvoicesResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class SubmitInvoicesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\invoices\TransactionId();
+        $testValue = new \OpenAPI\Client\Model\vendor\invoices\v1\TransactionId();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

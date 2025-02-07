@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\StandardIdForLabel;
+use OpenAPI\Client\Model\merchantFulfillment\v0\StandardIdForLabel;
 
 /**
  * StandardIdForLabelTest Class Doc Comment

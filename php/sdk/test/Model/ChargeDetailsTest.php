@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\ChargeDetails;
+use OpenAPI\Client\Model\vendor\df\payments\v1\ChargeDetails;
 
 /**
  * ChargeDetailsTest Class Doc Comment
@@ -69,7 +69,7 @@ class ChargeDetailsTest extends TestCase
     public function testPropertyChargeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\Money();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\Money();
         
         $this->model->setChargeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getChargeAmount());

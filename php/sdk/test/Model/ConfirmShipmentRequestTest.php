@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\ConfirmShipmentRequest;
+use OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest;
 
 /**
  * ConfirmShipmentRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class ConfirmShipmentRequestTest extends TestCase
     public function testPropertyPackageDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\PackageDetail();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\PackageDetail();
         
         $this->model->setPackageDetail($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDetail());

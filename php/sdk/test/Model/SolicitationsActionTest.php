@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\SolicitationsAction;
+use OpenAPI\Client\Model\solicitations\v1\SolicitationsAction;
 
 /**
  * SolicitationsActionTest Class Doc Comment

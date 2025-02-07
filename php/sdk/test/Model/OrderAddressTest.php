@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\OrderAddress;
+use OpenAPI\Client\Model\orders\v0\OrderAddress;
 
 /**
  * OrderAddressTest Class Doc Comment
@@ -79,7 +79,7 @@ class OrderAddressTest extends TestCase
     public function testPropertyShippingAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Address();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Address();
         
         $this->model->setShippingAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShippingAddress());
@@ -91,7 +91,7 @@ class OrderAddressTest extends TestCase
     public function testPropertyDeliveryPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\DeliveryPreferences();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\DeliveryPreferences();
         
         $this->model->setDeliveryPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryPreferences());

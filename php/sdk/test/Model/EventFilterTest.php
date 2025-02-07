@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\EventFilter;
+use OpenAPI\Client\Model\notifications\v1\EventFilter;
 
 /**
  * EventFilterTest Class Doc Comment
@@ -57,7 +57,7 @@ class EventFilterTest extends TestCase
     public function testPropertyAggregationSettings()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\AggregationSettings();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\AggregationSettings();
         
         $this->model->setAggregationSettings($testValue);
         $this->assertEquals($testValue, $this->model->getAggregationSettings());

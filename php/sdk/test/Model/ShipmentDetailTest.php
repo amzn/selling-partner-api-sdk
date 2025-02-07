@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\ShipmentDetail;
+use OpenAPI\Client\Model\invoicing\v0\ShipmentDetail;
 
 /**
  * ShipmentDetailTest Class Doc Comment
@@ -102,7 +102,7 @@ class ShipmentDetailTest extends TestCase
     public function testPropertyShippingAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\Address();
+        $testValue = new \OpenAPI\Client\Model\invoicing\v0\Address();
         
         $this->model->setShippingAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShippingAddress());
@@ -169,7 +169,7 @@ class ShipmentDetailTest extends TestCase
     public function testPropertyBuyerTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\BuyerTaxInfo();
+        $testValue = new \OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo();
         
         $this->model->setBuyerTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerTaxInfo());
@@ -181,7 +181,7 @@ class ShipmentDetailTest extends TestCase
     public function testPropertyMarketplaceTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\MarketplaceTaxInfo();
+        $testValue = new \OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo();
         
         $this->model->setMarketplaceTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplaceTaxInfo());

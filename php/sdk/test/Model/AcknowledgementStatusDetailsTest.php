@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\AcknowledgementStatusDetails;
+use OpenAPI\Client\Model\vendor\orders\v1\AcknowledgementStatusDetails;
 
 /**
  * AcknowledgementStatusDetailsTest Class Doc Comment
@@ -69,7 +69,7 @@ class AcknowledgementStatusDetailsTest extends TestCase
     public function testPropertyAcceptedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setAcceptedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAcceptedQuantity());
@@ -81,7 +81,7 @@ class AcknowledgementStatusDetailsTest extends TestCase
     public function testPropertyRejectedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setRejectedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getRejectedQuantity());

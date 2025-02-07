@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\DimensionUnitOfMeasurement;
+use OpenAPI\Client\Model\awd\v2024_05_09\DimensionUnitOfMeasurement;
 
 /**
  * DimensionUnitOfMeasurementTest Class Doc Comment

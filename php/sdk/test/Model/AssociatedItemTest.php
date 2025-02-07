@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\AssociatedItem;
+use OpenAPI\Client\Model\orders\v0\AssociatedItem;
 
 /**
  * AssociatedItemTest Class Doc Comment
@@ -78,7 +78,7 @@ class AssociatedItemTest extends TestCase
      */
     public function testPropertyAssociationType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\AssociationType();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\AssociationType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

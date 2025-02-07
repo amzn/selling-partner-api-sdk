@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\DeliveryInformation;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation;
 
 /**
  * DeliveryInformationTest Class Doc Comment
@@ -68,7 +68,7 @@ class DeliveryInformationTest extends TestCase
     public function testPropertyDropOffLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\DropOffLocation();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation();
         
         $this->model->setDropOffLocation($testValue);
         $this->assertEquals($testValue, $this->model->getDropOffLocation());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\GetDestinationsResponse;
+use OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse;
 
 /**
  * GetDestinationsResponseTest Class Doc Comment

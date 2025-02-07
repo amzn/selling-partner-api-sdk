@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\SchemaLinkLink;
+use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink;
 
 /**
  * SchemaLinkLinkTest Class Doc Comment

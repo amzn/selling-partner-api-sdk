@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\OrderChangeTypeEnum;
+use OpenAPI\Client\Model\notifications\v1\OrderChangeTypeEnum;
 
 /**
  * OrderChangeTypeEnumTest Class Doc Comment

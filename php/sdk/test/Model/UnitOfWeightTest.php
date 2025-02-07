@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\UnitOfWeight;
+use OpenAPI\Client\Model\easyship\v2022_03_23\UnitOfWeight;
 
 /**
  * UnitOfWeightTest Class Doc Comment

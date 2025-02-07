@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponse;
+use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse;
 
 /**
  * GetSolicitationActionsForOrderResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetSolicitationActionsForOrderResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponseLinks();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());
@@ -69,7 +69,7 @@ class GetSolicitationActionsForOrderResponseTest extends TestCase
     public function testPropertyEmbedded()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponseEmbedded();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded();
         
         $this->model->setEmbedded($testValue);
         $this->assertEquals($testValue, $this->model->getEmbedded());

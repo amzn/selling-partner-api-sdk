@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\GetFeatureInventoryResult;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResult;
 
 /**
  * GetFeatureInventoryResultTest Class Doc Comment

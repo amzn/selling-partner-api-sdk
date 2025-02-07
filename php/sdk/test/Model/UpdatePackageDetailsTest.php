@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\UpdatePackageDetails;
+use OpenAPI\Client\Model\easyship\v2022_03_23\UpdatePackageDetails;
 
 /**
  * UpdatePackageDetailsTest Class Doc Comment
@@ -57,7 +57,7 @@ class UpdatePackageDetailsTest extends TestCase
     public function testPropertyScheduledPackageId()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\ScheduledPackageId();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId();
         
         $this->model->setScheduledPackageId($testValue);
         $this->assertEquals($testValue, $this->model->getScheduledPackageId());
@@ -69,7 +69,7 @@ class UpdatePackageDetailsTest extends TestCase
     public function testPropertyPackageTimeSlot()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\TimeSlot();
+        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot();
         
         $this->model->setPackageTimeSlot($testValue);
         $this->assertEquals($testValue, $this->model->getPackageTimeSlot());

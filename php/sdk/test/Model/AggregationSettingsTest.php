@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\AggregationSettings;
+use OpenAPI\Client\Model\notifications\v1\AggregationSettings;
 
 /**
  * AggregationSettingsTest Class Doc Comment
@@ -56,7 +56,7 @@ class AggregationSettingsTest extends TestCase
      */
     public function testPropertyAggregationTimePeriod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\notifications\AggregationTimePeriod();
+        $enumInstance = new \OpenAPI\Client\Model\notifications\v1\AggregationTimePeriod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

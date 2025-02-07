@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\OrderItemBuyerInfo;
+use OpenAPI\Client\Model\orders\v0\OrderItemBuyerInfo;
 
 /**
  * OrderItemBuyerInfoTest Class Doc Comment
@@ -68,7 +68,7 @@ class OrderItemBuyerInfoTest extends TestCase
     public function testPropertyBuyerCustomizedInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\BuyerCustomizedInfoDetail();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail();
         
         $this->model->setBuyerCustomizedInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerCustomizedInfo());
@@ -80,7 +80,7 @@ class OrderItemBuyerInfoTest extends TestCase
     public function testPropertyGiftWrapPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setGiftWrapPrice($testValue);
         $this->assertEquals($testValue, $this->model->getGiftWrapPrice());
@@ -92,7 +92,7 @@ class OrderItemBuyerInfoTest extends TestCase
     public function testPropertyGiftWrapTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setGiftWrapTax($testValue);
         $this->assertEquals($testValue, $this->model->getGiftWrapTax());

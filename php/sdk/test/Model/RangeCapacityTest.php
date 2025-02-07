@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\RangeCapacity;
+use OpenAPI\Client\Model\services\v1\RangeCapacity;
 
 /**
  * RangeCapacityTest Class Doc Comment
@@ -56,7 +56,7 @@ class RangeCapacityTest extends TestCase
      */
     public function testPropertyCapacityType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\services\CapacityType();
+        $enumInstance = new \OpenAPI\Client\Model\services\v1\CapacityType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

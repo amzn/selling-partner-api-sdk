@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\MarketplaceParticipation;
+use OpenAPI\Client\Model\sellers\v1\MarketplaceParticipation;
 
 /**
  * MarketplaceParticipationTest Class Doc Comment
@@ -57,7 +57,7 @@ class MarketplaceParticipationTest extends TestCase
     public function testPropertyMarketplace()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\Marketplace();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\Marketplace();
         
         $this->model->setMarketplace($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplace());
@@ -69,7 +69,7 @@ class MarketplaceParticipationTest extends TestCase
     public function testPropertyParticipation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\Participation();
+        $testValue = new \OpenAPI\Client\Model\sellers\v1\Participation();
         
         $this->model->setParticipation($testValue);
         $this->assertEquals($testValue, $this->model->getParticipation());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\Containers;
+use OpenAPI\Client\Model\vendor\shipments\v1\Containers;
 
 /**
  * ContainersTest Class Doc Comment
@@ -102,7 +102,7 @@ class ContainersTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Dimensions();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -114,7 +114,7 @@ class ContainersTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Weight();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
@@ -148,7 +148,7 @@ class ContainersTest extends TestCase
     public function testPropertyInnerContainersDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\InnerContainersDetails();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails();
         
         $this->model->setInnerContainersDetails($testValue);
         $this->assertEquals($testValue, $this->model->getInnerContainersDetails());

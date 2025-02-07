@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\ListOffersRequestFilters;
+use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters;
 
 /**
  * ListOffersRequestFiltersTest Class Doc Comment
@@ -101,7 +101,7 @@ class ListOffersRequestFiltersTest extends TestCase
     public function testPropertyPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\Preference();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\Preference();
         
         $this->model->setPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getPreferences());
@@ -113,7 +113,7 @@ class ListOffersRequestFiltersTest extends TestCase
     public function testPropertyPromotions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\Promotion();
+        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion();
         
         $this->model->setPromotions($testValue);
         $this->assertEquals($testValue, $this->model->getPromotions());

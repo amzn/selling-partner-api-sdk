@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\TransportationLabels;
+use OpenAPI\Client\Model\vendor\shipments\v1\TransportationLabels;
 
 /**
  * TransportationLabelsTest Class Doc Comment
@@ -57,7 +57,7 @@ class TransportationLabelsTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\Pagination();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\ShipperInstruction;
+use OpenAPI\Client\Model\shipping\v2\ShipperInstruction;
 
 /**
  * ShipperInstructionTest Class Doc Comment

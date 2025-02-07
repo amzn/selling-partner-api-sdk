@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\SqsResource;
+use OpenAPI\Client\Model\notifications\v1\SqsResource;
 
 /**
  * SqsResourceTest Class Doc Comment

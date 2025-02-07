@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\reports\GetReportsResponse;
+use OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse;
 
 /**
  * GetReportsResponseTest Class Doc Comment

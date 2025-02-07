@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\TaxRegistrationDetail;
+use OpenAPI\Client\Model\vendor\df\payments\v1\TaxRegistrationDetail;
 
 /**
  * TaxRegistrationDetailTest Class Doc Comment
@@ -80,7 +80,7 @@ class TaxRegistrationDetailTest extends TestCase
     public function testPropertyTaxRegistrationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\Address();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\Address();
         
         $this->model->setTaxRegistrationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getTaxRegistrationAddress());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\GetUnmanifestedShipmentsResponse;
+use OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse;
 
 /**
  * GetUnmanifestedShipmentsResponseTest Class Doc Comment

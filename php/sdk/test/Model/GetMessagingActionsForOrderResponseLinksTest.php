@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponseLinks;
+use OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks;
 
 /**
  * GetMessagingActionsForOrderResponseLinksTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetMessagingActionsForOrderResponseLinksTest extends TestCase
     public function testPropertySelf()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\LinkObject();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\LinkObject();
         
         $this->model->setSelf($testValue);
         $this->assertEquals($testValue, $this->model->getSelf());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\RescheduleAppointmentRequest;
+use OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest;
 
 /**
  * RescheduleAppointmentRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class RescheduleAppointmentRequestTest extends TestCase
     public function testPropertyAppointmentTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\AppointmentTimeInput();
+        $testValue = new \OpenAPI\Client\Model\services\v1\AppointmentTimeInput();
         
         $this->model->setAppointmentTime($testValue);
         $this->assertEquals($testValue, $this->model->getAppointmentTime());

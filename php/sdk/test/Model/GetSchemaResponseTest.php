@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\GetSchemaResponse;
+use OpenAPI\Client\Model\messaging\v1\GetSchemaResponse;
 
 /**
  * GetSchemaResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetSchemaResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\GetSchemaResponseLinks();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetSchemaResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());

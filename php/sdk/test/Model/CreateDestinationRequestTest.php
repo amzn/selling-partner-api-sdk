@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\CreateDestinationRequest;
+use OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest;
 
 /**
  * CreateDestinationRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateDestinationRequestTest extends TestCase
     public function testPropertyResourceSpecification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\DestinationResourceSpecification();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\DestinationResourceSpecification();
         
         $this->model->setResourceSpecification($testValue);
         $this->assertEquals($testValue, $this->model->getResourceSpecification());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\ListReturnReasonCodesResponse;
+use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse;
 
 /**
  * ListReturnReasonCodesResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class ListReturnReasonCodesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\ListReturnReasonCodesResult();
+        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

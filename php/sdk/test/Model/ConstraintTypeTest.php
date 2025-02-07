@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\ConstraintType;
+use OpenAPI\Client\Model\orders\v0\ConstraintType;
 
 /**
  * ConstraintTypeTest Class Doc Comment

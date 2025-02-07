@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\OpenTimeInterval;
+use OpenAPI\Client\Model\orders\v0\OpenTimeInterval;
 
 /**
  * OpenTimeIntervalTest Class Doc Comment

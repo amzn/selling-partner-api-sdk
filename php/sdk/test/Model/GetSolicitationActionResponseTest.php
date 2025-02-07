@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\GetSolicitationActionResponse;
+use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponse;
 
 /**
  * GetSolicitationActionResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetSolicitationActionResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\GetSolicitationActionResponseLinks();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());
@@ -69,7 +69,7 @@ class GetSolicitationActionResponseTest extends TestCase
     public function testPropertyEmbedded()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\GetSolicitationActionResponseEmbedded();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded();
         
         $this->model->setEmbedded($testValue);
         $this->assertEquals($testValue, $this->model->getEmbedded());
@@ -81,7 +81,7 @@ class GetSolicitationActionResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\SolicitationsAction();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\SolicitationsAction();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

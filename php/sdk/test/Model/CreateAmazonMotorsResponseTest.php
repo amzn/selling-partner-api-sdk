@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\CreateAmazonMotorsResponse;
+use OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse;
 
 /**
  * CreateAmazonMotorsResponseTest Class Doc Comment

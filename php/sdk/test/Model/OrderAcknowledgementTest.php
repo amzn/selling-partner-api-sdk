@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderAcknowledgement;
+use OpenAPI\Client\Model\vendor\orders\v1\OrderAcknowledgement;
 
 /**
  * OrderAcknowledgementTest Class Doc Comment
@@ -68,7 +68,7 @@ class OrderAcknowledgementTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\PartyIdentification();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sales\OrderMetricsInterval;
+use OpenAPI\Client\Model\sales\v1\OrderMetricsInterval;
 
 /**
  * OrderMetricsIntervalTest Class Doc Comment
@@ -101,7 +101,7 @@ class OrderMetricsIntervalTest extends TestCase
     public function testPropertyAverageUnitPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sales\Money();
+        $testValue = new \OpenAPI\Client\Model\sales\v1\Money();
         
         $this->model->setAverageUnitPrice($testValue);
         $this->assertEquals($testValue, $this->model->getAverageUnitPrice());
@@ -113,7 +113,7 @@ class OrderMetricsIntervalTest extends TestCase
     public function testPropertyTotalSales()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sales\Money();
+        $testValue = new \OpenAPI\Client\Model\sales\v1\Money();
         
         $this->model->setTotalSales($testValue);
         $this->assertEquals($testValue, $this->model->getTotalSales());

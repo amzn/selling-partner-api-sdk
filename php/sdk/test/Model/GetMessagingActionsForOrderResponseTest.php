@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponse;
+use OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse;
 
 /**
  * GetMessagingActionsForOrderResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetMessagingActionsForOrderResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponseLinks();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());
@@ -69,7 +69,7 @@ class GetMessagingActionsForOrderResponseTest extends TestCase
     public function testPropertyEmbedded()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\GetMessagingActionsForOrderResponseEmbedded();
+        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded();
         
         $this->model->setEmbedded($testValue);
         $this->assertEquals($testValue, $this->model->getEmbedded());

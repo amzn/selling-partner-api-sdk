@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\RegulatedOrderVerificationStatus;
+use OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus;
 
 /**
  * RegulatedOrderVerificationStatusTest Class Doc Comment
@@ -56,7 +56,7 @@ class RegulatedOrderVerificationStatusTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\VerificationStatus();
+        $enumInstance = new \OpenAPI\Client\Model\orders\v0\VerificationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -92,7 +92,7 @@ class RegulatedOrderVerificationStatusTest extends TestCase
     public function testPropertyRejectionReason()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\RejectionReason();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\RejectionReason();
         
         $this->model->setRejectionReason($testValue);
         $this->assertEquals($testValue, $this->model->getRejectionReason());

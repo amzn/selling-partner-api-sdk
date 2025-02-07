@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\ContentRecord;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord;
 
 /**
  * ContentRecordTest Class Doc Comment
@@ -68,7 +68,7 @@ class ContentRecordTest extends TestCase
     public function testPropertyContentMetadata()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ContentMetadata();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata();
         
         $this->model->setContentMetadata($testValue);
         $this->assertEquals($testValue, $this->model->getContentMetadata());
@@ -80,7 +80,7 @@ class ContentRecordTest extends TestCase
     public function testPropertyContentDocument()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\ContentDocument();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument();
         
         $this->model->setContentDocument($testValue);
         $this->assertEquals($testValue, $this->model->getContentDocument());

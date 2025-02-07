@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\TimeSlot;
+use OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot;
 
 /**
  * TimeSlotTest Class Doc Comment
@@ -91,7 +91,7 @@ class TimeSlotTest extends TestCase
      */
     public function testPropertyHandoverMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\HandoverMethod();
+        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\HandoverMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

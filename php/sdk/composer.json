@@ -40,7 +40,7 @@
         "psr-4": {
             "SpApi\\AuthAndAuth\\": "src/authandauth",
             "OpenAPI\\Client\\": "lib/",
-            "OpenAPI\\Client\\Test\\": "test/"
+            "OpenAPI\\Client\\Test\\" : "test/"
         }
     }
 }

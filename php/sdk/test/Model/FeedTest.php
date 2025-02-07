@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\feeds\Feed;
+use OpenAPI\Client\Model\feeds\v2021_06_30\Feed;
 
 /**
  * FeedTest Class Doc Comment

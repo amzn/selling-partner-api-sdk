@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\ParkingSpotIdentificationType;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType;
 
 /**
  * ParkingSpotIdentificationTypeTest Class Doc Comment

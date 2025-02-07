@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\SetAppointmentFulfillmentDataRequest;
+use OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest;
 
 /**
  * SetAppointmentFulfillmentDataRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class SetAppointmentFulfillmentDataRequestTest extends TestCase
     public function testPropertyFulfillmentTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\FulfillmentTime();
+        $testValue = new \OpenAPI\Client\Model\services\v1\FulfillmentTime();
         
         $this->model->setFulfillmentTime($testValue);
         $this->assertEquals($testValue, $this->model->getFulfillmentTime());

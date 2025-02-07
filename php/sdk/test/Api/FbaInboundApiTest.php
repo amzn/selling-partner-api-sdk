@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\FbaInboundApi;
+use OpenAPI\Client\Api\fba\eligibility\v1\FbaInboundApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

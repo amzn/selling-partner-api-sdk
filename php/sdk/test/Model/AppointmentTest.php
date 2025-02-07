@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\Appointment;
+use OpenAPI\Client\Model\services\v1\Appointment;
 
 /**
  * AppointmentTest Class Doc Comment
@@ -80,7 +80,7 @@ class AppointmentTest extends TestCase
     public function testPropertyAppointmentTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\AppointmentTime();
+        $testValue = new \OpenAPI\Client\Model\services\v1\AppointmentTime();
         
         $this->model->setAppointmentTime($testValue);
         $this->assertEquals($testValue, $this->model->getAppointmentTime());
@@ -114,7 +114,7 @@ class AppointmentTest extends TestCase
     public function testPropertyPoa()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\Poa();
+        $testValue = new \OpenAPI\Client\Model\services\v1\Poa();
         
         $this->model->setPoa($testValue);
         $this->assertEquals($testValue, $this->model->getPoa());

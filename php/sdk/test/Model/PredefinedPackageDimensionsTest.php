@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\PredefinedPackageDimensions;
+use OpenAPI\Client\Model\merchantFulfillment\v0\PredefinedPackageDimensions;
 
 /**
  * PredefinedPackageDimensionsTest Class Doc Comment

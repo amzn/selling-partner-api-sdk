@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\SubmitShipmentConfirmationsResponse;
+use OpenAPI\Client\Model\vendor\shipments\v1\SubmitShipmentConfirmationsResponse;
 
 /**
  * SubmitShipmentConfirmationsResponseTest Class Doc Comment
@@ -57,7 +57,7 @@ class SubmitShipmentConfirmationsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\TransactionReference();
+        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\TransactionReference();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

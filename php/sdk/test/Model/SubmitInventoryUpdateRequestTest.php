@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\SubmitInventoryUpdateRequest;
+use OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest;
 
 /**
  * SubmitInventoryUpdateRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class SubmitInventoryUpdateRequestTest extends TestCase
     public function testPropertyInventory()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\InventoryUpdate();
+        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate();
         
         $this->model->setInventory($testValue);
         $this->assertEquals($testValue, $this->model->getInventory());

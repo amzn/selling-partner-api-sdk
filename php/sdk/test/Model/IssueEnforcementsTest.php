@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\IssueEnforcements;
+use OpenAPI\Client\Model\listings\items\v2021_08_01\IssueEnforcements;
 
 /**
  * IssueEnforcementsTest Class Doc Comment
@@ -68,7 +68,7 @@ class IssueEnforcementsTest extends TestCase
     public function testPropertyExemption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\IssueExemption();
+        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption();
         
         $this->model->setExemption($testValue);
         $this->assertEquals($testValue, $this->model->getExemption());

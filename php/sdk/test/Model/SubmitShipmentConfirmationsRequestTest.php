@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\SubmitShipmentConfirmationsRequest;
+use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\SubmitShipmentConfirmationsRequest;
 
 /**
  * SubmitShipmentConfirmationsRequestTest Class Doc Comment

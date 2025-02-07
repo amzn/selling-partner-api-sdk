@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\DestinationResourceSpecification;
+use OpenAPI\Client\Model\notifications\v1\DestinationResourceSpecification;
 
 /**
  * DestinationResourceSpecificationTest Class Doc Comment
@@ -57,7 +57,7 @@ class DestinationResourceSpecificationTest extends TestCase
     public function testPropertySqs()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\SqsResource();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\SqsResource();
         
         $this->model->setSqs($testValue);
         $this->assertEquals($testValue, $this->model->getSqs());
@@ -69,7 +69,7 @@ class DestinationResourceSpecificationTest extends TestCase
     public function testPropertyEventBridge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\EventBridgeResourceSpecification();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\EventBridgeResourceSpecification();
         
         $this->model->setEventBridge($testValue);
         $this->assertEquals($testValue, $this->model->getEventBridge());

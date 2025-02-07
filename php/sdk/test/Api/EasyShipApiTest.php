@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\EasyShipApi;
+use OpenAPI\Client\Api\easyship\v2022_03_23\EasyShipApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\OrderItemAcknowledgement;
+use OpenAPI\Client\Model\vendor\orders\v1\OrderItemAcknowledgement;
 
 /**
  * OrderItemAcknowledgementTest Class Doc Comment
@@ -69,7 +69,7 @@ class OrderItemAcknowledgementTest extends TestCase
     public function testPropertyAcknowledgedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\ItemQuantity();
+        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setAcknowledgedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAcknowledgedQuantity());

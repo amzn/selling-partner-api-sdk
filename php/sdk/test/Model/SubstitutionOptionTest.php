@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\SubstitutionOption;
+use OpenAPI\Client\Model\orders\v0\SubstitutionOption;
 
 /**
  * SubstitutionOptionTest Class Doc Comment
@@ -101,7 +101,7 @@ class SubstitutionOptionTest extends TestCase
     public function testPropertyMeasurement()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Measurement();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Measurement();
         
         $this->model->setMeasurement($testValue);
         $this->assertEquals($testValue, $this->model->getMeasurement());

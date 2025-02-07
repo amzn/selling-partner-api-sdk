@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\tokens\CreateRestrictedDataTokenRequest;
+use OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest;
 
 /**
  * CreateRestrictedDataTokenRequestTest Class Doc Comment

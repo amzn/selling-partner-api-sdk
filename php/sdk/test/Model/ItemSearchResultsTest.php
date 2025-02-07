@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\ItemSearchResults;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults;
 
 /**
  * ItemSearchResultsTest Class Doc Comment
@@ -68,7 +68,7 @@ class ItemSearchResultsTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\Pagination();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
@@ -80,7 +80,7 @@ class ItemSearchResultsTest extends TestCase
     public function testPropertyRefinements()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\Refinements();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Refinements();
         
         $this->model->setRefinements($testValue);
         $this->assertEquals($testValue, $this->model->getRefinements());

@@ -28,7 +28,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\QueriesApi;
+use OpenAPI\Client\Api\datakiosk\v2023_11_15\QueriesApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

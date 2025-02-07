@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\tokens\RestrictedResource;
+use OpenAPI\Client\Model\tokens\v2021_03_01\RestrictedResource;
 
 /**
  * RestrictedResourceTest Class Doc Comment

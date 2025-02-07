@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\ServiceJobProvider;
+use OpenAPI\Client\Model\services\v1\ServiceJobProvider;
 
 /**
  * ServiceJobProviderTest Class Doc Comment

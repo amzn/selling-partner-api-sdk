@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fbaInventory\GetInventorySummariesResult;
+use OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult;
 
 /**
  * GetInventorySummariesResultTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetInventorySummariesResultTest extends TestCase
     public function testPropertyGranularity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fbaInventory\Granularity();
+        $testValue = new \OpenAPI\Client\Model\fba\inventory\v1\Granularity();
         
         $this->model->setGranularity($testValue);
         $this->assertEquals($testValue, $this->model->getGranularity());

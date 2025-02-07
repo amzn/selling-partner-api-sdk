@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\Issue;
+use OpenAPI\Client\Model\listings\items\v2021_08_01\Issue;
 
 /**
  * IssueTest Class Doc Comment
@@ -113,7 +113,7 @@ class IssueTest extends TestCase
     public function testPropertyEnforcements()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\IssueEnforcements();
+        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueEnforcements();
         
         $this->model->setEnforcements($testValue);
         $this->assertEquals($testValue, $this->model->getEnforcements());

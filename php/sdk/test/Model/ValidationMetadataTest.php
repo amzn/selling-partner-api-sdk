@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\ValidationMetadata;
+use OpenAPI\Client\Model\shipping\v2\ValidationMetadata;
 
 /**
  * ValidationMetadataTest Class Doc Comment

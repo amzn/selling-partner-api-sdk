@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\CreateShipmentRequest;
+use OpenAPI\Client\Model\merchantFulfillment\v0\CreateShipmentRequest;
 
 /**
  * CreateShipmentRequestTest Class Doc Comment
@@ -57,7 +57,7 @@ class CreateShipmentRequestTest extends TestCase
     public function testPropertyShipmentRequestDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\ShipmentRequestDetails();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails();
         
         $this->model->setShipmentRequestDetails($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentRequestDetails());
@@ -90,7 +90,7 @@ class CreateShipmentRequestTest extends TestCase
      */
     public function testPropertyHazmatType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\HazmatType();
+        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\HazmatType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -104,7 +104,7 @@ class CreateShipmentRequestTest extends TestCase
     public function testPropertyLabelFormatOption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\LabelFormatOptionRequest();
+        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest();
         
         $this->model->setLabelFormatOption($testValue);
         $this->assertEquals($testValue, $this->model->getLabelFormatOption());

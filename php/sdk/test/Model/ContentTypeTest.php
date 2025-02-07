@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\ContentType;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentType;
 
 /**
  * ContentTypeTest Class Doc Comment

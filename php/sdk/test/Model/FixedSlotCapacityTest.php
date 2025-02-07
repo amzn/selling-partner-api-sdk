@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\FixedSlotCapacity;
+use OpenAPI\Client\Model\services\v1\FixedSlotCapacity;
 
 /**
  * FixedSlotCapacityTest Class Doc Comment

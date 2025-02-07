@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\ExportInvoicesRequest;
+use OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest;
 
 /**
  * ExportInvoicesRequestTest Class Doc Comment
@@ -91,7 +91,7 @@ class ExportInvoicesRequestTest extends TestCase
      */
     public function testPropertyFileFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\invoices\FileFormat();
+        $enumInstance = new \OpenAPI\Client\Model\invoices\v2024_06_19\FileFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -149,7 +149,7 @@ class ExportInvoicesRequestTest extends TestCase
     public function testPropertyTransactionIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoices\TransactionIdentifier();
+        $testValue = new \OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier();
         
         $this->model->setTransactionIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionIdentifier());

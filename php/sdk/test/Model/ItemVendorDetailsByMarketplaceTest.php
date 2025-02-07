@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\ItemVendorDetailsByMarketplace;
+use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsByMarketplace;
 
 /**
  * ItemVendorDetailsByMarketplaceTest Class Doc Comment
@@ -101,7 +101,7 @@ class ItemVendorDetailsByMarketplaceTest extends TestCase
     public function testPropertyProductCategory()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\ItemVendorDetailsCategory();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory();
         
         $this->model->setProductCategory($testValue);
         $this->assertEquals($testValue, $this->model->getProductCategory());
@@ -124,7 +124,7 @@ class ItemVendorDetailsByMarketplaceTest extends TestCase
     public function testPropertyProductSubcategory()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\ItemVendorDetailsCategory();
+        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory();
         
         $this->model->setProductSubcategory($testValue);
         $this->assertEquals($testValue, $this->model->getProductSubcategory());

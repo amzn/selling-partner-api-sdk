@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\GetSolicitationActionsForOrderResponseLinks;
+use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks;
 
 /**
  * GetSolicitationActionsForOrderResponseLinksTest Class Doc Comment
@@ -57,7 +57,7 @@ class GetSolicitationActionsForOrderResponseLinksTest extends TestCase
     public function testPropertySelf()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\LinkObject();
+        $testValue = new \OpenAPI\Client\Model\solicitations\v1\LinkObject();
         
         $this->model->setSelf($testValue);
         $this->assertEquals($testValue, $this->model->getSelf());

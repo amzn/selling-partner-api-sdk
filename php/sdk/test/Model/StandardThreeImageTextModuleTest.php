@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\StandardThreeImageTextModule;
+use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule;
 
 /**
  * StandardThreeImageTextModuleTest Class Doc Comment
@@ -57,7 +57,7 @@ class StandardThreeImageTextModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\TextComponent();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardThreeImageTextModuleTest extends TestCase
     public function testPropertyBlock1()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock1($testValue);
         $this->assertEquals($testValue, $this->model->getBlock1());
@@ -81,7 +81,7 @@ class StandardThreeImageTextModuleTest extends TestCase
     public function testPropertyBlock2()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock2($testValue);
         $this->assertEquals($testValue, $this->model->getBlock2());
@@ -93,7 +93,7 @@ class StandardThreeImageTextModuleTest extends TestCase
     public function testPropertyBlock3()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\StandardImageTextBlock();
+        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock3($testValue);
         $this->assertEquals($testValue, $this->model->getBlock3());

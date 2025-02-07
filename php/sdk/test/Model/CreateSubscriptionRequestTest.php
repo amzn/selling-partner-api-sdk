@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\CreateSubscriptionRequest;
+use OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest;
 
 /**
  * CreateSubscriptionRequestTest Class Doc Comment
@@ -79,7 +79,7 @@ class CreateSubscriptionRequestTest extends TestCase
     public function testPropertyProcessingDirective()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\ProcessingDirective();
+        $testValue = new \OpenAPI\Client\Model\notifications\v1\ProcessingDirective();
         
         $this->model->setProcessingDirective($testValue);
         $this->assertEquals($testValue, $this->model->getProcessingDirective());

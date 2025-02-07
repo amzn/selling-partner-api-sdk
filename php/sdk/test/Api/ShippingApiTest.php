@@ -29,7 +29,7 @@
 namespace OpenAPI\Client\Test\Api;
 
 use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\ShippingApi;
+use OpenAPI\Client\Api\shipping\v2\ShippingApi;
 use OpenAPI\Client\ObjectSerializer;
 
 /**

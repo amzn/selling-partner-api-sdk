@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\PaymentExecutionDetailItem;
+use OpenAPI\Client\Model\orders\v0\PaymentExecutionDetailItem;
 
 /**
  * PaymentExecutionDetailItemTest Class Doc Comment
@@ -57,7 +57,7 @@ class PaymentExecutionDetailItemTest extends TestCase
     public function testPropertyPayment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\Money();
+        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
         
         $this->model->setPayment($testValue);
         $this->assertEquals($testValue, $this->model->getPayment());

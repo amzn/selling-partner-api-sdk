@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\PickupChannel;
+use OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel;
 
 /**
  * PickupChannelTest Class Doc Comment
@@ -57,7 +57,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyInventoryHoldPeriod()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\Duration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration();
         
         $this->model->setInventoryHoldPeriod($testValue);
         $this->assertEquals($testValue, $this->model->getInventoryHoldPeriod());
@@ -80,7 +80,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\OperationalConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());
@@ -92,7 +92,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyInStorePickupConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\InStorePickupConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration();
         
         $this->model->setInStorePickupConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getInStorePickupConfiguration());
@@ -104,7 +104,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyCurbsidePickupConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\CurbsidePickupConfiguration();
+        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration();
         
         $this->model->setCurbsidePickupConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getCurbsidePickupConfiguration());

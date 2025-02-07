@@ -13,7 +13,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\IneligibilityReason;
+use OpenAPI\Client\Model\shipping\v2\IneligibilityReason;
 
 /**
  * IneligibilityReasonTest Class Doc Comment
@@ -56,7 +56,7 @@ class IneligibilityReasonTest extends TestCase
      */
     public function testPropertyCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\IneligibilityReasonCode();
+        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\IneligibilityReasonCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
