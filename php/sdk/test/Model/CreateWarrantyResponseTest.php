@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse;
+use SpApi\Model\messaging\v1\CreateWarrantyResponse;
 
 /**
  * CreateWarrantyResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the createWarranty operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateWarrantyResponseTest extends TestCase
 {

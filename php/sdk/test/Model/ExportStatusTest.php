@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\ExportStatus;
+use SpApi\Model\invoices\v2024_06_19\ExportStatus;
 
 /**
  * ExportStatusTest Class Doc Comment
  *
  * @category    Class
  * @description The current status of the request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExportStatusTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\Preference;
+use SpApi\Model\replenishment\v2022_11_07\Preference;
 
 /**
  * PreferenceTest Class Doc Comment
  *
  * @category    Class
  * @description Offer preferences that you can include in the result filter criteria.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PreferenceTest extends TestCase
 {

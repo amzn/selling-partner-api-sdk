@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\Issue;
+use SpApi\Model\listings\items\v2021_08_01\Issue;
 
 /**
  * IssueTest Class Doc Comment
  *
  * @category    Class
  * @description An issue with a listings item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class IssueTest extends TestCase
 {
@@ -113,7 +113,7 @@ class IssueTest extends TestCase
     public function testPropertyEnforcements()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueEnforcements();
+        $testValue = new \SpApi\Model\listings\items\v2021_08_01\IssueEnforcements();
         
         $this->model->setEnforcements($testValue);
         $this->assertEquals($testValue, $this->model->getEnforcements());

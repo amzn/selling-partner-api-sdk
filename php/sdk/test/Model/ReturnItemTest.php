@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItem;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItem;
 
 /**
  * ReturnItemTest Class Doc Comment
  *
  * @category    Class
  * @description An item that Amazon accepted for return.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ReturnItemTest extends TestCase
 {
@@ -122,7 +122,7 @@ class ReturnItemTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -158,7 +158,7 @@ class ReturnItemTest extends TestCase
      */
     public function testPropertyReturnReceivedCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

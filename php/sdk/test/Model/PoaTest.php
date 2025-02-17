@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\Poa;
+use SpApi\Model\services\v1\Poa;
 
 /**
  * PoaTest Class Doc Comment
  *
  * @category    Class
  * @description Proof of Appointment (POA) details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PoaTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PoaTest extends TestCase
     public function testPropertyAppointmentTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\AppointmentTime();
+        $testValue = new \SpApi\Model\services\v1\AppointmentTime();
         
         $this->model->setAppointmentTime($testValue);
         $this->assertEquals($testValue, $this->model->getAppointmentTime());

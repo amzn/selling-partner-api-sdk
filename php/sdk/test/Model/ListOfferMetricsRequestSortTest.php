@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequestSort;
+use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequestSort;
 
 /**
  * ListOfferMetricsRequestSortTest Class Doc Comment
  *
  * @category    Class
  * @description Use these parameters to sort the response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOfferMetricsRequestSortTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ListOfferMetricsRequestSortTest extends TestCase
      */
     public function testPropertyOrder()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\SortOrder();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\SortOrder();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ListOfferMetricsRequestSortTest extends TestCase
      */
     public function testPropertyKey()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsSortKey();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsSortKey();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

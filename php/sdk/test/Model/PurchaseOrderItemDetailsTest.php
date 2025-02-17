@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\PurchaseOrderItemDetails;
+use SpApi\Model\vendor\shipments\v1\PurchaseOrderItemDetails;
 
 /**
  * PurchaseOrderItemDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PurchaseOrderItemDetailsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PurchaseOrderItemDetailsTest extends TestCase
     public function testPropertyMaximumRetailPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Money();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Money();
         
         $this->model->setMaximumRetailPrice($testValue);
         $this->assertEquals($testValue, $this->model->getMaximumRetailPrice());

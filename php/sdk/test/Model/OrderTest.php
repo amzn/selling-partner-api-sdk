@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\Order;
+use SpApi\Model\orders\v0\Order;
 
 /**
  * OrderTest Class Doc Comment
  *
  * @category    Class
  * @description Order information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderTest extends TestCase
 {
@@ -158,7 +158,7 @@ class OrderTest extends TestCase
     public function testPropertyOrderTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
+        $testValue = new \SpApi\Model\orders\v0\Money();
         
         $this->model->setOrderTotal($testValue);
         $this->assertEquals($testValue, $this->model->getOrderTotal());
@@ -247,7 +247,7 @@ class OrderTest extends TestCase
      */
     public function testPropertyEasyShipShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\EasyShipShipmentStatus();
+        $enumInstance = new \SpApi\Model\orders\v0\EasyShipShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -438,7 +438,7 @@ class OrderTest extends TestCase
     public function testPropertyDefaultShipFromLocationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Address();
+        $testValue = new \SpApi\Model\orders\v0\Address();
         
         $this->model->setDefaultShipFromLocationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDefaultShipFromLocationAddress());
@@ -462,7 +462,7 @@ class OrderTest extends TestCase
     public function testPropertyBuyerTaxInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerTaxInformation();
+        $testValue = new \SpApi\Model\orders\v0\BuyerTaxInformation();
         
         $this->model->setBuyerTaxInformation($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerTaxInformation());
@@ -474,7 +474,7 @@ class OrderTest extends TestCase
     public function testPropertyFulfillmentInstruction()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\FulfillmentInstruction();
+        $testValue = new \SpApi\Model\orders\v0\FulfillmentInstruction();
         
         $this->model->setFulfillmentInstruction($testValue);
         $this->assertEquals($testValue, $this->model->getFulfillmentInstruction());
@@ -508,7 +508,7 @@ class OrderTest extends TestCase
     public function testPropertyMarketplaceTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\MarketplaceTaxInfo();
+        $testValue = new \SpApi\Model\orders\v0\MarketplaceTaxInfo();
         
         $this->model->setMarketplaceTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplaceTaxInfo());
@@ -531,7 +531,7 @@ class OrderTest extends TestCase
     public function testPropertyShippingAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Address();
+        $testValue = new \SpApi\Model\orders\v0\Address();
         
         $this->model->setShippingAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShippingAddress());
@@ -543,7 +543,7 @@ class OrderTest extends TestCase
     public function testPropertyBuyerInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerInfo();
+        $testValue = new \SpApi\Model\orders\v0\BuyerInfo();
         
         $this->model->setBuyerInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerInfo());
@@ -555,7 +555,7 @@ class OrderTest extends TestCase
     public function testPropertyAutomatedShippingSettings()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings();
+        $testValue = new \SpApi\Model\orders\v0\AutomatedShippingSettings();
         
         $this->model->setAutomatedShippingSettings($testValue);
         $this->assertEquals($testValue, $this->model->getAutomatedShippingSettings());
@@ -577,7 +577,7 @@ class OrderTest extends TestCase
      */
     public function testPropertyElectronicInvoiceStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ElectronicInvoiceStatus();
+        $enumInstance = new \SpApi\Model\orders\v0\ElectronicInvoiceStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

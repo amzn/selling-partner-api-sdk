@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SelfShipAppointmentDetails Class Doc Comment
  *
  * @category Class
  * @description Appointment details for carrier pickup or fulfillment center appointments.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPITypes = [
              'appointment_id' => 'float',
-             'appointment_slot_time' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime',
+             'appointment_slot_time' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime',
              'appointment_status' => 'string'    ];
 
     /**
@@ -350,9 +350,9 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets appointment_slot_time
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime|null
      */
-    public function getAppointmentSlotTime(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime
+    public function getAppointmentSlotTime(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime
     {
         return $this->container['appointment_slot_time'];
     }
@@ -360,11 +360,11 @@ class SelfShipAppointmentDetails implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets appointment_slot_time
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime|null $appointment_slot_time appointment_slot_time
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime|null $appointment_slot_time appointment_slot_time
      *
      * @return self
      */
-    public function setAppointmentSlotTime(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime $appointment_slot_time): self
+    public function setAppointmentSlotTime(?\SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime $appointment_slot_time): self
     {
         if (is_null($appointment_slot_time)) {
             array_push($this->openAPINullablesSetToNull, 'appointment_slot_time');

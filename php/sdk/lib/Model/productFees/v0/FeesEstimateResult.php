@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeesEstimateResult Class Doc Comment
  *
  * @category Class
  * @description An item identifier and the estimated fees for the item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPITypes = [
              'status' => 'string',
-             'fees_estimate_identifier' => '\OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier',
-             'fees_estimate' => '\OpenAPI\Client\Model\productFees\v0\FeesEstimate',
-             'error' => '\OpenAPI\Client\Model\productFees\v0\FeesEstimateError'    ];
+             'fees_estimate_identifier' => '\SpApi\Model\productFees\v0\FeesEstimateIdentifier',
+             'fees_estimate' => '\SpApi\Model\productFees\v0\FeesEstimate',
+             'error' => '\SpApi\Model\productFees\v0\FeesEstimateError'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -349,9 +349,9 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets fees_estimate_identifier
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier|null
+     * @return \SpApi\Model\productFees\v0\FeesEstimateIdentifier|null
      */
-    public function getFeesEstimateIdentifier(): ?\OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier
+    public function getFeesEstimateIdentifier(): ?\SpApi\Model\productFees\v0\FeesEstimateIdentifier
     {
         return $this->container['fees_estimate_identifier'];
     }
@@ -359,11 +359,11 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets fees_estimate_identifier
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier|null $fees_estimate_identifier fees_estimate_identifier
+     * @param \SpApi\Model\productFees\v0\FeesEstimateIdentifier|null $fees_estimate_identifier fees_estimate_identifier
      *
      * @return self
      */
-    public function setFeesEstimateIdentifier(?\OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier $fees_estimate_identifier): self
+    public function setFeesEstimateIdentifier(?\SpApi\Model\productFees\v0\FeesEstimateIdentifier $fees_estimate_identifier): self
     {
         if (is_null($fees_estimate_identifier)) {
             array_push($this->openAPINullablesSetToNull, 'fees_estimate_identifier');
@@ -383,9 +383,9 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets fees_estimate
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\FeesEstimate|null
+     * @return \SpApi\Model\productFees\v0\FeesEstimate|null
      */
-    public function getFeesEstimate(): ?\OpenAPI\Client\Model\productFees\v0\FeesEstimate
+    public function getFeesEstimate(): ?\SpApi\Model\productFees\v0\FeesEstimate
     {
         return $this->container['fees_estimate'];
     }
@@ -393,11 +393,11 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets fees_estimate
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\FeesEstimate|null $fees_estimate fees_estimate
+     * @param \SpApi\Model\productFees\v0\FeesEstimate|null $fees_estimate fees_estimate
      *
      * @return self
      */
-    public function setFeesEstimate(?\OpenAPI\Client\Model\productFees\v0\FeesEstimate $fees_estimate): self
+    public function setFeesEstimate(?\SpApi\Model\productFees\v0\FeesEstimate $fees_estimate): self
     {
         if (is_null($fees_estimate)) {
             array_push($this->openAPINullablesSetToNull, 'fees_estimate');
@@ -417,9 +417,9 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\FeesEstimateError|null
+     * @return \SpApi\Model\productFees\v0\FeesEstimateError|null
      */
-    public function getError(): ?\OpenAPI\Client\Model\productFees\v0\FeesEstimateError
+    public function getError(): ?\SpApi\Model\productFees\v0\FeesEstimateError
     {
         return $this->container['error'];
     }
@@ -427,11 +427,11 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\FeesEstimateError|null $error error
+     * @param \SpApi\Model\productFees\v0\FeesEstimateError|null $error error
      *
      * @return self
      */
-    public function setError(?\OpenAPI\Client\Model\productFees\v0\FeesEstimateError $error): self
+    public function setError(?\SpApi\Model\productFees\v0\FeesEstimateError $error): self
     {
         if (is_null($error)) {
             array_push($this->openAPINullablesSetToNull, 'error');

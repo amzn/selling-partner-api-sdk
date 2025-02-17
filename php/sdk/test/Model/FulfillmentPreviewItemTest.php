@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreviewItem;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreviewItem;
 
 /**
  * FulfillmentPreviewItemTest Class Doc Comment
  *
  * @category    Class
  * @description Item information for a shipment in a fulfillment order preview.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentPreviewItemTest extends TestCase
 {
@@ -90,7 +90,7 @@ class FulfillmentPreviewItemTest extends TestCase
     public function testPropertyEstimatedShippingWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Weight();
         
         $this->model->setEstimatedShippingWeight($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedShippingWeight());

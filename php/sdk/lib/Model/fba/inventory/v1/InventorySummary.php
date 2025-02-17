@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fba\inventory\v1;
+namespace SpApi\Model\fba\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InventorySummary Class Doc Comment
  *
  * @category Class
  * @description Inventory summary for a specific item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
              'fn_sku' => 'string',
              'seller_sku' => 'string',
              'condition' => 'string',
-             'inventory_details' => '\OpenAPI\Client\Model\fba\inventory\v1\InventoryDetails',
+             'inventory_details' => '\SpApi\Model\fba\inventory\v1\InventoryDetails',
              'last_updated_time' => '\DateTime',
              'product_name' => 'string',
              'total_quantity' => 'int',
@@ -486,9 +486,9 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets inventory_details
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\InventoryDetails|null
+     * @return \SpApi\Model\fba\inventory\v1\InventoryDetails|null
      */
-    public function getInventoryDetails(): ?\OpenAPI\Client\Model\fba\inventory\v1\InventoryDetails
+    public function getInventoryDetails(): ?\SpApi\Model\fba\inventory\v1\InventoryDetails
     {
         return $this->container['inventory_details'];
     }
@@ -496,11 +496,11 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inventory_details
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\InventoryDetails|null $inventory_details inventory_details
+     * @param \SpApi\Model\fba\inventory\v1\InventoryDetails|null $inventory_details inventory_details
      *
      * @return self
      */
-    public function setInventoryDetails(?\OpenAPI\Client\Model\fba\inventory\v1\InventoryDetails $inventory_details): self
+    public function setInventoryDetails(?\SpApi\Model\fba\inventory\v1\InventoryDetails $inventory_details): self
     {
         if (is_null($inventory_details)) {
             array_push($this->openAPINullablesSetToNull, 'inventory_details');

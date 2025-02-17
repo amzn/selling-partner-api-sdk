@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\datakiosk\v2023_11_15\Query;
+use SpApi\Model\datakiosk\v2023_11_15\Query;
 
 /**
  * QueryTest Class Doc Comment
  *
  * @category    Class
  * @description Detailed information about the query.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class QueryTest extends TestCase
 {
@@ -149,7 +149,7 @@ class QueryTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination();
+        $testValue = new \SpApi\Model\datakiosk\v2023_11_15\QueryPagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

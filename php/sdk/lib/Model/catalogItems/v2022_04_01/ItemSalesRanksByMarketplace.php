@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemSalesRanksByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Sales ranks of an Amazon catalog item for the indicated Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
-             'classification_ranks' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemClassificationSalesRank[]',
-             'display_group_ranks' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemDisplayGroupSalesRank[]'    ];
+             'classification_ranks' => '\SpApi\Model\catalogItems\v2022_04_01\ItemClassificationSalesRank[]',
+             'display_group_ranks' => '\SpApi\Model\catalogItems\v2022_04_01\ItemDisplayGroupSalesRank[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

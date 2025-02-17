@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Order Class Doc Comment
  *
  * @category Class
  * @description Order information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -69,15 +69,15 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
              'sales_channel' => 'string',
              'order_channel' => 'string',
              'ship_service_level' => 'string',
-             'order_total' => '\OpenAPI\Client\Model\orders\v0\Money',
+             'order_total' => '\SpApi\Model\orders\v0\Money',
              'number_of_items_shipped' => 'int',
              'number_of_items_unshipped' => 'int',
-             'payment_execution_detail' => '\OpenAPI\Client\Model\orders\v0\PaymentExecutionDetailItem[]',
+             'payment_execution_detail' => '\SpApi\Model\orders\v0\PaymentExecutionDetailItem[]',
              'payment_method' => 'string',
              'payment_method_details' => 'string[]',
              'marketplace_id' => 'string',
              'shipment_service_level_category' => 'string',
-             'easy_ship_shipment_status' => '\OpenAPI\Client\Model\orders\v0\EasyShipShipmentStatus',
+             'easy_ship_shipment_status' => '\SpApi\Model\orders\v0\EasyShipShipmentStatus',
              'cba_displayable_shipping_label' => 'string',
              'order_type' => 'string',
              'earliest_ship_date' => 'string',
@@ -94,19 +94,19 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
              'is_estimated_ship_date_set' => 'bool',
              'is_sold_by_ab' => 'bool',
              'is_iba' => 'bool',
-             'default_ship_from_location_address' => '\OpenAPI\Client\Model\orders\v0\Address',
+             'default_ship_from_location_address' => '\SpApi\Model\orders\v0\Address',
              'buyer_invoice_preference' => 'string',
-             'buyer_tax_information' => '\OpenAPI\Client\Model\orders\v0\BuyerTaxInformation',
-             'fulfillment_instruction' => '\OpenAPI\Client\Model\orders\v0\FulfillmentInstruction',
+             'buyer_tax_information' => '\SpApi\Model\orders\v0\BuyerTaxInformation',
+             'fulfillment_instruction' => '\SpApi\Model\orders\v0\FulfillmentInstruction',
              'is_ispu' => 'bool',
              'is_access_point_order' => 'bool',
-             'marketplace_tax_info' => '\OpenAPI\Client\Model\orders\v0\MarketplaceTaxInfo',
+             'marketplace_tax_info' => '\SpApi\Model\orders\v0\MarketplaceTaxInfo',
              'seller_display_name' => 'string',
-             'shipping_address' => '\OpenAPI\Client\Model\orders\v0\Address',
-             'buyer_info' => '\OpenAPI\Client\Model\orders\v0\BuyerInfo',
-             'automated_shipping_settings' => '\OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings',
+             'shipping_address' => '\SpApi\Model\orders\v0\Address',
+             'buyer_info' => '\SpApi\Model\orders\v0\BuyerInfo',
+             'automated_shipping_settings' => '\SpApi\Model\orders\v0\AutomatedShippingSettings',
              'has_regulated_items' => 'bool',
-             'electronic_invoice_status' => '\OpenAPI\Client\Model\orders\v0\ElectronicInvoiceStatus'    ];
+             'electronic_invoice_status' => '\SpApi\Model\orders\v0\ElectronicInvoiceStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -1066,9 +1066,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_total
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getOrderTotal(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getOrderTotal(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['order_total'];
     }
@@ -1076,11 +1076,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_total
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $order_total order_total
+     * @param \SpApi\Model\orders\v0\Money|null $order_total order_total
      *
      * @return self
      */
-    public function setOrderTotal(?\OpenAPI\Client\Model\orders\v0\Money $order_total): self
+    public function setOrderTotal(?\SpApi\Model\orders\v0\Money $order_total): self
     {
         if (is_null($order_total)) {
             array_push($this->openAPINullablesSetToNull, 'order_total');
@@ -1936,9 +1936,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets default_ship_from_location_address
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Address|null
+     * @return \SpApi\Model\orders\v0\Address|null
      */
-    public function getDefaultShipFromLocationAddress(): ?\OpenAPI\Client\Model\orders\v0\Address
+    public function getDefaultShipFromLocationAddress(): ?\SpApi\Model\orders\v0\Address
     {
         return $this->container['default_ship_from_location_address'];
     }
@@ -1946,11 +1946,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets default_ship_from_location_address
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Address|null $default_ship_from_location_address default_ship_from_location_address
+     * @param \SpApi\Model\orders\v0\Address|null $default_ship_from_location_address default_ship_from_location_address
      *
      * @return self
      */
-    public function setDefaultShipFromLocationAddress(?\OpenAPI\Client\Model\orders\v0\Address $default_ship_from_location_address): self
+    public function setDefaultShipFromLocationAddress(?\SpApi\Model\orders\v0\Address $default_ship_from_location_address): self
     {
         if (is_null($default_ship_from_location_address)) {
             array_push($this->openAPINullablesSetToNull, 'default_ship_from_location_address');
@@ -2014,9 +2014,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer_tax_information
      *
-     * @return \OpenAPI\Client\Model\orders\v0\BuyerTaxInformation|null
+     * @return \SpApi\Model\orders\v0\BuyerTaxInformation|null
      */
-    public function getBuyerTaxInformation(): ?\OpenAPI\Client\Model\orders\v0\BuyerTaxInformation
+    public function getBuyerTaxInformation(): ?\SpApi\Model\orders\v0\BuyerTaxInformation
     {
         return $this->container['buyer_tax_information'];
     }
@@ -2024,11 +2024,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_tax_information
      *
-     * @param \OpenAPI\Client\Model\orders\v0\BuyerTaxInformation|null $buyer_tax_information buyer_tax_information
+     * @param \SpApi\Model\orders\v0\BuyerTaxInformation|null $buyer_tax_information buyer_tax_information
      *
      * @return self
      */
-    public function setBuyerTaxInformation(?\OpenAPI\Client\Model\orders\v0\BuyerTaxInformation $buyer_tax_information): self
+    public function setBuyerTaxInformation(?\SpApi\Model\orders\v0\BuyerTaxInformation $buyer_tax_information): self
     {
         if (is_null($buyer_tax_information)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_tax_information');
@@ -2048,9 +2048,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fulfillment_instruction
      *
-     * @return \OpenAPI\Client\Model\orders\v0\FulfillmentInstruction|null
+     * @return \SpApi\Model\orders\v0\FulfillmentInstruction|null
      */
-    public function getFulfillmentInstruction(): ?\OpenAPI\Client\Model\orders\v0\FulfillmentInstruction
+    public function getFulfillmentInstruction(): ?\SpApi\Model\orders\v0\FulfillmentInstruction
     {
         return $this->container['fulfillment_instruction'];
     }
@@ -2058,11 +2058,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fulfillment_instruction
      *
-     * @param \OpenAPI\Client\Model\orders\v0\FulfillmentInstruction|null $fulfillment_instruction fulfillment_instruction
+     * @param \SpApi\Model\orders\v0\FulfillmentInstruction|null $fulfillment_instruction fulfillment_instruction
      *
      * @return self
      */
-    public function setFulfillmentInstruction(?\OpenAPI\Client\Model\orders\v0\FulfillmentInstruction $fulfillment_instruction): self
+    public function setFulfillmentInstruction(?\SpApi\Model\orders\v0\FulfillmentInstruction $fulfillment_instruction): self
     {
         if (is_null($fulfillment_instruction)) {
             array_push($this->openAPINullablesSetToNull, 'fulfillment_instruction');
@@ -2150,9 +2150,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_tax_info
      *
-     * @return \OpenAPI\Client\Model\orders\v0\MarketplaceTaxInfo|null
+     * @return \SpApi\Model\orders\v0\MarketplaceTaxInfo|null
      */
-    public function getMarketplaceTaxInfo(): ?\OpenAPI\Client\Model\orders\v0\MarketplaceTaxInfo
+    public function getMarketplaceTaxInfo(): ?\SpApi\Model\orders\v0\MarketplaceTaxInfo
     {
         return $this->container['marketplace_tax_info'];
     }
@@ -2160,11 +2160,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marketplace_tax_info
      *
-     * @param \OpenAPI\Client\Model\orders\v0\MarketplaceTaxInfo|null $marketplace_tax_info marketplace_tax_info
+     * @param \SpApi\Model\orders\v0\MarketplaceTaxInfo|null $marketplace_tax_info marketplace_tax_info
      *
      * @return self
      */
-    public function setMarketplaceTaxInfo(?\OpenAPI\Client\Model\orders\v0\MarketplaceTaxInfo $marketplace_tax_info): self
+    public function setMarketplaceTaxInfo(?\SpApi\Model\orders\v0\MarketplaceTaxInfo $marketplace_tax_info): self
     {
         if (is_null($marketplace_tax_info)) {
             array_push($this->openAPINullablesSetToNull, 'marketplace_tax_info');
@@ -2218,9 +2218,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_address
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Address|null
+     * @return \SpApi\Model\orders\v0\Address|null
      */
-    public function getShippingAddress(): ?\OpenAPI\Client\Model\orders\v0\Address
+    public function getShippingAddress(): ?\SpApi\Model\orders\v0\Address
     {
         return $this->container['shipping_address'];
     }
@@ -2228,11 +2228,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_address
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Address|null $shipping_address shipping_address
+     * @param \SpApi\Model\orders\v0\Address|null $shipping_address shipping_address
      *
      * @return self
      */
-    public function setShippingAddress(?\OpenAPI\Client\Model\orders\v0\Address $shipping_address): self
+    public function setShippingAddress(?\SpApi\Model\orders\v0\Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_address');
@@ -2252,9 +2252,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer_info
      *
-     * @return \OpenAPI\Client\Model\orders\v0\BuyerInfo|null
+     * @return \SpApi\Model\orders\v0\BuyerInfo|null
      */
-    public function getBuyerInfo(): ?\OpenAPI\Client\Model\orders\v0\BuyerInfo
+    public function getBuyerInfo(): ?\SpApi\Model\orders\v0\BuyerInfo
     {
         return $this->container['buyer_info'];
     }
@@ -2262,11 +2262,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_info
      *
-     * @param \OpenAPI\Client\Model\orders\v0\BuyerInfo|null $buyer_info buyer_info
+     * @param \SpApi\Model\orders\v0\BuyerInfo|null $buyer_info buyer_info
      *
      * @return self
      */
-    public function setBuyerInfo(?\OpenAPI\Client\Model\orders\v0\BuyerInfo $buyer_info): self
+    public function setBuyerInfo(?\SpApi\Model\orders\v0\BuyerInfo $buyer_info): self
     {
         if (is_null($buyer_info)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_info');
@@ -2286,9 +2286,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets automated_shipping_settings
      *
-     * @return \OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings|null
+     * @return \SpApi\Model\orders\v0\AutomatedShippingSettings|null
      */
-    public function getAutomatedShippingSettings(): ?\OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings
+    public function getAutomatedShippingSettings(): ?\SpApi\Model\orders\v0\AutomatedShippingSettings
     {
         return $this->container['automated_shipping_settings'];
     }
@@ -2296,11 +2296,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets automated_shipping_settings
      *
-     * @param \OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings|null $automated_shipping_settings automated_shipping_settings
+     * @param \SpApi\Model\orders\v0\AutomatedShippingSettings|null $automated_shipping_settings automated_shipping_settings
      *
      * @return self
      */
-    public function setAutomatedShippingSettings(?\OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings $automated_shipping_settings): self
+    public function setAutomatedShippingSettings(?\SpApi\Model\orders\v0\AutomatedShippingSettings $automated_shipping_settings): self
     {
         if (is_null($automated_shipping_settings)) {
             array_push($this->openAPINullablesSetToNull, 'automated_shipping_settings');

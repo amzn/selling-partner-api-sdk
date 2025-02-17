@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks;
+use SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks;
 
 /**
  * GetSolicitationActionsForOrderResponseLinksTest Class Doc Comment
  *
  * @category    Class
  * @description GetSolicitationActionsForOrderResponseLinks
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetSolicitationActionsForOrderResponseLinksTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetSolicitationActionsForOrderResponseLinksTest extends TestCase
     public function testPropertySelf()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\v1\LinkObject();
+        $testValue = new \SpApi\Model\solicitations\v1\LinkObject();
         
         $this->model->setSelf($testValue);
         $this->assertEquals($testValue, $this->model->getSelf());

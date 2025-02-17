@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOfferExpectedPriceRequest Class Doc Comment
  *
  * @category Class
  * @description An individual FOEP request for a particular SKU.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPITypes = [
              'uri' => 'string',
-             'method' => '\OpenAPI\Client\Model\pricing\v2022_05_01\HttpMethod',
+             'method' => '\SpApi\Model\pricing\v2022_05_01\HttpMethod',
              'body' => 'array<string,object>',
              'headers' => 'array<string,string>',
              'marketplace_id' => 'string',
              'sku' => 'string',
-             'segment' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Segment'    ];
+             'segment' => '\SpApi\Model\pricing\v2022_05_01\Segment'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -524,9 +524,9 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
     /**
      * Gets segment
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\Segment|null
+     * @return \SpApi\Model\pricing\v2022_05_01\Segment|null
      */
-    public function getSegment(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\Segment
+    public function getSegment(): ?\SpApi\Model\pricing\v2022_05_01\Segment
     {
         return $this->container['segment'];
     }
@@ -534,11 +534,11 @@ class FeaturedOfferExpectedPriceRequest implements ModelInterface, ArrayAccess, 
     /**
      * Sets segment
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\Segment|null $segment segment
+     * @param \SpApi\Model\pricing\v2022_05_01\Segment|null $segment segment
      *
      * @return self
      */
-    public function setSegment(?\OpenAPI\Client\Model\pricing\v2022_05_01\Segment $segment): self
+    public function setSegment(?\SpApi\Model\pricing\v2022_05_01\Segment $segment): self
     {
         if (is_null($segment)) {
             array_push($this->openAPINullablesSetToNull, 'segment');

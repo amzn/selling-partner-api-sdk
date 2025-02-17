@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\uploads\v2020_11_01\UploadDestination;
+use SpApi\Model\uploads\v2020_11_01\UploadDestination;
 
 /**
  * UploadDestinationTest Class Doc Comment
  *
  * @category    Class
  * @description Information about an upload destination.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UploadDestinationTest extends TestCase
 {

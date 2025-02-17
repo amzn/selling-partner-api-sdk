@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders;
+use SpApi\Model\pricing\v0\HttpResponseHeaders;
 
 /**
  * HttpResponseHeadersTest Class Doc Comment
  *
  * @category    Class
  * @description A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class HttpResponseHeadersTest extends TestCase
 {

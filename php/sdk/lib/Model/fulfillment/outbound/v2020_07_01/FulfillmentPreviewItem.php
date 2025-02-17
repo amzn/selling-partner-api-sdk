@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FulfillmentPreviewItem Class Doc Comment
  *
  * @category Class
  * @description Item information for a shipment in a fulfillment order preview.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
              'seller_sku' => 'string',
              'quantity' => 'int',
              'seller_fulfillment_order_item_id' => 'string',
-             'estimated_shipping_weight' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight',
+             'estimated_shipping_weight' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Weight',
              'shipping_weight_calculation_method' => 'string'    ];
 
     /**
@@ -436,9 +436,9 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets estimated_shipping_weight
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Weight|null
      */
-    public function getEstimatedShippingWeight(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight
+    public function getEstimatedShippingWeight(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Weight
     {
         return $this->container['estimated_shipping_weight'];
     }
@@ -446,11 +446,11 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets estimated_shipping_weight
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight|null $estimated_shipping_weight estimated_shipping_weight
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Weight|null $estimated_shipping_weight estimated_shipping_weight
      *
      * @return self
      */
-    public function setEstimatedShippingWeight(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight $estimated_shipping_weight): self
+    public function setEstimatedShippingWeight(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Weight $estimated_shipping_weight): self
     {
         if (is_null($estimated_shipping_weight)) {
             array_push($this->openAPINullablesSetToNull, 'estimated_shipping_weight');

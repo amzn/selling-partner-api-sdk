@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateItemComplianceDetailsResponse;
 
 /**
  * UpdateItemComplianceDetailsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;updateItemComplianceDetails&#x60; response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateItemComplianceDetailsResponseTest extends TestCase
 {

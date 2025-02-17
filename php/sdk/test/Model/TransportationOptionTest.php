@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption;
 
 /**
  * TransportationOptionTest Class Doc Comment
  *
  * @category    Class
  * @description Contains information pertaining to a transportation option and the related carrier.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransportationOptionTest extends TestCase
 {
@@ -57,7 +57,7 @@ class TransportationOptionTest extends TestCase
     public function testPropertyCarrier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Carrier();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Carrier();
         
         $this->model->setCarrier($testValue);
         $this->assertEquals($testValue, $this->model->getCarrier());
@@ -69,7 +69,7 @@ class TransportationOptionTest extends TestCase
     public function testPropertyCarrierAppointment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment();
         
         $this->model->setCarrierAppointment($testValue);
         $this->assertEquals($testValue, $this->model->getCarrierAppointment());
@@ -92,7 +92,7 @@ class TransportationOptionTest extends TestCase
     public function testPropertyQuote()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Quote();
         
         $this->model->setQuote($testValue);
         $this->assertEquals($testValue, $this->model->getQuote());

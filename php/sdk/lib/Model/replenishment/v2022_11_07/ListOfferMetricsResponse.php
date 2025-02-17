@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOfferMetricsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;listOfferMetrics&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'offers' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponseOffer[]',
-             'pagination' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\PaginationResponse'    ];
+             'offers' => '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponseOffer[]',
+             'pagination' => '\SpApi\Model\replenishment\v2022_11_07\PaginationResponse'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\PaginationResponse|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\PaginationResponse|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\PaginationResponse
+    public function getPagination(): ?\SpApi\Model\replenishment\v2022_11_07\PaginationResponse
     {
         return $this->container['pagination'];
     }
@@ -345,11 +345,11 @@ class ListOfferMetricsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\PaginationResponse|null $pagination pagination
+     * @param \SpApi\Model\replenishment\v2022_11_07\PaginationResponse|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\replenishment\v2022_11_07\PaginationResponse $pagination): self
+    public function setPagination(?\SpApi\Model\replenishment\v2022_11_07\PaginationResponse $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

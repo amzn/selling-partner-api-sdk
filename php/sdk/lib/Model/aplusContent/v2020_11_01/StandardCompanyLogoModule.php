@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardCompanyLogoModule Class Doc Comment
  *
  * @category Class
  * @description The standard company logo image.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class StandardCompanyLogoModule implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'company_logo' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent'    ];
+             'company_logo' => '\SpApi\Model\aplusContent\v2020_11_01\ImageComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class StandardCompanyLogoModule implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets company_logo
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageComponent
      */
-    public function getCompanyLogo(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent
+    public function getCompanyLogo(): \SpApi\Model\aplusContent\v2020_11_01\ImageComponent
     {
         return $this->container['company_logo'];
     }
@@ -307,11 +307,11 @@ class StandardCompanyLogoModule implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets company_logo
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent $company_logo company_logo
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageComponent $company_logo company_logo
      *
      * @return self
      */
-    public function setCompanyLogo(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent $company_logo): self
+    public function setCompanyLogo(\SpApi\Model\aplusContent\v2020_11_01\ImageComponent $company_logo): self
     {
         if (is_null($company_logo)) {
             throw new \InvalidArgumentException('non-nullable company_logo cannot be null');

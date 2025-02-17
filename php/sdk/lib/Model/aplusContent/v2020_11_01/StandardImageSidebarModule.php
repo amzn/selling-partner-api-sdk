@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardImageSidebarModule Class Doc Comment
  *
  * @category Class
  * @description Two images, two paragraphs, and two bulleted lists. One image is smaller and displayed in the sidebar.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'image_caption_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock',
-             'description_text_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock',
-             'description_list_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock',
-             'sidebar_image_text_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'sidebar_list_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock'    ];
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'image_caption_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock',
+             'description_text_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock',
+             'description_list_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock',
+             'sidebar_image_text_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'sidebar_list_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -329,9 +329,9 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -339,11 +339,11 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -363,9 +363,9 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets image_caption_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock|null
      */
-    public function getImageCaptionBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock
+    public function getImageCaptionBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock
     {
         return $this->container['image_caption_block'];
     }
@@ -373,11 +373,11 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets image_caption_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock|null $image_caption_block image_caption_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock|null $image_caption_block image_caption_block
      *
      * @return self
      */
-    public function setImageCaptionBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock $image_caption_block): self
+    public function setImageCaptionBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageCaptionBlock $image_caption_block): self
     {
         if (is_null($image_caption_block)) {
             array_push($this->openAPINullablesSetToNull, 'image_caption_block');
@@ -397,9 +397,9 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets description_text_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getDescriptionTextBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getDescriptionTextBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['description_text_block'];
     }
@@ -407,11 +407,11 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets description_text_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $description_text_block description_text_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $description_text_block description_text_block
      *
      * @return self
      */
-    public function setDescriptionTextBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $description_text_block): self
+    public function setDescriptionTextBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $description_text_block): self
     {
         if (is_null($description_text_block)) {
             array_push($this->openAPINullablesSetToNull, 'description_text_block');
@@ -431,9 +431,9 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets description_list_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock|null
      */
-    public function getDescriptionListBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock
+    public function getDescriptionListBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock
     {
         return $this->container['description_list_block'];
     }
@@ -441,11 +441,11 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets description_list_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock|null $description_list_block description_list_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock|null $description_list_block description_list_block
      *
      * @return self
      */
-    public function setDescriptionListBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock $description_list_block): self
+    public function setDescriptionListBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock $description_list_block): self
     {
         if (is_null($description_list_block)) {
             array_push($this->openAPINullablesSetToNull, 'description_list_block');
@@ -465,9 +465,9 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets sidebar_image_text_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getSidebarImageTextBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getSidebarImageTextBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['sidebar_image_text_block'];
     }
@@ -475,11 +475,11 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets sidebar_image_text_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $sidebar_image_text_block sidebar_image_text_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $sidebar_image_text_block sidebar_image_text_block
      *
      * @return self
      */
-    public function setSidebarImageTextBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $sidebar_image_text_block): self
+    public function setSidebarImageTextBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $sidebar_image_text_block): self
     {
         if (is_null($sidebar_image_text_block)) {
             array_push($this->openAPINullablesSetToNull, 'sidebar_image_text_block');
@@ -499,9 +499,9 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets sidebar_list_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock|null
      */
-    public function getSidebarListBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock
+    public function getSidebarListBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock
     {
         return $this->container['sidebar_list_block'];
     }
@@ -509,11 +509,11 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets sidebar_list_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock|null $sidebar_list_block sidebar_list_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock|null $sidebar_list_block sidebar_list_block
      *
      * @return self
      */
-    public function setSidebarListBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock $sidebar_list_block): self
+    public function setSidebarListBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock $sidebar_list_block): self
     {
         if (is_null($sidebar_list_block)) {
             array_push($this->openAPINullablesSetToNull, 'sidebar_list_block');

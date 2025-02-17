@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetDeliveryOffersProduct Class Doc Comment
  *
  * @category Class
  * @description The product details for the delivery offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'product_identifier' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier',
-             'amount' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount'    ];
+             'product_identifier' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier',
+             'amount' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Amount'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets product_identifier
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier
      */
-    public function getProductIdentifier(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier
+    public function getProductIdentifier(): \SpApi\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier
     {
         return $this->container['product_identifier'];
     }
@@ -314,11 +314,11 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets product_identifier
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier $product_identifier product_identifier
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier $product_identifier product_identifier
      *
      * @return self
      */
-    public function setProductIdentifier(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier $product_identifier): self
+    public function setProductIdentifier(\SpApi\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier $product_identifier): self
     {
         if (is_null($product_identifier)) {
             throw new \InvalidArgumentException('non-nullable product_identifier cannot be null');
@@ -331,9 +331,9 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets amount
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Amount|null
      */
-    public function getAmount(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount
+    public function getAmount(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Amount
     {
         return $this->container['amount'];
     }
@@ -341,11 +341,11 @@ class GetDeliveryOffersProduct implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets amount
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount|null $amount amount
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Amount|null $amount amount
      *
      * @return self
      */
-    public function setAmount(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount $amount): self
+    public function setAmount(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Amount $amount): self
     {
         if (is_null($amount)) {
             array_push($this->openAPINullablesSetToNull, 'amount');

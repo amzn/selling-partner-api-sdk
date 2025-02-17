@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\RetrochargeEvent;
+use SpApi\Model\finances\v0\RetrochargeEvent;
 
 /**
  * RetrochargeEventTest Class Doc Comment
  *
  * @category    Class
  * @description A retrocharge or retrocharge reversal.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RetrochargeEventTest extends TestCase
 {
@@ -91,7 +91,7 @@ class RetrochargeEventTest extends TestCase
     public function testPropertyBaseTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setBaseTax($testValue);
         $this->assertEquals($testValue, $this->model->getBaseTax());
@@ -103,7 +103,7 @@ class RetrochargeEventTest extends TestCase
     public function testPropertyShippingTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setShippingTax($testValue);
         $this->assertEquals($testValue, $this->model->getShippingTax());

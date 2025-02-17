@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AffordabilityExpenseEvent Class Doc Comment
  *
  * @category Class
  * @description An expense related to an affordability promotion.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,11 +64,11 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
              'posted_date' => '\DateTime',
              'marketplace_id' => 'string',
              'transaction_type' => 'string',
-             'base_expense' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_type_cgst' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_type_sgst' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_type_igst' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'total_expense' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'base_expense' => '\SpApi\Model\finances\v0\Currency',
+             'tax_type_cgst' => '\SpApi\Model\finances\v0\Currency',
+             'tax_type_sgst' => '\SpApi\Model\finances\v0\Currency',
+             'tax_type_igst' => '\SpApi\Model\finances\v0\Currency',
+             'total_expense' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -495,9 +495,9 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets base_expense
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getBaseExpense(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getBaseExpense(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['base_expense'];
     }
@@ -505,11 +505,11 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets base_expense
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $base_expense base_expense
+     * @param \SpApi\Model\finances\v0\Currency|null $base_expense base_expense
      *
      * @return self
      */
-    public function setBaseExpense(?\OpenAPI\Client\Model\finances\v0\Currency $base_expense): self
+    public function setBaseExpense(?\SpApi\Model\finances\v0\Currency $base_expense): self
     {
         if (is_null($base_expense)) {
             array_push($this->openAPINullablesSetToNull, 'base_expense');
@@ -529,9 +529,9 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets tax_type_cgst
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency
+     * @return \SpApi\Model\finances\v0\Currency
      */
-    public function getTaxTypeCgst(): \OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxTypeCgst(): \SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_type_cgst'];
     }
@@ -539,11 +539,11 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets tax_type_cgst
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency $tax_type_cgst tax_type_cgst
+     * @param \SpApi\Model\finances\v0\Currency $tax_type_cgst tax_type_cgst
      *
      * @return self
      */
-    public function setTaxTypeCgst(\OpenAPI\Client\Model\finances\v0\Currency $tax_type_cgst): self
+    public function setTaxTypeCgst(\SpApi\Model\finances\v0\Currency $tax_type_cgst): self
     {
         if (is_null($tax_type_cgst)) {
             throw new \InvalidArgumentException('non-nullable tax_type_cgst cannot be null');
@@ -556,9 +556,9 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets tax_type_sgst
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency
+     * @return \SpApi\Model\finances\v0\Currency
      */
-    public function getTaxTypeSgst(): \OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxTypeSgst(): \SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_type_sgst'];
     }
@@ -566,11 +566,11 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets tax_type_sgst
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency $tax_type_sgst tax_type_sgst
+     * @param \SpApi\Model\finances\v0\Currency $tax_type_sgst tax_type_sgst
      *
      * @return self
      */
-    public function setTaxTypeSgst(\OpenAPI\Client\Model\finances\v0\Currency $tax_type_sgst): self
+    public function setTaxTypeSgst(\SpApi\Model\finances\v0\Currency $tax_type_sgst): self
     {
         if (is_null($tax_type_sgst)) {
             throw new \InvalidArgumentException('non-nullable tax_type_sgst cannot be null');
@@ -583,9 +583,9 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets tax_type_igst
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency
+     * @return \SpApi\Model\finances\v0\Currency
      */
-    public function getTaxTypeIgst(): \OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxTypeIgst(): \SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_type_igst'];
     }
@@ -593,11 +593,11 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets tax_type_igst
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency $tax_type_igst tax_type_igst
+     * @param \SpApi\Model\finances\v0\Currency $tax_type_igst tax_type_igst
      *
      * @return self
      */
-    public function setTaxTypeIgst(\OpenAPI\Client\Model\finances\v0\Currency $tax_type_igst): self
+    public function setTaxTypeIgst(\SpApi\Model\finances\v0\Currency $tax_type_igst): self
     {
         if (is_null($tax_type_igst)) {
             throw new \InvalidArgumentException('non-nullable tax_type_igst cannot be null');
@@ -610,9 +610,9 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets total_expense
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTotalExpense(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTotalExpense(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['total_expense'];
     }
@@ -620,11 +620,11 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets total_expense
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $total_expense total_expense
+     * @param \SpApi\Model\finances\v0\Currency|null $total_expense total_expense
      *
      * @return self
      */
-    public function setTotalExpense(?\OpenAPI\Client\Model\finances\v0\Currency $total_expense): self
+    public function setTotalExpense(?\SpApi\Model\finances\v0\Currency $total_expense): self
     {
         if (is_null($total_expense)) {
             array_push($this->openAPINullablesSetToNull, 'total_expense');

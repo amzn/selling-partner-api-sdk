@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01;
+namespace SpApi\Model\productTypeDefinitions\v2020_09_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ProductTypeDefinition Class Doc Comment
  *
  * @category Class
  * @description A product type definition represents the attributes and data requirements for a product type in the Amazon catalog. Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,16 +60,16 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'meta_schema' => '\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink',
-             'schema' => '\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink',
+             'meta_schema' => '\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink',
+             'schema' => '\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink',
              'requirements' => 'string',
              'requirements_enforced' => 'string',
-             'property_groups' => 'array<string,\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\PropertyGroup>',
+             'property_groups' => 'array<string,\SpApi\Model\productTypeDefinitions\v2020_09_01\PropertyGroup>',
              'locale' => 'string',
              'marketplace_ids' => 'string[]',
              'product_type' => 'string',
              'display_name' => 'string',
-             'product_type_version' => '\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion'    ];
+             'product_type_version' => '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -434,9 +434,9 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets meta_schema
      *
-     * @return \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink|null
+     * @return \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink|null
      */
-    public function getMetaSchema(): ?\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink
+    public function getMetaSchema(): ?\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink
     {
         return $this->container['meta_schema'];
     }
@@ -444,11 +444,11 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets meta_schema
      *
-     * @param \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink|null $meta_schema meta_schema
+     * @param \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink|null $meta_schema meta_schema
      *
      * @return self
      */
-    public function setMetaSchema(?\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink $meta_schema): self
+    public function setMetaSchema(?\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink $meta_schema): self
     {
         if (is_null($meta_schema)) {
             array_push($this->openAPINullablesSetToNull, 'meta_schema');
@@ -468,9 +468,9 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets schema
      *
-     * @return \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink
+     * @return \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink
      */
-    public function getSchema(): \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink
+    public function getSchema(): \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink
     {
         return $this->container['schema'];
     }
@@ -478,11 +478,11 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets schema
      *
-     * @param \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink $schema schema
+     * @param \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink $schema schema
      *
      * @return self
      */
-    public function setSchema(\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink $schema): self
+    public function setSchema(\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink $schema): self
     {
         if (is_null($schema)) {
             throw new \InvalidArgumentException('non-nullable schema cannot be null');
@@ -569,7 +569,7 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets property_groups
      *
-     * @return array<string,\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\PropertyGroup>
+     * @return array<string,\SpApi\Model\productTypeDefinitions\v2020_09_01\PropertyGroup>
      */
     public function getPropertyGroups(): array
     {
@@ -579,7 +579,7 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets property_groups
      *
-     * @param array<string,\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\PropertyGroup> $property_groups Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.
+     * @param array<string,\SpApi\Model\productTypeDefinitions\v2020_09_01\PropertyGroup> $property_groups Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.
      *
      * @return self
      */
@@ -704,9 +704,9 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets product_type_version
      *
-     * @return \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion
+     * @return \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion
      */
-    public function getProductTypeVersion(): \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion
+    public function getProductTypeVersion(): \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion
     {
         return $this->container['product_type_version'];
     }
@@ -714,11 +714,11 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets product_type_version
      *
-     * @param \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion $product_type_version product_type_version
+     * @param \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion $product_type_version product_type_version
      *
      * @return self
      */
-    public function setProductTypeVersion(\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion $product_type_version): self
+    public function setProductTypeVersion(\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion $product_type_version): self
     {
         if (is_null($product_type_version)) {
             throw new \InvalidArgumentException('non-nullable product_type_version cannot be null');

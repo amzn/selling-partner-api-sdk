@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RemovalShipmentEvent Class Doc Comment
  *
  * @category Class
  * @description A removal shipment event for a removal order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class RemovalShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializ
              'order_id' => 'string',
              'transaction_type' => 'string',
              'store_name' => 'string',
-             'removal_shipment_item_list' => '\OpenAPI\Client\Model\finances\v0\RemovalShipmentItem[]'    ];
+             'removal_shipment_item_list' => '\SpApi\Model\finances\v0\RemovalShipmentItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

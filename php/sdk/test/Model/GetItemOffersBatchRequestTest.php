@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest;
+use SpApi\Model\pricing\v0\GetItemOffersBatchRequest;
 
 /**
  * GetItemOffersBatchRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request associated with the &#x60;getItemOffersBatch&#x60; API call.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetItemOffersBatchRequestTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Destination Class Doc Comment
  *
  * @category Class
  * @description Information about the destination created when you call the &#x60;createDestination&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'name' => 'string',
              'destination_id' => 'string',
-             'resource' => '\OpenAPI\Client\Model\notifications\v1\DestinationResource'    ];
+             'resource' => '\SpApi\Model\notifications\v1\DestinationResource'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -379,9 +379,9 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets resource
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\DestinationResource
+     * @return \SpApi\Model\notifications\v1\DestinationResource
      */
-    public function getResource(): \OpenAPI\Client\Model\notifications\v1\DestinationResource
+    public function getResource(): \SpApi\Model\notifications\v1\DestinationResource
     {
         return $this->container['resource'];
     }
@@ -389,11 +389,11 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets resource
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\DestinationResource $resource resource
+     * @param \SpApi\Model\notifications\v1\DestinationResource $resource resource
      *
      * @return self
      */
-    public function setResource(\OpenAPI\Client\Model\notifications\v1\DestinationResource $resource): self
+    public function setResource(\SpApi\Model\notifications\v1\DestinationResource $resource): self
     {
         if (is_null($resource)) {
             throw new \InvalidArgumentException('non-nullable resource cannot be null');

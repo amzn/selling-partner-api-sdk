@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateReservationResponse Class Doc Comment
  *
  * @category Class
  * @description Response schema for the &#x60;updateReservation&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class UpdateReservationResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\services\v1\UpdateReservationRecord',
-             'errors' => '\OpenAPI\Client\Model\services\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\services\v1\UpdateReservationRecord',
+             'errors' => '\SpApi\Model\services\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class UpdateReservationResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\services\v1\UpdateReservationRecord|null
+     * @return \SpApi\Model\services\v1\UpdateReservationRecord|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\services\v1\UpdateReservationRecord
+    public function getPayload(): ?\SpApi\Model\services\v1\UpdateReservationRecord
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class UpdateReservationResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\services\v1\UpdateReservationRecord|null $payload payload
+     * @param \SpApi\Model\services\v1\UpdateReservationRecord|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\services\v1\UpdateReservationRecord $payload): self
+    public function setPayload(?\SpApi\Model\services\v1\UpdateReservationRecord $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

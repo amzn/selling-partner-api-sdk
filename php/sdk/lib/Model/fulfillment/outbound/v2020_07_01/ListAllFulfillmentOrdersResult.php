@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListAllFulfillmentOrdersResult Class Doc Comment
  *
  * @category Class
  * @description The request for the listAllFulfillmentOrders operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPITypes = [
              'next_token' => 'string',
-             'fulfillment_orders' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder[]'    ];
+             'fulfillment_orders' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

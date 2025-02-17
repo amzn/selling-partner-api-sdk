@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemProcurement Class Doc Comment
  *
  * @category Class
  * @description The vendor procurement information for the listings item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ItemProcurement implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'cost_price' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Money'    ];
+             'cost_price' => '\SpApi\Model\listings\items\v2021_08_01\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class ItemProcurement implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cost_price
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\Money
+     * @return \SpApi\Model\listings\items\v2021_08_01\Money
      */
-    public function getCostPrice(): \OpenAPI\Client\Model\listings\items\v2021_08_01\Money
+    public function getCostPrice(): \SpApi\Model\listings\items\v2021_08_01\Money
     {
         return $this->container['cost_price'];
     }
@@ -307,11 +307,11 @@ class ItemProcurement implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cost_price
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\Money $cost_price cost_price
+     * @param \SpApi\Model\listings\items\v2021_08_01\Money $cost_price cost_price
      *
      * @return self
      */
-    public function setCostPrice(\OpenAPI\Client\Model\listings\items\v2021_08_01\Money $cost_price): self
+    public function setCostPrice(\SpApi\Model\listings\items\v2021_08_01\Money $cost_price): self
     {
         if (is_null($cost_price)) {
             throw new \InvalidArgumentException('non-nullable cost_price cannot be null');

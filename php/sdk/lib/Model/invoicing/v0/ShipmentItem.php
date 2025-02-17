@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentItem Class Doc Comment
  *
  * @category Class
  * @description The shipment item information required by a seller to issue a shipment invoice.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,11 +65,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'order_item_id' => 'string',
              'title' => 'string',
              'quantity_ordered' => 'float',
-             'item_price' => '\OpenAPI\Client\Model\invoicing\v0\Money',
-             'shipping_price' => '\OpenAPI\Client\Model\invoicing\v0\Money',
-             'gift_wrap_price' => '\OpenAPI\Client\Model\invoicing\v0\Money',
-             'shipping_discount' => '\OpenAPI\Client\Model\invoicing\v0\Money',
-             'promotion_discount' => '\OpenAPI\Client\Model\invoicing\v0\Money',
+             'item_price' => '\SpApi\Model\invoicing\v0\Money',
+             'shipping_price' => '\SpApi\Model\invoicing\v0\Money',
+             'gift_wrap_price' => '\SpApi\Model\invoicing\v0\Money',
+             'shipping_discount' => '\SpApi\Model\invoicing\v0\Money',
+             'promotion_discount' => '\SpApi\Model\invoicing\v0\Money',
              'serial_numbers' => 'string[]'    ];
 
     /**
@@ -534,9 +534,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_price
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\Money|null
+     * @return \SpApi\Model\invoicing\v0\Money|null
      */
-    public function getItemPrice(): ?\OpenAPI\Client\Model\invoicing\v0\Money
+    public function getItemPrice(): ?\SpApi\Model\invoicing\v0\Money
     {
         return $this->container['item_price'];
     }
@@ -544,11 +544,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_price
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\Money|null $item_price item_price
+     * @param \SpApi\Model\invoicing\v0\Money|null $item_price item_price
      *
      * @return self
      */
-    public function setItemPrice(?\OpenAPI\Client\Model\invoicing\v0\Money $item_price): self
+    public function setItemPrice(?\SpApi\Model\invoicing\v0\Money $item_price): self
     {
         if (is_null($item_price)) {
             array_push($this->openAPINullablesSetToNull, 'item_price');
@@ -568,9 +568,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_price
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\Money|null
+     * @return \SpApi\Model\invoicing\v0\Money|null
      */
-    public function getShippingPrice(): ?\OpenAPI\Client\Model\invoicing\v0\Money
+    public function getShippingPrice(): ?\SpApi\Model\invoicing\v0\Money
     {
         return $this->container['shipping_price'];
     }
@@ -578,11 +578,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_price
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\Money|null $shipping_price shipping_price
+     * @param \SpApi\Model\invoicing\v0\Money|null $shipping_price shipping_price
      *
      * @return self
      */
-    public function setShippingPrice(?\OpenAPI\Client\Model\invoicing\v0\Money $shipping_price): self
+    public function setShippingPrice(?\SpApi\Model\invoicing\v0\Money $shipping_price): self
     {
         if (is_null($shipping_price)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_price');
@@ -602,9 +602,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets gift_wrap_price
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\Money|null
+     * @return \SpApi\Model\invoicing\v0\Money|null
      */
-    public function getGiftWrapPrice(): ?\OpenAPI\Client\Model\invoicing\v0\Money
+    public function getGiftWrapPrice(): ?\SpApi\Model\invoicing\v0\Money
     {
         return $this->container['gift_wrap_price'];
     }
@@ -612,11 +612,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gift_wrap_price
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\Money|null $gift_wrap_price gift_wrap_price
+     * @param \SpApi\Model\invoicing\v0\Money|null $gift_wrap_price gift_wrap_price
      *
      * @return self
      */
-    public function setGiftWrapPrice(?\OpenAPI\Client\Model\invoicing\v0\Money $gift_wrap_price): self
+    public function setGiftWrapPrice(?\SpApi\Model\invoicing\v0\Money $gift_wrap_price): self
     {
         if (is_null($gift_wrap_price)) {
             array_push($this->openAPINullablesSetToNull, 'gift_wrap_price');
@@ -636,9 +636,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_discount
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\Money|null
+     * @return \SpApi\Model\invoicing\v0\Money|null
      */
-    public function getShippingDiscount(): ?\OpenAPI\Client\Model\invoicing\v0\Money
+    public function getShippingDiscount(): ?\SpApi\Model\invoicing\v0\Money
     {
         return $this->container['shipping_discount'];
     }
@@ -646,11 +646,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_discount
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\Money|null $shipping_discount shipping_discount
+     * @param \SpApi\Model\invoicing\v0\Money|null $shipping_discount shipping_discount
      *
      * @return self
      */
-    public function setShippingDiscount(?\OpenAPI\Client\Model\invoicing\v0\Money $shipping_discount): self
+    public function setShippingDiscount(?\SpApi\Model\invoicing\v0\Money $shipping_discount): self
     {
         if (is_null($shipping_discount)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_discount');
@@ -670,9 +670,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotion_discount
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\Money|null
+     * @return \SpApi\Model\invoicing\v0\Money|null
      */
-    public function getPromotionDiscount(): ?\OpenAPI\Client\Model\invoicing\v0\Money
+    public function getPromotionDiscount(): ?\SpApi\Model\invoicing\v0\Money
     {
         return $this->container['promotion_discount'];
     }
@@ -680,11 +680,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promotion_discount
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\Money|null $promotion_discount promotion_discount
+     * @param \SpApi\Model\invoicing\v0\Money|null $promotion_discount promotion_discount
      *
      * @return self
      */
-    public function setPromotionDiscount(?\OpenAPI\Client\Model\invoicing\v0\Money $promotion_discount): self
+    public function setPromotionDiscount(?\SpApi\Model\invoicing\v0\Money $promotion_discount): self
     {
         if (is_null($promotion_discount)) {
             array_push($this->openAPINullablesSetToNull, 'promotion_discount');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\LinkableCarrier;
+use SpApi\Model\shipping\v2\LinkableCarrier;
 
 /**
  * LinkableCarrierTest Class Doc Comment
  *
  * @category    Class
  * @description Info About Linkable Carrier
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LinkableCarrierTest extends TestCase
 {

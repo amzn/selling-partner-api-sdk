@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContentDocument Class Doc Comment
  *
  * @category Class
  * @description The A+ Content document. This is the enhanced content that is published to product detail pages.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class ContentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'name' => 'string',
-             'content_type' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentType',
+             'content_type' => '\SpApi\Model\aplusContent\v2020_11_01\ContentType',
              'content_sub_type' => 'string',
              'locale' => 'string',
-             'content_module_list' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentModule[]'    ];
+             'content_module_list' => '\SpApi\Model\aplusContent\v2020_11_01\ContentModule[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

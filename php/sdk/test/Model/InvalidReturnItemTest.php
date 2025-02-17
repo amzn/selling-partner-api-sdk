@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidReturnItem;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidReturnItem;
 
 /**
  * InvalidReturnItemTest Class Doc Comment
  *
  * @category    Class
  * @description An item that is invalid for return.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvalidReturnItemTest extends TestCase
 {
@@ -79,7 +79,7 @@ class InvalidReturnItemTest extends TestCase
     public function testPropertyInvalidItemReason()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason();
         
         $this->model->setInvalidItemReason($testValue);
         $this->assertEquals($testValue, $this->model->getInvalidItemReason());

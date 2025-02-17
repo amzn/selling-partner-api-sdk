@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentEvent Class Doc Comment
  *
  * @category Class
  * @description A shipment, refund, guarantee claim, or chargeback.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,16 +64,16 @@ class ShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
              'seller_order_id' => 'string',
              'marketplace_name' => 'string',
              'store_name' => 'string',
-             'order_charge_list' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent[]',
-             'order_charge_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent[]',
-             'shipment_fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
-             'shipment_fee_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
-             'order_fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
-             'order_fee_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
-             'direct_payment_list' => '\OpenAPI\Client\Model\finances\v0\DirectPayment[]',
+             'order_charge_list' => '\SpApi\Model\finances\v0\ChargeComponent[]',
+             'order_charge_adjustment_list' => '\SpApi\Model\finances\v0\ChargeComponent[]',
+             'shipment_fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
+             'shipment_fee_adjustment_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
+             'order_fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
+             'order_fee_adjustment_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
+             'direct_payment_list' => '\SpApi\Model\finances\v0\DirectPayment[]',
              'posted_date' => '\DateTime',
-             'shipment_item_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentItem[]',
-             'shipment_item_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentItem[]'    ];
+             'shipment_item_list' => '\SpApi\Model\finances\v0\ShipmentItem[]',
+             'shipment_item_adjustment_list' => '\SpApi\Model\finances\v0\ShipmentItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse;
+use SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse;
 
 /**
  * DeleteSubscriptionByIdResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;deleteSubscriptionById&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DeleteSubscriptionByIdResponseTest extends TestCase
 {

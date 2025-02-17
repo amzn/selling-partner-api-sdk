@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client;
+namespace SpApi;
 
 use Exception;
 use stdClass;
@@ -36,7 +36,7 @@ use stdClass;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

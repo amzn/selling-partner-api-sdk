@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput;
 
 /**
  * LtlTrackingDetailInputTest Class Doc Comment
  *
  * @category    Class
  * @description Contains input information to update Less-Than-Truckload (LTL) tracking information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LtlTrackingDetailInputTest extends TestCase
 {

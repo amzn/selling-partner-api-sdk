@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\HandoverMethod;
+use SpApi\Model\easyship\v2022_03_23\HandoverMethod;
 
 /**
  * HandoverMethodTest Class Doc Comment
  *
  * @category    Class
  * @description Identifies the method by which a seller will hand a package over to Amazon Logistics.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class HandoverMethodTest extends TestCase
 {

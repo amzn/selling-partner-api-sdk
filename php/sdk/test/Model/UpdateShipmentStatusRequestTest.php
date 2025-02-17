@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest;
+use SpApi\Model\orders\v0\UpdateShipmentStatusRequest;
 
 /**
  * UpdateShipmentStatusRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body for the &#x60;updateShipmentStatus&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateShipmentStatusRequestTest extends TestCase
 {
@@ -67,7 +67,7 @@ class UpdateShipmentStatusRequestTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ShipmentStatus();
+        $enumInstance = new \SpApi\Model\orders\v0\ShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

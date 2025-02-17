@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client;
+namespace SpApi;
 
 use GuzzleHttp\Psr7\Request;
 use InvalidArgumentException;
@@ -40,7 +40,7 @@ use SpApi\AuthAndAuth\LWAAuthorizationSigner;
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -360,7 +360,7 @@ class Configuration
      */
     public static function toDebugReport(): string
     {
-        $report  = 'PHP SDK (OpenAPI\Client) Debug Report:' . PHP_EOL;
+        $report  = 'PHP SDK (SpApi) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: v1' . PHP_EOL;

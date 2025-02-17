@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentTransportationConfiguration Class Doc Comment
  *
  * @category Class
  * @description Details needed to generate the transportation options.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'contact_information' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
-             'freight_information' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation',
-             'pallets' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PalletInput[]',
-             'ready_to_ship_window' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WindowInput',
+             'contact_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
+             'freight_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation',
+             'pallets' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PalletInput[]',
+             'ready_to_ship_window' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput',
              'shipment_id' => 'string'    ];
 
     /**
@@ -340,9 +340,9 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Gets contact_information
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
      */
-    public function getContactInformation(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation
+    public function getContactInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation
     {
         return $this->container['contact_information'];
     }
@@ -350,11 +350,11 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets contact_information
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
      *
      * @return self
      */
-    public function setContactInformation(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
+    public function setContactInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
     {
         if (is_null($contact_information)) {
             array_push($this->openAPINullablesSetToNull, 'contact_information');
@@ -374,9 +374,9 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Gets freight_information
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null
      */
-    public function getFreightInformation(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation
+    public function getFreightInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation
     {
         return $this->container['freight_information'];
     }
@@ -384,11 +384,11 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets freight_information
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null $freight_information freight_information
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null $freight_information freight_information
      *
      * @return self
      */
-    public function setFreightInformation(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation $freight_information): self
+    public function setFreightInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation $freight_information): self
     {
         if (is_null($freight_information)) {
             array_push($this->openAPINullablesSetToNull, 'freight_information');
@@ -442,9 +442,9 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Gets ready_to_ship_window
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WindowInput
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput
      */
-    public function getReadyToShipWindow(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WindowInput
+    public function getReadyToShipWindow(): \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput
     {
         return $this->container['ready_to_ship_window'];
     }
@@ -452,11 +452,11 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets ready_to_ship_window
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WindowInput $ready_to_ship_window ready_to_ship_window
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput $ready_to_ship_window ready_to_ship_window
      *
      * @return self
      */
-    public function setReadyToShipWindow(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WindowInput $ready_to_ship_window): self
+    public function setReadyToShipWindow(\SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput $ready_to_ship_window): self
     {
         if (is_null($ready_to_ship_window)) {
             throw new \InvalidArgumentException('non-nullable ready_to_ship_window cannot be null');

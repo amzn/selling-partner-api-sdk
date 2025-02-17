@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxRate;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\TaxRate;
 
 /**
  * TaxRateTest Class Doc Comment
  *
  * @category    Class
  * @description Contains the type and rate of tax.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TaxRateTest extends TestCase
 {

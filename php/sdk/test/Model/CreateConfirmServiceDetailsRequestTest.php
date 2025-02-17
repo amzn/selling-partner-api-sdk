@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest;
+use SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest;
 
 /**
  * CreateConfirmServiceDetailsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the createConfirmServiceDetails operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateConfirmServiceDetailsRequestTest extends TestCase
 {

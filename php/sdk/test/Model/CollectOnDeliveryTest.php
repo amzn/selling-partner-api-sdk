@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\CollectOnDelivery;
+use SpApi\Model\shipping\v2\CollectOnDelivery;
 
 /**
  * CollectOnDeliveryTest Class Doc Comment
  *
  * @category    Class
  * @description The amount to collect on delivery.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CollectOnDeliveryTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CollectOnDeliveryTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
+        $testValue = new \SpApi\Model\shipping\v2\Currency();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

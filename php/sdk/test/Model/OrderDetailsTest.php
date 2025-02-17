@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderDetails;
+use SpApi\Model\vendor\orders\v1\OrderDetails;
 
 /**
  * OrderDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Details of an order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderDetailsTest extends TestCase
 {
@@ -105,7 +105,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyImportDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ImportDetails();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ImportDetails();
         
         $this->model->setImportDetails($testValue);
         $this->assertEquals($testValue, $this->model->getImportDetails());
@@ -140,7 +140,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyBuyingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setBuyingParty($testValue);
         $this->assertEquals($testValue, $this->model->getBuyingParty());
@@ -152,7 +152,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -164,7 +164,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyShipToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setShipToParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipToParty());
@@ -176,7 +176,7 @@ class OrderDetailsTest extends TestCase
     public function testPropertyBillToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setBillToParty($testValue);
         $this->assertEquals($testValue, $this->model->getBillToParty());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult;
 
 /**
  * GetDeliveryOffersResultTest Class Doc Comment
  *
  * @category    Class
  * @description A list of delivery offers, including offer expiration, earliest and latest date and time range, and the delivery offer policy.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetDeliveryOffersResultTest extends TestCase
 {

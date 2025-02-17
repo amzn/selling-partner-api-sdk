@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration;
+use SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration;
 
 /**
  * InStorePickupConfigurationTest Class Doc Comment
  *
  * @category    Class
  * @description The in-store pickup configuration of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InStorePickupConfigurationTest extends TestCase
 {
@@ -68,7 +68,7 @@ class InStorePickupConfigurationTest extends TestCase
     public function testPropertyParkingConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration();
         
         $this->model->setParkingConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getParkingConfiguration());

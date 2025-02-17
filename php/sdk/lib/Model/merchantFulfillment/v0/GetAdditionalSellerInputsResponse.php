@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetAdditionalSellerInputsResponse Class Doc Comment
  *
  * @category Class
  * @description Response schema.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetAdditionalSellerInputsResponse implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult',
-             'errors' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult',
+             'errors' => '\SpApi\Model\merchantFulfillment\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetAdditionalSellerInputsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult|null
+     * @return \SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult
+    public function getPayload(): ?\SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetAdditionalSellerInputsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult|null $payload payload
+     * @param \SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult $payload): self
+    public function setPayload(?\SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

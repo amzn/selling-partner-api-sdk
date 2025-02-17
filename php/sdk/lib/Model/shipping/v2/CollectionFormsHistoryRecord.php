@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CollectionFormsHistoryRecord Class Doc Comment
  *
  * @category Class
  * @description Active Account Details
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     protected static array $openAPITypes = [
              'carrier_name' => 'string',
              'creation_date' => 'string',
-             'generation_status' => '\OpenAPI\Client\Model\shipping\v2\GenerationStatus',
+             'generation_status' => '\SpApi\Model\shipping\v2\GenerationStatus',
              'collection_form_id' => 'string',
-             'ship_from_address' => '\OpenAPI\Client\Model\shipping\v2\Address'    ];
+             'ship_from_address' => '\SpApi\Model\shipping\v2\Address'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -459,9 +459,9 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets ship_from_address
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getShipFromAddress(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipFromAddress(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_from_address'];
     }
@@ -469,11 +469,11 @@ class CollectionFormsHistoryRecord implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets ship_from_address
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $ship_from_address ship_from_address
+     * @param \SpApi\Model\shipping\v2\Address|null $ship_from_address ship_from_address
      *
      * @return self
      */
-    public function setShipFromAddress(?\OpenAPI\Client\Model\shipping\v2\Address $ship_from_address): self
+    public function setShipFromAddress(?\SpApi\Model\shipping\v2\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
             array_push($this->openAPINullablesSetToNull, 'ship_from_address');

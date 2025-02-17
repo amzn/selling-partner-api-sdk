@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingEvent;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingEvent;
 
 /**
  * TrackingEventTest Class Doc Comment
  *
  * @category    Class
  * @description Information for tracking package deliveries.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TrackingEventTest extends TestCase
 {
@@ -69,7 +69,7 @@ class TrackingEventTest extends TestCase
     public function testPropertyEventAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress();
         
         $this->model->setEventAddress($testValue);
         $this->assertEquals($testValue, $this->model->getEventAddress());
@@ -80,7 +80,7 @@ class TrackingEventTest extends TestCase
      */
     public function testPropertyEventCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\EventCode();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\EventCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

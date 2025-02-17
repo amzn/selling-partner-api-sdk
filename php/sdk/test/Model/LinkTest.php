@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Link;
+use SpApi\Model\listings\restrictions\v2021_08_01\Link;
 
 /**
  * LinkTest Class Doc Comment
  *
  * @category    Class
  * @description A link to resources related to a listing restriction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LinkTest extends TestCase
 {

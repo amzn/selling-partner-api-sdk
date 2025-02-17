@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\SegmentedFeaturedOffer;
+use SpApi\Model\pricing\v2022_05_01\SegmentedFeaturedOffer;
 
 /**
  * SegmentedFeaturedOfferTest Class Doc Comment
  *
  * @category    Class
  * @description A product offer with segment information indicating where it&#39;s featured.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SegmentedFeaturedOfferTest extends TestCase
 {
@@ -67,7 +67,7 @@ class SegmentedFeaturedOfferTest extends TestCase
      */
     public function testPropertyCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\Condition();
+        $enumInstance = new \SpApi\Model\pricing\v2022_05_01\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -92,7 +92,7 @@ class SegmentedFeaturedOfferTest extends TestCase
      */
     public function testPropertyFulfillmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\FulfillmentType();
+        $enumInstance = new \SpApi\Model\pricing\v2022_05_01\FulfillmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -106,7 +106,7 @@ class SegmentedFeaturedOfferTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -129,7 +129,7 @@ class SegmentedFeaturedOfferTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Points();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());
@@ -141,7 +141,7 @@ class SegmentedFeaturedOfferTest extends TestCase
     public function testPropertyPrimeDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\PrimeDetails();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\PrimeDetails();
         
         $this->model->setPrimeDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPrimeDetails());

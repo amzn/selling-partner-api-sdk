@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOffersResponseOffer Class Doc Comment
  *
  * @category Class
  * @description An object which contains details about an offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
              'sku' => 'string',
              'asin' => 'string',
              'marketplace_id' => 'string',
-             'eligibility' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\EligibilityStatus',
-             'offer_program_configuration' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration',
-             'program_type' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ProgramType',
+             'eligibility' => '\SpApi\Model\replenishment\v2022_11_07\EligibilityStatus',
+             'offer_program_configuration' => '\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration',
+             'program_type' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType',
              'vendor_codes' => 'string[]'    ];
 
     /**
@@ -472,9 +472,9 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets offer_program_configuration
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration|null
      */
-    public function getOfferProgramConfiguration(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration
+    public function getOfferProgramConfiguration(): ?\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration
     {
         return $this->container['offer_program_configuration'];
     }
@@ -482,11 +482,11 @@ class ListOffersResponseOffer implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets offer_program_configuration
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration|null $offer_program_configuration offer_program_configuration
+     * @param \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration|null $offer_program_configuration offer_program_configuration
      *
      * @return self
      */
-    public function setOfferProgramConfiguration(?\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration $offer_program_configuration): self
+    public function setOfferProgramConfiguration(?\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration $offer_program_configuration): self
     {
         if (is_null($offer_program_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'offer_program_configuration');

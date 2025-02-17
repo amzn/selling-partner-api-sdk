@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * NetworkComminglingTransactionEvent Class Doc Comment
  *
  * @category Class
  * @description A network commingling transaction event.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,8 +66,8 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
              'swap_reason' => 'string',
              'asin' => 'string',
              'marketplace_id' => 'string',
-             'tax_exclusive_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'tax_exclusive_amount' => '\SpApi\Model\finances\v0\Currency',
+             'tax_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -547,9 +547,9 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     /**
      * Gets tax_exclusive_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxExclusiveAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxExclusiveAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_exclusive_amount'];
     }
@@ -557,11 +557,11 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     /**
      * Sets tax_exclusive_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_exclusive_amount tax_exclusive_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_exclusive_amount tax_exclusive_amount
      *
      * @return self
      */
-    public function setTaxExclusiveAmount(?\OpenAPI\Client\Model\finances\v0\Currency $tax_exclusive_amount): self
+    public function setTaxExclusiveAmount(?\SpApi\Model\finances\v0\Currency $tax_exclusive_amount): self
     {
         if (is_null($tax_exclusive_amount)) {
             array_push($this->openAPINullablesSetToNull, 'tax_exclusive_amount');
@@ -581,9 +581,9 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     /**
      * Gets tax_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_amount'];
     }
@@ -591,11 +591,11 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     /**
      * Sets tax_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_amount tax_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_amount tax_amount
      *
      * @return self
      */
-    public function setTaxAmount(?\OpenAPI\Client\Model\finances\v0\Currency $tax_amount): self
+    public function setTaxAmount(?\SpApi\Model\finances\v0\Currency $tax_amount): self
     {
         if (is_null($tax_amount)) {
             array_push($this->openAPINullablesSetToNull, 'tax_amount');

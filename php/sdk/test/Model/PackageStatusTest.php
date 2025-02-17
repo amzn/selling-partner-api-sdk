@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\PackageStatus;
+use SpApi\Model\easyship\v2022_03_23\PackageStatus;
 
 /**
  * PackageStatusTest Class Doc Comment
  *
  * @category    Class
  * @description The status of the package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageStatusTest extends TestCase
 {

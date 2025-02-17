@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\PayWithAmazonEvent;
+use SpApi\Model\finances\v0\PayWithAmazonEvent;
 
 /**
  * PayWithAmazonEventTest Class Doc Comment
  *
  * @category    Class
  * @description An event related to the seller&#39;s Pay with Amazon account.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PayWithAmazonEventTest extends TestCase
 {
@@ -102,7 +102,7 @@ class PayWithAmazonEventTest extends TestCase
     public function testPropertyCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\ChargeComponent();
+        $testValue = new \SpApi\Model\finances\v0\ChargeComponent();
         
         $this->model->setCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCharge());

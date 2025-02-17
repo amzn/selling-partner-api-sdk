@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Item Class Doc Comment
  *
  * @category Class
  * @description An Amazon order item identifier and a quantity.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,13 +62,13 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'order_item_id' => 'string',
              'quantity' => 'int',
-             'item_weight' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Weight',
+             'item_weight' => '\SpApi\Model\merchantFulfillment\v0\Weight',
              'item_description' => 'string',
              'transparency_code_list' => 'string[]',
-             'item_level_seller_inputs_list' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInputs[]',
-             'liquid_volume' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LiquidVolume',
+             'item_level_seller_inputs_list' => '\SpApi\Model\merchantFulfillment\v0\AdditionalSellerInputs[]',
+             'liquid_volume' => '\SpApi\Model\merchantFulfillment\v0\LiquidVolume',
              'is_hazmat' => 'bool',
-             'dangerous_goods_details' => '\OpenAPI\Client\Model\merchantFulfillment\v0\DangerousGoodsDetails'    ];
+             'dangerous_goods_details' => '\SpApi\Model\merchantFulfillment\v0\DangerousGoodsDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -410,9 +410,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_weight
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Weight|null
+     * @return \SpApi\Model\merchantFulfillment\v0\Weight|null
      */
-    public function getItemWeight(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\Weight
+    public function getItemWeight(): ?\SpApi\Model\merchantFulfillment\v0\Weight
     {
         return $this->container['item_weight'];
     }
@@ -420,11 +420,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_weight
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Weight|null $item_weight item_weight
+     * @param \SpApi\Model\merchantFulfillment\v0\Weight|null $item_weight item_weight
      *
      * @return self
      */
-    public function setItemWeight(?\OpenAPI\Client\Model\merchantFulfillment\v0\Weight $item_weight): self
+    public function setItemWeight(?\SpApi\Model\merchantFulfillment\v0\Weight $item_weight): self
     {
         if (is_null($item_weight)) {
             array_push($this->openAPINullablesSetToNull, 'item_weight');
@@ -546,9 +546,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets liquid_volume
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\LiquidVolume|null
+     * @return \SpApi\Model\merchantFulfillment\v0\LiquidVolume|null
      */
-    public function getLiquidVolume(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\LiquidVolume
+    public function getLiquidVolume(): ?\SpApi\Model\merchantFulfillment\v0\LiquidVolume
     {
         return $this->container['liquid_volume'];
     }
@@ -556,11 +556,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets liquid_volume
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\LiquidVolume|null $liquid_volume liquid_volume
+     * @param \SpApi\Model\merchantFulfillment\v0\LiquidVolume|null $liquid_volume liquid_volume
      *
      * @return self
      */
-    public function setLiquidVolume(?\OpenAPI\Client\Model\merchantFulfillment\v0\LiquidVolume $liquid_volume): self
+    public function setLiquidVolume(?\SpApi\Model\merchantFulfillment\v0\LiquidVolume $liquid_volume): self
     {
         if (is_null($liquid_volume)) {
             array_push($this->openAPINullablesSetToNull, 'liquid_volume');
@@ -614,9 +614,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dangerous_goods_details
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\DangerousGoodsDetails|null
+     * @return \SpApi\Model\merchantFulfillment\v0\DangerousGoodsDetails|null
      */
-    public function getDangerousGoodsDetails(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\DangerousGoodsDetails
+    public function getDangerousGoodsDetails(): ?\SpApi\Model\merchantFulfillment\v0\DangerousGoodsDetails
     {
         return $this->container['dangerous_goods_details'];
     }
@@ -624,11 +624,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dangerous_goods_details
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\DangerousGoodsDetails|null $dangerous_goods_details dangerous_goods_details
+     * @param \SpApi\Model\merchantFulfillment\v0\DangerousGoodsDetails|null $dangerous_goods_details dangerous_goods_details
      *
      * @return self
      */
-    public function setDangerousGoodsDetails(?\OpenAPI\Client\Model\merchantFulfillment\v0\DangerousGoodsDetails $dangerous_goods_details): self
+    public function setDangerousGoodsDetails(?\SpApi\Model\merchantFulfillment\v0\DangerousGoodsDetails $dangerous_goods_details): self
     {
         if (is_null($dangerous_goods_details)) {
             array_push($this->openAPINullablesSetToNull, 'dangerous_goods_details');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateRequest;
+use SpApi\Model\productFees\v0\GetMyFeesEstimateRequest;
 
 /**
  * GetMyFeesEstimateRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMyFeesEstimateRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetMyFeesEstimateRequestTest extends TestCase
     public function testPropertyFeesEstimateRequest()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest();
+        $testValue = new \SpApi\Model\productFees\v0\FeesEstimateRequest();
         
         $this->model->setFeesEstimateRequest($testValue);
         $this->assertEquals($testValue, $this->model->getFeesEstimateRequest());

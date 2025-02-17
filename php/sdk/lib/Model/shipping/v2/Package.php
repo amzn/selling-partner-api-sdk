@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Package Class Doc Comment
  *
  * @category Class
  * @description A package to be shipped through a shipping service offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,14 +61,14 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'dimensions' => '\OpenAPI\Client\Model\shipping\v2\Dimensions',
-             'weight' => '\OpenAPI\Client\Model\shipping\v2\Weight',
-             'insured_value' => '\OpenAPI\Client\Model\shipping\v2\Currency',
+             'dimensions' => '\SpApi\Model\shipping\v2\Dimensions',
+             'weight' => '\SpApi\Model\shipping\v2\Weight',
+             'insured_value' => '\SpApi\Model\shipping\v2\Currency',
              'is_hazmat' => 'bool',
              'seller_display_name' => 'string',
-             'charges' => '\OpenAPI\Client\Model\shipping\v2\ChargeComponent[]',
+             'charges' => '\SpApi\Model\shipping\v2\ChargeComponent[]',
              'package_client_reference_id' => 'string',
-             'items' => '\OpenAPI\Client\Model\shipping\v2\Item[]'    ];
+             'items' => '\SpApi\Model\shipping\v2\Item[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -359,9 +359,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Dimensions
+     * @return \SpApi\Model\shipping\v2\Dimensions
      */
-    public function getDimensions(): \OpenAPI\Client\Model\shipping\v2\Dimensions
+    public function getDimensions(): \SpApi\Model\shipping\v2\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -369,11 +369,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Dimensions $dimensions dimensions
+     * @param \SpApi\Model\shipping\v2\Dimensions $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(\OpenAPI\Client\Model\shipping\v2\Dimensions $dimensions): self
+    public function setDimensions(\SpApi\Model\shipping\v2\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
@@ -386,9 +386,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Weight
+     * @return \SpApi\Model\shipping\v2\Weight
      */
-    public function getWeight(): \OpenAPI\Client\Model\shipping\v2\Weight
+    public function getWeight(): \SpApi\Model\shipping\v2\Weight
     {
         return $this->container['weight'];
     }
@@ -396,11 +396,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Weight $weight weight
+     * @param \SpApi\Model\shipping\v2\Weight $weight weight
      *
      * @return self
      */
-    public function setWeight(\OpenAPI\Client\Model\shipping\v2\Weight $weight): self
+    public function setWeight(\SpApi\Model\shipping\v2\Weight $weight): self
     {
         if (is_null($weight)) {
             throw new \InvalidArgumentException('non-nullable weight cannot be null');
@@ -413,9 +413,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets insured_value
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency
+     * @return \SpApi\Model\shipping\v2\Currency
      */
-    public function getInsuredValue(): \OpenAPI\Client\Model\shipping\v2\Currency
+    public function getInsuredValue(): \SpApi\Model\shipping\v2\Currency
     {
         return $this->container['insured_value'];
     }
@@ -423,11 +423,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets insured_value
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency $insured_value insured_value
+     * @param \SpApi\Model\shipping\v2\Currency $insured_value insured_value
      *
      * @return self
      */
-    public function setInsuredValue(\OpenAPI\Client\Model\shipping\v2\Currency $insured_value): self
+    public function setInsuredValue(\SpApi\Model\shipping\v2\Currency $insured_value): self
     {
         if (is_null($insured_value)) {
             throw new \InvalidArgumentException('non-nullable insured_value cannot be null');

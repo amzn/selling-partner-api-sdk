@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine;
+use SpApi\Model\pricing\v2022_05_01\HttpStatusLine;
 
 /**
  * HttpStatusLineTest Class Doc Comment
  *
  * @category    Class
  * @description The HTTP status line associated with the response for an individual request within a batch. For more information, refer to [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class HttpStatusLineTest extends TestCase
 {

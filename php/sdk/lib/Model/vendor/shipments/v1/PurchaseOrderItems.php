@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PurchaseOrderItems Class Doc Comment
  *
  * @category Class
  * @description Details of the item being shipped.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
              'item_sequence_number' => 'string',
              'buyer_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'shipped_quantity' => '\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity',
-             'maximum_retail_price' => '\OpenAPI\Client\Model\vendor\shipments\v1\Money'    ];
+             'shipped_quantity' => '\SpApi\Model\vendor\shipments\v1\ItemQuantity',
+             'maximum_retail_price' => '\SpApi\Model\vendor\shipments\v1\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -423,9 +423,9 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets shipped_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\shipments\v1\ItemQuantity
      */
-    public function getShippedQuantity(): \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity
+    public function getShippedQuantity(): \SpApi\Model\vendor\shipments\v1\ItemQuantity
     {
         return $this->container['shipped_quantity'];
     }
@@ -433,11 +433,11 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets shipped_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity shipped_quantity
+     * @param \SpApi\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity shipped_quantity
      *
      * @return self
      */
-    public function setShippedQuantity(\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity): self
+    public function setShippedQuantity(\SpApi\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity): self
     {
         if (is_null($shipped_quantity)) {
             throw new \InvalidArgumentException('non-nullable shipped_quantity cannot be null');
@@ -450,9 +450,9 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets maximum_retail_price
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Money|null
+     * @return \SpApi\Model\vendor\shipments\v1\Money|null
      */
-    public function getMaximumRetailPrice(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Money
+    public function getMaximumRetailPrice(): ?\SpApi\Model\vendor\shipments\v1\Money
     {
         return $this->container['maximum_retail_price'];
     }
@@ -460,11 +460,11 @@ class PurchaseOrderItems implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets maximum_retail_price
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Money|null $maximum_retail_price maximum_retail_price
+     * @param \SpApi\Model\vendor\shipments\v1\Money|null $maximum_retail_price maximum_retail_price
      *
      * @return self
      */
-    public function setMaximumRetailPrice(?\OpenAPI\Client\Model\vendor\shipments\v1\Money $maximum_retail_price): self
+    public function setMaximumRetailPrice(?\SpApi\Model\vendor\shipments\v1\Money $maximum_retail_price): self
     {
         if (is_null($maximum_retail_price)) {
             array_push($this->openAPINullablesSetToNull, 'maximum_retail_price');

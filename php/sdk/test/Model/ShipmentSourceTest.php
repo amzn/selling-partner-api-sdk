@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource;
 
 /**
  * ShipmentSourceTest Class Doc Comment
  *
  * @category    Class
  * @description Specifies the &#39;ship from&#39; address for the shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentSourceTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ShipmentSourceTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

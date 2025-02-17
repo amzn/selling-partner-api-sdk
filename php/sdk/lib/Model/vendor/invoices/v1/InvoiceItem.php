@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\invoices\v1;
+namespace SpApi\Model\vendor\invoices\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InvoiceItem Class Doc Comment
  *
  * @category Class
  * @description Details of the item being invoiced.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,15 +63,15 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'item_sequence_number' => 'int',
              'amazon_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'invoiced_quantity' => '\OpenAPI\Client\Model\vendor\invoices\v1\ItemQuantity',
-             'net_cost' => '\OpenAPI\Client\Model\vendor\invoices\v1\Money',
-             'net_cost_unit_of_measure' => '\OpenAPI\Client\Model\vendor\invoices\v1\NetCostUnitOfMeasure',
+             'invoiced_quantity' => '\SpApi\Model\vendor\invoices\v1\ItemQuantity',
+             'net_cost' => '\SpApi\Model\vendor\invoices\v1\Money',
+             'net_cost_unit_of_measure' => '\SpApi\Model\vendor\invoices\v1\NetCostUnitOfMeasure',
              'purchase_order_number' => 'string',
              'hsn_code' => 'string',
-             'credit_note_details' => '\OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails',
-             'tax_details' => '\OpenAPI\Client\Model\vendor\invoices\v1\TaxDetails[]',
-             'charge_details' => '\OpenAPI\Client\Model\vendor\invoices\v1\ChargeDetails[]',
-             'allowance_details' => '\OpenAPI\Client\Model\vendor\invoices\v1\AllowanceDetails[]'    ];
+             'credit_note_details' => '\SpApi\Model\vendor\invoices\v1\CreditNoteDetails',
+             'tax_details' => '\SpApi\Model\vendor\invoices\v1\TaxDetails[]',
+             'charge_details' => '\SpApi\Model\vendor\invoices\v1\ChargeDetails[]',
+             'allowance_details' => '\SpApi\Model\vendor\invoices\v1\AllowanceDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -475,9 +475,9 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoiced_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\invoices\v1\ItemQuantity
      */
-    public function getInvoicedQuantity(): \OpenAPI\Client\Model\vendor\invoices\v1\ItemQuantity
+    public function getInvoicedQuantity(): \SpApi\Model\vendor\invoices\v1\ItemQuantity
     {
         return $this->container['invoiced_quantity'];
     }
@@ -485,11 +485,11 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoiced_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\ItemQuantity $invoiced_quantity invoiced_quantity
+     * @param \SpApi\Model\vendor\invoices\v1\ItemQuantity $invoiced_quantity invoiced_quantity
      *
      * @return self
      */
-    public function setInvoicedQuantity(\OpenAPI\Client\Model\vendor\invoices\v1\ItemQuantity $invoiced_quantity): self
+    public function setInvoicedQuantity(\SpApi\Model\vendor\invoices\v1\ItemQuantity $invoiced_quantity): self
     {
         if (is_null($invoiced_quantity)) {
             throw new \InvalidArgumentException('non-nullable invoiced_quantity cannot be null');
@@ -502,9 +502,9 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets net_cost
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\Money
+     * @return \SpApi\Model\vendor\invoices\v1\Money
      */
-    public function getNetCost(): \OpenAPI\Client\Model\vendor\invoices\v1\Money
+    public function getNetCost(): \SpApi\Model\vendor\invoices\v1\Money
     {
         return $this->container['net_cost'];
     }
@@ -512,11 +512,11 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets net_cost
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\Money $net_cost net_cost
+     * @param \SpApi\Model\vendor\invoices\v1\Money $net_cost net_cost
      *
      * @return self
      */
-    public function setNetCost(\OpenAPI\Client\Model\vendor\invoices\v1\Money $net_cost): self
+    public function setNetCost(\SpApi\Model\vendor\invoices\v1\Money $net_cost): self
     {
         if (is_null($net_cost)) {
             throw new \InvalidArgumentException('non-nullable net_cost cannot be null');
@@ -631,9 +631,9 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets credit_note_details
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails|null
+     * @return \SpApi\Model\vendor\invoices\v1\CreditNoteDetails|null
      */
-    public function getCreditNoteDetails(): ?\OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails
+    public function getCreditNoteDetails(): ?\SpApi\Model\vendor\invoices\v1\CreditNoteDetails
     {
         return $this->container['credit_note_details'];
     }
@@ -641,11 +641,11 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credit_note_details
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails|null $credit_note_details credit_note_details
+     * @param \SpApi\Model\vendor\invoices\v1\CreditNoteDetails|null $credit_note_details credit_note_details
      *
      * @return self
      */
-    public function setCreditNoteDetails(?\OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails $credit_note_details): self
+    public function setCreditNoteDetails(?\SpApi\Model\vendor\invoices\v1\CreditNoteDetails $credit_note_details): self
     {
         if (is_null($credit_note_details)) {
             array_push($this->openAPINullablesSetToNull, 'credit_note_details');

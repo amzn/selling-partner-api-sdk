@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule;
 
 /**
  * StandardSingleImageSpecsDetailModuleTest Class Doc Comment
  *
  * @category    Class
  * @description A standard image with paragraphs and a bulleted list, and extra space for technical details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardSingleImageSpecsDetailModuleTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());
@@ -81,7 +81,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyDescriptionHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setDescriptionHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionHeadline());
@@ -93,7 +93,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyDescriptionBlock1()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setDescriptionBlock1($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionBlock1());
@@ -105,7 +105,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertyDescriptionBlock2()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setDescriptionBlock2($testValue);
         $this->assertEquals($testValue, $this->model->getDescriptionBlock2());
@@ -117,7 +117,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertySpecificationHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setSpecificationHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getSpecificationHeadline());
@@ -129,7 +129,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertySpecificationListBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock();
         
         $this->model->setSpecificationListBlock($testValue);
         $this->assertEquals($testValue, $this->model->getSpecificationListBlock());
@@ -141,7 +141,7 @@ class StandardSingleImageSpecsDetailModuleTest extends TestCase
     public function testPropertySpecificationTextBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setSpecificationTextBlock($testValue);
         $this->assertEquals($testValue, $this->model->getSpecificationTextBlock());

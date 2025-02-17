@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\RejectionReason;
+use SpApi\Model\orders\v0\RejectionReason;
 
 /**
  * RejectionReasonTest Class Doc Comment
  *
  * @category    Class
  * @description The reason for rejecting the order&#39;s regulated information. This is only present if the order is rejected.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RejectionReasonTest extends TestCase
 {

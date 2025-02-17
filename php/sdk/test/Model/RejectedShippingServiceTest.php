@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\RejectedShippingService;
+use SpApi\Model\merchantFulfillment\v0\RejectedShippingService;
 
 /**
  * RejectedShippingServiceTest Class Doc Comment
  *
  * @category    Class
  * @description Information about a rejected shipping service
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RejectedShippingServiceTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\PrepOwner;
+use SpApi\Model\awd\v2024_05_09\PrepOwner;
 
 /**
  * PrepOwnerTest Class Doc Comment
  *
  * @category    Class
  * @description The owner of the preparations, if special preparations are required.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrepOwnerTest extends TestCase
 {

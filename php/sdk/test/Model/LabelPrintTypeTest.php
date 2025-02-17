@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LabelPrintType;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\LabelPrintType;
 
 /**
  * LabelPrintTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates the type of print type for a given label.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LabelPrintTypeTest extends TestCase
 {

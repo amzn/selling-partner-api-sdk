@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetFulfillmentPreviewRequest Class Doc Comment
  *
  * @category Class
  * @description The request body schema for the &#x60;getFulfillmentPreview&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
-             'address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address',
-             'items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem[]',
-             'shipping_speed_categories' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory[]',
+             'address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
+             'items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem[]',
+             'shipping_speed_categories' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory[]',
              'include_cod_fulfillment_preview' => 'bool',
              'include_delivery_windows' => 'bool',
-             'feature_constraints' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]'    ];
+             'feature_constraints' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -376,9 +376,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
      */
-    public function getAddress(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+    public function getAddress(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
     {
         return $this->container['address'];
     }
@@ -386,11 +386,11 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $address address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Address $address address
      *
      * @return self
      */
-    public function setAddress(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $address): self
+    public function setAddress(\SpApi\Model\fulfillment\outbound\v2020_07_01\Address $address): self
     {
         if (is_null($address)) {
             throw new \InvalidArgumentException('non-nullable address cannot be null');

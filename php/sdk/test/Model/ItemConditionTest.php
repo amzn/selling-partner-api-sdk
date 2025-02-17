@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\ItemCondition;
+use SpApi\Model\pricing\v0\ItemCondition;
 
 /**
  * ItemConditionTest Class Doc Comment
  *
  * @category    Class
  * @description Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemConditionTest extends TestCase
 {

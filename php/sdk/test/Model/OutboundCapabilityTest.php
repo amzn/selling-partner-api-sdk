@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability;
+use SpApi\Model\supplySources\v2020_07_01\OutboundCapability;
 
 /**
  * OutboundCapabilityTest Class Doc Comment
  *
  * @category    Class
  * @description The outbound capability of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OutboundCapabilityTest extends TestCase
 {
@@ -68,7 +68,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());
@@ -80,7 +80,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyReturnLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ReturnLocation();
         
         $this->model->setReturnLocation($testValue);
         $this->assertEquals($testValue, $this->model->getReturnLocation());
@@ -92,7 +92,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyDeliveryChannel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\DeliveryChannel();
         
         $this->model->setDeliveryChannel($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryChannel());
@@ -104,7 +104,7 @@ class OutboundCapabilityTest extends TestCase
     public function testPropertyPickupChannel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\PickupChannel();
         
         $this->model->setPickupChannel($testValue);
         $this->assertEquals($testValue, $this->model->getPickupChannel());

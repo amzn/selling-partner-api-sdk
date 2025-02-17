@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents;
+use SpApi\Model\awd\v2024_05_09\DistributionPackageContents;
 
 /**
  * DistributionPackageContentsTest Class Doc Comment
  *
  * @category    Class
  * @description Represents the contents inside a package, which can be products or a nested package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DistributionPackageContentsTest extends TestCase
 {

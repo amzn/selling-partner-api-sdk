@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList;
+use SpApi\Model\reports\v2021_06_30\ReportScheduleList;
 
 /**
  * ReportScheduleListTest Class Doc Comment
  *
  * @category    Class
  * @description A list of report schedules.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ReportScheduleListTest extends TestCase
 {

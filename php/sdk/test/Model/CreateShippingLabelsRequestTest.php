@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest;
 
 /**
  * CreateShippingLabelsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body for the createShippingLabels operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateShippingLabelsRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateShippingLabelsRequestTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -69,7 +69,7 @@ class CreateShippingLabelsRequestTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());

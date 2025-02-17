@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TrackingEvent Class Doc Comment
  *
  * @category Class
  * @description Information for tracking package deliveries.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class TrackingEvent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'event_date' => '\DateTime',
-             'event_address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress',
-             'event_code' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\EventCode',
+             'event_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress',
+             'event_code' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\EventCode',
              'event_description' => 'string'    ];
 
     /**
@@ -354,9 +354,9 @@ class TrackingEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets event_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress
      */
-    public function getEventAddress(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress
+    public function getEventAddress(): \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress
     {
         return $this->container['event_address'];
     }
@@ -364,11 +364,11 @@ class TrackingEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress $event_address event_address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress $event_address event_address
      *
      * @return self
      */
-    public function setEventAddress(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress $event_address): self
+    public function setEventAddress(\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress $event_address): self
     {
         if (is_null($event_address)) {
             throw new \InvalidArgumentException('non-nullable event_address cannot be null');

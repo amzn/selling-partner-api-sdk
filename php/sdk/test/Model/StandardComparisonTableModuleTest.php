@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule;
 
 /**
  * StandardComparisonTableModuleTest Class Doc Comment
  *
  * @category    Class
  * @description The standard product comparison table.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardComparisonTableModuleTest extends TestCase
 {

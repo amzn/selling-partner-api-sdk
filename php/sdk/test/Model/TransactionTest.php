@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024_06_19\Transaction;
+use SpApi\Model\finances\v2024_06_19\Transaction;
 
 /**
  * TransactionTest Class Doc Comment
  *
  * @category    Class
  * @description All the information related to a transaction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransactionTest extends TestCase
 {
@@ -57,7 +57,7 @@ class TransactionTest extends TestCase
     public function testPropertySellingPartnerMetadata()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata();
+        $testValue = new \SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata();
         
         $this->model->setSellingPartnerMetadata($testValue);
         $this->assertEquals($testValue, $this->model->getSellingPartnerMetadata());
@@ -136,7 +136,7 @@ class TransactionTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\Currency();
+        $testValue = new \SpApi\Model\finances\v2024_06_19\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());
@@ -148,7 +148,7 @@ class TransactionTest extends TestCase
     public function testPropertyMarketplaceDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails();
+        $testValue = new \SpApi\Model\finances\v2024_06_19\MarketplaceDetails();
         
         $this->model->setMarketplaceDetails($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplaceDetails());

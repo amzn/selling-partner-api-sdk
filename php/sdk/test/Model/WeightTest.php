@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\Weight;
+use SpApi\Model\easyship\v2022_03_23\Weight;
 
 /**
  * WeightTest Class Doc Comment
  *
  * @category    Class
  * @description The weight of the scheduled package
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class WeightTest extends TestCase
 {
@@ -68,7 +68,7 @@ class WeightTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\UnitOfWeight();
+        $enumInstance = new \SpApi\Model\easyship\v2022_03_23\UnitOfWeight();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

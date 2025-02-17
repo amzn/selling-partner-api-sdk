@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v2024_06_19;
+namespace SpApi\Model\finances\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Breakdown Class Doc Comment
  *
  * @category Class
  * @description Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'breakdown_type' => 'string',
-             'breakdown_amount' => '\OpenAPI\Client\Model\finances\v2024_06_19\Currency',
-             'breakdowns' => '\OpenAPI\Client\Model\finances\v2024_06_19\Breakdown'    ];
+             'breakdown_amount' => '\SpApi\Model\finances\v2024_06_19\Currency',
+             'breakdowns' => '\SpApi\Model\finances\v2024_06_19\Breakdown'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdown_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\Currency|null
+     * @return \SpApi\Model\finances\v2024_06_19\Currency|null
      */
-    public function getBreakdownAmount(): ?\OpenAPI\Client\Model\finances\v2024_06_19\Currency
+    public function getBreakdownAmount(): ?\SpApi\Model\finances\v2024_06_19\Currency
     {
         return $this->container['breakdown_amount'];
     }
@@ -352,11 +352,11 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets breakdown_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v2024_06_19\Currency|null $breakdown_amount breakdown_amount
+     * @param \SpApi\Model\finances\v2024_06_19\Currency|null $breakdown_amount breakdown_amount
      *
      * @return self
      */
-    public function setBreakdownAmount(?\OpenAPI\Client\Model\finances\v2024_06_19\Currency $breakdown_amount): self
+    public function setBreakdownAmount(?\SpApi\Model\finances\v2024_06_19\Currency $breakdown_amount): self
     {
         if (is_null($breakdown_amount)) {
             array_push($this->openAPINullablesSetToNull, 'breakdown_amount');
@@ -376,9 +376,9 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets breakdowns
      *
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\Breakdown|null
+     * @return \SpApi\Model\finances\v2024_06_19\Breakdown|null
      */
-    public function getBreakdowns(): ?\OpenAPI\Client\Model\finances\v2024_06_19\Breakdown
+    public function getBreakdowns(): ?\SpApi\Model\finances\v2024_06_19\Breakdown
     {
         return $this->container['breakdowns'];
     }
@@ -386,11 +386,11 @@ class Breakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets breakdowns
      *
-     * @param \OpenAPI\Client\Model\finances\v2024_06_19\Breakdown|null $breakdowns breakdowns
+     * @param \SpApi\Model\finances\v2024_06_19\Breakdown|null $breakdowns breakdowns
      *
      * @return self
      */
-    public function setBreakdowns(?\OpenAPI\Client\Model\finances\v2024_06_19\Breakdown $breakdowns): self
+    public function setBreakdowns(?\SpApi\Model\finances\v2024_06_19\Breakdown $breakdowns): self
     {
         if (is_null($breakdowns)) {
             array_push($this->openAPINullablesSetToNull, 'breakdowns');

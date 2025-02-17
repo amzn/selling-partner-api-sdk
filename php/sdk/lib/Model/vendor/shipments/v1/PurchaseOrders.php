@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PurchaseOrders Class Doc Comment
  *
  * @category Class
  * @description Transport Request pickup date
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class PurchaseOrders implements ModelInterface, ArrayAccess, \JsonSerializable
              'purchase_order_number' => 'string',
              'purchase_order_date' => '\DateTime',
              'ship_window' => 'string',
-             'items' => '\OpenAPI\Client\Model\vendor\shipments\v1\PurchaseOrderItems[]'    ];
+             'items' => '\SpApi\Model\vendor\shipments\v1\PurchaseOrderItems[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

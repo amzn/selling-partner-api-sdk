@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShippingOfferingFilter Class Doc Comment
  *
  * @category Class
  * @description Filter for use when requesting eligible shipping services.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPITypes = [
              'include_packing_slip_with_label' => 'bool',
              'include_complex_shipping_options' => 'bool',
-             'carrier_will_pick_up' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
-             'delivery_experience' => '\OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceOption'    ];
+             'carrier_will_pick_up' => '\SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
+             'delivery_experience' => '\SpApi\Model\merchantFulfillment\v0\DeliveryExperienceOption'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

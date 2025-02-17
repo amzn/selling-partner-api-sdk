@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\messaging\v1;
+namespace SpApi\Model\messaging\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetMessagingActionsForOrderResponseLinks Class Doc Comment
  *
  * @category Class
  * @description The links response that is associated with the specified &#x60;amazonOrderId&#x60;.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetMessagingActionsForOrderResponseLinks implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'self' => '\OpenAPI\Client\Model\messaging\v1\LinkObject',
-             'actions' => '\OpenAPI\Client\Model\messaging\v1\LinkObject[]'    ];
+             'self' => '\SpApi\Model\messaging\v1\LinkObject',
+             'actions' => '\SpApi\Model\messaging\v1\LinkObject[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class GetMessagingActionsForOrderResponseLinks implements ModelInterface, ArrayA
     /**
      * Gets self
      *
-     * @return \OpenAPI\Client\Model\messaging\v1\LinkObject
+     * @return \SpApi\Model\messaging\v1\LinkObject
      */
-    public function getSelf(): \OpenAPI\Client\Model\messaging\v1\LinkObject
+    public function getSelf(): \SpApi\Model\messaging\v1\LinkObject
     {
         return $this->container['self'];
     }
@@ -317,11 +317,11 @@ class GetMessagingActionsForOrderResponseLinks implements ModelInterface, ArrayA
     /**
      * Sets self
      *
-     * @param \OpenAPI\Client\Model\messaging\v1\LinkObject $self self
+     * @param \SpApi\Model\messaging\v1\LinkObject $self self
      *
      * @return self
      */
-    public function setSelf(\OpenAPI\Client\Model\messaging\v1\LinkObject $self): self
+    public function setSelf(\SpApi\Model\messaging\v1\LinkObject $self): self
     {
         if (is_null($self)) {
             throw new \InvalidArgumentException('non-nullable self cannot be null');

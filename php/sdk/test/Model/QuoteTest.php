@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Quote;
 
 /**
  * QuoteTest Class Doc Comment
  *
  * @category    Class
  * @description The estimated shipping cost associated with the transportation option.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class QuoteTest extends TestCase
 {
@@ -57,7 +57,7 @@ class QuoteTest extends TestCase
     public function testPropertyCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency();
         
         $this->model->setCost($testValue);
         $this->assertEquals($testValue, $this->model->getCost());

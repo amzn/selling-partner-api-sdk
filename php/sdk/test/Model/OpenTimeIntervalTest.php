@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\OpenTimeInterval;
+use SpApi\Model\orders\v0\OpenTimeInterval;
 
 /**
  * OpenTimeIntervalTest Class Doc Comment
  *
  * @category    Class
  * @description The time when the business opens or closes.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OpenTimeIntervalTest extends TestCase
 {

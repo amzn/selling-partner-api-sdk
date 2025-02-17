@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest;
+use SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest;
 
 /**
  * ListHandoverSlotsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the &#x60;listHandoverSlots&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListHandoverSlotsRequestTest extends TestCase
 {
@@ -79,7 +79,7 @@ class ListHandoverSlotsRequestTest extends TestCase
     public function testPropertyPackageDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\Dimensions();
         
         $this->model->setPackageDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDimensions());
@@ -91,7 +91,7 @@ class ListHandoverSlotsRequestTest extends TestCase
     public function testPropertyPackageWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Weight();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\Weight();
         
         $this->model->setPackageWeight($testValue);
         $this->assertEquals($testValue, $this->model->getPackageWeight());

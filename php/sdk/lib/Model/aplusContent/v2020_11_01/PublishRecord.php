@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PublishRecord Class Doc Comment
  *
  * @category Class
  * @description The full context for an A+ Content publishing event.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class PublishRecord implements ModelInterface, ArrayAccess, \JsonSerializable
              'marketplace_id' => 'string',
              'locale' => 'string',
              'asin' => 'string',
-             'content_type' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentType',
+             'content_type' => '\SpApi\Model\aplusContent\v2020_11_01\ContentType',
              'content_sub_type' => 'string',
              'content_reference_key' => 'string'    ];
 

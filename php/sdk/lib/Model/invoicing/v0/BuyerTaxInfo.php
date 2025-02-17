@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * BuyerTaxInfo Class Doc Comment
  *
  * @category Class
  * @description Tax information about the buyer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class BuyerTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'company_legal_name' => 'string',
              'taxing_region' => 'string',
-             'tax_classifications' => '\OpenAPI\Client\Model\invoicing\v0\TaxClassification[]'    ];
+             'tax_classifications' => '\SpApi\Model\invoicing\v0\TaxClassification[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

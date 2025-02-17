@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PaymentExecutionDetailItem Class Doc Comment
  *
  * @category Class
  * @description Information about a sub-payment method used to pay for a COD order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payment' => '\OpenAPI\Client\Model\orders\v0\Money',
+             'payment' => '\SpApi\Model\orders\v0\Money',
              'payment_method' => 'string'    ];
 
     /**
@@ -307,9 +307,9 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets payment
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money
+     * @return \SpApi\Model\orders\v0\Money
      */
-    public function getPayment(): \OpenAPI\Client\Model\orders\v0\Money
+    public function getPayment(): \SpApi\Model\orders\v0\Money
     {
         return $this->container['payment'];
     }
@@ -317,11 +317,11 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets payment
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money $payment payment
+     * @param \SpApi\Model\orders\v0\Money $payment payment
      *
      * @return self
      */
-    public function setPayment(\OpenAPI\Client\Model\orders\v0\Money $payment): self
+    public function setPayment(\SpApi\Model\orders\v0\Money $payment): self
     {
         if (is_null($payment)) {
             throw new \InvalidArgumentException('non-nullable payment cannot be null');

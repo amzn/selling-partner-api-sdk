@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * BuyBoxPriceType Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,13 +60,13 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'condition' => 'string',
-             'offer_type' => '\OpenAPI\Client\Model\pricing\v0\OfferCustomerType',
+             'offer_type' => '\SpApi\Model\pricing\v0\OfferCustomerType',
              'quantity_tier' => 'int',
-             'quantity_discount_type' => '\OpenAPI\Client\Model\pricing\v0\QuantityDiscountType',
-             'landed_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'listing_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'shipping' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'points' => '\OpenAPI\Client\Model\pricing\v0\Points',
+             'quantity_discount_type' => '\SpApi\Model\pricing\v0\QuantityDiscountType',
+             'landed_price' => '\SpApi\Model\pricing\v0\MoneyType',
+             'listing_price' => '\SpApi\Model\pricing\v0\MoneyType',
+             'shipping' => '\SpApi\Model\pricing\v0\MoneyType',
+             'points' => '\SpApi\Model\pricing\v0\Points',
              'seller_id' => 'string'    ];
 
     /**
@@ -490,9 +490,9 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets landed_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getLandedPrice(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getLandedPrice(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['landed_price'];
     }
@@ -500,11 +500,11 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets landed_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $landed_price landed_price
+     * @param \SpApi\Model\pricing\v0\MoneyType $landed_price landed_price
      *
      * @return self
      */
-    public function setLandedPrice(\OpenAPI\Client\Model\pricing\v0\MoneyType $landed_price): self
+    public function setLandedPrice(\SpApi\Model\pricing\v0\MoneyType $landed_price): self
     {
         if (is_null($landed_price)) {
             throw new \InvalidArgumentException('non-nullable landed_price cannot be null');
@@ -517,9 +517,9 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets listing_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getListingPrice(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getListingPrice(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -527,11 +527,11 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets listing_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $listing_price listing_price
+     * @param \SpApi\Model\pricing\v0\MoneyType $listing_price listing_price
      *
      * @return self
      */
-    public function setListingPrice(\OpenAPI\Client\Model\pricing\v0\MoneyType $listing_price): self
+    public function setListingPrice(\SpApi\Model\pricing\v0\MoneyType $listing_price): self
     {
         if (is_null($listing_price)) {
             throw new \InvalidArgumentException('non-nullable listing_price cannot be null');
@@ -544,9 +544,9 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getShipping(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getShipping(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['shipping'];
     }
@@ -554,11 +554,11 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $shipping shipping
+     * @param \SpApi\Model\pricing\v0\MoneyType $shipping shipping
      *
      * @return self
      */
-    public function setShipping(\OpenAPI\Client\Model\pricing\v0\MoneyType $shipping): self
+    public function setShipping(\SpApi\Model\pricing\v0\MoneyType $shipping): self
     {
         if (is_null($shipping)) {
             throw new \InvalidArgumentException('non-nullable shipping cannot be null');
@@ -571,9 +571,9 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets points
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\Points|null
+     * @return \SpApi\Model\pricing\v0\Points|null
      */
-    public function getPoints(): ?\OpenAPI\Client\Model\pricing\v0\Points
+    public function getPoints(): ?\SpApi\Model\pricing\v0\Points
     {
         return $this->container['points'];
     }
@@ -581,11 +581,11 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets points
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\Points|null $points points
+     * @param \SpApi\Model\pricing\v0\Points|null $points points
      *
      * @return self
      */
-    public function setPoints(?\OpenAPI\Client\Model\pricing\v0\Points $points): self
+    public function setPoints(?\SpApi\Model\pricing\v0\Points $points): self
     {
         if (is_null($points)) {
             array_push($this->openAPINullablesSetToNull, 'points');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\AutoEnrollmentPreference;
+use SpApi\Model\replenishment\v2022_11_07\AutoEnrollmentPreference;
 
 /**
  * AutoEnrollmentPreferenceTest Class Doc Comment
  *
  * @category    Class
  * @description The auto-enrollment preference indicates whether the offer is opted-in to or opted-out of Amazon&#39;s auto-enrollment feature.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AutoEnrollmentPreferenceTest extends TestCase
 {

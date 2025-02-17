@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetMyFeesEstimateResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetMyFeesEstimateResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResult',
-             'errors' => '\OpenAPI\Client\Model\productFees\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\productFees\v0\GetMyFeesEstimateResult',
+             'errors' => '\SpApi\Model\productFees\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -300,9 +300,9 @@ class GetMyFeesEstimateResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResult|null
+     * @return \SpApi\Model\productFees\v0\GetMyFeesEstimateResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResult
+    public function getPayload(): ?\SpApi\Model\productFees\v0\GetMyFeesEstimateResult
     {
         return $this->container['payload'];
     }
@@ -310,11 +310,11 @@ class GetMyFeesEstimateResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResult|null $payload payload
+     * @param \SpApi\Model\productFees\v0\GetMyFeesEstimateResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimateResult $payload): self
+    public function setPayload(?\SpApi\Model\productFees\v0\GetMyFeesEstimateResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress;
 
 /**
  * VariablePrecisionAddressTest Class Doc Comment
  *
  * @category    Class
  * @description A physical address with varying degrees of precision. A more precise address can provide more accurate results than country code and postal code alone.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class VariablePrecisionAddressTest extends TestCase
 {

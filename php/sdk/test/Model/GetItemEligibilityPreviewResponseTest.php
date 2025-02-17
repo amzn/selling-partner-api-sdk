@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse;
+use SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse;
 
 /**
  * GetItemEligibilityPreviewResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the getItemEligibilityPreview operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetItemEligibilityPreviewResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetItemEligibilityPreviewResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fba\eligibility\v1\ItemEligibilityPreview();
+        $testValue = new \SpApi\Model\fba\eligibility\v1\ItemEligibilityPreview();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

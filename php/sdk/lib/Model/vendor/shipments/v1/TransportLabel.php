@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TransportLabel Class Doc Comment
  *
  * @category Class
  * @description A list of one or more ShipmentLabels.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'label_create_date_time' => '\DateTime',
-             'shipment_information' => '\OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation',
-             'label_data' => '\OpenAPI\Client\Model\vendor\shipments\v1\LabelData[]'    ];
+             'shipment_information' => '\SpApi\Model\vendor\shipments\v1\ShipmentInformation',
+             'label_data' => '\SpApi\Model\vendor\shipments\v1\LabelData[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipment_information
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation|null
+     * @return \SpApi\Model\vendor\shipments\v1\ShipmentInformation|null
      */
-    public function getShipmentInformation(): ?\OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation
+    public function getShipmentInformation(): ?\SpApi\Model\vendor\shipments\v1\ShipmentInformation
     {
         return $this->container['shipment_information'];
     }
@@ -352,11 +352,11 @@ class TransportLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipment_information
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation|null $shipment_information shipment_information
+     * @param \SpApi\Model\vendor\shipments\v1\ShipmentInformation|null $shipment_information shipment_information
      *
      * @return self
      */
-    public function setShipmentInformation(?\OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation $shipment_information): self
+    public function setShipmentInformation(?\SpApi\Model\vendor\shipments\v1\ShipmentInformation $shipment_information): self
     {
         if (is_null($shipment_information)) {
             array_push($this->openAPINullablesSetToNull, 'shipment_information');

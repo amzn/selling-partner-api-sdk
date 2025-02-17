@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate;
+use SpApi\Model\transfers\v2024_06_01\ExpiryDate;
 
 /**
  * ExpiryDateTest Class Doc Comment
  *
  * @category    Class
  * @description The expiration date of the card used for payment. If the payment method is not &#x60;card&#x60;, the expiration date is &#x60;null&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExpiryDateTest extends TestCase
 {

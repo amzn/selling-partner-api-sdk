@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ProductAdsPaymentEvent Class Doc Comment
  *
  * @category Class
  * @description A Sponsored Products payment event.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
              'posted_date' => '\DateTime',
              'transaction_type' => 'string',
              'invoice_id' => 'string',
-             'base_value' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_value' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'transaction_value' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'base_value' => '\SpApi\Model\finances\v0\Currency',
+             'tax_value' => '\SpApi\Model\finances\v0\Currency',
+             'transaction_value' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -431,9 +431,9 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets base_value
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getBaseValue(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getBaseValue(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['base_value'];
     }
@@ -441,11 +441,11 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets base_value
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $base_value base_value
+     * @param \SpApi\Model\finances\v0\Currency|null $base_value base_value
      *
      * @return self
      */
-    public function setBaseValue(?\OpenAPI\Client\Model\finances\v0\Currency $base_value): self
+    public function setBaseValue(?\SpApi\Model\finances\v0\Currency $base_value): self
     {
         if (is_null($base_value)) {
             array_push($this->openAPINullablesSetToNull, 'base_value');
@@ -465,9 +465,9 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tax_value
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxValue(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxValue(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_value'];
     }
@@ -475,11 +475,11 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tax_value
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_value tax_value
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_value tax_value
      *
      * @return self
      */
-    public function setTaxValue(?\OpenAPI\Client\Model\finances\v0\Currency $tax_value): self
+    public function setTaxValue(?\SpApi\Model\finances\v0\Currency $tax_value): self
     {
         if (is_null($tax_value)) {
             array_push($this->openAPINullablesSetToNull, 'tax_value');
@@ -499,9 +499,9 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets transaction_value
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTransactionValue(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTransactionValue(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['transaction_value'];
     }
@@ -509,11 +509,11 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets transaction_value
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $transaction_value transaction_value
+     * @param \SpApi\Model\finances\v0\Currency|null $transaction_value transaction_value
      *
      * @return self
      */
-    public function setTransactionValue(?\OpenAPI\Client\Model\finances\v0\Currency $transaction_value): self
+    public function setTransactionValue(?\SpApi\Model\finances\v0\Currency $transaction_value): self
     {
         if (is_null($transaction_value)) {
             array_push($this->openAPINullablesSetToNull, 'transaction_value');

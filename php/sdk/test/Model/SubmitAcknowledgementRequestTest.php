@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\SubmitAcknowledgementRequest;
+use SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest;
 
 /**
  * SubmitAcknowledgementRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the submitAcknowledgment operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitAcknowledgementRequestTest extends TestCase
 {

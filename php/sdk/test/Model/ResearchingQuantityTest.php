@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\inventory\v1\ResearchingQuantity;
+use SpApi\Model\fba\inventory\v1\ResearchingQuantity;
 
 /**
  * ResearchingQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description The number of misplaced or warehouse damaged units that are actively being confirmed at our fulfillment centers.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ResearchingQuantityTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\AmazonPrograms;
+use SpApi\Model\orders\v0\AmazonPrograms;
 
 /**
  * AmazonProgramsTest Class Doc Comment
  *
  * @category    Class
  * @description Contains the list of programs that are associated with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AmazonProgramsTest extends TestCase
 {

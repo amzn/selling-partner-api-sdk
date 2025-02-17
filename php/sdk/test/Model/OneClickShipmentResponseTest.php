@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse;
+use SpApi\Model\shipping\v2\OneClickShipmentResponse;
 
 /**
  * OneClickShipmentResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the OneClickShipment operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OneClickShipmentResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OneClickShipmentResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\OneClickShipmentResult();
+        $testValue = new \SpApi\Model\shipping\v2\OneClickShipmentResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

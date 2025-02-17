@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DeliveryPolicy Class Doc Comment
  *
  * @category Class
  * @description The policy for a delivery offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class DeliveryPolicy implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'message' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage'    ];
+             'message' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class DeliveryPolicy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets message
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage|null
      */
-    public function getMessage(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage
+    public function getMessage(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage
     {
         return $this->container['message'];
     }
@@ -304,11 +304,11 @@ class DeliveryPolicy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage|null $message message
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage|null $message message
      *
      * @return self
      */
-    public function setMessage(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage $message): self
+    public function setMessage(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage $message): self
     {
         if (is_null($message)) {
             array_push($this->openAPINullablesSetToNull, 'message');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardMultipleImageTextModule Class Doc Comment
  *
  * @category Class
  * @description Standard images with text, presented one at a time. The user clicks on thumbnails to view each block.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class StandardMultipleImageTextModule implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'blocks' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextCaptionBlock[]'    ];
+             'blocks' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextCaptionBlock[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

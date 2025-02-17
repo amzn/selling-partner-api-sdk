@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateRequest;
 
 /**
  * SubmitFulfillmentOrderStatusUpdateRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body schema for the &#x60;submitFulfillmentOrderStatusUpdate&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitFulfillmentOrderStatusUpdateRequestTest extends TestCase
 {
@@ -56,7 +56,7 @@ class SubmitFulfillmentOrderStatusUpdateRequestTest extends TestCase
      */
     public function testPropertyFulfillmentOrderStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderStatus();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

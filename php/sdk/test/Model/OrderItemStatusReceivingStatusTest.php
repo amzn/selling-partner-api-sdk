@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus;
+use SpApi\Model\vendor\orders\v1\OrderItemStatusReceivingStatus;
 
 /**
  * OrderItemStatusReceivingStatusTest Class Doc Comment
  *
  * @category    Class
  * @description Item receive status at the buyer&#39;s warehouse.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderItemStatusReceivingStatusTest extends TestCase
 {
@@ -69,7 +69,7 @@ class OrderItemStatusReceivingStatusTest extends TestCase
     public function testPropertyReceivedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setReceivedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getReceivedQuantity());

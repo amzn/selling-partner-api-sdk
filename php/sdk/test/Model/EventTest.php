@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\Event;
+use SpApi\Model\shipping\v2\Event;
 
 /**
  * EventTest Class Doc Comment
  *
  * @category    Class
  * @description A tracking event.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class EventTest extends TestCase
 {
@@ -56,7 +56,7 @@ class EventTest extends TestCase
      */
     public function testPropertyEventCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\EventCode();
+        $enumInstance = new \SpApi\Model\shipping\v2\EventCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class EventTest extends TestCase
     public function testPropertyLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Location();
+        $testValue = new \SpApi\Model\shipping\v2\Location();
         
         $this->model->setLocation($testValue);
         $this->assertEquals($testValue, $this->model->getLocation());

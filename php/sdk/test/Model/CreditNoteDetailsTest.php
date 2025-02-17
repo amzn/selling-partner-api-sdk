@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\v1\CreditNoteDetails;
+use SpApi\Model\vendor\invoices\v1\CreditNoteDetails;
 
 /**
  * CreditNoteDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description References required in order to process a credit note. This information is required only if InvoiceType is CreditNote.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreditNoteDetailsTest extends TestCase
 {

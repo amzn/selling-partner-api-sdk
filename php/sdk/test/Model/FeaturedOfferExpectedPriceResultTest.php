@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResult;
+use SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResult;
 
 /**
  * FeaturedOfferExpectedPriceResultTest Class Doc Comment
  *
  * @category    Class
  * @description The FOEP result data for the requested offer.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeaturedOfferExpectedPriceResultTest extends TestCase
 {
@@ -57,7 +57,7 @@ class FeaturedOfferExpectedPriceResultTest extends TestCase
     public function testPropertyFeaturedOfferExpectedPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice();
         
         $this->model->setFeaturedOfferExpectedPrice($testValue);
         $this->assertEquals($testValue, $this->model->getFeaturedOfferExpectedPrice());
@@ -80,7 +80,7 @@ class FeaturedOfferExpectedPriceResultTest extends TestCase
     public function testPropertyCompetingFeaturedOffer()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\FeaturedOffer();
         
         $this->model->setCompetingFeaturedOffer($testValue);
         $this->assertEquals($testValue, $this->model->getCompetingFeaturedOffer());
@@ -92,7 +92,7 @@ class FeaturedOfferExpectedPriceResultTest extends TestCase
     public function testPropertyCurrentFeaturedOffer()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\FeaturedOffer();
         
         $this->model->setCurrentFeaturedOffer($testValue);
         $this->assertEquals($testValue, $this->model->getCurrentFeaturedOffer());

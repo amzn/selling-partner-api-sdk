@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\sales\v1;
+namespace SpApi\Api\sales\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * SalesApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -171,9 +171,9 @@ class SalesApi
      * @param  string|null $sku
      *  Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse
+     * @return \SpApi\Model\sales\v1\GetOrderMetricsResponse
      */
     public function getOrderMetrics(
         array $marketplace_ids,
@@ -185,7 +185,7 @@ class SalesApi
         ?string $first_day_of_week = 'Monday',
         ?string $asin = null,
         ?string $sku = null
-    ): \OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse {
+    ): \SpApi\Model\sales\v1\GetOrderMetricsResponse {
         list($response) = $this->getOrderMetricsWithHttpInfo($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku);
         return $response;
     }
@@ -212,9 +212,9 @@ class SalesApi
      * @param  string|null $sku
      *  Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\sales\v1\GetOrderMetricsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderMetricsWithHttpInfo(
         array $marketplace_ids,
@@ -268,143 +268,143 @@ class SalesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\sales\v1\GetOrderMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\sales\v1\GetOrderMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse';
+            $returnType = '\SpApi\Model\sales\v1\GetOrderMetricsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -425,7 +425,7 @@ class SalesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class SalesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class SalesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -449,7 +449,7 @@ class SalesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -457,7 +457,7 @@ class SalesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -465,7 +465,7 @@ class SalesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -473,7 +473,7 @@ class SalesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -481,7 +481,7 @@ class SalesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -489,7 +489,7 @@ class SalesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse',
+                        '\SpApi\Model\sales\v1\GetOrderMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -579,7 +579,7 @@ class SalesApi
         ?string $asin = null,
         ?string $sku = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\sales\v1\GetOrderMetricsResponse';
+        $returnType = '\SpApi\Model\sales\v1\GetOrderMetricsResponse';
         $request = $this->getOrderMetricsRequest($marketplace_ids, $interval, $granularity, $granularity_time_zone, $buyer_type, $fulfillment_network, $first_day_of_week, $asin, $sku);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\payments\v1;
+namespace SpApi\Model\vendor\df\payments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ChargeDetails Class Doc Comment
  *
  * @category Class
  * @description Monetary and tax details of the charge.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'type' => 'string',
-             'charge_amount' => '\OpenAPI\Client\Model\vendor\df\payments\v1\Money',
-             'tax_details' => '\OpenAPI\Client\Model\vendor\df\payments\v1\TaxDetail[]'    ];
+             'charge_amount' => '\SpApi\Model\vendor\df\payments\v1\Money',
+             'tax_details' => '\SpApi\Model\vendor\df\payments\v1\TaxDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -385,9 +385,9 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets charge_amount
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\Money
+     * @return \SpApi\Model\vendor\df\payments\v1\Money
      */
-    public function getChargeAmount(): \OpenAPI\Client\Model\vendor\df\payments\v1\Money
+    public function getChargeAmount(): \SpApi\Model\vendor\df\payments\v1\Money
     {
         return $this->container['charge_amount'];
     }
@@ -395,11 +395,11 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets charge_amount
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\Money $charge_amount charge_amount
+     * @param \SpApi\Model\vendor\df\payments\v1\Money $charge_amount charge_amount
      *
      * @return self
      */
-    public function setChargeAmount(\OpenAPI\Client\Model\vendor\df\payments\v1\Money $charge_amount): self
+    public function setChargeAmount(\SpApi\Model\vendor\df\payments\v1\Money $charge_amount): self
     {
         if (is_null($charge_amount)) {
             throw new \InvalidArgumentException('non-nullable charge_amount cannot be null');

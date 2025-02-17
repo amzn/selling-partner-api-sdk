@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardComparisonProductBlock Class Doc Comment
  *
  * @category Class
  * @description The A+ Content standard comparison product block.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,11 +61,11 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPITypes = [
              'position' => 'int',
-             'image' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent',
+             'image' => '\SpApi\Model\aplusContent\v2020_11_01\ImageComponent',
              'title' => 'string',
              'asin' => 'string',
              'highlight' => 'bool',
-             'metrics' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PlainTextItem[]'    ];
+             'metrics' => '\SpApi\Model\aplusContent\v2020_11_01\PlainTextItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -395,9 +395,9 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets image
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null
      */
-    public function getImage(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent
+    public function getImage(): ?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent
     {
         return $this->container['image'];
     }
@@ -405,11 +405,11 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
      *
      * @return self
      */
-    public function setImage(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent $image): self
+    public function setImage(?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent $image): self
     {
         if (is_null($image)) {
             array_push($this->openAPINullablesSetToNull, 'image');

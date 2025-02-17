@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContactDetails Class Doc Comment
  *
  * @category Class
  * @description The contact details
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ContactDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'primary' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetailsPrimary'    ];
+             'primary' => '\SpApi\Model\supplySources\v2020_07_01\ContactDetailsPrimary'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class ContactDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets primary
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetailsPrimary|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ContactDetailsPrimary|null
      */
-    public function getPrimary(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetailsPrimary
+    public function getPrimary(): ?\SpApi\Model\supplySources\v2020_07_01\ContactDetailsPrimary
     {
         return $this->container['primary'];
     }
@@ -304,11 +304,11 @@ class ContactDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets primary
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetailsPrimary|null $primary primary
+     * @param \SpApi\Model\supplySources\v2020_07_01\ContactDetailsPrimary|null $primary primary
      *
      * @return self
      */
-    public function setPrimary(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetailsPrimary $primary): self
+    public function setPrimary(?\SpApi\Model\supplySources\v2020_07_01\ContactDetailsPrimary $primary): self
     {
         if (is_null($primary)) {
             array_push($this->openAPINullablesSetToNull, 'primary');

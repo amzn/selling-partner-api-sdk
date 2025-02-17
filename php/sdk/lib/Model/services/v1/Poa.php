@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Poa Class Doc Comment
  *
  * @category Class
  * @description Proof of Appointment (POA) details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'appointment_time' => '\OpenAPI\Client\Model\services\v1\AppointmentTime',
-             'technicians' => '\OpenAPI\Client\Model\services\v1\Technician[]',
+             'appointment_time' => '\SpApi\Model\services\v1\AppointmentTime',
+             'technicians' => '\SpApi\Model\services\v1\Technician[]',
              'uploading_technician' => 'string',
              'upload_time' => '\DateTime',
              'poa_type' => 'string'    ];
@@ -358,9 +358,9 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets appointment_time
      *
-     * @return \OpenAPI\Client\Model\services\v1\AppointmentTime|null
+     * @return \SpApi\Model\services\v1\AppointmentTime|null
      */
-    public function getAppointmentTime(): ?\OpenAPI\Client\Model\services\v1\AppointmentTime
+    public function getAppointmentTime(): ?\SpApi\Model\services\v1\AppointmentTime
     {
         return $this->container['appointment_time'];
     }
@@ -368,11 +368,11 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets appointment_time
      *
-     * @param \OpenAPI\Client\Model\services\v1\AppointmentTime|null $appointment_time appointment_time
+     * @param \SpApi\Model\services\v1\AppointmentTime|null $appointment_time appointment_time
      *
      * @return self
      */
-    public function setAppointmentTime(?\OpenAPI\Client\Model\services\v1\AppointmentTime $appointment_time): self
+    public function setAppointmentTime(?\SpApi\Model\services\v1\AppointmentTime $appointment_time): self
     {
         if (is_null($appointment_time)) {
             array_push($this->openAPINullablesSetToNull, 'appointment_time');

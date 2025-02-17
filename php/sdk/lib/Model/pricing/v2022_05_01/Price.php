@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Price Class Doc Comment
  *
  * @category Class
  * @description The schema for item&#39;s price information, including listing price, shipping price, and Amazon Points.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'listing_price' => '\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType',
-             'shipping_price' => '\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType',
-             'points' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Points'    ];
+             'listing_price' => '\SpApi\Model\pricing\v2022_05_01\MoneyType',
+             'shipping_price' => '\SpApi\Model\pricing\v2022_05_01\MoneyType',
+             'points' => '\SpApi\Model\pricing\v2022_05_01\Points'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -311,9 +311,9 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets listing_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+     * @return \SpApi\Model\pricing\v2022_05_01\MoneyType
      */
-    public function getListingPrice(): \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+    public function getListingPrice(): \SpApi\Model\pricing\v2022_05_01\MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -321,11 +321,11 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets listing_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $listing_price listing_price
+     * @param \SpApi\Model\pricing\v2022_05_01\MoneyType $listing_price listing_price
      *
      * @return self
      */
-    public function setListingPrice(\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $listing_price): self
+    public function setListingPrice(\SpApi\Model\pricing\v2022_05_01\MoneyType $listing_price): self
     {
         if (is_null($listing_price)) {
             throw new \InvalidArgumentException('non-nullable listing_price cannot be null');
@@ -338,9 +338,9 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType|null
+     * @return \SpApi\Model\pricing\v2022_05_01\MoneyType|null
      */
-    public function getShippingPrice(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+    public function getShippingPrice(): ?\SpApi\Model\pricing\v2022_05_01\MoneyType
     {
         return $this->container['shipping_price'];
     }
@@ -348,11 +348,11 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType|null $shipping_price shipping_price
+     * @param \SpApi\Model\pricing\v2022_05_01\MoneyType|null $shipping_price shipping_price
      *
      * @return self
      */
-    public function setShippingPrice(?\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $shipping_price): self
+    public function setShippingPrice(?\SpApi\Model\pricing\v2022_05_01\MoneyType $shipping_price): self
     {
         if (is_null($shipping_price)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_price');
@@ -372,9 +372,9 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets points
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\Points|null
+     * @return \SpApi\Model\pricing\v2022_05_01\Points|null
      */
-    public function getPoints(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\Points
+    public function getPoints(): ?\SpApi\Model\pricing\v2022_05_01\Points
     {
         return $this->container['points'];
     }
@@ -382,11 +382,11 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets points
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\Points|null $points points
+     * @param \SpApi\Model\pricing\v2022_05_01\Points|null $points points
      *
      * @return self
      */
-    public function setPoints(?\OpenAPI\Client\Model\pricing\v2022_05_01\Points $points): self
+    public function setPoints(?\SpApi\Model\pricing\v2022_05_01\Points $points): self
     {
         if (is_null($points)) {
             array_push($this->openAPINullablesSetToNull, 'points');

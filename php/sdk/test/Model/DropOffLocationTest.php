@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation;
 
 /**
  * DropOffLocationTest Class Doc Comment
  *
  * @category    Class
  * @description The preferred location to leave packages at the destination address.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DropOffLocationTest extends TestCase
 {

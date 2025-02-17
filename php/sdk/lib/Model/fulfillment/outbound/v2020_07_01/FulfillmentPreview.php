@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FulfillmentPreview Class Doc Comment
  *
  * @category Class
  * @description Information about a fulfillment order preview, including delivery and fee information based on shipping method.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,17 +60,17 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipping_speed_category' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory',
-             'scheduled_delivery_info' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo',
+             'shipping_speed_category' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory',
+             'scheduled_delivery_info' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo',
              'is_fulfillable' => 'bool',
              'is_cod_capable' => 'bool',
-             'estimated_shipping_weight' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight',
-             'estimated_fees' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Fee[]',
-             'fulfillment_preview_shipments' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreviewShipment[]',
-             'unfulfillable_preview_items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\UnfulfillablePreviewItem[]',
+             'estimated_shipping_weight' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Weight',
+             'estimated_fees' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Fee[]',
+             'fulfillment_preview_shipments' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreviewShipment[]',
+             'unfulfillable_preview_items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\UnfulfillablePreviewItem[]',
              'order_unfulfillable_reasons' => 'string[]',
              'marketplace_id' => 'string',
-             'feature_constraints' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]'    ];
+             'feature_constraints' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -403,9 +403,9 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets scheduled_delivery_info
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo|null
      */
-    public function getScheduledDeliveryInfo(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo
+    public function getScheduledDeliveryInfo(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo
     {
         return $this->container['scheduled_delivery_info'];
     }
@@ -413,11 +413,11 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets scheduled_delivery_info
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo|null $scheduled_delivery_info scheduled_delivery_info
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo|null $scheduled_delivery_info scheduled_delivery_info
      *
      * @return self
      */
-    public function setScheduledDeliveryInfo(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo $scheduled_delivery_info): self
+    public function setScheduledDeliveryInfo(?\SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo $scheduled_delivery_info): self
     {
         if (is_null($scheduled_delivery_info)) {
             array_push($this->openAPINullablesSetToNull, 'scheduled_delivery_info');
@@ -491,9 +491,9 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets estimated_shipping_weight
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Weight|null
      */
-    public function getEstimatedShippingWeight(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight
+    public function getEstimatedShippingWeight(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Weight
     {
         return $this->container['estimated_shipping_weight'];
     }
@@ -501,11 +501,11 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets estimated_shipping_weight
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight|null $estimated_shipping_weight estimated_shipping_weight
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Weight|null $estimated_shipping_weight estimated_shipping_weight
      *
      * @return self
      */
-    public function setEstimatedShippingWeight(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight $estimated_shipping_weight): self
+    public function setEstimatedShippingWeight(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Weight $estimated_shipping_weight): self
     {
         if (is_null($estimated_shipping_weight)) {
             array_push($this->openAPINullablesSetToNull, 'estimated_shipping_weight');

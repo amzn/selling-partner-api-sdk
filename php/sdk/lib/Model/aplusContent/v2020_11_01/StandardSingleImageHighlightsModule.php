@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardSingleImageHighlightsModule Class Doc Comment
  *
  * @category Class
  * @description A standard image with several paragraphs and a bulleted list.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'image' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent',
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'text_block1' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock',
-             'text_block2' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock',
-             'text_block3' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock',
-             'bulleted_list_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock'    ];
+             'image' => '\SpApi\Model\aplusContent\v2020_11_01\ImageComponent',
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'text_block1' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock',
+             'text_block2' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock',
+             'text_block3' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock',
+             'bulleted_list_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -329,9 +329,9 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Gets image
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null
      */
-    public function getImage(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent
+    public function getImage(): ?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent
     {
         return $this->container['image'];
     }
@@ -339,11 +339,11 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
      *
      * @return self
      */
-    public function setImage(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent $image): self
+    public function setImage(?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent $image): self
     {
         if (is_null($image)) {
             array_push($this->openAPINullablesSetToNull, 'image');
@@ -363,9 +363,9 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -373,11 +373,11 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -397,9 +397,9 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Gets text_block1
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getTextBlock1(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getTextBlock1(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['text_block1'];
     }
@@ -407,11 +407,11 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Sets text_block1
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $text_block1 text_block1
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $text_block1 text_block1
      *
      * @return self
      */
-    public function setTextBlock1(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $text_block1): self
+    public function setTextBlock1(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $text_block1): self
     {
         if (is_null($text_block1)) {
             array_push($this->openAPINullablesSetToNull, 'text_block1');
@@ -431,9 +431,9 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Gets text_block2
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getTextBlock2(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getTextBlock2(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['text_block2'];
     }
@@ -441,11 +441,11 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Sets text_block2
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $text_block2 text_block2
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $text_block2 text_block2
      *
      * @return self
      */
-    public function setTextBlock2(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $text_block2): self
+    public function setTextBlock2(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $text_block2): self
     {
         if (is_null($text_block2)) {
             array_push($this->openAPINullablesSetToNull, 'text_block2');
@@ -465,9 +465,9 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Gets text_block3
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getTextBlock3(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getTextBlock3(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['text_block3'];
     }
@@ -475,11 +475,11 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Sets text_block3
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $text_block3 text_block3
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $text_block3 text_block3
      *
      * @return self
      */
-    public function setTextBlock3(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $text_block3): self
+    public function setTextBlock3(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $text_block3): self
     {
         if (is_null($text_block3)) {
             array_push($this->openAPINullablesSetToNull, 'text_block3');
@@ -499,9 +499,9 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Gets bulleted_list_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null
      */
-    public function getBulletedListBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock
+    public function getBulletedListBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock
     {
         return $this->container['bulleted_list_block'];
     }
@@ -509,11 +509,11 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     /**
      * Sets bulleted_list_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null $bulleted_list_block bulleted_list_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null $bulleted_list_block bulleted_list_block
      *
      * @return self
      */
-    public function setBulletedListBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock $bulleted_list_block): self
+    public function setBulletedListBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock $bulleted_list_block): self
     {
         if (is_null($bulleted_list_block)) {
             array_push($this->openAPINullablesSetToNull, 'bulleted_list_block');

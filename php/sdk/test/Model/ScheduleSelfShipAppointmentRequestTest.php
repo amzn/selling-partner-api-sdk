@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentRequest;
 
 /**
  * ScheduleSelfShipAppointmentRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;scheduleSelfShipAppointment&#x60; request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ScheduleSelfShipAppointmentRequestTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ScheduleSelfShipAppointmentRequestTest extends TestCase
      */
     public function testPropertyReasonComment()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ReasonComment();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\ReasonComment();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

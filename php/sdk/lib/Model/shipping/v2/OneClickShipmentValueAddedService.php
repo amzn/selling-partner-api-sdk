@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OneClickShipmentValueAddedService Class Doc Comment
  *
  * @category Class
  * @description A value-added service to be applied to a shipping service purchase.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class OneClickShipmentValueAddedService implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPITypes = [
              'id' => 'string',
-             'amount' => '\OpenAPI\Client\Model\shipping\v2\Currency'    ];
+             'amount' => '\SpApi\Model\shipping\v2\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -332,9 +332,9 @@ class OneClickShipmentValueAddedService implements ModelInterface, ArrayAccess, 
     /**
      * Gets amount
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency|null
+     * @return \SpApi\Model\shipping\v2\Currency|null
      */
-    public function getAmount(): ?\OpenAPI\Client\Model\shipping\v2\Currency
+    public function getAmount(): ?\SpApi\Model\shipping\v2\Currency
     {
         return $this->container['amount'];
     }
@@ -342,11 +342,11 @@ class OneClickShipmentValueAddedService implements ModelInterface, ArrayAccess, 
     /**
      * Sets amount
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency|null $amount amount
+     * @param \SpApi\Model\shipping\v2\Currency|null $amount amount
      *
      * @return self
      */
-    public function setAmount(?\OpenAPI\Client\Model\shipping\v2\Currency $amount): self
+    public function setAmount(?\SpApi\Model\shipping\v2\Currency $amount): self
     {
         if (is_null($amount)) {
             array_push($this->openAPINullablesSetToNull, 'amount');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardSingleSideImageModule Class Doc Comment
  *
  * @category Class
  * @description A standard headline and body text with an image on the side.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'image_position_type' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PositionType',
-             'block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock'    ];
+             'image_position_type' => '\SpApi\Model\aplusContent\v2020_11_01\PositionType',
+             'block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -331,9 +331,9 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block'];
     }
@@ -341,11 +341,11 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block block
      *
      * @return self
      */
-    public function setBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block): self
+    public function setBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block): self
     {
         if (is_null($block)) {
             array_push($this->openAPINullablesSetToNull, 'block');

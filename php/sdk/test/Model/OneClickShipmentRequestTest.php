@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest;
+use SpApi\Model\shipping\v2\OneClickShipmentRequest;
 
 /**
  * OneClickShipmentRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and when channelType is Amazon shipTo is ignored.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OneClickShipmentRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyShipTo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setShipTo($testValue);
         $this->assertEquals($testValue, $this->model->getShipTo());
@@ -69,7 +69,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyShipFrom()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setShipFrom($testValue);
         $this->assertEquals($testValue, $this->model->getShipFrom());
@@ -81,7 +81,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyReturnTo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setReturnTo($testValue);
         $this->assertEquals($testValue, $this->model->getReturnTo());
@@ -138,7 +138,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyChannelDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\ChannelDetails();
+        $testValue = new \SpApi\Model\shipping\v2\ChannelDetails();
         
         $this->model->setChannelDetails($testValue);
         $this->assertEquals($testValue, $this->model->getChannelDetails());
@@ -150,7 +150,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyLabelSpecifications()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification();
+        $testValue = new \SpApi\Model\shipping\v2\RequestedDocumentSpecification();
         
         $this->model->setLabelSpecifications($testValue);
         $this->assertEquals($testValue, $this->model->getLabelSpecifications());
@@ -162,7 +162,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyServiceSelection()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\ServiceSelection();
+        $testValue = new \SpApi\Model\shipping\v2\ServiceSelection();
         
         $this->model->setServiceSelection($testValue);
         $this->assertEquals($testValue, $this->model->getServiceSelection());
@@ -174,7 +174,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyShipperInstruction()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\ShipperInstruction();
+        $testValue = new \SpApi\Model\shipping\v2\ShipperInstruction();
         
         $this->model->setShipperInstruction($testValue);
         $this->assertEquals($testValue, $this->model->getShipperInstruction());
@@ -186,7 +186,7 @@ class OneClickShipmentRequestTest extends TestCase
     public function testPropertyDestinationAccessPointDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\AccessPointDetails();
+        $testValue = new \SpApi\Model\shipping\v2\AccessPointDetails();
         
         $this->model->setDestinationAccessPointDetails($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAccessPointDetails());

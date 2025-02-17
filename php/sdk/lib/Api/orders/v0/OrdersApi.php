@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\orders\v0;
+namespace SpApi\Api\orders\v0;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * OrdersApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -156,16 +156,16 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+     * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
      *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
     public function confirmShipment(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+        \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
     ): void {
         $this->confirmShipmentWithHttpInfo($order_id, $payload);
     }
@@ -177,16 +177,16 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+     * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
      *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
     public function confirmShipmentWithHttpInfo(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+        \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
     ): array {
         $request = $this->confirmShipmentRequest($order_id, $payload);
         $request = $this->config->sign($request);
@@ -234,7 +234,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -242,7 +242,7 @@ class OrdersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,7 +258,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,7 +266,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -274,7 +274,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -282,7 +282,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\ConfirmShipmentErrorResponse',
+                        '\SpApi\Model\orders\v0\ConfirmShipmentErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -299,7 +299,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+     * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
      *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
@@ -307,7 +307,7 @@ class OrdersApi
      */
     public function confirmShipmentAsync(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+        \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
     ): PromiseInterface {
         return $this->confirmShipmentAsyncWithHttpInfo($order_id, $payload)
             ->then(
@@ -324,7 +324,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+     * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
      *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
@@ -332,7 +332,7 @@ class OrdersApi
      */
     public function confirmShipmentAsyncWithHttpInfo(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+        \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
     ): PromiseInterface {
         $returnType = '';
         $request = $this->confirmShipmentRequest($order_id, $payload);
@@ -367,7 +367,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+     * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
      *  Request body of &#x60;confirmShipment&#x60;. (required)
      *
      * @throws \InvalidArgumentException
@@ -375,7 +375,7 @@ class OrdersApi
      */
     public function confirmShipmentRequest(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest $payload
+        \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
     ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
@@ -482,13 +482,13 @@ class OrdersApi
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrderResponse
+     * @return \SpApi\Model\orders\v0\GetOrderResponse
      */
     public function getOrder(
         string $order_id
-    ): \OpenAPI\Client\Model\orders\v0\GetOrderResponse {
+    ): \SpApi\Model\orders\v0\GetOrderResponse {
         list($response) = $this->getOrderWithHttpInfo($order_id);
         return $response;
     }
@@ -501,9 +501,9 @@ class OrdersApi
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderWithHttpInfo(
         string $order_id
@@ -549,113 +549,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -676,7 +676,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -684,7 +684,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -692,7 +692,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -700,7 +700,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -708,7 +708,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -716,7 +716,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -724,7 +724,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderResponse',
+                        '\SpApi\Model\orders\v0\GetOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -770,7 +770,7 @@ class OrdersApi
     public function getOrderAsyncWithHttpInfo(
         string $order_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrderResponse';
         $request = $this->getOrderRequest($order_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -916,13 +916,13 @@ class OrdersApi
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse
+     * @return \SpApi\Model\orders\v0\GetOrderAddressResponse
      */
     public function getOrderAddress(
         string $order_id
-    ): \OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse {
+    ): \SpApi\Model\orders\v0\GetOrderAddressResponse {
         list($response) = $this->getOrderAddressWithHttpInfo($order_id);
         return $response;
     }
@@ -935,9 +935,9 @@ class OrdersApi
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrderAddressResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderAddressWithHttpInfo(
         string $order_id
@@ -983,113 +983,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderAddressResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderAddressResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrderAddressResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1110,7 +1110,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1118,7 +1118,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1126,7 +1126,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1134,7 +1134,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1142,7 +1142,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1150,7 +1150,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1158,7 +1158,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse',
+                        '\SpApi\Model\orders\v0\GetOrderAddressResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1204,7 +1204,7 @@ class OrdersApi
     public function getOrderAddressAsyncWithHttpInfo(
         string $order_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrderAddressResponse';
         $request = $this->getOrderAddressRequest($order_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1350,13 +1350,13 @@ class OrdersApi
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse
+     * @return \SpApi\Model\orders\v0\GetOrderBuyerInfoResponse
      */
     public function getOrderBuyerInfo(
         string $order_id
-    ): \OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse {
+    ): \SpApi\Model\orders\v0\GetOrderBuyerInfoResponse {
         list($response) = $this->getOrderBuyerInfoWithHttpInfo($order_id);
         return $response;
     }
@@ -1369,9 +1369,9 @@ class OrdersApi
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrderBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderBuyerInfoWithHttpInfo(
         string $order_id
@@ -1417,113 +1417,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1544,7 +1544,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1552,7 +1552,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1560,7 +1560,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1568,7 +1568,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1576,7 +1576,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1584,7 +1584,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1592,7 +1592,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1638,7 +1638,7 @@ class OrdersApi
     public function getOrderBuyerInfoAsyncWithHttpInfo(
         string $order_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderBuyerInfoResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrderBuyerInfoResponse';
         $request = $this->getOrderBuyerInfoRequest($order_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1786,14 +1786,14 @@ class OrdersApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse
+     * @return \SpApi\Model\orders\v0\GetOrderItemsResponse
      */
     public function getOrderItems(
         string $order_id,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse {
+    ): \SpApi\Model\orders\v0\GetOrderItemsResponse {
         list($response) = $this->getOrderItemsWithHttpInfo($order_id, $next_token);
         return $response;
     }
@@ -1808,9 +1808,9 @@ class OrdersApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrderItemsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderItemsWithHttpInfo(
         string $order_id,
@@ -1857,113 +1857,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrderItemsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1984,7 +1984,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1992,7 +1992,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2000,7 +2000,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2008,7 +2008,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2016,7 +2016,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2024,7 +2024,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2032,7 +2032,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2084,7 +2084,7 @@ class OrdersApi
         string $order_id,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderItemsResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrderItemsResponse';
         $request = $this->getOrderItemsRequest($order_id, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2244,14 +2244,14 @@ class OrdersApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse
+     * @return \SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse
      */
     public function getOrderItemsBuyerInfo(
         string $order_id,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse {
+    ): \SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse {
         list($response) = $this->getOrderItemsBuyerInfoWithHttpInfo($order_id, $next_token);
         return $response;
     }
@@ -2266,9 +2266,9 @@ class OrdersApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderItemsBuyerInfoWithHttpInfo(
         string $order_id,
@@ -2315,113 +2315,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2442,7 +2442,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2450,7 +2450,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2458,7 +2458,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2466,7 +2466,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2474,7 +2474,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2482,7 +2482,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2490,7 +2490,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2542,7 +2542,7 @@ class OrdersApi
         string $order_id,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderItemsBuyerInfoResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse';
         $request = $this->getOrderItemsBuyerInfoRequest($order_id, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2700,13 +2700,13 @@ class OrdersApi
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse
+     * @return \SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse
      */
     public function getOrderRegulatedInfo(
         string $order_id
-    ): \OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse {
+    ): \SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse {
         list($response) = $this->getOrderRegulatedInfoWithHttpInfo($order_id);
         return $response;
     }
@@ -2719,9 +2719,9 @@ class OrdersApi
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrderRegulatedInfoWithHttpInfo(
         string $order_id
@@ -2767,113 +2767,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2894,7 +2894,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2902,7 +2902,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2910,7 +2910,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2918,7 +2918,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2926,7 +2926,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2934,7 +2934,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2942,7 +2942,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse',
+                        '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2988,7 +2988,7 @@ class OrdersApi
     public function getOrderRegulatedInfoAsyncWithHttpInfo(
         string $order_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse';
         $request = $this->getOrderRegulatedInfoRequest($order_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3176,9 +3176,9 @@ class OrdersApi
      * @param  string|null $latest_delivery_date_after
      *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\orders\v0\GetOrdersResponse
+     * @return \SpApi\Model\orders\v0\GetOrdersResponse
      */
     public function getOrders(
         array $marketplace_ids,
@@ -3203,7 +3203,7 @@ class OrdersApi
         ?string $earliest_delivery_date_after = null,
         ?string $latest_delivery_date_before = null,
         ?string $latest_delivery_date_after = null
-    ): \OpenAPI\Client\Model\orders\v0\GetOrdersResponse {
+    ): \SpApi\Model\orders\v0\GetOrdersResponse {
         list($response) = $this->getOrdersWithHttpInfo($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
         return $response;
     }
@@ -3258,9 +3258,9 @@ class OrdersApi
      * @param  string|null $latest_delivery_date_after
      *  Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\orders\v0\GetOrdersResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\orders\v0\GetOrdersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOrdersWithHttpInfo(
         array $marketplace_ids,
@@ -3327,113 +3327,113 @@ class OrdersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\orders\v0\GetOrdersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\orders\v0\GetOrdersResponse' !== 'string') {
+                        if ('\SpApi\Model\orders\v0\GetOrdersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrdersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse';
+            $returnType = '\SpApi\Model\orders\v0\GetOrdersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3454,7 +3454,7 @@ class OrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3462,7 +3462,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3470,7 +3470,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3478,7 +3478,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3486,7 +3486,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3494,7 +3494,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3502,7 +3502,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse',
+                        '\SpApi\Model\orders\v0\GetOrdersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3674,7 +3674,7 @@ class OrdersApi
         ?string $latest_delivery_date_before = null,
         ?string $latest_delivery_date_after = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\orders\v0\GetOrdersResponse';
+        $returnType = '\SpApi\Model\orders\v0\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplace_ids, $created_after, $created_before, $last_updated_after, $last_updated_before, $order_statuses, $fulfillment_channels, $payment_methods, $buyer_email, $seller_order_id, $max_results_per_page, $easy_ship_shipment_statuses, $electronic_invoice_statuses, $next_token, $amazon_order_ids, $actual_fulfillment_supply_source_id, $is_ispu, $store_chain_store_id, $earliest_delivery_date_before, $earliest_delivery_date_after, $latest_delivery_date_before, $latest_delivery_date_after);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4080,16 +4080,16 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
      *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
     public function updateShipmentStatus(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
     ): void {
         $this->updateShipmentStatusWithHttpInfo($order_id, $payload);
     }
@@ -4101,16 +4101,16 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
      *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
     public function updateShipmentStatusWithHttpInfo(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
     ): array {
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
@@ -4158,7 +4158,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4166,7 +4166,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4174,7 +4174,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4182,7 +4182,7 @@ class OrdersApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4190,7 +4190,7 @@ class OrdersApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4198,7 +4198,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4206,7 +4206,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4214,7 +4214,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4231,7 +4231,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
      *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -4239,7 +4239,7 @@ class OrdersApi
      */
     public function updateShipmentStatusAsync(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
     ): PromiseInterface {
         return $this->updateShipmentStatusAsyncWithHttpInfo($order_id, $payload)
             ->then(
@@ -4256,7 +4256,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
      *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -4264,7 +4264,7 @@ class OrdersApi
      */
     public function updateShipmentStatusAsyncWithHttpInfo(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateShipmentStatusRequest($order_id, $payload);
@@ -4299,7 +4299,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
      *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -4307,7 +4307,7 @@ class OrdersApi
      */
     public function updateShipmentStatusRequest(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateShipmentStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
     ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
@@ -4413,16 +4413,16 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
      *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
     public function updateVerificationStatus(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
     ): void {
         $this->updateVerificationStatusWithHttpInfo($order_id, $payload);
     }
@@ -4434,16 +4434,16 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
      *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
     public function updateVerificationStatusWithHttpInfo(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
     ): array {
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
         $request = $this->config->sign($request);
@@ -4491,7 +4491,7 @@ class OrdersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4499,7 +4499,7 @@ class OrdersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4507,7 +4507,7 @@ class OrdersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4515,7 +4515,7 @@ class OrdersApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4523,7 +4523,7 @@ class OrdersApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4531,7 +4531,7 @@ class OrdersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4539,7 +4539,7 @@ class OrdersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4547,7 +4547,7 @@ class OrdersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusErrorResponse',
+                        '\SpApi\Model\orders\v0\UpdateVerificationStatusErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4564,7 +4564,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
      *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -4572,7 +4572,7 @@ class OrdersApi
      */
     public function updateVerificationStatusAsync(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
     ): PromiseInterface {
         return $this->updateVerificationStatusAsyncWithHttpInfo($order_id, $payload)
             ->then(
@@ -4589,7 +4589,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
      *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -4597,7 +4597,7 @@ class OrdersApi
      */
     public function updateVerificationStatusAsyncWithHttpInfo(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateVerificationStatusRequest($order_id, $payload);
@@ -4632,7 +4632,7 @@ class OrdersApi
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+     * @param  \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
      *  The request body for the &#x60;updateVerificationStatus&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -4640,7 +4640,7 @@ class OrdersApi
      */
     public function updateVerificationStatusRequest(
         string $order_id,
-        \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequest $payload
+        \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
     ): Request {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {

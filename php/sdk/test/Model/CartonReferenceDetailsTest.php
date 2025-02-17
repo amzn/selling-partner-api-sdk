@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\CartonReferenceDetails;
+use SpApi\Model\vendor\shipments\v1\CartonReferenceDetails;
 
 /**
  * CartonReferenceDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Carton reference details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CartonReferenceDetailsTest extends TestCase
 {

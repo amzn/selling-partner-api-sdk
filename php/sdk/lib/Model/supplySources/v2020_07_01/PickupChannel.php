@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PickupChannel Class Doc Comment
  *
  * @category Class
  * @description The pick up channel of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'inventory_hold_period' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\Duration',
+             'inventory_hold_period' => '\SpApi\Model\supplySources\v2020_07_01\Duration',
              'is_supported' => 'bool',
-             'operational_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration',
-             'in_store_pickup_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration',
-             'curbside_pickup_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration'    ];
+             'operational_configuration' => '\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration',
+             'in_store_pickup_configuration' => '\SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration',
+             'curbside_pickup_configuration' => '\SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -322,9 +322,9 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets inventory_hold_period
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\Duration|null
      */
-    public function getInventoryHoldPeriod(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\Duration
+    public function getInventoryHoldPeriod(): ?\SpApi\Model\supplySources\v2020_07_01\Duration
     {
         return $this->container['inventory_hold_period'];
     }
@@ -332,11 +332,11 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inventory_hold_period
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration|null $inventory_hold_period inventory_hold_period
+     * @param \SpApi\Model\supplySources\v2020_07_01\Duration|null $inventory_hold_period inventory_hold_period
      *
      * @return self
      */
-    public function setInventoryHoldPeriod(?\OpenAPI\Client\Model\supplySources\v2020_07_01\Duration $inventory_hold_period): self
+    public function setInventoryHoldPeriod(?\SpApi\Model\supplySources\v2020_07_01\Duration $inventory_hold_period): self
     {
         if (is_null($inventory_hold_period)) {
             array_push($this->openAPINullablesSetToNull, 'inventory_hold_period');
@@ -390,9 +390,9 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets operational_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null
      */
-    public function getOperationalConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration
+    public function getOperationalConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration
     {
         return $this->container['operational_configuration'];
     }
@@ -400,11 +400,11 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operational_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
      *
      * @return self
      */
-    public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
+    public function setOperationalConfiguration(?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'operational_configuration');
@@ -424,9 +424,9 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets in_store_pickup_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration|null
      */
-    public function getInStorePickupConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration
+    public function getInStorePickupConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration
     {
         return $this->container['in_store_pickup_configuration'];
     }
@@ -434,11 +434,11 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets in_store_pickup_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration|null $in_store_pickup_configuration in_store_pickup_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration|null $in_store_pickup_configuration in_store_pickup_configuration
      *
      * @return self
      */
-    public function setInStorePickupConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration $in_store_pickup_configuration): self
+    public function setInStorePickupConfiguration(?\SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration $in_store_pickup_configuration): self
     {
         if (is_null($in_store_pickup_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'in_store_pickup_configuration');
@@ -458,9 +458,9 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets curbside_pickup_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration|null
      */
-    public function getCurbsidePickupConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration
+    public function getCurbsidePickupConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration
     {
         return $this->container['curbside_pickup_configuration'];
     }
@@ -468,11 +468,11 @@ class PickupChannel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets curbside_pickup_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration|null $curbside_pickup_configuration curbside_pickup_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration|null $curbside_pickup_configuration curbside_pickup_configuration
      *
      * @return self
      */
-    public function setCurbsidePickupConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration $curbside_pickup_configuration): self
+    public function setCurbsidePickupConfiguration(?\SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration $curbside_pickup_configuration): self
     {
         if (is_null($curbside_pickup_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'curbside_pickup_configuration');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\messaging\v1;
+namespace SpApi\Model\messaging\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetMessagingActionsForOrderResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getMessagingActionsForOrder&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             '_links' => '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks',
-             '_embedded' => '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded',
-             'errors' => '\OpenAPI\Client\Model\messaging\v1\Error[]'    ];
+             '_links' => '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks',
+             '_embedded' => '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded',
+             'errors' => '\SpApi\Model\messaging\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Gets _links
      *
-     * @return \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks|null
+     * @return \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks|null
      */
-    public function getLinks(): ?\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks
+    public function getLinks(): ?\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks
     {
         return $this->container['_links'];
     }
@@ -318,11 +318,11 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Sets _links
      *
-     * @param \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks|null $_links _links
+     * @param \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks|null $_links _links
      *
      * @return self
      */
-    public function setLinks(?\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks $_links): self
+    public function setLinks(?\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks $_links): self
     {
         if (is_null($_links)) {
             array_push($this->openAPINullablesSetToNull, '_links');
@@ -342,9 +342,9 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Gets _embedded
      *
-     * @return \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded|null
+     * @return \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded|null
      */
-    public function getEmbedded(): ?\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded
+    public function getEmbedded(): ?\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded
     {
         return $this->container['_embedded'];
     }
@@ -352,11 +352,11 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Sets _embedded
      *
-     * @param \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded|null $_embedded _embedded
+     * @param \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded|null $_embedded _embedded
      *
      * @return self
      */
-    public function setEmbedded(?\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded $_embedded): self
+    public function setEmbedded(?\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded $_embedded): self
     {
         if (is_null($_embedded)) {
             array_push($this->openAPINullablesSetToNull, '_embedded');

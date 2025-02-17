@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetAdditionalSellerInputsResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the &#x60;getAdditionalSellerInputs&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipment_level_fields' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalInputs[]',
-             'item_level_fields_list' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ItemLevelFields[]'    ];
+             'shipment_level_fields' => '\SpApi\Model\merchantFulfillment\v0\AdditionalInputs[]',
+             'item_level_fields_list' => '\SpApi\Model\merchantFulfillment\v0\ItemLevelFields[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

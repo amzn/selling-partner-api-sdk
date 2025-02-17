@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\TransportationLabels;
+use SpApi\Model\vendor\shipments\v1\TransportationLabels;
 
 /**
  * TransportationLabelsTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the GetShipmentLabels operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransportationLabelsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class TransportationLabelsTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Pagination();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

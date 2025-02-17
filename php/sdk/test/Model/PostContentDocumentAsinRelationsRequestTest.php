@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest;
 
 /**
  * PostContentDocumentAsinRelationsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description PostContentDocumentAsinRelationsRequest
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PostContentDocumentAsinRelationsRequestTest extends TestCase
 {

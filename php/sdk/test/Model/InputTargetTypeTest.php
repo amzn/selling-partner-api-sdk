@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\InputTargetType;
+use SpApi\Model\merchantFulfillment\v0\InputTargetType;
 
 /**
  * InputTargetTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates whether the additional seller input is at the item or shipment level.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InputTargetTypeTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\CreateInboundPlanRequest;
 
 /**
  * CreateInboundPlanRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;createInboundPlan&#x60; request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateInboundPlanRequestTest extends TestCase
 {
@@ -90,7 +90,7 @@ class CreateInboundPlanRequestTest extends TestCase
     public function testPropertySourceAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AddressInput();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\AddressInput();
         
         $this->model->setSourceAddress($testValue);
         $this->assertEquals($testValue, $this->model->getSourceAddress());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\ShippingConstraints;
+use SpApi\Model\orders\v0\ShippingConstraints;
 
 /**
  * ShippingConstraintsTest Class Doc Comment
  *
  * @category    Class
  * @description Delivery constraints applicable to this order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShippingConstraintsTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyPalletDelivery()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
+        $enumInstance = new \SpApi\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertySignatureConfirmation()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
+        $enumInstance = new \SpApi\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -82,7 +82,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyRecipientIdentityVerification()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
+        $enumInstance = new \SpApi\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -95,7 +95,7 @@ class ShippingConstraintsTest extends TestCase
      */
     public function testPropertyRecipientAgeVerification()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\ConstraintType();
+        $enumInstance = new \SpApi\Model\orders\v0\ConstraintType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\PrintOption;
+use SpApi\Model\shipping\v2\PrintOption;
 
 /**
  * PrintOptionTest Class Doc Comment
  *
  * @category    Class
  * @description The format options available for a label.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrintOptionTest extends TestCase
 {

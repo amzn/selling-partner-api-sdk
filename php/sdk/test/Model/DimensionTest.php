@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension;
+use SpApi\Model\catalogItems\v2022_04_01\Dimension;
 
 /**
  * DimensionTest Class Doc Comment
  *
  * @category    Class
  * @description Individual dimension value of an Amazon catalog item or item package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DimensionTest extends TestCase
 {

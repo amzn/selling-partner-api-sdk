@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryOffer;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryOffer;
 
 /**
  * DeliveryOfferTest Class Doc Comment
  *
  * @category    Class
  * @description An available offer for delivery of a product.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DeliveryOfferTest extends TestCase
 {
@@ -69,7 +69,7 @@ class DeliveryOfferTest extends TestCase
     public function testPropertyDateRange()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange();
         
         $this->model->setDateRange($testValue);
         $this->assertEquals($testValue, $this->model->getDateRange());
@@ -81,7 +81,7 @@ class DeliveryOfferTest extends TestCase
     public function testPropertyPolicy()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy();
         
         $this->model->setPolicy($testValue);
         $this->assertEquals($testValue, $this->model->getPolicy());

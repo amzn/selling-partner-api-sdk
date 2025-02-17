@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences;
+use SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences;
 
 /**
  * OfferProgramConfigurationPreferencesTest Class Doc Comment
  *
  * @category    Class
  * @description An object which contains the preferences applied to the offer.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OfferProgramConfigurationPreferencesTest extends TestCase
 {
@@ -56,7 +56,7 @@ class OfferProgramConfigurationPreferencesTest extends TestCase
      */
     public function testPropertyAutoEnrollment()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\AutoEnrollmentPreference();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\AutoEnrollmentPreference();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

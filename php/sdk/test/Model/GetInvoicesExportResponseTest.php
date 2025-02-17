@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse;
+use SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse;
 
 /**
  * GetInvoicesExportResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Success.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetInvoicesExportResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetInvoicesExportResponseTest extends TestCase
     public function testPropertyExport()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoices\v2024_06_19\Export();
+        $testValue = new \SpApi\Model\invoices\v2024_06_19\Export();
         
         $this->model->setExport($testValue);
         $this->assertEquals($testValue, $this->model->getExport());

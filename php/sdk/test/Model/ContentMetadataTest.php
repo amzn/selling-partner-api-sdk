@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata;
+use SpApi\Model\aplusContent\v2020_11_01\ContentMetadata;
 
 /**
  * ContentMetadataTest Class Doc Comment
  *
  * @category    Class
  * @description The metadata of an A+ Content document.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContentMetadataTest extends TestCase
 {
@@ -78,7 +78,7 @@ class ContentMetadataTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentStatus();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\ContentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

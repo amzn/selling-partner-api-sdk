@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse;
 
 /**
  * CreateFulfillmentOrderResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;createFulfillmentOrder&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateFulfillmentOrderResponseTest extends TestCase
 {

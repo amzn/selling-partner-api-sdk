@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\GetOrderAddressResponse;
+use SpApi\Model\orders\v0\GetOrderAddressResponse;
 
 /**
  * GetOrderAddressResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getOrderAddress&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetOrderAddressResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetOrderAddressResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\OrderAddress();
+        $testValue = new \SpApi\Model\orders\v0\OrderAddress();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

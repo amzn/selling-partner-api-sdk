@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage;
+use SpApi\Model\awd\v2024_05_09\DistributionPackage;
 
 /**
  * DistributionPackageTest Class Doc Comment
  *
  * @category    Class
  * @description Represents an AWD distribution package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DistributionPackageTest extends TestCase
 {
@@ -57,7 +57,7 @@ class DistributionPackageTest extends TestCase
     public function testPropertyContents()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\DistributionPackageContents();
         
         $this->model->setContents($testValue);
         $this->assertEquals($testValue, $this->model->getContents());
@@ -69,7 +69,7 @@ class DistributionPackageTest extends TestCase
     public function testPropertyMeasurements()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\MeasurementData();
         
         $this->model->setMeasurements($testValue);
         $this->assertEquals($testValue, $this->model->getMeasurements());
@@ -80,7 +80,7 @@ class DistributionPackageTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageType();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\DistributionPackageType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

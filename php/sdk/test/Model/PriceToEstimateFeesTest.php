@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees;
+use SpApi\Model\productFees\v0\PriceToEstimateFees;
 
 /**
  * PriceToEstimateFeesTest Class Doc Comment
  *
  * @category    Class
  * @description Price information for an item, used to estimate fees.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PriceToEstimateFeesTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PriceToEstimateFeesTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -69,7 +69,7 @@ class PriceToEstimateFeesTest extends TestCase
     public function testPropertyShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setShipping($testValue);
         $this->assertEquals($testValue, $this->model->getShipping());
@@ -81,7 +81,7 @@ class PriceToEstimateFeesTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\Points();
+        $testValue = new \SpApi\Model\productFees\v0\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

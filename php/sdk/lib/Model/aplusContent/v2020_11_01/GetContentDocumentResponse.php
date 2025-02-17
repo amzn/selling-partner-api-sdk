@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetContentDocumentResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'warnings' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\Error[]',
-             'content_record' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord'    ];
+             'warnings' => '\SpApi\Model\aplusContent\v2020_11_01\Error[]',
+             'content_record' => '\SpApi\Model\aplusContent\v2020_11_01\ContentRecord'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -339,9 +339,9 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets content_record
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ContentRecord
      */
-    public function getContentRecord(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord
+    public function getContentRecord(): \SpApi\Model\aplusContent\v2020_11_01\ContentRecord
     {
         return $this->container['content_record'];
     }
@@ -349,11 +349,11 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets content_record
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord $content_record content_record
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ContentRecord $content_record content_record
      *
      * @return self
      */
-    public function setContentRecord(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord $content_record): self
+    public function setContentRecord(\SpApi\Model\aplusContent\v2020_11_01\ContentRecord $content_record): self
     {
         if (is_null($content_record)) {
             throw new \InvalidArgumentException('non-nullable content_record cannot be null');

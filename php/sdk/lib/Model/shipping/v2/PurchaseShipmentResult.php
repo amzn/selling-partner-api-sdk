@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PurchaseShipmentResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the purchaseShipment operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
-             'package_document_details' => '\OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail[]',
-             'promise' => '\OpenAPI\Client\Model\shipping\v2\Promise'    ];
+             'package_document_details' => '\SpApi\Model\shipping\v2\PackageDocumentDetail[]',
+             'promise' => '\SpApi\Model\shipping\v2\Promise'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -372,9 +372,9 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets promise
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Promise
+     * @return \SpApi\Model\shipping\v2\Promise
      */
-    public function getPromise(): \OpenAPI\Client\Model\shipping\v2\Promise
+    public function getPromise(): \SpApi\Model\shipping\v2\Promise
     {
         return $this->container['promise'];
     }
@@ -382,11 +382,11 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets promise
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Promise $promise promise
+     * @param \SpApi\Model\shipping\v2\Promise $promise promise
      *
      * @return self
      */
-    public function setPromise(\OpenAPI\Client\Model\shipping\v2\Promise $promise): self
+    public function setPromise(\SpApi\Model\shipping\v2\Promise $promise): self
     {
         if (is_null($promise)) {
             throw new \InvalidArgumentException('non-nullable promise cannot be null');

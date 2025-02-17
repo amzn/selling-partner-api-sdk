@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\Package;
+use SpApi\Model\easyship\v2022_03_23\Package;
 
 /**
  * PackageTest Class Doc Comment
  *
  * @category    Class
  * @description This object contains all the details of the scheduled Easy Ship package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PackageTest extends TestCase
     public function testPropertyScheduledPackageId()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId();
         
         $this->model->setScheduledPackageId($testValue);
         $this->assertEquals($testValue, $this->model->getScheduledPackageId());
@@ -69,7 +69,7 @@ class PackageTest extends TestCase
     public function testPropertyPackageDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\Dimensions();
         
         $this->model->setPackageDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDimensions());
@@ -81,7 +81,7 @@ class PackageTest extends TestCase
     public function testPropertyPackageWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Weight();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\Weight();
         
         $this->model->setPackageWeight($testValue);
         $this->assertEquals($testValue, $this->model->getPackageWeight());
@@ -104,7 +104,7 @@ class PackageTest extends TestCase
     public function testPropertyPackageTimeSlot()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\TimeSlot();
         
         $this->model->setPackageTimeSlot($testValue);
         $this->assertEquals($testValue, $this->model->getPackageTimeSlot());
@@ -127,7 +127,7 @@ class PackageTest extends TestCase
     public function testPropertyInvoice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\InvoiceData();
         
         $this->model->setInvoice($testValue);
         $this->assertEquals($testValue, $this->model->getInvoice());
@@ -138,7 +138,7 @@ class PackageTest extends TestCase
      */
     public function testPropertyPackageStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\PackageStatus();
+        $enumInstance = new \SpApi\Model\easyship\v2022_03_23\PackageStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -152,7 +152,7 @@ class PackageTest extends TestCase
     public function testPropertyTrackingDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\TrackingDetails();
         
         $this->model->setTrackingDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTrackingDetails());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\ShipmentItem;
+use SpApi\Model\finances\v0\ShipmentItem;
 
 /**
  * ShipmentItemTest Class Doc Comment
  *
  * @category    Class
  * @description An item of a shipment, refund, guarantee claim, or chargeback.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentItemTest extends TestCase
 {
@@ -178,7 +178,7 @@ class ShipmentItemTest extends TestCase
     public function testPropertyCostOfPointsGranted()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setCostOfPointsGranted($testValue);
         $this->assertEquals($testValue, $this->model->getCostOfPointsGranted());
@@ -190,7 +190,7 @@ class ShipmentItemTest extends TestCase
     public function testPropertyCostOfPointsReturned()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setCostOfPointsReturned($testValue);
         $this->assertEquals($testValue, $this->model->getCostOfPointsReturned());

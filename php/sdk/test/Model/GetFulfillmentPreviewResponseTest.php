@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse;
 
 /**
  * GetFulfillmentPreviewResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getFulfillmentPreview&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetFulfillmentPreviewResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetFulfillmentPreviewResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResult();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

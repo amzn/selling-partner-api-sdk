@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ItemDeliveryPromise;
+use SpApi\Model\services\v1\ItemDeliveryPromise;
 
 /**
  * ItemDeliveryPromiseTest Class Doc Comment
  *
  * @category    Class
  * @description Promised delivery information for the item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemDeliveryPromiseTest extends TestCase
 {

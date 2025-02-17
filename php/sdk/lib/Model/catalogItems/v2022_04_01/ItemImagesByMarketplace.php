@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemImagesByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Images for an item in the Amazon catalog for the indicated Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ItemImagesByMarketplace implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
-             'images' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemImage[]'    ];
+             'images' => '\SpApi\Model\catalogItems\v2022_04_01\ItemImage[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

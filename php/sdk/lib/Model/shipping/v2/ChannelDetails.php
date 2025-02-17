@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ChannelDetails Class Doc Comment
  *
  * @category Class
  * @description Shipment source channel related information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'channel_type' => '\OpenAPI\Client\Model\shipping\v2\ChannelType',
-             'amazon_order_details' => '\OpenAPI\Client\Model\shipping\v2\AmazonOrderDetails',
-             'amazon_shipment_details' => '\OpenAPI\Client\Model\shipping\v2\AmazonShipmentDetails'    ];
+             'channel_type' => '\SpApi\Model\shipping\v2\ChannelType',
+             'amazon_order_details' => '\SpApi\Model\shipping\v2\AmazonOrderDetails',
+             'amazon_shipment_details' => '\SpApi\Model\shipping\v2\AmazonShipmentDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -339,9 +339,9 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amazon_order_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\AmazonOrderDetails|null
+     * @return \SpApi\Model\shipping\v2\AmazonOrderDetails|null
      */
-    public function getAmazonOrderDetails(): ?\OpenAPI\Client\Model\shipping\v2\AmazonOrderDetails
+    public function getAmazonOrderDetails(): ?\SpApi\Model\shipping\v2\AmazonOrderDetails
     {
         return $this->container['amazon_order_details'];
     }
@@ -349,11 +349,11 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amazon_order_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\AmazonOrderDetails|null $amazon_order_details amazon_order_details
+     * @param \SpApi\Model\shipping\v2\AmazonOrderDetails|null $amazon_order_details amazon_order_details
      *
      * @return self
      */
-    public function setAmazonOrderDetails(?\OpenAPI\Client\Model\shipping\v2\AmazonOrderDetails $amazon_order_details): self
+    public function setAmazonOrderDetails(?\SpApi\Model\shipping\v2\AmazonOrderDetails $amazon_order_details): self
     {
         if (is_null($amazon_order_details)) {
             array_push($this->openAPINullablesSetToNull, 'amazon_order_details');
@@ -373,9 +373,9 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amazon_shipment_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\AmazonShipmentDetails|null
+     * @return \SpApi\Model\shipping\v2\AmazonShipmentDetails|null
      */
-    public function getAmazonShipmentDetails(): ?\OpenAPI\Client\Model\shipping\v2\AmazonShipmentDetails
+    public function getAmazonShipmentDetails(): ?\SpApi\Model\shipping\v2\AmazonShipmentDetails
     {
         return $this->container['amazon_shipment_details'];
     }
@@ -383,11 +383,11 @@ class ChannelDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amazon_shipment_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\AmazonShipmentDetails|null $amazon_shipment_details amazon_shipment_details
+     * @param \SpApi\Model\shipping\v2\AmazonShipmentDetails|null $amazon_shipment_details amazon_shipment_details
      *
      * @return self
      */
-    public function setAmazonShipmentDetails(?\OpenAPI\Client\Model\shipping\v2\AmazonShipmentDetails $amazon_shipment_details): self
+    public function setAmazonShipmentDetails(?\SpApi\Model\shipping\v2\AmazonShipmentDetails $amazon_shipment_details): self
     {
         if (is_null($amazon_shipment_details)) {
             array_push($this->openAPINullablesSetToNull, 'amazon_shipment_details');

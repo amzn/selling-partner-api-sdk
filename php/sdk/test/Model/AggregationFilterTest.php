@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\AggregationFilter;
+use SpApi\Model\notifications\v1\AggregationFilter;
 
 /**
  * AggregationFilterTest Class Doc Comment
  *
  * @category    Class
  * @description A filter used to select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AggregationFilterTest extends TestCase
 {
@@ -57,7 +57,7 @@ class AggregationFilterTest extends TestCase
     public function testPropertyAggregationSettings()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\v1\AggregationSettings();
+        $testValue = new \SpApi\Model\notifications\v1\AggregationSettings();
         
         $this->model->setAggregationSettings($testValue);
         $this->assertEquals($testValue, $this->model->getAggregationSettings());

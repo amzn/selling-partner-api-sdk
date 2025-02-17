@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\TransportShipmentMeasurements;
+use SpApi\Model\vendor\shipments\v1\TransportShipmentMeasurements;
 
 /**
  * TransportShipmentMeasurementsTest Class Doc Comment
  *
  * @category    Class
  * @description Shipment measurement details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransportShipmentMeasurementsTest extends TestCase
 {
@@ -90,7 +90,7 @@ class TransportShipmentMeasurementsTest extends TestCase
     public function testPropertyShipmentWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Weight();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Weight();
         
         $this->model->setShipmentWeight($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentWeight());
@@ -102,7 +102,7 @@ class TransportShipmentMeasurementsTest extends TestCase
     public function testPropertyShipmentVolume()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Volume();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Volume();
         
         $this->model->setShipmentVolume($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentVolume());

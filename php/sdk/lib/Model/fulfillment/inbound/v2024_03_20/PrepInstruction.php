@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PrepInstruction Class Doc Comment
  *
  * @category Class
  * @description Information pertaining to the preparation of inbound goods.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'fee' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency',
+             'fee' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency',
              'prep_owner' => 'string',
              'prep_type' => 'string'    ];
 
@@ -324,9 +324,9 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fee
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency|null
      */
-    public function getFee(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency
+    public function getFee(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
     {
         return $this->container['fee'];
     }
@@ -334,11 +334,11 @@ class PrepInstruction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fee
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency|null $fee fee
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency|null $fee fee
      *
      * @return self
      */
-    public function setFee(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency $fee): self
+    public function setFee(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $fee): self
     {
         if (is_null($fee)) {
             array_push($this->openAPINullablesSetToNull, 'fee');

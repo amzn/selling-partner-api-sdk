@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\RentalTransactionEvent;
+use SpApi\Model\finances\v0\RentalTransactionEvent;
 
 /**
  * RentalTransactionEventTest Class Doc Comment
  *
  * @category    Class
  * @description An event related to a rental transaction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RentalTransactionEventTest extends TestCase
 {
@@ -135,7 +135,7 @@ class RentalTransactionEventTest extends TestCase
     public function testPropertyRentalInitialValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setRentalInitialValue($testValue);
         $this->assertEquals($testValue, $this->model->getRentalInitialValue());
@@ -147,7 +147,7 @@ class RentalTransactionEventTest extends TestCase
     public function testPropertyRentalReimbursement()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setRentalReimbursement($testValue);
         $this->assertEquals($testValue, $this->model->getRentalReimbursement());

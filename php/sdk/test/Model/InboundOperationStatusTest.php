@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\InboundOperationStatus;
 
 /**
  * InboundOperationStatusTest Class Doc Comment
  *
  * @category    Class
  * @description GetInboundOperationStatus response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InboundOperationStatusTest extends TestCase
 {
@@ -89,7 +89,7 @@ class InboundOperationStatusTest extends TestCase
      */
     public function testPropertyOperationStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\OperationStatus();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\OperationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

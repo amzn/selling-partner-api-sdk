@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\IdentifierType;
+use SpApi\Model\pricing\v0\IdentifierType;
 
 /**
  * IdentifierTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Specifies the identifiers used to uniquely identify an item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class IdentifierTypeTest extends TestCase
 {
@@ -57,7 +57,7 @@ class IdentifierTypeTest extends TestCase
     public function testPropertyMarketplaceAsin()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\ASINIdentifier();
+        $testValue = new \SpApi\Model\pricing\v0\ASINIdentifier();
         
         $this->model->setMarketplaceAsin($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplaceAsin());
@@ -69,7 +69,7 @@ class IdentifierTypeTest extends TestCase
     public function testPropertySkuIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\SellerSKUIdentifier();
+        $testValue = new \SpApi\Model\pricing\v0\SellerSKUIdentifier();
         
         $this->model->setSkuIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getSkuIdentifier());

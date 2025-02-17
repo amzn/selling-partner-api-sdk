@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ServiceJob;
+use SpApi\Model\services\v1\ServiceJob;
 
 /**
  * ServiceJobTest Class Doc Comment
  *
  * @category    Class
  * @description The job details of a service.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ServiceJobTest extends TestCase
 {
@@ -92,7 +92,7 @@ class ServiceJobTest extends TestCase
     public function testPropertyScopeOfWork()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\ScopeOfWork();
+        $testValue = new \SpApi\Model\services\v1\ScopeOfWork();
         
         $this->model->setScopeOfWork($testValue);
         $this->assertEquals($testValue, $this->model->getScopeOfWork());
@@ -104,7 +104,7 @@ class ServiceJobTest extends TestCase
     public function testPropertySeller()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\Seller();
+        $testValue = new \SpApi\Model\services\v1\Seller();
         
         $this->model->setSeller($testValue);
         $this->assertEquals($testValue, $this->model->getSeller());
@@ -116,7 +116,7 @@ class ServiceJobTest extends TestCase
     public function testPropertyServiceJobProvider()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\ServiceJobProvider();
+        $testValue = new \SpApi\Model\services\v1\ServiceJobProvider();
         
         $this->model->setServiceJobProvider($testValue);
         $this->assertEquals($testValue, $this->model->getServiceJobProvider());
@@ -183,7 +183,7 @@ class ServiceJobTest extends TestCase
     public function testPropertyBuyer()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\Buyer();
+        $testValue = new \SpApi\Model\services\v1\Buyer();
         
         $this->model->setBuyer($testValue);
         $this->assertEquals($testValue, $this->model->getBuyer());
@@ -206,7 +206,7 @@ class ServiceJobTest extends TestCase
     public function testPropertyServiceLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\ServiceLocation();
+        $testValue = new \SpApi\Model\services\v1\ServiceLocation();
         
         $this->model->setServiceLocation($testValue);
         $this->assertEquals($testValue, $this->model->getServiceLocation());

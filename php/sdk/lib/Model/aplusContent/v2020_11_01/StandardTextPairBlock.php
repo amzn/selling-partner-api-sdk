@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardTextPairBlock Class Doc Comment
  *
  * @category Class
  * @description The A+ Content standard label and description block, comprised of a pair of text components.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'label' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'description' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent'    ];
+             'label' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'description' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets label
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getLabel(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getLabel(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['label'];
     }
@@ -311,11 +311,11 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets label
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $label label
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $label label
      *
      * @return self
      */
-    public function setLabel(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $label): self
+    public function setLabel(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $label): self
     {
         if (is_null($label)) {
             array_push($this->openAPINullablesSetToNull, 'label');
@@ -335,9 +335,9 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets description
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getDescription(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getDescription(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['description'];
     }
@@ -345,11 +345,11 @@ class StandardTextPairBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets description
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $description description
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $description description
      *
      * @return self
      */
-    public function setDescription(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $description): self
+    public function setDescription(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $description): self
     {
         if (is_null($description)) {
             array_push($this->openAPINullablesSetToNull, 'description');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetTrackingResult;
+use SpApi\Model\shipping\v2\GetTrackingResult;
 
 /**
  * GetTrackingResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the getTracking operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetTrackingResultTest extends TestCase
 {
@@ -102,7 +102,7 @@ class GetTrackingResultTest extends TestCase
     public function testPropertySummary()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\TrackingSummary();
+        $testValue = new \SpApi\Model\shipping\v2\TrackingSummary();
         
         $this->model->setSummary($testValue);
         $this->assertEquals($testValue, $this->model->getSummary());

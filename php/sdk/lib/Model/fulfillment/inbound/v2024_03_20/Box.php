@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Box Class Doc Comment
  *
  * @category Class
  * @description Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,16 +61,16 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'box_id' => 'string',
-             'content_information_source' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource',
-             'destination_region' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region',
-             'dimensions' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions',
+             'content_information_source' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource',
+             'destination_region' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Region',
+             'dimensions' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions',
              'external_container_identifier' => 'string',
              'external_container_identifier_type' => 'string',
-             'items' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Item[]',
+             'items' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Item[]',
              'package_id' => 'string',
              'quantity' => 'int',
              'template_name' => 'string',
-             'weight' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight'    ];
+             'weight' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Weight'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -494,9 +494,9 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets destination_region
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Region|null
      */
-    public function getDestinationRegion(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region
+    public function getDestinationRegion(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Region
     {
         return $this->container['destination_region'];
     }
@@ -504,11 +504,11 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination_region
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region|null $destination_region destination_region
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Region|null $destination_region destination_region
      *
      * @return self
      */
-    public function setDestinationRegion(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region $destination_region): self
+    public function setDestinationRegion(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Region $destination_region): self
     {
         if (is_null($destination_region)) {
             array_push($this->openAPINullablesSetToNull, 'destination_region');
@@ -528,9 +528,9 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions|null
      */
-    public function getDimensions(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions
+    public function getDimensions(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -538,11 +538,11 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions|null $dimensions dimensions
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions $dimensions): self
+    public function setDimensions(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             array_push($this->openAPINullablesSetToNull, 'dimensions');
@@ -798,9 +798,9 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight|null
      */
-    public function getWeight(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight
+    public function getWeight(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Weight
     {
         return $this->container['weight'];
     }
@@ -808,11 +808,11 @@ class Box implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight|null $weight weight
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight|null $weight weight
      *
      * @return self
      */
-    public function setWeight(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight $weight): self
+    public function setWeight(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Weight $weight): self
     {
         if (is_null($weight)) {
             array_push($this->openAPINullablesSetToNull, 'weight');

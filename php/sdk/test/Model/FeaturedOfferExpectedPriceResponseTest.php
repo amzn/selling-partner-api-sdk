@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponse;
+use SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponse;
 
 /**
  * FeaturedOfferExpectedPriceResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Schema for an individual FOEP response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeaturedOfferExpectedPriceResponseTest extends TestCase
 {
@@ -68,7 +68,7 @@ class FeaturedOfferExpectedPriceResponseTest extends TestCase
     public function testPropertyStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\HttpStatusLine();
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());
@@ -80,7 +80,7 @@ class FeaturedOfferExpectedPriceResponseTest extends TestCase
     public function testPropertyRequest()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams();
         
         $this->model->setRequest($testValue);
         $this->assertEquals($testValue, $this->model->getRequest());
@@ -92,7 +92,7 @@ class FeaturedOfferExpectedPriceResponseTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

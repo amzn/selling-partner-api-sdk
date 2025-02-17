@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentInformation Class Doc Comment
  *
  * @category Class
  * @description Shipment Information details for Label request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'vendor_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails',
+             'vendor_details' => '\SpApi\Model\vendor\shipments\v1\VendorDetails',
              'buyer_reference_number' => 'string',
-             'ship_to_party' => '\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification',
-             'ship_from_party' => '\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification',
+             'ship_to_party' => '\SpApi\Model\vendor\shipments\v1\PartyIdentification',
+             'ship_from_party' => '\SpApi\Model\vendor\shipments\v1\PartyIdentification',
              'warehouse_id' => 'string',
              'master_tracking_id' => 'string',
              'total_label_count' => 'int',
@@ -367,9 +367,9 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets vendor_details
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails|null
+     * @return \SpApi\Model\vendor\shipments\v1\VendorDetails|null
      */
-    public function getVendorDetails(): ?\OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails
+    public function getVendorDetails(): ?\SpApi\Model\vendor\shipments\v1\VendorDetails
     {
         return $this->container['vendor_details'];
     }
@@ -377,11 +377,11 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets vendor_details
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails|null $vendor_details vendor_details
+     * @param \SpApi\Model\vendor\shipments\v1\VendorDetails|null $vendor_details vendor_details
      *
      * @return self
      */
-    public function setVendorDetails(?\OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails $vendor_details): self
+    public function setVendorDetails(?\SpApi\Model\vendor\shipments\v1\VendorDetails $vendor_details): self
     {
         if (is_null($vendor_details)) {
             array_push($this->openAPINullablesSetToNull, 'vendor_details');
@@ -435,9 +435,9 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets ship_to_party
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\shipments\v1\PartyIdentification|null
      */
-    public function getShipToParty(): ?\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification
+    public function getShipToParty(): ?\SpApi\Model\vendor\shipments\v1\PartyIdentification
     {
         return $this->container['ship_to_party'];
     }
@@ -445,11 +445,11 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets ship_to_party
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification|null $ship_to_party ship_to_party
+     * @param \SpApi\Model\vendor\shipments\v1\PartyIdentification|null $ship_to_party ship_to_party
      *
      * @return self
      */
-    public function setShipToParty(?\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification $ship_to_party): self
+    public function setShipToParty(?\SpApi\Model\vendor\shipments\v1\PartyIdentification $ship_to_party): self
     {
         if (is_null($ship_to_party)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to_party');
@@ -469,9 +469,9 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets ship_from_party
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\shipments\v1\PartyIdentification|null
      */
-    public function getShipFromParty(): ?\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification
+    public function getShipFromParty(): ?\SpApi\Model\vendor\shipments\v1\PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -479,11 +479,11 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets ship_from_party
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification|null $ship_from_party ship_from_party
+     * @param \SpApi\Model\vendor\shipments\v1\PartyIdentification|null $ship_from_party ship_from_party
      *
      * @return self
      */
-    public function setShipFromParty(?\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification $ship_from_party): self
+    public function setShipFromParty(?\SpApi\Model\vendor\shipments\v1\PartyIdentification $ship_from_party): self
     {
         if (is_null($ship_from_party)) {
             array_push($this->openAPINullablesSetToNull, 'ship_from_party');

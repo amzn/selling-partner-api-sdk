@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackageDimensions Class Doc Comment
  *
  * @category Class
  * @description Dimensions of the package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPITypes = [
              'height' => 'float',
              'length' => 'float',
-             'unit_of_measurement' => '\OpenAPI\Client\Model\awd\v2024_05_09\DimensionUnitOfMeasurement',
+             'unit_of_measurement' => '\SpApi\Model\awd\v2024_05_09\DimensionUnitOfMeasurement',
              'width' => 'float'    ];
 
     /**

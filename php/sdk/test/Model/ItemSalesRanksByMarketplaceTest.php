@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSalesRanksByMarketplace;
+use SpApi\Model\catalogItems\v2022_04_01\ItemSalesRanksByMarketplace;
 
 /**
  * ItemSalesRanksByMarketplaceTest Class Doc Comment
  *
  * @category    Class
  * @description Sales ranks of an Amazon catalog item for the indicated Amazon marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemSalesRanksByMarketplaceTest extends TestCase
 {

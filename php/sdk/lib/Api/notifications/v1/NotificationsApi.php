@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\notifications\v1;
+namespace SpApi\Api\notifications\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * NotificationsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class NotificationsApi
     /**
      * Operation createDestination
      *
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateDestinationRequest $body
      *  body (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse
+     * @return \SpApi\Model\notifications\v1\CreateDestinationResponse
      */
     public function createDestination(
-        \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
-    ): \OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse {
+        \SpApi\Model\notifications\v1\CreateDestinationRequest $body
+    ): \SpApi\Model\notifications\v1\CreateDestinationResponse {
         list($response) = $this->createDestinationWithHttpInfo($body);
         return $response;
     }
@@ -169,15 +169,15 @@ class NotificationsApi
     /**
      * Operation createDestinationWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateDestinationRequest $body
      *  (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\CreateDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDestinationWithHttpInfo(
-        \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+        \SpApi\Model\notifications\v1\CreateDestinationRequest $body
     ): array {
         $request = $this->createDestinationRequest($body);
         $request = $this->config->sign($request);
@@ -220,158 +220,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse';
+            $returnType = '\SpApi\Model\notifications\v1\CreateDestinationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -392,7 +392,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -432,7 +432,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -440,7 +440,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,7 +448,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -464,7 +464,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse',
+                        '\SpApi\Model\notifications\v1\CreateDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,14 +477,14 @@ class NotificationsApi
     /**
      * Operation createDestinationAsync
      *
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateDestinationRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createDestinationAsync(
-        \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+        \SpApi\Model\notifications\v1\CreateDestinationRequest $body
     ): PromiseInterface {
         return $this->createDestinationAsyncWithHttpInfo($body)
             ->then(
@@ -497,16 +497,16 @@ class NotificationsApi
     /**
      * Operation createDestinationAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateDestinationRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createDestinationAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+        \SpApi\Model\notifications\v1\CreateDestinationRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\CreateDestinationResponse';
+        $returnType = '\SpApi\Model\notifications\v1\CreateDestinationResponse';
         $request = $this->createDestinationRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -550,14 +550,14 @@ class NotificationsApi
     /**
      * Create request for operation 'createDestination'
      *
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateDestinationRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createDestinationRequest(
-        \OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest $body
+        \SpApi\Model\notifications\v1\CreateDestinationRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -647,17 +647,17 @@ class NotificationsApi
      *
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
      *  body (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse
+     * @return \SpApi\Model\notifications\v1\CreateSubscriptionResponse
      */
     public function createSubscription(
         string $notification_type,
-        \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
-    ): \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse {
+        \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
+    ): \SpApi\Model\notifications\v1\CreateSubscriptionResponse {
         list($response) = $this->createSubscriptionWithHttpInfo($notification_type, $body);
         return $response;
     }
@@ -667,16 +667,16 @@ class NotificationsApi
      *
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
      *  (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\CreateSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSubscriptionWithHttpInfo(
         string $notification_type,
-        \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+        \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
     ): array {
         $request = $this->createSubscriptionRequest($notification_type, $body);
         $request = $this->config->sign($request);
@@ -719,158 +719,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\CreateSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\CreateSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse';
+            $returnType = '\SpApi\Model\notifications\v1\CreateSubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -891,7 +891,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -899,7 +899,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -907,7 +907,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -915,7 +915,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -923,7 +923,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -931,7 +931,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -939,7 +939,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -947,7 +947,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -955,7 +955,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -963,7 +963,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\CreateSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -978,7 +978,7 @@ class NotificationsApi
      *
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -986,7 +986,7 @@ class NotificationsApi
      */
     public function createSubscriptionAsync(
         string $notification_type,
-        \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+        \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
     ): PromiseInterface {
         return $this->createSubscriptionAsyncWithHttpInfo($notification_type, $body)
             ->then(
@@ -1001,7 +1001,7 @@ class NotificationsApi
      *
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1009,9 +1009,9 @@ class NotificationsApi
      */
     public function createSubscriptionAsyncWithHttpInfo(
         string $notification_type,
-        \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+        \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse';
+        $returnType = '\SpApi\Model\notifications\v1\CreateSubscriptionResponse';
         $request = $this->createSubscriptionRequest($notification_type, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1057,7 +1057,7 @@ class NotificationsApi
      *
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
-     * @param  \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+     * @param  \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1065,7 +1065,7 @@ class NotificationsApi
      */
     public function createSubscriptionRequest(
         string $notification_type,
-        \OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest $body
+        \SpApi\Model\notifications\v1\CreateSubscriptionRequest $body
     ): Request {
         // verify the required parameter 'notification_type' is set
         if ($notification_type === null || (is_array($notification_type) && count($notification_type) === 0)) {
@@ -1170,13 +1170,13 @@ class NotificationsApi
      * @param  string $destination_id
      *  The identifier for the destination that you want to delete. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse
+     * @return \SpApi\Model\notifications\v1\DeleteDestinationResponse
      */
     public function deleteDestination(
         string $destination_id
-    ): \OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse {
+    ): \SpApi\Model\notifications\v1\DeleteDestinationResponse {
         list($response) = $this->deleteDestinationWithHttpInfo($destination_id);
         return $response;
     }
@@ -1187,9 +1187,9 @@ class NotificationsApi
      * @param  string $destination_id
      *  The identifier for the destination that you want to delete. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\DeleteDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDestinationWithHttpInfo(
         string $destination_id
@@ -1235,158 +1235,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse';
+            $returnType = '\SpApi\Model\notifications\v1\DeleteDestinationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1407,7 +1407,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1415,7 +1415,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1423,7 +1423,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1431,7 +1431,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1439,7 +1439,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1447,7 +1447,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1455,7 +1455,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1463,7 +1463,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1471,7 +1471,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1479,7 +1479,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse',
+                        '\SpApi\Model\notifications\v1\DeleteDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1521,7 +1521,7 @@ class NotificationsApi
     public function deleteDestinationAsyncWithHttpInfo(
         string $destination_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\DeleteDestinationResponse';
+        $returnType = '\SpApi\Model\notifications\v1\DeleteDestinationResponse';
         $request = $this->deleteDestinationRequest($destination_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1667,14 +1667,14 @@ class NotificationsApi
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse
+     * @return \SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse
      */
     public function deleteSubscriptionById(
         string $subscription_id,
         string $notification_type
-    ): \OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse {
+    ): \SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse {
         list($response) = $this->deleteSubscriptionByIdWithHttpInfo($subscription_id, $notification_type);
         return $response;
     }
@@ -1687,9 +1687,9 @@ class NotificationsApi
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteSubscriptionByIdWithHttpInfo(
         string $subscription_id,
@@ -1736,158 +1736,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse';
+            $returnType = '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1908,7 +1908,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1916,7 +1916,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1924,7 +1924,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1932,7 +1932,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1940,7 +1940,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1948,7 +1948,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1956,7 +1956,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1964,7 +1964,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1972,7 +1972,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1980,7 +1980,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2028,7 +2028,7 @@ class NotificationsApi
         string $subscription_id,
         string $notification_type
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\DeleteSubscriptionByIdResponse';
+        $returnType = '\SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse';
         $request = $this->deleteSubscriptionByIdRequest($subscription_id, $notification_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2189,13 +2189,13 @@ class NotificationsApi
      * @param  string $destination_id
      *  The identifier generated when you created the destination. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\GetDestinationResponse
+     * @return \SpApi\Model\notifications\v1\GetDestinationResponse
      */
     public function getDestination(
         string $destination_id
-    ): \OpenAPI\Client\Model\notifications\v1\GetDestinationResponse {
+    ): \SpApi\Model\notifications\v1\GetDestinationResponse {
         list($response) = $this->getDestinationWithHttpInfo($destination_id);
         return $response;
     }
@@ -2206,9 +2206,9 @@ class NotificationsApi
      * @param  string $destination_id
      *  The identifier generated when you created the destination. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\GetDestinationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\GetDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDestinationWithHttpInfo(
         string $destination_id
@@ -2254,158 +2254,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse';
+            $returnType = '\SpApi\Model\notifications\v1\GetDestinationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2426,7 +2426,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2434,7 +2434,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2442,7 +2442,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2450,7 +2450,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2458,7 +2458,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2466,7 +2466,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2474,7 +2474,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2482,7 +2482,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2490,7 +2490,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2498,7 +2498,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2540,7 +2540,7 @@ class NotificationsApi
     public function getDestinationAsyncWithHttpInfo(
         string $destination_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\GetDestinationResponse';
+        $returnType = '\SpApi\Model\notifications\v1\GetDestinationResponse';
         $request = $this->getDestinationRequest($destination_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2682,13 +2682,13 @@ class NotificationsApi
      * Operation getDestinations
      *
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse
+     * @return \SpApi\Model\notifications\v1\GetDestinationsResponse
      */
     public function getDestinations(
     
-    ): \OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse {
+    ): \SpApi\Model\notifications\v1\GetDestinationsResponse {
         list($response) = $this->getDestinationsWithHttpInfo();
         return $response;
     }
@@ -2697,9 +2697,9 @@ class NotificationsApi
      * Operation getDestinationsWithHttpInfo
      *
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\GetDestinationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDestinationsWithHttpInfo(
     
@@ -2745,158 +2745,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetDestinationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetDestinationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse';
+            $returnType = '\SpApi\Model\notifications\v1\GetDestinationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2917,7 +2917,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2925,7 +2925,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2933,7 +2933,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2941,7 +2941,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2949,7 +2949,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2957,7 +2957,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2965,7 +2965,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2973,7 +2973,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2981,7 +2981,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2989,7 +2989,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse',
+                        '\SpApi\Model\notifications\v1\GetDestinationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3027,7 +3027,7 @@ class NotificationsApi
     public function getDestinationsAsyncWithHttpInfo(
     
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\GetDestinationsResponse';
+        $returnType = '\SpApi\Model\notifications\v1\GetDestinationsResponse';
         $request = $this->getDestinationsRequest();
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3157,14 +3157,14 @@ class NotificationsApi
      * @param  string|null $payload_version
      *  The version of the payload object to be used in the notification. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse
+     * @return \SpApi\Model\notifications\v1\GetSubscriptionResponse
      */
     public function getSubscription(
         string $notification_type,
         ?string $payload_version = null
-    ): \OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse {
+    ): \SpApi\Model\notifications\v1\GetSubscriptionResponse {
         list($response) = $this->getSubscriptionWithHttpInfo($notification_type, $payload_version);
         return $response;
     }
@@ -3177,9 +3177,9 @@ class NotificationsApi
      * @param  string|null $payload_version
      *  The version of the payload object to be used in the notification. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\GetSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSubscriptionWithHttpInfo(
         string $notification_type,
@@ -3226,143 +3226,143 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse';
+            $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3383,7 +3383,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3391,7 +3391,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3399,7 +3399,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3407,7 +3407,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3415,7 +3415,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3423,7 +3423,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3431,7 +3431,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3439,7 +3439,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3447,7 +3447,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3495,7 +3495,7 @@ class NotificationsApi
         string $notification_type,
         ?string $payload_version = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse';
+        $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionResponse';
         $request = $this->getSubscriptionRequest($notification_type, $payload_version);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3653,14 +3653,14 @@ class NotificationsApi
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse
+     * @return \SpApi\Model\notifications\v1\GetSubscriptionByIdResponse
      */
     public function getSubscriptionById(
         string $subscription_id,
         string $notification_type
-    ): \OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse {
+    ): \SpApi\Model\notifications\v1\GetSubscriptionByIdResponse {
         list($response) = $this->getSubscriptionByIdWithHttpInfo($subscription_id, $notification_type);
         return $response;
     }
@@ -3673,9 +3673,9 @@ class NotificationsApi
      * @param  string $notification_type
      *  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\notifications\v1\GetSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSubscriptionByIdWithHttpInfo(
         string $subscription_id,
@@ -3722,158 +3722,158 @@ class NotificationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
+                        if ('\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse';
+            $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3894,7 +3894,7 @@ class NotificationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3902,7 +3902,7 @@ class NotificationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3910,7 +3910,7 @@ class NotificationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3918,7 +3918,7 @@ class NotificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3926,7 +3926,7 @@ class NotificationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3934,7 +3934,7 @@ class NotificationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3942,7 +3942,7 @@ class NotificationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3950,7 +3950,7 @@ class NotificationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3958,7 +3958,7 @@ class NotificationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3966,7 +3966,7 @@ class NotificationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse',
+                        '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4014,7 +4014,7 @@ class NotificationsApi
         string $subscription_id,
         string $notification_type
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\notifications\v1\GetSubscriptionByIdResponse';
+        $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionByIdResponse';
         $request = $this->getSubscriptionByIdRequest($subscription_id, $notification_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

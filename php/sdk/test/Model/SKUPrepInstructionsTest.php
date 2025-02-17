@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\SKUPrepInstructions;
+use SpApi\Model\fulfillment\inbound\v0\SKUPrepInstructions;
 
 /**
  * SKUPrepInstructionsTest Class Doc Comment
  *
  * @category    Class
  * @description Labeling requirements and item preparation instructions to help you prepare items for shipment to Amazon&#39;s fulfillment network.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SKUPrepInstructionsTest extends TestCase
 {
@@ -78,7 +78,7 @@ class SKUPrepInstructionsTest extends TestCase
      */
     public function testPropertyBarcodeInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\BarcodeInstruction();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\BarcodeInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class SKUPrepInstructionsTest extends TestCase
      */
     public function testPropertyPrepGuidance()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\PrepGuidance();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\PrepGuidance();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

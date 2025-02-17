@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DebtRecoveryEvent Class Doc Comment
  *
  * @category Class
  * @description A debt payment or debt adjustment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPITypes = [
              'debt_recovery_type' => 'string',
-             'recovery_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'over_payment_credit' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'debt_recovery_item_list' => '\OpenAPI\Client\Model\finances\v0\DebtRecoveryItem[]',
-             'charge_instrument_list' => '\OpenAPI\Client\Model\finances\v0\ChargeInstrument[]'    ];
+             'recovery_amount' => '\SpApi\Model\finances\v0\Currency',
+             'over_payment_credit' => '\SpApi\Model\finances\v0\Currency',
+             'debt_recovery_item_list' => '\SpApi\Model\finances\v0\DebtRecoveryItem[]',
+             'charge_instrument_list' => '\SpApi\Model\finances\v0\ChargeInstrument[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -356,9 +356,9 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets recovery_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getRecoveryAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getRecoveryAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['recovery_amount'];
     }
@@ -366,11 +366,11 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets recovery_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $recovery_amount recovery_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $recovery_amount recovery_amount
      *
      * @return self
      */
-    public function setRecoveryAmount(?\OpenAPI\Client\Model\finances\v0\Currency $recovery_amount): self
+    public function setRecoveryAmount(?\SpApi\Model\finances\v0\Currency $recovery_amount): self
     {
         if (is_null($recovery_amount)) {
             array_push($this->openAPINullablesSetToNull, 'recovery_amount');
@@ -390,9 +390,9 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets over_payment_credit
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getOverPaymentCredit(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getOverPaymentCredit(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['over_payment_credit'];
     }
@@ -400,11 +400,11 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets over_payment_credit
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $over_payment_credit over_payment_credit
+     * @param \SpApi\Model\finances\v0\Currency|null $over_payment_credit over_payment_credit
      *
      * @return self
      */
-    public function setOverPaymentCredit(?\OpenAPI\Client\Model\finances\v0\Currency $over_payment_credit): self
+    public function setOverPaymentCredit(?\SpApi\Model\finances\v0\Currency $over_payment_credit): self
     {
         if (is_null($over_payment_credit)) {
             array_push($this->openAPINullablesSetToNull, 'over_payment_credit');

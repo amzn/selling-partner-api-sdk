@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * VendorDetails Class Doc Comment
  *
  * @category Class
  * @description Vendor Details as part of Label response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'selling_party' => '\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification',
+             'selling_party' => '\SpApi\Model\vendor\shipments\v1\PartyIdentification',
              'vendor_shipment_identifier' => 'string'    ];
 
     /**
@@ -301,9 +301,9 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_party
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\shipments\v1\PartyIdentification|null
      */
-    public function getSellingParty(): ?\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification
+    public function getSellingParty(): ?\SpApi\Model\vendor\shipments\v1\PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -311,11 +311,11 @@ class VendorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_party
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification|null $selling_party selling_party
+     * @param \SpApi\Model\vendor\shipments\v1\PartyIdentification|null $selling_party selling_party
      *
      * @return self
      */
-    public function setSellingParty(?\OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification $selling_party): self
+    public function setSellingParty(?\SpApi\Model\vendor\shipments\v1\PartyIdentification $selling_party): self
     {
         if (is_null($selling_party)) {
             array_push($this->openAPINullablesSetToNull, 'selling_party');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sales\v1\OrderMetricsInterval;
+use SpApi\Model\sales\v1\OrderMetricsInterval;
 
 /**
  * OrderMetricsIntervalTest Class Doc Comment
  *
  * @category    Class
  * @description Contains order metrics.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderMetricsIntervalTest extends TestCase
 {
@@ -101,7 +101,7 @@ class OrderMetricsIntervalTest extends TestCase
     public function testPropertyAverageUnitPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sales\v1\Money();
+        $testValue = new \SpApi\Model\sales\v1\Money();
         
         $this->model->setAverageUnitPrice($testValue);
         $this->assertEquals($testValue, $this->model->getAverageUnitPrice());
@@ -113,7 +113,7 @@ class OrderMetricsIntervalTest extends TestCase
     public function testPropertyTotalSales()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sales\v1\Money();
+        $testValue = new \SpApi\Model\sales\v1\Money();
         
         $this->model->setTotalSales($testValue);
         $this->assertEquals($testValue, $this->model->getTotalSales());

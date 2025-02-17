@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PartyIdentification Class Doc Comment
  *
  * @category Class
  * @description Name, address and tax details of a party.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPITypes = [
              'party_id' => 'string',
-             'address' => '\OpenAPI\Client\Model\vendor\orders\v1\Address',
-             'tax_info' => '\OpenAPI\Client\Model\vendor\orders\v1\TaxRegistrationDetails'    ];
+             'address' => '\SpApi\Model\vendor\orders\v1\Address',
+             'tax_info' => '\SpApi\Model\vendor\orders\v1\TaxRegistrationDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -338,9 +338,9 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\Address|null
+     * @return \SpApi\Model\vendor\orders\v1\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\vendor\orders\v1\Address
+    public function getAddress(): ?\SpApi\Model\vendor\orders\v1\Address
     {
         return $this->container['address'];
     }
@@ -348,11 +348,11 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\Address|null $address address
+     * @param \SpApi\Model\vendor\orders\v1\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\vendor\orders\v1\Address $address): self
+    public function setAddress(?\SpApi\Model\vendor\orders\v1\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');
@@ -372,9 +372,9 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tax_info
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\TaxRegistrationDetails|null
+     * @return \SpApi\Model\vendor\orders\v1\TaxRegistrationDetails|null
      */
-    public function getTaxInfo(): ?\OpenAPI\Client\Model\vendor\orders\v1\TaxRegistrationDetails
+    public function getTaxInfo(): ?\SpApi\Model\vendor\orders\v1\TaxRegistrationDetails
     {
         return $this->container['tax_info'];
     }
@@ -382,11 +382,11 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tax_info
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\TaxRegistrationDetails|null $tax_info tax_info
+     * @param \SpApi\Model\vendor\orders\v1\TaxRegistrationDetails|null $tax_info tax_info
      *
      * @return self
      */
-    public function setTaxInfo(?\OpenAPI\Client\Model\vendor\orders\v1\TaxRegistrationDetails $tax_info): self
+    public function setTaxInfo(?\SpApi\Model\vendor\orders\v1\TaxRegistrationDetails $tax_info): self
     {
         if (is_null($tax_info)) {
             array_push($this->openAPINullablesSetToNull, 'tax_info');

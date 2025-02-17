@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest;
+use SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest;
 
 /**
  * SetAppointmentFulfillmentDataRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Input for set appointment fulfillment data operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SetAppointmentFulfillmentDataRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SetAppointmentFulfillmentDataRequestTest extends TestCase
     public function testPropertyFulfillmentTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\FulfillmentTime();
+        $testValue = new \SpApi\Model\services\v1\FulfillmentTime();
         
         $this->model->setFulfillmentTime($testValue);
         $this->assertEquals($testValue, $this->model->getFulfillmentTime());

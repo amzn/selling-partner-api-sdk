@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShippingLabelList Class Doc Comment
  *
  * @category Class
  * @description Response payload with the list of shipping labels.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'pagination' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Pagination',
-             'shipping_labels' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShippingLabel[]'    ];
+             'pagination' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Pagination',
+             'shipping_labels' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Pagination|null
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Pagination
+    public function getPagination(): ?\SpApi\Model\vendor\df\shipping\v2021_12_28\Pagination
     {
         return $this->container['pagination'];
     }
@@ -311,11 +311,11 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Pagination|null $pagination pagination
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\vendor\df\shipping\v2021_12_28\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

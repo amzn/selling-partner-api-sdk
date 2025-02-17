@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\inventory\v1\Granularity;
+use SpApi\Model\fba\inventory\v1\Granularity;
 
 /**
  * GranularityTest Class Doc Comment
  *
  * @category    Class
  * @description Describes a granularity at which inventory data can be aggregated. For example, if you use Marketplace granularity, the fulfillable quantity will reflect inventory that could be fulfilled in the given marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GranularityTest extends TestCase
 {

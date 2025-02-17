@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CompetitivePricingType Class Doc Comment
  *
  * @category Class
  * @description Competitive pricing information for the item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'competitive_prices' => '\OpenAPI\Client\Model\pricing\v0\CompetitivePriceType[]',
-             'number_of_offer_listings' => '\OpenAPI\Client\Model\pricing\v0\OfferListingCountType[]',
-             'trade_in_value' => '\OpenAPI\Client\Model\pricing\v0\MoneyType'    ];
+             'competitive_prices' => '\SpApi\Model\pricing\v0\CompetitivePriceType[]',
+             'number_of_offer_listings' => '\SpApi\Model\pricing\v0\OfferListingCountType[]',
+             'trade_in_value' => '\SpApi\Model\pricing\v0\MoneyType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -368,9 +368,9 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets trade_in_value
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType|null
+     * @return \SpApi\Model\pricing\v0\MoneyType|null
      */
-    public function getTradeInValue(): ?\OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getTradeInValue(): ?\SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['trade_in_value'];
     }
@@ -378,11 +378,11 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets trade_in_value
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType|null $trade_in_value trade_in_value
+     * @param \SpApi\Model\pricing\v0\MoneyType|null $trade_in_value trade_in_value
      *
      * @return self
      */
-    public function setTradeInValue(?\OpenAPI\Client\Model\pricing\v0\MoneyType $trade_in_value): self
+    public function setTradeInValue(?\SpApi\Model\pricing\v0\MoneyType $trade_in_value): self
     {
         if (is_null($trade_in_value)) {
             array_push($this->openAPINullablesSetToNull, 'trade_in_value');

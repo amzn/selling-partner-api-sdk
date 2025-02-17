@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\payments\v1;
+namespace SpApi\Model\vendor\df\payments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InvoiceItem Class Doc Comment
  *
  * @category Class
  * @description Provides the details of the items in this invoice.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,13 +63,13 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'item_sequence_number' => 'string',
              'buyer_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'invoiced_quantity' => '\OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity',
-             'net_cost' => '\OpenAPI\Client\Model\vendor\df\payments\v1\Money',
+             'invoiced_quantity' => '\SpApi\Model\vendor\df\payments\v1\ItemQuantity',
+             'net_cost' => '\SpApi\Model\vendor\df\payments\v1\Money',
              'purchase_order_number' => 'string',
              'vendor_order_number' => 'string',
              'hsn_code' => 'string',
-             'tax_details' => '\OpenAPI\Client\Model\vendor\df\payments\v1\TaxDetail[]',
-             'charge_details' => '\OpenAPI\Client\Model\vendor\df\payments\v1\ChargeDetails[]'    ];
+             'tax_details' => '\SpApi\Model\vendor\df\payments\v1\TaxDetail[]',
+             'charge_details' => '\SpApi\Model\vendor\df\payments\v1\ChargeDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -464,9 +464,9 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoiced_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\df\payments\v1\ItemQuantity
      */
-    public function getInvoicedQuantity(): \OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity
+    public function getInvoicedQuantity(): \SpApi\Model\vendor\df\payments\v1\ItemQuantity
     {
         return $this->container['invoiced_quantity'];
     }
@@ -474,11 +474,11 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoiced_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity $invoiced_quantity invoiced_quantity
+     * @param \SpApi\Model\vendor\df\payments\v1\ItemQuantity $invoiced_quantity invoiced_quantity
      *
      * @return self
      */
-    public function setInvoicedQuantity(\OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity $invoiced_quantity): self
+    public function setInvoicedQuantity(\SpApi\Model\vendor\df\payments\v1\ItemQuantity $invoiced_quantity): self
     {
         if (is_null($invoiced_quantity)) {
             throw new \InvalidArgumentException('non-nullable invoiced_quantity cannot be null');
@@ -491,9 +491,9 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets net_cost
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\Money
+     * @return \SpApi\Model\vendor\df\payments\v1\Money
      */
-    public function getNetCost(): \OpenAPI\Client\Model\vendor\df\payments\v1\Money
+    public function getNetCost(): \SpApi\Model\vendor\df\payments\v1\Money
     {
         return $this->container['net_cost'];
     }
@@ -501,11 +501,11 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets net_cost
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\Money $net_cost net_cost
+     * @param \SpApi\Model\vendor\df\payments\v1\Money $net_cost net_cost
      *
      * @return self
      */
-    public function setNetCost(\OpenAPI\Client\Model\vendor\df\payments\v1\Money $net_cost): self
+    public function setNetCost(\SpApi\Model\vendor\df\payments\v1\Money $net_cost): self
     {
         if (is_null($net_cost)) {
             throw new \InvalidArgumentException('non-nullable net_cost cannot be null');

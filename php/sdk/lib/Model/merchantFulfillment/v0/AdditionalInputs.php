@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AdditionalInputs Class Doc Comment
  *
  * @category Class
  * @description Maps the additional seller input to the definition. The key to the map is the field name.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class AdditionalInputs implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'additional_input_field_name' => 'string',
-             'seller_input_definition' => '\OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition'    ];
+             'seller_input_definition' => '\SpApi\Model\merchantFulfillment\v0\SellerInputDefinition'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class AdditionalInputs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets seller_input_definition
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition|null
+     * @return \SpApi\Model\merchantFulfillment\v0\SellerInputDefinition|null
      */
-    public function getSellerInputDefinition(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition
+    public function getSellerInputDefinition(): ?\SpApi\Model\merchantFulfillment\v0\SellerInputDefinition
     {
         return $this->container['seller_input_definition'];
     }
@@ -345,11 +345,11 @@ class AdditionalInputs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seller_input_definition
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition|null $seller_input_definition seller_input_definition
+     * @param \SpApi\Model\merchantFulfillment\v0\SellerInputDefinition|null $seller_input_definition seller_input_definition
      *
      * @return self
      */
-    public function setSellerInputDefinition(?\OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition $seller_input_definition): self
+    public function setSellerInputDefinition(?\SpApi\Model\merchantFulfillment\v0\SellerInputDefinition $seller_input_definition): self
     {
         if (is_null($seller_input_definition)) {
             array_push($this->openAPINullablesSetToNull, 'seller_input_definition');

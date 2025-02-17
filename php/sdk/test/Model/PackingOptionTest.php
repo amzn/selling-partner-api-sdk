@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PackingOption;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\PackingOption;
 
 /**
  * PackingOptionTest Class Doc Comment
  *
  * @category    Class
  * @description A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it&#39;s selected.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackingOptionTest extends TestCase
 {

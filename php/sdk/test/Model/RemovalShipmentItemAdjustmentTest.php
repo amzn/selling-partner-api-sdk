@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\RemovalShipmentItemAdjustment;
+use SpApi\Model\finances\v0\RemovalShipmentItemAdjustment;
 
 /**
  * RemovalShipmentItemAdjustmentTest Class Doc Comment
  *
  * @category    Class
  * @description Item-level information for a removal shipment item adjustment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RemovalShipmentItemAdjustmentTest extends TestCase
 {
@@ -101,7 +101,7 @@ class RemovalShipmentItemAdjustmentTest extends TestCase
     public function testPropertyRevenueAdjustment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setRevenueAdjustment($testValue);
         $this->assertEquals($testValue, $this->model->getRevenueAdjustment());
@@ -113,7 +113,7 @@ class RemovalShipmentItemAdjustmentTest extends TestCase
     public function testPropertyTaxAmountAdjustment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxAmountAdjustment($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmountAdjustment());
@@ -125,7 +125,7 @@ class RemovalShipmentItemAdjustmentTest extends TestCase
     public function testPropertyTaxWithheldAdjustment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxWithheldAdjustment($testValue);
         $this->assertEquals($testValue, $this->model->getTaxWithheldAdjustment());

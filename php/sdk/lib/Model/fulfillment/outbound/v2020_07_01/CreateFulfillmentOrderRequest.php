@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateFulfillmentOrderRequest Class Doc Comment
  *
  * @category Class
  * @description The request body schema for the &#x60;createFulfillmentOrder&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,18 +65,18 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
              'displayable_order_id' => 'string',
              'displayable_order_date' => '\DateTime',
              'displayable_order_comment' => 'string',
-             'shipping_speed_category' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory',
-             'delivery_window' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow',
-             'destination_address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address',
-             'delivery_preferences' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences',
-             'fulfillment_action' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction',
-             'fulfillment_policy' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy',
-             'cod_settings' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CODSettings',
+             'shipping_speed_category' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory',
+             'delivery_window' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow',
+             'destination_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
+             'delivery_preferences' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences',
+             'fulfillment_action' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction',
+             'fulfillment_policy' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy',
+             'cod_settings' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\CODSettings',
              'ship_from_country_code' => 'string',
              'notification_emails' => 'string[]',
-             'feature_constraints' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]',
-             'items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderItem[]',
-             'payment_information' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PaymentInformation[]'    ];
+             'feature_constraints' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]',
+             'items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderItem[]',
+             'payment_information' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\PaymentInformation[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -620,9 +620,9 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets delivery_window
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow|null
      */
-    public function getDeliveryWindow(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow
+    public function getDeliveryWindow(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow
     {
         return $this->container['delivery_window'];
     }
@@ -630,11 +630,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets delivery_window
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow|null $delivery_window delivery_window
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow|null $delivery_window delivery_window
      *
      * @return self
      */
-    public function setDeliveryWindow(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow $delivery_window): self
+    public function setDeliveryWindow(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow $delivery_window): self
     {
         if (is_null($delivery_window)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_window');
@@ -654,9 +654,9 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets destination_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
      */
-    public function getDestinationAddress(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+    public function getDestinationAddress(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
     {
         return $this->container['destination_address'];
     }
@@ -664,11 +664,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets destination_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $destination_address destination_address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Address $destination_address destination_address
      *
      * @return self
      */
-    public function setDestinationAddress(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $destination_address): self
+    public function setDestinationAddress(\SpApi\Model\fulfillment\outbound\v2020_07_01\Address $destination_address): self
     {
         if (is_null($destination_address)) {
             throw new \InvalidArgumentException('non-nullable destination_address cannot be null');
@@ -681,9 +681,9 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets delivery_preferences
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences|null
      */
-    public function getDeliveryPreferences(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences
+    public function getDeliveryPreferences(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences
     {
         return $this->container['delivery_preferences'];
     }
@@ -691,11 +691,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets delivery_preferences
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences|null $delivery_preferences delivery_preferences
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences|null $delivery_preferences delivery_preferences
      *
      * @return self
      */
-    public function setDeliveryPreferences(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences $delivery_preferences): self
+    public function setDeliveryPreferences(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences $delivery_preferences): self
     {
         if (is_null($delivery_preferences)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_preferences');
@@ -783,9 +783,9 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets cod_settings
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CODSettings|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\CODSettings|null
      */
-    public function getCodSettings(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CODSettings
+    public function getCodSettings(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\CODSettings
     {
         return $this->container['cod_settings'];
     }
@@ -793,11 +793,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets cod_settings
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CODSettings|null $cod_settings cod_settings
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\CODSettings|null $cod_settings cod_settings
      *
      * @return self
      */
-    public function setCodSettings(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CODSettings $cod_settings): self
+    public function setCodSettings(?\SpApi\Model\fulfillment\outbound\v2020_07_01\CODSettings $cod_settings): self
     {
         if (is_null($cod_settings)) {
             array_push($this->openAPINullablesSetToNull, 'cod_settings');

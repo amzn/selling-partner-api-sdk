@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FulfillmentShipmentPackage Class Doc Comment
  *
  * @category Class
  * @description Package information for a shipment in a fulfillment order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
              'carrier_code' => 'string',
              'tracking_number' => 'string',
              'estimated_arrival_date' => '\DateTime',
-             'locker_details' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails',
-             'delivery_information' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation'    ];
+             'locker_details' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails',
+             'delivery_information' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -457,9 +457,9 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets locker_details
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails|null
      */
-    public function getLockerDetails(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails
+    public function getLockerDetails(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails
     {
         return $this->container['locker_details'];
     }
@@ -467,11 +467,11 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets locker_details
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails|null $locker_details locker_details
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails|null $locker_details locker_details
      *
      * @return self
      */
-    public function setLockerDetails(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails $locker_details): self
+    public function setLockerDetails(?\SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails $locker_details): self
     {
         if (is_null($locker_details)) {
             array_push($this->openAPINullablesSetToNull, 'locker_details');
@@ -491,9 +491,9 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets delivery_information
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation|null
      */
-    public function getDeliveryInformation(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation
+    public function getDeliveryInformation(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation
     {
         return $this->container['delivery_information'];
     }
@@ -501,11 +501,11 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets delivery_information
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation|null $delivery_information delivery_information
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation|null $delivery_information delivery_information
      *
      * @return self
      */
-    public function setDeliveryInformation(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation $delivery_information): self
+    public function setDeliveryInformation(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation $delivery_information): self
     {
         if (is_null($delivery_information)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_information');

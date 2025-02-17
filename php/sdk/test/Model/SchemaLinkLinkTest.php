@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink;
+use SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink;
 
 /**
  * SchemaLinkLinkTest Class Doc Comment
  *
  * @category    Class
  * @description Link to retrieve the schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SchemaLinkLinkTest extends TestCase
 {

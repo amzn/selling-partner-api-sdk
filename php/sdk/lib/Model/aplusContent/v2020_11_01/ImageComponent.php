@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ImageComponent Class Doc Comment
  *
  * @category Class
  * @description A reference to an image, hosted in the A+ Content media library.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ImageComponent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'upload_destination_id' => 'string',
-             'image_crop_specification' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification',
+             'image_crop_specification' => '\SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification',
              'alt_text' => 'string'    ];
 
     /**
@@ -361,9 +361,9 @@ class ImageComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets image_crop_specification
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification
      */
-    public function getImageCropSpecification(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification
+    public function getImageCropSpecification(): \SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification
     {
         return $this->container['image_crop_specification'];
     }
@@ -371,11 +371,11 @@ class ImageComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_crop_specification
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification $image_crop_specification image_crop_specification
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification $image_crop_specification image_crop_specification
      *
      * @return self
      */
-    public function setImageCropSpecification(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification $image_crop_specification): self
+    public function setImageCropSpecification(\SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification $image_crop_specification): self
     {
         if (is_null($image_crop_specification)) {
             throw new \InvalidArgumentException('non-nullable image_crop_specification cannot be null');

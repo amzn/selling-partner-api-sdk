@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\SubstitutionOption;
+use SpApi\Model\orders\v0\SubstitutionOption;
 
 /**
  * SubstitutionOptionTest Class Doc Comment
  *
  * @category    Class
  * @description Substitution options for an order item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubstitutionOptionTest extends TestCase
 {
@@ -101,7 +101,7 @@ class SubstitutionOptionTest extends TestCase
     public function testPropertyMeasurement()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Measurement();
+        $testValue = new \SpApi\Model\orders\v0\Measurement();
         
         $this->model->setMeasurement($testValue);
         $this->assertEquals($testValue, $this->model->getMeasurement());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\MoneyType;
+use SpApi\Model\productFees\v0\MoneyType;
 
 /**
  * MoneyTypeTest Class Doc Comment
  *
  * @category    Class
  * @description MoneyType
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class MoneyTypeTest extends TestCase
 {

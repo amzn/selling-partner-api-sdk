@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SupportedDocumentSpecification Class Doc Comment
  *
  * @category Class
  * @description Document specification that is supported for a service offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class SupportedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'format' => '\OpenAPI\Client\Model\shipping\v2\DocumentFormat',
-             'size' => '\OpenAPI\Client\Model\shipping\v2\DocumentSize',
-             'print_options' => '\OpenAPI\Client\Model\shipping\v2\PrintOption[]'    ];
+             'format' => '\SpApi\Model\shipping\v2\DocumentFormat',
+             'size' => '\SpApi\Model\shipping\v2\DocumentSize',
+             'print_options' => '\SpApi\Model\shipping\v2\PrintOption[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -345,9 +345,9 @@ class SupportedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets size
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\DocumentSize
+     * @return \SpApi\Model\shipping\v2\DocumentSize
      */
-    public function getSize(): \OpenAPI\Client\Model\shipping\v2\DocumentSize
+    public function getSize(): \SpApi\Model\shipping\v2\DocumentSize
     {
         return $this->container['size'];
     }
@@ -355,11 +355,11 @@ class SupportedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets size
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\DocumentSize $size size
+     * @param \SpApi\Model\shipping\v2\DocumentSize $size size
      *
      * @return self
      */
-    public function setSize(\OpenAPI\Client\Model\shipping\v2\DocumentSize $size): self
+    public function setSize(\SpApi\Model\shipping\v2\DocumentSize $size): self
     {
         if (is_null($size)) {
             throw new \InvalidArgumentException('non-nullable size cannot be null');

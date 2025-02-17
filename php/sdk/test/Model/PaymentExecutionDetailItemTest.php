@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\PaymentExecutionDetailItem;
+use SpApi\Model\orders\v0\PaymentExecutionDetailItem;
 
 /**
  * PaymentExecutionDetailItemTest Class Doc Comment
  *
  * @category    Class
  * @description Information about a sub-payment method used to pay for a COD order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PaymentExecutionDetailItemTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PaymentExecutionDetailItemTest extends TestCase
     public function testPropertyPayment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
+        $testValue = new \SpApi\Model\orders\v0\Money();
         
         $this->model->setPayment($testValue);
         $this->assertEquals($testValue, $this->model->getPayment());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\ProductAttribute;
+use SpApi\Model\awd\v2024_05_09\ProductAttribute;
 
 /**
  * ProductAttributeTest Class Doc Comment
  *
  * @category    Class
  * @description Product instance attribute that is not described at the SKU level in the catalog.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductAttributeTest extends TestCase
 {

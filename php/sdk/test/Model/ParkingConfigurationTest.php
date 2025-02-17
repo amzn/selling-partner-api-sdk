@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration;
+use SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration;
 
 /**
  * ParkingConfigurationTest Class Doc Comment
  *
  * @category    Class
  * @description The parking configuration.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ParkingConfigurationTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ParkingConfigurationTest extends TestCase
      */
     public function testPropertyParkingCostType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingCostType();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\ParkingCostType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ParkingConfigurationTest extends TestCase
      */
     public function testPropertyParkingSpotIdentificationType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

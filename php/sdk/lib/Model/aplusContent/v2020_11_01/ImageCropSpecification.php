@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ImageCropSpecification Class Doc Comment
  *
  * @category Class
  * @description The instructions for optionally cropping an image. If no cropping is desired, set the dimensions to the original image size. If the image is cropped and no offset values are provided, then the coordinates of the top left corner of the cropped image, relative to the original image, are defaulted to (0,0).
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'size' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions',
-             'offset' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets'    ];
+             'size' => '\SpApi\Model\aplusContent\v2020_11_01\ImageDimensions',
+             'offset' => '\SpApi\Model\aplusContent\v2020_11_01\ImageOffsets'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets size
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageDimensions
      */
-    public function getSize(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions
+    public function getSize(): \SpApi\Model\aplusContent\v2020_11_01\ImageDimensions
     {
         return $this->container['size'];
     }
@@ -314,11 +314,11 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets size
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions $size size
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageDimensions $size size
      *
      * @return self
      */
-    public function setSize(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions $size): self
+    public function setSize(\SpApi\Model\aplusContent\v2020_11_01\ImageDimensions $size): self
     {
         if (is_null($size)) {
             throw new \InvalidArgumentException('non-nullable size cannot be null');
@@ -331,9 +331,9 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets offset
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageOffsets|null
      */
-    public function getOffset(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets
+    public function getOffset(): ?\SpApi\Model\aplusContent\v2020_11_01\ImageOffsets
     {
         return $this->container['offset'];
     }
@@ -341,11 +341,11 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets offset
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets|null $offset offset
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageOffsets|null $offset offset
      *
      * @return self
      */
-    public function setOffset(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets $offset): self
+    public function setOffset(?\SpApi\Model\aplusContent\v2020_11_01\ImageOffsets $offset): self
     {
         if (is_null($offset)) {
             array_push($this->openAPINullablesSetToNull, 'offset');

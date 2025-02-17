@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ConfirmShipmentRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for an shipment confirmation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'package_detail' => '\OpenAPI\Client\Model\orders\v0\PackageDetail',
+             'package_detail' => '\SpApi\Model\orders\v0\PackageDetail',
              'cod_collection_method' => 'string',
              'marketplace_id' => 'string'    ];
 
@@ -336,9 +336,9 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets package_detail
      *
-     * @return \OpenAPI\Client\Model\orders\v0\PackageDetail
+     * @return \SpApi\Model\orders\v0\PackageDetail
      */
-    public function getPackageDetail(): \OpenAPI\Client\Model\orders\v0\PackageDetail
+    public function getPackageDetail(): \SpApi\Model\orders\v0\PackageDetail
     {
         return $this->container['package_detail'];
     }
@@ -346,11 +346,11 @@ class ConfirmShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets package_detail
      *
-     * @param \OpenAPI\Client\Model\orders\v0\PackageDetail $package_detail package_detail
+     * @param \SpApi\Model\orders\v0\PackageDetail $package_detail package_detail
      *
      * @return self
      */
-    public function setPackageDetail(\OpenAPI\Client\Model\orders\v0\PackageDetail $package_detail): self
+    public function setPackageDetail(\SpApi\Model\orders\v0\PackageDetail $package_detail): self
     {
         if (is_null($package_detail)) {
             throw new \InvalidArgumentException('non-nullable package_detail cannot be null');

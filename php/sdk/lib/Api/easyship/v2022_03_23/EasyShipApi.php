@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\easyship\v2022_03_23;
+namespace SpApi\Api\easyship\v2022_03_23;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * EasyShipApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class EasyShipApi
     /**
      * Operation createScheduledPackage
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
      *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Package
+     * @return \SpApi\Model\easyship\v2022_03_23\Package
      */
     public function createScheduledPackage(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
-    ): \OpenAPI\Client\Model\easyship\v2022_03_23\Package {
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+    ): \SpApi\Model\easyship\v2022_03_23\Package {
         list($response) = $this->createScheduledPackageWithHttpInfo($create_scheduled_package_request);
         return $response;
     }
@@ -169,15 +169,15 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
      *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
      */
     public function createScheduledPackageWithHttpInfo(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
     ): array {
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
         $request = $this->config->sign($request);
@@ -220,158 +220,158 @@ class EasyShipApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\Package' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\Package' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\Package', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Package', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\Package';
+            $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -392,7 +392,7 @@ class EasyShipApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\Package',
+                        '\SpApi\Model\easyship\v2022_03_23\Package',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class EasyShipApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class EasyShipApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class EasyShipApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class EasyShipApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -432,7 +432,7 @@ class EasyShipApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -440,7 +440,7 @@ class EasyShipApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,7 +448,7 @@ class EasyShipApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class EasyShipApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -464,7 +464,7 @@ class EasyShipApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,14 +477,14 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageAsync
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
      *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createScheduledPackageAsync(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
     ): PromiseInterface {
         return $this->createScheduledPackageAsyncWithHttpInfo($create_scheduled_package_request)
             ->then(
@@ -497,16 +497,16 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
      *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createScheduledPackageAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\Package';
+        $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->createScheduledPackageRequest($create_scheduled_package_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -550,14 +550,14 @@ class EasyShipApi
     /**
      * Create request for operation 'createScheduledPackage'
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
      *  The request schema for the &#x60;createScheduledPackage&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createScheduledPackageRequest(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest $create_scheduled_package_request
     ): Request {
         // verify the required parameter 'create_scheduled_package_request' is set
         if ($create_scheduled_package_request === null || (is_array($create_scheduled_package_request) && count($create_scheduled_package_request) === 0)) {
@@ -645,16 +645,16 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageBulk
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
      *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse
+     * @return \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse
      */
     public function createScheduledPackageBulk(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
-    ): \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse {
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+    ): \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse {
         list($response) = $this->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request);
         return $response;
     }
@@ -662,15 +662,15 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageBulkWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
      *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createScheduledPackageBulkWithHttpInfo(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
     ): array {
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
         $request = $this->config->sign($request);
@@ -713,158 +713,158 @@ class EasyShipApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
+            $returnType = '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -885,7 +885,7 @@ class EasyShipApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse',
+                        '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -893,7 +893,7 @@ class EasyShipApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -901,7 +901,7 @@ class EasyShipApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -909,7 +909,7 @@ class EasyShipApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -917,7 +917,7 @@ class EasyShipApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -925,7 +925,7 @@ class EasyShipApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -933,7 +933,7 @@ class EasyShipApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -941,7 +941,7 @@ class EasyShipApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -949,7 +949,7 @@ class EasyShipApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -957,7 +957,7 @@ class EasyShipApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -970,14 +970,14 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageBulkAsync
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
      *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createScheduledPackageBulkAsync(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
     ): PromiseInterface {
         return $this->createScheduledPackageBulkAsyncWithHttpInfo($create_scheduled_packages_request)
             ->then(
@@ -990,16 +990,16 @@ class EasyShipApi
     /**
      * Operation createScheduledPackageBulkAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
      *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createScheduledPackageBulkAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
+        $returnType = '\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse';
         $request = $this->createScheduledPackageBulkRequest($create_scheduled_packages_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1043,14 +1043,14 @@ class EasyShipApi
     /**
      * Create request for operation 'createScheduledPackageBulk'
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
      *  The request schema for the &#x60;createScheduledPackageBulk&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createScheduledPackageBulkRequest(
-        \OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
+        \SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest $create_scheduled_packages_request
     ): Request {
         // verify the required parameter 'create_scheduled_packages_request' is set
         if ($create_scheduled_packages_request === null || (is_array($create_scheduled_packages_request) && count($create_scheduled_packages_request) === 0)) {
@@ -1143,14 +1143,14 @@ class EasyShipApi
      * @param  string $marketplace_id
      *  An identifier for the marketplace in which the seller is selling. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Package
+     * @return \SpApi\Model\easyship\v2022_03_23\Package
      */
     public function getScheduledPackage(
         string $amazon_order_id,
         string $marketplace_id
-    ): \OpenAPI\Client\Model\easyship\v2022_03_23\Package {
+    ): \SpApi\Model\easyship\v2022_03_23\Package {
         list($response) = $this->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id);
         return $response;
     }
@@ -1163,9 +1163,9 @@ class EasyShipApi
      * @param  string $marketplace_id
      *  An identifier for the marketplace in which the seller is selling. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\easyship\v2022_03_23\Package, HTTP status code, HTTP response headers (array of strings)
      */
     public function getScheduledPackageWithHttpInfo(
         string $amazon_order_id,
@@ -1212,158 +1212,158 @@ class EasyShipApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\Package' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\Package' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\Package' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\Package', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Package', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\Package';
+            $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1384,7 +1384,7 @@ class EasyShipApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\Package',
+                        '\SpApi\Model\easyship\v2022_03_23\Package',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1392,7 +1392,7 @@ class EasyShipApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1400,7 +1400,7 @@ class EasyShipApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1408,7 +1408,7 @@ class EasyShipApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1416,7 +1416,7 @@ class EasyShipApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1424,7 +1424,7 @@ class EasyShipApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1432,7 +1432,7 @@ class EasyShipApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1440,7 +1440,7 @@ class EasyShipApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1448,7 +1448,7 @@ class EasyShipApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1456,7 +1456,7 @@ class EasyShipApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1504,7 +1504,7 @@ class EasyShipApi
         string $amazon_order_id,
         string $marketplace_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\Package';
+        $returnType = '\SpApi\Model\easyship\v2022_03_23\Package';
         $request = $this->getScheduledPackageRequest($amazon_order_id, $marketplace_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1678,16 +1678,16 @@ class EasyShipApi
     /**
      * Operation listHandoverSlots
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
      *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse
+     * @return \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse
      */
     public function listHandoverSlots(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
-    ): \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse {
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
+    ): \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse {
         list($response) = $this->listHandoverSlotsWithHttpInfo($list_handover_slots_request);
         return $response;
     }
@@ -1695,15 +1695,15 @@ class EasyShipApi
     /**
      * Operation listHandoverSlotsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
      *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listHandoverSlotsWithHttpInfo(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
     ): array {
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
         $request = $this->config->sign($request);
@@ -1746,158 +1746,158 @@ class EasyShipApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
+            $returnType = '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1918,7 +1918,7 @@ class EasyShipApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse',
+                        '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1926,7 +1926,7 @@ class EasyShipApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1934,7 +1934,7 @@ class EasyShipApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1942,7 +1942,7 @@ class EasyShipApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1950,7 +1950,7 @@ class EasyShipApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1958,7 +1958,7 @@ class EasyShipApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1966,7 +1966,7 @@ class EasyShipApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1974,7 +1974,7 @@ class EasyShipApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1982,7 +1982,7 @@ class EasyShipApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1990,7 +1990,7 @@ class EasyShipApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2003,14 +2003,14 @@ class EasyShipApi
     /**
      * Operation listHandoverSlotsAsync
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
      *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function listHandoverSlotsAsync(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
     ): PromiseInterface {
         return $this->listHandoverSlotsAsyncWithHttpInfo($list_handover_slots_request)
             ->then(
@@ -2023,16 +2023,16 @@ class EasyShipApi
     /**
      * Operation listHandoverSlotsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
      *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function listHandoverSlotsAsyncWithHttpInfo(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
+        $returnType = '\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsResponse';
         $request = $this->listHandoverSlotsRequest($list_handover_slots_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2076,14 +2076,14 @@ class EasyShipApi
     /**
      * Create request for operation 'listHandoverSlots'
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest|null $list_handover_slots_request
      *  The request schema for the &#x60;listHandoverSlots&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function listHandoverSlotsRequest(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\ListHandoverSlotsRequest $list_handover_slots_request = null
     ): Request {
 
         $resourcePath = '/easyShip/2022-03-23/timeSlot';
@@ -2165,16 +2165,16 @@ class EasyShipApi
     /**
      * Operation updateScheduledPackages
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
      *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Packages
+     * @return \SpApi\Model\easyship\v2022_03_23\Packages
      */
     public function updateScheduledPackages(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
-    ): \OpenAPI\Client\Model\easyship\v2022_03_23\Packages {
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+    ): \SpApi\Model\easyship\v2022_03_23\Packages {
         list($response) = $this->updateScheduledPackagesWithHttpInfo($update_scheduled_packages_request);
         return $response;
     }
@@ -2182,15 +2182,15 @@ class EasyShipApi
     /**
      * Operation updateScheduledPackagesWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
      *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\easyship\v2022_03_23\Packages, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\easyship\v2022_03_23\Packages, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateScheduledPackagesWithHttpInfo(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
     ): array {
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
         $request = $this->config->sign($request);
@@ -2233,158 +2233,158 @@ class EasyShipApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\Packages' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\Packages' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\Packages' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\Packages' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\Packages', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\Packages', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\easyship\v2022_03_23\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\easyship\v2022_03_23\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\Packages';
+            $returnType = '\SpApi\Model\easyship\v2022_03_23\Packages';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2405,7 +2405,7 @@ class EasyShipApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\Packages',
+                        '\SpApi\Model\easyship\v2022_03_23\Packages',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2413,7 +2413,7 @@ class EasyShipApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2421,7 +2421,7 @@ class EasyShipApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2429,7 +2429,7 @@ class EasyShipApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2437,7 +2437,7 @@ class EasyShipApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2445,7 +2445,7 @@ class EasyShipApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2453,7 +2453,7 @@ class EasyShipApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2461,7 +2461,7 @@ class EasyShipApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2469,7 +2469,7 @@ class EasyShipApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2477,7 +2477,7 @@ class EasyShipApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\easyship\v2022_03_23\ErrorList',
+                        '\SpApi\Model\easyship\v2022_03_23\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2490,14 +2490,14 @@ class EasyShipApi
     /**
      * Operation updateScheduledPackagesAsync
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
      *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function updateScheduledPackagesAsync(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
     ): PromiseInterface {
         return $this->updateScheduledPackagesAsyncWithHttpInfo($update_scheduled_packages_request)
             ->then(
@@ -2510,16 +2510,16 @@ class EasyShipApi
     /**
      * Operation updateScheduledPackagesAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
      *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function updateScheduledPackagesAsyncWithHttpInfo(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\easyship\v2022_03_23\Packages';
+        $returnType = '\SpApi\Model\easyship\v2022_03_23\Packages';
         $request = $this->updateScheduledPackagesRequest($update_scheduled_packages_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2563,14 +2563,14 @@ class EasyShipApi
     /**
      * Create request for operation 'updateScheduledPackages'
      *
-     * @param  \OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
+     * @param  \SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest|null $update_scheduled_packages_request
      *  The request schema for the &#x60;updateScheduledPackages&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function updateScheduledPackagesRequest(
-        ?\OpenAPI\Client\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
+        ?\SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest $update_scheduled_packages_request = null
     ): Request {
 
         $resourcePath = '/easyShip/2022-03-23/package';

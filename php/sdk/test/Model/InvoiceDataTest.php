@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData;
+use SpApi\Model\easyship\v2022_03_23\InvoiceData;
 
 /**
  * InvoiceDataTest Class Doc Comment
  *
  * @category    Class
  * @description Invoice number and date.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvoiceDataTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\InventoryDetails;
+use SpApi\Model\awd\v2024_05_09\InventoryDetails;
 
 /**
  * InventoryDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Additional inventory details. This object is only displayed if the details parameter in the request is set to &#x60;SHOW&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InventoryDetailsTest extends TestCase
 {

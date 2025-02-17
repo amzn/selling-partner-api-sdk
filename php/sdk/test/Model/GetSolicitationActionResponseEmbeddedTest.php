@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded;
+use SpApi\Model\solicitations\v1\GetSolicitationActionResponseEmbedded;
 
 /**
  * GetSolicitationActionResponseEmbeddedTest Class Doc Comment
  *
  * @category    Class
  * @description GetSolicitationActionResponseEmbedded
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetSolicitationActionResponseEmbeddedTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetSolicitationActionResponseEmbeddedTest extends TestCase
     public function testPropertySchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse();
+        $testValue = new \SpApi\Model\solicitations\v1\GetSchemaResponse();
         
         $this->model->setSchema($testValue);
         $this->assertEquals($testValue, $this->model->getSchema());

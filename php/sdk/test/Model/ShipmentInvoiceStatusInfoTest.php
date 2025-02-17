@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo;
+use SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo;
 
 /**
  * ShipmentInvoiceStatusInfoTest Class Doc Comment
  *
  * @category    Class
  * @description The shipment invoice status information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentInvoiceStatusInfoTest extends TestCase
 {
@@ -67,7 +67,7 @@ class ShipmentInvoiceStatusInfoTest extends TestCase
      */
     public function testPropertyInvoiceStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatus();
+        $enumInstance = new \SpApi\Model\invoicing\v0\ShipmentInvoiceStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

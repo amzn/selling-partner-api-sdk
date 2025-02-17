@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubmitShipmentConfirmationsRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the submitShipmentConfirmations operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SubmitShipmentConfirmationsRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipment_confirmations' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentConfirmation[]'    ];
+             'shipment_confirmations' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentConfirmation[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

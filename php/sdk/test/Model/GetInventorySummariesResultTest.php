@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult;
+use SpApi\Model\fba\inventory\v1\GetInventorySummariesResult;
 
 /**
  * GetInventorySummariesResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload schema for the getInventorySummaries operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetInventorySummariesResultTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetInventorySummariesResultTest extends TestCase
     public function testPropertyGranularity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fba\inventory\v1\Granularity();
+        $testValue = new \SpApi\Model\fba\inventory\v1\Granularity();
         
         $this->model->setGranularity($testValue);
         $this->assertEquals($testValue, $this->model->getGranularity());

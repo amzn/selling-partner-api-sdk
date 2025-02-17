@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\finances\v0;
+namespace SpApi\Api\finances\v0;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -161,16 +161,16 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse
+     * @return \SpApi\Model\finances\v0\ListFinancialEventGroupsResponse
      */
     public function listFinancialEventGroups(
         ?int $max_results_per_page = 10,
         ?\DateTime $financial_event_group_started_before = null,
         ?\DateTime $financial_event_group_started_after = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse {
+    ): \SpApi\Model\finances\v0\ListFinancialEventGroupsResponse {
         list($response) = $this->listFinancialEventGroupsWithHttpInfo($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
         return $response;
     }
@@ -187,9 +187,9 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\finances\v0\ListFinancialEventGroupsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFinancialEventGroupsWithHttpInfo(
         ?int $max_results_per_page = 10,
@@ -238,113 +238,113 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse';
+            $returnType = '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -365,7 +365,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -373,7 +373,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -381,7 +381,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -389,7 +389,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -397,7 +397,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -405,7 +405,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -413,7 +413,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -473,7 +473,7 @@ class DefaultApi
         ?\DateTime $financial_event_group_started_after = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsResponse';
+        $returnType = '\SpApi\Model\finances\v0\ListFinancialEventGroupsResponse';
         $request = $this->listFinancialEventGroupsRequest($max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -661,16 +661,16 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse
+     * @return \SpApi\Model\finances\v0\ListFinancialEventsResponse
      */
     public function listFinancialEvents(
         ?int $max_results_per_page = 100,
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse {
+    ): \SpApi\Model\finances\v0\ListFinancialEventsResponse {
         list($response) = $this->listFinancialEventsWithHttpInfo($max_results_per_page, $posted_after, $posted_before, $next_token);
         return $response;
     }
@@ -687,9 +687,9 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFinancialEventsWithHttpInfo(
         ?int $max_results_per_page = 100,
@@ -738,113 +738,113 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse';
+            $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -865,7 +865,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -873,7 +873,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -881,7 +881,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -889,7 +889,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -897,7 +897,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -905,7 +905,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -913,7 +913,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -973,7 +973,7 @@ class DefaultApi
         ?\DateTime $posted_before = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse';
+        $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsRequest($max_results_per_page, $posted_after, $posted_before, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1163,9 +1163,9 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse
+     * @return \SpApi\Model\finances\v0\ListFinancialEventsResponse
      */
     public function listFinancialEventsByGroupId(
         string $event_group_id,
@@ -1173,7 +1173,7 @@ class DefaultApi
         ?\DateTime $posted_after = null,
         ?\DateTime $posted_before = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse {
+    ): \SpApi\Model\finances\v0\ListFinancialEventsResponse {
         list($response) = $this->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
         return $response;
     }
@@ -1192,9 +1192,9 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFinancialEventsByGroupIdWithHttpInfo(
         string $event_group_id,
@@ -1244,113 +1244,113 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse';
+            $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1371,7 +1371,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1379,7 +1379,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1387,7 +1387,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1395,7 +1395,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1403,7 +1403,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1411,7 +1411,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1419,7 +1419,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1485,7 +1485,7 @@ class DefaultApi
         ?\DateTime $posted_before = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse';
+        $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByGroupIdRequest($event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1688,15 +1688,15 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse
+     * @return \SpApi\Model\finances\v0\ListFinancialEventsResponse
      */
     public function listFinancialEventsByOrderId(
         string $order_id,
         ?int $max_results_per_page = 100,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse {
+    ): \SpApi\Model\finances\v0\ListFinancialEventsResponse {
         list($response) = $this->listFinancialEventsByOrderIdWithHttpInfo($order_id, $max_results_per_page, $next_token);
         return $response;
     }
@@ -1711,9 +1711,9 @@ class DefaultApi
      * @param  string|null $next_token
      *  A string token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\finances\v0\ListFinancialEventsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFinancialEventsByOrderIdWithHttpInfo(
         string $order_id,
@@ -1761,113 +1761,113 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v0\ListFinancialEventsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v0\ListFinancialEventsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse';
+            $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1888,7 +1888,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1896,7 +1896,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1904,7 +1904,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1912,7 +1912,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1920,7 +1920,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1928,7 +1928,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1936,7 +1936,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse',
+                        '\SpApi\Model\finances\v0\ListFinancialEventsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1990,7 +1990,7 @@ class DefaultApi
         ?int $max_results_per_page = 100,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\finances\v0\ListFinancialEventsResponse';
+        $returnType = '\SpApi\Model\finances\v0\ListFinancialEventsResponse';
         $request = $this->listFinancialEventsByOrderIdRequest($order_id, $max_results_per_page, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

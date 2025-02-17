@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RequestedDocumentSpecification Class Doc Comment
  *
  * @category Class
  * @description The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'format' => '\OpenAPI\Client\Model\shipping\v2\DocumentFormat',
-             'size' => '\OpenAPI\Client\Model\shipping\v2\DocumentSize',
+             'format' => '\SpApi\Model\shipping\v2\DocumentFormat',
+             'size' => '\SpApi\Model\shipping\v2\DocumentSize',
              'dpi' => 'int',
              'page_layout' => 'string',
              'need_file_joining' => 'bool',
-             'requested_document_types' => '\OpenAPI\Client\Model\shipping\v2\DocumentType[]'    ];
+             'requested_document_types' => '\SpApi\Model\shipping\v2\DocumentType[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -369,9 +369,9 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets size
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\DocumentSize
+     * @return \SpApi\Model\shipping\v2\DocumentSize
      */
-    public function getSize(): \OpenAPI\Client\Model\shipping\v2\DocumentSize
+    public function getSize(): \SpApi\Model\shipping\v2\DocumentSize
     {
         return $this->container['size'];
     }
@@ -379,11 +379,11 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets size
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\DocumentSize $size size
+     * @param \SpApi\Model\shipping\v2\DocumentSize $size size
      *
      * @return self
      */
-    public function setSize(\OpenAPI\Client\Model\shipping\v2\DocumentSize $size): self
+    public function setSize(\SpApi\Model\shipping\v2\DocumentSize $size): self
     {
         if (is_null($size)) {
             throw new \InvalidArgumentException('non-nullable size cannot be null');

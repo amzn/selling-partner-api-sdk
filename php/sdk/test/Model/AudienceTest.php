@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\Audience;
+use SpApi\Model\listings\items\v2021_08_01\Audience;
 
 /**
  * AudienceTest Class Doc Comment
  *
  * @category    Class
  * @description Buyer segment or program this offer is applicable to.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AudienceTest extends TestCase
 {

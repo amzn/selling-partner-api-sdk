@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination;
 
 /**
  * ShipmentDestinationTest Class Doc Comment
  *
  * @category    Class
  * @description The Amazon fulfillment center address and warehouse ID.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentDestinationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ShipmentDestinationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

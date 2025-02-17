@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo;
 
 /**
  * ScheduledDeliveryInfoTest Class Doc Comment
  *
  * @category    Class
  * @description Delivery information for a scheduled delivery. This is only available in the JP marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ScheduledDeliveryInfoTest extends TestCase
 {

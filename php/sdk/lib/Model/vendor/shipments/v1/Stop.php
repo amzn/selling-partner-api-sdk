@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Stop Class Doc Comment
  *
  * @category Class
  * @description Contractual or operational port or point relevant to the movement of the cargo.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'function_code' => 'string',
-             'location_identification' => '\OpenAPI\Client\Model\vendor\shipments\v1\Location',
+             'location_identification' => '\SpApi\Model\vendor\shipments\v1\Location',
              'arrival_time' => '\DateTime',
              'departure_time' => '\DateTime'    ];
 
@@ -381,9 +381,9 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets location_identification
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Location|null
+     * @return \SpApi\Model\vendor\shipments\v1\Location|null
      */
-    public function getLocationIdentification(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Location
+    public function getLocationIdentification(): ?\SpApi\Model\vendor\shipments\v1\Location
     {
         return $this->container['location_identification'];
     }
@@ -391,11 +391,11 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets location_identification
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Location|null $location_identification location_identification
+     * @param \SpApi\Model\vendor\shipments\v1\Location|null $location_identification location_identification
      *
      * @return self
      */
-    public function setLocationIdentification(?\OpenAPI\Client\Model\vendor\shipments\v1\Location $location_identification): self
+    public function setLocationIdentification(?\SpApi\Model\vendor\shipments\v1\Location $location_identification): self
     {
         if (is_null($location_identification)) {
             array_push($this->openAPINullablesSetToNull, 'location_identification');

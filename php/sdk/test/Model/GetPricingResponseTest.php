@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\GetPricingResponse;
+use SpApi\Model\pricing\v0\GetPricingResponse;
 
 /**
  * GetPricingResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getPricing&#x60; and &#x60;getCompetitivePricing&#x60; operations.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetPricingResponseTest extends TestCase
 {

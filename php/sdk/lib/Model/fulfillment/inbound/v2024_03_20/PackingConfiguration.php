@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackingConfiguration Class Doc Comment
  *
  * @category Class
  * @description A way to configure this packing option. Some box content information sources might not be allowed. Non-standard minimum and maximum box weights might be enforced.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class PackingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'box_packing_methods' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource[]',
-             'box_requirements' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxRequirements',
-             'shipping_requirements' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShippingRequirements[]'    ];
+             'box_packing_methods' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource[]',
+             'box_requirements' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxRequirements',
+             'shipping_requirements' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ShippingRequirements[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class PackingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets box_requirements
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxRequirements|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\BoxRequirements|null
      */
-    public function getBoxRequirements(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxRequirements
+    public function getBoxRequirements(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxRequirements
     {
         return $this->container['box_requirements'];
     }
@@ -352,11 +352,11 @@ class PackingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets box_requirements
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxRequirements|null $box_requirements box_requirements
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\BoxRequirements|null $box_requirements box_requirements
      *
      * @return self
      */
-    public function setBoxRequirements(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxRequirements $box_requirements): self
+    public function setBoxRequirements(?\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxRequirements $box_requirements): self
     {
         if (is_null($box_requirements)) {
             array_push($this->openAPINullablesSetToNull, 'box_requirements');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\feeds\v2021_06_30\CreateFeedDocumentResponse;
+use SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentResponse;
 
 /**
  * CreateFeedDocumentResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Information required to upload a feed document&#39;s contents.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateFeedDocumentResponseTest extends TestCase
 {

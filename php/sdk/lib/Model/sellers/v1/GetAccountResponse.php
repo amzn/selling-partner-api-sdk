@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\sellers\v1;
+namespace SpApi\Model\sellers\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetAccountResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getAccount&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetAccountResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\sellers\v1\Account',
-             'errors' => '\OpenAPI\Client\Model\sellers\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\sellers\v1\Account',
+             'errors' => '\SpApi\Model\sellers\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetAccountResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\Account|null
+     * @return \SpApi\Model\sellers\v1\Account|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\sellers\v1\Account
+    public function getPayload(): ?\SpApi\Model\sellers\v1\Account
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetAccountResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\Account|null $payload payload
+     * @param \SpApi\Model\sellers\v1\Account|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\sellers\v1\Account $payload): self
+    public function setPayload(?\SpApi\Model\sellers\v1\Account $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

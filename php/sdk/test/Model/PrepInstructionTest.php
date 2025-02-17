@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\PrepInstruction;
+use SpApi\Model\awd\v2024_05_09\PrepInstruction;
 
 /**
  * PrepInstructionTest Class Doc Comment
  *
  * @category    Class
  * @description Information pertaining to the preparation of inbound products.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrepInstructionTest extends TestCase
 {
@@ -56,7 +56,7 @@ class PrepInstructionTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\PrepOwner();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

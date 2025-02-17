@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * QuantityDiscountPriceType Class Doc Comment
  *
  * @category Class
  * @description Contains pricing information that includes special pricing when buying in bulk.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class QuantityDiscountPriceType implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPITypes = [
              'quantity_tier' => 'int',
-             'quantity_discount_type' => '\OpenAPI\Client\Model\pricing\v0\QuantityDiscountType',
-             'listing_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType'    ];
+             'quantity_discount_type' => '\SpApi\Model\pricing\v0\QuantityDiscountType',
+             'listing_price' => '\SpApi\Model\pricing\v0\MoneyType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -371,9 +371,9 @@ class QuantityDiscountPriceType implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets listing_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getListingPrice(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getListingPrice(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -381,11 +381,11 @@ class QuantityDiscountPriceType implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets listing_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $listing_price listing_price
+     * @param \SpApi\Model\pricing\v0\MoneyType $listing_price listing_price
      *
      * @return self
      */
-    public function setListingPrice(\OpenAPI\Client\Model\pricing\v0\MoneyType $listing_price): self
+    public function setListingPrice(\SpApi\Model\pricing\v0\MoneyType $listing_price): self
     {
         if (is_null($listing_price)) {
             throw new \InvalidArgumentException('non-nullable listing_price cannot be null');

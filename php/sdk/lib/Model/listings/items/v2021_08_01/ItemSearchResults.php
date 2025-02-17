@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemSearchResults Class Doc Comment
  *
  * @category Class
  * @description Selling partner listings items and search related metadata.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPITypes = [
              'number_of_results' => 'int',
-             'pagination' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Pagination',
-             'items' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Item[]'    ];
+             'pagination' => '\SpApi\Model\listings\items\v2021_08_01\Pagination',
+             'items' => '\SpApi\Model\listings\items\v2021_08_01\Item[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -341,9 +341,9 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\Pagination|null
+     * @return \SpApi\Model\listings\items\v2021_08_01\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\listings\items\v2021_08_01\Pagination
+    public function getPagination(): ?\SpApi\Model\listings\items\v2021_08_01\Pagination
     {
         return $this->container['pagination'];
     }
@@ -351,11 +351,11 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\Pagination|null $pagination pagination
+     * @param \SpApi\Model\listings\items\v2021_08_01\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\listings\items\v2021_08_01\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\listings\items\v2021_08_01\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

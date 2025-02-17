@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\transfers\v2024_06_01;
+namespace SpApi\Api\transfers\v2024_06_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -157,14 +157,14 @@ class DefaultApi
      * @param  string[]|null $payment_method_types
      *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse
+     * @return \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse
      */
     public function getPaymentMethods(
         string $marketplace_id,
         ?array $payment_method_types = null
-    ): \OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse {
+    ): \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse {
         list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types);
         return $response;
     }
@@ -177,9 +177,9 @@ class DefaultApi
      * @param  string[]|null $payment_method_types
      *  A comma-separated list of the payment method types you want to include in the response. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPaymentMethodsWithHttpInfo(
         string $marketplace_id,
@@ -226,143 +226,143 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
+            $returnType = '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -383,7 +383,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse',
+                        '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -391,7 +391,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -399,7 +399,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class DefaultApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class DefaultApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -495,7 +495,7 @@ class DefaultApi
         string $marketplace_id,
         ?array $payment_method_types = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
+        $returnType = '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
         $request = $this->getPaymentMethodsRequest($marketplace_id, $payment_method_types);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -653,16 +653,16 @@ class DefaultApi
     /**
      * Operation initiatePayout
      *
-     * @param  \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
      *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse
+     * @return \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse
      */
     public function initiatePayout(
-        \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-    ): \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse {
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+    ): \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse {
         list($response) = $this->initiatePayoutWithHttpInfo($body);
         return $response;
     }
@@ -670,15 +670,15 @@ class DefaultApi
     /**
      * Operation initiatePayoutWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
      *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function initiatePayoutWithHttpInfo(
-        \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
     ): array {
         $request = $this->initiatePayoutRequest($body);
         $request = $this->config->sign($request);
@@ -721,143 +721,143 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse';
+            $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -878,7 +878,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse',
+                        '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -886,7 +886,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -894,7 +894,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -902,7 +902,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -910,7 +910,7 @@ class DefaultApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -918,7 +918,7 @@ class DefaultApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -926,7 +926,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -934,7 +934,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -942,7 +942,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\transfers\v2024_06_01\ErrorList',
+                        '\SpApi\Model\transfers\v2024_06_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -955,14 +955,14 @@ class DefaultApi
     /**
      * Operation initiatePayoutAsync
      *
-     * @param  \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
      *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function initiatePayoutAsync(
-        \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
     ): PromiseInterface {
         return $this->initiatePayoutAsyncWithHttpInfo($body)
             ->then(
@@ -975,16 +975,16 @@ class DefaultApi
     /**
      * Operation initiatePayoutAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
      *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function initiatePayoutAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse';
+        $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
         $request = $this->initiatePayoutRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1028,14 +1028,14 @@ class DefaultApi
     /**
      * Create request for operation 'initiatePayout'
      *
-     * @param  \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
      *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function initiatePayoutRequest(
-        \OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {

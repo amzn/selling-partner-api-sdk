@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateScheduleResponse Class Doc Comment
  *
  * @category Class
  * @description Response schema for the &#x60;updateSchedule&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class UpdateScheduleResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\services\v1\UpdateScheduleRecord[]',
-             'errors' => '\OpenAPI\Client\Model\services\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\services\v1\UpdateScheduleRecord[]',
+             'errors' => '\SpApi\Model\services\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

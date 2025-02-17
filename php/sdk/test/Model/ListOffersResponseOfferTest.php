@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponseOffer;
+use SpApi\Model\replenishment\v2022_11_07\ListOffersResponseOffer;
 
 /**
  * ListOffersResponseOfferTest Class Doc Comment
  *
  * @category    Class
  * @description An object which contains details about an offer.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOffersResponseOfferTest extends TestCase
 {
@@ -89,7 +89,7 @@ class ListOffersResponseOfferTest extends TestCase
      */
     public function testPropertyEligibility()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\EligibilityStatus();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\EligibilityStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class ListOffersResponseOfferTest extends TestCase
     public function testPropertyOfferProgramConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfiguration();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration();
         
         $this->model->setOfferProgramConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOfferProgramConfiguration());
@@ -114,7 +114,7 @@ class ListOffersResponseOfferTest extends TestCase
      */
     public function testPropertyProgramType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ProgramType();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\ProgramType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

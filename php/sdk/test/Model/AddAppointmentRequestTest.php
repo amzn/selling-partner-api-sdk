@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\AddAppointmentRequest;
+use SpApi\Model\services\v1\AddAppointmentRequest;
 
 /**
  * AddAppointmentRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Input for add appointment operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AddAppointmentRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class AddAppointmentRequestTest extends TestCase
     public function testPropertyAppointmentTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\AppointmentTimeInput();
+        $testValue = new \SpApi\Model\services\v1\AppointmentTimeInput();
         
         $this->model->setAppointmentTime($testValue);
         $this->assertEquals($testValue, $this->model->getAppointmentTime());

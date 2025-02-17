@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode;
+use SpApi\Model\awd\v2024_05_09\CarrierCode;
 
 /**
  * CarrierCodeTest Class Doc Comment
  *
  * @category    Class
  * @description Identifies the carrier that will deliver the shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CarrierCodeTest extends TestCase
 {
@@ -56,7 +56,7 @@ class CarrierCodeTest extends TestCase
      */
     public function testPropertyCarrierCodeType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\CarrierCodeType();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\CarrierCodeType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

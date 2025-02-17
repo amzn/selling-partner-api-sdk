@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateMarketplaceItemLabelsRequest Class Doc Comment
  *
  * @category Class
  * @description The &#x60;createMarketplaceItemLabels&#x60; request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,11 +61,11 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPITypes = [
              'height' => 'float',
-             'label_type' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LabelPrintType',
+             'label_type' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\LabelPrintType',
              'locale_code' => 'string',
              'marketplace_id' => 'string',
-             'msku_quantities' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\MskuQuantity[]',
-             'page_type' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ItemLabelPageType',
+             'msku_quantities' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\MskuQuantity[]',
+             'page_type' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ItemLabelPageType',
              'width' => 'float'    ];
 
     /**

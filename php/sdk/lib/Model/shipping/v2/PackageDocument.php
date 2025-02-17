@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackageDocument Class Doc Comment
  *
  * @category Class
  * @description A document related to a package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class PackageDocument implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'type' => '\OpenAPI\Client\Model\shipping\v2\DocumentType',
-             'format' => '\OpenAPI\Client\Model\shipping\v2\DocumentFormat',
+             'type' => '\SpApi\Model\shipping\v2\DocumentType',
+             'format' => '\SpApi\Model\shipping\v2\DocumentFormat',
              'contents' => 'string'    ];
 
     /**

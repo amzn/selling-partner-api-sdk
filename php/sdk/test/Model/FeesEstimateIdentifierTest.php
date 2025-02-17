@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier;
+use SpApi\Model\productFees\v0\FeesEstimateIdentifier;
 
 /**
  * FeesEstimateIdentifierTest Class Doc Comment
  *
  * @category    Class
  * @description An item identifier, marketplace, time of request, and other details that identify an estimate.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeesEstimateIdentifierTest extends TestCase
 {
@@ -78,7 +78,7 @@ class FeesEstimateIdentifierTest extends TestCase
      */
     public function testPropertyIdType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\productFees\v0\IdType();
+        $enumInstance = new \SpApi\Model\productFees\v0\IdType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class FeesEstimateIdentifierTest extends TestCase
     public function testPropertyPriceToEstimateFees()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees();
+        $testValue = new \SpApi\Model\productFees\v0\PriceToEstimateFees();
         
         $this->model->setPriceToEstimateFees($testValue);
         $this->assertEquals($testValue, $this->model->getPriceToEstimateFees());
@@ -136,7 +136,7 @@ class FeesEstimateIdentifierTest extends TestCase
      */
     public function testPropertyOptionalFulfillmentProgram()
     {
-        $enumInstance = new \OpenAPI\Client\Model\productFees\v0\OptionalFulfillmentProgram();
+        $enumInstance = new \SpApi\Model\productFees\v0\OptionalFulfillmentProgram();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

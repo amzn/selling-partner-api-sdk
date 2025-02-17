@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\ErrorList;
+use SpApi\Model\awd\v2024_05_09\ErrorList;
 
 /**
  * ErrorListTest Class Doc Comment
  *
  * @category    Class
  * @description This exception is thrown when client inputs are invalid.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ErrorListTest extends TestCase
 {

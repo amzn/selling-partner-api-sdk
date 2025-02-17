@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DistributionPackage Class Doc Comment
  *
  * @category Class
  * @description Represents an AWD distribution package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class DistributionPackage implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'contents' => '\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents',
-             'measurements' => '\OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData',
-             'type' => '\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageType'    ];
+             'contents' => '\SpApi\Model\awd\v2024_05_09\DistributionPackageContents',
+             'measurements' => '\SpApi\Model\awd\v2024_05_09\MeasurementData',
+             'type' => '\SpApi\Model\awd\v2024_05_09\DistributionPackageType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -317,9 +317,9 @@ class DistributionPackage implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets contents
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents
+     * @return \SpApi\Model\awd\v2024_05_09\DistributionPackageContents
      */
-    public function getContents(): \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents
+    public function getContents(): \SpApi\Model\awd\v2024_05_09\DistributionPackageContents
     {
         return $this->container['contents'];
     }
@@ -327,11 +327,11 @@ class DistributionPackage implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets contents
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents $contents contents
+     * @param \SpApi\Model\awd\v2024_05_09\DistributionPackageContents $contents contents
      *
      * @return self
      */
-    public function setContents(\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageContents $contents): self
+    public function setContents(\SpApi\Model\awd\v2024_05_09\DistributionPackageContents $contents): self
     {
         if (is_null($contents)) {
             throw new \InvalidArgumentException('non-nullable contents cannot be null');
@@ -344,9 +344,9 @@ class DistributionPackage implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets measurements
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData
+     * @return \SpApi\Model\awd\v2024_05_09\MeasurementData
      */
-    public function getMeasurements(): \OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData
+    public function getMeasurements(): \SpApi\Model\awd\v2024_05_09\MeasurementData
     {
         return $this->container['measurements'];
     }
@@ -354,11 +354,11 @@ class DistributionPackage implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets measurements
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData $measurements measurements
+     * @param \SpApi\Model\awd\v2024_05_09\MeasurementData $measurements measurements
      *
      * @return self
      */
-    public function setMeasurements(\OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData $measurements): self
+    public function setMeasurements(\SpApi\Model\awd\v2024_05_09\MeasurementData $measurements): self
     {
         if (is_null($measurements)) {
             throw new \InvalidArgumentException('non-nullable measurements cannot be null');

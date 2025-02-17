@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\Promise;
+use SpApi\Model\shipping\v2\Promise;
 
 /**
  * PromiseTest Class Doc Comment
  *
  * @category    Class
  * @description The time windows promised for pickup and delivery events.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PromiseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PromiseTest extends TestCase
     public function testPropertyDeliveryWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeWindow();
+        $testValue = new \SpApi\Model\shipping\v2\TimeWindow();
         
         $this->model->setDeliveryWindow($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryWindow());
@@ -69,7 +69,7 @@ class PromiseTest extends TestCase
     public function testPropertyPickupWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeWindow();
+        $testValue = new \SpApi\Model\shipping\v2\TimeWindow();
         
         $this->model->setPickupWindow($testValue);
         $this->assertEquals($testValue, $this->model->getPickupWindow());

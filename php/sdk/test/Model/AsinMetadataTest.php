@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\AsinMetadata;
+use SpApi\Model\aplusContent\v2020_11_01\AsinMetadata;
 
 /**
  * AsinMetadataTest Class Doc Comment
  *
  * @category    Class
  * @description The A+ Content ASIN with additional metadata for content management. If you don&#39;t include the &#x60;includedDataSet&#x60; parameter in a call to the listContentDocumentAsinRelations operation, the related ASINs are returned without metadata.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AsinMetadataTest extends TestCase
 {

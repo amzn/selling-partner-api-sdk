@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\pricing\v2022_05_01;
+namespace SpApi\Api\pricing\v2022_05_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ProductPricingApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class ProductPricingApi
     /**
      * Operation getCompetitiveSummary
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+     * @param  \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
      *  The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse
+     * @return \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse
      */
     public function getCompetitiveSummary(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
-    ): \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse {
+        \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+    ): \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse {
         list($response) = $this->getCompetitiveSummaryWithHttpInfo($requests);
         return $response;
     }
@@ -169,15 +169,15 @@ class ProductPricingApi
     /**
      * Operation getCompetitiveSummaryWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+     * @param  \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
      *  The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCompetitiveSummaryWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+        \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
     ): array {
         $request = $this->getCompetitiveSummaryRequest($requests);
         $request = $this->config->sign($request);
@@ -220,113 +220,113 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
+            $returnType = '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -347,7 +347,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse',
+                        '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -355,7 +355,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -363,7 +363,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -371,7 +371,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -379,7 +379,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -387,7 +387,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -395,7 +395,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,14 +408,14 @@ class ProductPricingApi
     /**
      * Operation getCompetitiveSummaryAsync
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+     * @param  \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
      *  The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getCompetitiveSummaryAsync(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+        \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
     ): PromiseInterface {
         return $this->getCompetitiveSummaryAsyncWithHttpInfo($requests)
             ->then(
@@ -428,16 +428,16 @@ class ProductPricingApi
     /**
      * Operation getCompetitiveSummaryAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+     * @param  \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
      *  The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getCompetitiveSummaryAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+        \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
+        $returnType = '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
         $request = $this->getCompetitiveSummaryRequest($requests);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -481,14 +481,14 @@ class ProductPricingApi
     /**
      * Create request for operation 'getCompetitiveSummary'
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+     * @param  \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
      *  The batch of &#x60;getCompetitiveSummary&#x60; requests. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function getCompetitiveSummaryRequest(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
+        \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchRequest $requests
     ): Request {
         // verify the required parameter 'requests' is set
         if ($requests === null || (is_array($requests) && count($requests) === 0)) {
@@ -576,16 +576,16 @@ class ProductPricingApi
     /**
      * Operation getFeaturedOfferExpectedPriceBatch
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+     * @param  \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *  The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse
+     * @return \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse
      */
     public function getFeaturedOfferExpectedPriceBatch(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
-    ): \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse {
+        \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+    ): \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse {
         list($response) = $this->getFeaturedOfferExpectedPriceBatchWithHttpInfo($get_featured_offer_expected_price_batch_request_body);
         return $response;
     }
@@ -593,15 +593,15 @@ class ProductPricingApi
     /**
      * Operation getFeaturedOfferExpectedPriceBatchWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+     * @param  \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *  The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFeaturedOfferExpectedPriceBatchWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
     ): array {
         $request = $this->getFeaturedOfferExpectedPriceBatchRequest($get_featured_offer_expected_price_batch_request_body);
         $request = $this->config->sign($request);
@@ -644,128 +644,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v2022_05_01\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
+            $returnType = '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -786,7 +786,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse',
+                        '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -794,7 +794,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -802,7 +802,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -810,7 +810,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -818,7 +818,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -826,7 +826,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -834,7 +834,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -842,7 +842,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v2022_05_01\Errors',
+                        '\SpApi\Model\pricing\v2022_05_01\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -855,14 +855,14 @@ class ProductPricingApi
     /**
      * Operation getFeaturedOfferExpectedPriceBatchAsync
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+     * @param  \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *  The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getFeaturedOfferExpectedPriceBatchAsync(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
     ): PromiseInterface {
         return $this->getFeaturedOfferExpectedPriceBatchAsyncWithHttpInfo($get_featured_offer_expected_price_batch_request_body)
             ->then(
@@ -875,16 +875,16 @@ class ProductPricingApi
     /**
      * Operation getFeaturedOfferExpectedPriceBatchAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+     * @param  \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *  The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getFeaturedOfferExpectedPriceBatchAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
+        $returnType = '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
         $request = $this->getFeaturedOfferExpectedPriceBatchRequest($get_featured_offer_expected_price_batch_request_body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -928,14 +928,14 @@ class ProductPricingApi
     /**
      * Create request for operation 'getFeaturedOfferExpectedPriceBatch'
      *
-     * @param  \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+     * @param  \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
      *  The batch of &#x60;getFeaturedOfferExpectedPrice&#x60; requests. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function getFeaturedOfferExpectedPriceBatchRequest(
-        \OpenAPI\Client\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
+        \SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchRequest $get_featured_offer_expected_price_batch_request_body
     ): Request {
         // verify the required parameter 'get_featured_offer_expected_price_batch_request_body' is set
         if ($get_featured_offer_expected_price_batch_request_body === null || (is_array($get_featured_offer_expected_price_batch_request_body) && count($get_featured_offer_expected_price_batch_request_body) === 0)) {

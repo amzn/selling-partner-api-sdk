@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole;
+use SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole;
 
 /**
  * ItemContributorRoleTest Class Doc Comment
  *
  * @category    Class
  * @description Role of an individual contributor in the creation of an item, such as author or actor.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemContributorRoleTest extends TestCase
 {

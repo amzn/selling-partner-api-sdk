@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\InboundShipmentItem;
+use SpApi\Model\fulfillment\inbound\v0\InboundShipmentItem;
 
 /**
  * InboundShipmentItemTest Class Doc Comment
  *
  * @category    Class
  * @description Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InboundShipmentItemTest extends TestCase
 {

@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\appIntegrations\v2024_04_01;
+namespace SpApi\Api\appIntegrations\v2024_04_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * AppIntegrationsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class AppIntegrationsApi
     /**
      * Operation createNotification
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
      *  The request body for the &#x60;createNotification&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse
+     * @return \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse
      */
     public function createNotification(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
-    ): \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse {
+        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+    ): \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse {
         list($response) = $this->createNotificationWithHttpInfo($body);
         return $response;
     }
@@ -169,15 +169,15 @@ class AppIntegrationsApi
     /**
      * Operation createNotificationWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
      *  The request body for the &#x60;createNotification&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createNotificationWithHttpInfo(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
     ): array {
         $request = $this->createNotificationRequest($body);
         $request = $this->config->sign($request);
@@ -220,158 +220,158 @@ class AppIntegrationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\appIntegrations\v2024_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
+            $returnType = '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -392,7 +392,7 @@ class AppIntegrationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class AppIntegrationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class AppIntegrationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class AppIntegrationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class AppIntegrationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -432,7 +432,7 @@ class AppIntegrationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -440,7 +440,7 @@ class AppIntegrationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,7 +448,7 @@ class AppIntegrationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class AppIntegrationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -464,7 +464,7 @@ class AppIntegrationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,14 +477,14 @@ class AppIntegrationsApi
     /**
      * Operation createNotificationAsync
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
      *  The request body for the &#x60;createNotification&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createNotificationAsync(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
     ): PromiseInterface {
         return $this->createNotificationAsyncWithHttpInfo($body)
             ->then(
@@ -497,16 +497,16 @@ class AppIntegrationsApi
     /**
      * Operation createNotificationAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
      *  The request body for the &#x60;createNotification&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createNotificationAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
+        $returnType = '\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse';
         $request = $this->createNotificationRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -550,14 +550,14 @@ class AppIntegrationsApi
     /**
      * Create request for operation 'createNotification'
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
      *  The request body for the &#x60;createNotification&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createNotificationRequest(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -645,15 +645,15 @@ class AppIntegrationsApi
     /**
      * Operation deleteNotifications
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
      *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
     public function deleteNotifications(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
     ): void {
         $this->deleteNotificationsWithHttpInfo($body);
     }
@@ -661,15 +661,15 @@ class AppIntegrationsApi
     /**
      * Operation deleteNotificationsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
      *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteNotificationsWithHttpInfo(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
     ): array {
         $request = $this->deleteNotificationsRequest($body);
         $request = $this->config->sign($request);
@@ -717,7 +717,7 @@ class AppIntegrationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -725,7 +725,7 @@ class AppIntegrationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -733,7 +733,7 @@ class AppIntegrationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -741,7 +741,7 @@ class AppIntegrationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -749,7 +749,7 @@ class AppIntegrationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -757,7 +757,7 @@ class AppIntegrationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -765,7 +765,7 @@ class AppIntegrationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -773,7 +773,7 @@ class AppIntegrationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -786,14 +786,14 @@ class AppIntegrationsApi
     /**
      * Operation deleteNotificationsAsync
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
      *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function deleteNotificationsAsync(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
     ): PromiseInterface {
         return $this->deleteNotificationsAsyncWithHttpInfo($body)
             ->then(
@@ -806,14 +806,14 @@ class AppIntegrationsApi
     /**
      * Operation deleteNotificationsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
      *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function deleteNotificationsAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
     ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteNotificationsRequest($body);
@@ -846,14 +846,14 @@ class AppIntegrationsApi
     /**
      * Create request for operation 'deleteNotifications'
      *
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
      *  The request body for the &#x60;deleteNotifications&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function deleteNotificationsRequest(
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -943,16 +943,16 @@ class AppIntegrationsApi
      *
      * @param  string $notification_id
      *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
      *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
     public function recordActionFeedback(
         string $notification_id,
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
     ): void {
         $this->recordActionFeedbackWithHttpInfo($notification_id, $body);
     }
@@ -962,16 +962,16 @@ class AppIntegrationsApi
      *
      * @param  string $notification_id
      *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
      *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
     public function recordActionFeedbackWithHttpInfo(
         string $notification_id,
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
     ): array {
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
         $request = $this->config->sign($request);
@@ -1019,7 +1019,7 @@ class AppIntegrationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1027,7 +1027,7 @@ class AppIntegrationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1035,7 +1035,7 @@ class AppIntegrationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1043,7 +1043,7 @@ class AppIntegrationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1051,7 +1051,7 @@ class AppIntegrationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1059,7 +1059,7 @@ class AppIntegrationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1067,7 +1067,7 @@ class AppIntegrationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1075,7 +1075,7 @@ class AppIntegrationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1083,7 +1083,7 @@ class AppIntegrationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\appIntegrations\v2024_04_01\ErrorList',
+                        '\SpApi\Model\appIntegrations\v2024_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1098,7 +1098,7 @@ class AppIntegrationsApi
      *
      * @param  string $notification_id
      *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
      *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -1106,7 +1106,7 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackAsync(
         string $notification_id,
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
     ): PromiseInterface {
         return $this->recordActionFeedbackAsyncWithHttpInfo($notification_id, $body)
             ->then(
@@ -1121,7 +1121,7 @@ class AppIntegrationsApi
      *
      * @param  string $notification_id
      *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
      *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -1129,7 +1129,7 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackAsyncWithHttpInfo(
         string $notification_id,
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
     ): PromiseInterface {
         $returnType = '';
         $request = $this->recordActionFeedbackRequest($notification_id, $body);
@@ -1164,7 +1164,7 @@ class AppIntegrationsApi
      *
      * @param  string $notification_id
      *  A &#x60;notificationId&#x60; uniquely identifies a notification. (required)
-     * @param  \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+     * @param  \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
      *  The request body for the &#x60;recordActionFeedback&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
@@ -1172,7 +1172,7 @@ class AppIntegrationsApi
      */
     public function recordActionFeedbackRequest(
         string $notification_id,
-        \OpenAPI\Client\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
+        \SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest $body
     ): Request {
         // verify the required parameter 'notification_id' is set
         if ($notification_id === null || (is_array($notification_id) && count($notification_id) === 0)) {

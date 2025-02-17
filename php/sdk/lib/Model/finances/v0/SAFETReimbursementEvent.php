@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SAFETReimbursementEvent Class Doc Comment
  *
  * @category Class
  * @description A SAFE-T claim reimbursement on the seller&#39;s account.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,9 +62,9 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPITypes = [
              'posted_date' => '\DateTime',
              'safet_claim_id' => 'string',
-             'reimbursed_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'reimbursed_amount' => '\SpApi\Model\finances\v0\Currency',
              'reason_code' => 'string',
-             'safet_reimbursement_item_list' => '\OpenAPI\Client\Model\finances\v0\SAFETReimbursementItem[]'    ];
+             'safet_reimbursement_item_list' => '\SpApi\Model\finances\v0\SAFETReimbursementItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -390,9 +390,9 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets reimbursed_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getReimbursedAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getReimbursedAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['reimbursed_amount'];
     }
@@ -400,11 +400,11 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets reimbursed_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $reimbursed_amount reimbursed_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $reimbursed_amount reimbursed_amount
      *
      * @return self
      */
-    public function setReimbursedAmount(?\OpenAPI\Client\Model\finances\v0\Currency $reimbursed_amount): self
+    public function setReimbursedAmount(?\SpApi\Model\finances\v0\Currency $reimbursed_amount): self
     {
         if (is_null($reimbursed_amount)) {
             array_push($this->openAPINullablesSetToNull, 'reimbursed_amount');

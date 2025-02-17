@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Quote Class Doc Comment
  *
  * @category Class
  * @description The estimated shipping cost associated with the transportation option.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class Quote implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'cost' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency',
+             'cost' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency',
              'expiration' => '\DateTime',
              'voidable_until' => '\DateTime'    ];
 
@@ -311,9 +311,9 @@ class Quote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cost
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
      */
-    public function getCost(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency
+    public function getCost(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
     {
         return $this->container['cost'];
     }
@@ -321,11 +321,11 @@ class Quote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cost
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency $cost cost
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $cost cost
      *
      * @return self
      */
-    public function setCost(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency $cost): self
+    public function setCost(\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $cost): self
     {
         if (is_null($cost)) {
             throw new \InvalidArgumentException('non-nullable cost cannot be null');

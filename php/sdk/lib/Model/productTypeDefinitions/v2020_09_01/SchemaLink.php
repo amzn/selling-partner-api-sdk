@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01;
+namespace SpApi\Model\productTypeDefinitions\v2020_09_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SchemaLink Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class SchemaLink implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'link' => '\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink',
+             'link' => '\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink',
              'checksum' => 'string'    ];
 
     /**
@@ -306,9 +306,9 @@ class SchemaLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets link
      *
-     * @return \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink
+     * @return \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink
      */
-    public function getLink(): \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink
+    public function getLink(): \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink
     {
         return $this->container['link'];
     }
@@ -316,11 +316,11 @@ class SchemaLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink $link link
+     * @param \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink $link link
      *
      * @return self
      */
-    public function setLink(\OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink $link): self
+    public function setLink(\SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink $link): self
     {
         if (is_null($link)) {
             throw new \InvalidArgumentException('non-nullable link cannot be null');

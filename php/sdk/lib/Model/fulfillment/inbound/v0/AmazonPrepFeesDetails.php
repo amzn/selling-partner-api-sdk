@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AmazonPrepFeesDetails Class Doc Comment
  *
  * @category Class
  * @description The fees for Amazon to prep goods for shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'prep_instruction' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction',
-             'fee_per_unit' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount'    ];
+             'prep_instruction' => '\SpApi\Model\fulfillment\inbound\v0\PrepInstruction',
+             'fee_per_unit' => '\SpApi\Model\fulfillment\inbound\v0\Amount'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets fee_per_unit
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount|null
+     * @return \SpApi\Model\fulfillment\inbound\v0\Amount|null
      */
-    public function getFeePerUnit(): ?\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount
+    public function getFeePerUnit(): ?\SpApi\Model\fulfillment\inbound\v0\Amount
     {
         return $this->container['fee_per_unit'];
     }
@@ -345,11 +345,11 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets fee_per_unit
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount|null $fee_per_unit fee_per_unit
+     * @param \SpApi\Model\fulfillment\inbound\v0\Amount|null $fee_per_unit fee_per_unit
      *
      * @return self
      */
-    public function setFeePerUnit(?\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount $fee_per_unit): self
+    public function setFeePerUnit(?\SpApi\Model\fulfillment\inbound\v0\Amount $fee_per_unit): self
     {
         if (is_null($fee_per_unit)) {
             array_push($this->openAPINullablesSetToNull, 'fee_per_unit');

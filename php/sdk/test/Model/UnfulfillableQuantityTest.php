@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\inventory\v1\UnfulfillableQuantity;
+use SpApi\Model\fba\inventory\v1\UnfulfillableQuantity;
 
 /**
  * UnfulfillableQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description The quantity of unfulfillable inventory.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UnfulfillableQuantityTest extends TestCase
 {

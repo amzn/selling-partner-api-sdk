@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StatusUpdateDetails Class Doc Comment
  *
  * @category Class
  * @description Details for the shipment status update given by the vendor for the specific package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
              'status_code' => 'string',
              'reason_code' => 'string',
              'status_date_time' => '\DateTime',
-             'status_location_address' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address',
-             'shipment_schedule' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule'    ];
+             'status_location_address' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Address',
+             'shipment_schedule' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -452,9 +452,9 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets status_location_address
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\Address
      */
-    public function getStatusLocationAddress(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address
+    public function getStatusLocationAddress(): \SpApi\Model\vendor\df\shipping\v2021_12_28\Address
     {
         return $this->container['status_location_address'];
     }
@@ -462,11 +462,11 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets status_location_address
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address $status_location_address status_location_address
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\Address $status_location_address status_location_address
      *
      * @return self
      */
-    public function setStatusLocationAddress(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address $status_location_address): self
+    public function setStatusLocationAddress(\SpApi\Model\vendor\df\shipping\v2021_12_28\Address $status_location_address): self
     {
         if (is_null($status_location_address)) {
             throw new \InvalidArgumentException('non-nullable status_location_address cannot be null');
@@ -479,9 +479,9 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets shipment_schedule
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule|null
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule|null
      */
-    public function getShipmentSchedule(): ?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule
+    public function getShipmentSchedule(): ?\SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule
     {
         return $this->container['shipment_schedule'];
     }
@@ -489,11 +489,11 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets shipment_schedule
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule|null $shipment_schedule shipment_schedule
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule|null $shipment_schedule shipment_schedule
      *
      * @return self
      */
-    public function setShipmentSchedule(?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule $shipment_schedule): self
+    public function setShipmentSchedule(?\SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule $shipment_schedule): self
     {
         if (is_null($shipment_schedule)) {
             array_push($this->openAPINullablesSetToNull, 'shipment_schedule');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails;
+use SpApi\Model\supplySources\v2020_07_01\ContactDetails;
 
 /**
  * ContactDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The contact details
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContactDetailsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ContactDetailsTest extends TestCase
     public function testPropertyPrimary()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetailsPrimary();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ContactDetailsPrimary();
         
         $this->model->setPrimary($testValue);
         $this->assertEquals($testValue, $this->model->getPrimary());

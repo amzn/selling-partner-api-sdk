@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceStatus;
+use SpApi\Model\supplySources\v2020_07_01\SupplySourceStatus;
 
 /**
  * SupplySourceStatusTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;SupplySource&#x60; status
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SupplySourceStatusTest extends TestCase
 {

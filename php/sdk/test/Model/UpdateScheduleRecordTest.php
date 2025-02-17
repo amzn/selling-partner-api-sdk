@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\UpdateScheduleRecord;
+use SpApi\Model\services\v1\UpdateScheduleRecord;
 
 /**
  * UpdateScheduleRecordTest Class Doc Comment
  *
  * @category    Class
  * @description &#x60;UpdateScheduleRecord&#x60; entity contains the &#x60;AvailabilityRecord&#x60; if there is an error/warning while performing the requested operation on it.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateScheduleRecordTest extends TestCase
 {
@@ -57,7 +57,7 @@ class UpdateScheduleRecordTest extends TestCase
     public function testPropertyAvailability()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\AvailabilityRecord();
+        $testValue = new \SpApi\Model\services\v1\AvailabilityRecord();
         
         $this->model->setAvailability($testValue);
         $this->assertEquals($testValue, $this->model->getAvailability());

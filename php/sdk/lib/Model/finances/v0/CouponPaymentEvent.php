@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CouponPaymentEvent Class Doc Comment
  *
  * @category Class
  * @description An event related to coupon payments.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,9 +65,9 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
              'seller_coupon_description' => 'string',
              'clip_or_redemption_count' => 'int',
              'payment_event_id' => 'string',
-             'fee_component' => '\OpenAPI\Client\Model\finances\v0\FeeComponent',
-             'charge_component' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent',
-             'total_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'fee_component' => '\SpApi\Model\finances\v0\FeeComponent',
+             'charge_component' => '\SpApi\Model\finances\v0\ChargeComponent',
+             'total_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -513,9 +513,9 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets fee_component
      *
-     * @return \OpenAPI\Client\Model\finances\v0\FeeComponent|null
+     * @return \SpApi\Model\finances\v0\FeeComponent|null
      */
-    public function getFeeComponent(): ?\OpenAPI\Client\Model\finances\v0\FeeComponent
+    public function getFeeComponent(): ?\SpApi\Model\finances\v0\FeeComponent
     {
         return $this->container['fee_component'];
     }
@@ -523,11 +523,11 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets fee_component
      *
-     * @param \OpenAPI\Client\Model\finances\v0\FeeComponent|null $fee_component fee_component
+     * @param \SpApi\Model\finances\v0\FeeComponent|null $fee_component fee_component
      *
      * @return self
      */
-    public function setFeeComponent(?\OpenAPI\Client\Model\finances\v0\FeeComponent $fee_component): self
+    public function setFeeComponent(?\SpApi\Model\finances\v0\FeeComponent $fee_component): self
     {
         if (is_null($fee_component)) {
             array_push($this->openAPINullablesSetToNull, 'fee_component');
@@ -547,9 +547,9 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets charge_component
      *
-     * @return \OpenAPI\Client\Model\finances\v0\ChargeComponent|null
+     * @return \SpApi\Model\finances\v0\ChargeComponent|null
      */
-    public function getChargeComponent(): ?\OpenAPI\Client\Model\finances\v0\ChargeComponent
+    public function getChargeComponent(): ?\SpApi\Model\finances\v0\ChargeComponent
     {
         return $this->container['charge_component'];
     }
@@ -557,11 +557,11 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets charge_component
      *
-     * @param \OpenAPI\Client\Model\finances\v0\ChargeComponent|null $charge_component charge_component
+     * @param \SpApi\Model\finances\v0\ChargeComponent|null $charge_component charge_component
      *
      * @return self
      */
-    public function setChargeComponent(?\OpenAPI\Client\Model\finances\v0\ChargeComponent $charge_component): self
+    public function setChargeComponent(?\SpApi\Model\finances\v0\ChargeComponent $charge_component): self
     {
         if (is_null($charge_component)) {
             array_push($this->openAPINullablesSetToNull, 'charge_component');
@@ -581,9 +581,9 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets total_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTotalAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTotalAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['total_amount'];
     }
@@ -591,11 +591,11 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets total_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $total_amount total_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $total_amount total_amount
      *
      * @return self
      */
-    public function setTotalAmount(?\OpenAPI\Client\Model\finances\v0\Currency $total_amount): self
+    public function setTotalAmount(?\SpApi\Model\finances\v0\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
             array_push($this->openAPINullablesSetToNull, 'total_amount');

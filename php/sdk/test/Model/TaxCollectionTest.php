@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\TaxCollection;
+use SpApi\Model\orders\v0\TaxCollection;
 
 /**
  * TaxCollectionTest Class Doc Comment
  *
  * @category    Class
  * @description Information about withheld taxes.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TaxCollectionTest extends TestCase
 {

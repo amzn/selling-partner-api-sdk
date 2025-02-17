@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody;
+use SpApi\Model\orders\v0\UpdateVerificationStatusRequestBody;
 
 /**
  * UpdateVerificationStatusRequestBodyTest Class Doc Comment
  *
  * @category    Class
  * @description The updated values of the &#x60;VerificationStatus&#x60; field.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateVerificationStatusRequestBodyTest extends TestCase
 {
@@ -56,7 +56,7 @@ class UpdateVerificationStatusRequestBodyTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\VerificationStatus();
+        $enumInstance = new \SpApi\Model\orders\v0\VerificationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -92,7 +92,7 @@ class UpdateVerificationStatusRequestBodyTest extends TestCase
     public function testPropertyVerificationDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\VerificationDetails();
+        $testValue = new \SpApi\Model\orders\v0\VerificationDetails();
         
         $this->model->setVerificationDetails($testValue);
         $this->assertEquals($testValue, $this->model->getVerificationDetails());

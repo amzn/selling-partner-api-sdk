@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardTextModule Class Doc Comment
  *
  * @category Class
  * @description A standard headline and body text.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'body' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent'    ];
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'body' => '\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -314,11 +314,11 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -338,9 +338,9 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets body
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent
      */
-    public function getBody(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent
+    public function getBody(): \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent
     {
         return $this->container['body'];
     }
@@ -348,11 +348,11 @@ class StandardTextModule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets body
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent $body body
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent $body body
      *
      * @return self
      */
-    public function setBody(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent $body): self
+    public function setBody(\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent $body): self
     {
         if (is_null($body)) {
             throw new \InvalidArgumentException('non-nullable body cannot be null');

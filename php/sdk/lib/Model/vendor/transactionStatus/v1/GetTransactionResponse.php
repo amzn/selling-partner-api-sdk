@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\transactionStatus\v1;
+namespace SpApi\Model\vendor\transactionStatus\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetTransactionResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the getTransaction operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetTransactionResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\vendor\transactionStatus\v1\TransactionStatus',
-             'errors' => '\OpenAPI\Client\Model\vendor\transactionStatus\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\vendor\transactionStatus\v1\TransactionStatus',
+             'errors' => '\SpApi\Model\vendor\transactionStatus\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetTransactionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\vendor\transactionStatus\v1\TransactionStatus|null
+     * @return \SpApi\Model\vendor\transactionStatus\v1\TransactionStatus|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\vendor\transactionStatus\v1\TransactionStatus
+    public function getPayload(): ?\SpApi\Model\vendor\transactionStatus\v1\TransactionStatus
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetTransactionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\vendor\transactionStatus\v1\TransactionStatus|null $payload payload
+     * @param \SpApi\Model\vendor\transactionStatus\v1\TransactionStatus|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\vendor\transactionStatus\v1\TransactionStatus $payload): self
+    public function setPayload(?\SpApi\Model\vendor\transactionStatus\v1\TransactionStatus $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

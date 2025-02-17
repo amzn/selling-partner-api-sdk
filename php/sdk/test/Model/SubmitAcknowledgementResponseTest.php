@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\SubmitAcknowledgementResponse;
+use SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse;
 
 /**
  * SubmitAcknowledgementResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the submitAcknowledgement operation
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitAcknowledgementResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SubmitAcknowledgementResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\TransactionId();
+        $testValue = new \SpApi\Model\vendor\orders\v1\TransactionId();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

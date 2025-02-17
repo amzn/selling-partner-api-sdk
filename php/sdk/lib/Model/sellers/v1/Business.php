@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\sellers\v1;
+namespace SpApi\Model\sellers\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Business Class Doc Comment
  *
  * @category Class
  * @description Information about the Seller&#39;s business. These fields may be omitted if the Seller is registered as an individual.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'name' => 'string',
-             'registered_business_address' => '\OpenAPI\Client\Model\sellers\v1\Address',
+             'registered_business_address' => '\SpApi\Model\sellers\v1\Address',
              'company_registration_number' => 'string',
              'company_tax_identification_number' => 'string',
              'non_latin_name' => 'string'    ];
@@ -355,9 +355,9 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets registered_business_address
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\Address
+     * @return \SpApi\Model\sellers\v1\Address
      */
-    public function getRegisteredBusinessAddress(): \OpenAPI\Client\Model\sellers\v1\Address
+    public function getRegisteredBusinessAddress(): \SpApi\Model\sellers\v1\Address
     {
         return $this->container['registered_business_address'];
     }
@@ -365,11 +365,11 @@ class Business implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets registered_business_address
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\Address $registered_business_address registered_business_address
+     * @param \SpApi\Model\sellers\v1\Address $registered_business_address registered_business_address
      *
      * @return self
      */
-    public function setRegisteredBusinessAddress(\OpenAPI\Client\Model\sellers\v1\Address $registered_business_address): self
+    public function setRegisteredBusinessAddress(\SpApi\Model\sellers\v1\Address $registered_business_address): self
     {
         if (is_null($registered_business_address)) {
             throw new \InvalidArgumentException('non-nullable registered_business_address cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest;
+use SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest;
 
 /**
  * GetCollectionFormHistoryRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema to get query collections form history API .
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetCollectionFormHistoryRequestTest extends TestCase
 {
@@ -90,7 +90,7 @@ class GetCollectionFormHistoryRequestTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());
@@ -102,7 +102,7 @@ class GetCollectionFormHistoryRequestTest extends TestCase
     public function testPropertyDateRange()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\DateRange();
+        $testValue = new \SpApi\Model\shipping\v2\DateRange();
         
         $this->model->setDateRange($testValue);
         $this->assertEquals($testValue, $this->model->getDateRange());

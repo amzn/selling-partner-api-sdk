@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails;
 
 /**
  * LockerDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The locker details, which you can use to access the locker delivery box.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LockerDetailsTest extends TestCase
 {

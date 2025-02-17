@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\solicitations\v1;
+namespace SpApi\Model\solicitations\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetSolicitationActionResponseEmbedded Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'schema' => '\OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse'    ];
+             'schema' => '\SpApi\Model\solicitations\v1\GetSchemaResponse'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -293,9 +293,9 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
     /**
      * Gets schema
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse|null
+     * @return \SpApi\Model\solicitations\v1\GetSchemaResponse|null
      */
-    public function getSchema(): ?\OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse
+    public function getSchema(): ?\SpApi\Model\solicitations\v1\GetSchemaResponse
     {
         return $this->container['schema'];
     }
@@ -303,11 +303,11 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
     /**
      * Sets schema
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse|null $schema schema
+     * @param \SpApi\Model\solicitations\v1\GetSchemaResponse|null $schema schema
      *
      * @return self
      */
-    public function setSchema(?\OpenAPI\Client\Model\solicitations\v1\GetSchemaResponse $schema): self
+    public function setSchema(?\SpApi\Model\solicitations\v1\GetSchemaResponse $schema): self
     {
         if (is_null($schema)) {
             array_push($this->openAPINullablesSetToNull, 'schema');

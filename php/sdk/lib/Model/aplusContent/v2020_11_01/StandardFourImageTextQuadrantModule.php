@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardFourImageTextQuadrantModule Class Doc Comment
  *
  * @category Class
  * @description Four standard images with text, presented on a grid of four quadrants.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'block1' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'block2' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'block3' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'block4' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock'    ];
+             'block1' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'block2' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'block3' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'block4' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -327,9 +327,9 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Gets block1
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
      */
-    public function getBlock1(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock1(): \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block1'];
     }
@@ -337,11 +337,11 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Sets block1
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block1 block1
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block1 block1
      *
      * @return self
      */
-    public function setBlock1(\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block1): self
+    public function setBlock1(\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block1): self
     {
         if (is_null($block1)) {
             throw new \InvalidArgumentException('non-nullable block1 cannot be null');
@@ -354,9 +354,9 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Gets block2
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
      */
-    public function getBlock2(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock2(): \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block2'];
     }
@@ -364,11 +364,11 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Sets block2
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block2 block2
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block2 block2
      *
      * @return self
      */
-    public function setBlock2(\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block2): self
+    public function setBlock2(\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block2): self
     {
         if (is_null($block2)) {
             throw new \InvalidArgumentException('non-nullable block2 cannot be null');
@@ -381,9 +381,9 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Gets block3
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
      */
-    public function getBlock3(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock3(): \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block3'];
     }
@@ -391,11 +391,11 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Sets block3
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block3 block3
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block3 block3
      *
      * @return self
      */
-    public function setBlock3(\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block3): self
+    public function setBlock3(\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block3): self
     {
         if (is_null($block3)) {
             throw new \InvalidArgumentException('non-nullable block3 cannot be null');
@@ -408,9 +408,9 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Gets block4
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
      */
-    public function getBlock4(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock4(): \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block4'];
     }
@@ -418,11 +418,11 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     /**
      * Sets block4
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block4 block4
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block4 block4
      *
      * @return self
      */
-    public function setBlock4(\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block4): self
+    public function setBlock4(\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block4): self
     {
         if (is_null($block4)) {
             throw new \InvalidArgumentException('non-nullable block4 cannot be null');

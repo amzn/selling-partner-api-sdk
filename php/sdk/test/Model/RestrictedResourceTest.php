@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\tokens\v2021_03_01\RestrictedResource;
+use SpApi\Model\tokens\v2021_03_01\RestrictedResource;
 
 /**
  * RestrictedResourceTest Class Doc Comment
  *
  * @category    Class
  * @description Model of a restricted resource.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RestrictedResourceTest extends TestCase
 {

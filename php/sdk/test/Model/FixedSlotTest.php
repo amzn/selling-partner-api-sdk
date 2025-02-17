@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\FixedSlot;
+use SpApi\Model\services\v1\FixedSlot;
 
 /**
  * FixedSlotTest Class Doc Comment
  *
  * @category    Class
  * @description In this slot format each slot only has the requested capacity types. This slot size is as specified by slot duration.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FixedSlotTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails;
+use SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails;
 
 /**
  * ShipmentRequestDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Shipment information required for requesting shipping service offers or for creating a shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentRequestDetailsTest extends TestCase
 {
@@ -90,7 +90,7 @@ class ShipmentRequestDetailsTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Address();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());
@@ -102,7 +102,7 @@ class ShipmentRequestDetailsTest extends TestCase
     public function testPropertyPackageDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\PackageDimensions();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\PackageDimensions();
         
         $this->model->setPackageDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDimensions());
@@ -114,7 +114,7 @@ class ShipmentRequestDetailsTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Weight();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
@@ -150,7 +150,7 @@ class ShipmentRequestDetailsTest extends TestCase
     public function testPropertyShippingServiceOptions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions();
         
         $this->model->setShippingServiceOptions($testValue);
         $this->assertEquals($testValue, $this->model->getShippingServiceOptions());
@@ -162,7 +162,7 @@ class ShipmentRequestDetailsTest extends TestCase
     public function testPropertyLabelCustomization()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelCustomization();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\LabelCustomization();
         
         $this->model->setLabelCustomization($testValue);
         $this->assertEquals($testValue, $this->model->getLabelCustomization());

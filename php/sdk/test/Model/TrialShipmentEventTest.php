@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\TrialShipmentEvent;
+use SpApi\Model\finances\v0\TrialShipmentEvent;
 
 /**
  * TrialShipmentEventTest Class Doc Comment
  *
  * @category    Class
  * @description An event related to a trial shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TrialShipmentEventTest extends TestCase
 {

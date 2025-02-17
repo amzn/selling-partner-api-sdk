@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Package Class Doc Comment
  *
  * @category Class
  * @description This object contains all the details of the scheduled Easy Ship package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,15 +60,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'scheduled_package_id' => '\OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId',
-             'package_dimensions' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions',
-             'package_weight' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Weight',
-             'package_items' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Item[]',
-             'package_time_slot' => '\OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot',
+             'scheduled_package_id' => '\SpApi\Model\easyship\v2022_03_23\ScheduledPackageId',
+             'package_dimensions' => '\SpApi\Model\easyship\v2022_03_23\Dimensions',
+             'package_weight' => '\SpApi\Model\easyship\v2022_03_23\Weight',
+             'package_items' => '\SpApi\Model\easyship\v2022_03_23\Item[]',
+             'package_time_slot' => '\SpApi\Model\easyship\v2022_03_23\TimeSlot',
              'package_identifier' => 'string',
-             'invoice' => '\OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData',
-             'package_status' => '\OpenAPI\Client\Model\easyship\v2022_03_23\PackageStatus',
-             'tracking_details' => '\OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails'    ];
+             'invoice' => '\SpApi\Model\easyship\v2022_03_23\InvoiceData',
+             'package_status' => '\SpApi\Model\easyship\v2022_03_23\PackageStatus',
+             'tracking_details' => '\SpApi\Model\easyship\v2022_03_23\TrackingDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -366,9 +366,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets scheduled_package_id
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId
+     * @return \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId
      */
-    public function getScheduledPackageId(): \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId
+    public function getScheduledPackageId(): \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId
     {
         return $this->container['scheduled_package_id'];
     }
@@ -376,11 +376,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets scheduled_package_id
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id scheduled_package_id
+     * @param \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id scheduled_package_id
      *
      * @return self
      */
-    public function setScheduledPackageId(\OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id): self
+    public function setScheduledPackageId(\SpApi\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id): self
     {
         if (is_null($scheduled_package_id)) {
             throw new \InvalidArgumentException('non-nullable scheduled_package_id cannot be null');
@@ -393,9 +393,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_dimensions
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions
+     * @return \SpApi\Model\easyship\v2022_03_23\Dimensions
      */
-    public function getPackageDimensions(): \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions
+    public function getPackageDimensions(): \SpApi\Model\easyship\v2022_03_23\Dimensions
     {
         return $this->container['package_dimensions'];
     }
@@ -403,11 +403,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets package_dimensions
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions $package_dimensions package_dimensions
+     * @param \SpApi\Model\easyship\v2022_03_23\Dimensions $package_dimensions package_dimensions
      *
      * @return self
      */
-    public function setPackageDimensions(\OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions $package_dimensions): self
+    public function setPackageDimensions(\SpApi\Model\easyship\v2022_03_23\Dimensions $package_dimensions): self
     {
         if (is_null($package_dimensions)) {
             throw new \InvalidArgumentException('non-nullable package_dimensions cannot be null');
@@ -420,9 +420,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_weight
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Weight
+     * @return \SpApi\Model\easyship\v2022_03_23\Weight
      */
-    public function getPackageWeight(): \OpenAPI\Client\Model\easyship\v2022_03_23\Weight
+    public function getPackageWeight(): \SpApi\Model\easyship\v2022_03_23\Weight
     {
         return $this->container['package_weight'];
     }
@@ -430,11 +430,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets package_weight
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\Weight $package_weight package_weight
+     * @param \SpApi\Model\easyship\v2022_03_23\Weight $package_weight package_weight
      *
      * @return self
      */
-    public function setPackageWeight(\OpenAPI\Client\Model\easyship\v2022_03_23\Weight $package_weight): self
+    public function setPackageWeight(\SpApi\Model\easyship\v2022_03_23\Weight $package_weight): self
     {
         if (is_null($package_weight)) {
             throw new \InvalidArgumentException('non-nullable package_weight cannot be null');
@@ -485,9 +485,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_time_slot
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot
+     * @return \SpApi\Model\easyship\v2022_03_23\TimeSlot
      */
-    public function getPackageTimeSlot(): \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot
+    public function getPackageTimeSlot(): \SpApi\Model\easyship\v2022_03_23\TimeSlot
     {
         return $this->container['package_time_slot'];
     }
@@ -495,11 +495,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets package_time_slot
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot $package_time_slot package_time_slot
+     * @param \SpApi\Model\easyship\v2022_03_23\TimeSlot $package_time_slot package_time_slot
      *
      * @return self
      */
-    public function setPackageTimeSlot(\OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot $package_time_slot): self
+    public function setPackageTimeSlot(\SpApi\Model\easyship\v2022_03_23\TimeSlot $package_time_slot): self
     {
         if (is_null($package_time_slot)) {
             throw new \InvalidArgumentException('non-nullable package_time_slot cannot be null');
@@ -546,9 +546,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData|null
+     * @return \SpApi\Model\easyship\v2022_03_23\InvoiceData|null
      */
-    public function getInvoice(): ?\OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData
+    public function getInvoice(): ?\SpApi\Model\easyship\v2022_03_23\InvoiceData
     {
         return $this->container['invoice'];
     }
@@ -556,11 +556,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData|null $invoice invoice
+     * @param \SpApi\Model\easyship\v2022_03_23\InvoiceData|null $invoice invoice
      *
      * @return self
      */
-    public function setInvoice(?\OpenAPI\Client\Model\easyship\v2022_03_23\InvoiceData $invoice): self
+    public function setInvoice(?\SpApi\Model\easyship\v2022_03_23\InvoiceData $invoice): self
     {
         if (is_null($invoice)) {
             array_push($this->openAPINullablesSetToNull, 'invoice');
@@ -614,9 +614,9 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tracking_details
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails|null
+     * @return \SpApi\Model\easyship\v2022_03_23\TrackingDetails|null
      */
-    public function getTrackingDetails(): ?\OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails
+    public function getTrackingDetails(): ?\SpApi\Model\easyship\v2022_03_23\TrackingDetails
     {
         return $this->container['tracking_details'];
     }
@@ -624,11 +624,11 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tracking_details
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails|null $tracking_details tracking_details
+     * @param \SpApi\Model\easyship\v2022_03_23\TrackingDetails|null $tracking_details tracking_details
      *
      * @return self
      */
-    public function setTrackingDetails(?\OpenAPI\Client\Model\easyship\v2022_03_23\TrackingDetails $tracking_details): self
+    public function setTrackingDetails(?\SpApi\Model\easyship\v2022_03_23\TrackingDetails $tracking_details): self
     {
         if (is_null($tracking_details)) {
             array_push($this->openAPINullablesSetToNull, 'tracking_details');

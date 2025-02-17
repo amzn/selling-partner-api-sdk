@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListItemComplianceDetailsResponse Class Doc Comment
  *
  * @category Class
  * @description The &#x60;listItemComplianceDetails&#x60; response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ListItemComplianceDetailsResponse implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'compliance_details' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ComplianceDetail[]'    ];
+             'compliance_details' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ComplianceDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

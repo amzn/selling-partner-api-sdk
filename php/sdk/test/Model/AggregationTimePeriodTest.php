@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\AggregationTimePeriod;
+use SpApi\Model\notifications\v1\AggregationTimePeriod;
 
 /**
  * AggregationTimePeriodTest Class Doc Comment
  *
  * @category    Class
  * @description The supported aggregation time periods. For example, if FiveMinutes is the value chosen, and 50 price updates occur for an ASIN within 5 minutes, Amazon will send only two notifications; one for the first event, and then a subsequent notification 5 minutes later with the final end state of the data. The 48 interim events will be dropped.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AggregationTimePeriodTest extends TestCase
 {

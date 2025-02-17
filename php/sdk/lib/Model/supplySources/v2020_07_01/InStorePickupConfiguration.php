@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InStorePickupConfiguration Class Doc Comment
  *
  * @category Class
  * @description The in-store pickup configuration of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class InStorePickupConfiguration implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPITypes = [
              'is_supported' => 'bool',
-             'parking_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration'    ];
+             'parking_configuration' => '\SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class InStorePickupConfiguration implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets parking_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration|null
      */
-    public function getParkingConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration
+    public function getParkingConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration
     {
         return $this->container['parking_configuration'];
     }
@@ -345,11 +345,11 @@ class InStorePickupConfiguration implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets parking_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration|null $parking_configuration parking_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration|null $parking_configuration parking_configuration
      *
      * @return self
      */
-    public function setParkingConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingConfiguration $parking_configuration): self
+    public function setParkingConfiguration(?\SpApi\Model\supplySources\v2020_07_01\ParkingConfiguration $parking_configuration): self
     {
         if (is_null($parking_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'parking_configuration');

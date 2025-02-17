@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemStatusReceivingStatus Class Doc Comment
  *
  * @category Class
  * @description Item receive status at the buyer&#39;s warehouse.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class OrderItemStatusReceivingStatus implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPITypes = [
              'receive_status' => 'string',
-             'received_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
+             'received_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
              'last_receive_date' => '\DateTime'    ];
 
     /**
@@ -378,9 +378,9 @@ class OrderItemStatusReceivingStatus implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets received_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity|null
      */
-    public function getReceivedQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getReceivedQuantity(): ?\SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['received_quantity'];
     }
@@ -388,11 +388,11 @@ class OrderItemStatusReceivingStatus implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets received_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null $received_quantity received_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity|null $received_quantity received_quantity
      *
      * @return self
      */
-    public function setReceivedQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $received_quantity): self
+    public function setReceivedQuantity(?\SpApi\Model\vendor\orders\v1\ItemQuantity $received_quantity): self
     {
         if (is_null($received_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'received_quantity');

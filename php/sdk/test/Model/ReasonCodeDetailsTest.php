@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReasonCodeDetails;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\ReasonCodeDetails;
 
 /**
  * ReasonCodeDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description A return reason code, a description, and an optional description translation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ReasonCodeDetailsTest extends TestCase
 {

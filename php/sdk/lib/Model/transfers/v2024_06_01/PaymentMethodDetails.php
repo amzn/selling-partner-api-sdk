@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\transfers\v2024_06_01;
+namespace SpApi\Model\transfers\v2024_06_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PaymentMethodDetails Class Doc Comment
  *
  * @category Class
  * @description The details of a payment method.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,10 +63,10 @@ class PaymentMethodDetails implements ModelInterface, ArrayAccess, \JsonSerializ
              'account_holder_name' => 'string',
              'payment_method_id' => 'string',
              'tail' => 'string',
-             'expiry_date' => '\OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate',
+             'expiry_date' => '\SpApi\Model\transfers\v2024_06_01\ExpiryDate',
              'country_code' => 'string',
-             'payment_method_type' => '\OpenAPI\Client\Model\transfers\v2024_06_01\PaymentMethodType',
-             'assignment_type' => '\OpenAPI\Client\Model\transfers\v2024_06_01\AssignmentType'    ];
+             'payment_method_type' => '\SpApi\Model\transfers\v2024_06_01\PaymentMethodType',
+             'assignment_type' => '\SpApi\Model\transfers\v2024_06_01\AssignmentType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -438,9 +438,9 @@ class PaymentMethodDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets expiry_date
      *
-     * @return \OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate|null
+     * @return \SpApi\Model\transfers\v2024_06_01\ExpiryDate|null
      */
-    public function getExpiryDate(): ?\OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate
+    public function getExpiryDate(): ?\SpApi\Model\transfers\v2024_06_01\ExpiryDate
     {
         return $this->container['expiry_date'];
     }
@@ -448,11 +448,11 @@ class PaymentMethodDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expiry_date
      *
-     * @param \OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate|null $expiry_date expiry_date
+     * @param \SpApi\Model\transfers\v2024_06_01\ExpiryDate|null $expiry_date expiry_date
      *
      * @return self
      */
-    public function setExpiryDate(?\OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate $expiry_date): self
+    public function setExpiryDate(?\SpApi\Model\transfers\v2024_06_01\ExpiryDate $expiry_date): self
     {
         if (is_null($expiry_date)) {
             array_push($this->openAPINullablesSetToNull, 'expiry_date');

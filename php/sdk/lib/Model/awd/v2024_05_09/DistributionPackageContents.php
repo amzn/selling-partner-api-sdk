@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DistributionPackageContents Class Doc Comment
  *
  * @category Class
  * @description Represents the contents inside a package, which can be products or a nested package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class DistributionPackageContents implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'packages' => '\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageQuantity[]',
-             'products' => '\OpenAPI\Client\Model\awd\v2024_05_09\ProductQuantity[]'    ];
+             'packages' => '\SpApi\Model\awd\v2024_05_09\DistributionPackageQuantity[]',
+             'products' => '\SpApi\Model\awd\v2024_05_09\ProductQuantity[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

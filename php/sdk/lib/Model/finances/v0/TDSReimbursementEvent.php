@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TDSReimbursementEvent Class Doc Comment
  *
  * @category Class
  * @description An event related to a Tax-Deducted-at-Source (TDS) reimbursement.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPITypes = [
              'posted_date' => '\DateTime',
              'tds_order_id' => 'string',
-             'reimbursed_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'reimbursed_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -376,9 +376,9 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets reimbursed_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getReimbursedAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getReimbursedAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['reimbursed_amount'];
     }
@@ -386,11 +386,11 @@ class TDSReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets reimbursed_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $reimbursed_amount reimbursed_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $reimbursed_amount reimbursed_amount
      *
      * @return self
      */
-    public function setReimbursedAmount(?\OpenAPI\Client\Model\finances\v0\Currency $reimbursed_amount): self
+    public function setReimbursedAmount(?\SpApi\Model\finances\v0\Currency $reimbursed_amount): self
     {
         if (is_null($reimbursed_amount)) {
             array_push($this->openAPINullablesSetToNull, 'reimbursed_amount');

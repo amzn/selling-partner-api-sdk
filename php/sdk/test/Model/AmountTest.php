@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\Amount;
+use SpApi\Model\fulfillment\inbound\v0\Amount;
 
 /**
  * AmountTest Class Doc Comment
  *
  * @category    Class
  * @description The monetary value.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AmountTest extends TestCase
 {
@@ -56,7 +56,7 @@ class AmountTest extends TestCase
      */
     public function testPropertyCurrencyCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\CurrencyCode();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\CurrencyCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

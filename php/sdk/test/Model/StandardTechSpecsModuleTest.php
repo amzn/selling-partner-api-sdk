@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule;
 
 /**
  * StandardTechSpecsModuleTest Class Doc Comment
  *
  * @category    Class
  * @description The standard table of technical feature names and definitions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardTechSpecsModuleTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardTechSpecsModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());

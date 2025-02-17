@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\ASINPrepInstructions;
+use SpApi\Model\fulfillment\inbound\v0\ASINPrepInstructions;
 
 /**
  * ASINPrepInstructionsTest Class Doc Comment
  *
  * @category    Class
  * @description Item preparation instructions to help with item sourcing decisions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ASINPrepInstructionsTest extends TestCase
 {
@@ -67,7 +67,7 @@ class ASINPrepInstructionsTest extends TestCase
      */
     public function testPropertyBarcodeInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\BarcodeInstruction();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\BarcodeInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -80,7 +80,7 @@ class ASINPrepInstructionsTest extends TestCase
      */
     public function testPropertyPrepGuidance()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\PrepGuidance();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\PrepGuidance();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult;
+use SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult;
 
 /**
  * GetAdditionalSellerInputsResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the &#x60;getAdditionalSellerInputs&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAdditionalSellerInputsResultTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AvailableCarrierWillPickUpOption Class Doc Comment
  *
  * @category Class
  * @description Indicates whether the carrier will pick up the package, and what fee is charged, if any.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class AvailableCarrierWillPickUpOption implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'carrier_will_pick_up_option' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
-             'charge' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount'    ];
+             'carrier_will_pick_up_option' => '\SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
+             'charge' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class AvailableCarrierWillPickUpOption implements ModelInterface, ArrayAccess, \
     /**
      * Gets charge
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+     * @return \SpApi\Model\merchantFulfillment\v0\CurrencyAmount
      */
-    public function getCharge(): \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+    public function getCharge(): \SpApi\Model\merchantFulfillment\v0\CurrencyAmount
     {
         return $this->container['charge'];
     }
@@ -344,11 +344,11 @@ class AvailableCarrierWillPickUpOption implements ModelInterface, ArrayAccess, \
     /**
      * Sets charge
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $charge charge
+     * @param \SpApi\Model\merchantFulfillment\v0\CurrencyAmount $charge charge
      *
      * @return self
      */
-    public function setCharge(\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $charge): self
+    public function setCharge(\SpApi\Model\merchantFulfillment\v0\CurrencyAmount $charge): self
     {
         if (is_null($charge)) {
             throw new \InvalidArgumentException('non-nullable charge cannot be null');

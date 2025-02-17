@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSummaryByMarketplace;
+use SpApi\Model\catalogItems\v2022_04_01\ItemSummaryByMarketplace;
 
 /**
  * ItemSummaryByMarketplaceTest Class Doc Comment
  *
  * @category    Class
  * @description Summary details of an Amazon catalog item for the indicated Amazon marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemSummaryByMarketplaceTest extends TestCase
 {
@@ -101,7 +101,7 @@ class ItemSummaryByMarketplaceTest extends TestCase
     public function testPropertyBrowseClassification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification();
         
         $this->model->setBrowseClassification($testValue);
         $this->assertEquals($testValue, $this->model->getBrowseClassification());

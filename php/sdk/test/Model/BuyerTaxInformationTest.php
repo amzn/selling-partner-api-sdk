@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\BuyerTaxInformation;
+use SpApi\Model\orders\v0\BuyerTaxInformation;
 
 /**
  * BuyerTaxInformationTest Class Doc Comment
  *
  * @category    Class
  * @description Contains the business invoice tax information. Available only in the TR marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BuyerTaxInformationTest extends TestCase
 {

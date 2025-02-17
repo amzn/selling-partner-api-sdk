@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentStatusUpdate;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentStatusUpdate;
 
 /**
  * ShipmentStatusUpdateTest Class Doc Comment
  *
  * @category    Class
  * @description Represents an update to the status of a shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentStatusUpdateTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ShipmentStatusUpdateTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -80,7 +80,7 @@ class ShipmentStatusUpdateTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());
@@ -92,7 +92,7 @@ class ShipmentStatusUpdateTest extends TestCase
     public function testPropertyStatusUpdateDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\StatusUpdateDetails();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\StatusUpdateDetails();
         
         $this->model->setStatusUpdateDetails($testValue);
         $this->assertEquals($testValue, $this->model->getStatusUpdateDetails());

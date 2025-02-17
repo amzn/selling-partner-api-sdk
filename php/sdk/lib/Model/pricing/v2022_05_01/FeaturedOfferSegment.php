@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOfferSegment Class Doc Comment
  *
  * @category Class
  * @description Describes the segment in which the offer is featured.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class FeaturedOfferSegment implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
              'customer_membership' => 'string',
-             'segment_details' => '\OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails'    ];
+             'segment_details' => '\SpApi\Model\pricing\v2022_05_01\SegmentDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -368,9 +368,9 @@ class FeaturedOfferSegment implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets segment_details
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails
+     * @return \SpApi\Model\pricing\v2022_05_01\SegmentDetails
      */
-    public function getSegmentDetails(): \OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails
+    public function getSegmentDetails(): \SpApi\Model\pricing\v2022_05_01\SegmentDetails
     {
         return $this->container['segment_details'];
     }
@@ -378,11 +378,11 @@ class FeaturedOfferSegment implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets segment_details
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails $segment_details segment_details
+     * @param \SpApi\Model\pricing\v2022_05_01\SegmentDetails $segment_details segment_details
      *
      * @return self
      */
-    public function setSegmentDetails(\OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails $segment_details): self
+    public function setSegmentDetails(\SpApi\Model\pricing\v2022_05_01\SegmentDetails $segment_details): self
     {
         if (is_null($segment_details)) {
             throw new \InvalidArgumentException('non-nullable segment_details cannot be null');

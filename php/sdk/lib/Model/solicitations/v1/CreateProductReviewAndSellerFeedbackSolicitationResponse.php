@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\solicitations\v1;
+namespace SpApi\Model\solicitations\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateProductReviewAndSellerFeedbackSolicitationResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the createProductReviewAndSellerFeedbackSolicitation operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CreateProductReviewAndSellerFeedbackSolicitationResponse implements ModelI
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'errors' => '\OpenAPI\Client\Model\solicitations\v1\Error[]'    ];
+             'errors' => '\SpApi\Model\solicitations\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

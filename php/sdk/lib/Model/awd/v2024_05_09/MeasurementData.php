@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * MeasurementData Class Doc Comment
  *
  * @category Class
  * @description Package weight and dimension.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'dimensions' => '\OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions',
-             'volume' => '\OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume',
-             'weight' => '\OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight'    ];
+             'dimensions' => '\SpApi\Model\awd\v2024_05_09\PackageDimensions',
+             'volume' => '\SpApi\Model\awd\v2024_05_09\PackageVolume',
+             'weight' => '\SpApi\Model\awd\v2024_05_09\PackageWeight'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -311,9 +311,9 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions|null
+     * @return \SpApi\Model\awd\v2024_05_09\PackageDimensions|null
      */
-    public function getDimensions(): ?\OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions
+    public function getDimensions(): ?\SpApi\Model\awd\v2024_05_09\PackageDimensions
     {
         return $this->container['dimensions'];
     }
@@ -321,11 +321,11 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions|null $dimensions dimensions
+     * @param \SpApi\Model\awd\v2024_05_09\PackageDimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(?\OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions $dimensions): self
+    public function setDimensions(?\SpApi\Model\awd\v2024_05_09\PackageDimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             array_push($this->openAPINullablesSetToNull, 'dimensions');
@@ -345,9 +345,9 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets volume
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume|null
+     * @return \SpApi\Model\awd\v2024_05_09\PackageVolume|null
      */
-    public function getVolume(): ?\OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume
+    public function getVolume(): ?\SpApi\Model\awd\v2024_05_09\PackageVolume
     {
         return $this->container['volume'];
     }
@@ -355,11 +355,11 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets volume
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume|null $volume volume
+     * @param \SpApi\Model\awd\v2024_05_09\PackageVolume|null $volume volume
      *
      * @return self
      */
-    public function setVolume(?\OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume $volume): self
+    public function setVolume(?\SpApi\Model\awd\v2024_05_09\PackageVolume $volume): self
     {
         if (is_null($volume)) {
             array_push($this->openAPINullablesSetToNull, 'volume');
@@ -379,9 +379,9 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight
+     * @return \SpApi\Model\awd\v2024_05_09\PackageWeight
      */
-    public function getWeight(): \OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight
+    public function getWeight(): \SpApi\Model\awd\v2024_05_09\PackageWeight
     {
         return $this->container['weight'];
     }
@@ -389,11 +389,11 @@ class MeasurementData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight $weight weight
+     * @param \SpApi\Model\awd\v2024_05_09\PackageWeight $weight weight
      *
      * @return self
      */
-    public function setWeight(\OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight $weight): self
+    public function setWeight(\SpApi\Model\awd\v2024_05_09\PackageWeight $weight): self
     {
         if (is_null($weight)) {
             throw new \InvalidArgumentException('non-nullable weight cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\ExcludedBenefit;
+use SpApi\Model\merchantFulfillment\v0\ExcludedBenefit;
 
 /**
  * ExcludedBenefitTest Class Doc Comment
  *
  * @category    Class
  * @description An object representing an excluded benefit that is excluded for a shipping offer or rate.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExcludedBenefitTest extends TestCase
 {

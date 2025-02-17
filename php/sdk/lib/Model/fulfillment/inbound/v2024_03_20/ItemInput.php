@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemInput Class Doc Comment
  *
  * @category Class
  * @description Defines an item&#39;s input parameters.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class ItemInput implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'expiration' => 'string',
-             'label_owner' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LabelOwner',
+             'label_owner' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\LabelOwner',
              'manufacturing_lot_code' => 'string',
              'msku' => 'string',
-             'prep_owner' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepOwner',
+             'prep_owner' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PrepOwner',
              'quantity' => 'int'    ];
 
     /**

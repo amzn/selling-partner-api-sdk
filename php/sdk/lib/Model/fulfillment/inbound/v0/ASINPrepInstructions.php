@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ASINPrepInstructions Class Doc Comment
  *
  * @category Class
  * @description Item preparation instructions to help with item sourcing decisions.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
              'asin' => 'string',
-             'barcode_instruction' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\BarcodeInstruction',
-             'prep_guidance' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepGuidance',
-             'prep_instruction_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction[]'    ];
+             'barcode_instruction' => '\SpApi\Model\fulfillment\inbound\v0\BarcodeInstruction',
+             'prep_guidance' => '\SpApi\Model\fulfillment\inbound\v0\PrepGuidance',
+             'prep_instruction_list' => '\SpApi\Model\fulfillment\inbound\v0\PrepInstruction[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

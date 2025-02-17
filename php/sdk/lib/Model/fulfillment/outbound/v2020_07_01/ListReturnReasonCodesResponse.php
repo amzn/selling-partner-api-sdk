@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListReturnReasonCodesResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;listReturnReasonCodes&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ListReturnReasonCodesResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult',
-             'errors' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Error[]'    ];
+             'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult',
+             'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class ListReturnReasonCodesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult
+    public function getPayload(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class ListReturnReasonCodesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult|null $payload payload
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult $payload): self
+    public function setPayload(?\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

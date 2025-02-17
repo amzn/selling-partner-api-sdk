@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemStatusAcknowledgementStatus Class Doc Comment
  *
  * @category Class
  * @description Acknowledgement status information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
       */
     protected static array $openAPITypes = [
              'confirmation_status' => 'string',
-             'accepted_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
-             'rejected_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
-             'acknowledgement_status_details' => '\OpenAPI\Client\Model\vendor\orders\v1\AcknowledgementStatusDetails[]'    ];
+             'accepted_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
+             'rejected_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
+             'acknowledgement_status_details' => '\SpApi\Model\vendor\orders\v1\AcknowledgementStatusDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -387,9 +387,9 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
     /**
      * Gets accepted_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity|null
      */
-    public function getAcceptedQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getAcceptedQuantity(): ?\SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['accepted_quantity'];
     }
@@ -397,11 +397,11 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
     /**
      * Sets accepted_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null $accepted_quantity accepted_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity|null $accepted_quantity accepted_quantity
      *
      * @return self
      */
-    public function setAcceptedQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $accepted_quantity): self
+    public function setAcceptedQuantity(?\SpApi\Model\vendor\orders\v1\ItemQuantity $accepted_quantity): self
     {
         if (is_null($accepted_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'accepted_quantity');
@@ -421,9 +421,9 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
     /**
      * Gets rejected_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity|null
      */
-    public function getRejectedQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getRejectedQuantity(): ?\SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['rejected_quantity'];
     }
@@ -431,11 +431,11 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
     /**
      * Sets rejected_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null $rejected_quantity rejected_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity|null $rejected_quantity rejected_quantity
      *
      * @return self
      */
-    public function setRejectedQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $rejected_quantity): self
+    public function setRejectedQuantity(?\SpApi\Model\vendor\orders\v1\ItemQuantity $rejected_quantity): self
     {
         if (is_null($rejected_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'rejected_quantity');

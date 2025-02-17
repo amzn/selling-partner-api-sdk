@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\ListingOffersResponse;
+use SpApi\Model\pricing\v0\ListingOffersResponse;
 
 /**
  * ListingOffersResponseTest Class Doc Comment
  *
  * @category    Class
  * @description ListingOffersResponse
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListingOffersResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ListingOffersResponseTest extends TestCase
     public function testPropertyHeaders()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders();
+        $testValue = new \SpApi\Model\pricing\v0\HttpResponseHeaders();
         
         $this->model->setHeaders($testValue);
         $this->assertEquals($testValue, $this->model->getHeaders());
@@ -69,7 +69,7 @@ class ListingOffersResponseTest extends TestCase
     public function testPropertyStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine();
+        $testValue = new \SpApi\Model\pricing\v0\GetOffersHttpStatusLine();
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());
@@ -81,7 +81,7 @@ class ListingOffersResponseTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\GetOffersResponse();
+        $testValue = new \SpApi\Model\pricing\v0\GetOffersResponse();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());
@@ -93,7 +93,7 @@ class ListingOffersResponseTest extends TestCase
     public function testPropertyRequest()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\ListingOffersRequestParams();
+        $testValue = new \SpApi\Model\pricing\v0\ListingOffersRequestParams();
         
         $this->model->setRequest($testValue);
         $this->assertEquals($testValue, $this->model->getRequest());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\JobListing;
+use SpApi\Model\services\v1\JobListing;
 
 /**
  * JobListingTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the &#x60;getServiceJobs&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class JobListingTest extends TestCase
 {

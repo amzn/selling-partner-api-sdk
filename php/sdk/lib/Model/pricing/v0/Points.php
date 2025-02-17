@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Points Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class Points implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'points_number' => 'int',
-             'points_monetary_value' => '\OpenAPI\Client\Model\pricing\v0\MoneyType'    ];
+             'points_monetary_value' => '\SpApi\Model\pricing\v0\MoneyType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class Points implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets points_monetary_value
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType|null
+     * @return \SpApi\Model\pricing\v0\MoneyType|null
      */
-    public function getPointsMonetaryValue(): ?\OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getPointsMonetaryValue(): ?\SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['points_monetary_value'];
     }
@@ -344,11 +344,11 @@ class Points implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets points_monetary_value
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType|null $points_monetary_value points_monetary_value
+     * @param \SpApi\Model\pricing\v0\MoneyType|null $points_monetary_value points_monetary_value
      *
      * @return self
      */
-    public function setPointsMonetaryValue(?\OpenAPI\Client\Model\pricing\v0\MoneyType $points_monetary_value): self
+    public function setPointsMonetaryValue(?\SpApi\Model\pricing\v0\MoneyType $points_monetary_value): self
     {
         if (is_null($points_monetary_value)) {
             array_push($this->openAPINullablesSetToNull, 'points_monetary_value');

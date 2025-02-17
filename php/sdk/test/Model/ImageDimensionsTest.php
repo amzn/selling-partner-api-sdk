@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions;
+use SpApi\Model\aplusContent\v2020_11_01\ImageDimensions;
 
 /**
  * ImageDimensionsTest Class Doc Comment
  *
  * @category    Class
  * @description The dimensions extending from the top left corner of the cropped image, or the top left corner of the original image if there is no cropping. Only &#x60;pixels&#x60; is allowed as the units value for ImageDimensions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ImageDimensionsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ImageDimensionsTest extends TestCase
     public function testPropertyWidth()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setWidth($testValue);
         $this->assertEquals($testValue, $this->model->getWidth());
@@ -69,7 +69,7 @@ class ImageDimensionsTest extends TestCase
     public function testPropertyHeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setHeight($testValue);
         $this->assertEquals($testValue, $this->model->getHeight());

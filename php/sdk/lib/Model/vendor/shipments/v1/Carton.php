@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Carton Class Doc Comment
  *
  * @category Class
  * @description Details of the carton/package being shipped.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'carton_identifiers' => '\OpenAPI\Client\Model\vendor\shipments\v1\ContainerIdentification[]',
+             'carton_identifiers' => '\SpApi\Model\vendor\shipments\v1\ContainerIdentification[]',
              'carton_sequence_number' => 'string',
-             'dimensions' => '\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions',
-             'weight' => '\OpenAPI\Client\Model\vendor\shipments\v1\Weight',
+             'dimensions' => '\SpApi\Model\vendor\shipments\v1\Dimensions',
+             'weight' => '\SpApi\Model\vendor\shipments\v1\Weight',
              'tracking_number' => 'string',
-             'items' => '\OpenAPI\Client\Model\vendor\shipments\v1\ContainerItem[]'    ];
+             'items' => '\SpApi\Model\vendor\shipments\v1\ContainerItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -396,9 +396,9 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions|null
+     * @return \SpApi\Model\vendor\shipments\v1\Dimensions|null
      */
-    public function getDimensions(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions
+    public function getDimensions(): ?\SpApi\Model\vendor\shipments\v1\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -406,11 +406,11 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions|null $dimensions dimensions
+     * @param \SpApi\Model\vendor\shipments\v1\Dimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(?\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions $dimensions): self
+    public function setDimensions(?\SpApi\Model\vendor\shipments\v1\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             array_push($this->openAPINullablesSetToNull, 'dimensions');
@@ -430,9 +430,9 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null
+     * @return \SpApi\Model\vendor\shipments\v1\Weight|null
      */
-    public function getWeight(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Weight
+    public function getWeight(): ?\SpApi\Model\vendor\shipments\v1\Weight
     {
         return $this->container['weight'];
     }
@@ -440,11 +440,11 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null $weight weight
+     * @param \SpApi\Model\vendor\shipments\v1\Weight|null $weight weight
      *
      * @return self
      */
-    public function setWeight(?\OpenAPI\Client\Model\vendor\shipments\v1\Weight $weight): self
+    public function setWeight(?\SpApi\Model\vendor\shipments\v1\Weight $weight): self
     {
         if (is_null($weight)) {
             array_push($this->openAPINullablesSetToNull, 'weight');

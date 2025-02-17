@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse;
+use SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse;
 
 /**
  * GetMessagingActionsForOrderResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getMessagingActionsForOrder&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMessagingActionsForOrderResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetMessagingActionsForOrderResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks();
+        $testValue = new \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());
@@ -69,7 +69,7 @@ class GetMessagingActionsForOrderResponseTest extends TestCase
     public function testPropertyEmbedded()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded();
+        $testValue = new \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded();
         
         $this->model->setEmbedded($testValue);
         $this->assertEquals($testValue, $this->model->getEmbedded());

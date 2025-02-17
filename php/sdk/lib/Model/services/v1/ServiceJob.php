@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ServiceJob Class Doc Comment
  *
  * @category Class
  * @description The job details of a service.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,17 +63,17 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
              'create_time' => '\DateTime',
              'service_job_id' => 'string',
              'service_job_status' => 'string',
-             'scope_of_work' => '\OpenAPI\Client\Model\services\v1\ScopeOfWork',
-             'seller' => '\OpenAPI\Client\Model\services\v1\Seller',
-             'service_job_provider' => '\OpenAPI\Client\Model\services\v1\ServiceJobProvider',
-             'preferred_appointment_times' => '\OpenAPI\Client\Model\services\v1\AppointmentTime[]',
-             'appointments' => '\OpenAPI\Client\Model\services\v1\Appointment[]',
+             'scope_of_work' => '\SpApi\Model\services\v1\ScopeOfWork',
+             'seller' => '\SpApi\Model\services\v1\Seller',
+             'service_job_provider' => '\SpApi\Model\services\v1\ServiceJobProvider',
+             'preferred_appointment_times' => '\SpApi\Model\services\v1\AppointmentTime[]',
+             'appointments' => '\SpApi\Model\services\v1\Appointment[]',
              'service_order_id' => 'string',
              'marketplace_id' => 'string',
              'store_id' => 'string',
-             'buyer' => '\OpenAPI\Client\Model\services\v1\Buyer',
-             'associated_items' => '\OpenAPI\Client\Model\services\v1\AssociatedItem[]',
-             'service_location' => '\OpenAPI\Client\Model\services\v1\ServiceLocation'    ];
+             'buyer' => '\SpApi\Model\services\v1\Buyer',
+             'associated_items' => '\SpApi\Model\services\v1\AssociatedItem[]',
+             'service_location' => '\SpApi\Model\services\v1\ServiceLocation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -566,9 +566,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets scope_of_work
      *
-     * @return \OpenAPI\Client\Model\services\v1\ScopeOfWork|null
+     * @return \SpApi\Model\services\v1\ScopeOfWork|null
      */
-    public function getScopeOfWork(): ?\OpenAPI\Client\Model\services\v1\ScopeOfWork
+    public function getScopeOfWork(): ?\SpApi\Model\services\v1\ScopeOfWork
     {
         return $this->container['scope_of_work'];
     }
@@ -576,11 +576,11 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets scope_of_work
      *
-     * @param \OpenAPI\Client\Model\services\v1\ScopeOfWork|null $scope_of_work scope_of_work
+     * @param \SpApi\Model\services\v1\ScopeOfWork|null $scope_of_work scope_of_work
      *
      * @return self
      */
-    public function setScopeOfWork(?\OpenAPI\Client\Model\services\v1\ScopeOfWork $scope_of_work): self
+    public function setScopeOfWork(?\SpApi\Model\services\v1\ScopeOfWork $scope_of_work): self
     {
         if (is_null($scope_of_work)) {
             array_push($this->openAPINullablesSetToNull, 'scope_of_work');
@@ -600,9 +600,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets seller
      *
-     * @return \OpenAPI\Client\Model\services\v1\Seller|null
+     * @return \SpApi\Model\services\v1\Seller|null
      */
-    public function getSeller(): ?\OpenAPI\Client\Model\services\v1\Seller
+    public function getSeller(): ?\SpApi\Model\services\v1\Seller
     {
         return $this->container['seller'];
     }
@@ -610,11 +610,11 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seller
      *
-     * @param \OpenAPI\Client\Model\services\v1\Seller|null $seller seller
+     * @param \SpApi\Model\services\v1\Seller|null $seller seller
      *
      * @return self
      */
-    public function setSeller(?\OpenAPI\Client\Model\services\v1\Seller $seller): self
+    public function setSeller(?\SpApi\Model\services\v1\Seller $seller): self
     {
         if (is_null($seller)) {
             array_push($this->openAPINullablesSetToNull, 'seller');
@@ -634,9 +634,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_job_provider
      *
-     * @return \OpenAPI\Client\Model\services\v1\ServiceJobProvider|null
+     * @return \SpApi\Model\services\v1\ServiceJobProvider|null
      */
-    public function getServiceJobProvider(): ?\OpenAPI\Client\Model\services\v1\ServiceJobProvider
+    public function getServiceJobProvider(): ?\SpApi\Model\services\v1\ServiceJobProvider
     {
         return $this->container['service_job_provider'];
     }
@@ -644,11 +644,11 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_job_provider
      *
-     * @param \OpenAPI\Client\Model\services\v1\ServiceJobProvider|null $service_job_provider service_job_provider
+     * @param \SpApi\Model\services\v1\ServiceJobProvider|null $service_job_provider service_job_provider
      *
      * @return self
      */
-    public function setServiceJobProvider(?\OpenAPI\Client\Model\services\v1\ServiceJobProvider $service_job_provider): self
+    public function setServiceJobProvider(?\SpApi\Model\services\v1\ServiceJobProvider $service_job_provider): self
     {
         if (is_null($service_job_provider)) {
             array_push($this->openAPINullablesSetToNull, 'service_job_provider');
@@ -857,9 +857,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer
      *
-     * @return \OpenAPI\Client\Model\services\v1\Buyer|null
+     * @return \SpApi\Model\services\v1\Buyer|null
      */
-    public function getBuyer(): ?\OpenAPI\Client\Model\services\v1\Buyer
+    public function getBuyer(): ?\SpApi\Model\services\v1\Buyer
     {
         return $this->container['buyer'];
     }
@@ -867,11 +867,11 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer
      *
-     * @param \OpenAPI\Client\Model\services\v1\Buyer|null $buyer buyer
+     * @param \SpApi\Model\services\v1\Buyer|null $buyer buyer
      *
      * @return self
      */
-    public function setBuyer(?\OpenAPI\Client\Model\services\v1\Buyer $buyer): self
+    public function setBuyer(?\SpApi\Model\services\v1\Buyer $buyer): self
     {
         if (is_null($buyer)) {
             array_push($this->openAPINullablesSetToNull, 'buyer');
@@ -925,9 +925,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_location
      *
-     * @return \OpenAPI\Client\Model\services\v1\ServiceLocation|null
+     * @return \SpApi\Model\services\v1\ServiceLocation|null
      */
-    public function getServiceLocation(): ?\OpenAPI\Client\Model\services\v1\ServiceLocation
+    public function getServiceLocation(): ?\SpApi\Model\services\v1\ServiceLocation
     {
         return $this->container['service_location'];
     }
@@ -935,11 +935,11 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_location
      *
-     * @param \OpenAPI\Client\Model\services\v1\ServiceLocation|null $service_location service_location
+     * @param \SpApi\Model\services\v1\ServiceLocation|null $service_location service_location
      *
      * @return self
      */
-    public function setServiceLocation(?\OpenAPI\Client\Model\services\v1\ServiceLocation $service_location): self
+    public function setServiceLocation(?\SpApi\Model\services\v1\ServiceLocation $service_location): self
     {
         if (is_null($service_location)) {
             array_push($this->openAPINullablesSetToNull, 'service_location');

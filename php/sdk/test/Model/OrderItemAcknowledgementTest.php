@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderItemAcknowledgement;
+use SpApi\Model\vendor\orders\v1\OrderItemAcknowledgement;
 
 /**
  * OrderItemAcknowledgementTest Class Doc Comment
  *
  * @category    Class
  * @description Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged quantity, scheduled ship and delivery dates, and rejection reason (if applicable).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderItemAcknowledgementTest extends TestCase
 {
@@ -69,7 +69,7 @@ class OrderItemAcknowledgementTest extends TestCase
     public function testPropertyAcknowledgedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setAcknowledgedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAcknowledgedQuantity());

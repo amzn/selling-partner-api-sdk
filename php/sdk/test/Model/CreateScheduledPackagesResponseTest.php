@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse;
+use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesResponse;
 
 /**
  * CreateScheduledPackagesResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the bulk scheduling API. It returns by the bulk scheduling API containing an array of the scheduled packtages, an optional list of orders we couldn&#39;t schedule with the reason, and a pre-signed URL for a ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateScheduledPackagesResponseTest extends TestCase
 {

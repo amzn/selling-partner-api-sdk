@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TransportationSelection Class Doc Comment
  *
  * @category Class
  * @description The transportation option selected to confirm.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class TransportationSelection implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'contact_information' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
+             'contact_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
              'shipment_id' => 'string',
              'transportation_option_id' => 'string'    ];
 
@@ -338,9 +338,9 @@ class TransportationSelection implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets contact_information
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
      */
-    public function getContactInformation(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation
+    public function getContactInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation
     {
         return $this->container['contact_information'];
     }
@@ -348,11 +348,11 @@ class TransportationSelection implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets contact_information
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
      *
      * @return self
      */
-    public function setContactInformation(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
+    public function setContactInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
     {
         if (is_null($contact_information)) {
             array_push($this->openAPINullablesSetToNull, 'contact_information');

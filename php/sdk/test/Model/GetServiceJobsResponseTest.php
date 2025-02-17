@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\GetServiceJobsResponse;
+use SpApi\Model\services\v1\GetServiceJobsResponse;
 
 /**
  * GetServiceJobsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Response schema for the &#x60;getServiceJobs&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetServiceJobsResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetServiceJobsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\JobListing();
+        $testValue = new \SpApi\Model\services\v1\JobListing();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

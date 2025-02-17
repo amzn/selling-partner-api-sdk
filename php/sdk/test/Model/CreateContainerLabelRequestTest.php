@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest;
 
 /**
  * CreateContainerLabelRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body schema for the &#x60;createContainerLabel&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateContainerLabelRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateContainerLabelRequestTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -69,7 +69,7 @@ class CreateContainerLabelRequestTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());
@@ -80,7 +80,7 @@ class CreateContainerLabelRequestTest extends TestCase
      */
     public function testPropertyCarrierId()
     {
-        $enumInstance = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CarrierId();
+        $enumInstance = new \SpApi\Model\vendor\df\shipping\v2021_12_28\CarrierId();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku;
 
 /**
  * FeatureSkuTest Class Doc Comment
  *
  * @category    Class
  * @description Information about an SKU, including the count available, identifiers, and a list of overlapping SKUs that share the same inventory pool.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeatureSkuTest extends TestCase
 {

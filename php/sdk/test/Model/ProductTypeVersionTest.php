@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion;
+use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion;
 
 /**
  * ProductTypeVersionTest Class Doc Comment
  *
  * @category    Class
  * @description The version details for an Amazon product type.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductTypeVersionTest extends TestCase
 {

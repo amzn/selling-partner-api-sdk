@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v2024_06_19;
+namespace SpApi\Model\finances\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Transaction Class Doc Comment
  *
  * @category Class
  * @description All the information related to a transaction.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,18 +60,18 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'selling_partner_metadata' => '\OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata',
-             'related_identifiers' => '\OpenAPI\Client\Model\finances\v2024_06_19\RelatedIdentifier[]',
+             'selling_partner_metadata' => '\SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata',
+             'related_identifiers' => '\SpApi\Model\finances\v2024_06_19\RelatedIdentifier[]',
              'transaction_type' => 'string',
              'transaction_id' => 'string',
              'transaction_status' => 'string',
              'description' => 'string',
              'posted_date' => '\DateTime',
-             'total_amount' => '\OpenAPI\Client\Model\finances\v2024_06_19\Currency',
-             'marketplace_details' => '\OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails',
-             'items' => '\OpenAPI\Client\Model\finances\v2024_06_19\Item[]',
-             'contexts' => '\OpenAPI\Client\Model\finances\v2024_06_19\Context[]',
-             'breakdowns' => '\OpenAPI\Client\Model\finances\v2024_06_19\Breakdown[]'    ];
+             'total_amount' => '\SpApi\Model\finances\v2024_06_19\Currency',
+             'marketplace_details' => '\SpApi\Model\finances\v2024_06_19\MarketplaceDetails',
+             'items' => '\SpApi\Model\finances\v2024_06_19\Item[]',
+             'contexts' => '\SpApi\Model\finances\v2024_06_19\Context[]',
+             'breakdowns' => '\SpApi\Model\finances\v2024_06_19\Breakdown[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -371,9 +371,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_partner_metadata
      *
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata|null
+     * @return \SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata|null
      */
-    public function getSellingPartnerMetadata(): ?\OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata
+    public function getSellingPartnerMetadata(): ?\SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata
     {
         return $this->container['selling_partner_metadata'];
     }
@@ -381,11 +381,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_partner_metadata
      *
-     * @param \OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata|null $selling_partner_metadata selling_partner_metadata
+     * @param \SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata|null $selling_partner_metadata selling_partner_metadata
      *
      * @return self
      */
-    public function setSellingPartnerMetadata(?\OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata $selling_partner_metadata): self
+    public function setSellingPartnerMetadata(?\SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata $selling_partner_metadata): self
     {
         if (is_null($selling_partner_metadata)) {
             array_push($this->openAPINullablesSetToNull, 'selling_partner_metadata');
@@ -609,9 +609,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\Currency|null
+     * @return \SpApi\Model\finances\v2024_06_19\Currency|null
      */
-    public function getTotalAmount(): ?\OpenAPI\Client\Model\finances\v2024_06_19\Currency
+    public function getTotalAmount(): ?\SpApi\Model\finances\v2024_06_19\Currency
     {
         return $this->container['total_amount'];
     }
@@ -619,11 +619,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v2024_06_19\Currency|null $total_amount total_amount
+     * @param \SpApi\Model\finances\v2024_06_19\Currency|null $total_amount total_amount
      *
      * @return self
      */
-    public function setTotalAmount(?\OpenAPI\Client\Model\finances\v2024_06_19\Currency $total_amount): self
+    public function setTotalAmount(?\SpApi\Model\finances\v2024_06_19\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
             array_push($this->openAPINullablesSetToNull, 'total_amount');
@@ -643,9 +643,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_details
      *
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails|null
+     * @return \SpApi\Model\finances\v2024_06_19\MarketplaceDetails|null
      */
-    public function getMarketplaceDetails(): ?\OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails
+    public function getMarketplaceDetails(): ?\SpApi\Model\finances\v2024_06_19\MarketplaceDetails
     {
         return $this->container['marketplace_details'];
     }
@@ -653,11 +653,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marketplace_details
      *
-     * @param \OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails|null $marketplace_details marketplace_details
+     * @param \SpApi\Model\finances\v2024_06_19\MarketplaceDetails|null $marketplace_details marketplace_details
      *
      * @return self
      */
-    public function setMarketplaceDetails(?\OpenAPI\Client\Model\finances\v2024_06_19\MarketplaceDetails $marketplace_details): self
+    public function setMarketplaceDetails(?\SpApi\Model\finances\v2024_06_19\MarketplaceDetails $marketplace_details): self
     {
         if (is_null($marketplace_details)) {
             array_push($this->openAPINullablesSetToNull, 'marketplace_details');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SupplySourceConfiguration Class Doc Comment
  *
  * @category Class
  * @description Includes configuration and timezone of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SupplySourceConfiguration implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'operational_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration',
+             'operational_configuration' => '\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration',
              'timezone' => 'string'    ];
 
     /**
@@ -301,9 +301,9 @@ class SupplySourceConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets operational_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null
      */
-    public function getOperationalConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration
+    public function getOperationalConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration
     {
         return $this->container['operational_configuration'];
     }
@@ -311,11 +311,11 @@ class SupplySourceConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets operational_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
      *
      * @return self
      */
-    public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
+    public function setOperationalConfiguration(?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'operational_configuration');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest;
+use SpApi\Model\shipping\v2\LinkCarrierAccountRequest;
 
 /**
  * LinkCarrierAccountRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for verify and add the merchant&#39;s account with a certain carrier.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LinkCarrierAccountRequestTest extends TestCase
 {

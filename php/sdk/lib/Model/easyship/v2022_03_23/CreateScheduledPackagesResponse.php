@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateScheduledPackagesResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the bulk scheduling API. It returns by the bulk scheduling API containing an array of the scheduled packtages, an optional list of orders we couldn&#39;t schedule with the reason, and a pre-signed URL for a ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'scheduled_packages' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Package[]',
-             'rejected_orders' => '\OpenAPI\Client\Model\easyship\v2022_03_23\RejectedOrder[]',
+             'scheduled_packages' => '\SpApi\Model\easyship\v2022_03_23\Package[]',
+             'rejected_orders' => '\SpApi\Model\easyship\v2022_03_23\RejectedOrder[]',
              'printable_documents_url' => 'string'    ];
 
     /**

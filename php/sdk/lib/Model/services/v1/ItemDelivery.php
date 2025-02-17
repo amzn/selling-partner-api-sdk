@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemDelivery Class Doc Comment
  *
  * @category Class
  * @description Delivery information for the item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'estimated_delivery_date' => '\DateTime',
-             'item_delivery_promise' => '\OpenAPI\Client\Model\services\v1\ItemDeliveryPromise'    ];
+             'item_delivery_promise' => '\SpApi\Model\services\v1\ItemDeliveryPromise'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_delivery_promise
      *
-     * @return \OpenAPI\Client\Model\services\v1\ItemDeliveryPromise|null
+     * @return \SpApi\Model\services\v1\ItemDeliveryPromise|null
      */
-    public function getItemDeliveryPromise(): ?\OpenAPI\Client\Model\services\v1\ItemDeliveryPromise
+    public function getItemDeliveryPromise(): ?\SpApi\Model\services\v1\ItemDeliveryPromise
     {
         return $this->container['item_delivery_promise'];
     }
@@ -345,11 +345,11 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_delivery_promise
      *
-     * @param \OpenAPI\Client\Model\services\v1\ItemDeliveryPromise|null $item_delivery_promise item_delivery_promise
+     * @param \SpApi\Model\services\v1\ItemDeliveryPromise|null $item_delivery_promise item_delivery_promise
      *
      * @return self
      */
-    public function setItemDeliveryPromise(?\OpenAPI\Client\Model\services\v1\ItemDeliveryPromise $item_delivery_promise): self
+    public function setItemDeliveryPromise(?\SpApi\Model\services\v1\ItemDeliveryPromise $item_delivery_promise): self
     {
         if (is_null($item_delivery_promise)) {
             array_push($this->openAPINullablesSetToNull, 'item_delivery_promise');

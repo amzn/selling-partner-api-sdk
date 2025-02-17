@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume;
+use SpApi\Model\awd\v2024_05_09\PackageVolume;
 
 /**
  * PackageVolumeTest Class Doc Comment
  *
  * @category    Class
  * @description Represents the volume of the package with a unit of measurement.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageVolumeTest extends TestCase
 {
@@ -56,7 +56,7 @@ class PackageVolumeTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\VolumeUnitOfMeasurement();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\VolumeUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

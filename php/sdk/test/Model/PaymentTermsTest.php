@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\v1\PaymentTerms;
+use SpApi\Model\vendor\invoices\v1\PaymentTerms;
 
 /**
  * PaymentTermsTest Class Doc Comment
  *
  * @category    Class
  * @description Terms of the payment for the invoice. The basis of the payment terms is the invoice date.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PaymentTermsTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest;
+use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest;
 
 /**
  * ListOfferMetricsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body for the &#x60;listOfferMetrics&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOfferMetricsRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ListOfferMetricsRequestTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequestPagination();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequestPagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
@@ -69,7 +69,7 @@ class ListOfferMetricsRequestTest extends TestCase
     public function testPropertySort()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequestSort();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequestSort();
         
         $this->model->setSort($testValue);
         $this->assertEquals($testValue, $this->model->getSort());
@@ -81,7 +81,7 @@ class ListOfferMetricsRequestTest extends TestCase
     public function testPropertyFilters()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequestFilters();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequestFilters();
         
         $this->model->setFilters($testValue);
         $this->assertEquals($testValue, $this->model->getFilters());

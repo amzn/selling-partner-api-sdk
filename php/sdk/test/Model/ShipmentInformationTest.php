@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation;
+use SpApi\Model\vendor\shipments\v1\ShipmentInformation;
 
 /**
  * ShipmentInformationTest Class Doc Comment
  *
  * @category    Class
  * @description Shipment Information details for Label request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentInformationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ShipmentInformationTest extends TestCase
     public function testPropertyVendorDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\VendorDetails();
         
         $this->model->setVendorDetails($testValue);
         $this->assertEquals($testValue, $this->model->getVendorDetails());
@@ -80,7 +80,7 @@ class ShipmentInformationTest extends TestCase
     public function testPropertyShipToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\PartyIdentification();
         
         $this->model->setShipToParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipToParty());
@@ -92,7 +92,7 @@ class ShipmentInformationTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());

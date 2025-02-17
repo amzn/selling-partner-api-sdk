@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem;
 
 /**
  * GetFulfillmentPreviewItemTest Class Doc Comment
  *
  * @category    Class
  * @description Item information for a fulfillment order preview.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetFulfillmentPreviewItemTest extends TestCase
 {
@@ -79,7 +79,7 @@ class GetFulfillmentPreviewItemTest extends TestCase
     public function testPropertyPerUnitDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Money();
         
         $this->model->setPerUnitDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitDeclaredValue());

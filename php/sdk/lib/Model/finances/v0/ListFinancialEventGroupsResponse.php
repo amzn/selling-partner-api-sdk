@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListFinancialEventGroupsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the listFinancialEventGroups operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ListFinancialEventGroupsResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsPayload',
-             'errors' => '\OpenAPI\Client\Model\finances\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\finances\v0\ListFinancialEventGroupsPayload',
+             'errors' => '\SpApi\Model\finances\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class ListFinancialEventGroupsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsPayload|null
+     * @return \SpApi\Model\finances\v0\ListFinancialEventGroupsPayload|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsPayload
+    public function getPayload(): ?\SpApi\Model\finances\v0\ListFinancialEventGroupsPayload
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class ListFinancialEventGroupsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsPayload|null $payload payload
+     * @param \SpApi\Model\finances\v0\ListFinancialEventGroupsPayload|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\finances\v0\ListFinancialEventGroupsPayload $payload): self
+    public function setPayload(?\SpApi\Model\finances\v0\ListFinancialEventGroupsPayload $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

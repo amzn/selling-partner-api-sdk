@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier;
+use SpApi\Model\pricing\v2022_05_01\OfferIdentifier;
 
 /**
  * OfferIdentifierTest Class Doc Comment
  *
  * @category    Class
  * @description Identifies an offer from a particular seller for a specified ASIN.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OfferIdentifierTest extends TestCase
 {
@@ -100,7 +100,7 @@ class OfferIdentifierTest extends TestCase
      */
     public function testPropertyFulfillmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\FulfillmentType();
+        $enumInstance = new \SpApi\Model\pricing\v2022_05_01\FulfillmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\BuyerInfo;
+use SpApi\Model\orders\v0\BuyerInfo;
 
 /**
  * BuyerInfoTest Class Doc Comment
  *
  * @category    Class
  * @description Buyer information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BuyerInfoTest extends TestCase
 {
@@ -90,7 +90,7 @@ class BuyerInfoTest extends TestCase
     public function testPropertyBuyerTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerTaxInfo();
+        $testValue = new \SpApi\Model\orders\v0\BuyerTaxInfo();
         
         $this->model->setBuyerTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerTaxInfo());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PriceToEstimateFees Class Doc Comment
  *
  * @category Class
  * @description Price information for an item, used to estimate fees.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'listing_price' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'shipping' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'points' => '\OpenAPI\Client\Model\productFees\v0\Points'    ];
+             'listing_price' => '\SpApi\Model\productFees\v0\MoneyType',
+             'shipping' => '\SpApi\Model\productFees\v0\MoneyType',
+             'points' => '\SpApi\Model\productFees\v0\Points'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -311,9 +311,9 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets listing_price
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType
+     * @return \SpApi\Model\productFees\v0\MoneyType
      */
-    public function getListingPrice(): \OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getListingPrice(): \SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -321,11 +321,11 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets listing_price
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType $listing_price listing_price
+     * @param \SpApi\Model\productFees\v0\MoneyType $listing_price listing_price
      *
      * @return self
      */
-    public function setListingPrice(\OpenAPI\Client\Model\productFees\v0\MoneyType $listing_price): self
+    public function setListingPrice(\SpApi\Model\productFees\v0\MoneyType $listing_price): self
     {
         if (is_null($listing_price)) {
             throw new \InvalidArgumentException('non-nullable listing_price cannot be null');
@@ -338,9 +338,9 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets shipping
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType|null
+     * @return \SpApi\Model\productFees\v0\MoneyType|null
      */
-    public function getShipping(): ?\OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getShipping(): ?\SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['shipping'];
     }
@@ -348,11 +348,11 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets shipping
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType|null $shipping shipping
+     * @param \SpApi\Model\productFees\v0\MoneyType|null $shipping shipping
      *
      * @return self
      */
-    public function setShipping(?\OpenAPI\Client\Model\productFees\v0\MoneyType $shipping): self
+    public function setShipping(?\SpApi\Model\productFees\v0\MoneyType $shipping): self
     {
         if (is_null($shipping)) {
             array_push($this->openAPINullablesSetToNull, 'shipping');
@@ -372,9 +372,9 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets points
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\Points|null
+     * @return \SpApi\Model\productFees\v0\Points|null
      */
-    public function getPoints(): ?\OpenAPI\Client\Model\productFees\v0\Points
+    public function getPoints(): ?\SpApi\Model\productFees\v0\Points
     {
         return $this->container['points'];
     }
@@ -382,11 +382,11 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets points
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\Points|null $points points
+     * @param \SpApi\Model\productFees\v0\Points|null $points points
      *
      * @return self
      */
-    public function setPoints(?\OpenAPI\Client\Model\productFees\v0\Points $points): self
+    public function setPoints(?\SpApi\Model\productFees\v0\Points $points): self
     {
         if (is_null($points)) {
             array_push($this->openAPINullablesSetToNull, 'points');

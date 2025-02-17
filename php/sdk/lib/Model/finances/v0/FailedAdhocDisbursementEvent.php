@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FailedAdhocDisbursementEvent Class Doc Comment
  *
  * @category Class
  * @description Failed ad hoc disbursement event list.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
              'disbursement_id' => 'string',
              'payment_disbursement_type' => 'string',
              'status' => 'string',
-             'transfer_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'transfer_amount' => '\SpApi\Model\finances\v0\Currency',
              'posted_date' => '\DateTime'    ];
 
     /**
@@ -506,9 +506,9 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets transfer_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTransferAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTransferAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['transfer_amount'];
     }
@@ -516,11 +516,11 @@ class FailedAdhocDisbursementEvent implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets transfer_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $transfer_amount transfer_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $transfer_amount transfer_amount
      *
      * @return self
      */
-    public function setTransferAmount(?\OpenAPI\Client\Model\finances\v0\Currency $transfer_amount): self
+    public function setTransferAmount(?\SpApi\Model\finances\v0\Currency $transfer_amount): self
     {
         if (is_null($transfer_amount)) {
             array_push($this->openAPINullablesSetToNull, 'transfer_amount');

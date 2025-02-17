@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DeliveryInformation Class Doc Comment
  *
  * @category Class
  * @description The delivery information for the package. This information is available after the package is delivered.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'delivery_document_list' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryDocument[]',
-             'drop_off_location' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation'    ];
+             'delivery_document_list' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryDocument[]',
+             'drop_off_location' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets drop_off_location
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null
      */
-    public function getDropOffLocation(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation
+    public function getDropOffLocation(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation
     {
         return $this->container['drop_off_location'];
     }
@@ -345,11 +345,11 @@ class DeliveryInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets drop_off_location
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null $drop_off_location drop_off_location
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null $drop_off_location drop_off_location
      *
      * @return self
      */
-    public function setDropOffLocation(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation $drop_off_location): self
+    public function setDropOffLocation(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation $drop_off_location): self
     {
         if (is_null($drop_off_location)) {
             array_push($this->openAPINullablesSetToNull, 'drop_off_location');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SupplySource Class Doc Comment
  *
  * @category Class
  * @description The supply source details, including configurations and capabilities.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,10 +63,10 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
              'supply_source_id' => 'string',
              'supply_source_code' => 'string',
              'alias' => 'string',
-             'status' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceStatusReadOnly',
-             'address' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\Address',
-             'configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration',
-             'capabilities' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities',
+             'status' => '\SpApi\Model\supplySources\v2020_07_01\SupplySourceStatusReadOnly',
+             'address' => '\SpApi\Model\supplySources\v2020_07_01\Address',
+             'configuration' => '\SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration',
+             'capabilities' => '\SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities',
              'created_at' => 'string',
              'updated_at' => 'string'    ];
 
@@ -486,9 +486,9 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\Address|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\Address
+    public function getAddress(): ?\SpApi\Model\supplySources\v2020_07_01\Address
     {
         return $this->container['address'];
     }
@@ -496,11 +496,11 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\Address|null $address address
+     * @param \SpApi\Model\supplySources\v2020_07_01\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\supplySources\v2020_07_01\Address $address): self
+    public function setAddress(?\SpApi\Model\supplySources\v2020_07_01\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');
@@ -520,9 +520,9 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null
      */
-    public function getConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration
+    public function getConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration
     {
         return $this->container['configuration'];
     }
@@ -530,11 +530,11 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null $configuration configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null $configuration configuration
      *
      * @return self
      */
-    public function setConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration $configuration): self
+    public function setConfiguration(?\SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration $configuration): self
     {
         if (is_null($configuration)) {
             array_push($this->openAPINullablesSetToNull, 'configuration');
@@ -554,9 +554,9 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets capabilities
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null
      */
-    public function getCapabilities(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities
+    public function getCapabilities(): ?\SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities
     {
         return $this->container['capabilities'];
     }
@@ -564,11 +564,11 @@ class SupplySource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets capabilities
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null $capabilities capabilities
+     * @param \SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null $capabilities capabilities
      *
      * @return self
      */
-    public function setCapabilities(?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities $capabilities): self
+    public function setCapabilities(?\SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities $capabilities): self
     {
         if (is_null($capabilities)) {
             array_push($this->openAPINullablesSetToNull, 'capabilities');

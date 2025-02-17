@@ -39,8 +39,8 @@
     "autoload": {
         "psr-4": {
             "SpApi\\AuthAndAuth\\": "src/authandauth",
-            "OpenAPI\\Client\\": "lib/",
-            "OpenAPI\\Client\\Test\\" : "test/"
+            "SpApi\\": "lib/",
+            "SpApi\\Test\\" : "test/"
         }
     }
 }

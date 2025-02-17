@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOffer Class Doc Comment
  *
  * @category Class
  * @description Schema for &#x60;currentFeaturedOffer&#x60; or &#x60;competingFeaturedOffer&#x60;.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'offer_identifier' => '\OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier',
-             'condition' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Condition',
-             'price' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Price'    ];
+             'offer_identifier' => '\SpApi\Model\pricing\v2022_05_01\OfferIdentifier',
+             'condition' => '\SpApi\Model\pricing\v2022_05_01\Condition',
+             'price' => '\SpApi\Model\pricing\v2022_05_01\Price'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -311,9 +311,9 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offer_identifier
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier
+     * @return \SpApi\Model\pricing\v2022_05_01\OfferIdentifier
      */
-    public function getOfferIdentifier(): \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier
+    public function getOfferIdentifier(): \SpApi\Model\pricing\v2022_05_01\OfferIdentifier
     {
         return $this->container['offer_identifier'];
     }
@@ -321,11 +321,11 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets offer_identifier
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier $offer_identifier offer_identifier
+     * @param \SpApi\Model\pricing\v2022_05_01\OfferIdentifier $offer_identifier offer_identifier
      *
      * @return self
      */
-    public function setOfferIdentifier(\OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier $offer_identifier): self
+    public function setOfferIdentifier(\SpApi\Model\pricing\v2022_05_01\OfferIdentifier $offer_identifier): self
     {
         if (is_null($offer_identifier)) {
             throw new \InvalidArgumentException('non-nullable offer_identifier cannot be null');
@@ -372,9 +372,9 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets price
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\Price|null
+     * @return \SpApi\Model\pricing\v2022_05_01\Price|null
      */
-    public function getPrice(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\Price
+    public function getPrice(): ?\SpApi\Model\pricing\v2022_05_01\Price
     {
         return $this->container['price'];
     }
@@ -382,11 +382,11 @@ class FeaturedOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets price
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\Price|null $price price
+     * @param \SpApi\Model\pricing\v2022_05_01\Price|null $price price
      *
      * @return self
      */
-    public function setPrice(?\OpenAPI\Client\Model\pricing\v2022_05_01\Price $price): self
+    public function setPrice(?\SpApi\Model\pricing\v2022_05_01\Price $price): self
     {
         if (is_null($price)) {
             array_push($this->openAPINullablesSetToNull, 'price');

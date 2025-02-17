@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\OfferType;
+use SpApi\Model\pricing\v0\OfferType;
 
 /**
  * OfferTypeTest Class Doc Comment
  *
  * @category    Class
  * @description OfferType
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OfferTypeTest extends TestCase
 {
@@ -56,7 +56,7 @@ class OfferTypeTest extends TestCase
      */
     public function testPropertyOfferType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\OfferCustomerType();
+        $enumInstance = new \SpApi\Model\pricing\v0\OfferCustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class OfferTypeTest extends TestCase
     public function testPropertyBuyingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\PriceType();
+        $testValue = new \SpApi\Model\pricing\v0\PriceType();
         
         $this->model->setBuyingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getBuyingPrice());
@@ -82,7 +82,7 @@ class OfferTypeTest extends TestCase
     public function testPropertyRegularPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setRegularPrice($testValue);
         $this->assertEquals($testValue, $this->model->getRegularPrice());
@@ -94,7 +94,7 @@ class OfferTypeTest extends TestCase
     public function testPropertyBusinessPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setBusinessPrice($testValue);
         $this->assertEquals($testValue, $this->model->getBusinessPrice());

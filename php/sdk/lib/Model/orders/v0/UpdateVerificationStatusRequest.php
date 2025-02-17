@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateVerificationStatusRequest Class Doc Comment
  *
  * @category Class
  * @description The request body for the &#x60;updateVerificationStatus&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UpdateVerificationStatusRequest implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'regulated_order_verification_status' => '\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody'    ];
+             'regulated_order_verification_status' => '\SpApi\Model\orders\v0\UpdateVerificationStatusRequestBody'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class UpdateVerificationStatusRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets regulated_order_verification_status
      *
-     * @return \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody
+     * @return \SpApi\Model\orders\v0\UpdateVerificationStatusRequestBody
      */
-    public function getRegulatedOrderVerificationStatus(): \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody
+    public function getRegulatedOrderVerificationStatus(): \SpApi\Model\orders\v0\UpdateVerificationStatusRequestBody
     {
         return $this->container['regulated_order_verification_status'];
     }
@@ -307,11 +307,11 @@ class UpdateVerificationStatusRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets regulated_order_verification_status
      *
-     * @param \OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody $regulated_order_verification_status regulated_order_verification_status
+     * @param \SpApi\Model\orders\v0\UpdateVerificationStatusRequestBody $regulated_order_verification_status regulated_order_verification_status
      *
      * @return self
      */
-    public function setRegulatedOrderVerificationStatus(\OpenAPI\Client\Model\orders\v0\UpdateVerificationStatusRequestBody $regulated_order_verification_status): self
+    public function setRegulatedOrderVerificationStatus(\SpApi\Model\orders\v0\UpdateVerificationStatusRequestBody $regulated_order_verification_status): self
     {
         if (is_null($regulated_order_verification_status)) {
             throw new \InvalidArgumentException('non-nullable regulated_order_verification_status cannot be null');

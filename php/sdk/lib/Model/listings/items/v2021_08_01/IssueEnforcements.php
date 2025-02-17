@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * IssueEnforcements Class Doc Comment
  *
  * @category Class
  * @description This field provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class IssueEnforcements implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'actions' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\IssueEnforcementAction[]',
-             'exemption' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption'    ];
+             'actions' => '\SpApi\Model\listings\items\v2021_08_01\IssueEnforcementAction[]',
+             'exemption' => '\SpApi\Model\listings\items\v2021_08_01\IssueExemption'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class IssueEnforcements implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets exemption
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption
+     * @return \SpApi\Model\listings\items\v2021_08_01\IssueExemption
      */
-    public function getExemption(): \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption
+    public function getExemption(): \SpApi\Model\listings\items\v2021_08_01\IssueExemption
     {
         return $this->container['exemption'];
     }
@@ -344,11 +344,11 @@ class IssueEnforcements implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets exemption
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption $exemption exemption
+     * @param \SpApi\Model\listings\items\v2021_08_01\IssueExemption $exemption exemption
      *
      * @return self
      */
-    public function setExemption(\OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption $exemption): self
+    public function setExemption(\SpApi\Model\listings\items\v2021_08_01\IssueExemption $exemption): self
     {
         if (is_null($exemption)) {
             throw new \InvalidArgumentException('non-nullable exemption cannot be null');

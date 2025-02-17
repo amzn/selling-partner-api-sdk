@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\solicitations\v1;
+namespace SpApi\Model\solicitations\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetSolicitationActionsForOrderResponseLinks Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetSolicitationActionsForOrderResponseLinks implements ModelInterface, Arr
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'self' => '\OpenAPI\Client\Model\solicitations\v1\LinkObject',
-             'actions' => '\OpenAPI\Client\Model\solicitations\v1\LinkObject[]'    ];
+             'self' => '\SpApi\Model\solicitations\v1\LinkObject',
+             'actions' => '\SpApi\Model\solicitations\v1\LinkObject[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -306,9 +306,9 @@ class GetSolicitationActionsForOrderResponseLinks implements ModelInterface, Arr
     /**
      * Gets self
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\LinkObject
+     * @return \SpApi\Model\solicitations\v1\LinkObject
      */
-    public function getSelf(): \OpenAPI\Client\Model\solicitations\v1\LinkObject
+    public function getSelf(): \SpApi\Model\solicitations\v1\LinkObject
     {
         return $this->container['self'];
     }
@@ -316,11 +316,11 @@ class GetSolicitationActionsForOrderResponseLinks implements ModelInterface, Arr
     /**
      * Sets self
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\LinkObject $self self
+     * @param \SpApi\Model\solicitations\v1\LinkObject $self self
      *
      * @return self
      */
-    public function setSelf(\OpenAPI\Client\Model\solicitations\v1\LinkObject $self): self
+    public function setSelf(\SpApi\Model\solicitations\v1\LinkObject $self): self
     {
         if (is_null($self)) {
             throw new \InvalidArgumentException('non-nullable self cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange;
 
 /**
  * DateRangeTest Class Doc Comment
  *
  * @category    Class
  * @description The time range within which something (for example, a delivery) will occur.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DateRangeTest extends TestCase
 {

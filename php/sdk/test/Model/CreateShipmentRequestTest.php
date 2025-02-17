@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\CreateShipmentRequest;
+use SpApi\Model\merchantFulfillment\v0\CreateShipmentRequest;
 
 /**
  * CreateShipmentRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateShipmentRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateShipmentRequestTest extends TestCase
     public function testPropertyShipmentRequestDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails();
         
         $this->model->setShipmentRequestDetails($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentRequestDetails());
@@ -90,7 +90,7 @@ class CreateShipmentRequestTest extends TestCase
      */
     public function testPropertyHazmatType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\HazmatType();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\HazmatType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -104,7 +104,7 @@ class CreateShipmentRequestTest extends TestCase
     public function testPropertyLabelFormatOption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\LabelFormatOptionRequest();
         
         $this->model->setLabelFormatOption($testValue);
         $this->assertEquals($testValue, $this->model->getLabelFormatOption());

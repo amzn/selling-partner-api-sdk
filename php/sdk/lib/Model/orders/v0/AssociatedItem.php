@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AssociatedItem Class Doc Comment
  *
  * @category Class
  * @description An item that is associated with an order item. For example, a tire installation service that is purchased with tires.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'order_id' => 'string',
              'order_item_id' => 'string',
-             'association_type' => '\OpenAPI\Client\Model\orders\v0\AssociationType'    ];
+             'association_type' => '\SpApi\Model\orders\v0\AssociationType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

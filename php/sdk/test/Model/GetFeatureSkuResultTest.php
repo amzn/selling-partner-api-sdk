@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResult;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResult;
 
 /**
  * GetFeatureSkuResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the &#x60;getFeatureSKU&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetFeatureSkuResultTest extends TestCase
 {
@@ -101,7 +101,7 @@ class GetFeatureSkuResultTest extends TestCase
     public function testPropertySkuInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku();
         
         $this->model->setSkuInfo($testValue);
         $this->assertEquals($testValue, $this->model->getSkuInfo());

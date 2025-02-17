@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InboundPlanSummary Class Doc Comment
  *
  * @category Class
  * @description A light-weight inbound plan.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class InboundPlanSummary implements ModelInterface, ArrayAccess, \JsonSerializab
              'last_updated_at' => '\DateTime',
              'marketplace_ids' => 'string[]',
              'name' => 'string',
-             'source_address' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address',
+             'source_address' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Address',
              'status' => 'string'    ];
 
     /**
@@ -522,9 +522,9 @@ class InboundPlanSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets source_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Address
      */
-    public function getSourceAddress(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address
+    public function getSourceAddress(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Address
     {
         return $this->container['source_address'];
     }
@@ -532,11 +532,11 @@ class InboundPlanSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets source_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address $source_address source_address
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Address $source_address source_address
      *
      * @return self
      */
-    public function setSourceAddress(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address $source_address): self
+    public function setSourceAddress(\SpApi\Model\fulfillment\inbound\v2024_03_20\Address $source_address): self
     {
         if (is_null($source_address)) {
             throw new \InvalidArgumentException('non-nullable source_address cannot be null');

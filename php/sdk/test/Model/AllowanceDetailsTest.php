@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\v1\AllowanceDetails;
+use SpApi\Model\vendor\invoices\v1\AllowanceDetails;
 
 /**
  * AllowanceDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Monetary and tax details of the allowance.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AllowanceDetailsTest extends TestCase
 {
@@ -80,7 +80,7 @@ class AllowanceDetailsTest extends TestCase
     public function testPropertyAllowanceAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\invoices\v1\Money();
+        $testValue = new \SpApi\Model\vendor\invoices\v1\Money();
         
         $this->model->setAllowanceAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAllowanceAmount());

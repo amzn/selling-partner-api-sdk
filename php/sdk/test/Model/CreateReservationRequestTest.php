@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\CreateReservationRequest;
+use SpApi\Model\services\v1\CreateReservationRequest;
 
 /**
  * CreateReservationRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema for the &#x60;createReservation&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateReservationRequestTest extends TestCase
 {
@@ -68,7 +68,7 @@ class CreateReservationRequestTest extends TestCase
     public function testPropertyReservation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\Reservation();
+        $testValue = new \SpApi\Model\services\v1\Reservation();
         
         $this->model->setReservation($testValue);
         $this->assertEquals($testValue, $this->model->getReservation());

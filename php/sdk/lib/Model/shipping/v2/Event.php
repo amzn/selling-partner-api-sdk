@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Event Class Doc Comment
  *
  * @category Class
  * @description A tracking event.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'event_code' => '\OpenAPI\Client\Model\shipping\v2\EventCode',
-             'location' => '\OpenAPI\Client\Model\shipping\v2\Location',
+             'event_code' => '\SpApi\Model\shipping\v2\EventCode',
+             'location' => '\SpApi\Model\shipping\v2\Location',
              'event_time' => '\DateTime'    ];
 
     /**
@@ -342,9 +342,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets location
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Location|null
+     * @return \SpApi\Model\shipping\v2\Location|null
      */
-    public function getLocation(): ?\OpenAPI\Client\Model\shipping\v2\Location
+    public function getLocation(): ?\SpApi\Model\shipping\v2\Location
     {
         return $this->container['location'];
     }
@@ -352,11 +352,11 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets location
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Location|null $location location
+     * @param \SpApi\Model\shipping\v2\Location|null $location location
      *
      * @return self
      */
-    public function setLocation(?\OpenAPI\Client\Model\shipping\v2\Location $location): self
+    public function setLocation(?\SpApi\Model\shipping\v2\Location $location): self
     {
         if (is_null($location)) {
             array_push($this->openAPINullablesSetToNull, 'location');

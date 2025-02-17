@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice;
+use SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice;
 
 /**
  * FeaturedOfferExpectedPriceTest Class Doc Comment
  *
  * @category    Class
  * @description The item price at or below which the target offer may be featured.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeaturedOfferExpectedPriceTest extends TestCase
 {
@@ -57,7 +57,7 @@ class FeaturedOfferExpectedPriceTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -69,7 +69,7 @@ class FeaturedOfferExpectedPriceTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Points();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

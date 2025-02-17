@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\TaxDetail;
+use SpApi\Model\shipping\v2\TaxDetail;
 
 /**
  * TaxDetailTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TaxDetailTest extends TestCase
 {
@@ -56,7 +56,7 @@ class TaxDetailTest extends TestCase
      */
     public function testPropertyTaxType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\TaxType();
+        $enumInstance = new \SpApi\Model\shipping\v2\TaxType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetPackageTrackingDetailsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getPackageTrackingDetails&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetPackageTrackingDetailsResponse implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails',
-             'errors' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Error[]'    ];
+             'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails',
+             'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetPackageTrackingDetailsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails
+    public function getPayload(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetPackageTrackingDetailsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails|null $payload payload
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails $payload): self
+    public function setPayload(?\SpApi\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

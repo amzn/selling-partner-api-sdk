@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,12 +27,12 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace OpenAPI\Client\Test\Api;
+namespace SpApi\Test\Api;
 
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\ApiException;
+use SpApi\Configuration;
+use SpApi\ApiException;
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Test\TestHelper;
+use SpApi\Test\TestHelper;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use Dotenv\Dotenv;
 
@@ -43,7 +43,7 @@ $dotenv->load();
  * BaseTestCase Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

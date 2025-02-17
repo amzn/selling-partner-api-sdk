@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderList;
+use SpApi\Model\vendor\orders\v1\OrderList;
 
 /**
  * OrderListTest Class Doc Comment
  *
  * @category    Class
  * @description A list of orders returned as response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderListTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OrderListTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Pagination();
+        $testValue = new \SpApi\Model\vendor\orders\v1\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

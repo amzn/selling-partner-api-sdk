@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubmitFulfillmentOrderStatusUpdateRequest Class Doc Comment
  *
  * @category Class
  * @description The request body schema for the &#x60;submitFulfillmentOrderStatusUpdate&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SubmitFulfillmentOrderStatusUpdateRequest implements ModelInterface, Array
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'fulfillment_order_status' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderStatus'    ];
+             'fulfillment_order_status' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

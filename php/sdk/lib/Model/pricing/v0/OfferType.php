@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OfferType Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,11 +59,11 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'offer_type' => '\OpenAPI\Client\Model\pricing\v0\OfferCustomerType',
-             'buying_price' => '\OpenAPI\Client\Model\pricing\v0\PriceType',
-             'regular_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'business_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'quantity_discount_prices' => '\OpenAPI\Client\Model\pricing\v0\QuantityDiscountPriceType[]',
+             'offer_type' => '\SpApi\Model\pricing\v0\OfferCustomerType',
+             'buying_price' => '\SpApi\Model\pricing\v0\PriceType',
+             'regular_price' => '\SpApi\Model\pricing\v0\MoneyType',
+             'business_price' => '\SpApi\Model\pricing\v0\MoneyType',
+             'quantity_discount_prices' => '\SpApi\Model\pricing\v0\QuantityDiscountPriceType[]',
              'fulfillment_channel' => 'string',
              'item_condition' => 'string',
              'item_sub_condition' => 'string',
@@ -401,9 +401,9 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buying_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\PriceType
+     * @return \SpApi\Model\pricing\v0\PriceType
      */
-    public function getBuyingPrice(): \OpenAPI\Client\Model\pricing\v0\PriceType
+    public function getBuyingPrice(): \SpApi\Model\pricing\v0\PriceType
     {
         return $this->container['buying_price'];
     }
@@ -411,11 +411,11 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buying_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\PriceType $buying_price buying_price
+     * @param \SpApi\Model\pricing\v0\PriceType $buying_price buying_price
      *
      * @return self
      */
-    public function setBuyingPrice(\OpenAPI\Client\Model\pricing\v0\PriceType $buying_price): self
+    public function setBuyingPrice(\SpApi\Model\pricing\v0\PriceType $buying_price): self
     {
         if (is_null($buying_price)) {
             throw new \InvalidArgumentException('non-nullable buying_price cannot be null');
@@ -428,9 +428,9 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets regular_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getRegularPrice(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getRegularPrice(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['regular_price'];
     }
@@ -438,11 +438,11 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets regular_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $regular_price regular_price
+     * @param \SpApi\Model\pricing\v0\MoneyType $regular_price regular_price
      *
      * @return self
      */
-    public function setRegularPrice(\OpenAPI\Client\Model\pricing\v0\MoneyType $regular_price): self
+    public function setRegularPrice(\SpApi\Model\pricing\v0\MoneyType $regular_price): self
     {
         if (is_null($regular_price)) {
             throw new \InvalidArgumentException('non-nullable regular_price cannot be null');
@@ -455,9 +455,9 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets business_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType|null
+     * @return \SpApi\Model\pricing\v0\MoneyType|null
      */
-    public function getBusinessPrice(): ?\OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getBusinessPrice(): ?\SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['business_price'];
     }
@@ -465,11 +465,11 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets business_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType|null $business_price business_price
+     * @param \SpApi\Model\pricing\v0\MoneyType|null $business_price business_price
      *
      * @return self
      */
-    public function setBusinessPrice(?\OpenAPI\Client\Model\pricing\v0\MoneyType $business_price): self
+    public function setBusinessPrice(?\SpApi\Model\pricing\v0\MoneyType $business_price): self
     {
         if (is_null($business_price)) {
             array_push($this->openAPINullablesSetToNull, 'business_price');

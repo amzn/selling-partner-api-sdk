@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListDeliveryWindowOptionsResponse Class Doc Comment
  *
  * @category Class
  * @description The &#x60;listDeliveryWindowOptions&#x60; response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ListDeliveryWindowOptionsResponse implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'delivery_window_options' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\DeliveryWindowOption[]',
-             'pagination' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination'    ];
+             'delivery_window_options' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\DeliveryWindowOption[]',
+             'pagination' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -331,9 +331,9 @@ class ListDeliveryWindowOptionsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination
+    public function getPagination(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination
     {
         return $this->container['pagination'];
     }
@@ -341,11 +341,11 @@ class ListDeliveryWindowOptionsResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination|null $pagination pagination
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

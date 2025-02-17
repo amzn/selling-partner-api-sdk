@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\AffordabilityExpenseEvent;
+use SpApi\Model\finances\v0\AffordabilityExpenseEvent;
 
 /**
  * AffordabilityExpenseEventTest Class Doc Comment
  *
  * @category    Class
  * @description An expense related to an affordability promotion.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AffordabilityExpenseEventTest extends TestCase
 {
@@ -102,7 +102,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyBaseExpense()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setBaseExpense($testValue);
         $this->assertEquals($testValue, $this->model->getBaseExpense());
@@ -114,7 +114,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTaxTypeCgst()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxTypeCgst($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTypeCgst());
@@ -126,7 +126,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTaxTypeSgst()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxTypeSgst($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTypeSgst());
@@ -138,7 +138,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTaxTypeIgst()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxTypeIgst($testValue);
         $this->assertEquals($testValue, $this->model->getTaxTypeIgst());
@@ -150,7 +150,7 @@ class AffordabilityExpenseEventTest extends TestCase
     public function testPropertyTotalExpense()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTotalExpense($testValue);
         $this->assertEquals($testValue, $this->model->getTotalExpense());

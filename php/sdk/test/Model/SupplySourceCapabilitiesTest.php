@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities;
+use SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities;
 
 /**
  * SupplySourceCapabilitiesTest Class Doc Comment
  *
  * @category    Class
  * @description The capabilities of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SupplySourceCapabilitiesTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SupplySourceCapabilitiesTest extends TestCase
     public function testPropertyOutbound()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\OutboundCapability();
         
         $this->model->setOutbound($testValue);
         $this->assertEquals($testValue, $this->model->getOutbound());
@@ -69,7 +69,7 @@ class SupplySourceCapabilitiesTest extends TestCase
     public function testPropertyServices()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ServicesCapability();
         
         $this->model->setServices($testValue);
         $this->assertEquals($testValue, $this->model->getServices());

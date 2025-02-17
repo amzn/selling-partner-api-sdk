@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateReservationRequest Class Doc Comment
  *
  * @category Class
  * @description Request schema for the &#x60;createReservation&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class CreateReservationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPITypes = [
              'resource_id' => 'string',
-             'reservation' => '\OpenAPI\Client\Model\services\v1\Reservation'    ];
+             'reservation' => '\SpApi\Model\services\v1\Reservation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class CreateReservationRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets reservation
      *
-     * @return \OpenAPI\Client\Model\services\v1\Reservation
+     * @return \SpApi\Model\services\v1\Reservation
      */
-    public function getReservation(): \OpenAPI\Client\Model\services\v1\Reservation
+    public function getReservation(): \SpApi\Model\services\v1\Reservation
     {
         return $this->container['reservation'];
     }
@@ -344,11 +344,11 @@ class CreateReservationRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets reservation
      *
-     * @param \OpenAPI\Client\Model\services\v1\Reservation $reservation reservation
+     * @param \SpApi\Model\services\v1\Reservation $reservation reservation
      *
      * @return self
      */
-    public function setReservation(\OpenAPI\Client\Model\services\v1\Reservation $reservation): self
+    public function setReservation(\SpApi\Model\services\v1\Reservation $reservation): self
     {
         if (is_null($reservation)) {
             throw new \InvalidArgumentException('non-nullable reservation cannot be null');

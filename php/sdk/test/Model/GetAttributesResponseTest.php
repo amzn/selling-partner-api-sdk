@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetAttributesResponse;
+use SpApi\Model\messaging\v1\GetAttributesResponse;
 
 /**
  * GetAttributesResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the GetAttributes operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAttributesResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetAttributesResponseTest extends TestCase
     public function testPropertyBuyer()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer();
+        $testValue = new \SpApi\Model\messaging\v1\GetAttributesResponseBuyer();
         
         $this->model->setBuyer($testValue);
         $this->assertEquals($testValue, $this->model->getBuyer());

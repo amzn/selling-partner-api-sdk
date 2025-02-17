@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShippingOption Class Doc Comment
  *
  * @category Class
  * @description The shipping option available for the offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ShippingOption implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'shipping_option_type' => 'string',
-             'price' => '\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType'    ];
+             'price' => '\SpApi\Model\pricing\v2022_05_01\MoneyType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -366,9 +366,9 @@ class ShippingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets price
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+     * @return \SpApi\Model\pricing\v2022_05_01\MoneyType
      */
-    public function getPrice(): \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+    public function getPrice(): \SpApi\Model\pricing\v2022_05_01\MoneyType
     {
         return $this->container['price'];
     }
@@ -376,11 +376,11 @@ class ShippingOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets price
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $price price
+     * @param \SpApi\Model\pricing\v2022_05_01\MoneyType $price price
      *
      * @return self
      */
-    public function setPrice(\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $price): self
+    public function setPrice(\SpApi\Model\pricing\v2022_05_01\MoneyType $price): self
     {
         if (is_null($price)) {
             throw new \InvalidArgumentException('non-nullable price cannot be null');

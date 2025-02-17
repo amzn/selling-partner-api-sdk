@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest;
+use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest;
 
 /**
  * CreateScheduledPackagesRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body for the POST /easyShip/2022-03-23/packages/bulk API.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateScheduledPackagesRequestTest extends TestCase
 {
@@ -78,7 +78,7 @@ class CreateScheduledPackagesRequestTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\LabelFormat();
+        $enumInstance = new \SpApi\Model\easyship\v2022_03_23\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetShipmentItemsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the getShipmentItems operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetShipmentItemsResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResult',
-             'errors' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResult',
+             'errors' => '\SpApi\Model\fulfillment\inbound\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetShipmentItemsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResult|null
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResult
+    public function getPayload(): ?\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResult
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetShipmentItemsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResult|null $payload payload
+     * @param \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResult $payload): self
+    public function setPayload(?\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

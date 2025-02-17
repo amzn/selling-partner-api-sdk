@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\v1\NetCostUnitOfMeasure;
+use SpApi\Model\vendor\invoices\v1\NetCostUnitOfMeasure;
 
 /**
  * NetCostUnitOfMeasureTest Class Doc Comment
  *
  * @category    Class
  * @description This field represents weight unit of measure of items that are ordered by cases and supporting priced by weight.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class NetCostUnitOfMeasureTest extends TestCase
 {

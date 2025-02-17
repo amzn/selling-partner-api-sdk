@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\Destination;
 
 /**
  * DestinationTest Class Doc Comment
  *
  * @category    Class
  * @description The destination for the delivery offer.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DestinationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class DestinationTest extends TestCase
     public function testPropertyDeliveryAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress();
         
         $this->model->setDeliveryAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryAddress());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PostContentDocumentRequest Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class PostContentDocumentRequest implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'content_document' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument'    ];
+             'content_document' => '\SpApi\Model\aplusContent\v2020_11_01\ContentDocument'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -296,9 +296,9 @@ class PostContentDocumentRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets content_document
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ContentDocument
      */
-    public function getContentDocument(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument
+    public function getContentDocument(): \SpApi\Model\aplusContent\v2020_11_01\ContentDocument
     {
         return $this->container['content_document'];
     }
@@ -306,11 +306,11 @@ class PostContentDocumentRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets content_document
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument $content_document content_document
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ContentDocument $content_document content_document
      *
      * @return self
      */
-    public function setContentDocument(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument $content_document): self
+    public function setContentDocument(\SpApi\Model\aplusContent\v2020_11_01\ContentDocument $content_document): self
     {
         if (is_null($content_document)) {
             throw new \InvalidArgumentException('non-nullable content_document cannot be null');

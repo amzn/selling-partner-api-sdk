@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemStatusOrderedQuantity Class Doc Comment
  *
  * @category Class
  * @description Ordered quantity information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class OrderItemStatusOrderedQuantity implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'ordered_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
-             'ordered_quantity_details' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderedQuantityDetails[]'    ];
+             'ordered_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
+             'ordered_quantity_details' => '\SpApi\Model\vendor\orders\v1\OrderedQuantityDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class OrderItemStatusOrderedQuantity implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets ordered_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity|null
      */
-    public function getOrderedQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getOrderedQuantity(): ?\SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['ordered_quantity'];
     }
@@ -311,11 +311,11 @@ class OrderItemStatusOrderedQuantity implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets ordered_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null $ordered_quantity ordered_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity|null $ordered_quantity ordered_quantity
      *
      * @return self
      */
-    public function setOrderedQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $ordered_quantity): self
+    public function setOrderedQuantity(?\SpApi\Model\vendor\orders\v1\ItemQuantity $ordered_quantity): self
     {
         if (is_null($ordered_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'ordered_quantity');

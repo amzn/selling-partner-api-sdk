@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TaxWithholdingEvent Class Doc Comment
  *
  * @category Class
  * @description A TaxWithholding event on seller&#39;s account.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPITypes = [
              'posted_date' => '\DateTime',
-             'base_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'withheld_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_withholding_period' => '\OpenAPI\Client\Model\finances\v0\TaxWithholdingPeriod'    ];
+             'base_amount' => '\SpApi\Model\finances\v0\Currency',
+             'withheld_amount' => '\SpApi\Model\finances\v0\Currency',
+             'tax_withholding_period' => '\SpApi\Model\finances\v0\TaxWithholdingPeriod'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -349,9 +349,9 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets base_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getBaseAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getBaseAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['base_amount'];
     }
@@ -359,11 +359,11 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets base_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $base_amount base_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $base_amount base_amount
      *
      * @return self
      */
-    public function setBaseAmount(?\OpenAPI\Client\Model\finances\v0\Currency $base_amount): self
+    public function setBaseAmount(?\SpApi\Model\finances\v0\Currency $base_amount): self
     {
         if (is_null($base_amount)) {
             array_push($this->openAPINullablesSetToNull, 'base_amount');
@@ -383,9 +383,9 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets withheld_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getWithheldAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getWithheldAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['withheld_amount'];
     }
@@ -393,11 +393,11 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets withheld_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $withheld_amount withheld_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $withheld_amount withheld_amount
      *
      * @return self
      */
-    public function setWithheldAmount(?\OpenAPI\Client\Model\finances\v0\Currency $withheld_amount): self
+    public function setWithheldAmount(?\SpApi\Model\finances\v0\Currency $withheld_amount): self
     {
         if (is_null($withheld_amount)) {
             array_push($this->openAPINullablesSetToNull, 'withheld_amount');
@@ -417,9 +417,9 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tax_withholding_period
      *
-     * @return \OpenAPI\Client\Model\finances\v0\TaxWithholdingPeriod|null
+     * @return \SpApi\Model\finances\v0\TaxWithholdingPeriod|null
      */
-    public function getTaxWithholdingPeriod(): ?\OpenAPI\Client\Model\finances\v0\TaxWithholdingPeriod
+    public function getTaxWithholdingPeriod(): ?\SpApi\Model\finances\v0\TaxWithholdingPeriod
     {
         return $this->container['tax_withholding_period'];
     }
@@ -427,11 +427,11 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tax_withholding_period
      *
-     * @param \OpenAPI\Client\Model\finances\v0\TaxWithholdingPeriod|null $tax_withholding_period tax_withholding_period
+     * @param \SpApi\Model\finances\v0\TaxWithholdingPeriod|null $tax_withholding_period tax_withholding_period
      *
      * @return self
      */
-    public function setTaxWithholdingPeriod(?\OpenAPI\Client\Model\finances\v0\TaxWithholdingPeriod $tax_withholding_period): self
+    public function setTaxWithholdingPeriod(?\SpApi\Model\finances\v0\TaxWithholdingPeriod $tax_withholding_period): self
     {
         if (is_null($tax_withholding_period)) {
             array_push($this->openAPINullablesSetToNull, 'tax_withholding_period');

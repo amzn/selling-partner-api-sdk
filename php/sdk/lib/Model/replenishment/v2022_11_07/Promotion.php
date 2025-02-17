@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Promotion Class Doc Comment
  *
  * @category Class
  * @description Offer promotions to include in the result filter criteria.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'selling_partner_funded_base_discount' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding',
-             'selling_partner_funded_tiered_discount' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding',
-             'amazon_funded_base_discount' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding',
-             'amazon_funded_tiered_discount' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding'    ];
+             'selling_partner_funded_base_discount' => '\SpApi\Model\replenishment\v2022_11_07\DiscountFunding',
+             'selling_partner_funded_tiered_discount' => '\SpApi\Model\replenishment\v2022_11_07\DiscountFunding',
+             'amazon_funded_base_discount' => '\SpApi\Model\replenishment\v2022_11_07\DiscountFunding',
+             'amazon_funded_tiered_discount' => '\SpApi\Model\replenishment\v2022_11_07\DiscountFunding'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -315,9 +315,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_partner_funded_base_discount
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null
      */
-    public function getSellingPartnerFundedBaseDiscount(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding
+    public function getSellingPartnerFundedBaseDiscount(): ?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding
     {
         return $this->container['selling_partner_funded_base_discount'];
     }
@@ -325,11 +325,11 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_partner_funded_base_discount
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null $selling_partner_funded_base_discount selling_partner_funded_base_discount
+     * @param \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null $selling_partner_funded_base_discount selling_partner_funded_base_discount
      *
      * @return self
      */
-    public function setSellingPartnerFundedBaseDiscount(?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding $selling_partner_funded_base_discount): self
+    public function setSellingPartnerFundedBaseDiscount(?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding $selling_partner_funded_base_discount): self
     {
         if (is_null($selling_partner_funded_base_discount)) {
             array_push($this->openAPINullablesSetToNull, 'selling_partner_funded_base_discount');
@@ -349,9 +349,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_partner_funded_tiered_discount
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null
      */
-    public function getSellingPartnerFundedTieredDiscount(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding
+    public function getSellingPartnerFundedTieredDiscount(): ?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding
     {
         return $this->container['selling_partner_funded_tiered_discount'];
     }
@@ -359,11 +359,11 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_partner_funded_tiered_discount
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null $selling_partner_funded_tiered_discount selling_partner_funded_tiered_discount
+     * @param \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null $selling_partner_funded_tiered_discount selling_partner_funded_tiered_discount
      *
      * @return self
      */
-    public function setSellingPartnerFundedTieredDiscount(?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding $selling_partner_funded_tiered_discount): self
+    public function setSellingPartnerFundedTieredDiscount(?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding $selling_partner_funded_tiered_discount): self
     {
         if (is_null($selling_partner_funded_tiered_discount)) {
             array_push($this->openAPINullablesSetToNull, 'selling_partner_funded_tiered_discount');
@@ -383,9 +383,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amazon_funded_base_discount
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null
      */
-    public function getAmazonFundedBaseDiscount(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding
+    public function getAmazonFundedBaseDiscount(): ?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding
     {
         return $this->container['amazon_funded_base_discount'];
     }
@@ -393,11 +393,11 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amazon_funded_base_discount
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null $amazon_funded_base_discount amazon_funded_base_discount
+     * @param \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null $amazon_funded_base_discount amazon_funded_base_discount
      *
      * @return self
      */
-    public function setAmazonFundedBaseDiscount(?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding $amazon_funded_base_discount): self
+    public function setAmazonFundedBaseDiscount(?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding $amazon_funded_base_discount): self
     {
         if (is_null($amazon_funded_base_discount)) {
             array_push($this->openAPINullablesSetToNull, 'amazon_funded_base_discount');
@@ -417,9 +417,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amazon_funded_tiered_discount
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null
      */
-    public function getAmazonFundedTieredDiscount(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding
+    public function getAmazonFundedTieredDiscount(): ?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding
     {
         return $this->container['amazon_funded_tiered_discount'];
     }
@@ -427,11 +427,11 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amazon_funded_tiered_discount
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding|null $amazon_funded_tiered_discount amazon_funded_tiered_discount
+     * @param \SpApi\Model\replenishment\v2022_11_07\DiscountFunding|null $amazon_funded_tiered_discount amazon_funded_tiered_discount
      *
      * @return self
      */
-    public function setAmazonFundedTieredDiscount(?\OpenAPI\Client\Model\replenishment\v2022_11_07\DiscountFunding $amazon_funded_tiered_discount): self
+    public function setAmazonFundedTieredDiscount(?\SpApi\Model\replenishment\v2022_11_07\DiscountFunding $amazon_funded_tiered_discount): self
     {
         if (is_null($amazon_funded_tiered_discount)) {
             array_push($this->openAPINullablesSetToNull, 'amazon_funded_tiered_discount');

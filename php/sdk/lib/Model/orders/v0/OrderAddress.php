@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderAddress Class Doc Comment
  *
  * @category Class
  * @description The shipping address for the order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'amazon_order_id' => 'string',
              'buyer_company_name' => 'string',
-             'shipping_address' => '\OpenAPI\Client\Model\orders\v0\Address',
-             'delivery_preferences' => '\OpenAPI\Client\Model\orders\v0\DeliveryPreferences'    ];
+             'shipping_address' => '\SpApi\Model\orders\v0\Address',
+             'delivery_preferences' => '\SpApi\Model\orders\v0\DeliveryPreferences'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -379,9 +379,9 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_address
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Address|null
+     * @return \SpApi\Model\orders\v0\Address|null
      */
-    public function getShippingAddress(): ?\OpenAPI\Client\Model\orders\v0\Address
+    public function getShippingAddress(): ?\SpApi\Model\orders\v0\Address
     {
         return $this->container['shipping_address'];
     }
@@ -389,11 +389,11 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_address
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Address|null $shipping_address shipping_address
+     * @param \SpApi\Model\orders\v0\Address|null $shipping_address shipping_address
      *
      * @return self
      */
-    public function setShippingAddress(?\OpenAPI\Client\Model\orders\v0\Address $shipping_address): self
+    public function setShippingAddress(?\SpApi\Model\orders\v0\Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_address');
@@ -413,9 +413,9 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets delivery_preferences
      *
-     * @return \OpenAPI\Client\Model\orders\v0\DeliveryPreferences|null
+     * @return \SpApi\Model\orders\v0\DeliveryPreferences|null
      */
-    public function getDeliveryPreferences(): ?\OpenAPI\Client\Model\orders\v0\DeliveryPreferences
+    public function getDeliveryPreferences(): ?\SpApi\Model\orders\v0\DeliveryPreferences
     {
         return $this->container['delivery_preferences'];
     }
@@ -423,11 +423,11 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_preferences
      *
-     * @param \OpenAPI\Client\Model\orders\v0\DeliveryPreferences|null $delivery_preferences delivery_preferences
+     * @param \SpApi\Model\orders\v0\DeliveryPreferences|null $delivery_preferences delivery_preferences
      *
      * @return self
      */
-    public function setDeliveryPreferences(?\OpenAPI\Client\Model\orders\v0\DeliveryPreferences $delivery_preferences): self
+    public function setDeliveryPreferences(?\SpApi\Model\orders\v0\DeliveryPreferences $delivery_preferences): self
     {
         if (is_null($delivery_preferences)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_preferences');

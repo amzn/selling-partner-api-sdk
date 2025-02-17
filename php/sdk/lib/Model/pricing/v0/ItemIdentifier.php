@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemIdentifier Class Doc Comment
  *
  * @category Class
  * @description Information that identifies an item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
              'marketplace_id' => 'string',
              'asin' => 'string',
              'seller_sku' => 'string',
-             'item_condition' => '\OpenAPI\Client\Model\pricing\v0\ConditionType'    ];
+             'item_condition' => '\SpApi\Model\pricing\v0\ConditionType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

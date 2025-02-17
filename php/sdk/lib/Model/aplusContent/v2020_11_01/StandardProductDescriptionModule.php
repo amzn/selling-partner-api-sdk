@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardProductDescriptionModule Class Doc Comment
  *
  * @category Class
  * @description Standard product description text.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class StandardProductDescriptionModule implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'body' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent'    ];
+             'body' => '\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class StandardProductDescriptionModule implements ModelInterface, ArrayAccess, \
     /**
      * Gets body
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent
      */
-    public function getBody(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent
+    public function getBody(): \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent
     {
         return $this->container['body'];
     }
@@ -307,11 +307,11 @@ class StandardProductDescriptionModule implements ModelInterface, ArrayAccess, \
     /**
      * Sets body
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent $body body
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent $body body
      *
      * @return self
      */
-    public function setBody(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent $body): self
+    public function setBody(\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent $body): self
     {
         if (is_null($body)) {
             throw new \InvalidArgumentException('non-nullable body cannot be null');

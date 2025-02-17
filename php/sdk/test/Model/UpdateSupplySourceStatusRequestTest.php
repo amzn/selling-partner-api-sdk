@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest;
+use SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest;
 
 /**
  * UpdateSupplySourceStatusRequestTest Class Doc Comment
  *
  * @category    Class
  * @description A request to update the status of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateSupplySourceStatusRequestTest extends TestCase
 {
@@ -56,7 +56,7 @@ class UpdateSupplySourceStatusRequestTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceStatus();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\SupplySourceStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

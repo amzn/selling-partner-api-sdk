@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OperatingHours Class Doc Comment
  *
  * @category Class
  * @description The hours in which the access point shall remain operational
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'closing_time' => '\OpenAPI\Client\Model\shipping\v2\TimeOfDay',
-             'opening_time' => '\OpenAPI\Client\Model\shipping\v2\TimeOfDay',
-             'mid_day_closures' => '\OpenAPI\Client\Model\shipping\v2\TimeOfDay[]'    ];
+             'closing_time' => '\SpApi\Model\shipping\v2\TimeOfDay',
+             'opening_time' => '\SpApi\Model\shipping\v2\TimeOfDay',
+             'mid_day_closures' => '\SpApi\Model\shipping\v2\TimeOfDay[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -309,9 +309,9 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets closing_time
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\TimeOfDay|null
+     * @return \SpApi\Model\shipping\v2\TimeOfDay|null
      */
-    public function getClosingTime(): ?\OpenAPI\Client\Model\shipping\v2\TimeOfDay
+    public function getClosingTime(): ?\SpApi\Model\shipping\v2\TimeOfDay
     {
         return $this->container['closing_time'];
     }
@@ -319,11 +319,11 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets closing_time
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\TimeOfDay|null $closing_time closing_time
+     * @param \SpApi\Model\shipping\v2\TimeOfDay|null $closing_time closing_time
      *
      * @return self
      */
-    public function setClosingTime(?\OpenAPI\Client\Model\shipping\v2\TimeOfDay $closing_time): self
+    public function setClosingTime(?\SpApi\Model\shipping\v2\TimeOfDay $closing_time): self
     {
         if (is_null($closing_time)) {
             array_push($this->openAPINullablesSetToNull, 'closing_time');
@@ -343,9 +343,9 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets opening_time
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\TimeOfDay|null
+     * @return \SpApi\Model\shipping\v2\TimeOfDay|null
      */
-    public function getOpeningTime(): ?\OpenAPI\Client\Model\shipping\v2\TimeOfDay
+    public function getOpeningTime(): ?\SpApi\Model\shipping\v2\TimeOfDay
     {
         return $this->container['opening_time'];
     }
@@ -353,11 +353,11 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets opening_time
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\TimeOfDay|null $opening_time opening_time
+     * @param \SpApi\Model\shipping\v2\TimeOfDay|null $opening_time opening_time
      *
      * @return self
      */
-    public function setOpeningTime(?\OpenAPI\Client\Model\shipping\v2\TimeOfDay $opening_time): self
+    public function setOpeningTime(?\SpApi\Model\shipping\v2\TimeOfDay $opening_time): self
     {
         if (is_null($opening_time)) {
             array_push($this->openAPINullablesSetToNull, 'opening_time');

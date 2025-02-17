@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Address Class Doc Comment
  *
  * @category Class
  * @description The shipping address details of the shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -71,7 +71,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
              'postal_code' => 'string',
              'country_code' => 'string',
              'phone' => 'string',
-             'address_type' => '\OpenAPI\Client\Model\invoicing\v0\AddressTypeEnum'    ];
+             'address_type' => '\SpApi\Model\invoicing\v0\AddressTypeEnum'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

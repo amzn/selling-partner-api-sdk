@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeesEstimateRequest Class Doc Comment
  *
  * @category Class
  * @description A product, marketplace, and proposed price used to request estimated fees.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,9 +62,9 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
              'is_amazon_fulfilled' => 'bool',
-             'price_to_estimate_fees' => '\OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees',
+             'price_to_estimate_fees' => '\SpApi\Model\productFees\v0\PriceToEstimateFees',
              'identifier' => 'string',
-             'optional_fulfillment_program' => '\OpenAPI\Client\Model\productFees\v0\OptionalFulfillmentProgram'    ];
+             'optional_fulfillment_program' => '\SpApi\Model\productFees\v0\OptionalFulfillmentProgram'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -392,9 +392,9 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets price_to_estimate_fees
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees
+     * @return \SpApi\Model\productFees\v0\PriceToEstimateFees
      */
-    public function getPriceToEstimateFees(): \OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees
+    public function getPriceToEstimateFees(): \SpApi\Model\productFees\v0\PriceToEstimateFees
     {
         return $this->container['price_to_estimate_fees'];
     }
@@ -402,11 +402,11 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets price_to_estimate_fees
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees $price_to_estimate_fees price_to_estimate_fees
+     * @param \SpApi\Model\productFees\v0\PriceToEstimateFees $price_to_estimate_fees price_to_estimate_fees
      *
      * @return self
      */
-    public function setPriceToEstimateFees(\OpenAPI\Client\Model\productFees\v0\PriceToEstimateFees $price_to_estimate_fees): self
+    public function setPriceToEstimateFees(\SpApi\Model\productFees\v0\PriceToEstimateFees $price_to_estimate_fees): self
     {
         if (is_null($price_to_estimate_fees)) {
             throw new \InvalidArgumentException('non-nullable price_to_estimate_fees cannot be null');

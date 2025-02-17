@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateVerificationStatusRequestBody Class Doc Comment
  *
  * @category Class
  * @description The updated values of the &#x60;VerificationStatus&#x60; field.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'status' => '\OpenAPI\Client\Model\orders\v0\VerificationStatus',
+             'status' => '\SpApi\Model\orders\v0\VerificationStatus',
              'external_reviewer_id' => 'string',
              'rejection_reason_id' => 'string',
-             'verification_details' => '\OpenAPI\Client\Model\orders\v0\VerificationDetails'    ];
+             'verification_details' => '\SpApi\Model\orders\v0\VerificationDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -413,9 +413,9 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     /**
      * Gets verification_details
      *
-     * @return \OpenAPI\Client\Model\orders\v0\VerificationDetails|null
+     * @return \SpApi\Model\orders\v0\VerificationDetails|null
      */
-    public function getVerificationDetails(): ?\OpenAPI\Client\Model\orders\v0\VerificationDetails
+    public function getVerificationDetails(): ?\SpApi\Model\orders\v0\VerificationDetails
     {
         return $this->container['verification_details'];
     }
@@ -423,11 +423,11 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     /**
      * Sets verification_details
      *
-     * @param \OpenAPI\Client\Model\orders\v0\VerificationDetails|null $verification_details verification_details
+     * @param \SpApi\Model\orders\v0\VerificationDetails|null $verification_details verification_details
      *
      * @return self
      */
-    public function setVerificationDetails(?\OpenAPI\Client\Model\orders\v0\VerificationDetails $verification_details): self
+    public function setVerificationDetails(?\SpApi\Model\orders\v0\VerificationDetails $verification_details): self
     {
         if (is_null($verification_details)) {
             array_push($this->openAPINullablesSetToNull, 'verification_details');

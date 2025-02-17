@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ServiceDocumentUploadDestination;
+use SpApi\Model\services\v1\ServiceDocumentUploadDestination;
 
 /**
  * ServiceDocumentUploadDestinationTest Class Doc Comment
  *
  * @category    Class
  * @description Information about an upload destination.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ServiceDocumentUploadDestinationTest extends TestCase
 {
@@ -79,7 +79,7 @@ class ServiceDocumentUploadDestinationTest extends TestCase
     public function testPropertyEncryptionDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\EncryptionDetails();
+        $testValue = new \SpApi\Model\services\v1\EncryptionDetails();
         
         $this->model->setEncryptionDetails($testValue);
         $this->assertEquals($testValue, $this->model->getEncryptionDetails());

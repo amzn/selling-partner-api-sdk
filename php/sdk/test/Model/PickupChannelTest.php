@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel;
+use SpApi\Model\supplySources\v2020_07_01\PickupChannel;
 
 /**
  * PickupChannelTest Class Doc Comment
  *
  * @category    Class
  * @description The pick up channel of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PickupChannelTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyInventoryHoldPeriod()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\Duration();
         
         $this->model->setInventoryHoldPeriod($testValue);
         $this->assertEquals($testValue, $this->model->getInventoryHoldPeriod());
@@ -80,7 +80,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());
@@ -92,7 +92,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyInStorePickupConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\InStorePickupConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\InStorePickupConfiguration();
         
         $this->model->setInStorePickupConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getInStorePickupConfiguration());
@@ -104,7 +104,7 @@ class PickupChannelTest extends TestCase
     public function testPropertyCurbsidePickupConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration();
         
         $this->model->setCurbsidePickupConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getCurbsidePickupConfiguration());

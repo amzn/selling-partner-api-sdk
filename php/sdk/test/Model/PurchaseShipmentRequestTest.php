@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest;
+use SpApi\Model\shipping\v2\PurchaseShipmentRequest;
 
 /**
  * PurchaseShipmentRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the purchaseShipment operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PurchaseShipmentRequestTest extends TestCase
 {
@@ -79,7 +79,7 @@ class PurchaseShipmentRequestTest extends TestCase
     public function testPropertyRequestedDocumentSpecification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification();
+        $testValue = new \SpApi\Model\shipping\v2\RequestedDocumentSpecification();
         
         $this->model->setRequestedDocumentSpecification($testValue);
         $this->assertEquals($testValue, $this->model->getRequestedDocumentSpecification());

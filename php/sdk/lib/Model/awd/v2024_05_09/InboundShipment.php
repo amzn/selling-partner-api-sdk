@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InboundShipment Class Doc Comment
  *
  * @category Class
  * @description Represents an AWD inbound shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,19 +60,19 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'carrier_code' => '\OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode',
+             'carrier_code' => '\SpApi\Model\awd\v2024_05_09\CarrierCode',
              'created_at' => '\DateTime',
-             'destination_address' => '\OpenAPI\Client\Model\awd\v2024_05_09\Address',
+             'destination_address' => '\SpApi\Model\awd\v2024_05_09\Address',
              'external_reference_id' => 'string',
              'order_id' => 'string',
-             'origin_address' => '\OpenAPI\Client\Model\awd\v2024_05_09\Address',
-             'received_quantity' => '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity[]',
+             'origin_address' => '\SpApi\Model\awd\v2024_05_09\Address',
+             'received_quantity' => '\SpApi\Model\awd\v2024_05_09\InventoryQuantity[]',
              'ship_by' => '\DateTime',
-             'shipment_container_quantities' => '\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageQuantity[]',
+             'shipment_container_quantities' => '\SpApi\Model\awd\v2024_05_09\DistributionPackageQuantity[]',
              'shipment_id' => 'string',
-             'shipment_sku_quantities' => '\OpenAPI\Client\Model\awd\v2024_05_09\SkuQuantity[]',
+             'shipment_sku_quantities' => '\SpApi\Model\awd\v2024_05_09\SkuQuantity[]',
              'destination_region' => 'string',
-             'shipment_status' => '\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentStatus',
+             'shipment_status' => '\SpApi\Model\awd\v2024_05_09\InboundShipmentStatus',
              'tracking_id' => 'string',
              'updated_at' => '\DateTime',
              'warehouse_reference_id' => 'string'    ];
@@ -429,9 +429,9 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets carrier_code
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode|null
+     * @return \SpApi\Model\awd\v2024_05_09\CarrierCode|null
      */
-    public function getCarrierCode(): ?\OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode
+    public function getCarrierCode(): ?\SpApi\Model\awd\v2024_05_09\CarrierCode
     {
         return $this->container['carrier_code'];
     }
@@ -439,11 +439,11 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets carrier_code
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode|null $carrier_code carrier_code
+     * @param \SpApi\Model\awd\v2024_05_09\CarrierCode|null $carrier_code carrier_code
      *
      * @return self
      */
-    public function setCarrierCode(?\OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode $carrier_code): self
+    public function setCarrierCode(?\SpApi\Model\awd\v2024_05_09\CarrierCode $carrier_code): self
     {
         if (is_null($carrier_code)) {
             array_push($this->openAPINullablesSetToNull, 'carrier_code');
@@ -497,9 +497,9 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets destination_address
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\Address
+     * @return \SpApi\Model\awd\v2024_05_09\Address
      */
-    public function getDestinationAddress(): \OpenAPI\Client\Model\awd\v2024_05_09\Address
+    public function getDestinationAddress(): \SpApi\Model\awd\v2024_05_09\Address
     {
         return $this->container['destination_address'];
     }
@@ -507,11 +507,11 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination_address
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\Address $destination_address destination_address
+     * @param \SpApi\Model\awd\v2024_05_09\Address $destination_address destination_address
      *
      * @return self
      */
-    public function setDestinationAddress(\OpenAPI\Client\Model\awd\v2024_05_09\Address $destination_address): self
+    public function setDestinationAddress(\SpApi\Model\awd\v2024_05_09\Address $destination_address): self
     {
         if (is_null($destination_address)) {
             throw new \InvalidArgumentException('non-nullable destination_address cannot be null');
@@ -590,9 +590,9 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets origin_address
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\Address
+     * @return \SpApi\Model\awd\v2024_05_09\Address
      */
-    public function getOriginAddress(): \OpenAPI\Client\Model\awd\v2024_05_09\Address
+    public function getOriginAddress(): \SpApi\Model\awd\v2024_05_09\Address
     {
         return $this->container['origin_address'];
     }
@@ -600,11 +600,11 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets origin_address
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\Address $origin_address origin_address
+     * @param \SpApi\Model\awd\v2024_05_09\Address $origin_address origin_address
      *
      * @return self
      */
-    public function setOriginAddress(\OpenAPI\Client\Model\awd\v2024_05_09\Address $origin_address): self
+    public function setOriginAddress(\SpApi\Model\awd\v2024_05_09\Address $origin_address): self
     {
         if (is_null($origin_address)) {
             throw new \InvalidArgumentException('non-nullable origin_address cannot be null');

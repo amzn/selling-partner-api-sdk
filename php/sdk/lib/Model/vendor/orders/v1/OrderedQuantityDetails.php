@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderedQuantityDetails Class Doc Comment
  *
  * @category Class
  * @description Details of item quantity ordered.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPITypes = [
              'updated_date' => '\DateTime',
-             'ordered_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
-             'cancelled_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity'    ];
+             'ordered_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
+             'cancelled_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets ordered_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity|null
      */
-    public function getOrderedQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getOrderedQuantity(): ?\SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['ordered_quantity'];
     }
@@ -352,11 +352,11 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets ordered_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null $ordered_quantity ordered_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity|null $ordered_quantity ordered_quantity
      *
      * @return self
      */
-    public function setOrderedQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $ordered_quantity): self
+    public function setOrderedQuantity(?\SpApi\Model\vendor\orders\v1\ItemQuantity $ordered_quantity): self
     {
         if (is_null($ordered_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'ordered_quantity');
@@ -376,9 +376,9 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets cancelled_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity|null
      */
-    public function getCancelledQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getCancelledQuantity(): ?\SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['cancelled_quantity'];
     }
@@ -386,11 +386,11 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets cancelled_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity|null $cancelled_quantity cancelled_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity|null $cancelled_quantity cancelled_quantity
      *
      * @return self
      */
-    public function setCancelledQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $cancelled_quantity): self
+    public function setCancelledQuantity(?\SpApi\Model\vendor\orders\v1\ItemQuantity $cancelled_quantity): self
     {
         if (is_null($cancelled_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'cancelled_quantity');

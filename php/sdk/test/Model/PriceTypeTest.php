@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\PriceType;
+use SpApi\Model\pricing\v0\PriceType;
 
 /**
  * PriceTypeTest Class Doc Comment
  *
  * @category    Class
  * @description PriceType
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PriceTypeTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyLandedPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setLandedPrice($testValue);
         $this->assertEquals($testValue, $this->model->getLandedPrice());
@@ -69,7 +69,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -81,7 +81,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setShipping($testValue);
         $this->assertEquals($testValue, $this->model->getShipping());
@@ -93,7 +93,7 @@ class PriceTypeTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\Points();
+        $testValue = new \SpApi\Model\pricing\v0\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

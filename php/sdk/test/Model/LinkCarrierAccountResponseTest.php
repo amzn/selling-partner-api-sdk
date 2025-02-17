@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse;
+use SpApi\Model\shipping\v2\LinkCarrierAccountResponse;
 
 /**
  * LinkCarrierAccountResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The Response  for the LinkCarrierAccount operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LinkCarrierAccountResponseTest extends TestCase
 {
@@ -56,7 +56,7 @@ class LinkCarrierAccountResponseTest extends TestCase
      */
     public function testPropertyRegistrationStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\AccountStatus();
+        $enumInstance = new \SpApi\Model\shipping\v2\AccountStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

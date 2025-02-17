@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DeliveryPreferences Class Doc Comment
  *
  * @category Class
  * @description Contains all of the delivery instructions provided by the customer for the shipping address.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPITypes = [
              'drop_off_location' => 'string',
-             'preferred_delivery_time' => '\OpenAPI\Client\Model\orders\v0\PreferredDeliveryTime',
-             'other_attributes' => '\OpenAPI\Client\Model\orders\v0\OtherDeliveryAttributes[]',
+             'preferred_delivery_time' => '\SpApi\Model\orders\v0\PreferredDeliveryTime',
+             'other_attributes' => '\SpApi\Model\orders\v0\OtherDeliveryAttributes[]',
              'address_instructions' => 'string'    ];
 
     /**
@@ -349,9 +349,9 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets preferred_delivery_time
      *
-     * @return \OpenAPI\Client\Model\orders\v0\PreferredDeliveryTime|null
+     * @return \SpApi\Model\orders\v0\PreferredDeliveryTime|null
      */
-    public function getPreferredDeliveryTime(): ?\OpenAPI\Client\Model\orders\v0\PreferredDeliveryTime
+    public function getPreferredDeliveryTime(): ?\SpApi\Model\orders\v0\PreferredDeliveryTime
     {
         return $this->container['preferred_delivery_time'];
     }
@@ -359,11 +359,11 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets preferred_delivery_time
      *
-     * @param \OpenAPI\Client\Model\orders\v0\PreferredDeliveryTime|null $preferred_delivery_time preferred_delivery_time
+     * @param \SpApi\Model\orders\v0\PreferredDeliveryTime|null $preferred_delivery_time preferred_delivery_time
      *
      * @return self
      */
-    public function setPreferredDeliveryTime(?\OpenAPI\Client\Model\orders\v0\PreferredDeliveryTime $preferred_delivery_time): self
+    public function setPreferredDeliveryTime(?\SpApi\Model\orders\v0\PreferredDeliveryTime $preferred_delivery_time): self
     {
         if (is_null($preferred_delivery_time)) {
             array_push($this->openAPINullablesSetToNull, 'preferred_delivery_time');

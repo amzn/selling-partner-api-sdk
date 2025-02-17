@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse;
+use SpApi\Model\messaging\v1\CreateLegalDisclosureResponse;
 
 /**
  * CreateLegalDisclosureResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the createLegalDisclosure operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateLegalDisclosureResponseTest extends TestCase
 {

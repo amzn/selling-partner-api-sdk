@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ImportDetails Class Doc Comment
  *
  * @category Class
  * @description Provide these fields only if this shipment is a direct import.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,9 +62,9 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'method_of_payment' => 'string',
              'seal_number' => 'string',
-             'route' => '\OpenAPI\Client\Model\vendor\shipments\v1\Route',
+             'route' => '\SpApi\Model\vendor\shipments\v1\Route',
              'import_containers' => 'string',
-             'billable_weight' => '\OpenAPI\Client\Model\vendor\shipments\v1\Weight',
+             'billable_weight' => '\SpApi\Model\vendor\shipments\v1\Weight',
              'estimated_ship_by_date' => '\DateTime',
              'handling_instructions' => 'string'    ];
 
@@ -478,9 +478,9 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets route
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Route|null
+     * @return \SpApi\Model\vendor\shipments\v1\Route|null
      */
-    public function getRoute(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Route
+    public function getRoute(): ?\SpApi\Model\vendor\shipments\v1\Route
     {
         return $this->container['route'];
     }
@@ -488,11 +488,11 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets route
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Route|null $route route
+     * @param \SpApi\Model\vendor\shipments\v1\Route|null $route route
      *
      * @return self
      */
-    public function setRoute(?\OpenAPI\Client\Model\vendor\shipments\v1\Route $route): self
+    public function setRoute(?\SpApi\Model\vendor\shipments\v1\Route $route): self
     {
         if (is_null($route)) {
             array_push($this->openAPINullablesSetToNull, 'route');
@@ -550,9 +550,9 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billable_weight
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null
+     * @return \SpApi\Model\vendor\shipments\v1\Weight|null
      */
-    public function getBillableWeight(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Weight
+    public function getBillableWeight(): ?\SpApi\Model\vendor\shipments\v1\Weight
     {
         return $this->container['billable_weight'];
     }
@@ -560,11 +560,11 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billable_weight
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null $billable_weight billable_weight
+     * @param \SpApi\Model\vendor\shipments\v1\Weight|null $billable_weight billable_weight
      *
      * @return self
      */
-    public function setBillableWeight(?\OpenAPI\Client\Model\vendor\shipments\v1\Weight $billable_weight): self
+    public function setBillableWeight(?\SpApi\Model\vendor\shipments\v1\Weight $billable_weight): self
     {
         if (is_null($billable_weight)) {
             array_push($this->openAPINullablesSetToNull, 'billable_weight');

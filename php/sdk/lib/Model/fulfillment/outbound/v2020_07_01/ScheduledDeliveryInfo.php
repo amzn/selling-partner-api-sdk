@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ScheduledDeliveryInfo Class Doc Comment
  *
  * @category Class
  * @description Delivery information for a scheduled delivery. This is only available in the JP marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ScheduledDeliveryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPITypes = [
              'delivery_time_zone' => 'string',
-             'delivery_windows' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow[]'    ];
+             'delivery_windows' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

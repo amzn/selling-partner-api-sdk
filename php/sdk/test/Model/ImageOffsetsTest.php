@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets;
+use SpApi\Model\aplusContent\v2020_11_01\ImageOffsets;
 
 /**
  * ImageOffsetsTest Class Doc Comment
  *
  * @category    Class
  * @description The top left corner of the cropped image, specified in the original image&#39;s coordinate space.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ImageOffsetsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ImageOffsetsTest extends TestCase
     public function testPropertyX()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setX($testValue);
         $this->assertEquals($testValue, $this->model->getX());
@@ -69,7 +69,7 @@ class ImageOffsetsTest extends TestCase
     public function testPropertyY()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits();
         
         $this->model->setY($testValue);
         $this->assertEquals($testValue, $this->model->getY());

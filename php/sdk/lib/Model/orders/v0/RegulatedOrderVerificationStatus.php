@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RegulatedOrderVerificationStatus Class Doc Comment
  *
  * @category Class
  * @description The verification status of the order, along with associated approval or rejection metadata.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,13 +60,13 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'status' => '\OpenAPI\Client\Model\orders\v0\VerificationStatus',
+             'status' => '\SpApi\Model\orders\v0\VerificationStatus',
              'requires_merchant_action' => 'bool',
-             'valid_rejection_reasons' => '\OpenAPI\Client\Model\orders\v0\RejectionReason[]',
-             'rejection_reason' => '\OpenAPI\Client\Model\orders\v0\RejectionReason',
+             'valid_rejection_reasons' => '\SpApi\Model\orders\v0\RejectionReason[]',
+             'rejection_reason' => '\SpApi\Model\orders\v0\RejectionReason',
              'review_date' => 'string',
              'external_reviewer_id' => 'string',
-             'valid_verification_details' => '\OpenAPI\Client\Model\orders\v0\ValidVerificationDetail[]'    ];
+             'valid_verification_details' => '\SpApi\Model\orders\v0\ValidVerificationDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -426,9 +426,9 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Gets rejection_reason
      *
-     * @return \OpenAPI\Client\Model\orders\v0\RejectionReason|null
+     * @return \SpApi\Model\orders\v0\RejectionReason|null
      */
-    public function getRejectionReason(): ?\OpenAPI\Client\Model\orders\v0\RejectionReason
+    public function getRejectionReason(): ?\SpApi\Model\orders\v0\RejectionReason
     {
         return $this->container['rejection_reason'];
     }
@@ -436,11 +436,11 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     /**
      * Sets rejection_reason
      *
-     * @param \OpenAPI\Client\Model\orders\v0\RejectionReason|null $rejection_reason rejection_reason
+     * @param \SpApi\Model\orders\v0\RejectionReason|null $rejection_reason rejection_reason
      *
      * @return self
      */
-    public function setRejectionReason(?\OpenAPI\Client\Model\orders\v0\RejectionReason $rejection_reason): self
+    public function setRejectionReason(?\SpApi\Model\orders\v0\RejectionReason $rejection_reason): self
     {
         if (is_null($rejection_reason)) {
             array_push($this->openAPINullablesSetToNull, 'rejection_reason');

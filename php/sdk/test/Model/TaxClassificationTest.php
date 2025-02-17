@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\TaxClassification;
+use SpApi\Model\orders\v0\TaxClassification;
 
 /**
  * TaxClassificationTest Class Doc Comment
  *
  * @category    Class
  * @description The tax classification of the order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TaxClassificationTest extends TestCase
 {

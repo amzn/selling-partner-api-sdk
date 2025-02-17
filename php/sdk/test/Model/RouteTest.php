@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\Route;
+use SpApi\Model\vendor\shipments\v1\Route;
 
 /**
  * RouteTest Class Doc Comment
  *
  * @category    Class
  * @description This is used only for direct import shipment confirmations.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RouteTest extends TestCase
 {

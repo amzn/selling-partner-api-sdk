@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemSummaryByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Summary details of an Amazon catalog item for the indicated Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,9 +64,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
              'adult_product' => 'bool',
              'autographed' => 'bool',
              'brand' => 'string',
-             'browse_classification' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification',
+             'browse_classification' => '\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification',
              'color' => 'string',
-             'contributors' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributor[]',
+             'contributors' => '\SpApi\Model\catalogItems\v2022_04_01\ItemContributor[]',
              'item_classification' => 'string',
              'item_name' => 'string',
              'manufacturer' => 'string',
@@ -587,9 +587,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets browse_classification
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null
      */
-    public function getBrowseClassification(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification
+    public function getBrowseClassification(): ?\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification
     {
         return $this->container['browse_classification'];
     }
@@ -597,11 +597,11 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets browse_classification
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null $browse_classification browse_classification
+     * @param \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null $browse_classification browse_classification
      *
      * @return self
      */
-    public function setBrowseClassification(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification $browse_classification): self
+    public function setBrowseClassification(?\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification $browse_classification): self
     {
         if (is_null($browse_classification)) {
             array_push($this->openAPINullablesSetToNull, 'browse_classification');

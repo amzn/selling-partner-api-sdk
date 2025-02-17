@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateShipmentStatusRequest Class Doc Comment
  *
  * @category Class
  * @description The request body for the &#x60;updateShipmentStatus&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class UpdateShipmentStatusRequest implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
-             'shipment_status' => '\OpenAPI\Client\Model\orders\v0\ShipmentStatus',
-             'order_items' => '\OpenAPI\Client\Model\orders\v0\OrderItemsInner[]'    ];
+             'shipment_status' => '\SpApi\Model\orders\v0\ShipmentStatus',
+             'order_items' => '\SpApi\Model\orders\v0\OrderItemsInner[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

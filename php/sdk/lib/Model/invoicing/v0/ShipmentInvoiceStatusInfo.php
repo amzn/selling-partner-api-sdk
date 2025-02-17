@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentInvoiceStatusInfo Class Doc Comment
  *
  * @category Class
  * @description The shipment invoice status information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ShipmentInvoiceStatusInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPITypes = [
              'amazon_shipment_id' => 'string',
-             'invoice_status' => '\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatus'    ];
+             'invoice_status' => '\SpApi\Model\invoicing\v0\ShipmentInvoiceStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

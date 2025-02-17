@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContentMetadataRecord Class Doc Comment
  *
  * @category Class
  * @description The metadata for an A+ Content document, with additional information for content management.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ContentMetadataRecord implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPITypes = [
              'content_reference_key' => 'string',
-             'content_metadata' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata'    ];
+             'content_metadata' => '\SpApi\Model\aplusContent\v2020_11_01\ContentMetadata'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -343,9 +343,9 @@ class ContentMetadataRecord implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets content_metadata
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ContentMetadata
      */
-    public function getContentMetadata(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata
+    public function getContentMetadata(): \SpApi\Model\aplusContent\v2020_11_01\ContentMetadata
     {
         return $this->container['content_metadata'];
     }
@@ -353,11 +353,11 @@ class ContentMetadataRecord implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets content_metadata
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata $content_metadata content_metadata
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ContentMetadata $content_metadata content_metadata
      *
      * @return self
      */
-    public function setContentMetadata(\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata $content_metadata): self
+    public function setContentMetadata(\SpApi\Model\aplusContent\v2020_11_01\ContentMetadata $content_metadata): self
     {
         if (is_null($content_metadata)) {
             throw new \InvalidArgumentException('non-nullable content_metadata cannot be null');

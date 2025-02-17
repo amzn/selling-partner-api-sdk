@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\OrderItemsInner;
+use SpApi\Model\orders\v0\OrderItemsInner;
 
 /**
  * OrderItemsInnerTest Class Doc Comment
  *
  * @category    Class
  * @description OrderItemsInner
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderItemsInnerTest extends TestCase
 {

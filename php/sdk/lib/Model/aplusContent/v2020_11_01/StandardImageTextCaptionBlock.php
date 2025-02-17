@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardImageTextCaptionBlock Class Doc Comment
  *
  * @category Class
  * @description The A+ Content standard image and text block, with a related caption. The caption may not display on all devices.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'caption' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent'    ];
+             'block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'caption' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block'];
     }
@@ -311,11 +311,11 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block block
      *
      * @return self
      */
-    public function setBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block): self
+    public function setBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block): self
     {
         if (is_null($block)) {
             array_push($this->openAPINullablesSetToNull, 'block');
@@ -335,9 +335,9 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets caption
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getCaption(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getCaption(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['caption'];
     }
@@ -345,11 +345,11 @@ class StandardImageTextCaptionBlock implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets caption
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $caption caption
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $caption caption
      *
      * @return self
      */
-    public function setCaption(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $caption): self
+    public function setCaption(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $caption): self
     {
         if (is_null($caption)) {
             array_push($this->openAPINullablesSetToNull, 'caption');

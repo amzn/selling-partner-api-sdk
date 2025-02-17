@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration;
+use SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration;
 
 /**
  * ParkingWithAddressConfigurationTest Class Doc Comment
  *
  * @category    Class
  * @description The parking configuration with the address.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ParkingWithAddressConfigurationTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ParkingWithAddressConfigurationTest extends TestCase
      */
     public function testPropertyParkingCostType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingCostType();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\ParkingCostType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class ParkingWithAddressConfigurationTest extends TestCase
      */
     public function testPropertyParkingSpotIdentificationType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -94,7 +94,7 @@ class ParkingWithAddressConfigurationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Address();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

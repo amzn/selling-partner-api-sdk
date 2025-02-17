@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\PurchaseOrderItems;
+use SpApi\Model\vendor\shipments\v1\PurchaseOrderItems;
 
 /**
  * PurchaseOrderItemsTest Class Doc Comment
  *
  * @category    Class
  * @description Details of the item being shipped.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PurchaseOrderItemsTest extends TestCase
 {
@@ -90,7 +90,7 @@ class PurchaseOrderItemsTest extends TestCase
     public function testPropertyShippedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\ItemQuantity();
         
         $this->model->setShippedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getShippedQuantity());
@@ -102,7 +102,7 @@ class PurchaseOrderItemsTest extends TestCase
     public function testPropertyMaximumRetailPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Money();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Money();
         
         $this->model->setMaximumRetailPrice($testValue);
         $this->assertEquals($testValue, $this->model->getMaximumRetailPrice());

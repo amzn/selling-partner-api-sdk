@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetSelfShipAppointmentSlotsResponse Class Doc Comment
  *
  * @category Class
  * @description The &#x60;getSelfShipAppointmentSlots&#x60; response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetSelfShipAppointmentSlotsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'pagination' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination',
-             'self_ship_appointment_slots_availability' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability'    ];
+             'pagination' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination',
+             'self_ship_appointment_slots_availability' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class GetSelfShipAppointmentSlotsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination
+    public function getPagination(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination
     {
         return $this->container['pagination'];
     }
@@ -314,11 +314,11 @@ class GetSelfShipAppointmentSlotsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination|null $pagination pagination
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');
@@ -338,9 +338,9 @@ class GetSelfShipAppointmentSlotsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets self_ship_appointment_slots_availability
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability
      */
-    public function getSelfShipAppointmentSlotsAvailability(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability
+    public function getSelfShipAppointmentSlotsAvailability(): \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability
     {
         return $this->container['self_ship_appointment_slots_availability'];
     }
@@ -348,11 +348,11 @@ class GetSelfShipAppointmentSlotsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets self_ship_appointment_slots_availability
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability $self_ship_appointment_slots_availability self_ship_appointment_slots_availability
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability $self_ship_appointment_slots_availability self_ship_appointment_slots_availability
      *
      * @return self
      */
-    public function setSelfShipAppointmentSlotsAvailability(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability $self_ship_appointment_slots_availability): self
+    public function setSelfShipAppointmentSlotsAvailability(\SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentSlotsAvailability $self_ship_appointment_slots_availability): self
     {
         if (is_null($self_ship_appointment_slots_availability)) {
             throw new \InvalidArgumentException('non-nullable self_ship_appointment_slots_availability cannot be null');

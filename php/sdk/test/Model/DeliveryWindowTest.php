@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow;
 
 /**
  * DeliveryWindowTest Class Doc Comment
  *
  * @category    Class
  * @description The time range within which a Scheduled Delivery fulfillment order should be delivered. This is only available in the JP marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DeliveryWindowTest extends TestCase
 {

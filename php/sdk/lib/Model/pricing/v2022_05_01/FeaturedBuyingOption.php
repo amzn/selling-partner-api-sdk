@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedBuyingOption Class Doc Comment
  *
  * @category Class
  * @description Describes a featured buying option, which includes a list of segmented featured offers for a particular item condition.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
              'buying_option_type' => 'string',
-             'segmented_featured_offers' => '\OpenAPI\Client\Model\pricing\v2022_05_01\SegmentedFeaturedOffer[]'    ];
+             'segmented_featured_offers' => '\SpApi\Model\pricing\v2022_05_01\SegmentedFeaturedOffer[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

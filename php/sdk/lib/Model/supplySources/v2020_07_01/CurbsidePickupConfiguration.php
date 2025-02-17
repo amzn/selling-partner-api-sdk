@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CurbsidePickupConfiguration Class Doc Comment
  *
  * @category Class
  * @description The curbside pickup configuration of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
              'is_supported' => 'bool',
-             'operational_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration',
-             'parking_with_address_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration'    ];
+             'operational_configuration' => '\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration',
+             'parking_with_address_configuration' => '\SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets operational_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null
      */
-    public function getOperationalConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration
+    public function getOperationalConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration
     {
         return $this->container['operational_configuration'];
     }
@@ -352,11 +352,11 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets operational_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
      *
      * @return self
      */
-    public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
+    public function setOperationalConfiguration(?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'operational_configuration');
@@ -376,9 +376,9 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets parking_with_address_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration|null
      */
-    public function getParkingWithAddressConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration
+    public function getParkingWithAddressConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration
     {
         return $this->container['parking_with_address_configuration'];
     }
@@ -386,11 +386,11 @@ class CurbsidePickupConfiguration implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets parking_with_address_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration|null $parking_with_address_configuration parking_with_address_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration|null $parking_with_address_configuration parking_with_address_configuration
      *
      * @return self
      */
-    public function setParkingWithAddressConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration $parking_with_address_configuration): self
+    public function setParkingWithAddressConfiguration(?\SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration $parking_with_address_configuration): self
     {
         if (is_null($parking_with_address_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'parking_with_address_configuration');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationSelection;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationSelection;
 
 /**
  * TransportationSelectionTest Class Doc Comment
  *
  * @category    Class
  * @description The transportation option selected to confirm.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransportationSelectionTest extends TestCase
 {
@@ -57,7 +57,7 @@ class TransportationSelectionTest extends TestCase
     public function testPropertyContactInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation();
         
         $this->model->setContactInformation($testValue);
         $this->assertEquals($testValue, $this->model->getContactInformation());

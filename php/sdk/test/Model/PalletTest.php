@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pallet;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Pallet;
 
 /**
  * PalletTest Class Doc Comment
  *
  * @category    Class
  * @description Contains information about a pallet that is used in the inbound plan. The pallet is a container that holds multiple items or boxes.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PalletTest extends TestCase
 {
@@ -57,7 +57,7 @@ class PalletTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -90,7 +90,7 @@ class PalletTest extends TestCase
      */
     public function testPropertyStackability()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Stackability();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Stackability();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -104,7 +104,7 @@ class PalletTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

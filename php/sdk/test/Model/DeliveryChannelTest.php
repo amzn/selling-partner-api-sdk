@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel;
+use SpApi\Model\supplySources\v2020_07_01\DeliveryChannel;
 
 /**
  * DeliveryChannelTest Class Doc Comment
  *
  * @category    Class
  * @description The delivery channel of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DeliveryChannelTest extends TestCase
 {
@@ -68,7 +68,7 @@ class DeliveryChannelTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());

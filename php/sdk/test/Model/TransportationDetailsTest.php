@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\TransportationDetails;
+use SpApi\Model\vendor\shipments\v1\TransportationDetails;
 
 /**
  * TransportationDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Transportation details for this shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransportationDetailsTest extends TestCase
 {
@@ -117,7 +117,7 @@ class TransportationDetailsTest extends TestCase
     public function testPropertyCarrierDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\CarrierDetails();
         
         $this->model->setCarrierDetails($testValue);
         $this->assertEquals($testValue, $this->model->getCarrierDetails());

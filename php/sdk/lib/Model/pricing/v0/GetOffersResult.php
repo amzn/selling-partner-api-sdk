@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetOffersResult Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,11 +62,11 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
              'marketplace_id' => 'string',
              'asin' => 'string',
              'sku' => 'string',
-             'item_condition' => '\OpenAPI\Client\Model\pricing\v0\ConditionType',
+             'item_condition' => '\SpApi\Model\pricing\v0\ConditionType',
              'status' => 'string',
-             'identifier' => '\OpenAPI\Client\Model\pricing\v0\ItemIdentifier',
-             'summary' => '\OpenAPI\Client\Model\pricing\v0\Summary',
-             'offers' => '\OpenAPI\Client\Model\pricing\v0\OfferDetail[]'    ];
+             'identifier' => '\SpApi\Model\pricing\v0\ItemIdentifier',
+             'summary' => '\SpApi\Model\pricing\v0\Summary',
+             'offers' => '\SpApi\Model\pricing\v0\OfferDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -513,9 +513,9 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identifier
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\ItemIdentifier
+     * @return \SpApi\Model\pricing\v0\ItemIdentifier
      */
-    public function getIdentifier(): \OpenAPI\Client\Model\pricing\v0\ItemIdentifier
+    public function getIdentifier(): \SpApi\Model\pricing\v0\ItemIdentifier
     {
         return $this->container['identifier'];
     }
@@ -523,11 +523,11 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifier
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\ItemIdentifier $identifier identifier
+     * @param \SpApi\Model\pricing\v0\ItemIdentifier $identifier identifier
      *
      * @return self
      */
-    public function setIdentifier(\OpenAPI\Client\Model\pricing\v0\ItemIdentifier $identifier): self
+    public function setIdentifier(\SpApi\Model\pricing\v0\ItemIdentifier $identifier): self
     {
         if (is_null($identifier)) {
             throw new \InvalidArgumentException('non-nullable identifier cannot be null');
@@ -540,9 +540,9 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets summary
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\Summary
+     * @return \SpApi\Model\pricing\v0\Summary
      */
-    public function getSummary(): \OpenAPI\Client\Model\pricing\v0\Summary
+    public function getSummary(): \SpApi\Model\pricing\v0\Summary
     {
         return $this->container['summary'];
     }
@@ -550,11 +550,11 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets summary
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\Summary $summary summary
+     * @param \SpApi\Model\pricing\v0\Summary $summary summary
      *
      * @return self
      */
-    public function setSummary(\OpenAPI\Client\Model\pricing\v0\Summary $summary): self
+    public function setSummary(\SpApi\Model\pricing\v0\Summary $summary): self
     {
         if (is_null($summary)) {
             throw new \InvalidArgumentException('non-nullable summary cannot be null');

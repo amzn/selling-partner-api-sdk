@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreview;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreview;
 
 /**
  * FulfillmentPreviewTest Class Doc Comment
  *
  * @category    Class
  * @description Information about a fulfillment order preview, including delivery and fee information based on shipping method.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentPreviewTest extends TestCase
 {
@@ -56,7 +56,7 @@ class FulfillmentPreviewTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class FulfillmentPreviewTest extends TestCase
     public function testPropertyScheduledDeliveryInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\ScheduledDeliveryInfo();
         
         $this->model->setScheduledDeliveryInfo($testValue);
         $this->assertEquals($testValue, $this->model->getScheduledDeliveryInfo());
@@ -104,7 +104,7 @@ class FulfillmentPreviewTest extends TestCase
     public function testPropertyEstimatedShippingWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Weight();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Weight();
         
         $this->model->setEstimatedShippingWeight($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedShippingWeight());

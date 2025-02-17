@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine;
+use SpApi\Model\pricing\v0\GetOffersHttpStatusLine;
 
 /**
  * GetOffersHttpStatusLineTest Class Doc Comment
  *
  * @category    Class
  * @description The HTTP status line associated with the response.  For more information, consult [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetOffersHttpStatusLineTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse;
+use SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse;
 
 /**
  * CreateUploadDestinationResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the createUploadDestination operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateUploadDestinationResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateUploadDestinationResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\uploads\v2020_11_01\UploadDestination();
+        $testValue = new \SpApi\Model\uploads\v2020_11_01\UploadDestination();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInvoicesDocumentResponse Class Doc Comment
  *
  * @category Class
  * @description Success.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetInvoicesDocumentResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'invoices_document' => '\OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument'    ];
+             'invoices_document' => '\SpApi\Model\invoices\v2024_06_19\InvoicesDocument'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class GetInvoicesDocumentResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets invoices_document
      *
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument|null
+     * @return \SpApi\Model\invoices\v2024_06_19\InvoicesDocument|null
      */
-    public function getInvoicesDocument(): ?\OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument
+    public function getInvoicesDocument(): ?\SpApi\Model\invoices\v2024_06_19\InvoicesDocument
     {
         return $this->container['invoices_document'];
     }
@@ -304,11 +304,11 @@ class GetInvoicesDocumentResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets invoices_document
      *
-     * @param \OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument|null $invoices_document invoices_document
+     * @param \SpApi\Model\invoices\v2024_06_19\InvoicesDocument|null $invoices_document invoices_document
      *
      * @return self
      */
-    public function setInvoicesDocument(?\OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument $invoices_document): self
+    public function setInvoicesDocument(?\SpApi\Model\invoices\v2024_06_19\InvoicesDocument $invoices_document): self
     {
         if (is_null($invoices_document)) {
             array_push($this->openAPINullablesSetToNull, 'invoices_document');

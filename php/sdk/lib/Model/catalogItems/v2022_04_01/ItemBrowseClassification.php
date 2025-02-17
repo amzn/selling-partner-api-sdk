@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemBrowseClassification Class Doc Comment
  *
  * @category Class
  * @description Classification (browse node) associated with an Amazon catalog item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPITypes = [
              'display_name' => 'string',
              'classification_id' => 'string',
-             'parent' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification'    ];
+             'parent' => '\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -368,9 +368,9 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets parent
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null
      */
-    public function getParent(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification
+    public function getParent(): ?\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification
     {
         return $this->container['parent'];
     }
@@ -378,11 +378,11 @@ class ItemBrowseClassification implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets parent
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null $parent parent
+     * @param \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null $parent parent
      *
      * @return self
      */
-    public function setParent(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification $parent): self
+    public function setParent(?\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification $parent): self
     {
         if (is_null($parent)) {
             array_push($this->openAPINullablesSetToNull, 'parent');

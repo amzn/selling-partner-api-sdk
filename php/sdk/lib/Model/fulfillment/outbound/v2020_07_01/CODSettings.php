@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CODSettings Class Doc Comment
  *
  * @category Class
  * @description The COD (Cash On Delivery) charges that you associate with a COD fulfillment order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'is_cod_required' => 'bool',
-             'cod_charge' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money',
-             'cod_charge_tax' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money',
-             'shipping_charge' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money',
-             'shipping_charge_tax' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money'    ];
+             'cod_charge' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+             'cod_charge_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+             'shipping_charge' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+             'shipping_charge_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -352,9 +352,9 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cod_charge
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getCodCharge(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getCodCharge(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['cod_charge'];
     }
@@ -362,11 +362,11 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cod_charge
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $cod_charge cod_charge
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $cod_charge cod_charge
      *
      * @return self
      */
-    public function setCodCharge(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $cod_charge): self
+    public function setCodCharge(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $cod_charge): self
     {
         if (is_null($cod_charge)) {
             array_push($this->openAPINullablesSetToNull, 'cod_charge');
@@ -386,9 +386,9 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cod_charge_tax
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getCodChargeTax(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getCodChargeTax(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['cod_charge_tax'];
     }
@@ -396,11 +396,11 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cod_charge_tax
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $cod_charge_tax cod_charge_tax
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $cod_charge_tax cod_charge_tax
      *
      * @return self
      */
-    public function setCodChargeTax(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $cod_charge_tax): self
+    public function setCodChargeTax(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $cod_charge_tax): self
     {
         if (is_null($cod_charge_tax)) {
             array_push($this->openAPINullablesSetToNull, 'cod_charge_tax');
@@ -420,9 +420,9 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_charge
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getShippingCharge(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getShippingCharge(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['shipping_charge'];
     }
@@ -430,11 +430,11 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_charge
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $shipping_charge shipping_charge
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $shipping_charge shipping_charge
      *
      * @return self
      */
-    public function setShippingCharge(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $shipping_charge): self
+    public function setShippingCharge(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $shipping_charge): self
     {
         if (is_null($shipping_charge)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_charge');
@@ -454,9 +454,9 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_charge_tax
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getShippingChargeTax(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getShippingChargeTax(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['shipping_charge_tax'];
     }
@@ -464,11 +464,11 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_charge_tax
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $shipping_charge_tax shipping_charge_tax
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $shipping_charge_tax shipping_charge_tax
      *
      * @return self
      */
-    public function setShippingChargeTax(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $shipping_charge_tax): self
+    public function setShippingChargeTax(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $shipping_charge_tax): self
     {
         if (is_null($shipping_charge_tax)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_charge_tax');

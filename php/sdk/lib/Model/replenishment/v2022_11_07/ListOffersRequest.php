@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOffersRequest Class Doc Comment
  *
  * @category Class
  * @description The request body for the &#x60;listOffers&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'pagination' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination',
-             'filters' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters',
-             'sort' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort'    ];
+             'pagination' => '\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestPagination',
+             'filters' => '\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters',
+             'sort' => '\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestSort'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -314,9 +314,9 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination
+     * @return \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestPagination
      */
-    public function getPagination(): \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination
+    public function getPagination(): \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestPagination
     {
         return $this->container['pagination'];
     }
@@ -324,11 +324,11 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination $pagination pagination
+     * @param \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestPagination $pagination pagination
      *
      * @return self
      */
-    public function setPagination(\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination $pagination): self
+    public function setPagination(\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestPagination $pagination): self
     {
         if (is_null($pagination)) {
             throw new \InvalidArgumentException('non-nullable pagination cannot be null');
@@ -341,9 +341,9 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets filters
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters
+     * @return \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters
      */
-    public function getFilters(): \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters
+    public function getFilters(): \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters
     {
         return $this->container['filters'];
     }
@@ -351,11 +351,11 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets filters
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters $filters filters
+     * @param \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters $filters filters
      *
      * @return self
      */
-    public function setFilters(\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters $filters): self
+    public function setFilters(\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters $filters): self
     {
         if (is_null($filters)) {
             throw new \InvalidArgumentException('non-nullable filters cannot be null');
@@ -368,9 +368,9 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets sort
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestSort|null
      */
-    public function getSort(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort
+    public function getSort(): ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestSort
     {
         return $this->container['sort'];
     }
@@ -378,11 +378,11 @@ class ListOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets sort
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort|null $sort sort
+     * @param \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestSort|null $sort sort
      *
      * @return self
      */
-    public function setSort(?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort $sort): self
+    public function setSort(?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequestSort $sort): self
     {
         if (is_null($sort)) {
             array_push($this->openAPINullablesSetToNull, 'sort');

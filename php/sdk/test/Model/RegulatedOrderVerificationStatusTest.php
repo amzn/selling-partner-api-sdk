@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus;
+use SpApi\Model\orders\v0\RegulatedOrderVerificationStatus;
 
 /**
  * RegulatedOrderVerificationStatusTest Class Doc Comment
  *
  * @category    Class
  * @description The verification status of the order, along with associated approval or rejection metadata.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RegulatedOrderVerificationStatusTest extends TestCase
 {
@@ -56,7 +56,7 @@ class RegulatedOrderVerificationStatusTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\VerificationStatus();
+        $enumInstance = new \SpApi\Model\orders\v0\VerificationStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -92,7 +92,7 @@ class RegulatedOrderVerificationStatusTest extends TestCase
     public function testPropertyRejectionReason()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\RejectionReason();
+        $testValue = new \SpApi\Model\orders\v0\RejectionReason();
         
         $this->model->setRejectionReason($testValue);
         $this->assertEquals($testValue, $this->model->getRejectionReason());

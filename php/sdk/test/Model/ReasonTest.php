@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Reason;
+use SpApi\Model\listings\restrictions\v2021_08_01\Reason;
 
 /**
  * ReasonTest Class Doc Comment
  *
  * @category    Class
  * @description A reason for the restriction, including path forward links that may allow Selling Partners to remove the restriction, if available.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ReasonTest extends TestCase
 {

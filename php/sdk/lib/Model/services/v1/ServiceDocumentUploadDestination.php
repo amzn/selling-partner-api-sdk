@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ServiceDocumentUploadDestination Class Doc Comment
  *
  * @category Class
  * @description Information about an upload destination.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ServiceDocumentUploadDestination implements ModelInterface, ArrayAccess, \
     protected static array $openAPITypes = [
              'upload_destination_id' => 'string',
              'url' => 'string',
-             'encryption_details' => '\OpenAPI\Client\Model\services\v1\EncryptionDetails',
+             'encryption_details' => '\SpApi\Model\services\v1\EncryptionDetails',
              'headers' => 'object'    ];
 
     /**
@@ -378,9 +378,9 @@ class ServiceDocumentUploadDestination implements ModelInterface, ArrayAccess, \
     /**
      * Gets encryption_details
      *
-     * @return \OpenAPI\Client\Model\services\v1\EncryptionDetails
+     * @return \SpApi\Model\services\v1\EncryptionDetails
      */
-    public function getEncryptionDetails(): \OpenAPI\Client\Model\services\v1\EncryptionDetails
+    public function getEncryptionDetails(): \SpApi\Model\services\v1\EncryptionDetails
     {
         return $this->container['encryption_details'];
     }
@@ -388,11 +388,11 @@ class ServiceDocumentUploadDestination implements ModelInterface, ArrayAccess, \
     /**
      * Sets encryption_details
      *
-     * @param \OpenAPI\Client\Model\services\v1\EncryptionDetails $encryption_details encryption_details
+     * @param \SpApi\Model\services\v1\EncryptionDetails $encryption_details encryption_details
      *
      * @return self
      */
-    public function setEncryptionDetails(\OpenAPI\Client\Model\services\v1\EncryptionDetails $encryption_details): self
+    public function setEncryptionDetails(\SpApi\Model\services\v1\EncryptionDetails $encryption_details): self
     {
         if (is_null($encryption_details)) {
             throw new \InvalidArgumentException('non-nullable encryption_details cannot be null');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28;
+namespace SpApi\Model\vendor\df\transactions\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Transaction Class Doc Comment
  *
  * @category Class
  * @description The transaction status details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'transaction_id' => 'string',
              'status' => 'string',
-             'errors' => '\OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\ErrorList'    ];
+             'errors' => '\SpApi\Model\vendor\df\transactions\v2021_12_28\ErrorList'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -404,9 +404,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets errors
      *
-     * @return \OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\ErrorList|null
+     * @return \SpApi\Model\vendor\df\transactions\v2021_12_28\ErrorList|null
      */
-    public function getErrors(): ?\OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\ErrorList
+    public function getErrors(): ?\SpApi\Model\vendor\df\transactions\v2021_12_28\ErrorList
     {
         return $this->container['errors'];
     }
@@ -414,11 +414,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\ErrorList|null $errors errors
+     * @param \SpApi\Model\vendor\df\transactions\v2021_12_28\ErrorList|null $errors errors
      *
      * @return self
      */
-    public function setErrors(?\OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\ErrorList $errors): self
+    public function setErrors(?\SpApi\Model\vendor\df\transactions\v2021_12_28\ErrorList $errors): self
     {
         if (is_null($errors)) {
             array_push($this->openAPINullablesSetToNull, 'errors');

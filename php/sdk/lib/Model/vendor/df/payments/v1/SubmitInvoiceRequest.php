@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\payments\v1;
+namespace SpApi\Model\vendor\df\payments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubmitInvoiceRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the submitInvoice operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SubmitInvoiceRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'invoices' => '\OpenAPI\Client\Model\vendor\df\payments\v1\InvoiceDetail[]'    ];
+             'invoices' => '\SpApi\Model\vendor\df\payments\v1\InvoiceDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

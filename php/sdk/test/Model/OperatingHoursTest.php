@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\OperatingHours;
+use SpApi\Model\shipping\v2\OperatingHours;
 
 /**
  * OperatingHoursTest Class Doc Comment
  *
  * @category    Class
  * @description The hours in which the access point shall remain operational
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OperatingHoursTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OperatingHoursTest extends TestCase
     public function testPropertyClosingTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeOfDay();
+        $testValue = new \SpApi\Model\shipping\v2\TimeOfDay();
         
         $this->model->setClosingTime($testValue);
         $this->assertEquals($testValue, $this->model->getClosingTime());
@@ -69,7 +69,7 @@ class OperatingHoursTest extends TestCase
     public function testPropertyOpeningTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\TimeOfDay();
+        $testValue = new \SpApi\Model\shipping\v2\TimeOfDay();
         
         $this->model->setOpeningTime($testValue);
         $this->assertEquals($testValue, $this->model->getOpeningTime());

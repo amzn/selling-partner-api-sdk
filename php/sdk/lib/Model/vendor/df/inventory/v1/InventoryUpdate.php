@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\inventory\v1;
+namespace SpApi\Model\vendor\df\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InventoryUpdate Class Doc Comment
  *
  * @category Class
  * @description Inventory details required to update some or all items for the requested warehouse.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class InventoryUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'selling_party' => '\OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification',
+             'selling_party' => '\SpApi\Model\vendor\df\inventory\v1\PartyIdentification',
              'is_full_update' => 'bool',
-             'items' => '\OpenAPI\Client\Model\vendor\df\inventory\v1\ItemDetails[]'    ];
+             'items' => '\SpApi\Model\vendor\df\inventory\v1\ItemDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -317,9 +317,9 @@ class InventoryUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_party
      *
-     * @return \OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification
+     * @return \SpApi\Model\vendor\df\inventory\v1\PartyIdentification
      */
-    public function getSellingParty(): \OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification
+    public function getSellingParty(): \SpApi\Model\vendor\df\inventory\v1\PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -327,11 +327,11 @@ class InventoryUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_party
      *
-     * @param \OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification $selling_party selling_party
+     * @param \SpApi\Model\vendor\df\inventory\v1\PartyIdentification $selling_party selling_party
      *
      * @return self
      */
-    public function setSellingParty(\OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification $selling_party): self
+    public function setSellingParty(\SpApi\Model\vendor\df\inventory\v1\PartyIdentification $selling_party): self
     {
         if (is_null($selling_party)) {
             throw new \InvalidArgumentException('non-nullable selling_party cannot be null');

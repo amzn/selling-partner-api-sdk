@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * BoxContentsFeeDetails Class Doc Comment
  *
  * @category Class
  * @description The manual processing fee per unit and total fee for a shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPITypes = [
              'total_units' => 'int',
-             'fee_per_unit' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount',
-             'total_fee' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount'    ];
+             'fee_per_unit' => '\SpApi\Model\fulfillment\inbound\v0\Amount',
+             'total_fee' => '\SpApi\Model\fulfillment\inbound\v0\Amount'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets fee_per_unit
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount|null
+     * @return \SpApi\Model\fulfillment\inbound\v0\Amount|null
      */
-    public function getFeePerUnit(): ?\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount
+    public function getFeePerUnit(): ?\SpApi\Model\fulfillment\inbound\v0\Amount
     {
         return $this->container['fee_per_unit'];
     }
@@ -352,11 +352,11 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets fee_per_unit
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount|null $fee_per_unit fee_per_unit
+     * @param \SpApi\Model\fulfillment\inbound\v0\Amount|null $fee_per_unit fee_per_unit
      *
      * @return self
      */
-    public function setFeePerUnit(?\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount $fee_per_unit): self
+    public function setFeePerUnit(?\SpApi\Model\fulfillment\inbound\v0\Amount $fee_per_unit): self
     {
         if (is_null($fee_per_unit)) {
             array_push($this->openAPINullablesSetToNull, 'fee_per_unit');
@@ -376,9 +376,9 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets total_fee
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount|null
+     * @return \SpApi\Model\fulfillment\inbound\v0\Amount|null
      */
-    public function getTotalFee(): ?\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount
+    public function getTotalFee(): ?\SpApi\Model\fulfillment\inbound\v0\Amount
     {
         return $this->container['total_fee'];
     }
@@ -386,11 +386,11 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets total_fee
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount|null $total_fee total_fee
+     * @param \SpApi\Model\fulfillment\inbound\v0\Amount|null $total_fee total_fee
      *
      * @return self
      */
-    public function setTotalFee(?\OpenAPI\Client\Model\fulfillment\inbound\v0\Amount $total_fee): self
+    public function setTotalFee(?\SpApi\Model\fulfillment\inbound\v0\Amount $total_fee): self
     {
         if (is_null($total_fee)) {
             array_push($this->openAPINullablesSetToNull, 'total_fee');

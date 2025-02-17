@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateFulfillmentOrderItem Class Doc Comment
  *
  * @category Class
  * @description Item information for updating a fulfillment order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -67,9 +67,9 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
              'displayable_comment' => 'string',
              'fulfillment_network_sku' => 'string',
              'order_item_disposition' => 'string',
-             'per_unit_declared_value' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money',
-             'per_unit_price' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money',
-             'per_unit_tax' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money'    ];
+             'per_unit_declared_value' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+             'per_unit_price' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+             'per_unit_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -611,9 +611,9 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets per_unit_declared_value
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getPerUnitDeclaredValue(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getPerUnitDeclaredValue(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['per_unit_declared_value'];
     }
@@ -621,11 +621,11 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets per_unit_declared_value
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_declared_value per_unit_declared_value
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_declared_value per_unit_declared_value
      *
      * @return self
      */
-    public function setPerUnitDeclaredValue(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_declared_value): self
+    public function setPerUnitDeclaredValue(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_declared_value): self
     {
         if (is_null($per_unit_declared_value)) {
             array_push($this->openAPINullablesSetToNull, 'per_unit_declared_value');
@@ -645,9 +645,9 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets per_unit_price
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getPerUnitPrice(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getPerUnitPrice(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['per_unit_price'];
     }
@@ -655,11 +655,11 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets per_unit_price
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_price per_unit_price
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_price per_unit_price
      *
      * @return self
      */
-    public function setPerUnitPrice(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_price): self
+    public function setPerUnitPrice(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_price): self
     {
         if (is_null($per_unit_price)) {
             array_push($this->openAPINullablesSetToNull, 'per_unit_price');
@@ -679,9 +679,9 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets per_unit_tax
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getPerUnitTax(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getPerUnitTax(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['per_unit_tax'];
     }
@@ -689,11 +689,11 @@ class UpdateFulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets per_unit_tax
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_tax per_unit_tax
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_tax per_unit_tax
      *
      * @return self
      */
-    public function setPerUnitTax(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_tax): self
+    public function setPerUnitTax(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_tax): self
     {
         if (is_null($per_unit_tax)) {
             array_push($this->openAPINullablesSetToNull, 'per_unit_tax');

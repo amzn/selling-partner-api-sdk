@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Promise Class Doc Comment
  *
  * @category Class
  * @description The time windows promised for pickup and delivery events.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'delivery_window' => '\OpenAPI\Client\Model\shipping\v2\TimeWindow',
-             'pickup_window' => '\OpenAPI\Client\Model\shipping\v2\TimeWindow'    ];
+             'delivery_window' => '\SpApi\Model\shipping\v2\TimeWindow',
+             'pickup_window' => '\SpApi\Model\shipping\v2\TimeWindow'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -302,9 +302,9 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets delivery_window
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\TimeWindow|null
+     * @return \SpApi\Model\shipping\v2\TimeWindow|null
      */
-    public function getDeliveryWindow(): ?\OpenAPI\Client\Model\shipping\v2\TimeWindow
+    public function getDeliveryWindow(): ?\SpApi\Model\shipping\v2\TimeWindow
     {
         return $this->container['delivery_window'];
     }
@@ -312,11 +312,11 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_window
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\TimeWindow|null $delivery_window delivery_window
+     * @param \SpApi\Model\shipping\v2\TimeWindow|null $delivery_window delivery_window
      *
      * @return self
      */
-    public function setDeliveryWindow(?\OpenAPI\Client\Model\shipping\v2\TimeWindow $delivery_window): self
+    public function setDeliveryWindow(?\SpApi\Model\shipping\v2\TimeWindow $delivery_window): self
     {
         if (is_null($delivery_window)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_window');
@@ -336,9 +336,9 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pickup_window
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\TimeWindow|null
+     * @return \SpApi\Model\shipping\v2\TimeWindow|null
      */
-    public function getPickupWindow(): ?\OpenAPI\Client\Model\shipping\v2\TimeWindow
+    public function getPickupWindow(): ?\SpApi\Model\shipping\v2\TimeWindow
     {
         return $this->container['pickup_window'];
     }
@@ -346,11 +346,11 @@ class Promise implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pickup_window
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\TimeWindow|null $pickup_window pickup_window
+     * @param \SpApi\Model\shipping\v2\TimeWindow|null $pickup_window pickup_window
      *
      * @return self
      */
-    public function setPickupWindow(?\OpenAPI\Client\Model\shipping\v2\TimeWindow $pickup_window): self
+    public function setPickupWindow(?\SpApi\Model\shipping\v2\TimeWindow $pickup_window): self
     {
         if (is_null($pickup_window)) {
             array_push($this->openAPINullablesSetToNull, 'pickup_window');

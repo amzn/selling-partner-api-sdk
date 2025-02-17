@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse;
+use SpApi\Model\reports\v2021_06_30\GetReportsResponse;
 
 /**
  * GetReportsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response for the &#x60;getReports&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetReportsResponseTest extends TestCase
 {

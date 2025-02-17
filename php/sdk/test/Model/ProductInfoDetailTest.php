@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\ProductInfoDetail;
+use SpApi\Model\orders\v0\ProductInfoDetail;
 
 /**
  * ProductInfoDetailTest Class Doc Comment
  *
  * @category    Class
  * @description Product information on the number of items.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductInfoDetailTest extends TestCase
 {

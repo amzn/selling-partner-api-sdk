@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DebtRecoveryItem Class Doc Comment
  *
  * @category Class
  * @description An item of a debt payment or debt adjustment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'recovery_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'original_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'recovery_amount' => '\SpApi\Model\finances\v0\Currency',
+             'original_amount' => '\SpApi\Model\finances\v0\Currency',
              'group_begin_date' => '\DateTime',
              'group_end_date' => '\DateTime'    ];
 
@@ -315,9 +315,9 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recovery_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getRecoveryAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getRecoveryAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['recovery_amount'];
     }
@@ -325,11 +325,11 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recovery_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $recovery_amount recovery_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $recovery_amount recovery_amount
      *
      * @return self
      */
-    public function setRecoveryAmount(?\OpenAPI\Client\Model\finances\v0\Currency $recovery_amount): self
+    public function setRecoveryAmount(?\SpApi\Model\finances\v0\Currency $recovery_amount): self
     {
         if (is_null($recovery_amount)) {
             array_push($this->openAPINullablesSetToNull, 'recovery_amount');
@@ -349,9 +349,9 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets original_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getOriginalAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getOriginalAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['original_amount'];
     }
@@ -359,11 +359,11 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets original_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $original_amount original_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $original_amount original_amount
      *
      * @return self
      */
-    public function setOriginalAmount(?\OpenAPI\Client\Model\finances\v0\Currency $original_amount): self
+    public function setOriginalAmount(?\SpApi\Model\finances\v0\Currency $original_amount): self
     {
         if (is_null($original_amount)) {
             array_push($this->openAPINullablesSetToNull, 'original_amount');

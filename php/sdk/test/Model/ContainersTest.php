@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\Containers;
+use SpApi\Model\vendor\shipments\v1\Containers;
 
 /**
  * ContainersTest Class Doc Comment
  *
  * @category    Class
  * @description A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContainersTest extends TestCase
 {
@@ -102,7 +102,7 @@ class ContainersTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -114,7 +114,7 @@ class ContainersTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Weight();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
@@ -148,7 +148,7 @@ class ContainersTest extends TestCase
     public function testPropertyInnerContainersDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\InnerContainersDetails();
         
         $this->model->setInnerContainersDetails($testValue);
         $this->assertEquals($testValue, $this->model->getInnerContainersDetails());

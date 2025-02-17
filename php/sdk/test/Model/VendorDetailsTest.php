@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\VendorDetails;
+use SpApi\Model\vendor\shipments\v1\VendorDetails;
 
 /**
  * VendorDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Vendor Details as part of Label response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class VendorDetailsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class VendorDetailsTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());

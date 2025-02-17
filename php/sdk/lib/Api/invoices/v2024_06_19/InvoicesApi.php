@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\invoices\v2024_06_19;
+namespace SpApi\Api\invoices\v2024_06_19;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * InvoicesApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class InvoicesApi
     /**
      * Operation createInvoicesExport
      *
-     * @param  \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+     * @param  \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
      *  Information required to create the export request. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse
      */
     public function createInvoicesExport(
-        \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse {
+        \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+    ): \SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse {
         list($response) = $this->createInvoicesExportWithHttpInfo($body);
         return $response;
     }
@@ -169,15 +169,15 @@ class InvoicesApi
     /**
      * Operation createInvoicesExportWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+     * @param  \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
      *  Information required to create the export request. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInvoicesExportWithHttpInfo(
-        \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+        \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
     ): array {
         $request = $this->createInvoicesExportRequest($body);
         $request = $this->config->sign($request);
@@ -220,158 +220,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -392,7 +392,7 @@ class InvoicesApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -432,7 +432,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -440,7 +440,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,7 +448,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -464,7 +464,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,14 +477,14 @@ class InvoicesApi
     /**
      * Operation createInvoicesExportAsync
      *
-     * @param  \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+     * @param  \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
      *  Information required to create the export request. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createInvoicesExportAsync(
-        \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+        \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
     ): PromiseInterface {
         return $this->createInvoicesExportAsyncWithHttpInfo($body)
             ->then(
@@ -497,16 +497,16 @@ class InvoicesApi
     /**
      * Operation createInvoicesExportAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+     * @param  \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
      *  Information required to create the export request. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createInvoicesExportAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+        \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\ExportInvoicesResponse';
         $request = $this->createInvoicesExportRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -550,14 +550,14 @@ class InvoicesApi
     /**
      * Create request for operation 'createInvoicesExport'
      *
-     * @param  \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+     * @param  \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
      *  Information required to create the export request. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createInvoicesExportRequest(
-        \OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
+        \SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -650,14 +650,14 @@ class InvoicesApi
      * @param  string $invoice_id
      *  The invoice identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse
      */
     public function getInvoice(
         string $marketplace_id,
         string $invoice_id
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse {
+    ): \SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse {
         list($response) = $this->getInvoiceWithHttpInfo($marketplace_id, $invoice_id);
         return $response;
     }
@@ -670,9 +670,9 @@ class InvoicesApi
      * @param  string $invoice_id
      *  The invoice identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoiceWithHttpInfo(
         string $marketplace_id,
@@ -719,158 +719,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -891,7 +891,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -899,7 +899,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -907,7 +907,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -915,7 +915,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -923,7 +923,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -931,7 +931,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -939,7 +939,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -947,7 +947,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -955,7 +955,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -963,7 +963,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1011,7 +1011,7 @@ class InvoicesApi
         string $marketplace_id,
         string $invoice_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoiceResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoiceResponse';
         $request = $this->getInvoiceRequest($marketplace_id, $invoice_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1199,9 +1199,9 @@ class InvoicesApi
      * @param  string|null $sort_by
      *  The attribute by which you want to sort the invoices in the response. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse
      */
     public function getInvoices(
         string $marketplace_id,
@@ -1218,7 +1218,7 @@ class InvoicesApi
         ?array $statuses = null,
         ?string $external_invoice_id = null,
         ?string $sort_by = null
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse {
+    ): \SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse {
         list($response) = $this->getInvoicesWithHttpInfo($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
         return $response;
     }
@@ -1255,9 +1255,9 @@ class InvoicesApi
      * @param  string|null $sort_by
      *  The attribute by which you want to sort the invoices in the response. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoicesWithHttpInfo(
         string $marketplace_id,
@@ -1316,158 +1316,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1488,7 +1488,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1496,7 +1496,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1504,7 +1504,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1512,7 +1512,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1520,7 +1520,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1528,7 +1528,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1536,7 +1536,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1544,7 +1544,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1552,7 +1552,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1560,7 +1560,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1680,7 +1680,7 @@ class InvoicesApi
         ?string $external_invoice_id = null,
         ?string $sort_by = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesResponse';
         $request = $this->getInvoicesRequest($marketplace_id, $transaction_identifier_name, $page_size, $date_end, $transaction_type, $transaction_identifier_id, $date_start, $series, $next_token, $sort_order, $invoice_type, $statuses, $external_invoice_id, $sort_by);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1985,13 +1985,13 @@ class InvoicesApi
      * @param  string $marketplace_id
      *  The marketplace identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse
      */
     public function getInvoicesAttributes(
         string $marketplace_id
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse {
+    ): \SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse {
         list($response) = $this->getInvoicesAttributesWithHttpInfo($marketplace_id);
         return $response;
     }
@@ -2002,9 +2002,9 @@ class InvoicesApi
      * @param  string $marketplace_id
      *  The marketplace identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoicesAttributesWithHttpInfo(
         string $marketplace_id
@@ -2050,158 +2050,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2222,7 +2222,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2230,7 +2230,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2238,7 +2238,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2246,7 +2246,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2254,7 +2254,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2262,7 +2262,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2270,7 +2270,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2278,7 +2278,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2286,7 +2286,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2294,7 +2294,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2336,7 +2336,7 @@ class InvoicesApi
     public function getInvoicesAttributesAsyncWithHttpInfo(
         string $marketplace_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesAttributesResponse';
         $request = $this->getInvoicesAttributesRequest($marketplace_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2481,13 +2481,13 @@ class InvoicesApi
      * @param  string $invoices_document_id
      *  The export document identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse
      */
     public function getInvoicesDocument(
         string $invoices_document_id
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse {
+    ): \SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse {
         list($response) = $this->getInvoicesDocumentWithHttpInfo($invoices_document_id);
         return $response;
     }
@@ -2498,9 +2498,9 @@ class InvoicesApi
      * @param  string $invoices_document_id
      *  The export document identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoicesDocumentWithHttpInfo(
         string $invoices_document_id
@@ -2546,158 +2546,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2718,7 +2718,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2726,7 +2726,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2734,7 +2734,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2742,7 +2742,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2750,7 +2750,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2758,7 +2758,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2766,7 +2766,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2774,7 +2774,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2782,7 +2782,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2790,7 +2790,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2832,7 +2832,7 @@ class InvoicesApi
     public function getInvoicesDocumentAsyncWithHttpInfo(
         string $invoices_document_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesDocumentResponse';
         $request = $this->getInvoicesDocumentRequest($invoices_document_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2976,13 +2976,13 @@ class InvoicesApi
      * @param  string $export_id
      *  The unique identifier for the export. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse
      */
     public function getInvoicesExport(
         string $export_id
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse {
+    ): \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse {
         list($response) = $this->getInvoicesExportWithHttpInfo($export_id);
         return $response;
     }
@@ -2993,9 +2993,9 @@ class InvoicesApi
      * @param  string $export_id
      *  The unique identifier for the export. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoicesExportWithHttpInfo(
         string $export_id
@@ -3041,158 +3041,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3213,7 +3213,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3221,7 +3221,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3229,7 +3229,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3237,7 +3237,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3245,7 +3245,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3253,7 +3253,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3261,7 +3261,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3269,7 +3269,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3277,7 +3277,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3285,7 +3285,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3327,7 +3327,7 @@ class InvoicesApi
     public function getInvoicesExportAsyncWithHttpInfo(
         string $export_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportResponse';
         $request = $this->getInvoicesExportRequest($export_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3481,9 +3481,9 @@ class InvoicesApi
      * @param  string|null $status
      *  Return exports matching the status specified. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse
+     * @return \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse
      */
     public function getInvoicesExports(
         string $marketplace_id,
@@ -3492,7 +3492,7 @@ class InvoicesApi
         ?int $page_size = null,
         ?\DateTime $date_end = null,
         ?string $status = null
-    ): \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse {
+    ): \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse {
         list($response) = $this->getInvoicesExportsWithHttpInfo($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
         return $response;
     }
@@ -3513,9 +3513,9 @@ class InvoicesApi
      * @param  string|null $status
      *  Return exports matching the status specified. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoicesExportsWithHttpInfo(
         string $marketplace_id,
@@ -3566,158 +3566,158 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\invoices\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\invoices\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
+            $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3738,7 +3738,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse',
+                        '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3746,7 +3746,7 @@ class InvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3754,7 +3754,7 @@ class InvoicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3762,7 +3762,7 @@ class InvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3770,7 +3770,7 @@ class InvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3778,7 +3778,7 @@ class InvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3786,7 +3786,7 @@ class InvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3794,7 +3794,7 @@ class InvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3802,7 +3802,7 @@ class InvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3810,7 +3810,7 @@ class InvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\invoices\v2024_06_19\ErrorList',
+                        '\SpApi\Model\invoices\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3882,7 +3882,7 @@ class InvoicesApi
         ?\DateTime $date_end = null,
         ?string $status = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
+        $returnType = '\SpApi\Model\invoices\v2024_06_19\GetInvoicesExportsResponse';
         $request = $this->getInvoicesExportsRequest($marketplace_id, $date_start, $next_token, $page_size, $date_end, $status);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

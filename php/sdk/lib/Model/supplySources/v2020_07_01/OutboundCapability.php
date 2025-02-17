@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OutboundCapability Class Doc Comment
  *
  * @category Class
  * @description The outbound capability of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPITypes = [
              'is_supported' => 'bool',
-             'operational_configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration',
-             'return_location' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation',
-             'delivery_channel' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel',
-             'pickup_channel' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel'    ];
+             'operational_configuration' => '\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration',
+             'return_location' => '\SpApi\Model\supplySources\v2020_07_01\ReturnLocation',
+             'delivery_channel' => '\SpApi\Model\supplySources\v2020_07_01\DeliveryChannel',
+             'pickup_channel' => '\SpApi\Model\supplySources\v2020_07_01\PickupChannel'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -356,9 +356,9 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets operational_configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null
      */
-    public function getOperationalConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration
+    public function getOperationalConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration
     {
         return $this->container['operational_configuration'];
     }
@@ -366,11 +366,11 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets operational_configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration|null $operational_configuration operational_configuration
      *
      * @return self
      */
-    public function setOperationalConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
+    public function setOperationalConfiguration(?\SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration $operational_configuration): self
     {
         if (is_null($operational_configuration)) {
             array_push($this->openAPINullablesSetToNull, 'operational_configuration');
@@ -390,9 +390,9 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets return_location
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ReturnLocation|null
      */
-    public function getReturnLocation(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation
+    public function getReturnLocation(): ?\SpApi\Model\supplySources\v2020_07_01\ReturnLocation
     {
         return $this->container['return_location'];
     }
@@ -400,11 +400,11 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets return_location
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation|null $return_location return_location
+     * @param \SpApi\Model\supplySources\v2020_07_01\ReturnLocation|null $return_location return_location
      *
      * @return self
      */
-    public function setReturnLocation(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ReturnLocation $return_location): self
+    public function setReturnLocation(?\SpApi\Model\supplySources\v2020_07_01\ReturnLocation $return_location): self
     {
         if (is_null($return_location)) {
             array_push($this->openAPINullablesSetToNull, 'return_location');
@@ -424,9 +424,9 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets delivery_channel
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\DeliveryChannel|null
      */
-    public function getDeliveryChannel(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel
+    public function getDeliveryChannel(): ?\SpApi\Model\supplySources\v2020_07_01\DeliveryChannel
     {
         return $this->container['delivery_channel'];
     }
@@ -434,11 +434,11 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets delivery_channel
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel|null $delivery_channel delivery_channel
+     * @param \SpApi\Model\supplySources\v2020_07_01\DeliveryChannel|null $delivery_channel delivery_channel
      *
      * @return self
      */
-    public function setDeliveryChannel(?\OpenAPI\Client\Model\supplySources\v2020_07_01\DeliveryChannel $delivery_channel): self
+    public function setDeliveryChannel(?\SpApi\Model\supplySources\v2020_07_01\DeliveryChannel $delivery_channel): self
     {
         if (is_null($delivery_channel)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_channel');
@@ -458,9 +458,9 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets pickup_channel
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\PickupChannel|null
      */
-    public function getPickupChannel(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel
+    public function getPickupChannel(): ?\SpApi\Model\supplySources\v2020_07_01\PickupChannel
     {
         return $this->container['pickup_channel'];
     }
@@ -468,11 +468,11 @@ class OutboundCapability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets pickup_channel
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel|null $pickup_channel pickup_channel
+     * @param \SpApi\Model\supplySources\v2020_07_01\PickupChannel|null $pickup_channel pickup_channel
      *
      * @return self
      */
-    public function setPickupChannel(?\OpenAPI\Client\Model\supplySources\v2020_07_01\PickupChannel $pickup_channel): self
+    public function setPickupChannel(?\SpApi\Model\supplySources\v2020_07_01\PickupChannel $pickup_channel): self
     {
         if (is_null($pickup_channel)) {
             array_push($this->openAPINullablesSetToNull, 'pickup_channel');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOfferMetricsResponseOffer Class Doc Comment
  *
  * @category Class
  * @description An object which contains offer metrics.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -75,7 +75,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
              'next30_day_shipped_subscription_units' => 'float',
              'next60_day_shipped_subscription_units' => 'float',
              'next90_day_shipped_subscription_units' => 'float',
-             'time_interval' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval',
+             'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
              'currency_code' => 'string'    ];
 
     /**
@@ -1070,9 +1070,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets time_interval
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\TimeInterval|null
      */
-    public function getTimeInterval(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval
+    public function getTimeInterval(): ?\SpApi\Model\replenishment\v2022_11_07\TimeInterval
     {
         return $this->container['time_interval'];
     }
@@ -1080,11 +1080,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets time_interval
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval|null $time_interval time_interval
+     * @param \SpApi\Model\replenishment\v2022_11_07\TimeInterval|null $time_interval time_interval
      *
      * @return self
      */
-    public function setTimeInterval(?\OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval $time_interval): self
+    public function setTimeInterval(?\SpApi\Model\replenishment\v2022_11_07\TimeInterval $time_interval): self
     {
         if (is_null($time_interval)) {
             array_push($this->openAPINullablesSetToNull, 'time_interval');

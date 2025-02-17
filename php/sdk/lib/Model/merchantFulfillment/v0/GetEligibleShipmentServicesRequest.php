@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetEligibleShipmentServicesRequest Class Doc Comment
  *
  * @category Class
  * @description Request schema.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipment_request_details' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails',
-             'shipping_offering_filter' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter'    ];
+             'shipment_request_details' => '\SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails',
+             'shipping_offering_filter' => '\SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
     /**
      * Gets shipment_request_details
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails
+     * @return \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails
      */
-    public function getShipmentRequestDetails(): \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails
+    public function getShipmentRequestDetails(): \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails
     {
         return $this->container['shipment_request_details'];
     }
@@ -314,11 +314,11 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets shipment_request_details
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details shipment_request_details
+     * @param \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details shipment_request_details
      *
      * @return self
      */
-    public function setShipmentRequestDetails(\OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details): self
+    public function setShipmentRequestDetails(\SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details): self
     {
         if (is_null($shipment_request_details)) {
             throw new \InvalidArgumentException('non-nullable shipment_request_details cannot be null');
@@ -331,9 +331,9 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
     /**
      * Gets shipping_offering_filter
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter|null
+     * @return \SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter|null
      */
-    public function getShippingOfferingFilter(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter
+    public function getShippingOfferingFilter(): ?\SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter
     {
         return $this->container['shipping_offering_filter'];
     }
@@ -341,11 +341,11 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets shipping_offering_filter
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter|null $shipping_offering_filter shipping_offering_filter
+     * @param \SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter|null $shipping_offering_filter shipping_offering_filter
      *
      * @return self
      */
-    public function setShippingOfferingFilter(?\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter $shipping_offering_filter): self
+    public function setShippingOfferingFilter(?\SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter $shipping_offering_filter): self
     {
         if (is_null($shipping_offering_filter)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_offering_filter');

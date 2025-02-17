@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded;
+use SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseEmbedded;
 
 /**
  * GetMessagingActionsForOrderResponseEmbeddedTest Class Doc Comment
  *
  * @category    Class
  * @description The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMessagingActionsForOrderResponseEmbeddedTest extends TestCase
 {

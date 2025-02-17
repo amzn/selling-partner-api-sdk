@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\v1\ChargeDetails;
+use SpApi\Model\vendor\df\payments\v1\ChargeDetails;
 
 /**
  * ChargeDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Monetary and tax details of the charge.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ChargeDetailsTest extends TestCase
 {
@@ -69,7 +69,7 @@ class ChargeDetailsTest extends TestCase
     public function testPropertyChargeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\Money();
+        $testValue = new \SpApi\Model\vendor\df\payments\v1\Money();
         
         $this->model->setChargeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getChargeAmount());

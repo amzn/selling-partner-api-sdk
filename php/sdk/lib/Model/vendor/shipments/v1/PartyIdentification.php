@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PartyIdentification Class Doc Comment
  *
  * @category Class
  * @description Name/Address and tax details of the party.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'address' => '\OpenAPI\Client\Model\vendor\shipments\v1\Address',
+             'address' => '\SpApi\Model\vendor\shipments\v1\Address',
              'party_id' => 'string',
-             'tax_registration_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\TaxRegistrationDetails[]'    ];
+             'tax_registration_details' => '\SpApi\Model\vendor\shipments\v1\TaxRegistrationDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -311,9 +311,9 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Address|null
+     * @return \SpApi\Model\vendor\shipments\v1\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Address
+    public function getAddress(): ?\SpApi\Model\vendor\shipments\v1\Address
     {
         return $this->container['address'];
     }
@@ -321,11 +321,11 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Address|null $address address
+     * @param \SpApi\Model\vendor\shipments\v1\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\vendor\shipments\v1\Address $address): self
+    public function setAddress(?\SpApi\Model\vendor\shipments\v1\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

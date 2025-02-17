@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ChargeRefundTransaction Class Doc Comment
  *
  * @category Class
  * @description The charge refund transaction.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ChargeRefundTransaction implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'charge_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'charge_amount' => '\SpApi\Model\finances\v0\Currency',
              'charge_type' => 'string'    ];
 
     /**
@@ -301,9 +301,9 @@ class ChargeRefundTransaction implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets charge_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getChargeAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getChargeAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['charge_amount'];
     }
@@ -311,11 +311,11 @@ class ChargeRefundTransaction implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets charge_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $charge_amount charge_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $charge_amount charge_amount
      *
      * @return self
      */
-    public function setChargeAmount(?\OpenAPI\Client\Model\finances\v0\Currency $charge_amount): self
+    public function setChargeAmount(?\SpApi\Model\finances\v0\Currency $charge_amount): self
     {
         if (is_null($charge_amount)) {
             array_push($this->openAPINullablesSetToNull, 'charge_amount');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * MskuPrepDetailInput Class Doc Comment
  *
  * @category Class
  * @description An MSKU and its related prep details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class MskuPrepDetailInput implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPITypes = [
              'msku' => 'string',
-             'prep_category' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepCategory',
-             'prep_types' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepType[]'    ];
+             'prep_category' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PrepCategory',
+             'prep_types' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PrepType[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\GetMyFeesEstimatesErrorList;
+use SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList;
 
 /**
  * GetMyFeesEstimatesErrorListTest Class Doc Comment
  *
  * @category    Class
  * @description A list of error responses returned when a request is unsuccessful.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMyFeesEstimatesErrorListTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Promotion Class Doc Comment
  *
  * @category Class
  * @description A promotion applied to an item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'promotion_type' => 'string',
              'promotion_id' => 'string',
-             'promotion_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'promotion_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -376,9 +376,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotion_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getPromotionAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getPromotionAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['promotion_amount'];
     }
@@ -386,11 +386,11 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promotion_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $promotion_amount promotion_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $promotion_amount promotion_amount
      *
      * @return self
      */
-    public function setPromotionAmount(?\OpenAPI\Client\Model\finances\v0\Currency $promotion_amount): self
+    public function setPromotionAmount(?\SpApi\Model\finances\v0\Currency $promotion_amount): self
     {
         if (is_null($promotion_amount)) {
             array_push($this->openAPINullablesSetToNull, 'promotion_amount');

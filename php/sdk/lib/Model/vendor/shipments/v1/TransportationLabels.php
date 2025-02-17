@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TransportationLabels Class Doc Comment
  *
  * @category Class
  * @description The request schema for the GetShipmentLabels operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'pagination' => '\OpenAPI\Client\Model\vendor\shipments\v1\Pagination',
-             'transport_labels' => '\OpenAPI\Client\Model\vendor\shipments\v1\TransportLabel[]'    ];
+             'pagination' => '\SpApi\Model\vendor\shipments\v1\Pagination',
+             'transport_labels' => '\SpApi\Model\vendor\shipments\v1\TransportLabel[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Pagination|null
+     * @return \SpApi\Model\vendor\shipments\v1\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Pagination
+    public function getPagination(): ?\SpApi\Model\vendor\shipments\v1\Pagination
     {
         return $this->container['pagination'];
     }
@@ -311,11 +311,11 @@ class TransportationLabels implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Pagination|null $pagination pagination
+     * @param \SpApi\Model\vendor\shipments\v1\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\vendor\shipments\v1\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\vendor\shipments\v1\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

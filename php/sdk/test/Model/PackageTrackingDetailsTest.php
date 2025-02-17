@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\PackageTrackingDetails;
 
 /**
  * PackageTrackingDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Tracking details of package
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageTrackingDetailsTest extends TestCase
 {
@@ -147,7 +147,7 @@ class PackageTrackingDetailsTest extends TestCase
     public function testPropertyShipToAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress();
         
         $this->model->setShipToAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipToAddress());
@@ -158,7 +158,7 @@ class PackageTrackingDetailsTest extends TestCase
      */
     public function testPropertyCurrentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CurrentStatus();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\CurrentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -193,7 +193,7 @@ class PackageTrackingDetailsTest extends TestCase
      */
     public function testPropertyAdditionalLocationInfo()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\AdditionalLocationInfo();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\AdditionalLocationInfo();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

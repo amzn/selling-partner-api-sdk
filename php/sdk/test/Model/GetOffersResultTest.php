@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\GetOffersResult;
+use SpApi\Model\pricing\v0\GetOffersResult;
 
 /**
  * GetOffersResultTest Class Doc Comment
  *
  * @category    Class
  * @description GetOffersResult
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetOffersResultTest extends TestCase
 {
@@ -89,7 +89,7 @@ class GetOffersResultTest extends TestCase
      */
     public function testPropertyItemCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\ConditionType();
+        $enumInstance = new \SpApi\Model\pricing\v0\ConditionType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class GetOffersResultTest extends TestCase
     public function testPropertyIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\ItemIdentifier();
+        $testValue = new \SpApi\Model\pricing\v0\ItemIdentifier();
         
         $this->model->setIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getIdentifier());
@@ -126,7 +126,7 @@ class GetOffersResultTest extends TestCase
     public function testPropertySummary()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\Summary();
+        $testValue = new \SpApi\Model\pricing\v0\Summary();
         
         $this->model->setSummary($testValue);
         $this->assertEquals($testValue, $this->model->getSummary());

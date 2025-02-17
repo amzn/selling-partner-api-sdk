@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentMeasurements Class Doc Comment
  *
  * @category Class
  * @description Shipment measurement details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'gross_shipment_weight' => '\OpenAPI\Client\Model\vendor\shipments\v1\Weight',
-             'shipment_volume' => '\OpenAPI\Client\Model\vendor\shipments\v1\Volume',
+             'gross_shipment_weight' => '\SpApi\Model\vendor\shipments\v1\Weight',
+             'shipment_volume' => '\SpApi\Model\vendor\shipments\v1\Volume',
              'carton_count' => 'int',
              'pallet_count' => 'int'    ];
 
@@ -315,9 +315,9 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets gross_shipment_weight
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null
+     * @return \SpApi\Model\vendor\shipments\v1\Weight|null
      */
-    public function getGrossShipmentWeight(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Weight
+    public function getGrossShipmentWeight(): ?\SpApi\Model\vendor\shipments\v1\Weight
     {
         return $this->container['gross_shipment_weight'];
     }
@@ -325,11 +325,11 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets gross_shipment_weight
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null $gross_shipment_weight gross_shipment_weight
+     * @param \SpApi\Model\vendor\shipments\v1\Weight|null $gross_shipment_weight gross_shipment_weight
      *
      * @return self
      */
-    public function setGrossShipmentWeight(?\OpenAPI\Client\Model\vendor\shipments\v1\Weight $gross_shipment_weight): self
+    public function setGrossShipmentWeight(?\SpApi\Model\vendor\shipments\v1\Weight $gross_shipment_weight): self
     {
         if (is_null($gross_shipment_weight)) {
             array_push($this->openAPINullablesSetToNull, 'gross_shipment_weight');
@@ -349,9 +349,9 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets shipment_volume
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Volume|null
+     * @return \SpApi\Model\vendor\shipments\v1\Volume|null
      */
-    public function getShipmentVolume(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Volume
+    public function getShipmentVolume(): ?\SpApi\Model\vendor\shipments\v1\Volume
     {
         return $this->container['shipment_volume'];
     }
@@ -359,11 +359,11 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets shipment_volume
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Volume|null $shipment_volume shipment_volume
+     * @param \SpApi\Model\vendor\shipments\v1\Volume|null $shipment_volume shipment_volume
      *
      * @return self
      */
-    public function setShipmentVolume(?\OpenAPI\Client\Model\vendor\shipments\v1\Volume $shipment_volume): self
+    public function setShipmentVolume(?\SpApi\Model\vendor\shipments\v1\Volume $shipment_volume): self
     {
         if (is_null($shipment_volume)) {
             array_push($this->openAPINullablesSetToNull, 'shipment_volume');

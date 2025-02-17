@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\services\v1;
+namespace SpApi\Api\services\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ServiceApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -154,17 +154,17 @@ class ServiceApi
      *
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
      *  Add appointment operation input details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\SetAppointmentResponse
+     * @return \SpApi\Model\services\v1\SetAppointmentResponse
      */
     public function addAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
-        \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
-    ): \OpenAPI\Client\Model\services\v1\SetAppointmentResponse {
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
+    ): \SpApi\Model\services\v1\SetAppointmentResponse {
         list($response) = $this->addAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $body);
         return $response;
     }
@@ -174,16 +174,16 @@ class ServiceApi
      *
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
      *  Add appointment operation input details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
-        \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
     ): array {
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
         $request = $this->config->sign($request);
@@ -226,158 +226,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse';
+            $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -398,7 +398,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -406,7 +406,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -414,7 +414,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -422,7 +422,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -430,7 +430,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -438,7 +438,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -446,7 +446,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -454,7 +454,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -462,7 +462,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -470,7 +470,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -485,7 +485,7 @@ class ServiceApi
      *
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
      *  Add appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
@@ -493,7 +493,7 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdAsync(
         string $service_job_id,
-        \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
     ): PromiseInterface {
         return $this->addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo($service_job_id, $body)
             ->then(
@@ -508,7 +508,7 @@ class ServiceApi
      *
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
      *  Add appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
@@ -516,9 +516,9 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
-        \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse';
+        $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->addAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -564,7 +564,7 @@ class ServiceApi
      *
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\AddAppointmentRequest $body
      *  Add appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
@@ -572,7 +572,7 @@ class ServiceApi
      */
     public function addAppointmentForServiceJobByServiceJobIdRequest(
         string $service_job_id,
-        \OpenAPI\Client\Model\services\v1\AddAppointmentRequest $body
+        \SpApi\Model\services\v1\AddAppointmentRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
@@ -685,18 +685,18 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
      *  body (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse
+     * @return \SpApi\Model\services\v1\AssignAppointmentResourcesResponse
      */
     public function assignAppointmentResources(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
-    ): \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse {
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
+    ): \SpApi\Model\services\v1\AssignAppointmentResourcesResponse {
         list($response) = $this->assignAppointmentResourcesWithHttpInfo($service_job_id, $appointment_id, $body);
         return $response;
     }
@@ -708,17 +708,17 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
      *  (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\AssignAppointmentResourcesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function assignAppointmentResourcesWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
     ): array {
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
         $request = $this->config->sign($request);
@@ -761,158 +761,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\AssignAppointmentResourcesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse';
+            $returnType = '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -933,7 +933,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -941,7 +941,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -949,7 +949,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -957,7 +957,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -965,7 +965,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -973,7 +973,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -981,7 +981,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -989,7 +989,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -997,7 +997,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1005,7 +1005,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse',
+                        '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1022,7 +1022,7 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1031,7 +1031,7 @@ class ServiceApi
     public function assignAppointmentResourcesAsync(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
     ): PromiseInterface {
         return $this->assignAppointmentResourcesAsyncWithHttpInfo($service_job_id, $appointment_id, $body)
             ->then(
@@ -1048,7 +1048,7 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1057,9 +1057,9 @@ class ServiceApi
     public function assignAppointmentResourcesAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesResponse';
+        $returnType = '\SpApi\Model\services\v1\AssignAppointmentResourcesResponse';
         $request = $this->assignAppointmentResourcesRequest($service_job_id, $appointment_id, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1107,7 +1107,7 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+     * @param  \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
      *  (required)
      *
      * @throws \InvalidArgumentException
@@ -1116,7 +1116,7 @@ class ServiceApi
     public function assignAppointmentResourcesRequest(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\AssignAppointmentResourcesRequest $body
+        \SpApi\Model\services\v1\AssignAppointmentResourcesRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
@@ -1251,14 +1251,14 @@ class ServiceApi
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\CancelReservationResponse
+     * @return \SpApi\Model\services\v1\CancelReservationResponse
      */
     public function cancelReservation(
         string $reservation_id,
         array $marketplace_ids
-    ): \OpenAPI\Client\Model\services\v1\CancelReservationResponse {
+    ): \SpApi\Model\services\v1\CancelReservationResponse {
         list($response) = $this->cancelReservationWithHttpInfo($reservation_id, $marketplace_ids);
         return $response;
     }
@@ -1271,9 +1271,9 @@ class ServiceApi
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\CancelReservationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\CancelReservationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelReservationWithHttpInfo(
         string $reservation_id,
@@ -1320,143 +1320,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 204:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\CancelReservationResponse';
+            $returnType = '\SpApi\Model\services\v1\CancelReservationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1477,7 +1477,7 @@ class ServiceApi
                 case 204:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1485,7 +1485,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1493,7 +1493,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1501,7 +1501,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1509,7 +1509,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1517,7 +1517,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1525,7 +1525,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1533,7 +1533,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1541,7 +1541,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelReservationResponse',
+                        '\SpApi\Model\services\v1\CancelReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1589,7 +1589,7 @@ class ServiceApi
         string $reservation_id,
         array $marketplace_ids
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\CancelReservationResponse';
+        $returnType = '\SpApi\Model\services\v1\CancelReservationResponse';
         $request = $this->cancelReservationRequest($reservation_id, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1764,14 +1764,14 @@ class ServiceApi
      * @param  string $cancellation_reason_code
      *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse
+     * @return \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse
      */
     public function cancelServiceJobByServiceJobId(
         string $service_job_id,
         string $cancellation_reason_code
-    ): \OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse {
+    ): \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse {
         list($response) = $this->cancelServiceJobByServiceJobIdWithHttpInfo($service_job_id, $cancellation_reason_code);
         return $response;
     }
@@ -1784,9 +1784,9 @@ class ServiceApi
      * @param  string $cancellation_reason_code
      *  A cancel reason code that specifies the reason for cancelling a service job. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
@@ -1833,158 +1833,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
+            $returnType = '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2005,7 +2005,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2013,7 +2013,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2021,7 +2021,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2029,7 +2029,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2037,7 +2037,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2045,7 +2045,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2053,7 +2053,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2061,7 +2061,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2069,7 +2069,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2077,7 +2077,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2125,7 +2125,7 @@ class ServiceApi
         string $service_job_id,
         string $cancellation_reason_code
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
+        $returnType = '\SpApi\Model\services\v1\CancelServiceJobByServiceJobIdResponse';
         $request = $this->cancelServiceJobByServiceJobIdRequest($service_job_id, $cancellation_reason_code);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2304,13 +2304,13 @@ class ServiceApi
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse
+     * @return \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse
      */
     public function completeServiceJobByServiceJobId(
         string $service_job_id
-    ): \OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse {
+    ): \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse {
         list($response) = $this->completeServiceJobByServiceJobIdWithHttpInfo($service_job_id);
         return $response;
     }
@@ -2321,9 +2321,9 @@ class ServiceApi
      * @param  string $service_job_id
      *  An Amazon defined service job identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function completeServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id
@@ -2369,158 +2369,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
+            $returnType = '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2541,7 +2541,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2549,7 +2549,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2557,7 +2557,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2565,7 +2565,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2573,7 +2573,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2581,7 +2581,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2589,7 +2589,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2597,7 +2597,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2605,7 +2605,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2613,7 +2613,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2655,7 +2655,7 @@ class ServiceApi
     public function completeServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
+        $returnType = '\SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse';
         $request = $this->completeServiceJobByServiceJobIdRequest($service_job_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2805,17 +2805,17 @@ class ServiceApi
      *
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
      *  Reservation details (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\CreateReservationResponse
+     * @return \SpApi\Model\services\v1\CreateReservationResponse
      */
     public function createReservation(
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
-    ): \OpenAPI\Client\Model\services\v1\CreateReservationResponse {
+        \SpApi\Model\services\v1\CreateReservationRequest $body
+    ): \SpApi\Model\services\v1\CreateReservationResponse {
         list($response) = $this->createReservationWithHttpInfo($marketplace_ids, $body);
         return $response;
     }
@@ -2825,16 +2825,16 @@ class ServiceApi
      *
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
      *  Reservation details (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\CreateReservationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\CreateReservationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReservationWithHttpInfo(
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+        \SpApi\Model\services\v1\CreateReservationRequest $body
     ): array {
         $request = $this->createReservationRequest($marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -2877,143 +2877,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\CreateReservationResponse';
+            $returnType = '\SpApi\Model\services\v1\CreateReservationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3034,7 +3034,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3042,7 +3042,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3050,7 +3050,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3058,7 +3058,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3066,7 +3066,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3074,7 +3074,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3082,7 +3082,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3090,7 +3090,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3098,7 +3098,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateReservationResponse',
+                        '\SpApi\Model\services\v1\CreateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3113,7 +3113,7 @@ class ServiceApi
      *
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
      *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
@@ -3121,7 +3121,7 @@ class ServiceApi
      */
     public function createReservationAsync(
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+        \SpApi\Model\services\v1\CreateReservationRequest $body
     ): PromiseInterface {
         return $this->createReservationAsyncWithHttpInfo($marketplace_ids, $body)
             ->then(
@@ -3136,7 +3136,7 @@ class ServiceApi
      *
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
      *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
@@ -3144,9 +3144,9 @@ class ServiceApi
      */
     public function createReservationAsyncWithHttpInfo(
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+        \SpApi\Model\services\v1\CreateReservationRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\CreateReservationResponse';
+        $returnType = '\SpApi\Model\services\v1\CreateReservationResponse';
         $request = $this->createReservationRequest($marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3192,7 +3192,7 @@ class ServiceApi
      *
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\CreateReservationRequest $body
      *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
@@ -3200,7 +3200,7 @@ class ServiceApi
      */
     public function createReservationRequest(
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\CreateReservationRequest $body
+        \SpApi\Model\services\v1\CreateReservationRequest $body
     ): Request {
         // verify the required parameter 'marketplace_ids' is set
         if ($marketplace_ids === null || (is_array($marketplace_ids) && count($marketplace_ids) === 0)) {
@@ -3307,16 +3307,16 @@ class ServiceApi
     /**
      * Operation createServiceDocumentUploadDestination
      *
-     * @param  \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
      *  Upload document operation input details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination
+     * @return \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination
      */
     public function createServiceDocumentUploadDestination(
-        \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
-    ): \OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination {
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
+    ): \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination {
         list($response) = $this->createServiceDocumentUploadDestinationWithHttpInfo($body);
         return $response;
     }
@@ -3324,15 +3324,15 @@ class ServiceApi
     /**
      * Operation createServiceDocumentUploadDestinationWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
      *  Upload document operation input details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\CreateServiceDocumentUploadDestination, HTTP status code, HTTP response headers (array of strings)
      */
     public function createServiceDocumentUploadDestinationWithHttpInfo(
-        \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
     ): array {
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
         $request = $this->config->sign($request);
@@ -3375,158 +3375,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
+                        if ('\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination';
+            $returnType = '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3547,7 +3547,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3555,7 +3555,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3563,7 +3563,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3571,7 +3571,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3579,7 +3579,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3587,7 +3587,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3595,7 +3595,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3603,7 +3603,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3611,7 +3611,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3619,7 +3619,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination',
+                        '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3632,14 +3632,14 @@ class ServiceApi
     /**
      * Operation createServiceDocumentUploadDestinationAsync
      *
-     * @param  \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
      *  Upload document operation input details. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createServiceDocumentUploadDestinationAsync(
-        \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
     ): PromiseInterface {
         return $this->createServiceDocumentUploadDestinationAsyncWithHttpInfo($body)
             ->then(
@@ -3652,16 +3652,16 @@ class ServiceApi
     /**
      * Operation createServiceDocumentUploadDestinationAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
      *  Upload document operation input details. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createServiceDocumentUploadDestinationAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\CreateServiceDocumentUploadDestination';
+        $returnType = '\SpApi\Model\services\v1\CreateServiceDocumentUploadDestination';
         $request = $this->createServiceDocumentUploadDestinationRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3705,14 +3705,14 @@ class ServiceApi
     /**
      * Create request for operation 'createServiceDocumentUploadDestination'
      *
-     * @param  \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+     * @param  \SpApi\Model\services\v1\ServiceUploadDocument $body
      *  Upload document operation input details. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createServiceDocumentUploadDestinationRequest(
-        \OpenAPI\Client\Model\services\v1\ServiceUploadDocument $body
+        \SpApi\Model\services\v1\ServiceUploadDocument $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -3811,9 +3811,9 @@ class ServiceApi
      * @param  string|null $end_time
      *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse
+     * @return \SpApi\Model\services\v1\GetAppointmentSlotsResponse
      */
     public function getAppointmentSlots(
         string $asin,
@@ -3821,7 +3821,7 @@ class ServiceApi
         array $marketplace_ids,
         ?string $start_time = null,
         ?string $end_time = null
-    ): \OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse {
+    ): \SpApi\Model\services\v1\GetAppointmentSlotsResponse {
         list($response) = $this->getAppointmentSlotsWithHttpInfo($asin, $store_id, $marketplace_ids, $start_time, $end_time);
         return $response;
     }
@@ -3840,9 +3840,9 @@ class ServiceApi
      * @param  string|null $end_time
      *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppointmentSlotsWithHttpInfo(
         string $asin,
@@ -3892,143 +3892,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse';
+            $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4049,7 +4049,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4057,7 +4057,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4065,7 +4065,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4073,7 +4073,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4081,7 +4081,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4089,7 +4089,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4097,7 +4097,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4105,7 +4105,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4113,7 +4113,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4179,7 +4179,7 @@ class ServiceApi
         ?string $start_time = null,
         ?string $end_time = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse';
+        $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmentSlotsRequest($asin, $store_id, $marketplace_ids, $start_time, $end_time);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4401,16 +4401,16 @@ class ServiceApi
      * @param  string|null $end_time
      *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse
+     * @return \SpApi\Model\services\v1\GetAppointmentSlotsResponse
      */
     public function getAppointmmentSlotsByJobId(
         string $service_job_id,
         array $marketplace_ids,
         ?string $start_time = null,
         ?string $end_time = null
-    ): \OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse {
+    ): \SpApi\Model\services\v1\GetAppointmentSlotsResponse {
         list($response) = $this->getAppointmmentSlotsByJobIdWithHttpInfo($service_job_id, $marketplace_ids, $start_time, $end_time);
         return $response;
     }
@@ -4427,9 +4427,9 @@ class ServiceApi
      * @param  string|null $end_time
      *  A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\GetAppointmentSlotsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppointmmentSlotsByJobIdWithHttpInfo(
         string $service_job_id,
@@ -4478,143 +4478,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetAppointmentSlotsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetAppointmentSlotsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse';
+            $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4635,7 +4635,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4643,7 +4643,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4651,7 +4651,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4659,7 +4659,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4667,7 +4667,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4675,7 +4675,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4683,7 +4683,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4691,7 +4691,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4699,7 +4699,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse',
+                        '\SpApi\Model\services\v1\GetAppointmentSlotsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4759,7 +4759,7 @@ class ServiceApi
         ?string $start_time = null,
         ?string $end_time = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse';
+        $returnType = '\SpApi\Model\services\v1\GetAppointmentSlotsResponse';
         $request = $this->getAppointmmentSlotsByJobIdRequest($service_job_id, $marketplace_ids, $start_time, $end_time);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4957,21 +4957,21 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\FixedSlotCapacity
+     * @return \SpApi\Model\services\v1\FixedSlotCapacity
      */
     public function getFixedSlotCapacity(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
-    ): \OpenAPI\Client\Model\services\v1\FixedSlotCapacity {
+    ): \SpApi\Model\services\v1\FixedSlotCapacity {
         list($response) = $this->getFixedSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token);
         return $response;
     }
@@ -4983,19 +4983,19 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\FixedSlotCapacity, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\FixedSlotCapacity, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFixedSlotCapacityWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): array {
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
@@ -5039,158 +5039,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacity' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacity' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacity' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacity' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacity', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacity', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\FixedSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\FixedSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\FixedSlotCapacity';
+            $returnType = '\SpApi\Model\services\v1\FixedSlotCapacity';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5211,7 +5211,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacity',
+                        '\SpApi\Model\services\v1\FixedSlotCapacity',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5219,7 +5219,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5227,7 +5227,7 @@ class ServiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5235,7 +5235,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5243,7 +5243,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5251,7 +5251,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5259,7 +5259,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5267,7 +5267,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5275,7 +5275,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5283,7 +5283,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\FixedSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\FixedSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5300,7 +5300,7 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
@@ -5311,7 +5311,7 @@ class ServiceApi
     public function getFixedSlotCapacityAsync(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): PromiseInterface {
         return $this->getFixedSlotCapacityAsyncWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token)
@@ -5329,7 +5329,7 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
@@ -5340,10 +5340,10 @@ class ServiceApi
     public function getFixedSlotCapacityAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\FixedSlotCapacity';
+        $returnType = '\SpApi\Model\services\v1\FixedSlotCapacity';
         $request = $this->getFixedSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -5391,7 +5391,7 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\FixedSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
@@ -5402,7 +5402,7 @@ class ServiceApi
     public function getFixedSlotCapacityRequest(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\FixedSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'resource_id' is set
@@ -5544,21 +5544,21 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\RangeSlotCapacity
+     * @return \SpApi\Model\services\v1\RangeSlotCapacity
      */
     public function getRangeSlotCapacity(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
-    ): \OpenAPI\Client\Model\services\v1\RangeSlotCapacity {
+    ): \SpApi\Model\services\v1\RangeSlotCapacity {
         list($response) = $this->getRangeSlotCapacityWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token);
         return $response;
     }
@@ -5570,19 +5570,19 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\RangeSlotCapacity, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\RangeSlotCapacity, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRangeSlotCapacityWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): array {
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
@@ -5626,158 +5626,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacity' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacity' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacity' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacity' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacity', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacity', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
+                        if ('\SpApi\Model\services\v1\RangeSlotCapacityErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\RangeSlotCapacityErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\RangeSlotCapacity';
+            $returnType = '\SpApi\Model\services\v1\RangeSlotCapacity';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5798,7 +5798,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacity',
+                        '\SpApi\Model\services\v1\RangeSlotCapacity',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5806,7 +5806,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5814,7 +5814,7 @@ class ServiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5822,7 +5822,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5830,7 +5830,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5838,7 +5838,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5846,7 +5846,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5854,7 +5854,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5862,7 +5862,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5870,7 +5870,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\RangeSlotCapacityErrors',
+                        '\SpApi\Model\services\v1\RangeSlotCapacityErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5887,7 +5887,7 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
@@ -5898,7 +5898,7 @@ class ServiceApi
     public function getRangeSlotCapacityAsync(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): PromiseInterface {
         return $this->getRangeSlotCapacityAsyncWithHttpInfo($resource_id, $marketplace_ids, $body, $next_page_token)
@@ -5916,7 +5916,7 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
@@ -5927,10 +5927,10 @@ class ServiceApi
     public function getRangeSlotCapacityAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\RangeSlotCapacity';
+        $returnType = '\SpApi\Model\services\v1\RangeSlotCapacity';
         $request = $this->getRangeSlotCapacityRequest($resource_id, $marketplace_ids, $body, $next_page_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -5978,7 +5978,7 @@ class ServiceApi
      *  Resource Identifier. (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body
+     * @param  \SpApi\Model\services\v1\RangeSlotCapacityQuery $body
      *  Request body. (required)
      * @param  string|null $next_page_token
      *  Next page token returned in the response of your previous request. (optional)
@@ -5989,7 +5989,7 @@ class ServiceApi
     public function getRangeSlotCapacityRequest(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery $body,
+        \SpApi\Model\services\v1\RangeSlotCapacityQuery $body,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'resource_id' is set
@@ -6130,13 +6130,13 @@ class ServiceApi
      * @param  string $service_job_id
      *  A service job identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse
+     * @return \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse
      */
     public function getServiceJobByServiceJobId(
         string $service_job_id
-    ): \OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse {
+    ): \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse {
         list($response) = $this->getServiceJobByServiceJobIdWithHttpInfo($service_job_id);
         return $response;
     }
@@ -6147,9 +6147,9 @@ class ServiceApi
      * @param  string $service_job_id
      *  A service job identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id
@@ -6195,158 +6195,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse';
+            $returnType = '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6367,7 +6367,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6375,7 +6375,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6383,7 +6383,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6391,7 +6391,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6399,7 +6399,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6407,7 +6407,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6415,7 +6415,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6423,7 +6423,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6431,7 +6431,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6439,7 +6439,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6481,7 +6481,7 @@ class ServiceApi
     public function getServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\GetServiceJobByServiceJobIdResponse';
+        $returnType = '\SpApi\Model\services\v1\GetServiceJobByServiceJobIdResponse';
         $request = $this->getServiceJobByServiceJobIdRequest($service_job_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -6662,9 +6662,9 @@ class ServiceApi
      * @param  string[]|null $store_ids
      *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\GetServiceJobsResponse
+     * @return \SpApi\Model\services\v1\GetServiceJobsResponse
      */
     public function getServiceJobs(
         array $marketplace_ids,
@@ -6683,7 +6683,7 @@ class ServiceApi
         ?array $asins = null,
         ?array $required_skills = null,
         ?array $store_ids = null
-    ): \OpenAPI\Client\Model\services\v1\GetServiceJobsResponse {
+    ): \SpApi\Model\services\v1\GetServiceJobsResponse {
         list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
         return $response;
     }
@@ -6724,9 +6724,9 @@ class ServiceApi
      * @param  string[]|null $store_ids
      *  List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\GetServiceJobsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\GetServiceJobsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getServiceJobsWithHttpInfo(
         array $marketplace_ids,
@@ -6787,143 +6787,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\GetServiceJobsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\GetServiceJobsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\GetServiceJobsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse';
+            $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6944,7 +6944,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6952,7 +6952,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6960,7 +6960,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6968,7 +6968,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6976,7 +6976,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6984,7 +6984,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6992,7 +6992,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7000,7 +7000,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7008,7 +7008,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse',
+                        '\SpApi\Model\services\v1\GetServiceJobsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7140,7 +7140,7 @@ class ServiceApi
         ?array $required_skills = null,
         ?array $store_ids = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\GetServiceJobsResponse';
+        $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
         $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -7505,18 +7505,18 @@ class ServiceApi
      *  An Amazon defined service job identifier. (required)
      * @param  string $appointment_id
      *  An existing appointment identifier for the Service Job. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
      *  Reschedule appointment operation input details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\SetAppointmentResponse
+     * @return \SpApi\Model\services\v1\SetAppointmentResponse
      */
     public function rescheduleAppointmentForServiceJobByServiceJobId(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
-    ): \OpenAPI\Client\Model\services\v1\SetAppointmentResponse {
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
+    ): \SpApi\Model\services\v1\SetAppointmentResponse {
         list($response) = $this->rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo($service_job_id, $appointment_id, $body);
         return $response;
     }
@@ -7528,17 +7528,17 @@ class ServiceApi
      *  An Amazon defined service job identifier. (required)
      * @param  string $appointment_id
      *  An existing appointment identifier for the Service Job. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
      *  Reschedule appointment operation input details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\SetAppointmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
     ): array {
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
         $request = $this->config->sign($request);
@@ -7581,158 +7581,158 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\SetAppointmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\SetAppointmentResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\SetAppointmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\SetAppointmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse';
+            $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7753,7 +7753,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7761,7 +7761,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7769,7 +7769,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7777,7 +7777,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7785,7 +7785,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7793,7 +7793,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7801,7 +7801,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7809,7 +7809,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7817,7 +7817,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7825,7 +7825,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse',
+                        '\SpApi\Model\services\v1\SetAppointmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7842,7 +7842,7 @@ class ServiceApi
      *  An Amazon defined service job identifier. (required)
      * @param  string $appointment_id
      *  An existing appointment identifier for the Service Job. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
      *  Reschedule appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
@@ -7851,7 +7851,7 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdAsync(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
     ): PromiseInterface {
         return $this->rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo($service_job_id, $appointment_id, $body)
             ->then(
@@ -7868,7 +7868,7 @@ class ServiceApi
      *  An Amazon defined service job identifier. (required)
      * @param  string $appointment_id
      *  An existing appointment identifier for the Service Job. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
      *  Reschedule appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
@@ -7877,9 +7877,9 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\SetAppointmentResponse';
+        $returnType = '\SpApi\Model\services\v1\SetAppointmentResponse';
         $request = $this->rescheduleAppointmentForServiceJobByServiceJobIdRequest($service_job_id, $appointment_id, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -7927,7 +7927,7 @@ class ServiceApi
      *  An Amazon defined service job identifier. (required)
      * @param  string $appointment_id
      *  An existing appointment identifier for the Service Job. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+     * @param  \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
      *  Reschedule appointment operation input details. (required)
      *
      * @throws \InvalidArgumentException
@@ -7936,7 +7936,7 @@ class ServiceApi
     public function rescheduleAppointmentForServiceJobByServiceJobIdRequest(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\RescheduleAppointmentRequest $body
+        \SpApi\Model\services\v1\RescheduleAppointmentRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
@@ -8070,17 +8070,17 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
      *  Appointment fulfillment data collection details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
     public function setAppointmentFulfillmentData(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): string {
         list($response) = $this->setAppointmentFulfillmentDataWithHttpInfo($service_job_id, $appointment_id, $body);
         return $response;
@@ -8093,17 +8093,17 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
      *  Appointment fulfillment data collection details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function setAppointmentFulfillmentDataWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): array {
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
         $request = $this->config->sign($request);
@@ -8161,137 +8161,137 @@ class ServiceApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\Error[]' !== 'string') {
+                        if ('\SpApi\Model\services\v1\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -8326,7 +8326,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8334,7 +8334,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8342,7 +8342,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8350,7 +8350,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8358,7 +8358,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8366,7 +8366,7 @@ class ServiceApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8374,7 +8374,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8382,7 +8382,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8390,7 +8390,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\Error[]',
+                        '\SpApi\Model\services\v1\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8407,7 +8407,7 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
      *  Appointment fulfillment data collection details. (required)
      *
      * @throws \InvalidArgumentException
@@ -8416,7 +8416,7 @@ class ServiceApi
     public function setAppointmentFulfillmentDataAsync(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): PromiseInterface {
         return $this->setAppointmentFulfillmentDataAsyncWithHttpInfo($service_job_id, $appointment_id, $body)
             ->then(
@@ -8433,7 +8433,7 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
      *  Appointment fulfillment data collection details. (required)
      *
      * @throws \InvalidArgumentException
@@ -8442,7 +8442,7 @@ class ServiceApi
     public function setAppointmentFulfillmentDataAsyncWithHttpInfo(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): PromiseInterface {
         $returnType = 'string';
         $request = $this->setAppointmentFulfillmentDataRequest($service_job_id, $appointment_id, $body);
@@ -8492,7 +8492,7 @@ class ServiceApi
      *  An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param  string $appointment_id
      *  An Amazon-defined identifier of active service job appointment. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+     * @param  \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
      *  Appointment fulfillment data collection details. (required)
      *
      * @throws \InvalidArgumentException
@@ -8501,7 +8501,7 @@ class ServiceApi
     public function setAppointmentFulfillmentDataRequest(
         string $service_job_id,
         string $appointment_id,
-        \OpenAPI\Client\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
+        \SpApi\Model\services\v1\SetAppointmentFulfillmentDataRequest $body
     ): Request {
         // verify the required parameter 'service_job_id' is set
         if ($service_job_id === null || (is_array($service_job_id) && count($service_job_id) === 0)) {
@@ -8635,18 +8635,18 @@ class ServiceApi
      *  Reservation Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
      *  Reservation details (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\UpdateReservationResponse
+     * @return \SpApi\Model\services\v1\UpdateReservationResponse
      */
     public function updateReservation(
         string $reservation_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
-    ): \OpenAPI\Client\Model\services\v1\UpdateReservationResponse {
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
+    ): \SpApi\Model\services\v1\UpdateReservationResponse {
         list($response) = $this->updateReservationWithHttpInfo($reservation_id, $marketplace_ids, $body);
         return $response;
     }
@@ -8658,17 +8658,17 @@ class ServiceApi
      *  Reservation Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
      *  Reservation details (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\UpdateReservationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\UpdateReservationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateReservationWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
     ): array {
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -8711,143 +8711,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateReservationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateReservationResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateReservationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateReservationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse';
+            $returnType = '\SpApi\Model\services\v1\UpdateReservationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8868,7 +8868,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8876,7 +8876,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8884,7 +8884,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8892,7 +8892,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8900,7 +8900,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8908,7 +8908,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8916,7 +8916,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8924,7 +8924,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8932,7 +8932,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse',
+                        '\SpApi\Model\services\v1\UpdateReservationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8949,7 +8949,7 @@ class ServiceApi
      *  Reservation Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
      *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
@@ -8958,7 +8958,7 @@ class ServiceApi
     public function updateReservationAsync(
         string $reservation_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
     ): PromiseInterface {
         return $this->updateReservationAsyncWithHttpInfo($reservation_id, $marketplace_ids, $body)
             ->then(
@@ -8975,7 +8975,7 @@ class ServiceApi
      *  Reservation Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
      *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
@@ -8984,9 +8984,9 @@ class ServiceApi
     public function updateReservationAsyncWithHttpInfo(
         string $reservation_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\UpdateReservationResponse';
+        $returnType = '\SpApi\Model\services\v1\UpdateReservationResponse';
         $request = $this->updateReservationRequest($reservation_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -9034,7 +9034,7 @@ class ServiceApi
      *  Reservation Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateReservationRequest $body
      *  Reservation details (required)
      *
      * @throws \InvalidArgumentException
@@ -9043,7 +9043,7 @@ class ServiceApi
     public function updateReservationRequest(
         string $reservation_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateReservationRequest $body
+        \SpApi\Model\services\v1\UpdateReservationRequest $body
     ): Request {
         // verify the required parameter 'reservation_id' is set
         if ($reservation_id === null || (is_array($reservation_id) && count($reservation_id) === 0)) {
@@ -9175,18 +9175,18 @@ class ServiceApi
      *  Resource (store) Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
      *  Schedule details (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\services\v1\UpdateScheduleResponse
+     * @return \SpApi\Model\services\v1\UpdateScheduleResponse
      */
     public function updateSchedule(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
-    ): \OpenAPI\Client\Model\services\v1\UpdateScheduleResponse {
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
+    ): \SpApi\Model\services\v1\UpdateScheduleResponse {
         list($response) = $this->updateScheduleWithHttpInfo($resource_id, $marketplace_ids, $body);
         return $response;
     }
@@ -9198,17 +9198,17 @@ class ServiceApi
      *  Resource (store) Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
      *  Schedule details (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\services\v1\UpdateScheduleResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\services\v1\UpdateScheduleResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateScheduleWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
     ): array {
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -9251,143 +9251,143 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\services\v1\UpdateScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\services\v1\UpdateScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\services\v1\UpdateScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse';
+            $returnType = '\SpApi\Model\services\v1\UpdateScheduleResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9408,7 +9408,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9416,7 +9416,7 @@ class ServiceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9424,7 +9424,7 @@ class ServiceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9432,7 +9432,7 @@ class ServiceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9440,7 +9440,7 @@ class ServiceApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9448,7 +9448,7 @@ class ServiceApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9456,7 +9456,7 @@ class ServiceApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9464,7 +9464,7 @@ class ServiceApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9472,7 +9472,7 @@ class ServiceApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse',
+                        '\SpApi\Model\services\v1\UpdateScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9489,7 +9489,7 @@ class ServiceApi
      *  Resource (store) Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
      *  Schedule details (required)
      *
      * @throws \InvalidArgumentException
@@ -9498,7 +9498,7 @@ class ServiceApi
     public function updateScheduleAsync(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
     ): PromiseInterface {
         return $this->updateScheduleAsyncWithHttpInfo($resource_id, $marketplace_ids, $body)
             ->then(
@@ -9515,7 +9515,7 @@ class ServiceApi
      *  Resource (store) Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
      *  Schedule details (required)
      *
      * @throws \InvalidArgumentException
@@ -9524,9 +9524,9 @@ class ServiceApi
     public function updateScheduleAsyncWithHttpInfo(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\services\v1\UpdateScheduleResponse';
+        $returnType = '\SpApi\Model\services\v1\UpdateScheduleResponse';
         $request = $this->updateScheduleRequest($resource_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -9574,7 +9574,7 @@ class ServiceApi
      *  Resource (store) Identifier (required)
      * @param  string[] $marketplace_ids
      *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+     * @param  \SpApi\Model\services\v1\UpdateScheduleRequest $body
      *  Schedule details (required)
      *
      * @throws \InvalidArgumentException
@@ -9583,7 +9583,7 @@ class ServiceApi
     public function updateScheduleRequest(
         string $resource_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\services\v1\UpdateScheduleRequest $body
+        \SpApi\Model\services\v1\UpdateScheduleRequest $body
     ): Request {
         // verify the required parameter 'resource_id' is set
         if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {

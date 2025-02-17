@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\AvailableDeliveryExperienceOption;
+use SpApi\Model\merchantFulfillment\v0\AvailableDeliveryExperienceOption;
 
 /**
  * AvailableDeliveryExperienceOptionTest Class Doc Comment
  *
  * @category    Class
  * @description The available delivery confirmation options, and the fee charged, if any.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AvailableDeliveryExperienceOptionTest extends TestCase
 {
@@ -56,7 +56,7 @@ class AvailableDeliveryExperienceOptionTest extends TestCase
      */
     public function testPropertyDeliveryExperienceOption()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceOption();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\DeliveryExperienceOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class AvailableDeliveryExperienceOptionTest extends TestCase
     public function testPropertyCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCharge());

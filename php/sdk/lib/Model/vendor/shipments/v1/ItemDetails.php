@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemDetails Class Doc Comment
  *
  * @category Class
  * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'purchase_order_number' => 'string',
              'lot_number' => 'string',
-             'expiry' => '\OpenAPI\Client\Model\vendor\shipments\v1\Expiry',
-             'maximum_retail_price' => '\OpenAPI\Client\Model\vendor\shipments\v1\Money',
+             'expiry' => '\SpApi\Model\vendor\shipments\v1\Expiry',
+             'maximum_retail_price' => '\SpApi\Model\vendor\shipments\v1\Money',
              'handling_code' => 'string'    ];
 
     /**
@@ -418,9 +418,9 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiry
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Expiry|null
+     * @return \SpApi\Model\vendor\shipments\v1\Expiry|null
      */
-    public function getExpiry(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Expiry
+    public function getExpiry(): ?\SpApi\Model\vendor\shipments\v1\Expiry
     {
         return $this->container['expiry'];
     }
@@ -428,11 +428,11 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiry
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Expiry|null $expiry expiry
+     * @param \SpApi\Model\vendor\shipments\v1\Expiry|null $expiry expiry
      *
      * @return self
      */
-    public function setExpiry(?\OpenAPI\Client\Model\vendor\shipments\v1\Expiry $expiry): self
+    public function setExpiry(?\SpApi\Model\vendor\shipments\v1\Expiry $expiry): self
     {
         if (is_null($expiry)) {
             array_push($this->openAPINullablesSetToNull, 'expiry');
@@ -452,9 +452,9 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets maximum_retail_price
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Money|null
+     * @return \SpApi\Model\vendor\shipments\v1\Money|null
      */
-    public function getMaximumRetailPrice(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Money
+    public function getMaximumRetailPrice(): ?\SpApi\Model\vendor\shipments\v1\Money
     {
         return $this->container['maximum_retail_price'];
     }
@@ -462,11 +462,11 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets maximum_retail_price
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Money|null $maximum_retail_price maximum_retail_price
+     * @param \SpApi\Model\vendor\shipments\v1\Money|null $maximum_retail_price maximum_retail_price
      *
      * @return self
      */
-    public function setMaximumRetailPrice(?\OpenAPI\Client\Model\vendor\shipments\v1\Money $maximum_retail_price): self
+    public function setMaximumRetailPrice(?\SpApi\Model\vendor\shipments\v1\Money $maximum_retail_price): self
     {
         if (is_null($maximum_retail_price)) {
             array_push($this->openAPINullablesSetToNull, 'maximum_retail_price');

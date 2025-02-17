@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\RejectedOrder;
+use SpApi\Model\easyship\v2022_03_23\RejectedOrder;
 
 /**
  * RejectedOrderTest Class Doc Comment
  *
  * @category    Class
  * @description A order which we couldn&#39;t schedule on your behalf. It contains its id, and information on the error.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RejectedOrderTest extends TestCase
 {
@@ -68,7 +68,7 @@ class RejectedOrderTest extends TestCase
     public function testPropertyError()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\Error();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\Error();
         
         $this->model->setError($testValue);
         $this->assertEquals($testValue, $this->model->getError());

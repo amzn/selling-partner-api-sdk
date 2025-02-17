@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\datakiosk\v2023_11_15;
+namespace SpApi\Model\datakiosk\v2023_11_15;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetQueriesResponse Class Doc Comment
  *
  * @category Class
  * @description The response for the &#x60;getQueries&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetQueriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'queries' => '\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query[]',
-             'pagination' => '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination'    ];
+             'queries' => '\SpApi\Model\datakiosk\v2023_11_15\Query[]',
+             'pagination' => '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -331,9 +331,9 @@ class GetQueriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination|null
+     * @return \SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination
+    public function getPagination(): ?\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination
     {
         return $this->container['pagination'];
     }
@@ -341,11 +341,11 @@ class GetQueriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination|null $pagination pagination
+     * @param \SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination $pagination): self
+    public function setPagination(?\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponsePagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

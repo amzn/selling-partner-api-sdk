@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TransportationDetails Class Doc Comment
  *
  * @category Class
  * @description Transportation details for this shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
              'shipped_date' => '\DateTime',
              'estimated_delivery_date' => '\DateTime',
              'shipment_delivery_date' => '\DateTime',
-             'carrier_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails',
+             'carrier_details' => '\SpApi\Model\vendor\shipments\v1\CarrierDetails',
              'bill_of_lading_number' => 'string'    ];
 
     /**
@@ -578,9 +578,9 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets carrier_details
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails|null
+     * @return \SpApi\Model\vendor\shipments\v1\CarrierDetails|null
      */
-    public function getCarrierDetails(): ?\OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails
+    public function getCarrierDetails(): ?\SpApi\Model\vendor\shipments\v1\CarrierDetails
     {
         return $this->container['carrier_details'];
     }
@@ -588,11 +588,11 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets carrier_details
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails|null $carrier_details carrier_details
+     * @param \SpApi\Model\vendor\shipments\v1\CarrierDetails|null $carrier_details carrier_details
      *
      * @return self
      */
-    public function setCarrierDetails(?\OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails $carrier_details): self
+    public function setCarrierDetails(?\SpApi\Model\vendor\shipments\v1\CarrierDetails $carrier_details): self
     {
         if (is_null($carrier_details)) {
             array_push($this->openAPINullablesSetToNull, 'carrier_details');

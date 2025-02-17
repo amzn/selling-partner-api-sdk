@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResponse;
+use SpApi\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResponse;
 
 /**
  * GetEligibleShipmentServicesResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Response schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetEligibleShipmentServicesResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetEligibleShipmentServicesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResult();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\GetEligibleShipmentServicesResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderItem;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderItem;
 
 /**
  * UpdateFulfillmentOrderItemTest Class Doc Comment
  *
  * @category    Class
  * @description Item information for updating a fulfillment order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateFulfillmentOrderItemTest extends TestCase
 {
@@ -134,7 +134,7 @@ class UpdateFulfillmentOrderItemTest extends TestCase
     public function testPropertyPerUnitDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Money();
         
         $this->model->setPerUnitDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitDeclaredValue());
@@ -146,7 +146,7 @@ class UpdateFulfillmentOrderItemTest extends TestCase
     public function testPropertyPerUnitPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Money();
         
         $this->model->setPerUnitPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitPrice());
@@ -158,7 +158,7 @@ class UpdateFulfillmentOrderItemTest extends TestCase
     public function testPropertyPerUnitTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Money();
         
         $this->model->setPerUnitTax($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitTax());

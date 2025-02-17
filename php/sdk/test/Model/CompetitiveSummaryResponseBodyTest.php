@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody;
+use SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody;
 
 /**
  * CompetitiveSummaryResponseBodyTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;competitiveSummaryResponse&#x60; body for a requested ASIN and &#x60;marketplaceId&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CompetitiveSummaryResponseBodyTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse;
+use SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse;
 
 /**
  * GetLabelsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the getLabels operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetLabelsResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetLabelsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\LabelDownloadURL();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\LabelDownloadURL();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

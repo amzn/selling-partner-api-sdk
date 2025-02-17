@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetShipmentDocumentsResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the getShipmentDocuments operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
-             'package_document_detail' => '\OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail'    ];
+             'package_document_detail' => '\SpApi\Model\shipping\v2\PackageDocumentDetail'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets package_document_detail
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail
+     * @return \SpApi\Model\shipping\v2\PackageDocumentDetail
      */
-    public function getPackageDocumentDetail(): \OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail
+    public function getPackageDocumentDetail(): \SpApi\Model\shipping\v2\PackageDocumentDetail
     {
         return $this->container['package_document_detail'];
     }
@@ -345,11 +345,11 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets package_document_detail
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail $package_document_detail package_document_detail
+     * @param \SpApi\Model\shipping\v2\PackageDocumentDetail $package_document_detail package_document_detail
      *
      * @return self
      */
-    public function setPackageDocumentDetail(\OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail $package_document_detail): self
+    public function setPackageDocumentDetail(\SpApi\Model\shipping\v2\PackageDocumentDetail $package_document_detail): self
     {
         if (is_null($package_document_detail)) {
             throw new \InvalidArgumentException('non-nullable package_document_detail cannot be null');

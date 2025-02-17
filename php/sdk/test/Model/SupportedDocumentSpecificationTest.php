@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\SupportedDocumentSpecification;
+use SpApi\Model\shipping\v2\SupportedDocumentSpecification;
 
 /**
  * SupportedDocumentSpecificationTest Class Doc Comment
  *
  * @category    Class
  * @description Document specification that is supported for a service offering.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SupportedDocumentSpecificationTest extends TestCase
 {
@@ -56,7 +56,7 @@ class SupportedDocumentSpecificationTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentFormat();
+        $enumInstance = new \SpApi\Model\shipping\v2\DocumentFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class SupportedDocumentSpecificationTest extends TestCase
     public function testPropertySize()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\DocumentSize();
+        $testValue = new \SpApi\Model\shipping\v2\DocumentSize();
         
         $this->model->setSize($testValue);
         $this->assertEquals($testValue, $this->model->getSize());

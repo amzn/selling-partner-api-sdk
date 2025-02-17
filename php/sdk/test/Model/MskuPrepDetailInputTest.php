@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\MskuPrepDetailInput;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\MskuPrepDetailInput;
 
 /**
  * MskuPrepDetailInputTest Class Doc Comment
  *
  * @category    Class
  * @description An MSKU and its related prep details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class MskuPrepDetailInputTest extends TestCase
 {
@@ -67,7 +67,7 @@ class MskuPrepDetailInputTest extends TestCase
      */
     public function testPropertyPrepCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepCategory();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\PrepCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

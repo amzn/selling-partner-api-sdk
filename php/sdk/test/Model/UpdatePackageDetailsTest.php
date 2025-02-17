@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\UpdatePackageDetails;
+use SpApi\Model\easyship\v2022_03_23\UpdatePackageDetails;
 
 /**
  * UpdatePackageDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Request to update the time slot of a package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdatePackageDetailsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class UpdatePackageDetailsTest extends TestCase
     public function testPropertyScheduledPackageId()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId();
         
         $this->model->setScheduledPackageId($testValue);
         $this->assertEquals($testValue, $this->model->getScheduledPackageId());
@@ -69,7 +69,7 @@ class UpdatePackageDetailsTest extends TestCase
     public function testPropertyPackageTimeSlot()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\TimeSlot();
         
         $this->model->setPackageTimeSlot($testValue);
         $this->assertEquals($testValue, $this->model->getPackageTimeSlot());

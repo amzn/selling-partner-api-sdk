@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\FeeDetail;
+use SpApi\Model\productFees\v0\FeeDetail;
 
 /**
  * FeeDetailTest Class Doc Comment
  *
  * @category    Class
  * @description The type of fee, fee amount, and other details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeeDetailTest extends TestCase
 {
@@ -68,7 +68,7 @@ class FeeDetailTest extends TestCase
     public function testPropertyFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getFeeAmount());
@@ -80,7 +80,7 @@ class FeeDetailTest extends TestCase
     public function testPropertyFeePromotion()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setFeePromotion($testValue);
         $this->assertEquals($testValue, $this->model->getFeePromotion());
@@ -92,7 +92,7 @@ class FeeDetailTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());
@@ -104,7 +104,7 @@ class FeeDetailTest extends TestCase
     public function testPropertyFinalFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setFinalFee($testValue);
         $this->assertEquals($testValue, $this->model->getFinalFee());

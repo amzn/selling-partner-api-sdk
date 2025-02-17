@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOfferExpectedPriceResult Class Doc Comment
  *
  * @category Class
  * @description The FOEP result data for the requested offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'featured_offer_expected_price' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice',
+             'featured_offer_expected_price' => '\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice',
              'result_status' => 'string',
-             'competing_featured_offer' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer',
-             'current_featured_offer' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer'    ];
+             'competing_featured_offer' => '\SpApi\Model\pricing\v2022_05_01\FeaturedOffer',
+             'current_featured_offer' => '\SpApi\Model\pricing\v2022_05_01\FeaturedOffer'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -318,9 +318,9 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     /**
      * Gets featured_offer_expected_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice|null
+     * @return \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice|null
      */
-    public function getFeaturedOfferExpectedPrice(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice
+    public function getFeaturedOfferExpectedPrice(): ?\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice
     {
         return $this->container['featured_offer_expected_price'];
     }
@@ -328,11 +328,11 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     /**
      * Sets featured_offer_expected_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice|null $featured_offer_expected_price featured_offer_expected_price
+     * @param \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice|null $featured_offer_expected_price featured_offer_expected_price
      *
      * @return self
      */
-    public function setFeaturedOfferExpectedPrice(?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice $featured_offer_expected_price): self
+    public function setFeaturedOfferExpectedPrice(?\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPrice $featured_offer_expected_price): self
     {
         if (is_null($featured_offer_expected_price)) {
             array_push($this->openAPINullablesSetToNull, 'featured_offer_expected_price');
@@ -379,9 +379,9 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     /**
      * Gets competing_featured_offer
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer|null
+     * @return \SpApi\Model\pricing\v2022_05_01\FeaturedOffer|null
      */
-    public function getCompetingFeaturedOffer(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer
+    public function getCompetingFeaturedOffer(): ?\SpApi\Model\pricing\v2022_05_01\FeaturedOffer
     {
         return $this->container['competing_featured_offer'];
     }
@@ -389,11 +389,11 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     /**
      * Sets competing_featured_offer
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer|null $competing_featured_offer competing_featured_offer
+     * @param \SpApi\Model\pricing\v2022_05_01\FeaturedOffer|null $competing_featured_offer competing_featured_offer
      *
      * @return self
      */
-    public function setCompetingFeaturedOffer(?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer $competing_featured_offer): self
+    public function setCompetingFeaturedOffer(?\SpApi\Model\pricing\v2022_05_01\FeaturedOffer $competing_featured_offer): self
     {
         if (is_null($competing_featured_offer)) {
             array_push($this->openAPINullablesSetToNull, 'competing_featured_offer');
@@ -413,9 +413,9 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     /**
      * Gets current_featured_offer
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer|null
+     * @return \SpApi\Model\pricing\v2022_05_01\FeaturedOffer|null
      */
-    public function getCurrentFeaturedOffer(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer
+    public function getCurrentFeaturedOffer(): ?\SpApi\Model\pricing\v2022_05_01\FeaturedOffer
     {
         return $this->container['current_featured_offer'];
     }
@@ -423,11 +423,11 @@ class FeaturedOfferExpectedPriceResult implements ModelInterface, ArrayAccess, \
     /**
      * Sets current_featured_offer
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer|null $current_featured_offer current_featured_offer
+     * @param \SpApi\Model\pricing\v2022_05_01\FeaturedOffer|null $current_featured_offer current_featured_offer
      *
      * @return self
      */
-    public function setCurrentFeaturedOffer(?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer $current_featured_offer): self
+    public function setCurrentFeaturedOffer(?\SpApi\Model\pricing\v2022_05_01\FeaturedOffer $current_featured_offer): self
     {
         if (is_null($current_featured_offer)) {
             array_push($this->openAPINullablesSetToNull, 'current_featured_offer');

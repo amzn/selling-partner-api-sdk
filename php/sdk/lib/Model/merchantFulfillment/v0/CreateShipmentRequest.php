@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateShipmentRequest Class Doc Comment
  *
  * @category Class
  * @description Request schema.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipment_request_details' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails',
+             'shipment_request_details' => '\SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails',
              'shipping_service_id' => 'string',
              'shipping_service_offer_id' => 'string',
-             'hazmat_type' => '\OpenAPI\Client\Model\merchantFulfillment\v0\HazmatType',
-             'label_format_option' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest',
-             'shipment_level_seller_inputs_list' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInputs[]'    ];
+             'hazmat_type' => '\SpApi\Model\merchantFulfillment\v0\HazmatType',
+             'label_format_option' => '\SpApi\Model\merchantFulfillment\v0\LabelFormatOptionRequest',
+             'shipment_level_seller_inputs_list' => '\SpApi\Model\merchantFulfillment\v0\AdditionalSellerInputs[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets shipment_request_details
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails
+     * @return \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails
      */
-    public function getShipmentRequestDetails(): \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails
+    public function getShipmentRequestDetails(): \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails
     {
         return $this->container['shipment_request_details'];
     }
@@ -345,11 +345,11 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets shipment_request_details
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details shipment_request_details
+     * @param \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details shipment_request_details
      *
      * @return self
      */
-    public function setShipmentRequestDetails(\OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details): self
+    public function setShipmentRequestDetails(\SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails $shipment_request_details): self
     {
         if (is_null($shipment_request_details)) {
             throw new \InvalidArgumentException('non-nullable shipment_request_details cannot be null');
@@ -457,9 +457,9 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets label_format_option
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest|null
+     * @return \SpApi\Model\merchantFulfillment\v0\LabelFormatOptionRequest|null
      */
-    public function getLabelFormatOption(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest
+    public function getLabelFormatOption(): ?\SpApi\Model\merchantFulfillment\v0\LabelFormatOptionRequest
     {
         return $this->container['label_format_option'];
     }
@@ -467,11 +467,11 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets label_format_option
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest|null $label_format_option label_format_option
+     * @param \SpApi\Model\merchantFulfillment\v0\LabelFormatOptionRequest|null $label_format_option label_format_option
      *
      * @return self
      */
-    public function setLabelFormatOption(?\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOptionRequest $label_format_option): self
+    public function setLabelFormatOption(?\SpApi\Model\merchantFulfillment\v0\LabelFormatOptionRequest $label_format_option): self
     {
         if (is_null($label_format_option)) {
             array_push($this->openAPINullablesSetToNull, 'label_format_option');

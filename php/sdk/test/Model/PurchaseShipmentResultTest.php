@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResult;
+use SpApi\Model\shipping\v2\PurchaseShipmentResult;
 
 /**
  * PurchaseShipmentResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the purchaseShipment operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PurchaseShipmentResultTest extends TestCase
 {
@@ -79,7 +79,7 @@ class PurchaseShipmentResultTest extends TestCase
     public function testPropertyPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Promise();
+        $testValue = new \SpApi\Model\shipping\v2\Promise();
         
         $this->model->setPromise($testValue);
         $this->assertEquals($testValue, $this->model->getPromise());

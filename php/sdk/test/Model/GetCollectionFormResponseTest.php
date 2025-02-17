@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse;
+use SpApi\Model\shipping\v2\GetCollectionFormResponse;
 
 /**
  * GetCollectionFormResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The Response  for the GetCollectionFormResponse operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetCollectionFormResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetCollectionFormResponseTest extends TestCase
     public function testPropertyCollectionsFormDocument()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument();
+        $testValue = new \SpApi\Model\shipping\v2\CollectionsFormDocument();
         
         $this->model->setCollectionsFormDocument($testValue);
         $this->assertEquals($testValue, $this->model->getCollectionsFormDocument());

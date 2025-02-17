@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\CreateScheduledPackageRequest;
+use SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest;
 
 /**
  * CreateScheduledPackageRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the &#x60;createScheduledPackage&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateScheduledPackageRequestTest extends TestCase
 {
@@ -79,7 +79,7 @@ class CreateScheduledPackageRequestTest extends TestCase
     public function testPropertyPackageDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\PackageDetails();
         
         $this->model->setPackageDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDetails());

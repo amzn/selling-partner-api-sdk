@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client\Test
+ * @package  SpApi\Test
  */
  /**
  * Selling Partner API
@@ -24,9 +24,9 @@
   * Do not edit the class manually.
   */
 
-namespace OpenAPI\Client\Test;
+namespace SpApi\Test;
 
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ObjectSerializer;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
@@ -36,7 +36,7 @@ use ReflectionMethod;
  * A helper class for testing OpenAPI responses.
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  */
 class TestHelper
 {
@@ -497,12 +497,12 @@ class TestHelper
      * @var array|string[]
      */
     private static array $vendorApiTestClassNameList = [
-        'OpenAPI\Client\Test\Api\UpdateInventoryApiTest',
-        'OpenAPI\Client\Test\Api\VendorOrdersApiTest',
-        'OpenAPI\Client\Test\Api\VendorInvoiceApiTest',
-        'OpenAPI\Client\Test\Api\VendorShippingApiTest',
-        'OpenAPI\Client\Test\Api\VendorShippingLabelsApiTest',
-        'OpenAPI\Client\Test\Api\VendorTransactionApi'
+        'SpApi\Test\Api\UpdateInventoryApiTest',
+        'SpApi\Test\Api\VendorOrdersApiTest',
+        'SpApi\Test\Api\VendorInvoiceApiTest',
+        'SpApi\Test\Api\VendorShippingApiTest',
+        'SpApi\Test\Api\VendorShippingLabelsApiTest',
+        'SpApi\Test\Api\VendorTransactionApi'
     ];
 
     /**

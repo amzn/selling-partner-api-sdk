@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\Label;
+use SpApi\Model\merchantFulfillment\v0\Label;
 
 /**
  * LabelTest Class Doc Comment
  *
  * @category    Class
  * @description Data for creating a shipping label and dimensions for printing the label.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LabelTest extends TestCase
 {
@@ -68,7 +68,7 @@ class LabelTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\LabelDimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -80,7 +80,7 @@ class LabelTest extends TestCase
     public function testPropertyFileContents()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\FileContents();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\FileContents();
         
         $this->model->setFileContents($testValue);
         $this->assertEquals($testValue, $this->model->getFileContents());
@@ -91,7 +91,7 @@ class LabelTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -104,7 +104,7 @@ class LabelTest extends TestCase
      */
     public function testPropertyStandardIdForLabel()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\StandardIdForLabel();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\StandardIdForLabel();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

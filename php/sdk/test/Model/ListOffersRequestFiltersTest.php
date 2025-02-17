@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters;
+use SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters;
 
 /**
  * ListOffersRequestFiltersTest Class Doc Comment
  *
  * @category    Class
  * @description Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOffersRequestFiltersTest extends TestCase
 {
@@ -101,7 +101,7 @@ class ListOffersRequestFiltersTest extends TestCase
     public function testPropertyPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\Preference();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\Preference();
         
         $this->model->setPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getPreferences());
@@ -113,7 +113,7 @@ class ListOffersRequestFiltersTest extends TestCase
     public function testPropertyPromotions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\Promotion();
         
         $this->model->setPromotions($testValue);
         $this->assertEquals($testValue, $this->model->getPromotions());

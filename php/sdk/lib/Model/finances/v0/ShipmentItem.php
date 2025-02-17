@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentItem Class Doc Comment
  *
  * @category Class
  * @description An item of a shipment, refund, guarantee claim, or chargeback.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,15 +64,15 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'order_item_id' => 'string',
              'order_adjustment_item_id' => 'string',
              'quantity_shipped' => 'int',
-             'item_charge_list' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent[]',
-             'item_charge_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent[]',
-             'item_fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
-             'item_fee_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
-             'item_tax_withheld_list' => '\OpenAPI\Client\Model\finances\v0\TaxWithheldComponent[]',
-             'promotion_list' => '\OpenAPI\Client\Model\finances\v0\Promotion[]',
-             'promotion_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\Promotion[]',
-             'cost_of_points_granted' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'cost_of_points_returned' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'item_charge_list' => '\SpApi\Model\finances\v0\ChargeComponent[]',
+             'item_charge_adjustment_list' => '\SpApi\Model\finances\v0\ChargeComponent[]',
+             'item_fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
+             'item_fee_adjustment_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
+             'item_tax_withheld_list' => '\SpApi\Model\finances\v0\TaxWithheldComponent[]',
+             'promotion_list' => '\SpApi\Model\finances\v0\Promotion[]',
+             'promotion_adjustment_list' => '\SpApi\Model\finances\v0\Promotion[]',
+             'cost_of_points_granted' => '\SpApi\Model\finances\v0\Currency',
+             'cost_of_points_returned' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -752,9 +752,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cost_of_points_granted
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getCostOfPointsGranted(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getCostOfPointsGranted(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['cost_of_points_granted'];
     }
@@ -762,11 +762,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cost_of_points_granted
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $cost_of_points_granted cost_of_points_granted
+     * @param \SpApi\Model\finances\v0\Currency|null $cost_of_points_granted cost_of_points_granted
      *
      * @return self
      */
-    public function setCostOfPointsGranted(?\OpenAPI\Client\Model\finances\v0\Currency $cost_of_points_granted): self
+    public function setCostOfPointsGranted(?\SpApi\Model\finances\v0\Currency $cost_of_points_granted): self
     {
         if (is_null($cost_of_points_granted)) {
             array_push($this->openAPINullablesSetToNull, 'cost_of_points_granted');
@@ -786,9 +786,9 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cost_of_points_returned
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getCostOfPointsReturned(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getCostOfPointsReturned(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['cost_of_points_returned'];
     }
@@ -796,11 +796,11 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cost_of_points_returned
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $cost_of_points_returned cost_of_points_returned
+     * @param \SpApi\Model\finances\v0\Currency|null $cost_of_points_returned cost_of_points_returned
      *
      * @return self
      */
-    public function setCostOfPointsReturned(?\OpenAPI\Client\Model\finances\v0\Currency $cost_of_points_returned): self
+    public function setCostOfPointsReturned(?\SpApi\Model\finances\v0\Currency $cost_of_points_returned): self
     {
         if (is_null($cost_of_points_returned)) {
             array_push($this->openAPINullablesSetToNull, 'cost_of_points_returned');

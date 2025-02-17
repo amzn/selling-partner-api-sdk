@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponseOffer;
+use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponseOffer;
 
 /**
  * ListOfferMetricsResponseOfferTest Class Doc Comment
  *
  * @category    Class
  * @description An object which contains offer metrics.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOfferMetricsResponseOfferTest extends TestCase
 {
@@ -231,7 +231,7 @@ class ListOfferMetricsResponseOfferTest extends TestCase
     public function testPropertyTimeInterval()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\TimeInterval();
         
         $this->model->setTimeInterval($testValue);
         $this->assertEquals($testValue, $this->model->getTimeInterval());

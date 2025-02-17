@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\OrderAddress;
+use SpApi\Model\orders\v0\OrderAddress;
 
 /**
  * OrderAddressTest Class Doc Comment
  *
  * @category    Class
  * @description The shipping address for the order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderAddressTest extends TestCase
 {
@@ -79,7 +79,7 @@ class OrderAddressTest extends TestCase
     public function testPropertyShippingAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Address();
+        $testValue = new \SpApi\Model\orders\v0\Address();
         
         $this->model->setShippingAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShippingAddress());
@@ -91,7 +91,7 @@ class OrderAddressTest extends TestCase
     public function testPropertyDeliveryPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\DeliveryPreferences();
+        $testValue = new \SpApi\Model\orders\v0\DeliveryPreferences();
         
         $this->model->setDeliveryPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryPreferences());

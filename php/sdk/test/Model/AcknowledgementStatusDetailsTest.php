@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\AcknowledgementStatusDetails;
+use SpApi\Model\vendor\orders\v1\AcknowledgementStatusDetails;
 
 /**
  * AcknowledgementStatusDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Details of item quantity ordered
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AcknowledgementStatusDetailsTest extends TestCase
 {
@@ -69,7 +69,7 @@ class AcknowledgementStatusDetailsTest extends TestCase
     public function testPropertyAcceptedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setAcceptedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAcceptedQuantity());
@@ -81,7 +81,7 @@ class AcknowledgementStatusDetailsTest extends TestCase
     public function testPropertyRejectedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setRejectedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getRejectedQuantity());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AvailableValueAddedServiceGroup Class Doc Comment
  *
  * @category Class
  * @description The value-added services available for purchase with a shipping service offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class AvailableValueAddedServiceGroup implements ModelInterface, ArrayAccess, \J
              'group_id' => 'string',
              'group_description' => 'string',
              'is_required' => 'bool',
-             'value_added_services' => '\OpenAPI\Client\Model\shipping\v2\ValueAddedService[]'    ];
+             'value_added_services' => '\SpApi\Model\shipping\v2\ValueAddedService[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

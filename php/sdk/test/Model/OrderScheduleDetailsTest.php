@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\OrderScheduleDetails;
+use SpApi\Model\easyship\v2022_03_23\OrderScheduleDetails;
 
 /**
  * OrderScheduleDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description This object allows users to specify an order to be scheduled. Only the amazonOrderId is required.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderScheduleDetailsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class OrderScheduleDetailsTest extends TestCase
     public function testPropertyPackageDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\PackageDetails();
         
         $this->model->setPackageDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDetails());

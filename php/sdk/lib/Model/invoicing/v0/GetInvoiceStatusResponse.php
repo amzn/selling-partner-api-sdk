@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInvoiceStatusResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the getInvoiceStatus operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetInvoiceStatusResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse',
-             'errors' => '\OpenAPI\Client\Model\invoicing\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\invoicing\v0\ShipmentInvoiceStatusResponse',
+             'errors' => '\SpApi\Model\invoicing\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetInvoiceStatusResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse|null
+     * @return \SpApi\Model\invoicing\v0\ShipmentInvoiceStatusResponse|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse
+    public function getPayload(): ?\SpApi\Model\invoicing\v0\ShipmentInvoiceStatusResponse
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetInvoiceStatusResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse|null $payload payload
+     * @param \SpApi\Model\invoicing\v0\ShipmentInvoiceStatusResponse|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse $payload): self
+    public function setPayload(?\SpApi\Model\invoicing\v0\ShipmentInvoiceStatusResponse $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

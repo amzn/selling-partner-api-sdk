@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\CarrierDetails;
+use SpApi\Model\vendor\shipments\v1\CarrierDetails;
 
 /**
  * CarrierDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates the carrier details and their contact informations
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CarrierDetailsTest extends TestCase
 {

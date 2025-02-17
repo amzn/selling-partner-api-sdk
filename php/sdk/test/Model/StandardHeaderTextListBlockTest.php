@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock;
+use SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock;
 
 /**
  * StandardHeaderTextListBlockTest Class Doc Comment
  *
  * @category    Class
  * @description The A+ standard fixed-length list of text, with a related headline.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardHeaderTextListBlockTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardHeaderTextListBlockTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardHeaderTextListBlockTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

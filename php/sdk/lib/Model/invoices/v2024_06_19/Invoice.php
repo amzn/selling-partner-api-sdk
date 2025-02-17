@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Invoice Class Doc Comment
  *
  * @category Class
  * @description Provides detailed information about an invoice.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -68,7 +68,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
              'invoice_type' => 'string',
              'series' => 'string',
              'status' => 'string',
-             'transaction_ids' => '\OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier[]',
+             'transaction_ids' => '\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier[]',
              'transaction_type' => 'string'    ];
 
     /**

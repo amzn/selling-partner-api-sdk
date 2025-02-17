@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\PrescriptionDetail;
+use SpApi\Model\orders\v0\PrescriptionDetail;
 
 /**
  * PrescriptionDetailTest Class Doc Comment
  *
  * @category    Class
  * @description Information about the prescription that is used to verify a regulated product. This must be provided once per order and reflect the seller’s own records. Only approved orders can have prescriptions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrescriptionDetailTest extends TestCase
 {

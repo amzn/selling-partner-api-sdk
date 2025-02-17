@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Item Class Doc Comment
  *
  * @category Class
  * @description An item in a package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,18 +61,18 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'item_value' => '\OpenAPI\Client\Model\shipping\v2\Currency',
+             'item_value' => '\SpApi\Model\shipping\v2\Currency',
              'description' => 'string',
              'item_identifier' => 'string',
              'quantity' => 'int',
-             'weight' => '\OpenAPI\Client\Model\shipping\v2\Weight',
-             'liquid_volume' => '\OpenAPI\Client\Model\shipping\v2\LiquidVolume',
+             'weight' => '\SpApi\Model\shipping\v2\Weight',
+             'liquid_volume' => '\SpApi\Model\shipping\v2\LiquidVolume',
              'is_hazmat' => 'bool',
-             'dangerous_goods_details' => '\OpenAPI\Client\Model\shipping\v2\DangerousGoodsDetails',
+             'dangerous_goods_details' => '\SpApi\Model\shipping\v2\DangerousGoodsDetails',
              'product_type' => 'string',
-             'invoice_details' => '\OpenAPI\Client\Model\shipping\v2\InvoiceDetails',
+             'invoice_details' => '\SpApi\Model\shipping\v2\InvoiceDetails',
              'serial_numbers' => 'string[]',
-             'direct_fulfillment_item_identifiers' => '\OpenAPI\Client\Model\shipping\v2\DirectFulfillmentItemIdentifiers'    ];
+             'direct_fulfillment_item_identifiers' => '\SpApi\Model\shipping\v2\DirectFulfillmentItemIdentifiers'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -375,9 +375,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_value
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency|null
+     * @return \SpApi\Model\shipping\v2\Currency|null
      */
-    public function getItemValue(): ?\OpenAPI\Client\Model\shipping\v2\Currency
+    public function getItemValue(): ?\SpApi\Model\shipping\v2\Currency
     {
         return $this->container['item_value'];
     }
@@ -385,11 +385,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_value
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency|null $item_value item_value
+     * @param \SpApi\Model\shipping\v2\Currency|null $item_value item_value
      *
      * @return self
      */
-    public function setItemValue(?\OpenAPI\Client\Model\shipping\v2\Currency $item_value): self
+    public function setItemValue(?\SpApi\Model\shipping\v2\Currency $item_value): self
     {
         if (is_null($item_value)) {
             array_push($this->openAPINullablesSetToNull, 'item_value');
@@ -504,9 +504,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Weight|null
+     * @return \SpApi\Model\shipping\v2\Weight|null
      */
-    public function getWeight(): ?\OpenAPI\Client\Model\shipping\v2\Weight
+    public function getWeight(): ?\SpApi\Model\shipping\v2\Weight
     {
         return $this->container['weight'];
     }
@@ -514,11 +514,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Weight|null $weight weight
+     * @param \SpApi\Model\shipping\v2\Weight|null $weight weight
      *
      * @return self
      */
-    public function setWeight(?\OpenAPI\Client\Model\shipping\v2\Weight $weight): self
+    public function setWeight(?\SpApi\Model\shipping\v2\Weight $weight): self
     {
         if (is_null($weight)) {
             array_push($this->openAPINullablesSetToNull, 'weight');
@@ -538,9 +538,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets liquid_volume
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\LiquidVolume|null
+     * @return \SpApi\Model\shipping\v2\LiquidVolume|null
      */
-    public function getLiquidVolume(): ?\OpenAPI\Client\Model\shipping\v2\LiquidVolume
+    public function getLiquidVolume(): ?\SpApi\Model\shipping\v2\LiquidVolume
     {
         return $this->container['liquid_volume'];
     }
@@ -548,11 +548,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets liquid_volume
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\LiquidVolume|null $liquid_volume liquid_volume
+     * @param \SpApi\Model\shipping\v2\LiquidVolume|null $liquid_volume liquid_volume
      *
      * @return self
      */
-    public function setLiquidVolume(?\OpenAPI\Client\Model\shipping\v2\LiquidVolume $liquid_volume): self
+    public function setLiquidVolume(?\SpApi\Model\shipping\v2\LiquidVolume $liquid_volume): self
     {
         if (is_null($liquid_volume)) {
             array_push($this->openAPINullablesSetToNull, 'liquid_volume');
@@ -606,9 +606,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dangerous_goods_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\DangerousGoodsDetails|null
+     * @return \SpApi\Model\shipping\v2\DangerousGoodsDetails|null
      */
-    public function getDangerousGoodsDetails(): ?\OpenAPI\Client\Model\shipping\v2\DangerousGoodsDetails
+    public function getDangerousGoodsDetails(): ?\SpApi\Model\shipping\v2\DangerousGoodsDetails
     {
         return $this->container['dangerous_goods_details'];
     }
@@ -616,11 +616,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dangerous_goods_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\DangerousGoodsDetails|null $dangerous_goods_details dangerous_goods_details
+     * @param \SpApi\Model\shipping\v2\DangerousGoodsDetails|null $dangerous_goods_details dangerous_goods_details
      *
      * @return self
      */
-    public function setDangerousGoodsDetails(?\OpenAPI\Client\Model\shipping\v2\DangerousGoodsDetails $dangerous_goods_details): self
+    public function setDangerousGoodsDetails(?\SpApi\Model\shipping\v2\DangerousGoodsDetails $dangerous_goods_details): self
     {
         if (is_null($dangerous_goods_details)) {
             array_push($this->openAPINullablesSetToNull, 'dangerous_goods_details');
@@ -674,9 +674,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\InvoiceDetails|null
+     * @return \SpApi\Model\shipping\v2\InvoiceDetails|null
      */
-    public function getInvoiceDetails(): ?\OpenAPI\Client\Model\shipping\v2\InvoiceDetails
+    public function getInvoiceDetails(): ?\SpApi\Model\shipping\v2\InvoiceDetails
     {
         return $this->container['invoice_details'];
     }
@@ -684,11 +684,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\InvoiceDetails|null $invoice_details invoice_details
+     * @param \SpApi\Model\shipping\v2\InvoiceDetails|null $invoice_details invoice_details
      *
      * @return self
      */
-    public function setInvoiceDetails(?\OpenAPI\Client\Model\shipping\v2\InvoiceDetails $invoice_details): self
+    public function setInvoiceDetails(?\SpApi\Model\shipping\v2\InvoiceDetails $invoice_details): self
     {
         if (is_null($invoice_details)) {
             array_push($this->openAPINullablesSetToNull, 'invoice_details');
@@ -742,9 +742,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets direct_fulfillment_item_identifiers
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\DirectFulfillmentItemIdentifiers|null
+     * @return \SpApi\Model\shipping\v2\DirectFulfillmentItemIdentifiers|null
      */
-    public function getDirectFulfillmentItemIdentifiers(): ?\OpenAPI\Client\Model\shipping\v2\DirectFulfillmentItemIdentifiers
+    public function getDirectFulfillmentItemIdentifiers(): ?\SpApi\Model\shipping\v2\DirectFulfillmentItemIdentifiers
     {
         return $this->container['direct_fulfillment_item_identifiers'];
     }
@@ -752,11 +752,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets direct_fulfillment_item_identifiers
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\DirectFulfillmentItemIdentifiers|null $direct_fulfillment_item_identifiers direct_fulfillment_item_identifiers
+     * @param \SpApi\Model\shipping\v2\DirectFulfillmentItemIdentifiers|null $direct_fulfillment_item_identifiers direct_fulfillment_item_identifiers
      *
      * @return self
      */
-    public function setDirectFulfillmentItemIdentifiers(?\OpenAPI\Client\Model\shipping\v2\DirectFulfillmentItemIdentifiers $direct_fulfillment_item_identifiers): self
+    public function setDirectFulfillmentItemIdentifiers(?\SpApi\Model\shipping\v2\DirectFulfillmentItemIdentifiers $direct_fulfillment_item_identifiers): self
     {
         if (is_null($direct_fulfillment_item_identifiers)) {
             array_push($this->openAPINullablesSetToNull, 'direct_fulfillment_item_identifiers');

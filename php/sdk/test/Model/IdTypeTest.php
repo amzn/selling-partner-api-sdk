@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\IdType;
+use SpApi\Model\productFees\v0\IdType;
 
 /**
  * IdTypeTest Class Doc Comment
  *
  * @category    Class
  * @description The type of product identifier used in a &#x60;FeesEstimateByIdRequest&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class IdTypeTest extends TestCase
 {

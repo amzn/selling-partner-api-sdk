@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CarrierId;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\CarrierId;
 
 /**
  * CarrierIdTest Class Doc Comment
  *
  * @category    Class
  * @description The unique carrier code for the carrier for whom container labels are requested.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CarrierIdTest extends TestCase
 {

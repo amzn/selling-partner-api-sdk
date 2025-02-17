@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Dimensions Class Doc Comment
  *
  * @category Class
  * @description Dimensions of an Amazon catalog item or item in its packaging.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'height' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension',
-             'length' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension',
-             'weight' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension',
-             'width' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension'    ];
+             'height' => '\SpApi\Model\catalogItems\v2022_04_01\Dimension',
+             'length' => '\SpApi\Model\catalogItems\v2022_04_01\Dimension',
+             'weight' => '\SpApi\Model\catalogItems\v2022_04_01\Dimension',
+             'width' => '\SpApi\Model\catalogItems\v2022_04_01\Dimension'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -315,9 +315,9 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets height
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Dimension|null
      */
-    public function getHeight(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension
+    public function getHeight(): ?\SpApi\Model\catalogItems\v2022_04_01\Dimension
     {
         return $this->container['height'];
     }
@@ -325,11 +325,11 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets height
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null $height height
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Dimension|null $height height
      *
      * @return self
      */
-    public function setHeight(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension $height): self
+    public function setHeight(?\SpApi\Model\catalogItems\v2022_04_01\Dimension $height): self
     {
         if (is_null($height)) {
             array_push($this->openAPINullablesSetToNull, 'height');
@@ -349,9 +349,9 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets length
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Dimension|null
      */
-    public function getLength(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension
+    public function getLength(): ?\SpApi\Model\catalogItems\v2022_04_01\Dimension
     {
         return $this->container['length'];
     }
@@ -359,11 +359,11 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets length
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null $length length
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Dimension|null $length length
      *
      * @return self
      */
-    public function setLength(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension $length): self
+    public function setLength(?\SpApi\Model\catalogItems\v2022_04_01\Dimension $length): self
     {
         if (is_null($length)) {
             array_push($this->openAPINullablesSetToNull, 'length');
@@ -383,9 +383,9 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Dimension|null
      */
-    public function getWeight(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension
+    public function getWeight(): ?\SpApi\Model\catalogItems\v2022_04_01\Dimension
     {
         return $this->container['weight'];
     }
@@ -393,11 +393,11 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null $weight weight
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Dimension|null $weight weight
      *
      * @return self
      */
-    public function setWeight(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension $weight): self
+    public function setWeight(?\SpApi\Model\catalogItems\v2022_04_01\Dimension $weight): self
     {
         if (is_null($weight)) {
             array_push($this->openAPINullablesSetToNull, 'weight');
@@ -417,9 +417,9 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets width
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Dimension|null
      */
-    public function getWidth(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension
+    public function getWidth(): ?\SpApi\Model\catalogItems\v2022_04_01\Dimension
     {
         return $this->container['width'];
     }
@@ -427,11 +427,11 @@ class Dimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets width
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension|null $width width
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Dimension|null $width width
      *
      * @return self
      */
-    public function setWidth(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension $width): self
+    public function setWidth(?\SpApi\Model\catalogItems\v2022_04_01\Dimension $width): self
     {
         if (is_null($width)) {
             array_push($this->openAPINullablesSetToNull, 'width');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot;
+use SpApi\Model\easyship\v2022_03_23\TimeSlot;
 
 /**
  * TimeSlotTest Class Doc Comment
  *
  * @category    Class
  * @description A time window to hand over an Easy Ship package to Amazon Logistics.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TimeSlotTest extends TestCase
 {
@@ -91,7 +91,7 @@ class TimeSlotTest extends TestCase
      */
     public function testPropertyHandoverMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\easyship\v2022_03_23\HandoverMethod();
+        $enumInstance = new \SpApi\Model\easyship\v2022_03_23\HandoverMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

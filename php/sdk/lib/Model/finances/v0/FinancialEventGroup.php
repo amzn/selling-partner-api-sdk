@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FinancialEventGroup Class Doc Comment
  *
  * @category Class
  * @description Information related to a financial event group.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,12 +63,12 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
              'financial_event_group_id' => 'string',
              'processing_status' => 'string',
              'fund_transfer_status' => 'string',
-             'original_total' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'converted_total' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'original_total' => '\SpApi\Model\finances\v0\Currency',
+             'converted_total' => '\SpApi\Model\finances\v0\Currency',
              'fund_transfer_date' => '\DateTime',
              'trace_id' => 'string',
              'account_tail' => 'string',
-             'beginning_balance' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'beginning_balance' => '\SpApi\Model\finances\v0\Currency',
              'financial_event_group_start' => '\DateTime',
              'financial_event_group_end' => '\DateTime'    ];
 
@@ -466,9 +466,9 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets original_total
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getOriginalTotal(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getOriginalTotal(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['original_total'];
     }
@@ -476,11 +476,11 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets original_total
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $original_total original_total
+     * @param \SpApi\Model\finances\v0\Currency|null $original_total original_total
      *
      * @return self
      */
-    public function setOriginalTotal(?\OpenAPI\Client\Model\finances\v0\Currency $original_total): self
+    public function setOriginalTotal(?\SpApi\Model\finances\v0\Currency $original_total): self
     {
         if (is_null($original_total)) {
             array_push($this->openAPINullablesSetToNull, 'original_total');
@@ -500,9 +500,9 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets converted_total
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getConvertedTotal(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getConvertedTotal(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['converted_total'];
     }
@@ -510,11 +510,11 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets converted_total
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $converted_total converted_total
+     * @param \SpApi\Model\finances\v0\Currency|null $converted_total converted_total
      *
      * @return self
      */
-    public function setConvertedTotal(?\OpenAPI\Client\Model\finances\v0\Currency $converted_total): self
+    public function setConvertedTotal(?\SpApi\Model\finances\v0\Currency $converted_total): self
     {
         if (is_null($converted_total)) {
             array_push($this->openAPINullablesSetToNull, 'converted_total');
@@ -636,9 +636,9 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets beginning_balance
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getBeginningBalance(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getBeginningBalance(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['beginning_balance'];
     }
@@ -646,11 +646,11 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets beginning_balance
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $beginning_balance beginning_balance
+     * @param \SpApi\Model\finances\v0\Currency|null $beginning_balance beginning_balance
      *
      * @return self
      */
-    public function setBeginningBalance(?\OpenAPI\Client\Model\finances\v0\Currency $beginning_balance): self
+    public function setBeginningBalance(?\SpApi\Model\finances\v0\Currency $beginning_balance): self
     {
         if (is_null($beginning_balance)) {
             array_push($this->openAPINullablesSetToNull, 'beginning_balance');

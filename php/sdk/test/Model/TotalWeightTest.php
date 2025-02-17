@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\v1\TotalWeight;
+use SpApi\Model\vendor\invoices\v1\TotalWeight;
 
 /**
  * TotalWeightTest Class Doc Comment
  *
  * @category    Class
  * @description The aggregate weight of this item being invoiced. This information will be available for items sold by weight.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TotalWeightTest extends TestCase
 {

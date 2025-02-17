@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PreferredDeliveryTime Class Doc Comment
  *
  * @category Class
  * @description The time window when the delivery is preferred.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class PreferredDeliveryTime implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'business_hours' => '\OpenAPI\Client\Model\orders\v0\BusinessHours[]',
-             'exception_dates' => '\OpenAPI\Client\Model\orders\v0\ExceptionDates[]'    ];
+             'business_hours' => '\SpApi\Model\orders\v0\BusinessHours[]',
+             'exception_dates' => '\SpApi\Model\orders\v0\ExceptionDates[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\NetworkComminglingTransactionEvent;
+use SpApi\Model\finances\v0\NetworkComminglingTransactionEvent;
 
 /**
  * NetworkComminglingTransactionEventTest Class Doc Comment
  *
  * @category    Class
  * @description A network commingling transaction event.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class NetworkComminglingTransactionEventTest extends TestCase
 {
@@ -124,7 +124,7 @@ class NetworkComminglingTransactionEventTest extends TestCase
     public function testPropertyTaxExclusiveAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxExclusiveAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxExclusiveAmount());
@@ -136,7 +136,7 @@ class NetworkComminglingTransactionEventTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());

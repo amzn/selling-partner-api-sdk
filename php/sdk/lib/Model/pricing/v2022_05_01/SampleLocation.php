@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SampleLocation Class Doc Comment
  *
  * @category Class
  * @description Information about a location. It uses a postal code to identify the location.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SampleLocation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'postal_code' => '\OpenAPI\Client\Model\pricing\v2022_05_01\PostalCode'    ];
+             'postal_code' => '\SpApi\Model\pricing\v2022_05_01\PostalCode'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class SampleLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets postal_code
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\PostalCode|null
+     * @return \SpApi\Model\pricing\v2022_05_01\PostalCode|null
      */
-    public function getPostalCode(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\PostalCode
+    public function getPostalCode(): ?\SpApi\Model\pricing\v2022_05_01\PostalCode
     {
         return $this->container['postal_code'];
     }
@@ -304,11 +304,11 @@ class SampleLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets postal_code
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\PostalCode|null $postal_code postal_code
+     * @param \SpApi\Model\pricing\v2022_05_01\PostalCode|null $postal_code postal_code
      *
      * @return self
      */
-    public function setPostalCode(?\OpenAPI\Client\Model\pricing\v2022_05_01\PostalCode $postal_code): self
+    public function setPostalCode(?\SpApi\Model\pricing\v2022_05_01\PostalCode $postal_code): self
     {
         if (is_null($postal_code)) {
             array_push($this->openAPINullablesSetToNull, 'postal_code');

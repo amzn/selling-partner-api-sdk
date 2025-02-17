@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentDetail Class Doc Comment
  *
  * @category Class
  * @description The information required by a selling partner to issue a shipment invoice.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,16 +64,16 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
              'amazon_order_id' => 'string',
              'amazon_shipment_id' => 'string',
              'purchase_date' => '\DateTime',
-             'shipping_address' => '\OpenAPI\Client\Model\invoicing\v0\Address',
+             'shipping_address' => '\SpApi\Model\invoicing\v0\Address',
              'payment_method_details' => 'string[]',
              'marketplace_id' => 'string',
              'seller_id' => 'string',
              'buyer_name' => 'string',
              'buyer_county' => 'string',
-             'buyer_tax_info' => '\OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo',
-             'marketplace_tax_info' => '\OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo',
+             'buyer_tax_info' => '\SpApi\Model\invoicing\v0\BuyerTaxInfo',
+             'marketplace_tax_info' => '\SpApi\Model\invoicing\v0\MarketplaceTaxInfo',
              'seller_display_name' => 'string',
-             'shipment_items' => '\OpenAPI\Client\Model\invoicing\v0\ShipmentItem[]'    ];
+             'shipment_items' => '\SpApi\Model\invoicing\v0\ShipmentItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -521,9 +521,9 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_address
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\Address|null
+     * @return \SpApi\Model\invoicing\v0\Address|null
      */
-    public function getShippingAddress(): ?\OpenAPI\Client\Model\invoicing\v0\Address
+    public function getShippingAddress(): ?\SpApi\Model\invoicing\v0\Address
     {
         return $this->container['shipping_address'];
     }
@@ -531,11 +531,11 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_address
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\Address|null $shipping_address shipping_address
+     * @param \SpApi\Model\invoicing\v0\Address|null $shipping_address shipping_address
      *
      * @return self
      */
-    public function setShippingAddress(?\OpenAPI\Client\Model\invoicing\v0\Address $shipping_address): self
+    public function setShippingAddress(?\SpApi\Model\invoicing\v0\Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_address');
@@ -725,9 +725,9 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer_tax_info
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo|null
+     * @return \SpApi\Model\invoicing\v0\BuyerTaxInfo|null
      */
-    public function getBuyerTaxInfo(): ?\OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo
+    public function getBuyerTaxInfo(): ?\SpApi\Model\invoicing\v0\BuyerTaxInfo
     {
         return $this->container['buyer_tax_info'];
     }
@@ -735,11 +735,11 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_tax_info
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo|null $buyer_tax_info buyer_tax_info
+     * @param \SpApi\Model\invoicing\v0\BuyerTaxInfo|null $buyer_tax_info buyer_tax_info
      *
      * @return self
      */
-    public function setBuyerTaxInfo(?\OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo $buyer_tax_info): self
+    public function setBuyerTaxInfo(?\SpApi\Model\invoicing\v0\BuyerTaxInfo $buyer_tax_info): self
     {
         if (is_null($buyer_tax_info)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_tax_info');
@@ -759,9 +759,9 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_tax_info
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo|null
+     * @return \SpApi\Model\invoicing\v0\MarketplaceTaxInfo|null
      */
-    public function getMarketplaceTaxInfo(): ?\OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo
+    public function getMarketplaceTaxInfo(): ?\SpApi\Model\invoicing\v0\MarketplaceTaxInfo
     {
         return $this->container['marketplace_tax_info'];
     }
@@ -769,11 +769,11 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marketplace_tax_info
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo|null $marketplace_tax_info marketplace_tax_info
+     * @param \SpApi\Model\invoicing\v0\MarketplaceTaxInfo|null $marketplace_tax_info marketplace_tax_info
      *
      * @return self
      */
-    public function setMarketplaceTaxInfo(?\OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo $marketplace_tax_info): self
+    public function setMarketplaceTaxInfo(?\SpApi\Model\invoicing\v0\MarketplaceTaxInfo $marketplace_tax_info): self
     {
         if (is_null($marketplace_tax_info)) {
             array_push($this->openAPINullablesSetToNull, 'marketplace_tax_info');

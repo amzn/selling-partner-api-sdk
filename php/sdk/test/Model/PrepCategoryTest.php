@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepCategory;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\PrepCategory;
 
 /**
  * PrepCategoryTest Class Doc Comment
  *
  * @category    Class
  * @description The preparation category for shipping an item to Amazon&#39;s fulfillment network.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrepCategoryTest extends TestCase
 {

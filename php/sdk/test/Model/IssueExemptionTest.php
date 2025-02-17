@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption;
+use SpApi\Model\listings\items\v2021_08_01\IssueExemption;
 
 /**
  * IssueExemptionTest Class Doc Comment
  *
  * @category    Class
  * @description Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption&#39;s expiry date.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class IssueExemptionTest extends TestCase
 {

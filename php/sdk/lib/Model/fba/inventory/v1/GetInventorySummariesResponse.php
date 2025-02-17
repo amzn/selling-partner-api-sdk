@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fba\inventory\v1;
+namespace SpApi\Model\fba\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInventorySummariesResponse Class Doc Comment
  *
  * @category Class
  * @description The Response schema.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult',
-             'pagination' => '\OpenAPI\Client\Model\fba\inventory\v1\Pagination',
-             'errors' => '\OpenAPI\Client\Model\fba\inventory\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResult',
+             'pagination' => '\SpApi\Model\fba\inventory\v1\Pagination',
+             'errors' => '\SpApi\Model\fba\inventory\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult|null
+     * @return \SpApi\Model\fba\inventory\v1\GetInventorySummariesResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult
+    public function getPayload(): ?\SpApi\Model\fba\inventory\v1\GetInventorySummariesResult
     {
         return $this->container['payload'];
     }
@@ -318,11 +318,11 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult|null $payload payload
+     * @param \SpApi\Model\fba\inventory\v1\GetInventorySummariesResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\fba\inventory\v1\GetInventorySummariesResult $payload): self
+    public function setPayload(?\SpApi\Model\fba\inventory\v1\GetInventorySummariesResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');
@@ -342,9 +342,9 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\Pagination|null
+     * @return \SpApi\Model\fba\inventory\v1\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\fba\inventory\v1\Pagination
+    public function getPagination(): ?\SpApi\Model\fba\inventory\v1\Pagination
     {
         return $this->container['pagination'];
     }
@@ -352,11 +352,11 @@ class GetInventorySummariesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\Pagination|null $pagination pagination
+     * @param \SpApi\Model\fba\inventory\v1\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\fba\inventory\v1\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\fba\inventory\v1\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

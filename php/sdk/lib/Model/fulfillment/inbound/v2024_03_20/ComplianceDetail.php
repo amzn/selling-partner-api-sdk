@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ComplianceDetail Class Doc Comment
  *
  * @category Class
  * @description Contains item identifiers and related tax information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
              'asin' => 'string',
              'fnsku' => 'string',
              'msku' => 'string',
-             'tax_details' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxDetails'    ];
+             'tax_details' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\TaxDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -462,9 +462,9 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_details
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxDetails|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\TaxDetails|null
      */
-    public function getTaxDetails(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxDetails
+    public function getTaxDetails(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\TaxDetails
     {
         return $this->container['tax_details'];
     }
@@ -472,11 +472,11 @@ class ComplianceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_details
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxDetails|null $tax_details tax_details
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\TaxDetails|null $tax_details tax_details
      *
      * @return self
      */
-    public function setTaxDetails(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxDetails $tax_details): self
+    public function setTaxDetails(?\SpApi\Model\fulfillment\inbound\v2024_03_20\TaxDetails $tax_details): self
     {
         if (is_null($tax_details)) {
             array_push($this->openAPINullablesSetToNull, 'tax_details');

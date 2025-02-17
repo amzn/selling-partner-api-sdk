@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ProcessingDirective Class Doc Comment
  *
  * @category Class
  * @description Additional information passed to the subscription to control the processing of notifications. For example, you can use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s, or select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications). The specific features available vary depending on the &#x60;notificationType&#x60;.  This feature is currently only supported by the &#x60;ANY_OFFER_CHANGED&#x60; and &#x60;ORDER_CHANGE&#x60; &#x60;notificationType&#x60;s.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ProcessingDirective implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'event_filter' => '\OpenAPI\Client\Model\notifications\v1\EventFilter'    ];
+             'event_filter' => '\SpApi\Model\notifications\v1\EventFilter'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class ProcessingDirective implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets event_filter
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\EventFilter|null
+     * @return \SpApi\Model\notifications\v1\EventFilter|null
      */
-    public function getEventFilter(): ?\OpenAPI\Client\Model\notifications\v1\EventFilter
+    public function getEventFilter(): ?\SpApi\Model\notifications\v1\EventFilter
     {
         return $this->container['event_filter'];
     }
@@ -304,11 +304,11 @@ class ProcessingDirective implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets event_filter
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\EventFilter|null $event_filter event_filter
+     * @param \SpApi\Model\notifications\v1\EventFilter|null $event_filter event_filter
      *
      * @return self
      */
-    public function setEventFilter(?\OpenAPI\Client\Model\notifications\v1\EventFilter $event_filter): self
+    public function setEventFilter(?\SpApi\Model\notifications\v1\EventFilter $event_filter): self
     {
         if (is_null($event_filter)) {
             array_push($this->openAPINullablesSetToNull, 'event_filter');

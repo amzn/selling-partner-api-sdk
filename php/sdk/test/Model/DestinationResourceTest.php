@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\DestinationResource;
+use SpApi\Model\notifications\v1\DestinationResource;
 
 /**
  * DestinationResourceTest Class Doc Comment
  *
  * @category    Class
  * @description The destination resource types.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DestinationResourceTest extends TestCase
 {
@@ -57,7 +57,7 @@ class DestinationResourceTest extends TestCase
     public function testPropertySqs()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\v1\SqsResource();
+        $testValue = new \SpApi\Model\notifications\v1\SqsResource();
         
         $this->model->setSqs($testValue);
         $this->assertEquals($testValue, $this->model->getSqs());
@@ -69,7 +69,7 @@ class DestinationResourceTest extends TestCase
     public function testPropertyEventBridge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\v1\EventBridgeResource();
+        $testValue = new \SpApi\Model\notifications\v1\EventBridgeResource();
         
         $this->model->setEventBridge($testValue);
         $this->assertEquals($testValue, $this->model->getEventBridge());

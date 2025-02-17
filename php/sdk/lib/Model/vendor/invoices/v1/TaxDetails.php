@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\invoices\v1;
+namespace SpApi\Model\vendor\invoices\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TaxDetails Class Doc Comment
  *
  * @category Class
  * @description Details of tax amount applied.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'tax_type' => 'string',
              'tax_rate' => 'string',
-             'tax_amount' => '\OpenAPI\Client\Model\vendor\invoices\v1\Money',
-             'taxable_amount' => '\OpenAPI\Client\Model\vendor\invoices\v1\Money'    ];
+             'tax_amount' => '\SpApi\Model\vendor\invoices\v1\Money',
+             'taxable_amount' => '\SpApi\Model\vendor\invoices\v1\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -440,9 +440,9 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_amount
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\Money
+     * @return \SpApi\Model\vendor\invoices\v1\Money
      */
-    public function getTaxAmount(): \OpenAPI\Client\Model\vendor\invoices\v1\Money
+    public function getTaxAmount(): \SpApi\Model\vendor\invoices\v1\Money
     {
         return $this->container['tax_amount'];
     }
@@ -450,11 +450,11 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_amount
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\Money $tax_amount tax_amount
+     * @param \SpApi\Model\vendor\invoices\v1\Money $tax_amount tax_amount
      *
      * @return self
      */
-    public function setTaxAmount(\OpenAPI\Client\Model\vendor\invoices\v1\Money $tax_amount): self
+    public function setTaxAmount(\SpApi\Model\vendor\invoices\v1\Money $tax_amount): self
     {
         if (is_null($tax_amount)) {
             throw new \InvalidArgumentException('non-nullable tax_amount cannot be null');
@@ -467,9 +467,9 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets taxable_amount
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\Money|null
+     * @return \SpApi\Model\vendor\invoices\v1\Money|null
      */
-    public function getTaxableAmount(): ?\OpenAPI\Client\Model\vendor\invoices\v1\Money
+    public function getTaxableAmount(): ?\SpApi\Model\vendor\invoices\v1\Money
     {
         return $this->container['taxable_amount'];
     }
@@ -477,11 +477,11 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets taxable_amount
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\Money|null $taxable_amount taxable_amount
+     * @param \SpApi\Model\vendor\invoices\v1\Money|null $taxable_amount taxable_amount
      *
      * @return self
      */
-    public function setTaxableAmount(?\OpenAPI\Client\Model\vendor\invoices\v1\Money $taxable_amount): self
+    public function setTaxableAmount(?\SpApi\Model\vendor\invoices\v1\Money $taxable_amount): self
     {
         if (is_null($taxable_amount)) {
             array_push($this->openAPINullablesSetToNull, 'taxable_amount');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ThroughputConfig Class Doc Comment
  *
  * @category Class
  * @description The throughput configuration.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ThroughputConfig implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'throughput_cap' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap',
-             'throughput_unit' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputUnit'    ];
+             'throughput_cap' => '\SpApi\Model\supplySources\v2020_07_01\ThroughputCap',
+             'throughput_unit' => '\SpApi\Model\supplySources\v2020_07_01\ThroughputUnit'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class ThroughputConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets throughput_cap
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ThroughputCap|null
      */
-    public function getThroughputCap(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap
+    public function getThroughputCap(): ?\SpApi\Model\supplySources\v2020_07_01\ThroughputCap
     {
         return $this->container['throughput_cap'];
     }
@@ -314,11 +314,11 @@ class ThroughputConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets throughput_cap
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap|null $throughput_cap throughput_cap
+     * @param \SpApi\Model\supplySources\v2020_07_01\ThroughputCap|null $throughput_cap throughput_cap
      *
      * @return self
      */
-    public function setThroughputCap(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap $throughput_cap): self
+    public function setThroughputCap(?\SpApi\Model\supplySources\v2020_07_01\ThroughputCap $throughput_cap): self
     {
         if (is_null($throughput_cap)) {
             array_push($this->openAPINullablesSetToNull, 'throughput_cap');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelResponse;
 
 /**
  * CreateContainerLabelResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;createContainerLabel&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateContainerLabelResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateContainerLabelResponseTest extends TestCase
     public function testPropertyContainerLabel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel();
         
         $this->model->setContainerLabel($testValue);
         $this->assertEquals($testValue, $this->model->getContainerLabel());

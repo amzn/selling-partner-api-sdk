@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\Reservation;
+use SpApi\Model\services\v1\Reservation;
 
 /**
  * ReservationTest Class Doc Comment
  *
  * @category    Class
  * @description Reservation object reduces the capacity of a resource.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ReservationTest extends TestCase
 {
@@ -80,7 +80,7 @@ class ReservationTest extends TestCase
     public function testPropertyAvailability()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\AvailabilityRecord();
+        $testValue = new \SpApi\Model\services\v1\AvailabilityRecord();
         
         $this->model->setAvailability($testValue);
         $this->assertEquals($testValue, $this->model->getAvailability());

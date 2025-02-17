@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\Length;
+use SpApi\Model\merchantFulfillment\v0\Length;
 
 /**
  * LengthTest Class Doc Comment
  *
  * @category    Class
  * @description The length.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LengthTest extends TestCase
 {
@@ -67,7 +67,7 @@ class LengthTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\UnitOfLength();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\UnitOfLength();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

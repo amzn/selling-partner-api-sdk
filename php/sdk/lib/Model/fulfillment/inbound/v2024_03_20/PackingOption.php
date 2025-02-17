@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackingOption Class Doc Comment
  *
  * @category Class
  * @description A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it&#39;s selected.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,14 +60,14 @@ class PackingOption implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'discounts' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
+             'discounts' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
              'expiration' => '\DateTime',
-             'fees' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
+             'fees' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
              'packing_groups' => 'string[]',
              'packing_option_id' => 'string',
              'status' => 'string',
-             'supported_configurations' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PackingConfiguration[]',
-             'supported_shipping_configurations' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShippingConfiguration[]'    ];
+             'supported_configurations' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PackingConfiguration[]',
+             'supported_shipping_configurations' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ShippingConfiguration[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration;
+use SpApi\Model\supplySources\v2020_07_01\CurbsidePickupConfiguration;
 
 /**
  * CurbsidePickupConfigurationTest Class Doc Comment
  *
  * @category    Class
  * @description The curbside pickup configuration of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CurbsidePickupConfigurationTest extends TestCase
 {
@@ -68,7 +68,7 @@ class CurbsidePickupConfigurationTest extends TestCase
     public function testPropertyOperationalConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration();
         
         $this->model->setOperationalConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getOperationalConfiguration());
@@ -80,7 +80,7 @@ class CurbsidePickupConfigurationTest extends TestCase
     public function testPropertyParkingWithAddressConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ParkingWithAddressConfiguration();
         
         $this->model->setParkingWithAddressConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getParkingWithAddressConfiguration());

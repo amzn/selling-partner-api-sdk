@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Container Class Doc Comment
  *
  * @category Class
  * @description A container used for shipping and packing items.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -69,9 +69,9 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
              'scac_code' => 'string',
              'carrier' => 'string',
              'container_sequence_number' => 'int',
-             'dimensions' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Dimensions',
-             'weight' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Weight',
-             'packed_items' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PackedItem[]'    ];
+             'dimensions' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Dimensions',
+             'weight' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Weight',
+             'packed_items' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\PackedItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -709,9 +709,9 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Dimensions|null
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\Dimensions|null
      */
-    public function getDimensions(): ?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Dimensions
+    public function getDimensions(): ?\SpApi\Model\vendor\df\shipping\v2021_12_28\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -719,11 +719,11 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Dimensions|null $dimensions dimensions
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\Dimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Dimensions $dimensions): self
+    public function setDimensions(?\SpApi\Model\vendor\df\shipping\v2021_12_28\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             array_push($this->openAPINullablesSetToNull, 'dimensions');
@@ -743,9 +743,9 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Weight
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\Weight
      */
-    public function getWeight(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Weight
+    public function getWeight(): \SpApi\Model\vendor\df\shipping\v2021_12_28\Weight
     {
         return $this->container['weight'];
     }
@@ -753,11 +753,11 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Weight $weight weight
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\Weight $weight weight
      *
      * @return self
      */
-    public function setWeight(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Weight $weight): self
+    public function setWeight(\SpApi\Model\vendor\df\shipping\v2021_12_28\Weight $weight): self
     {
         if (is_null($weight)) {
             throw new \InvalidArgumentException('non-nullable weight cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\v0\ShipmentDetail;
+use SpApi\Model\invoicing\v0\ShipmentDetail;
 
 /**
  * ShipmentDetailTest Class Doc Comment
  *
  * @category    Class
  * @description The information required by a selling partner to issue a shipment invoice.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentDetailTest extends TestCase
 {
@@ -102,7 +102,7 @@ class ShipmentDetailTest extends TestCase
     public function testPropertyShippingAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\v0\Address();
+        $testValue = new \SpApi\Model\invoicing\v0\Address();
         
         $this->model->setShippingAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShippingAddress());
@@ -169,7 +169,7 @@ class ShipmentDetailTest extends TestCase
     public function testPropertyBuyerTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\v0\BuyerTaxInfo();
+        $testValue = new \SpApi\Model\invoicing\v0\BuyerTaxInfo();
         
         $this->model->setBuyerTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerTaxInfo());
@@ -181,7 +181,7 @@ class ShipmentDetailTest extends TestCase
     public function testPropertyMarketplaceTaxInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\v0\MarketplaceTaxInfo();
+        $testValue = new \SpApi\Model\invoicing\v0\MarketplaceTaxInfo();
         
         $this->model->setMarketplaceTaxInfo($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplaceTaxInfo());

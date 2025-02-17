@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse;
 
 /**
  * SubmitFulfillmentOrderStatusUpdateResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;SubmitFulfillmentOrderStatusUpdate&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitFulfillmentOrderStatusUpdateResponseTest extends TestCase
 {

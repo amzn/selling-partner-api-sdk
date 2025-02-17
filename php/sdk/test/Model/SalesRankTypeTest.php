@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\SalesRankType;
+use SpApi\Model\pricing\v0\SalesRankType;
 
 /**
  * SalesRankTypeTest Class Doc Comment
  *
  * @category    Class
  * @description SalesRankType
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SalesRankTypeTest extends TestCase
 {

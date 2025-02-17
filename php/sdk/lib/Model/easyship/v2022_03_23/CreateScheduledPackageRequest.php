@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateScheduledPackageRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the &#x60;createScheduledPackage&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class CreateScheduledPackageRequest implements ModelInterface, ArrayAccess, \Jso
     protected static array $openAPITypes = [
              'amazon_order_id' => 'string',
              'marketplace_id' => 'string',
-             'package_details' => '\OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails'    ];
+             'package_details' => '\SpApi\Model\easyship\v2022_03_23\PackageDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -386,9 +386,9 @@ class CreateScheduledPackageRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets package_details
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails
+     * @return \SpApi\Model\easyship\v2022_03_23\PackageDetails
      */
-    public function getPackageDetails(): \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails
+    public function getPackageDetails(): \SpApi\Model\easyship\v2022_03_23\PackageDetails
     {
         return $this->container['package_details'];
     }
@@ -396,11 +396,11 @@ class CreateScheduledPackageRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets package_details
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails $package_details package_details
+     * @param \SpApi\Model\easyship\v2022_03_23\PackageDetails $package_details package_details
      *
      * @return self
      */
-    public function setPackageDetails(\OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails $package_details): self
+    public function setPackageDetails(\SpApi\Model\easyship\v2022_03_23\PackageDetails $package_details): self
     {
         if (is_null($package_details)) {
             throw new \InvalidArgumentException('non-nullable package_details cannot be null');

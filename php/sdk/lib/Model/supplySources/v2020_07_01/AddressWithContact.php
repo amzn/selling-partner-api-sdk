@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AddressWithContact Class Doc Comment
  *
  * @category Class
  * @description The address and contact details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'contact_details' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails',
-             'address' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\Address'    ];
+             'contact_details' => '\SpApi\Model\supplySources\v2020_07_01\ContactDetails',
+             'address' => '\SpApi\Model\supplySources\v2020_07_01\Address'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets contact_details
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ContactDetails|null
      */
-    public function getContactDetails(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails
+    public function getContactDetails(): ?\SpApi\Model\supplySources\v2020_07_01\ContactDetails
     {
         return $this->container['contact_details'];
     }
@@ -311,11 +311,11 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets contact_details
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails|null $contact_details contact_details
+     * @param \SpApi\Model\supplySources\v2020_07_01\ContactDetails|null $contact_details contact_details
      *
      * @return self
      */
-    public function setContactDetails(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails $contact_details): self
+    public function setContactDetails(?\SpApi\Model\supplySources\v2020_07_01\ContactDetails $contact_details): self
     {
         if (is_null($contact_details)) {
             array_push($this->openAPINullablesSetToNull, 'contact_details');
@@ -335,9 +335,9 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\Address|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\Address
+    public function getAddress(): ?\SpApi\Model\supplySources\v2020_07_01\Address
     {
         return $this->container['address'];
     }
@@ -345,11 +345,11 @@ class AddressWithContact implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\Address|null $address address
+     * @param \SpApi\Model\supplySources\v2020_07_01\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\supplySources\v2020_07_01\Address $address): self
+    public function setAddress(?\SpApi\Model\supplySources\v2020_07_01\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

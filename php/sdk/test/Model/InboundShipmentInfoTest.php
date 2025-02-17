@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\InboundShipmentInfo;
+use SpApi\Model\fulfillment\inbound\v0\InboundShipmentInfo;
 
 /**
  * InboundShipmentInfoTest Class Doc Comment
  *
  * @category    Class
  * @description Information about the seller&#39;s inbound shipments. Returned by the listInboundShipments operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InboundShipmentInfoTest extends TestCase
 {
@@ -79,7 +79,7 @@ class InboundShipmentInfoTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\Address();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());
@@ -101,7 +101,7 @@ class InboundShipmentInfoTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\ShipmentStatus();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\ShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class InboundShipmentInfoTest extends TestCase
      */
     public function testPropertyLabelPrepType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\LabelPrepType();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\LabelPrepType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -150,7 +150,7 @@ class InboundShipmentInfoTest extends TestCase
      */
     public function testPropertyBoxContentsSource()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsSource();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\BoxContentsSource();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -164,7 +164,7 @@ class InboundShipmentInfoTest extends TestCase
     public function testPropertyEstimatedBoxContentsFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails();
         
         $this->model->setEstimatedBoxContentsFee($testValue);
         $this->assertEquals($testValue, $this->model->getEstimatedBoxContentsFee());

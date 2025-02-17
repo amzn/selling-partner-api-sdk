@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ValueAddedServiceDetails Class Doc Comment
  *
  * @category Class
  * @description A collection of supported value-added services.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ValueAddedServiceDetails implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'collect_on_delivery' => '\OpenAPI\Client\Model\shipping\v2\CollectOnDelivery'    ];
+             'collect_on_delivery' => '\SpApi\Model\shipping\v2\CollectOnDelivery'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -295,9 +295,9 @@ class ValueAddedServiceDetails implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets collect_on_delivery
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\CollectOnDelivery|null
+     * @return \SpApi\Model\shipping\v2\CollectOnDelivery|null
      */
-    public function getCollectOnDelivery(): ?\OpenAPI\Client\Model\shipping\v2\CollectOnDelivery
+    public function getCollectOnDelivery(): ?\SpApi\Model\shipping\v2\CollectOnDelivery
     {
         return $this->container['collect_on_delivery'];
     }
@@ -305,11 +305,11 @@ class ValueAddedServiceDetails implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets collect_on_delivery
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\CollectOnDelivery|null $collect_on_delivery collect_on_delivery
+     * @param \SpApi\Model\shipping\v2\CollectOnDelivery|null $collect_on_delivery collect_on_delivery
      *
      * @return self
      */
-    public function setCollectOnDelivery(?\OpenAPI\Client\Model\shipping\v2\CollectOnDelivery $collect_on_delivery): self
+    public function setCollectOnDelivery(?\SpApi\Model\shipping\v2\CollectOnDelivery $collect_on_delivery): self
     {
         if (is_null($collect_on_delivery)) {
             array_push($this->openAPINullablesSetToNull, 'collect_on_delivery');

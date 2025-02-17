@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Rate Class Doc Comment
  *
  * @category Class
  * @description The details of a shipping service offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,15 +66,15 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
              'carrier_name' => 'string',
              'service_id' => 'string',
              'service_name' => 'string',
-             'billed_weight' => '\OpenAPI\Client\Model\shipping\v2\Weight',
-             'total_charge' => '\OpenAPI\Client\Model\shipping\v2\Currency',
-             'promise' => '\OpenAPI\Client\Model\shipping\v2\Promise',
-             'supported_document_specifications' => '\OpenAPI\Client\Model\shipping\v2\SupportedDocumentSpecification[]',
-             'available_value_added_service_groups' => '\OpenAPI\Client\Model\shipping\v2\AvailableValueAddedServiceGroup[]',
+             'billed_weight' => '\SpApi\Model\shipping\v2\Weight',
+             'total_charge' => '\SpApi\Model\shipping\v2\Currency',
+             'promise' => '\SpApi\Model\shipping\v2\Promise',
+             'supported_document_specifications' => '\SpApi\Model\shipping\v2\SupportedDocumentSpecification[]',
+             'available_value_added_service_groups' => '\SpApi\Model\shipping\v2\AvailableValueAddedServiceGroup[]',
              'requires_additional_inputs' => 'bool',
-             'rate_item_list' => '\OpenAPI\Client\Model\shipping\v2\RateItem[]',
-             'payment_type' => '\OpenAPI\Client\Model\shipping\v2\PaymentType',
-             'benefits' => '\OpenAPI\Client\Model\shipping\v2\Benefits'    ];
+             'rate_item_list' => '\SpApi\Model\shipping\v2\RateItem[]',
+             'payment_type' => '\SpApi\Model\shipping\v2\PaymentType',
+             'benefits' => '\SpApi\Model\shipping\v2\Benefits'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -548,9 +548,9 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billed_weight
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Weight|null
+     * @return \SpApi\Model\shipping\v2\Weight|null
      */
-    public function getBilledWeight(): ?\OpenAPI\Client\Model\shipping\v2\Weight
+    public function getBilledWeight(): ?\SpApi\Model\shipping\v2\Weight
     {
         return $this->container['billed_weight'];
     }
@@ -558,11 +558,11 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billed_weight
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Weight|null $billed_weight billed_weight
+     * @param \SpApi\Model\shipping\v2\Weight|null $billed_weight billed_weight
      *
      * @return self
      */
-    public function setBilledWeight(?\OpenAPI\Client\Model\shipping\v2\Weight $billed_weight): self
+    public function setBilledWeight(?\SpApi\Model\shipping\v2\Weight $billed_weight): self
     {
         if (is_null($billed_weight)) {
             array_push($this->openAPINullablesSetToNull, 'billed_weight');
@@ -582,9 +582,9 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_charge
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency
+     * @return \SpApi\Model\shipping\v2\Currency
      */
-    public function getTotalCharge(): \OpenAPI\Client\Model\shipping\v2\Currency
+    public function getTotalCharge(): \SpApi\Model\shipping\v2\Currency
     {
         return $this->container['total_charge'];
     }
@@ -592,11 +592,11 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_charge
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency $total_charge total_charge
+     * @param \SpApi\Model\shipping\v2\Currency $total_charge total_charge
      *
      * @return self
      */
-    public function setTotalCharge(\OpenAPI\Client\Model\shipping\v2\Currency $total_charge): self
+    public function setTotalCharge(\SpApi\Model\shipping\v2\Currency $total_charge): self
     {
         if (is_null($total_charge)) {
             throw new \InvalidArgumentException('non-nullable total_charge cannot be null');
@@ -609,9 +609,9 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promise
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Promise
+     * @return \SpApi\Model\shipping\v2\Promise
      */
-    public function getPromise(): \OpenAPI\Client\Model\shipping\v2\Promise
+    public function getPromise(): \SpApi\Model\shipping\v2\Promise
     {
         return $this->container['promise'];
     }
@@ -619,11 +619,11 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promise
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Promise $promise promise
+     * @param \SpApi\Model\shipping\v2\Promise $promise promise
      *
      * @return self
      */
-    public function setPromise(\OpenAPI\Client\Model\shipping\v2\Promise $promise): self
+    public function setPromise(\SpApi\Model\shipping\v2\Promise $promise): self
     {
         if (is_null($promise)) {
             throw new \InvalidArgumentException('non-nullable promise cannot be null');
@@ -792,9 +792,9 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets benefits
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Benefits|null
+     * @return \SpApi\Model\shipping\v2\Benefits|null
      */
-    public function getBenefits(): ?\OpenAPI\Client\Model\shipping\v2\Benefits
+    public function getBenefits(): ?\SpApi\Model\shipping\v2\Benefits
     {
         return $this->container['benefits'];
     }
@@ -802,11 +802,11 @@ class Rate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets benefits
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Benefits|null $benefits benefits
+     * @param \SpApi\Model\shipping\v2\Benefits|null $benefits benefits
      *
      * @return self
      */
-    public function setBenefits(?\OpenAPI\Client\Model\shipping\v2\Benefits $benefits): self
+    public function setBenefits(?\SpApi\Model\shipping\v2\Benefits $benefits): self
     {
         if (is_null($benefits)) {
             array_push($this->openAPINullablesSetToNull, 'benefits');

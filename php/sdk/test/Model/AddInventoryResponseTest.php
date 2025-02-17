@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\inventory\v1\AddInventoryResponse;
+use SpApi\Model\fba\inventory\v1\AddInventoryResponse;
 
 /**
  * AddInventoryResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the AddInventory operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AddInventoryResponseTest extends TestCase
 {

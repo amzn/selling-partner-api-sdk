@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DirectPurchaseResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the directPurchaseShipment operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class DirectPurchaseResult implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
-             'package_document_detail_list' => '\OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail[]'    ];
+             'package_document_detail_list' => '\SpApi\Model\shipping\v2\PackageDocumentDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\GetOffersResponse;
+use SpApi\Model\pricing\v0\GetOffersResponse;
 
 /**
  * GetOffersResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getListingOffers&#x60; and &#x60;getItemOffers&#x60; operations.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetOffersResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetOffersResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\GetOffersResult();
+        $testValue = new \SpApi\Model\pricing\v0\GetOffersResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

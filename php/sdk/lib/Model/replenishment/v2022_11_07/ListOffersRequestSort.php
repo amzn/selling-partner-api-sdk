@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOffersRequestSort Class Doc Comment
  *
  * @category Class
  * @description Use these parameters to sort the response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ListOffersRequestSort implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'order' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\SortOrder',
-             'key' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersSortKey'    ];
+             'order' => '\SpApi\Model\replenishment\v2022_11_07\SortOrder',
+             'key' => '\SpApi\Model\replenishment\v2022_11_07\ListOffersSortKey'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
